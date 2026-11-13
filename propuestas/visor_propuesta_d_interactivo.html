@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta D — Pabellón Bioclimático Atlántico (Oleiros Evolución)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #090d16; color: #f8fafc; }
+    .tab-btn.active { background-color: #0284c7; color: white; border-color: #38bdf8; }
+    .badge { display: inline-flex; align-items: center; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex flex-wrap items-center justify-between gap-4 sticky top-0 z-50">
+    <div>
+      <div class="flex items-center gap-3">
+        <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">NUEVA PROPUESTA D</span>
+        <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">RAMA: feature/auditoria-y-redisenho-critico</span>
+      </div>
+      <h1 class="text-xl font-bold tracking-tight text-white mt-1">Hogar Oleiros — Pabellón Bioclimático Atlántico</h1>
+      <p class="text-xs text-slate-400">Liáns / Santa Cruz (Concello de Oleiros) · 208,5 m² Construidos · 662.980 € Llave en Mano</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="flex bg-slate-950 p-1 rounded-xl border border-slate-800">
+      <button onclick="switchTab('pb')" id="tab-pb" class="tab-btn active px-4 py-2 rounded-lg text-sm font-medium transition-all">Planta Baja (±0,00 m)</button>
+      <button onclick="switchTab('p1')" id="tab-p1" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white transition-all">Planta Primera (+3,15 m)</button>
+      <button onclick="switchTab('auditoria')" id="tab-auditoria" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-amber-400 hover:text-white transition-all">⚡ Auditoría Crítica (Por qué cambió)</button>
+      <button onclick="switchTab('finanzas')" id="tab-finanzas" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white transition-all">💰 Presupuesto Blindado</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 p-6 max-w-7xl mx-auto w-full">
+
+    <!-- VIEW 1: PLANTA BAJA -->
+    <div id="view-pb" class="space-y-4">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold text-sky-400">Planta Baja — Cota ±0,00 m (Claustro Abierto y Zaguán Mudroom)</h2>
+          <p class="text-xs text-slate-400">Huella cerrada: <strong class="text-emerald-400">116,5 m²</strong> (CUMPLE estrictamente el 20% de ocupación del PXOM en parcela de 600 m²).</p>
+        </div>
+        <div class="flex gap-2">
+          <span class="badge bg-emerald-950 text-emerald-300 border border-emerald-800">✓ 100% Legal PXOM y NHG</span>
+          <span class="badge bg-sky-950 text-sky-300 border border-sky-800">✓ Zaguán Estanco</span>
+          <span class="badge bg-amber-950 text-amber-300 border border-amber-800">✓ Despacho Sanctasanctórum</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- SVG PLAN VIEWER (2 Cols) -->
+        <div class="lg:col-span-2 bg-slate-950 border border-slate-800 rounded-2xl p-2 overflow-hidden shadow-2xl flex items-center justify-center min-h-[580px]">
+          <object data="planta_baja_propuesta_d.svg" type="image/svg+xml" class="w-full h-auto max-h-[700px]"></object>
+        </div>
+
+        <!-- SIDEBAR DETAILS (1 Col) -->
+        <div class="space-y-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <h3 class="font-bold text-white text-sm uppercase tracking-wider text-slate-400">Puntos Fuertes de la Planta Baja</h3>
+            
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-sky-400 mb-1">🌧️ Zaguán Atlántico / Mudroom (5,8 m²)</div>
+              <p class="text-xs text-slate-300">Desembarco directo y 100% cubierto desde la pérgola. Esclusa térmica con zapatero, banco descalzador y doble puerta (técnica y noble). Cero frío y cero lluvia.</p>
+            </div>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-emerald-400 mb-1">🌿 Claustro Atlántico a Cielo Abierto (16,0 m²)</div>
+              <p class="text-xs text-slate-300">Al no tener techo de cristal, NO computa ocupación en el PXOM. Cero condensaciones, cero efecto invernadero en verano y drenaje natural para el Arce Japonés.</p>
+            </div>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-amber-400 mb-1">💼 Despacho Sanctasanctórum (11,8 m²)</div>
+              <p class="text-xs text-slate-300">Se elimina el atajo familiar. Puerta acústica $R_w \ge 38\text{ dB}$, ventana practicable al Norte (luz difusa sin reflejos + legalidad NHG) y cristalera al Claustro.</p>
+            </div>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-purple-400 mb-1">🚿 Núcleo de Baño PB con Vestíbulo Neutro (5,4 m²)</div>
+              <p class="text-xs text-slate-300">Se elimina la puerta directa a la cocina. Acceso noble único desde distribuidor con armario lencero. Mantiene bajantes unificadas en esquina Noreste.</p>
+            </div>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-rose-400 mb-1">🔥 Porche Sur Expandido (Fondo 3,00 m — 36 m²)</div>
+              <p class="text-xs text-slate-300">Ampliación de 2,20 a 3,00 m para mesa de 10 personas sin apreturas. El Salón gana ventanal en esquina Suroeste al mover el cuarto de robot al lateral.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: PLANTA PRIMERA -->
+    <div id="view-p1" class="space-y-4 hidden">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold text-sky-400">Planta Primera — Cota +3,15 m (Zona de Noche y Ergonomía de Estudio)</h2>
+          <p class="text-xs text-slate-400">Superficie útil: <strong class="text-emerald-400">78,5 m²</strong> interiores + 14,0 m² Balcón corrido Sur con peto de vidrio.</p>
+        </div>
+        <div class="flex gap-2">
+          <span class="badge bg-emerald-950 text-emerald-300 border border-emerald-800">✓ Galería Acústica 4+4 Silence</span>
+          <span class="badge bg-sky-950 text-sky-300 border border-sky-800">✓ Luz Este a 90°</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- SVG PLAN VIEWER (2 Cols) -->
+        <div class="lg:col-span-2 bg-slate-950 border border-slate-800 rounded-2xl p-2 overflow-hidden shadow-2xl flex items-center justify-center min-h-[580px]">
+          <object data="planta_alta_propuesta_d.svg" type="image/svg+xml" class="w-full h-auto max-h-[700px]"></object>
+        </div>
+
+        <!-- SIDEBAR DETAILS (1 Col) -->
+        <div class="space-y-4">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+            <h3 class="font-bold text-white text-sm uppercase tracking-wider text-slate-400">Innovaciones en Planta Primera</h3>
+            
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-sky-400 mb-1">🔇 Galería Acristalada Acústica (8,2 m²)</div>
+              <p class="text-xs text-slate-300">Mampara fija de vidrio laminar acústico 4+4 Silence hacia el claustro. Mantiene las vistas espectaculares al arce pero aísla el ruido de la televisión o cocina.</p>
+            </div>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-emerald-400 mb-1">💻 Puestos de Estudio Niños (14,6 m² c/u)</div>
+              <p class="text-xs text-slate-300">Escritorios de 1,80 m apoyados en pared Este: la luz del ventanal Sur entra a 90° sin contraluz ni reflejos en pantallas de portátiles. Salida libre al balcón.</p>
+            </div>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-indigo-400 mb-1">👑 Suite Matrimonio Serena (31,2 m²)</div>
+              <p class="text-xs text-slate-300">Dormitorio Sur con vistas al jardín, vestidor de paso con iluminación LED integrada y baño privado doble alineado con bajantes de PB.</p>
+            </div>
+
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
+              <div class="text-xs font-bold text-amber-400 mb-1">☀️ Cubierta Técnica Norte Desvinculada</div>
+              <p class="text-xs text-slate-300">Sobre la pérgola y trastero exterior se instalan los 10 paneles solares (4,5 kWp) totalmente ocultos de las visuales del jardín y balcón Sur.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: AUDITORÍA CRÍTICA (COMPARATIVA DETALLADA) -->
+    <div id="view-auditoria" class="space-y-6 hidden">
+      <div class="bg-amber-950/30 border border-amber-800/50 rounded-2xl p-6">
+        <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2">
+          <span>⚠️</span> ¿Por qué había que desafiar las decisiones de la Iteración 3?
+        </h2>
+        <p class="text-sm text-slate-300 mt-2">
+          Las 3 auditorías especializadas independientes (Urbanística/Bioclimática, Espacial y Constructiva) concluyeron que el proyecto anterior tenía <strong>bloqueos normativos y físicos insalvables</strong> que habrían impedido obtener la licencia en el Concello de Oleiros o provocado graves problemas de habitabilidad y humedades en Galicia.
+        </p>
+      </div>
+
+      <!-- COMPARISON TABLE -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-950 text-slate-400 border-b border-slate-800 text-xs uppercase">
+            <tr>
+              <th class="p-4">Aspecto Crítico</th>
+              <th class="p-4 text-rose-400">Iteración 3 (Auditada — Riesgo)</th>
+              <th class="p-4 text-emerald-400">Propuesta D (Evolucionada — Solución)</th>
+              <th class="p-4">Impacto Real</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-xs">
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Ocupación Parcela (PXOM Oleiros Ord. 2B)</td>
+              <td class="p-4 text-rose-300 font-mono">168,0 m² (28,0%) — 🔴 Ilegal</td>
+              <td class="p-4 text-emerald-300 font-mono">116,5 m² (19,4%) — 🟢 Legal</td>
+              <td class="p-4 text-slate-300">Al abrir el patio al cielo, no computa ocupación. El Concello aprueba la licencia sin problemas.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Calificación Legal Despacho (NHG)</td>
+              <td class="p-4 text-rose-300">No vividera (ventila a atrio cubierto)</td>
+              <td class="p-4 text-emerald-300">Vividera / Dormitorio 100% legal</td>
+              <td class="p-4 text-slate-300">Ventana exterior a fachada Norte + visuales al claustro. Válido como 4º dormitorio oficial.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Separación Baño PB - Cocina</td>
+              <td class="p-4 text-rose-300">Corredera directa (Prohibido NHG)</td>
+              <td class="p-4 text-emerald-300">Distribuidor neutro independiente</td>
+              <td class="p-4 text-slate-300">Cumple Decreto 29/2010. Máxima higiene, intimidad acústica y cero olores cruzados.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Física Atlántica y Condensaciones</td>
+              <td class="p-4 text-rose-300">Riesgo extremo de goteo / moho invernal</td>
+              <td class="p-4 text-emerald-300">Cero condensaciones interiores</td>
+              <td class="p-4 text-slate-300">La envolvente térmica exterior queda continua. Se elimina la "trampa de rocío" del vidrio horizontal.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Protección frente al Gas Radón (CTE HS-6)</td>
+              <td class="p-4 text-rose-300">Alcorque perforaba solera (chimenea de gas)</td>
+              <td class="p-4 text-emerald-300">Forjado Cáviti + Lámina continua</td>
+              <td class="p-4 text-slate-300">Blindaje total en Oleiros (municipio de alto riesgo por subsuelo granítico).</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Llegada en Coche bajo Temporal</td>
+              <td class="p-4 text-rose-300">2 metros intemperie / alero simple</td>
+              <td class="p-4 text-emerald-300">Zaguán Mudroom estanco con esclusa</td>
+              <td class="p-4 text-slate-300">Bajar del coche con la compra o niños dormidos sin mojarse ni meter arena en la casa.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Teletrabajo en el Despacho</td>
+              <td class="p-4 text-rose-300">Atajo familiar continuo cruzando la mesa</td>
+              <td class="p-4 text-emerald-300">Sanctasanctórum con puerta acústica</td>
+              <td class="p-4 text-slate-300">Videollamadas confidenciales y concentración real. Los invitados disfrutan de suite 100% privada.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Fondo Libre Porche Sur Comedor</td>
+              <td class="p-4 text-rose-300">2,20 m (estrangulado para 10 pax)</td>
+              <td class="p-4 text-emerald-300 font-mono">3,00 m libres de fondo</td>
+              <td class="p-4 text-slate-300">Mesa de 10 personas con paso holgado a ambos lados y espacio para zona lounge exterior.</td>
+            </tr>
+            <tr class="hover:bg-slate-800/30">
+              <td class="p-4 font-bold text-white">Riesgo Económico y Filtraciones</td>
+              <td class="p-4 text-rose-300">Lucernario motorizado (25-30 k€, goteras)</td>
+              <td class="p-4 text-emerald-300">Claustro exterior drenante (-26,5 k€)</td>
+              <td class="p-4 text-slate-300">Ese dinero se reinvierte en blindar cimentación, mudroom, porche y fondo de contingencias (+8 k€).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VIEW 4: PRESUPUESTO BLINDADO -->
+    <div id="view-finanzas" class="space-y-6 hidden">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h2 class="text-xl font-bold text-emerald-400">Presupuesto Llave en Mano Cerrado: 662.980 €</h2>
+        <p class="text-sm text-slate-300 mt-1">Cómo la Propuesta D protege vuestro patrimonio eliminando costes patológicos y reforzando las partidas estructurales.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+            <div class="text-xs text-slate-400 font-semibold uppercase">Terreno en Liáns (600 m²)</div>
+            <div class="text-2xl font-black text-white mt-1">180.000 €</div>
+            <div class="text-xs text-slate-400 mt-1">Incluye ITP (10%) + Notaría y Registro</div>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+            <div class="text-xs text-slate-400 font-semibold uppercase">Obra Construcción Llave en Mano</div>
+            <div class="text-2xl font-black text-sky-400 mt-1">381.600 €</div>
+            <div class="text-xs text-slate-400 mt-1">208,5 m² × 1.830 €/m² (SATE, Dekton, Aerotermia)</div>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+            <div class="text-xs text-slate-400 font-semibold uppercase">Fondo de Imprevistos Blindado</div>
+            <div class="text-2xl font-black text-emerald-400 mt-1">35.000 €</div>
+            <div class="text-xs text-emerald-400 mt-1">↑ Aumentado en +8.000 € de colchón</div>
+          </div>
+        </div>
+
+        <div class="mt-8 p-4 bg-emerald-950/20 border border-emerald-800/40 rounded-xl">
+          <h3 class="text-sm font-bold text-emerald-300">Reequilibrio Financiero Inteligente de la Propuesta D:</h3>
+          <ul class="text-xs text-slate-300 mt-2 space-y-1 list-disc list-inside">
+            <li><strong>-26.500 € ahorrados:</strong> Supresión del lucernario motorizado de 19 m², eliminación de vigas descolgadas metálicas y mantenimiento en altura.</li>
+            <li><strong>+6.500 € reinvertidos:</strong> Forjado sanitario Cáviti ventilado y lámina estanca antirradón homologada (CTE DB-HS6).</li>
+            <li><strong>+7.500 € reinvertidos:</strong> Zaguán / Mudroom acristalado estanco con zapatero y esclusa térmica.</li>
+            <li><strong>+4.500 € reinvertidos:</strong> Ampliación del Porche Sur a 3,00 m libres con cortavientos verticales.</li>
+            <li><strong>+8.000 € al Colchón Familiar:</strong> El fondo de contingencias pasa de 27.000 € a <strong>35.000 €</strong> intactos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active', 'text-white'));
+      document.querySelectorAll('[id^="view-"]').forEach(view => view.classList.add('hidden'));
+
+      document.getElementById('tab-' + tabId).classList.add('active');
+      document.getElementById('view-' + tabId).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
