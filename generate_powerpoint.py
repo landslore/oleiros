@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Generador de la Presentación PowerPoint (.pptx) para Mac (Keynote & PowerPoint).
-Presenta la Propuesta D de la Vivienda en Oleiros con planos definitivos, renders fotorrealistas y fichas técnicas.
+Generador de la Presentación PowerPoint (.pptx) Definitiva para Mac (Keynote & PowerPoint).
+Presenta la Propuesta D de la Vivienda en Oleiros estancia por estancia con sus renders fotorrealistas corregidos.
 """
 
 import os
@@ -14,7 +14,6 @@ from pptx.enum.shapes import MSO_SHAPE
 
 def create_deck():
     prs = Presentation()
-    # 16:9 Widescreen (13.333 x 7.5 inches)
     prs.slide_width = Inches(13.333)
     prs.slide_height = Inches(7.5)
     blank_layout = prs.slide_layouts[6]
@@ -37,10 +36,8 @@ def create_deck():
         fill.fore_color.rgb = color
 
     def add_header(slide, title_text, category="PROYECTO OLEIROS · PROPUESTA D", subtitle=None):
-        # Category Tag
-        cat_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.5), Inches(11.7), Inches(0.4))
+        cat_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(11.7), Inches(0.35))
         tf_cat = cat_box.text_frame
-        tf_cat.word_wrap = True
         p_cat = tf_cat.paragraphs[0]
         p_cat.text = category.upper()
         p_cat.font.name = "Helvetica"
@@ -48,14 +45,12 @@ def create_deck():
         p_cat.font.bold = True
         p_cat.font.color.rgb = ACCENT_SKY
 
-        # Main Title
-        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.85), Inches(11.7), Inches(0.7))
+        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.75), Inches(11.7), Inches(0.65))
         tf_title = title_box.text_frame
-        tf_title.word_wrap = True
         p_title = tf_title.paragraphs[0]
         p_title.text = title_text
         p_title.font.name = "Helvetica"
-        p_title.font.size = Pt(24)
+        p_title.font.size = Pt(22)
         p_title.font.bold = True
         p_title.font.color.rgb = TEXT_LIGHT
 
@@ -63,267 +58,257 @@ def create_deck():
             p_sub = tf_title.add_paragraph()
             p_sub.text = subtitle
             p_sub.font.name = "Helvetica"
-            p_sub.font.size = Pt(12)
+            p_sub.font.size = Pt(11)
             p_sub.font.color.rgb = TEXT_MUTED
 
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 1: PORTADA
-    # ═════════════════════════════════════════════════════════════════════════════
+    def add_room_slide(title, category, subtitle, img_name, points, badge_color=ACCENT_SKY):
+        slide = prs.slides.add_slide(blank_layout)
+        set_slide_background(slide)
+        add_header(slide, title, category, subtitle)
+
+        img_path = os.path.join(renders_dir, img_name)
+        if os.path.exists(img_path):
+            slide.shapes.add_picture(img_path, Inches(0.8), Inches(1.7), width=Inches(7.2), height=Inches(5.2))
+
+        box = slide.shapes.add_textbox(Inches(8.3), Inches(1.7), Inches(4.2), Inches(5.2))
+        tf = box.text_frame
+        tf.word_wrap = True
+
+        p_h = tf.paragraphs[0]
+        p_h.text = "Claves de Diseño & Aparejador:\n"
+        p_h.font.bold = True
+        p_h.font.size = Pt(13)
+        p_h.font.color.rgb = badge_color
+
+        for pt in points:
+            p_pt = tf.add_paragraph()
+            p_pt.text = "• " + pt
+            p_pt.font.size = Pt(10.5)
+            p_pt.font.color.rgb = TEXT_LIGHT
+
+    # 1. PORTADA
     s1 = prs.slides.add_slide(blank_layout)
     set_slide_background(s1, BG_DARK)
-
-    # Hero Image on right
     img_portada = os.path.join(renders_dir, "fachada_norte_render.jpg")
     if os.path.exists(img_portada):
         s1.shapes.add_picture(img_portada, Inches(6.0), Inches(0.75), width=Inches(6.8), height=Inches(6.0))
 
-    # Left content box
     left_box = s1.shapes.add_textbox(Inches(0.8), Inches(1.5), Inches(5.0), Inches(4.5))
     tf1 = left_box.text_frame
     tf1.word_wrap = True
-
     p0 = tf1.paragraphs[0]
     p0.text = "PROYECTO DE EJECUCIÓN · VIVIENDA UNIFAMILIAR"
-    p0.font.name = "Helvetica"
-    p0.font.size = Pt(11)
     p0.font.bold = True
+    p0.font.size = Pt(11)
     p0.font.color.rgb = ACCENT_SKY
-
     p1 = tf1.add_paragraph()
     p1.text = "Hogar Oleiros\nPropuesta D"
-    p1.font.name = "Helvetica"
-    p1.font.size = Pt(38)
     p1.font.bold = True
+    p1.font.size = Pt(36)
     p1.font.color.rgb = TEXT_LIGHT
-
     p2 = tf1.add_paragraph()
     p2.text = "Pabellón Bioclimático en Liáns / Santa Cruz\nConcello de Oleiros (A Coruña)"
-    p2.font.name = "Helvetica"
-    p2.font.size = Pt(14)
+    p2.font.size = Pt(13)
     p2.font.color.rgb = ACCENT_GOLD
-
     p3 = tf1.add_paragraph()
     p3.text = "\n• Parcela: 600 m² (Ordenanza 2B, PGOM Oleiros)\n• Ocupación PB: 116,5 m² (19,4% ≤ 20,0% legal)\n• Patio Corrala Central: 16,0 m² habitable y accesible\n• Presupuesto Llave en Mano: 662.980 €"
-    p3.font.name = "Helvetica"
     p3.font.size = Pt(11)
     p3.font.color.rgb = TEXT_MUTED
 
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 2: CRITERIOS RECTORES DE LA PROPUESTA D
-    # ═════════════════════════════════════════════════════════════════════════════
-    s2 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s2)
-    add_header(s2, "Criterios Rectores del Rediseño Integral", "ESTRATEGIA ARQUITECTÓNICA & BIOCLIMÁTICA", "Respuesta a la auditoría técnica y necesidades de la familia")
+    # 2. FACHADA NORTE Y ACCESO
+    add_room_slide(
+        "Acceso Principal & Fachada Norte",
+        "PLANTA BAJA · EXTERIORES",
+        "Doble acceso peatonal cubierto y aparcamiento bajo pérgola",
+        "fachada_norte_render.jpg",
+        [
+            "Porche cubierto de entrada noble con puerta pivotante de iroko macizo (1,10 m).",
+            "Pérgola de aparcamiento para 2 coches al Oeste con paso a cubierto.",
+            "Conexión directa desde el aparcamiento al Zaguán Mudroom.",
+            "Zócalo de granito gallego del país y carpintería minimalista Cortizo negro forja."
+        ],
+        ACCENT_SKY
+    )
 
-    pillars = [
-        ("🍁 1. Patio Corrala Habitable (Opción A)", "El patio central de 16,0 m² está 100% abierto al cielo con drenaje natural sobre terreno real. Se pisa a cota cero con tarima de iroko y alberga un arce japonés palmatum. Tres correderas elevables lo fusionan con la cocina y el salón."),
-        ("🚗 2. Doble Acceso Funcional", "Acceso diario protegido bajo techo: de la pérgola de coches directamente al Zaguán Mudroom (secador de lluvia, banco descalzador, acceso a bicis y compras). Acceso noble para visitas por el Porche Norte con puerta pivotante de 1,10 m hacia el Hall."),
-        ("💼 3. Despacho Sanctasanctórum", "Puesto de teletrabajo de alta concentración con doble orientación: ventana Norte con luz difusa sin reflejos y gran ventanal al patio. Cero servidumbre de paso hacia la cocina y puerta acústica (Rw ≥ 38 dB)."),
-        ("🌿 4. Porche Sur Expandido (Fondo 3 m)", "Superamos los 2,00 m estrechos de iteraciones previas alcanzando 3,00 m libres de fondo. Alberga comedor exterior para 10 plazas, churrasqueira de granito y zona lounge frente a la piscina.")
-    ]
+    # 3. ZAGUÁN MUDROOM
+    add_room_slide(
+        "01. Zaguán Atlántico / Mudroom Térmico",
+        "PLANTA BAJA · ENTRADA DIARIA",
+        "5,80 m² útiles · Esclusa térmica de doble barrera contra lluvia y viento",
+        "zaguan_mudroom_render.jpg",
+        [
+            "Banco descalzador de roble macizo con zapatero ventilado para 16 pares.",
+            "Armario secador de ropa de lluvia con bandeja de inox para goteo.",
+            "Puerta corredera de vidrio estriado hacia el Hall noble.",
+            "Puerta de servicio directa hacia el Trastero de Surf y Bicis.",
+            "Pavimento porcelánico C3 antideslizante gris pizarra (NCS S 4502-Y)."
+        ],
+        ACCENT_GOLD
+    )
 
-    for i, (title, desc) in enumerate(pillars):
-        col = i % 2
-        row = i // 2
-        x = Inches(0.8 + col * 6.0)
-        y = Inches(2.0 + row * 2.5)
+    # 4. HALL RECIBIDOR
+    add_room_slide(
+        "02. Hall / Recibidor Principal",
+        "PLANTA BAJA · RECEPCIÓN",
+        "10,40 m² útiles · Conexión visual directa con el claustro ajardinado",
+        "hall_recibidor_render.jpg",
+        [
+            "En cuanto se cruza la puerta, la mirada se fuga al arce japonés del Patio.",
+            "Cristalera fija de suelo a techo Cortizo Cor Vision Plus hacia el patio.",
+            "Consola suspendida de roble tostado con espejo circular retroiluminado LED.",
+            "Armario gabanero empotrado para abrigos de visitas.",
+            "Pantalla táctil domótica central para control de clima, persianas y portero."
+        ],
+        ACCENT_SKY
+    )
 
-        card = s2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y, Inches(5.6), Inches(2.2))
-        card.fill.solid()
-        card.fill.fore_color.rgb = CARD_BG
-        card.line.color.rgb = ACCENT_SKY
+    # 5. PATIO CORRALA CENTRAL (EL CORAZÓN)
+    add_room_slide(
+        "05. Patio Corrala Habitable y Accesible",
+        "PLANTA BAJA · EL CORAZÓN DE LA CASA",
+        "16,00 m² libres · Abierto al cielo · Microclima resguardado del Nordés",
+        "patio_corrala_render.jpg",
+        [
+            "100% Habitable y pisable: Enrasado a cota cero con tarima de iroko.",
+            "Arce japonés (Acer palmatum) plantado en alcorque natural con grava volcánica.",
+            "Banco corrido de lectura bajo alero perimetral cubierto de 80 cm.",
+            "Triple corredera elevable abriendo a Cocina (3m), Salón (3m) y Galería (2,5m).",
+            "Cero efecto invernadero: Abierto al cielo, evita condensaciones y ahorra ~26.500 €."
+        ],
+        ACCENT_GREEN
+    )
 
-        tf = card.text_frame
-        tf.word_wrap = True
-        p_t = tf.paragraphs[0]
-        p_t.text = title
-        p_t.font.name = "Helvetica"
-        p_t.font.size = Pt(13)
-        p_t.font.bold = True
-        p_t.font.color.rgb = ACCENT_SKY
+    # 6. COCINA CON ISLA
+    add_room_slide(
+        "06. Cocina con Isla y Desayunador",
+        "PLANTA BAJA · ZONA DE DÍA",
+        "15,20 m² útiles · Isla Dekton Kelya con campana integrada Bora Pure",
+        "cocina_isla_render.jpg",
+        [
+            "Isla central de 2,80 × 1,00 m con pasos libres de 105 cm a ambos lados.",
+            "Placa Bora Pure con extracción hacia abajo: techo 100% limpio sin campanas.",
+            "Mueble desayunador con puertas escamoteables y enchufes ocultos.",
+            "Columnas Santos Fine en cashmere mate y roble humo.",
+            "Conexión directa mediante corredera de 3 m al Patio Corrala para desayunos al sol."
+        ],
+        ACCENT_GOLD
+    )
 
-        p_d = tf.add_paragraph()
-        p_d.text = desc
-        p_d.font.name = "Helvetica"
-        p_d.font.size = Pt(11)
-        p_d.font.color.rgb = TEXT_LIGHT
+    # 7. SALÓN PRINCIPAL Y JARDÍN SUR
+    add_room_slide(
+        "08. Salón Principal con Chimenea",
+        "PLANTA BAJA · ZONA DE DÍA",
+        "26,50 m² útiles · Abierto al Porche Sur, piscina y jardín",
+        "salon_jardin_render.jpg",
+        [
+            "Sofá modular en L tapizado en arena a 3,60 m de la pantalla.",
+            "Chimenea panorámica estanca de leña con toma de aire exterior (compatible VMC).",
+            "Gran corredera Cortizo Cor Vision de 5 m abierta de par en par al Porche Sur.",
+            "Vistas continuas al césped atlántico, hortensias y piscina sin barreras.",
+            "Suelo continuo de piedra caliza con suelo radiante-refrescante zonificado."
+        ],
+        ACCENT_SKY
+    )
 
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 3: PATIO CORRALA (EL CORAZÓN)
-    # ═════════════════════════════════════════════════════════════════════════════
-    s3 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s3)
-    add_header(s3, "05. Patio Corrala Habitable y 100% Accesible", "EL CORAZÓN DE LA CASA", "16,00 m² útiles · Abierto al cielo · Microclima protegido de los vientos atlánticos")
+    # 8. DESPACHO SANCTASANCTÓRUM
+    add_room_slide(
+        "03. Despacho Sanctasanctórum & Suite Serena",
+        "PLANTA BAJA · TELETRABAJO & INVITADOS",
+        "11,50 m² útiles · Doble orientación Norte-Sur · Cero servidumbre",
+        "despacho_render.jpg",
+        [
+            "Mesa orientada con luz lateral a 90° de ventana Norte (cero reflejos en monitor).",
+            "Cristalera con vistas relajantes al arce del Patio Claustro.",
+            "Aislamiento acústico Rw ≥ 38 dB con puerta maciza y panel de lamas de roble.",
+            "Doble toma RJ45 Cat 6A blindada en escritorio para videollamadas 4K.",
+            "Sofá-cama de matrimonio (140 × 200 cm) con acceso privado al Baño PB."
+        ],
+        ACCENT_GREEN
+    )
 
-    img_patio = os.path.join(renders_dir, "patio_corrala_render.jpg")
-    if os.path.exists(img_patio):
-        s3.shapes.add_picture(img_patio, Inches(0.8), Inches(1.8), width=Inches(7.2), height=Inches(5.0))
+    # 9. BAÑO COMPLETO PB
+    add_room_slide(
+        "04. Baño Completo PB & Distribuidor Neutro",
+        "PLANTA BAJA · ZONA NOBLE",
+        "5,20 m² útiles · Ducha walk-in cota cero y sanitarios Geberit",
+        "bano_pb_render.jpg",
+        [
+            "Acceso desde distribuidor neutro: sin paso directo a cocina (100% legal NHG).",
+            "Ducha walk-in enrasada cota cero (120 × 80 cm) con mampara fija de 8 mm antical.",
+            "Mueble suspendido de roble de 90 cm con grifería empotrada negra mate.",
+            "Inodoro suspendido Geberit iCon Rimless con pulsador antiolores DuoFresh.",
+            "Ventana practicable a fachada Norte para iluminación y ventilación natural."
+        ],
+        ACCENT_SKY
+    )
 
-    box_p = s3.shapes.add_textbox(Inches(8.3), Inches(1.8), Inches(4.2), Inches(5.0))
-    tf_p = box_p.text_frame
-    tf_p.word_wrap = True
-    p = tf_p.paragraphs[0]
-    p.text = "Evolución de la Iteración:\n"
-    p.font.bold = True
-    p.font.size = Pt(14)
-    p.font.color.rgb = ACCENT_GOLD
+    # 10. PORCHE SUR CUBIERTO & PISCINA
+    add_room_slide(
+        "10. Porche Sur Expandido (Fondo 3,00 m)",
+        "PLANTA BAJA · EXTERIORES",
+        "36,00 m² cubiertos · Churrasqueira de granito y comedor de verano",
+        "porche_sur_render.jpg",
+        [
+            "Fondo libre real de 3,00 m: protegido de la lluvia gallega para comer fuera.",
+            "Churrasqueira en extremo Este con bancada de granito Zimbabwe y leñera.",
+            "Comedor exterior para 10 personas + zona lounge frente al jardín.",
+            "Piscina de 3,5 × 7,5 m con albardilla de granito calizo y solárium.",
+            "Armario lateral integrado con salida directa para robot cortacésped."
+        ],
+        ACCENT_GOLD
+    )
 
-    points = [
-        "100% Habitable y pisable: Enrasado al milímetro a cota cero con tarima de madera tecnológica.",
-        "Arce Japonés (Acer palmatum): Plantado en alcorque natural profundo con grava volcánica y helechos.",
-        "Banco de lectura perimetral: Fabricado en iroko macizo bajo el alero continuo de 80 cm.",
-        "Triple corredera elevable Cortizo Cor Vision Plus: Abre 3 m hacia Cocina, 3 m hacia Salón y 2,5 m hacia Galería.",
-        "Cero efecto invernadero: Abierto al cielo, evita condensaciones y ahorra ~26.500 € frente a lucernarios motorizados.",
-        "Cumplimiento 100% PGOM: No computa como superficie cubierta cerrada (ocupación PB = 116,5 m² ≤ 120 m²)."
-    ]
-    for pt in points:
-        p_pt = tf_p.add_paragraph()
-        p_pt.text = "• " + pt
-        p_pt.font.size = Pt(11)
-        p_pt.font.color.rgb = TEXT_LIGHT
+    # 11. GALERÍA ACÚSTICA Y ESCALERA P1
+    add_room_slide(
+        "12. Galería Acústica & Escalera P1",
+        "PLANTA PRIMERA · DISTRIBUIDOR",
+        "8,20 m² útiles · Mampara acústica continua de vidrio 4+4 Silence",
+        "galeria_escalera_render.jpg",
+        [
+            "Mampara de vidrio laminar 4+4 Silence: aísla 42 dB de ruido entre plantas.",
+            "Peldaños volados de roble macizo con zanca de acero oculta e iluminación LED.",
+            "Vistas cenitales espectaculares sobre el patio claustral y el arce.",
+            "Balizas LED de cortesía en zócalo (h = 25 cm) para trayectos nocturnos infantiles."
+        ],
+        ACCENT_SKY
+    )
 
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 4: ESPACIO DE DÍA INTEGRADO (SALÓN, COCINA, COMEDOR)
-    # ═════════════════════════════════════════════════════════════════════════════
-    s4 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s4)
-    add_header(s4, "06-08. Zona de Día Integrada y Porche Sur", "SALÓN CON CHIMENEA · COMEDOR · COCINA CON ISLA", "Continuidad visual y espacial con doble orientación (Patio Norte y Porche Sur)")
+    # 12. SUITE PRINCIPAL MATRIMONIO
+    add_room_slide(
+        "16. Suite Principal de Matrimonio",
+        "PLANTA PRIMERA · ALA ESTE PRIVADA",
+        "31,20 m² útiles · Dormitorio Sur, vestidor doble y baño privado",
+        "suite_principal_render.jpg",
+        [
+            "Cama King Size (1,80 × 2,00 m) orientada al Sur con vistas panorámicas al jardín.",
+            "Balcón corrido con barandilla continua de vidrio estructural 10+10 mm sin montantes.",
+            "Vestidor de paso en doble hilera con frentes de vidrio ahumado y barras LED.",
+            "Baño privado de 6,3 m² con ducha italiana doble (150 × 90 cm) y doble seno Dekton.",
+            "Climatización dual independiente con suelo radiante zonal y toallero de 750W."
+        ],
+        ACCENT_GREEN
+    )
 
-    img_living = os.path.join(renders_dir, "interior_living_render.jpg")
-    if os.path.exists(img_living):
-        s4.shapes.add_picture(img_living, Inches(0.8), Inches(1.8), width=Inches(7.2), height=Inches(5.0))
+    # 13. DORMITORIOS INFANTILES
+    add_room_slide(
+        "13-14. Dormitorios Infantiles (Luz a 90°)",
+        "PLANTA PRIMERA · ALA OESTE",
+        "14,60 m² útiles cada uno · Estudio ergonómico sin reflejos y balcón sur",
+        "dormitorio_infantil_render.jpg",
+        [
+            "Mesa de estudio suspendida de 1,80 m apoyada en pared lateral con luz a 90°.",
+            "Cero reflejos en pantalla de portátil y cero contraluz.",
+            "Cama de 120 × 200 cm con cabecero tapizado y armario empotrado de suelo a techo.",
+            "Salida directa a Balcón Corrido Sur con carpintería Cortizo COR 80 RPT.",
+            "Aislamiento acústico medianero reforzado Rw ≥ 50 dB entre dormitorios."
+        ],
+        ACCENT_SKY
+    )
 
-    box_l = s4.shapes.add_textbox(Inches(8.3), Inches(1.8), Inches(4.2), Inches(5.0))
-    tf_l = box_l.text_frame
-    tf_l.word_wrap = True
-    p = tf_l.paragraphs[0]
-    p.text = "Detalles Técnicos y de Interiorismo:\n"
-    p.font.bold = True
-    p.font.size = Pt(14)
-    p.font.color.rgb = ACCENT_SKY
-
-    points_l = [
-        "Isla Dekton Kelya (2,80 × 1,00 m): Con placa de inducción y extracción hacia abajo Bora Pure (techo despejado).",
-        "Mueble desayunador escamoteable: Frente de 120 cm con puertas que se ocultan en los laterales y tomas de fuerza.",
-        "Mesa noble de roble para 10 comensales: Pasos libres de circulación de 95 cm hacia la cristalera del porche.",
-        "Salón con chimenea estanca: Hogar cerrado con toma de aire exterior dedicada (compatible al 100% con VMC Zehnder).",
-        "TV OLED 77\" empotrada a paño: Tubo pasacables oculto Ø 50 mm al mueble suspendido (cero cables visibles).",
-        "Suelo continuo de piedra caliza (120 × 120 cm): Pavimento noble con suelo radiante-refrescante zonificado."
-    ]
-    for pt in points_l:
-        p_pt = tf_l.add_paragraph()
-        p_pt.text = "• " + pt
-        p_pt.font.size = Pt(11)
-        p_pt.font.color.rgb = TEXT_LIGHT
-
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 5: DESPACHO SANCTASANCTÓRUM
-    # ═════════════════════════════════════════════════════════════════════════════
-    s5 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s5)
-    add_header(s5, "03. Despacho Sanctasanctórum & Suite Serena", "TELETRABAJO ERGONÓMICO & SUITE DE INVITADOS", "11,50 m² útiles · Doble orientación Norte-Sur · Cero servidumbre a cocina")
-
-    img_desp = os.path.join(renders_dir, "despacho_render.jpg")
-    if os.path.exists(img_desp):
-        s5.shapes.add_picture(img_desp, Inches(0.8), Inches(1.8), width=Inches(7.2), height=Inches(5.0))
-
-    box_d = s5.shapes.add_textbox(Inches(8.3), Inches(1.8), Inches(4.2), Inches(5.0))
-    tf_d = box_d.text_frame
-    tf_d.word_wrap = True
-    p = tf_d.paragraphs[0]
-    p.text = "Configuración Acústica y Lumínica:\n"
-    p.font.bold = True
-    p.font.size = Pt(14)
-    p.font.color.rgb = ACCENT_GREEN
-
-    points_d = [
-        "Principio ergonómico a 90°: Luz natural difusa de fachada Norte entrando lateralmente al monitor (cero reflejos).",
-        "Vistas relajantes al Patio: Cristalera hacia el arce japonés para pausas visuales durante jornadas intensivas.",
-        "Acústica de estudio (Rw ≥ 38 dB): Puerta batiente maciza con guillotina de cierre automático y panel de lamas de roble sobre fieltro fonoabsorbente negro.",
-        "Red Cat 6A (10 Gbps): Doble toma blindada en escritorio para videollamadas 4K y streaming profesional sin latencia.",
-        "Suite de invitados: Sofá-cama italiano (colchón 140 × 200 cm) con acceso privado al distribuidor y Baño PB.",
-        "Climatización y VMC: Impulsión silenciosa de 45 m³/h de aire nuevo filtrado y termostato digital táctil independiente."
-    ]
-    for pt in points_d:
-        p_pt = tf_d.add_paragraph()
-        p_pt.text = "• " + pt
-        p_pt.font.size = Pt(11)
-        p_pt.font.color.rgb = TEXT_LIGHT
-
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 6: PORCHE SUR CUBIERTO & JARDÍN
-    # ═════════════════════════════════════════════════════════════════════════════
-    s6 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s6)
-    add_header(s6, "10. Porche Sur Cubierto Expandido (Fondo 3,00 m)", "ESPACIO EXTERIOR CUBIERTO PROTEGIDO DE LA LLUVIA", "36,00 m² cubiertos · Churrasqueira de granito · Comedor de verano · Piscina")
-
-    img_porche = os.path.join(renders_dir, "porche_sur_render.jpg")
-    if os.path.exists(img_porche):
-        s6.shapes.add_picture(img_porche, Inches(0.8), Inches(1.8), width=Inches(7.2), height=Inches(5.0))
-
-    box_po = s6.shapes.add_textbox(Inches(8.3), Inches(1.8), Inches(4.2), Inches(5.0))
-    tf_po = box_po.text_frame
-    tf_po.word_wrap = True
-    p = tf_po.paragraphs[0]
-    p.text = "Equipamiento de Ocio Exterior:\n"
-    p.font.bold = True
-    p.font.size = Pt(14)
-    p.font.color.rgb = ACCENT_GOLD
-
-    points_po = [
-        "Fondo real de 3,00 m: Permite comer fuera incluso con orballo gallego sin mojar mesas ni sillas.",
-        "Churrasqueira en extremo Este: Bancada de granito negro Zimbabwe abujardado con parrilla de inox AISI 316 y leñera ventilada.",
-        "Fregadero exterior auxiliar: Con agua fría y caliente sanitaria para limpieza sin entrar a la cocina.",
-        "Armario robot cortacésped en extremo Oeste: Con compuerta a ras de suelo para salida autónoma del robot.",
-        "Piscina integrada: Lámina de agua de 3,5 × 7,5 m con albardilla perimetral de granito calizo y solárium de madera.",
-        "Punto de acceso Wi-Fi 7 exterior IP65: Máxima cobertura en porche, césped y piscina."
-    ]
-    for pt in points_po:
-        p_pt = tf_po.add_paragraph()
-        p_pt.text = "• " + pt
-        p_pt.font.size = Pt(11)
-        p_pt.font.color.rgb = TEXT_LIGHT
-
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 7: SUITE PRINCIPAL MATRIMONIO
-    # ═════════════════════════════════════════════════════════════════════════════
-    s7 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s7)
-    add_header(s7, "16. Suite Principal de Matrimonio (Ala Este P1)", "DORMITORIO SUR · VESTIDOR EN DOBLE HILERA · BAÑO PRIVADO", "31,20 m² útiles · Privacidad total · Balcón corrido con barandilla de vidrio estructural")
-
-    img_suite = os.path.join(renders_dir, "suite_principal_render.jpg")
-    if os.path.exists(img_suite):
-        s7.shapes.add_picture(img_suite, Inches(0.8), Inches(1.8), width=Inches(7.2), height=Inches(5.0))
-
-    box_s = s7.shapes.add_textbox(Inches(8.3), Inches(1.8), Inches(4.2), Inches(5.0))
-    tf_s = box_s.text_frame
-    tf_s.word_wrap = True
-    p = tf_s.paragraphs[0]
-    p.text = "Distribución y Acabados de Lujo:\n"
-    p.font.bold = True
-    p.font.size = Pt(14)
-    p.font.color.rgb = ACCENT_SKY
-
-    points_s = [
-        "Cama King Size (1,80 × 2,00 m): Orientada al Sur con vistas panorámicas al jardín desde la almohada.",
-        "Barandilla de vidrio estructural 10+10 mm: Embutida en la testa del forjado sin montantes metálicos verticales.",
-        "Vestidor de paso (8,4 m²): Doble hilera de armarios con frentes de vidrio ahumado, barras iluminadas por LED y pasillo central libre de 110 cm.",
-        "Baño privado de 6,3 m²: Ducha italiana doble (150 × 90 cm) con rociador Raindance Hansgrohe y lavabo de doble seno Dekton.",
-        "Cabina de inodoro semi-independiente: Con puerta de vidrio al ácido para privacidad higiénica.",
-        "Climatización dual: Suelo radiante independiente en dormitorio y baño + toallero eléctrico de diseño 750W."
-    ]
-    for pt in points_s:
-        p_pt = tf_s.add_paragraph()
-        p_pt.text = "• " + pt
-        p_pt.font.size = Pt(11)
-        p_pt.font.color.rgb = TEXT_LIGHT
-
-    # ═════════════════════════════════════════════════════════════════════════════
-    # SLIDE 8: INSTALACIONES, EFICIENCIA & PRESUPUESTO
-    # ═════════════════════════════════════════════════════════════════════════════
-    s8 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s8)
-    add_header(s8, "Instalaciones, Eficiencia A y Presupuesto Llave en Mano", "INGENIERÍA & PRESUPUESTO DE EJECUCIÓN", "Transparencia económica rigurosa y estándar Passivhaus")
+    # 14. RESUMEN TÉCNICO Y PRESUPUESTO
+    s_end = prs.slides.add_slide(blank_layout)
+    set_slide_background(s_end)
+    add_header(s_end, "Instalaciones, Eficiencia A y Presupuesto Llave en Mano", "INGENIERÍA & PRESUPUESTO", "Transparencia económica rigurosa y estándar Passivhaus")
 
     cards_data = [
         ("🌡️ Climatización & ACS", "• Aerotermia Vaillant aroTHERM plus\n• Suelo radiante-refrescante bajo porcelánico/madera\n• Depósito ACS 250L + recirculación\n• Control digital zonal por estancia"),
@@ -332,13 +317,13 @@ def create_deck():
         ("⚡ Fotovoltaica & Telecomunicaciones", "• 12 paneles solares monocristalinos 450W (5,4 kWp)\n• Inversor híbrido 5 kW preparado para baterías\n• Red estructurada cableada Cat 6A (10 Gbps)\n• Rack mural 19\" 9U + Wi-Fi 7 PoE")
     ]
 
-    for i, (title, content) in enumerate(cards_data):
+    for i, (t, c) in enumerate(cards_data):
         col = i % 2
         row = i // 2
         x = Inches(0.8 + col * 6.0)
-        y = Inches(2.0 + row * 2.2)
+        y = Inches(1.8 + row * 2.3)
 
-        card = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y, Inches(5.6), Inches(2.0))
+        card = s_end.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, y, Inches(5.6), Inches(2.1))
         card.fill.solid()
         card.fill.fore_color.rgb = CARD_BG
         card.line.color.rgb = ACCENT_GOLD
@@ -346,37 +331,32 @@ def create_deck():
         tf = card.text_frame
         tf.word_wrap = True
         p_t = tf.paragraphs[0]
-        p_t.text = title
-        p_t.font.name = "Helvetica"
-        p_t.font.size = Pt(12)
+        p_t.text = t
         p_t.font.bold = True
+        p_t.font.size = Pt(12)
         p_t.font.color.rgb = ACCENT_GOLD
 
         p_c = tf.add_paragraph()
-        p_c.text = content
-        p_c.font.name = "Helvetica"
+        p_c.text = c
         p_c.font.size = Pt(10.5)
         p_c.font.color.rgb = TEXT_LIGHT
 
-    # Bottom summary box
-    sum_box = s8.shapes.add_textbox(Inches(0.8), Inches(6.5), Inches(11.7), Inches(0.6))
+    sum_box = s_end.shapes.add_textbox(Inches(0.8), Inches(6.6), Inches(11.7), Inches(0.5))
     tf_sum = sum_box.text_frame
     p_sum = tf_sum.paragraphs[0]
-    p_sum.text = "PRESUPUESTO TOTAL LLAVE EN MANO: 662.980 € (PEM: 418.000 € · Gastos Generales y Beneficio: 79.420 € · IVA 10%: 49.742 € · Técnicos y Licencias Concello de Oleiros: 115.818 €)"
-    p_sum.font.name = "Helvetica"
-    p_sum.font.size = Pt(10.5)
+    p_sum.text = "PRESUPUESTO TOTAL LLAVE EN MANO: 662.980 € (PEM: 418.000 € · Gastos y Beneficio: 79.420 € · IVA 10%: 49.742 € · Técnicos y Tasas: 115.818 €)"
     p_sum.font.bold = True
+    p_sum.font.size = Pt(10)
     p_sum.font.color.rgb = ACCENT_GREEN
 
-    # Save PPTX
+    # Save
     out_path = "/home/antigravity/landslore/oleiros/propuestas/Presentacion_Hogar_Oleiros_Propuesta_D.pptx"
     prs.save(out_path)
-    print(f"Presentation saved: {out_path} ({os.path.getsize(out_path)} bytes)")
+    print(f"Deck saved: {out_path} ({os.path.getsize(out_path)} bytes)")
 
-    # Copy to artifacts directory
     artifact_pptx = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e8f6a578-76cf-4abb-986f-afb074438ab7/Presentacion_Hogar_Oleiros_Propuesta_D.pptx"
     prs.save(artifact_pptx)
-    print(f"Artifact presentation saved: {artifact_pptx} ({os.path.getsize(artifact_pptx)} bytes)")
+    print(f"Artifact saved: {artifact_pptx} ({os.path.getsize(artifact_pptx)} bytes)")
 
 if __name__ == "__main__":
     create_deck()
