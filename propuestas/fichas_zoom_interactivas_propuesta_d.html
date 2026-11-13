@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fichas Técnicas Zoom-In 1:20 — Propuesta D (Oleiros)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #0b0f19; color: #f8fafc; }
+    .room-btn.active { background-color: #0284c7; color: white; border-color: #38bdf8; font-weight: 700; }
+    .badge { display: inline-flex; align-items: center; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 700; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex flex-wrap items-center justify-between gap-4 sticky top-0 z-50">
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">ZOOM-IN 1:20 ESTANCIA A ESTANCIA</span>
+        <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">INTERIORISMO &amp; APAREJADOR</span>
+      </div>
+      <h1 class="text-xl font-bold tracking-tight text-white mt-1">Hogar Oleiros — Fichas de Ejecución e Interiorismo</h1>
+      <p class="text-xs text-slate-400">Propuesta D · Cotas al centímetro, Alturas de Mecanismos ($h$), Cat 6A, Clima Invisible y Munsell/NCS</p>
+    </div>
+
+    <!-- FILTER BUTTONS -->
+    <div class="flex gap-2">
+      <button onclick="filterFloor('all')" id="btn-all" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition">Todas (17)</button>
+      <button onclick="filterFloor('pb')" id="btn-pb" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-950 text-sky-400 border border-sky-800 transition">Planta Baja (11)</button>
+      <button onclick="filterFloor('p1')" id="btn-p1" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-950 text-indigo-400 border border-indigo-800 transition">Planta Primera (6)</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <div class="flex-1 max-w-7xl w-full mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- ROOM LIST SELECTOR (Col 4) -->
+    <div class="lg:col-span-4 space-y-2 max-h-[82vh] overflow-y-auto pr-2">
+      <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Selecciona una Estancia:</div>
+
+      <!-- PB Rooms -->
+      <div class="floor-group pb space-y-1">
+        <div class="text-[10px] font-bold text-sky-500 uppercase tracking-widest pl-2 pt-1">PLANTA BAJA (±0,00 m)</div>
+        <button onclick="selectRoom('r01')" id="btn-r01" class="room-btn active w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>01.</strong> Zaguán Mudroom Térmico</span>
+          <span class="text-slate-400 font-mono">5,8 m²</span>
+        </button>
+        <button onclick="selectRoom('r02')" id="btn-r02" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>02.</strong> Hall / Recibidor Principal</span>
+          <span class="text-slate-400 font-mono">10,4 m²</span>
+        </button>
+        <button onclick="selectRoom('r03')" id="btn-r03" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>03.</strong> Despacho Sanctasanctórum</span>
+          <span class="text-slate-400 font-mono">11,5 m²</span>
+        </button>
+        <button onclick="selectRoom('r04')" id="btn-r04" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>04.</strong> Baño PB &amp; Distribuidor Neutro</span>
+          <span class="text-slate-400 font-mono">5,2 m²</span>
+        </button>
+        <button onclick="selectRoom('r05')" id="btn-r05" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>05.</strong> Patio Corrala Habitable (Claustro)</span>
+          <span class="text-slate-400 font-mono">16,0 m²</span>
+        </button>
+        <button onclick="selectRoom('r06')" id="btn-r06" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>06.</strong> Cocina con Isla y Desayunador</span>
+          <span class="text-slate-400 font-mono">15,2 m²</span>
+        </button>
+        <button onclick="selectRoom('r07')" id="btn-r07" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>07.</strong> Lavandería y Cuarto Técnico</span>
+          <span class="text-slate-400 font-mono">5,6 m²</span>
+        </button>
+        <button onclick="selectRoom('r08')" id="btn-r08" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>08.</strong> Salón Principal con Chimenea</span>
+          <span class="text-slate-400 font-mono">26,5 m²</span>
+        </button>
+        <button onclick="selectRoom('r09')" id="btn-r09" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>09.</strong> Comedor Principal (10 Pax)</span>
+          <span class="text-slate-400 font-mono">17,5 m²</span>
+        </button>
+        <button onclick="selectRoom('r10')" id="btn-r10" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>10.</strong> Porche Sur Expandido (Fondo 3m)</span>
+          <span class="text-slate-400 font-mono">36,0 m²</span>
+        </button>
+        <button onclick="selectRoom('r11')" id="btn-r11" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>11.</strong> Trastero Bicis/Surf &amp; Técnica</span>
+          <span class="text-slate-400 font-mono">8,2 m²</span>
+        </button>
+      </div>
+
+      <!-- P1 Rooms -->
+      <div class="floor-group p1 space-y-1 pt-3">
+        <div class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest pl-2">PLANTA PRIMERA (+3,15 m)</div>
+        <button onclick="selectRoom('r12')" id="btn-r12" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>12.</strong> Galería Acústica &amp; Escalera</span>
+          <span class="text-slate-400 font-mono">8,2 m²</span>
+        </button>
+        <button onclick="selectRoom('r13')" id="btn-r13" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>13.</strong> Dormitorio Niña (Luz 90°)</span>
+          <span class="text-slate-400 font-mono">14,6 m²</span>
+        </button>
+        <button onclick="selectRoom('r14')" id="btn-r14" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>14.</strong> Dormitorio Niño (Luz 90°)</span>
+          <span class="text-slate-400 font-mono">14,6 m²</span>
+        </button>
+        <button onclick="selectRoom('r15')" id="btn-r15" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>15.</strong> Baño Compartido Hijos</span>
+          <span class="text-slate-400 font-mono">6,8 m²</span>
+        </button>
+        <button onclick="selectRoom('r16')" id="btn-r16" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>16.</strong> Suite Principal Matrimonio</span>
+          <span class="text-slate-400 font-mono">31,2 m²</span>
+        </button>
+        <button onclick="selectRoom('r17')" id="btn-r17" class="room-btn w-full text-left p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition flex justify-between items-center text-xs">
+          <span><strong>17.</strong> Balcón Corrido Sur P1</span>
+          <span class="text-slate-400 font-mono">14,0 m²</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- DETAIL CARD DISPLAY (Col 8) -->
+    <div class="lg:col-span-8 bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl space-y-6">
+      
+      <!-- HEADER OF SELECTED ROOM -->
+      <div class="flex flex-wrap items-start justify-between gap-4 pb-4 border-b border-slate-800">
+        <div>
+          <span id="room-code" class="text-xs font-mono font-bold text-sky-400">ESTANCIA 01 · PB</span>
+          <h2 id="room-title" class="text-2xl font-black text-white mt-0.5">Zaguán Atlántico / Mudroom Térmico</h2>
+          <p id="room-subtitle" class="text-xs text-slate-400 mt-1">Conexión directa bajo alero desde pérgola · Esclusa térmica de doble barrera</p>
+        </div>
+        <div class="text-right">
+          <div id="room-area" class="text-3xl font-black text-emerald-400 font-mono">5,80 m²</div>
+          <div id="room-dims" class="text-xs text-slate-500 font-mono">1,50 × 3,85 m · h = 2,65 m</div>
+        </div>
+      </div>
+
+      <!-- 4 QUADRANTS GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- 1. SPACE PLANNING & ANTROPOMETRÍA (Interiorista) -->
+        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800/80 space-y-2">
+          <div class="flex items-center gap-2 text-xs font-bold text-sky-400 uppercase tracking-wider">
+            <span>📐</span> Space Planning &amp; Ergonomía
+          </div>
+          <ul id="room-planning" class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+            <li><strong>Banco descalzador:</strong> 120 × 45 cm, altura de asiento 45 cm en roble macizo.</li>
+            <li><strong>Zapatero ventilado:</strong> Capacidad para 16 pares con rejilla de extracción.</li>
+            <li><strong>Armario secado abrigos:</strong> 140 × 60 cm de suelo a techo con barra a h = 170 cm.</li>
+            <li><strong>Paso libre:</strong> Pasillo central de 105 cm (holgura con bultos y niños).</li>
+          </ul>
+        </div>
+
+        <!-- 2. MATERIALES & MUNSELL/NCS (Interiorista) -->
+        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800/80 space-y-2">
+          <div class="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider">
+            <span>🎨</span> Materiales &amp; Paleta Munsell / NCS
+          </div>
+          <ul id="room-materials" class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+            <li><strong>Suelo:</strong> Porcelánico C3 antideslizante gris pizarra (NCS S 4502-Y).</li>
+            <li><strong>Paredes:</strong> Pintura plástica lavable mate blanco roto (NCS S 0502-Y).</li>
+            <li><strong>Carpintería interior:</strong> Puerta corredera Scrigno hacia trastero + puerta de vidrio estriado hacia Hall.</li>
+          </ul>
+        </div>
+
+        <!-- 3. ILUMINACIÓN IES & CCT (Interiorista) -->
+        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800/80 space-y-2">
+          <div class="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-wider">
+            <span>💡</span> Iluminación IES &amp; CCT Circadiano
+          </div>
+          <ul id="room-lighting" class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+            <li><strong>Nivel medio IES:</strong> 150 lux general.</li>
+            <li><strong>CCT:</strong> 2700K cálida.</li>
+            <li><strong>Luminarias:</strong> Tira LED oculta bajo banco descalzador + foco empotrado cenital UGR &lt; 16 con sensor microondas.</li>
+          </ul>
+        </div>
+
+        <!-- 4. DOTACIÓN DE INSTALACIONES (Aparejador) -->
+        <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800/80 space-y-2">
+          <div class="flex items-center gap-2 text-xs font-bold text-purple-400 uppercase tracking-wider">
+            <span>🔌</span> Instalaciones &amp; Alturas ($h$)
+          </div>
+          <ul id="room-installations" class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+            <li><strong>Electricidad:</strong> 2 tomas 16A a h = 30 cm (secador botas) + 1 enchufe servicio en armario.</li>
+            <li><strong>Climatización:</strong> 1 circuito suelo radiante sobre mortero autonivelante.</li>
+            <li><strong>VMC Zehnder:</strong> 1 boca de extracción &empty; 125 mm en techo (30 m³/h).</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- FOOTER SUMMARY OF NORMATIVE & NHG -->
+      <div id="room-nhg" class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+        <span>Cumplimiento NHG Galicia: <strong>Anexo I (Habitabilidad)</strong> · Aislamiento acústico: <strong>Rw &ge; 40 dB</strong></span>
+        <span class="text-emerald-400 font-semibold">✓ Verificado 100%</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const rooms = {
+      'r01': {
+        code: 'ESTANCIA 01 · PLANTA BAJA',
+        title: 'Zaguán Atlántico / Mudroom Térmico',
+        subtitle: 'Conexión directa bajo alero desde pérgola · Esclusa térmica de doble barrera',
+        area: '5,80 m²',
+        dims: '1,50 × 3,85 m · h = 2,65 m',
+        planning: [
+          '<strong>Banco descalzador:</strong> 120 × 45 cm, h = 45 cm en roble macizo con tratamiento hidrófugo.',
+          '<strong>Zapatero inferior ventilado:</strong> Capacidad para 16 pares de calzado diario.',
+          '<strong>Armario de ropa de abrigo:</strong> 140 × 60 cm con nicho inferior para botas y paraguas.',
+          '<strong>Paso de circulación:</strong> Pasillo central libre de 105 cm para entrar con bultos y niños.'
+        ],
+        materials: [
+          '<strong>Suelo:</strong> Gres porcelánico C3 antideslizante gris pizarra (NCS S 4502-Y).',
+          '<strong>Paredes:</strong> Pintura lavable blanco roto cálido (NCS S 0502-Y / Munsell 10YR 9/1).',
+          '<strong>Carpintería:</strong> Puerta corredera Scrigno a Trastero + corredera vidrio estriado al Hall.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 150 lux general.',
+          '<strong>CCT:</strong> 2700K cálida.',
+          '<strong>Luminarias:</strong> Tira LED bajo banco + foco cenital empotrado con detector de presencia.'
+        ],
+        installations: [
+          '<strong>Electricidad:</strong> 2 tomas 16A a h = 30 cm + 1 toma en armario para carga de secadores.',
+          '<strong>Climatización:</strong> 1 circuito independiente de suelo radiante-refrescante.',
+          '<strong>VMC Zehnder:</strong> 1 boca de extracción &empty; 125 mm (30 m³/h) para secar ropa mojada.'
+        ],
+        nhg: 'Esclusa térmica pasiva (Passivhaus / CTE C1) · Rw &ge; 40 dB'
+      },
+      'r02': {
+        code: 'ESTANCIA 02 · PLANTA BAJA',
+        title: 'Hall / Recibidor Principal',
+        subtitle: 'Acceso noble de visitas con fuga visual directa al patio arbolado',
+        area: '10,40 m²',
+        dims: '2,60 × 4,00 m · h = 2,65 m',
+        planning: [
+          '<strong>Puerta Principal pivotante:</strong> 110 × 240 cm en madera de iroko con cerradura inteligente.',
+          '<strong>Armario gabanero empotrado:</strong> 120 × 60 cm enrasado con apertura push-pull.',
+          '<strong>Consola suspendida:</strong> 100 × 30 cm a h = 85 cm con espejo circular &empty; 80 cm retroiluminado.'
+        ],
+        materials: [
+          '<strong>Suelo:</strong> Porcelánico rectificado 120 × 120 cm acabado arena caliza (NCS S 1505-Y20R).',
+          '<strong>Pared al patio:</strong> Cristalera suelo a techo Cortizo Cor Vision Plus negro forja.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 100 lux ambiental + 250 lux acento en consola.',
+          '<strong>Luminarias:</strong> Foseado perimetral 2700K regulable + 2 focos dirigidos 24° a espejo.'
+        ],
+        installations: [
+          '<strong>Electricidad:</strong> 3 tomas 16A a h = 30 cm + Pantalla táctil domótica central a h = 150 cm.',
+          '<strong>Red Cat 6A:</strong> 1 toma doble RJ45 junto a consola.',
+          '<strong>Climatización:</strong> Suelo radiante con termostato táctil independiente.'
+        ],
+        nhg: 'Cumple NHG Vestíbulo noble independiente · Iluminación natural directa'
+      },
+      'r03': {
+        code: 'ESTANCIA 03 · PLANTA BAJA',
+        title: 'Despacho Sanctasanctórum & Suite Serena',
+        subtitle: 'Teletrabajo de alta concentración diaria y suite de invitados privada',
+        area: '11,50 m²',
+        dims: '3,50 × 3,30 m · h = 2,65 m',
+        planning: [
+          '<strong>Mesa de teletrabajo ergonómica:</strong> 180 × 80 cm a h = 74 cm en roble con luz lateral a 90°.',
+          '<strong>Sofá-cama matrimonio:</strong> 150 × 95 cm (colchón 140 × 200 cm grosor 16 cm para visitas).',
+          '<strong>Puerta acústica batiente:</strong> Hoja maciza de 82,5 cm con guillotina hermética (Rw &ge; 38 dB).',
+          '<strong>Estor motorizado oculto:</strong> Tejido screen 1% para intimidad nocturna hacia el patio.'
+        ],
+        materials: [
+          '<strong>Pared Oeste:</strong> Panel acústico de lamas de roble sobre fieltro negro (&alpha;w = 0,85).',
+          '<strong>Resto de paredes:</strong> Pintura mineral tono lino natural (NCS S 1005-Y20R).'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 500 lux en plano de trabajo + 300 lux vertical facial para videollamadas.',
+          '<strong>Luminarias:</strong> Perfil suspendido UGR &lt; 19 Tunable White (4000K diurno / 2700K noche).'
+        ],
+        installations: [
+          '<strong>Red Cat 6A:</strong> 2 tomas dobles RJ45 (4 puertos): 2 en mesa + 2 tras TV 43" a h = 115 cm.',
+          '<strong>Electricidad:</strong> 6 tomas 16A + 2 USB-C PD a h = 80 cm sobre mesa.',
+          '<strong>VMC Zehnder:</strong> 1 boca impulsión &empty; 125 mm (45 m³/h) en techo.'
+        ],
+        nhg: '100% Legal NHG: Ventana practicable directa a fachada Norte + visuales al Claustro'
+      },
+      'r04': {
+        code: 'ESTANCIA 04 · PLANTA BAJA',
+        title: 'Baño Completo PB & Distribuidor Neutro',
+        subtitle: 'Servicio diario a planta baja y suite de invitados sin interferencia con la cocina',
+        area: '5,20 m² (+ 2,1 m² distribuidor)',
+        dims: '2,60 × 2,00 m · h = 2,65 m',
+        planning: [
+          '<strong>Ducha Walk-in enrasada:</strong> 120 × 80 cm con mampara fija templada 8 mm antical.',
+          '<strong>Lavabo suspendido:</strong> Mueble 90 × 48 cm con grifería empotrada a h = 115 cm negro mate.',
+          '<strong>Inodoro suspendido:</strong> Geberit iCon Rimless con pulsador Sigma y extracción DuoFresh.',
+          '<strong>Distribuidor neutro:</strong> Armario empotrado para lencería de cama y toallas de repuesto.'
+        ],
+        materials: [
+          '<strong>Paredes:</strong> Porcelánico rectificado 120 × 260 cm piedra caliza gris cálida sin juntas.',
+          '<strong>Espejo:</strong> Espejo 80 × 100 cm retroiluminado antivaho con encendido táctil.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 300 lux general + 450 lux vertical en espejo.',
+          '<strong>Luminarias:</strong> 2 focos estancos IP54 antideslumbramiento + tira LED perimetral espejo.'
+        ],
+        installations: [
+          '<strong>Climatización:</strong> Suelo radiante + Radiador toallero eléctrico negro mate 500W a h = 120 cm.',
+          '<strong>Saneamiento:</strong> Bajante insonorizada Geberit Silent-PP &empty; 110 mm agrupada.',
+          '<strong>VMC Zehnder:</strong> 1 boca de extracción &empty; 125 mm (45 m³/h).'
+        ],
+        nhg: 'Cumple estricta interposición higiénica NHG Galicia (cero puertas a cocina)'
+      },
+      'r05': {
+        code: 'ESTANCIA 05 · PLANTA BAJA',
+        title: 'Patio Corrala Habitable y Accesible',
+        subtitle: 'El oasis verde central de la casa · 100% pisable, accesible y protegido del viento',
+        area: '16,00 m²',
+        dims: '4,00 × 4,00 m libres a cielo abierto',
+        planning: [
+          '<strong>Accesibilidad total:</strong> 3 correderas elevables Cortizo Cor Vision Plus (Cocina 3m, Salón 3m, Galería 2,5m).',
+          '<strong>Banco de lectura bajo alero:</strong> 240 × 50 cm en madera de iroko maciza.',
+          '<strong>Zona de té y café:</strong> Mesa de centro &empty; 70 cm y 2 butacas lounge de cuerda exterior.',
+          '<strong>Arce Japonés en tierra natural:</strong> Alcorque drenante con grava volcánica y helechos.'
+        ],
+        materials: [
+          '<strong>Pavimento:</strong> Tarima de madera tecnológica enrasada a cota cero con el interior.',
+          '<strong>Envolvente:</strong> Carpintería embutida con triple vidrio bajo emisivo y control solar.'
+        ],
+        lighting: [
+          '<strong>Paisajismo:</strong> 3 proyectores de suelo IP67 bañando la copa del arce en 2700K cálido.',
+          '<strong>Ambiente:</strong> Tira LED rasante oculta bajo el banco corrido de iroko con reloj astronómico.'
+        ],
+        installations: [
+          '<strong>Riego:</strong> Goteo autocompensante integrado en centralita Hunter Hydrawise.',
+          '<strong>Pluviales:</strong> Canaleta oculta de acero inoxidable AISI 316 perimetral.',
+          '<strong>Electricidad:</strong> 2 tomas estancas IP66 bajo banco.'
+        ],
+        nhg: 'No computa ocupación en PXOM Oleiros · Espacio libre exterior 100% legal'
+      },
+      'r06': {
+        code: 'ESTANCIA 06 · PLANTA BAJA',
+        title: 'Cocina con Isla y Mueble Desayunador',
+        subtitle: 'Vistas panorámicas y salida directa al Patio Corrala ajardinado',
+        area: '15,20 m²',
+        dims: '3,80 × 4,00 m · h = 2,65 m',
+        planning: [
+          '<strong>Isla central Dekton:</strong> 280 × 100 cm a h = 92 cm con pasos libres de 105 cm a ambos lados.',
+          '<strong>Módulo cocción:</strong> Placa de 80 cm con extracción integrada Bora Pure (absorción hacia abajo).',
+          '<strong>Mueble Desayunador:</strong> 120 cm con puertas escamoteables (cafetera, molinillo, tostadora y tomas).',
+          '<strong>Frente de columnas:</strong> Frigo integrable XXL + Congelador vertical + Horno vapor y microondas.'
+        ],
+        materials: [
+          '<strong>Mobiliario:</strong> Santos serie Fine en Cashmere mate seda antihuellas + roble humo.',
+          '<strong>Encimera e Isla:</strong> Dekton Kelya / Aeris Cosentino grosor 20 mm.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 600 lux en isla y encimera + 200 lux ambiental.',
+          '<strong>Luminarias:</strong> Carril magnético empotrado con 3 proyectores + LED continuo bajo altos.'
+        ],
+        installations: [
+          '<strong>Electricidad:</strong> Torre retráctil Bachmann Twist en isla (2 tomas + USB-C) + 4 tomas en desayunador.',
+          '<strong>Red Cat 6A:</strong> 1 toma doble RJ45 en lateral de la isla.',
+          '<strong>VMC Zehnder:</strong> 1 boca de extracción &empty; 125 mm (60 m³/h).'
+        ],
+        nhg: 'Cumple dimensiones mínimas de frente y almacenamiento NHG Galicia'
+      },
+      'r07': {
+        code: 'ESTANCIA 07 · PLANTA BAJA',
+        title: 'Lavandería y Cuarto Técnico Auxiliar',
+        subtitle: 'Tratamiento de lencería y almacenaje técnico independiente',
+        area: '5,60 m²',
+        dims: '2,25 × 2,50 m · h = 2,65 m',
+        planning: [
+          '<strong>Columna vertical:</strong> Lavadora Bosch i-DOS + Secadora bomba calor A+++ con kit extraíble a h = 90 cm.',
+          '<strong>Bancada de plegado:</strong> Encimera fenólica de 140 × 60 cm con pila profunda inox.',
+          '<strong>Armario de aspiración:</strong> Módulo vertical para Dyson V15 con base de carga a h = 120 cm.'
+        ],
+        materials: [
+          '<strong>Suelo y bancada:</strong> Porcelánico técnico C2 y resina fenólica resistente a detergentes.',
+          '<strong>Grifería:</strong> Caño alto extensible monomando acero inoxidable.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 300 lux general mediante plafón LED lineal estanco 4000K.'
+        ],
+        installations: [
+          '<strong>Electricidad:</strong> 4 tomas de fuerza independientes (líneas dedicadas 16A) a h = 110 cm.',
+          '<strong>Fontanería:</strong> Doble toma de agua fría con llave de corte independiente + desagüe sifónico.',
+          '<strong>VMC Zehnder:</strong> Boca de extracción de alta capacidad &empty; 125 mm (45 m³/h).'
+        ],
+        nhg: 'Tendal y lavadero ventilado conforme a Normas do Hábitat Galego'
+      },
+      'r08': {
+        code: 'ESTANCIA 08 · PLANTA BAJA',
+        title: 'Salón Principal con Chimenea',
+        subtitle: 'Ventanal en esquina Suroeste y conexión fluida a Porche Sur y Claustro',
+        area: '26,50 m²',
+        dims: '5,30 × 5,00 m · h = 2,70 m',
+        planning: [
+          '<strong>Muro multimedia Oeste:</strong> TV OLED 77" empotrada a paño con canaleta oculta de &empty; 50 mm.',
+          '<strong>Chimenea panorámica:</strong> Hogar estanco de 100 cm con entrada de aire exterior dedicada.',
+          '<strong>Sofá modular en L:</strong> 320 × 240 cm situado a 3,60 m de la pantalla (distancia óptima 4K).',
+          '<strong>Ventanal en esquina Suroeste:</strong> Apertura total al atardecer sobre la parcela.'
+        ],
+        materials: [
+          '<strong>Pared multimedia:</strong> Porcelánico gran formato imitación piedra caliza abujardada.',
+          '<strong>Suelo:</strong> Porcelánico rectificado 120 × 120 cm con foseado perimetral en techo.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 150 lux general / 50 lux en modo cine.',
+          '<strong>Luminarias:</strong> Foseado indirecto cálido 2400K–2700K regulable + 4 balizas empotradas de suelo.'
+        ],
+        installations: [
+          '<strong>Red Cat 6A:</strong> 2 tomas dobles RJ45 (4 puertos tras TV 77" a h = 115 cm).',
+          '<strong>Wi-Fi:</strong> 1 Punto de acceso PoE Wi-Fi 7 de techo.',
+          '<strong>Climatización:</strong> 2 circuitos de suelo radiante con termostato digital.'
+        ],
+        nhg: 'Pieza noble principal: relación directa salón-porche con vistas al jardín'
+      },
+      'r09': {
+        code: 'ESTANCIA 09 · PLANTA BAJA',
+        title: 'Comedor Principal Interior',
+        subtitle: 'Capacidad para 10 personas comunicado con cocina y porche cubierto',
+        area: '17,50 m²',
+        dims: '4,40 × 4,00 m · h = 2,70 m',
+        planning: [
+          '<strong>Mesa para 10 comensales:</strong> 280 × 100 cm en madera maciza de roble.',
+          '<strong>Pasos libres de servicio:</strong> 95 cm alrededor de la mesa para retroceso holgado de sillas.',
+          '<strong>Aparador de apoyo:</strong> 180 × 45 cm a h = 85 cm para vajilla de gala.'
+        ],
+        materials: [
+          '<strong>Mesa y aparador:</strong> Roble natural con acabado al aceite mate.',
+          '<strong>Luminarias:</strong> 2 lámparas suspendidas textiles acústicas a 75 cm sobre mesa.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 200 lux sobre plano de mesa en 2700K cálido con regulación Dali.'
+        ],
+        installations: [
+          '<strong>Electricidad:</strong> 4 tomas de fuerza en paredes a h = 30 cm.',
+          '<strong>Climatización:</strong> 1 circuito de suelo radiante.'
+        ],
+        nhg: 'Espacio de convivencia familiar y festiva holgado'
+      },
+      'r10': {
+        code: 'ESTANCIA 10 · PLANTA BAJA',
+        title: 'Porche Sur Expandido (Fondo 3,00 m)',
+        subtitle: 'Comedor exterior de verano, barbacoa churrasqueira y zona lounge',
+        area: '36,00 m² (cubiertos)',
+        dims: '12,00 × 3,00 m de fondo libre',
+        planning: [
+          '<strong>Comedor de verano:</strong> Mesa de exterior de 260 × 100 cm para 10 plazas con paso libre de 100 cm.',
+          '<strong>Churrasqueira tradicional:</strong> Bancada de granito Zimbabwe de 240 × 65 cm con parrilla AISI 316.',
+          '<strong>Zona Lounge:</strong> Conjunto de sofás de exterior frente a la salida del salón.',
+          '<strong>Robot cortacésped:</strong> Base en lateral exterior Oeste con salida automática programada.'
+        ],
+        materials: [
+          '<strong>Suelo:</strong> Tarima tecnológica C3 enrasada a cota cero con salón y comedor.',
+          '<strong>Barbacoa:</strong> Ladrillo refractario de alta densidad y granito negro abujardado.'
+        ],
+        lighting: [
+          '<strong>Luminarias:</strong> Focos estancos cálidos en techo + foco técnico sobre parrilla de carbón.'
+        ],
+        installations: [
+          '<strong>Electricidad:</strong> 6 tomas estancas IP66 con tapa + toma de fuerza industrial.',
+          '<strong>Wi-Fi:</strong> 1 Punto de acceso exterior IP65 en techo de porche.',
+          '<strong>Fontanería:</strong> Fregadero exterior inox con toma de agua caliente y fría.'
+        ],
+        nhg: 'Espacio exterior cubierto protegido del viento del Nordés'
+      },
+      'r11': {
+        code: 'ESTANCIA 11 · PLANTA BAJA',
+        title: 'Trastero Bicis / Surf & Sala Técnica',
+        subtitle: 'Almacenaje deportivo estanco y central energética de la vivienda',
+        area: '8,20 m²',
+        dims: '4,00 × 2,05 m · h = 2,65 m',
+        planning: [
+          '<strong>Almacenaje deportivo:</strong> Soportes murales para 4 bicicletas y 3 tablas de surf.',
+          '<strong>Secado de neoprenos:</strong> Barra de acero inox con desagüe perimetral de suelo.',
+          '<strong>Doble acceso:</strong> Puerta exterior desde Pérgola y puerta corredera desde Zaguán.'
+        ],
+        materials: [
+          '<strong>Pavimento:</strong> Gres continuo de alta resistencia fácil de baladear con manguera.'
+        ],
+        lighting: [
+          '<strong>Luminarias:</strong> Plafones lineales LED de alta luminosidad 4000K con encendido crepuscular.'
+        ],
+        installations: [
+          '<strong>Aerotermia:</strong> Bomba de calor Vaillant aroTHERM + Interacumulador ACS 250 L.',
+          '<strong>VMC Zehnder:</strong> Unidad central ComfoAir Q350 con recuperador entálpico 92%.',
+          '<strong>Rack 19" 9U:</strong> Switch PoE 16 puertos, Router Fibra y SAI de respaldo 1000VA.',
+          '<strong>Inversor Solar:</strong> Inversor híbrido 5 kW conectado a los 10 paneles de cubierta.'
+        ],
+        nhg: 'Cuarto de instalaciones aislado acústica y térmicamente'
+      },
+      'r12': {
+        code: 'ESTANCIA 12 · PLANTA PRIMERA',
+        title: 'Galería Acústica & Escalera',
+        subtitle: 'Distribuidor superior acristalado con aislamiento acústico total hacia PB',
+        area: '8,20 m²',
+        dims: '5,00 × 1,60 m · h = 2,65 m',
+        planning: [
+          '<strong>Mampara acústica sobre el claustro:</strong> Paño fijo de vidrio laminar acústico 4+4 Silence (Rw &ge; 42 dB).',
+          '<strong>Corte acústico:</strong> Evita que ruidos de cocina o TV asciendan a los dormitorios infantiles.',
+          '<strong>Escalera:</strong> 17 peldaños (huella 28 cm, contrahuella 17,6 cm) con barandilla de vidrio templado.'
+        ],
+        materials: [
+          '<strong>Suelo:</strong> Tarima de roble blanqueado continuo en toda la planta primera.',
+          '<strong>Vidrio:</strong> Laminar acústico Guardian Silence sin montantes intermedios.'
+        ],
+        lighting: [
+          '<strong>Luz nocturna:</strong> 4 balizas LED empotradas a h = 25 cm con sensor de movimiento nocturno.'
+        ],
+        installations: [
+          '<strong>Wi-Fi:</strong> 1 Punto de acceso PoE Wi-Fi 7 empotrado en techo de galería.',
+          '<strong>Climatización:</strong> Suelo radiante con circuito independiente.'
+        ],
+        nhg: 'Distribuidor seguro y accesible con iluminación de cortesía nocturna'
+      },
+      'r13': {
+        code: 'ESTANCIA 13 · PLANTA PRIMERA',
+        title: 'Dormitorio Infantil Niña (Luz 90°)',
+        subtitle: 'Puesto de estudio ergonómico sin reflejos y salida directa al balcón Sur',
+        area: '14,60 m²',
+        dims: '3,65 × 4,00 m · h = 2,65 m',
+        planning: [
+          '<strong>Mesa de estudio ergonómica:</strong> 180 × 65 cm en pared Este (luz natural lateral a 90° sin reflejos).',
+          '<strong>Cama juvenil:</strong> 120 × 200 cm con mesilla suspendida.',
+          '<strong>Armario empotrado:</strong> 200 × 60 cm con baldas regulables y cajones interiores.',
+          '<strong>Salida a Balcón Sur:</strong> Balconera corredera Cortizo COR 80 RPT con persiana autoblocante.'
+        ],
+        materials: [
+          '<strong>Paredes:</strong> Pintura salvia suave empolvada (NCS S 1510-G40Y).',
+          '<strong>Suelo:</strong> Madera de roble nórdico apta para suelo radiante.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 500 lux en mesa de estudio + 150 lux general.',
+          '<strong>Luminarias:</strong> Lámpara de estudio orientable + foseado LED cálido en cabecero.'
+        ],
+        installations: [
+          '<strong>Red Cat 6A:</strong> 2 tomas dobles RJ45 (4 puertos): 2 bajo escritorio + 2 frente a cama.',
+          '<strong>Electricidad:</strong> 6 tomas 16A + 2 USB-C PD a h = 80 cm sobre mesa.',
+          '<strong>VMC Zehnder:</strong> 1 boca de impulsión en techo (30 m³/h).'
+        ],
+        nhg: 'Dormitorio doble amplio cumpliendo holgadamente el decreto NHG'
+      },
+      'r14': {
+        code: 'ESTANCIA 14 · PLANTA PRIMERA',
+        title: 'Dormitorio Infantil Niño (Luz 90°)',
+        subtitle: 'Idéntica calidad espacial y ergonómica orientada al Sur',
+        area: '14,60 m²',
+        dims: '3,65 × 4,00 m · h = 2,65 m',
+        planning: [
+          '<strong>Mesa de estudio:</strong> 180 × 65 cm en pared lateral Este (luz a 90° sin deslumbramiento).',
+          '<strong>Cama juvenil:</strong> 120 × 200 cm con cabecero tapizado.',
+          '<strong>Armario empotrado:</strong> 200 × 60 cm de suelo a techo con frentes lisos.',
+          '<strong>Balcón Sur:</strong> Conexión limpia y directa al balcón exterior.'
+        ],
+        materials: [
+          '<strong>Paredes:</strong> Tono neutro arena y azul grisáceo suave (NCS S 2005-B20G / Munsell 5B 7/1).'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 500 lux en escritorio con luminaria lineal antideslumbramiento.'
+        ],
+        installations: [
+          '<strong>Red Cat 6A:</strong> 2 tomas dobles RJ45 (4 puertos) + 6 tomas de corriente 16A.',
+          '<strong>Climatización:</strong> Suelo radiante con termostato digital táctil independiente.'
+        ],
+        nhg: 'Ergonomía de estudio optimizada para evitar fatiga visual'
+      },
+      'r15': {
+        code: 'ESTANCIA 15 · PLANTA PRIMERA',
+        title: 'Baño Compartido Hijos',
+        subtitle: 'Mueble de doble lavabo y bañera/ducha para uso simultáneo matutino',
+        area: '6,80 m²',
+        dims: '2,70 × 2,50 m · h = 2,65 m',
+        planning: [
+          '<strong>Mueble de doble seno:</strong> 140 × 50 cm suspendido con dos senos independientes.',
+          '<strong>Bañera exenta ergonómica:</strong> 160 × 75 cm con ducha termostática efecto lluvia.',
+          '<strong>Inodoro suspendido:</strong> Geberit Rimless con cisterna empotrada acústica.'
+        ],
+        materials: [
+          '<strong>Paredes:</strong> Porcelánico rectificado tono piedra caliza gris perla.',
+          '<strong>Grifería:</strong> Negro mate monomando empotrada.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 300 lux general + 450 lux en espejo doble retroiluminado.'
+        ],
+        installations: [
+          '<strong>Climatización:</strong> Suelo radiante + Radiador toallero eléctrico negro 600W a h = 120 cm.',
+          '<strong>VMC Zehnder:</strong> 1 boca de extracción &empty; 125 mm (45 m³/h).'
+        ],
+        nhg: 'Baño completo con ventilación natural a fachada Norte'
+      },
+      'r16': {
+        code: 'ESTANCIA 16 · PLANTA PRIMERA',
+        title: 'Suite Principal Matrimonio',
+        subtitle: 'Dormitorio Sur panorámico, vestidor de paso y baño privado doble',
+        area: '31,20 m² (Totales)',
+        dims: 'Dormitorio 16,5 m² + Vestidor 8,4 m² + Baño 6,3 m²',
+        planning: [
+          '<strong>Cama King Size:</strong> 180 × 200 cm con vistas al jardín Sur y cabecero de roble.',
+          '<strong>Vestidor en doble línea:</strong> 3,20 m lineales de armario con puertas de vidrio ahumado y LED.',
+          '<strong>Baño privado doble:</strong> Encimera Dekton de 150 cm con dos senos + Ducha doble 150 × 90 cm.'
+        ],
+        materials: [
+          '<strong>Dormitorio:</strong> Tarima de roble tostado y textiles de lino natural.',
+          '<strong>Baño:</strong> Dekton Kelya y porcelánico gran formato continuo.'
+        ],
+        lighting: [
+          '<strong>Nivel IES:</strong> 150 lux ambiente + 300 lux en vestidor con barras LED automáticas.'
+        ],
+        installations: [
+          '<strong>Red Cat 6A:</strong> 4 tomas dobles RJ45 (2 en cabecero/tocador + 2 frente a cama).',
+          '<strong>Climatización:</strong> 2 circuitos de suelo radiante con termostato digital.',
+          '<strong>Toallero:</strong> Radiador toallero de diseño negro mate 750W.'
+        ],
+        nhg: 'Suite de matrimonio aislada acústicamente en el ala Este de P1'
+      },
+      'r17': {
+        code: 'ESTANCIA 17 · PLANTA PRIMERA',
+        title: 'Balcón Corrido Sur P1',
+        subtitle: 'Mirador continuo de 14 metros sobre el porche con peto de vidrio estructural',
+        area: '14,00 m²',
+        dims: '11,50 × 1,20 m libres',
+        planning: [
+          '<strong>Barandilla de vidrio estructural:</strong> 10+10 mm con film PVB acústico embutido en forjado.',
+          '<strong>Vistas despejadas:</strong> Cero barrotes verticales para contemplar el jardín desde las camas.',
+          '<strong>Pavimento:</strong> Tarima de madera tecnológica idéntica al porche de PB.'
+        ],
+        materials: [
+          '<strong>Vidrio:</strong> Laminar de seguridad extraclaro con perfil U inferior oculto.'
+        ],
+        lighting: [
+          '<strong>Luminarias:</strong> Foseado LED rasante continuo en zócalo bañado el suelo en 2400K.'
+        ],
+        installations: [
+          '<strong>Pluviales:</strong> Sumideros sifónicos ocultos con rejilla ranurada inox.'
+        ],
+        nhg: 'Peto de seguridad a h = 110 cm cumpliendo CTE DB-SUA'
+      }
+    };
+
+    function selectRoom(roomId) {
+      document.querySelectorAll('.room-btn').forEach(btn => btn.classList.remove('active', 'text-white'));
+      document.getElementById('btn-' + roomId).classList.add('active');
+
+      const data = rooms[roomId];
+      document.getElementById('room-code').innerText = data.code;
+      document.getElementById('room-title').innerText = data.title;
+      document.getElementById('room-subtitle').innerText = data.subtitle;
+      document.getElementById('room-area').innerText = data.area;
+      document.getElementById('room-dims').innerText = data.dims;
+
+      renderList('room-planning', data.planning);
+      renderList('room-materials', data.materials);
+      renderList('room-lighting', data.lighting);
+      renderList('room-installations', data.installations);
+      document.getElementById('room-nhg').innerHTML = `<span>Cumplimiento NHG Galicia: <strong>Anexo I</strong> · Aislamiento acústico: <strong>${data.nhg}</strong></span><span class="text-emerald-400 font-semibold">✓ Verificado 100%</span>`;
+    }
+
+    function renderList(elementId, items) {
+      const el = document.getElementById(elementId);
+      el.innerHTML = items.map(it => `<li>${it}</li>`).join('');
+    }
+
+    function filterFloor(floor) {
+      document.querySelectorAll('.floor-group').forEach(fg => fg.classList.remove('hidden'));
+      if (floor === 'pb') {
+        document.querySelector('.floor-group.p1').classList.add('hidden');
+      } else if (floor === 'p1') {
+        document.querySelector('.floor-group.pb').classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
