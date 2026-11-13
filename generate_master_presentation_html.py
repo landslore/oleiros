@@ -401,14 +401,14 @@ html_content = f"""<!DOCTYPE html>
           <h2 class="text-xl md:text-2xl font-black text-white mt-1">Planos Definitivos — Planta Baja y Planta Primera</h2>
           <p class="text-xs md:text-sm text-slate-400 mt-0.5">Planos a escala con cotas métricas, circulaciones, carpinterías y amueblamiento normativo.</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="showFloorSVG('pb')" id="btn-svg-pb" class="px-3 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white border border-sky-400 shadow-md">
+        <div class="flex flex-wrap gap-2.5 w-full sm:w-auto">
+          <button type="button" onclick="showFloorSVG('pb')" id="btn-svg-pb" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
             Planta Baja (±0,00 m)
           </button>
-          <button onclick="showFloorSVG('p1')" id="btn-svg-p1" class="px-3 py-2 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:text-white">
+          <button type="button" onclick="showFloorSVG('p1')" id="btn-svg-p1" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
             Planta Primera (+3,15 m)
           </button>
-          <button onclick="showFloorSVG('norte')" id="btn-svg-norte" class="px-3 py-2 rounded-xl text-xs font-medium bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30">
+          <button type="button" onclick="showFloorSVG('norte')" id="btn-svg-norte" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-lg shadow-amber-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
             🛠️ Detalle 1:50 Zona Norte PB
           </button>
         </div>
@@ -528,19 +528,28 @@ html_content = f"""<!DOCTYPE html>
     function showFloorSVG(fl) {{
       const cPb = document.getElementById('svg-container-pb');
       const cP1 = document.getElementById('svg-container-p1');
+      const cNorte = document.getElementById('svg-container-norte');
       const bPb = document.getElementById('btn-svg-pb');
       const bP1 = document.getElementById('btn-svg-p1');
+      const bNorte = document.getElementById('btn-svg-norte');
+
+      cPb.classList.add('hidden');
+      cP1.classList.add('hidden');
+      cNorte.classList.add('hidden');
+
+      bPb.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      bP1.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      bNorte.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
 
       if (fl === 'pb') {{
         cPb.classList.remove('hidden');
-        cP1.classList.add('hidden');
-        bPb.className = 'px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white border border-sky-400 shadow-md';
-        bP1.className = 'px-4 py-2 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:text-white';
-      }} else {{
-        cPb.classList.add('hidden');
+        bPb.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      }} else if (fl === 'p1') {{
         cP1.classList.remove('hidden');
-        bPb.className = 'px-4 py-2 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:text-white';
-        bP1.className = 'px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white border border-sky-400 shadow-md';
+        bP1.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      }} else if (fl === 'norte') {{
+        cNorte.classList.remove('hidden');
+        bNorte.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-lg shadow-amber-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
       }}
     }}
   </script>
