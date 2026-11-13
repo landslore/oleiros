@@ -34,6 +34,8 @@ with open(os.path.join(PROPUESTAS_DIR, 'planta_baja_propuesta_d.svg'), 'r') as f
 
 with open(os.path.join(PROPUESTAS_DIR, 'planta_alta_propuesta_d.svg'), 'r') as f:
     raw_svg_p1 = f.read()
+with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_zona_norte_pb.svg'), 'r') as f:
+    raw_svg_norte = f.read()
 
 
 html_content = f"""<!DOCTYPE html>
@@ -400,11 +402,14 @@ html_content = f"""<!DOCTYPE html>
           <p class="text-xs md:text-sm text-slate-400 mt-0.5">Planos a escala con cotas métricas, circulaciones, carpinterías y amueblamiento normativo.</p>
         </div>
         <div class="flex gap-2">
-          <button onclick="showFloorSVG('pb')" id="btn-svg-pb" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white border border-sky-400 shadow-md">
+          <button onclick="showFloorSVG('pb')" id="btn-svg-pb" class="px-3 py-2 rounded-xl text-xs font-bold bg-sky-600 text-white border border-sky-400 shadow-md">
             Planta Baja (±0,00 m)
           </button>
-          <button onclick="showFloorSVG('p1')" id="btn-svg-p1" class="px-4 py-2 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:text-white">
+          <button onclick="showFloorSVG('p1')" id="btn-svg-p1" class="px-3 py-2 rounded-xl text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:text-white">
             Planta Primera (+3,15 m)
+          </button>
+          <button onclick="showFloorSVG('norte')" id="btn-svg-norte" class="px-3 py-2 rounded-xl text-xs font-medium bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30">
+            🛠️ Detalle 1:50 Zona Norte PB
           </button>
         </div>
       </div>
@@ -416,6 +421,9 @@ html_content = f"""<!DOCTYPE html>
         </div>
         <div id="svg-container-p1" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
           {raw_svg_p1}
+        </div>
+        <div id="svg-container-norte" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+          {raw_svg_norte}
         </div>
       </div>
     </section>
@@ -559,7 +567,8 @@ if __name__ == "__main__":
         'modelo_3d_propuesta_d_homemaker.html',
         'planta_baja_propuesta_d.svg',
         'planta_alta_propuesta_d.svg',
-        'Presentacion_Hogar_Oleiros_Propuesta_D.pptx'
+        'Presentacion_Hogar_Oleiros_Propuesta_D.pptx',
+        'plano_constructivo_zona_norte_pb.svg'
     ]
     for fn in files_to_sync:
         src = os.path.join(PROPUESTAS_DIR, fn)
