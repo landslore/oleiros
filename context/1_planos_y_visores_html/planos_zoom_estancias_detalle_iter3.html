@@ -1,0 +1,1341 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoom-In 1:20 Estancia por Estancia — Enchufes, Interruptores, Clima y Electrodomésticos</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    :root {
+      --background: #f8fafc;
+      --foreground: #0f172a;
+      --content: #ffffff;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --muted: #64748b;
+      --muted-foreground: #64748b;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      margin: 0;
+      padding: 0;
+    }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .marker-node {
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    .marker-node:hover {
+      transform: scale(1.18);
+      filter: drop-shadow(0 3px 6px rgba(15,23,42,0.35));
+    }
+    .marker-selected {
+      stroke: #0f172a !important;
+      stroke-width: 2.5px !important;
+      filter: drop-shadow(0 0 8px rgba(245,158,11,0.85));
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #f8fafc;
+      --foreground: #0f172a;
+      --card: #ffffff;
+      --card-foreground: #0f172a;
+      --content: #ffffff;
+      --border: #e2e8f0;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --accent: #f1f5f9;
+      --accent-foreground: #0f172a;
+    }
+  </style>
+</head>
+<body class="p-3 md:p-6 max-w-[1680px] mx-auto space-y-4">
+
+  <!-- CABECERA -->
+  <header class="bg-[var(--content)] border border-[var(--border)] rounded-2xl p-4 md:p-5 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div class="space-y-1">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-600 text-white">PROYECTO DE EJECUCIÓN · ESCALA 1:20</span>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20">17 Fichas Zoom-In (25 Zonas al Centímetro)</span>
+        <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-700 border border-amber-500/20">Enchufes · Interruptores · Suelo Radiante · VMC · TV y Pequeño Electrodoméstico</span>
+      </div>
+      <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">Zoom-In Estancia a Estancia: ¿Dónde va exactamente cada cosa?</h1>
+      <p class="text-xs md:text-sm text-[var(--muted)] max-w-4xl">
+        Selecciona cualquier estancia para ver su plano técnico de detalle: ubicación exacta de <strong>TV, cafetera, tostadora, robot de cocina, enchufes con su altura en cm, tomas RJ45, interruptores/conmutados, circuitos de suelo radiante-refrescante, termostatos y toalleros</strong>. En el <strong>Despacho (Zona 3)</strong> tienes además <strong>3 opciones de mobiliario</strong> para elegir.
+      </p>
+    </div>
+
+    <!-- FILTRO DE PLANTA -->
+    <div class="flex flex-wrap items-center gap-1.5 shrink-0">
+      <button id="filter-ALL" onclick="setFloorFilter('ALL')" class="px-3 py-2 rounded-lg text-xs font-bold border border-indigo-600 bg-indigo-600 text-white shadow-sm transition">
+        Todas (17)
+      </button>
+      <button id="filter-PB" onclick="setFloorFilter('PB')" class="px-3 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--content)] hover:bg-slate-100 transition">
+        Planta Baja (+0,00)
+      </button>
+      <button id="filter-P1" onclick="setFloorFilter('P1')" class="px-3 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--content)] hover:bg-slate-100 transition">
+        Planta Primera (+3,15)
+      </button>
+    </div>
+  </header>
+
+  <!-- EXPLICACIÓN CLIMATIZACIÓN (RADIADORES Y AIRE ACONDICIONADO) -->
+  <section class="bg-gradient-to-r from-sky-50 via-emerald-50 to-amber-50 border border-emerald-300 rounded-xl p-3.5 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+    <div class="text-xs leading-relaxed text-slate-800 space-y-0.5">
+      <div class="font-bold text-slate-900 flex items-center gap-1.5">
+        <span>🌡️ ¿Dónde están los radiadores y los aparatos de Aire Acondicionado?</span>
+        <span class="px-2 py-0.5 rounded bg-emerald-600 text-white text-[10px] font-bold uppercase">100 % Invisibles</span>
+      </div>
+      <p>
+        <strong>1) Cero radiadores en paredes de dormitorios/salón:</strong> toda la casa lleva <strong>Suelo Radiante-Refrescante por Aerotermia</strong> bajo el porcelánico/madera (calienta con agua a 35 °C en invierno y refresca con agua a 17 °C en verano sin corrientes de aire). Solo los <strong>3 baños</strong> llevan además <strong>Radiador Toallero mural</strong> para calentar y secar las toallas.<br>
+        <strong>2) Cero splits de A/C en las paredes:</strong> en el techo de cada estancia hay bocas silenciosas de <strong>VMC de Doble Flujo con recuperador de calor</strong> (impulsan aire limpio filtrado a 21 °C en dormitorios/salón y extraen humedad/olores en baños, cocina y lavandería) + <strong>1 Termostato Digital independiente</strong> en la pared de cada habitación.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-1.5 shrink-0">
+      <button onclick="toggleLayer('furn')" id="btn-layer-furn" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-white border border-slate-800 transition">🛋️ Muebles y Aparatos: ON</button>
+      <button onclick="toggleLayer('elec')" id="btn-layer-elec" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white border border-amber-600 transition">🔌 Enchufes y RJ45: ON</button>
+      <button onclick="toggleLayer('sw')" id="btn-layer-sw" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white border border-blue-600 transition">💡 Interruptores y Luz: ON</button>
+      <button onclick="toggleLayer('hvac')" id="btn-layer-hvac" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 text-white border border-emerald-600 transition">🌡️ Clima, Suelo y VMC: ON</button>
+    </div>
+  </section>
+
+  <!-- SELECTOR RÁPIDO DE LAS 18 ESTANCIAS -->
+  <nav id="room-pills" class="flex flex-wrap gap-1.5 bg-[var(--content)] border border-[var(--border)] rounded-xl p-2.5 shadow-sm"></nav>
+
+  <!-- SELECTOR ESPECIAL DE DISTRIBUCIÓN DEL DESPACHO (SOLO VISIBLE EN ZONA 3) -->
+  <div id="despacho-options-bar" class="hidden bg-amber-50 border-2 border-amber-400 rounded-xl p-3.5 shadow-sm">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+      <div>
+        <span class="text-xs font-extrabold uppercase tracking-wider text-amber-900">🔄 Explorador de Mobiliario del Despacho (3,60 × 3,20 m):</span>
+        <p class="text-xs text-amber-800">Como comentaste que no te terminaba de cuadrar el mobiliario del Despacho, prueba estas 3 disposiciones sobre las mismas paredes y puertas:</p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 shrink-0">
+        <button onclick="setDespachoLayout('D2')" id="btn-desp-D2" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white border border-amber-700 shadow-sm transition">
+          ⭐ Opción B (Recomendada): Paso Norte Despejado + Rincón Estudio S-O
+        </button>
+        <button onclick="setDespachoLayout('D3')" id="btn-desp-D3" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-amber-900 border border-amber-300 hover:bg-amber-100 transition">
+          Opción C: Cama Abatible Oculta en Armario + Mesa Ejecutiva
+        </button>
+        <button onclick="setDespachoLayout('D1')" id="btn-desp-D1" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-amber-900 border border-amber-300 hover:bg-amber-100 transition">
+          Opción A (Anterior): Sofá-Cama al Norte + Mesa al Sur
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUERPO PRINCIPAL: PLANO ZOOM 1:20 (IZQUIERDA) + INVENTARIO DETALLADO DE LA ESTANCIA (DERECHA) -->
+  <div class="grid grid-cols-1 xl:grid-cols-12 gap-5 items-start">
+
+    <!-- COLUMNA IZQUIERDA (7 COLS): PLANO CAD 1:20 DE LA ESTANCIA -->
+    <div class="xl:col-span-7 bg-[var(--content)] border border-[var(--border)] rounded-2xl p-4 shadow-sm space-y-3">
+      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] pb-2.5">
+        <div>
+          <span id="room-badge" class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">PLANTA BAJA</span>
+          <h2 id="room-title" class="text-lg font-extrabold text-slate-900 mt-0.5">10. Cocina con Isla y Desayunador</h2>
+        </div>
+        <div class="text-right">
+          <div id="room-dims" class="text-xs font-bold mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded">3,60 × 5,00 m · 17,5 m² útiles</div>
+        </div>
+      </div>
+
+      <!-- LEYENDA DE SÍMBOLOS TÉCNICOS -->
+      <div class="flex flex-wrap items-center gap-3 text-[11px] bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-slate-700">
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-amber-500 inline-block border border-amber-800"></span> <strong>E#</strong> Enchufe 16A/25A/USB</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-violet-600 inline-block"></span> <strong>RJ#</strong> Red Cat6A / WiFi</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-blue-600 inline-block"></span> <strong>I#</strong> Interruptor / Conmutado</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-rose-500 inline-block"></span> <strong>T / TR</strong> Termostato / Toallero</span>
+        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-teal-600 inline-block"></span> <strong>VMC</strong> Impulsión / Extracción Aire</span>
+        <span class="ml-auto text-[10px] font-semibold text-indigo-700">💡 Haz clic en cualquier icono del plano para resaltarlo en la tabla</span>
+      </div>
+
+      <!-- LIENZO SVG 1:20 -->
+      <div class="w-full overflow-x-auto bg-slate-100/80 border border-slate-200 rounded-xl p-2 flex justify-center">
+        <svg id="room-svg" viewBox="0 0 820 680" class="w-full max-w-[820px] h-auto select-none"></svg>
+      </div>
+
+      <!-- COLINDANCIAS DE LAS 4 PAREDES -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-xs">
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+          <div class="font-bold text-slate-800">⬆️ Pared Norte (Arriba en plano):</div>
+          <p id="wall-N" class="text-slate-600 mt-0.5"></p>
+        </div>
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+          <div class="font-bold text-slate-800">⬇️ Pared Sur (Abajo en plano):</div>
+          <p id="wall-S" class="text-slate-600 mt-0.5"></p>
+        </div>
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+          <div class="font-bold text-slate-800">➡️ Pared Este (Derecha en plano):</div>
+          <p id="wall-E" class="text-slate-600 mt-0.5"></p>
+        </div>
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+          <div class="font-bold text-slate-800">⬅️ Pared Oeste (Izquierda en plano):</div>
+          <p id="wall-W" class="text-slate-600 mt-0.5"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA (5 COLS): DESGLOSE PUNTO POR PUNTO DE LA ESTANCIA -->
+    <div class="xl:col-span-5 space-y-4">
+
+      <!-- DETALLE DE ELEMENTO CLICADO -->
+      <div id="clicked-item-box" class="bg-amber-50 border-2 border-amber-400 rounded-xl p-3.5 shadow-sm">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-amber-800">🎯 Elemento Seleccionado en el Plano</div>
+        <div id="clicked-item-title" class="text-sm font-extrabold text-slate-900 mt-0.5">Haz clic en cualquier aparato, enchufe, interruptor o boca de clima del plano</div>
+        <div id="clicked-item-desc" class="text-xs text-slate-700 mt-1">Verás aquí su altura exacta desde el suelo (h in cm), su circuito y su función.</div>
+      </div>
+
+      <!-- 1. ELECTRODOMÉSTICOS, TV Y MOBILIARIO CLAVE -->
+      <div class="bg-[var(--content)] border border-[var(--border)] rounded-2xl p-4 shadow-sm space-y-2.5">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-800 flex items-center justify-between">
+          <span>📺 1. ¿Dónde va cada mueble, TV y electrodoméstico?</span>
+          <span id="count-furn" class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 mono text-[11px]"></span>
+        </h3>
+        <div id="list-furn" class="space-y-1.5 max-h-[240px] overflow-y-auto pr-1 text-xs"></div>
+      </div>
+
+      <!-- 2. ENCHUFES (16A / 25A / USB-C) Y RED RJ45 CAT6A -->
+      <div class="bg-[var(--content)] border border-[var(--border)] rounded-2xl p-4 shadow-sm space-y-2.5">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-amber-800 flex items-center justify-between">
+          <span>🔌 2. Enchufes, Tomas Especiales y Red RJ45 Cat6A</span>
+          <span id="count-elec" class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 mono text-[11px]"></span>
+        </h3>
+        <div id="list-elec" class="space-y-1.5 max-h-[250px] overflow-y-auto pr-1 text-xs"></div>
+      </div>
+
+      <!-- 3. INTERRUPTORES, CONMUTADOS Y PUNTOS DE LUZ -->
+      <div class="bg-[var(--content)] border border-[var(--border)] rounded-2xl p-4 shadow-sm space-y-2.5">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-blue-800 flex items-center justify-between">
+          <span>💡 3. Interruptores, Conmutadores, Persianas y Luminarias</span>
+          <span id="count-sw" class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 mono text-[11px]"></span>
+        </h3>
+        <div id="list-sw" class="space-y-1.5 max-h-[210px] overflow-y-auto pr-1 text-xs"></div>
+      </div>
+
+      <!-- 4. CLIMATIZACIÓN: SUELO RADIANTE, TOALLEROS, TERMOSTATO Y VMC -->
+      <div class="bg-[var(--content)] border border-[var(--border)] rounded-2xl p-4 shadow-sm space-y-2.5">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-emerald-800 flex items-center justify-between">
+          <span>🌡️ 4. Calefacción, Refrescamiento, Toallero y VMC</span>
+          <span id="count-hvac" class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 mono text-[11px]"></span>
+        </h3>
+        <div id="list-hvac" class="space-y-1.5 text-xs"></div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    let currentFilter = 'ALL';
+    let currentRoomId = 'cocina_pb';
+    let currentDespachoOpt = 'D2';
+    let selectedMarkerCode = null;
+    const layers = { furn: true, elec: true, sw: true, hvac: true };
+
+    const DESPACHO_VARIANTS = {
+      D2: {
+        subtitle: 'Opción B (Recomendada): Paso Norte despejado + Rincón Estudio S-O mirando al Patio + Sofá Cama al Este',
+        furn: [
+          { code: 'M1', name: 'Escritorio en L (1,60 × 1,20 m)', x: 0.15, y: 1.85, w: 1.65, h: 1.20, col: '#fef3c7', str: '#d97706', desc: 'En la esquina Suroeste mirando directamente a los 2,60 m de cristal del Patio Corrala y con vista lateral al jardín. Deja el paso Norte (Hall → Cocina) 100 % recto y despejado.' },
+          { code: 'M2', name: 'Monitor Ultrawide 34" + Portátil', x: 0.45, y: 2.72, w: 0.85, h: 0.22, col: '#1e293b', str: '#0f172a', desc: 'Brazo articulado en el escritorio con luz lateral/frontal tamizada del Patio Corrala.' },
+          { code: 'M3', name: 'Silla Ergonómica Herman Miller', x: 0.65, y: 2.05, w: 0.55, h: 0.55, col: '#e2e8f0', str: '#475569', desc: 'Situada de espaldas al paso, sin obstaculizar la circulación entre Hall y Cocina.' },
+          { code: 'M4', name: 'Sofá Cama Italiano (1,65 m cerrado)', x: 2.55, y: 0.70, w: 0.92, h: 1.25, col: '#e0e7ff', str: '#4f46e5', desc: 'Apoyado en el tabique Este (entre la esquina NE y la corredera del baño). Al abrirse hacia el Oeste (2,00 m) no choca con el escritorio ni con el armario.' },
+          { code: 'M5', name: 'Cama Abierta Invitados (140×200)', x: 1.50, y: 0.70, w: 1.95, h: 1.25, col: 'none', str: '#6366f1', dashed: true, desc: 'Proyección punteada de la cama desplegada para visitas: deja pasillo libre alrededor y acceso directo al Baño PB.' },
+          { code: 'M6', name: 'Armario Empotrado Visitas + Impresora', x: 0.25, y: 0.12, w: 2.10, h: 0.55, col: '#f1f5f9', str: '#64748b', desc: 'Armario empotrado en pared Norte con puertas correderas (para no invadir el paso) y módulo técnico interior con impresora WiFi.' },
+          { code: 'TV', name: 'TV 43" Smart TV en Pared Oeste', x: 0.06, y: 0.90, w: 0.12, h: 0.85, col: '#0f172a', str: '#ef4444', desc: 'Colgada en el tabique Oeste a h=125 cm, justo frente al sofá cama para ver la tele desde el sofá o desde la cama abierta.' }
+        ],
+        elec: [
+          { code: 'E1', name: '3× Enchufes 16A + USB-C Escritorio', x: 0.85, y: 3.08, h_cm: 75, cir: 'C2 / C-DATOS', desc: 'En el peto bajo de la cristalera Sur para alimentar Monitor 34", Portátil y lámpara flexo sin cables por el suelo.' },
+          { code: 'RJ1', name: 'Doble Toma RJ45 Cat6A (10 Gbps)', x: 1.25, y: 3.08, h_cm: 75, cir: 'RACK-PB', isRJ: true, desc: 'Conexión por cable directo desde el Rack para teletrabajo con latencia cero y videollamadas 4K.' },
+          { code: 'E2', name: 'Enchufe Interno Impresora / Cargadores', x: 1.85, y: 0.15, h_cm: 90, cir: 'C2', desc: 'Dentro del módulo derecho del armario Norte para tener la impresora/escáner conectada y oculta.' },
+          { code: 'E3', name: '2× Enchufes + RJ45 tras TV 43"', x: 0.12, y: 1.30, h_cm: 120, cir: 'C2 + RACK', isRJ: true, desc: 'Detrás de la TV 43" en la pared Oeste con toma de antena y red cableada.' },
+          { code: 'E4', name: 'Enchufe + USB-C Cabecero Sofá Cama', x: 3.48, y: 0.55, h_cm: 65, cir: 'C2', desc: 'Junto al brazo Norte del sofá cama para que los invitados carguen el móvil desde la cama.' },
+          { code: 'E5', name: 'Enchufe + USB-C Pie Sofá Cama', x: 3.48, y: 1.92, h_cm: 65, cir: 'C2', desc: 'Al otro lado del sofá cama, antes de la corredera del baño.' }
+        ]
+      },
+      D3: {
+        subtitle: 'Opción C: Cama Abatible Vertical oculta en Armario Norte + Mesa Ejecutiva mirando al Patio',
+        furn: [
+          { code: 'M1', name: 'Mueble Pared Norte con Cama Abatible 150×200', x: 0.30, y: 0.10, w: 3.00, h: 0.55, col: '#f1f5f9', str: '#475569', desc: 'Frente continuo de carpintería en roble en pared Norte: a diario la cama queda 100 % oculta en vertical (solo ocupa 55 cm de fondo) flanqueada por dos armarios roperos.' },
+          { code: 'M2', name: 'Proyección Cama Abatible Desplegada', x: 0.95, y: 0.65, w: 1.60, h: 1.95, col: 'none', str: '#6366f1', dashed: true, desc: 'Se baja en 5 segundos con pistones hidráulicos de noche cuando hay invitados.' },
+          { code: 'M3', name: 'Mesa de Despacho Ejecutiva (1,70 × 0,75 m)', x: 0.45, y: 2.25, w: 1.70, h: 0.75, col: '#fef3c7', str: '#d97706', desc: 'Frente a la cristalera del Patio Corrala con luz natural.' },
+          { code: 'M4', name: 'Monitor 34" + Portátil + Silla', x: 1.00, y: 1.85, w: 0.60, h: 0.50, col: '#e2e8f0', str: '#334155', desc: 'Puesto de trabajo ergonómico mirando hacia el Sur.' },
+          { code: 'M5', name: 'Butaca de Lectura + Mesita Auxiliar', x: 2.75, y: 0.90, w: 0.70, h: 0.75, col: '#e0e7ff', str: '#4f46e5', desc: 'Rincón de lectura para videollamadas o descanso.' },
+          { code: 'TV', name: 'TV 43" en Pared Oeste', x: 0.06, y: 1.15, w: 0.12, h: 0.85, col: '#0f172a', str: '#ef4444', desc: 'TV mural visible desde la butaca o la cama abatible.' }
+        ],
+        elec: [
+          { code: 'E1', name: '3× Enchufes 16A + USB-C Mesa Estudio', x: 1.10, y: 3.08, h_cm: 75, cir: 'C2', desc: 'En el peto inferior de la cristalera Sur para el puesto de teletrabajo.' },
+          { code: 'RJ1', name: 'Doble Toma RJ45 Cat6A', x: 1.50, y: 3.08, h_cm: 75, cir: 'RACK-PB', isRJ: true, desc: 'Doble puerto Ethernet Gigabit/10G para el ordenador.' },
+          { code: 'E2', name: '2× Enchufes + USB-C en Hornacina Cama Abatible', x: 1.75, y: 0.18, h_cm: 85, cir: 'C2', desc: 'Integrados en el cabecero interior de la cama abatible con tira LED de lectura.' },
+          { code: 'E3', name: 'Enchufe + RJ45 tras TV 43"', x: 0.12, y: 1.50, h_cm: 120, cir: 'C2 + RACK', isRJ: true, desc: 'Toma de corriente y red detrás del televisor.' },
+          { code: 'E4', name: 'Enchufe Auxiliar junto a Butaca Este', x: 3.48, y: 1.25, h_cm: 30, cir: 'C2', desc: 'Para lámpara de pie de lectura o cargador.' }
+        ]
+      },
+      D1: {
+        subtitle: 'Opción A (Anterior): Sofá-Cama en pared Norte + Escritorio frente al Patio Sur',
+        furn: [
+          { code: 'M1', name: 'Sofá Cama Italiano en Pared Norte', x: 1.15, y: 0.12, w: 1.80, h: 0.90, col: '#e0e7ff', str: '#4f46e5', desc: 'Apoyado en la fachada Norte mirando al Patio Corrala.' },
+          { code: 'M2', name: 'Cama Desplegada (150×200 cm)', x: 1.25, y: 1.02, w: 1.60, h: 1.10, col: 'none', str: '#6366f1', dashed: true, desc: 'Al abrirse ocupa el centro de la estancia, dejando paso hacia el baño.' },
+          { code: 'M3', name: 'Armario Empotrado N-O', x: 0.12, y: 0.12, w: 0.95, h: 0.60, col: '#f1f5f9', str: '#64748b', desc: 'Módulo ropero en la esquina Noroeste.' },
+          { code: 'M4', name: 'Escritorio 1,60 m mirando al Patio', x: 0.60, y: 2.50, w: 1.60, h: 0.60, col: '#fef3c7', str: '#d97706', desc: 'Junto al cristal del Patio Corrala.' },
+          { code: 'TV', name: 'TV 43" en soporte articulado', x: 3.42, y: 1.10, w: 0.12, h: 0.80, col: '#0f172a', str: '#ef4444', desc: 'En tabique Este.' }
+        ],
+        elec: [
+          { code: 'E1', name: '3× Enchufes 16A Escritorio', x: 1.20, y: 3.08, h_cm: 75, cir: 'C2', desc: 'Bajo escritorio.' },
+          { code: 'RJ1', name: 'Doble RJ45 Cat6A Escritorio', x: 1.60, y: 3.08, h_cm: 75, cir: 'RACK-PB', isRJ: true, desc: 'Datos cableados.' },
+          { code: 'E2', name: 'Enchufe + USB-C lado Oeste Sofá', x: 1.08, y: 0.20, h_cm: 65, cir: 'C2', desc: 'Cabecero izquierdo.' },
+          { code: 'E3', name: 'Enchufe + USB-C lado Este Sofá', x: 3.05, y: 0.20, h_cm: 65, cir: 'C2', desc: 'Cabecero derecho.' },
+          { code: 'E4', name: 'Enchufe + RJ45 TV', x: 3.48, y: 1.45, h_cm: 120, cir: 'C2 + RACK', isRJ: true, desc: 'Alimentación y red TV.' }
+        ]
+      }
+    };
+
+    const ROOMS = [
+      // 1. COCINA CON ISLA
+      {
+        id: 'cocina_pb', fl: 'PB', num: '10', short: '10. Cocina con Isla',
+        title: '10. Cocina con Isla Central, Desayunador y Office (17,5 m²)',
+        w: 3.6, h: 5.0, dims: '3,60 × 5,00 m · 17,5 m² útiles',
+        wN: 'De x=0,00 a 1,00 m: Puerta corredera desde el Despacho (paso corto con la compra). De x=1,00 a 3,60 m: Tabique con el Baño PB (incluye puerta corredera al antebaño/lavabo en x=1,20..2,00 y Hornacina Desayunador en x=2,10..3,50).',
+        wS: 'Tabique de cristal corredero oculto de 3,40 m hacia el Comedor Principal (Zona 12).',
+        wE: 'Fachada exterior Este con ventana horizontal sobre encimera y el frente de 4,20 m de columnas y aguas (conectado a la misma bajante que el Baño PB).',
+        wW: 'Cristalera con puerta corredera de 2,60 m a cota cero hacia el Patio Central Corrala (Zona 9).',
+        openings: [
+          { wall: 'N', pos: 0.15, len: 0.85, type: 'sliding', label: 'Paso a Despacho' },
+          { wall: 'N', pos: 1.20, len: 0.80, type: 'sliding', label: 'Al Baño PB (Lavabo)' },
+          { wall: 'W', pos: 1.10, len: 2.60, type: 'glass_sliding', label: 'Corredera al Patio Corrala' },
+          { wall: 'S', pos: 0.20, len: 3.20, type: 'glass_sliding', label: 'Corredera Cristal a Comedor' },
+          { wall: 'E', pos: 1.90, len: 1.40, type: 'window', label: 'Ventana Este' }
+        ],
+        furn: [
+          { code: 'CAF', name: '☕ Cafetera Espresso + Molinillo + Tostadora (Hornacina Desayunador)', x: 2.15, y: 0.12, w: 1.30, h: 0.62, col: '#fde68a', str: '#b45309', desc: 'Mueble desayunador escamoteable en esquina Noreste (h=90 cm): aloja la Cafetera superautomática/espresso, Molinillo, Tostadora de doble ranura y Hervidor con iluminación LED propia y 3 enchufes dobles.' },
+          { code: 'FRG', name: '❄️ Frigorífico XXL + Congelador Vertical (Side-by-Side)', x: 2.92, y: 0.78, w: 0.62, h: 1.20, col: '#e2e8f0', str: '#475569', desc: 'Pareja de Frigorífico y Congelador integrados de 70+60 cm con toma de agua filtrada para dispensador de hielo.' },
+          { code: 'LAV', name: '🍽️ Lavavajillas Integrado XXL + Cubos Reciclaje', x: 2.92, y: 2.00, w: 0.62, h: 0.65, col: '#f1f5f9', str: '#64748b', desc: 'Lavavajillas silencioso (41 dB) con proyección de tiempo en el suelo, pegado al fregadero.' },
+          { code: 'FREG', name: '🚰 Fregadero 70 cm + Grifo Extraíble + Ósmosis', x: 2.92, y: 2.65, w: 0.62, h: 0.90, col: '#bae6fd', str: '#0284c7', desc: 'Seno XXL en rasante bajo ventana Este. Comparte exactamente la vertical de bajante con el Baño PB y el Baño Suite P1.' },
+          { code: 'THERM', name: '🤖 Zona Robot de Cocina (Thermomix / Amasadora)', x: 2.92, y: 3.55, w: 0.62, h: 0.60, col: '#fed7aa', str: '#ea580c', desc: 'Tramo de encimera despejada de 60 cm entre el fregadero y la columna de hornos, con doble enchufe 16A a h=115 cm para la Thermomix.' },
+          { code: 'HOR', name: '🔥 Columna Horno Pirolítico + Microondas (h=90..165 cm)', x: 2.92, y: 4.15, w: 0.62, h: 0.70, col: '#fecaca', str: '#dc2626', desc: 'Columna ergonómica en esquina Sureste con Horno a la altura de los ojos y Microondas encastrado encima.' },
+          { code: 'ISLA', name: '🏝️ Isla Central (3,00 × 1,10 m) con Inducción Bora + Vinoteca + 4 Taburetes', x: 0.95, y: 1.15, w: 1.10, h: 2.90, col: '#fef3c7', str: '#d97706', desc: 'Isla en porcelánico Dekton: lleva la Placa de Inducción con extractor integrado Bora Pure en el centro, Vinoteca de 18 botellas en el extremo Sur, Torreta de enchufes retráctil y barra para 4 taburetes mirando al Oeste (Patio Corrala).' },
+          { code: 'TV-C', name: '📺 Pantalla Smart Home / TV Cocina 24" articulada', x: 2.12, y: 0.72, w: 0.35, h: 0.12, col: '#0f172a', str: '#ef4444', desc: 'Pantalla en el lateral del desayunador visible desde la isla y desde el fregadero para ver recetas, TV o cámaras del jardín.' }
+        ],
+        elec: [
+          { code: 'E1', name: '3× Enchufes Dobles 16A en Desayunador (Cafetera + Tostadora + Exprimidor)', x: 2.75, y: 0.18, h_cm: 115, cir: 'C5 (Cocina Aux)', desc: '6 tomas 16A sobre la encimera del desayunador: dejan conectadas de forma permanente la Cafetera, la Tostadora y el Hervidor.' },
+          { code: 'E2', name: '2× Enchufes 16A Frigorífico y Congelador', x: 3.48, y: 1.35, h_cm: 205, cir: 'C1/C4 (Línea Frío)', desc: 'En línea prioritaria protegida (no se apaga al activar el modo vacaciones).' },
+          { code: 'E3', name: 'Toma 16A Lavavajillas (Circuito C4)', x: 3.48, y: 2.30, h_cm: 45, cir: 'C4 (Lavavajillas)', desc: 'Ubicada en el módulo contiguo bajo fregadero para acceso inmediato.' },
+          { code: 'E4', name: 'Doble Enchufe 16A Encimera (Robot Thermomix / Batidora)', x: 3.48, y: 3.80, h_cm: 115, cir: 'C5 (Encimera)', desc: 'Situado a más de 60 cm del fregadero (REBT) para el robot de cocina.' },
+          { code: 'E5', name: 'Toma Fuerza 16A Horno + 16A Microondas', x: 3.48, y: 4.50, h_cm: 60, cir: 'C3 (Cocina/Horno)', desc: 'Doble línea para columna de cocción.' },
+          { code: 'E6', name: 'Toma Fuerza 25A (6 mm²) Placa Inducción + Extractor en Isla', x: 1.65, y: 2.40, h_cm: 40, cir: 'C3 (25A Inducción)', desc: 'Llega por tubo corrugado empotrado en el forjado hasta el interior de la isla.' },
+          { code: 'E7', name: 'Torreta Pop-Up en Isla (2× 16A + 2× USB-C 65W) + Toma Vinoteca', x: 1.65, y: 3.60, h_cm: 90, cir: 'C5 + C2', desc: 'Torreta enrasada en la encimera de la isla para cargar portátiles/tablets de los niños mientras meriendan o conectar batidora/raclette.' },
+          { code: 'RJ1', name: 'Toma RJ45 Cat6A + Enchufe Pantalla Smart / TV Cocina', x: 2.25, y: 0.70, h_cm: 145, cir: 'RACK-PB', isRJ: true, desc: 'Datos por cable para pantalla Smart / Hub de recetas y domótica.' },
+          { code: 'RJ2', name: 'Punto de Acceso WiFi 6E PoE en Techo', x: 1.50, y: 1.40, h_cm: 270, cir: 'RACK-PoE', isRJ: true, desc: 'Cubre con WiFi 6E de máxima velocidad la Cocina, el Patio Corrala y el Comedor.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Triple Interruptor Conmutado (Paso Norte a Despacho)', x: 0.98, y: 0.15, h_cm: 110, desc: 'Enciende: 1) Carril general techo, 2) Lámparas colgantes de la Isla, 3) Tira LED del Desayunador.' },
+          { code: 'I2', name: 'Doble Interruptor junto a entrada Baño PB', x: 2.02, y: 0.15, h_cm: 110, desc: 'Conmutado de luz cocina + encendido interior del antebaño.' },
+          { code: 'I3', name: 'Triple Conmutado + Regulador Dimmer (Paso Sur a Comedor)', x: 0.25, y: 4.82, h_cm: 110, desc: 'Permite apagar/regular las luces de la cocina y de la isla al pasar a cenar al comedor + pulsador de estores motorizados.' },
+          { code: 'L1', name: '3× Lámparas Colgantes Cálidas 2700K sobre Isla', x: 1.45, y: 1.70, h_cm: 195, isLight: true, desc: 'Tres luminarias suspendidas alineadas con la barra de taburetes.' },
+          { code: 'L2', name: 'Carril Técnico LED 3000K + Tira LED Bajo Mueble Alto', x: 2.55, y: 2.80, h_cm: 270, isLight: true, desc: 'Iluminación de trabajo sin sombras sobre el frente de fregadero y cocción.' }
+        ],
+        hvac: [
+          { code: 'T1', name: 'Termostato Digital Aerotermia (Zona Cocina)', x: 1.08, y: 0.22, h_cm: 150, desc: 'Controla los 2 circuitos de Suelo Radiante-Refrescante de la cocina (se suele fijar 1 °C más bajo que el salón por el calor de los hornos).' },
+          { code: 'SR1', name: 'Suelo Radiante-Refrescante (Circuitos C-COC-1 y C-COC-2)', x: 1.80, y: 2.50, h_cm: 0, isFloor: true, desc: 'Serpentín bajo el porcelánico (respetando la huella bajo frigorífico, congelador y vinoteca para no calentar los muebles de frío).' },
+          { code: 'VMC1', name: '2× Bocas de Extracción VMC Doble Flujo (60 m³/h)', x: 2.40, y: 1.80, h_cm: 270, isVMC: true, desc: 'Extraen de forma continua el vapor y los olores recuperando el 92 % del calor antes de expulsar el aire al exterior.' }
+        ]
+      },
+
+      // 2. SALÓN PRINCIPAL
+      {
+        id: 'salon_pb', fl: 'PB', num: '11', short: '11. Salón Principal',
+        title: '11. Salón Principal con Sofá en L, TV 77" y Chimenea (28,2 m²)',
+        w: 7.2, h: 4.0, dims: '7,20 × 4,00 m · 28,2 m² útiles',
+        wN: 'Colinda con Lavandería (x=0..2,5), Escalera (x=2,5..3,7), Pasillo Interior (x=3,7..5,0) y corredera de 2,20 m al Patio Corrala (x=5,0..7,2).',
+        wS: 'Muro hacia Cuarto de Jardín (x=0..1,8) y gran ventanal corredero de 5,40 m hacia el Porche Sur (x=1,8..7,2).',
+        wE: 'Unión abierta de 4,00 m con el Comedor Principal (Zona 12).',
+        wW: 'Fachada exterior Oeste ciega acústica y térmica: alberga el Mueble de TV de 3,20 m, la TV OLED de 77" y la Chimenea.',
+        openings: [
+          { wall: 'N', pos: 3.70, len: 1.30, type: 'open', label: 'Desde Pasillo PB' },
+          { wall: 'N', pos: 5.00, len: 2.20, type: 'glass_sliding', label: 'Al Patio Corrala' },
+          { wall: 'S', pos: 1.80, len: 5.40, type: 'glass_sliding', label: 'Ventanal al Porche Sur y Jardín' },
+          { wall: 'E', pos: 0.00, len: 4.00, type: 'open', label: 'Unión abierta con Comedor' }
+        ],
+        furn: [
+          { code: 'CHIM', name: '🔥 Chimenea Panorámica Leña/Bioetanol con Leñero', x: 0.15, y: 0.20, w: 0.85, h: 0.95, col: '#fecaca', str: '#dc2626', desc: 'Hogar panorámico cerrado en esquina Noroeste con conducto aislado a cubierta: se disfruta desde el sofá y desde el comedor.' },
+          { code: 'MTV', name: '🪵 Mueble Bajo Roble Suspendido (3,00 m) + Barra Dolby Atmos', x: 0.15, y: 1.25, w: 0.55, h: 2.50, col: '#fef3c7', str: '#d97706', desc: 'Alberga PS5/Consola, Apple TV, Decodificador, Subwoofer y oculta todo el cableado en su interior.' },
+          { code: 'TV77', name: '📺 Televisión OLED 77" en Muro Oeste (Centro a h=115 cm)', x: 0.08, y: 1.75, w: 0.12, h: 1.70, col: '#0f172a', str: '#ef4444', desc: 'Ubicada en la pared Oeste: recibe luz lateral controlada con estores screen para ver cine sin el reflejo directo del sol Sur.' },
+          { code: 'SOFA', name: '🛋️ Sofá Modular en L con Chaise-Longue (3,80 × 2,70 m)', x: 2.35, y: 0.70, w: 2.80, h: 2.55, col: '#dbeafe', str: '#2563eb', desc: 'Orientado hacia la TV 77" (Oeste), la Chimenea y el Jardín Sur, dejando pasillo fluido detrás hacia el comedor y el patio.' },
+          { code: 'MESA', name: '🪵 Mesa de Centro Roble (1,40 × 0,90 m) + Alfombra Lana', x: 1.25, y: 1.55, w: 0.90, h: 1.40, col: '#f1f5f9', str: '#64748b', desc: 'Sobre alfombra acústica de 3,00 × 2,50 m.' },
+          { code: 'BUT', name: '🪑 Butaca de Lectura Eames + Lámpara de Pie Arco', x: 5.65, y: 0.55, w: 0.85, h: 0.85, col: '#e0e7ff', str: '#4f46e5', desc: 'Junto a la cristalera del Patio Corrala para leer viendo el arce japonés.' },
+          { code: 'ROBO', name: '🤖 Base Oculta Robot Aspirador (bajo mueble auxiliar N)', x: 1.35, y: 0.12, w: 0.45, h: 0.45, col: '#d1fae5', str: '#059669', desc: 'Base de autovaciado oculta bajo el extremo Norte del mueble.' }
+        ],
+        elec: [
+          { code: 'E1', name: '6× Enchufes 16A + Pasamuros Oculto tras TV 77"', x: 0.18, y: 2.35, h_cm: 40, cir: 'C2 (Salón)', desc: '4 tomas a h=40 cm dentro del mueble (Barra sonido, Subwoofer, PS5, AppleTV) + 2 tomas a h=115 cm detrás de la pantalla OLED.' },
+          { code: 'RJ1', name: '4× Tomas RJ45 Cat6A (Smart TV, Consola, AppleTV, Audio)', x: 0.18, y: 2.75, h_cm: 40, cir: 'RACK-PB', isRJ: true, desc: 'Cuádruple toma Ethernet cableada directa al Switch del Rack para streaming 4K/8K y juego online sin usar WiFi.' },
+          { code: 'E2', name: 'Caja de Suelo Empotrada bajo el Sofá (2× 16A + 2× USB-C 65W)', x: 3.50, y: 1.30, h_cm: 0, cir: 'C2', desc: 'Tapa enrasada en el suelo bajo el módulo central del sofá: permite cargar móviles, tablets o portátiles en el sofá sin cables cruzando el salón.' },
+          { code: 'E3', name: 'Enchufe 16A Base Robot Aspirador', x: 1.55, y: 0.18, h_cm: 25, cir: 'C2', desc: 'Alimentación oculta para el robot aspirador/fregasuelos.' },
+          { code: 'E4', name: 'Doble Enchufe 16A Rincón de Lectura (Lámpara de Pie)', x: 6.10, y: 0.25, h_cm: 30, cir: 'C2', desc: 'Junto a la butaca de lectura y el Patio Corrala.' },
+          { code: 'E5', name: 'Enchufe de Limpieza junto a Corredera Sur', x: 1.65, y: 3.82, h_cm: 30, cir: 'C2', desc: 'Toma auxiliar junto al ventanal del porche.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Botonera 4 Escenas + Conmutado en llegada Pasillo PB', x: 3.62, y: 0.18, h_cm: 110, desc: 'Escenas de 1 toque: 1) Modo Cine (baja estor Sur y deja foseado LED al 20 %), 2) Día, 3) Lectura, 4) Todo Off PB.' },
+          { code: 'I2', name: 'Pulsadores Persianas / Estores Screen Motorizados Sur', x: 1.85, y: 3.82, h_cm: 110, desc: 'Controla los estores motorizados ocultos en el cortinero del ventanal Sur.' },
+          { code: 'L1', name: 'Foseado LED Perimetral 2700K en Cortinero Sur y Muro TV', x: 0.45, y: 2.50, h_cm: 270, isLight: true, desc: 'Luz indirecta cálida que no produce ningún reflejo en la pantalla de la TV.' },
+          { code: 'L2', name: '4× Focos Empotrados Antideslumbramiento (UGR<16) Regulables', x: 3.40, y: 2.20, h_cm: 270, isLight: true, desc: 'Óptica retranqueada invisible hasta que te sitúas justo debajo.' }
+        ],
+        hvac: [
+          { code: 'T1', name: 'Termostato Digital Salón-Comedor', x: 3.45, y: 0.18, h_cm: 150, desc: 'Gestiona la temperatura de la zona de día (21,5 °C en invierno / 24 °C refrescamiento en verano).' },
+          { code: 'SR1', name: '3× Circuitos Suelo Radiante-Refrescante (Paso 10 cm junto a Ventanal Sur)', x: 3.80, y: 2.80, h_cm: 0, isFloor: true, desc: 'Mayor densidad de tubería junto a la corredera Sur para crear una barrera térmica invisible sin necesidad de radiadores.' },
+          { code: 'VMC1', name: '2× Bocas de Impulsión VMC Doble Flujo Silenciosas (<18 dB)', x: 2.60, y: 1.10, h_cm: 270, isVMC: true, desc: 'Inyectan aire limpio filtrado (antipolen F7) y atemperado desde el techo.' }
+        ]
+      },
+
+      // 3. COMEDOR PRINCIPAL
+      {
+        id: 'comedor_pb', fl: 'PB', num: '12', short: '12. Comedor (10 Plazas)',
+        title: '12. Comedor Principal para 10 Comensales (20,2 m²)',
+        w: 5.2, h: 4.0, dims: '5,20 × 4,00 m · 20,2 m² útiles',
+        wN: 'De x=0,00 a 1,60 m colinda con el Patio Corrala; de x=1,60 a 5,20 m (3,60 m) conecta con la Cocina mediante corredera de cristal.',
+        wS: 'Gran ventanal corredero hacia el Porche Sur y la zona de Barbacoa (Zona 14).',
+        wE: 'Fachada exterior Este con Aparador / Mueble Bar de 2,40 m.',
+        wW: 'Unión abierta con el Salón Principal (Zona 11).',
+        openings: [
+          { wall: 'N', pos: 0.10, len: 1.40, type: 'glass_sliding', label: 'Al Patio Corrala' },
+          { wall: 'N', pos: 1.70, len: 3.20, type: 'glass_sliding', label: 'Corredera a Cocina' },
+          { wall: 'S', pos: 0.30, len: 4.50, type: 'glass_sliding', label: 'Corredera al Porche y BBQ' },
+          { wall: 'W', pos: 0.00, len: 4.00, type: 'open', label: 'Abierto al Salón' }
+        ],
+        furn: [
+          { code: 'MESA10', name: '🍽️ Mesa Roble Macizo (2,80 × 1,10 m — 10 Comensales)', x: 0.95, y: 1.35, w: 2.80, h: 1.15, col: '#fef3c7', str: '#d97706', desc: 'Centrada entre la Cocina (Norte) y el Porche con Barbacoa (Sur), con 10 sillas tapizadas.' },
+          { code: 'APAR', name: '🍷 Aparador / Vajillero y Mueble Bar (2,40 × 0,48 m)', x: 4.55, y: 0.80, w: 0.50, h: 2.40, col: '#f1f5f9', str: '#475569', desc: 'En la pared Este para guardar mantelería, vajilla, cristalería y bandeja de licores / calientaplatos.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Caja de Suelo Enrasada bajo la Mesa (2× 16A + USB-C)', x: 2.35, y: 1.92, h_cm: 0, cir: 'C2', desc: '¡Súper práctica!: permite conectar un portátil en la mesa de comedor o una plancha/raclette/fondue en cenas familiares sin cables por el suelo.' },
+          { code: 'E2', name: '2× Bases Dobles 16A sobre el Aparador Este', x: 5.05, y: 1.40, h_cm: 100, cir: 'C2', desc: 'Para lámpara de sobremesa, altavoz Sonos/Bose, calientaplatos o cafetera auxiliar en comidas grandes.' },
+          { code: 'E3', name: 'Enchufe de Limpieza junto a Ventanal Sur', x: 5.05, y: 3.65, h_cm: 30, cir: 'C2', desc: 'Toma a h=30 cm cerca de la salida a la barbacoa.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Regulador Dimmer Lámparas Comedor + Pulsador Estor Sur', x: 5.05, y: 0.45, h_cm: 110, desc: 'Junto al paso desde la Cocina: regula la intensidad de las lámparas sobre la mesa y abre/cierra el estor del porche.' },
+          { code: 'L1', name: '2× Lámparas Suspendidas Escultóricas sobre la Mesa (h=175 cm)', x: 2.35, y: 1.92, h_cm: 175, isLight: true, desc: 'Doble luminaria lineal/colgante cálida (2700K CRI>95) centrada exactamente sobre el eje de la mesa.' }
+        ],
+        hvac: [
+          { code: 'SR1', name: '2× Circuitos Suelo Radiante-Refrescante (C-COM-1 y C-COM-2)', x: 2.35, y: 2.90, h_cm: 0, isFloor: true, desc: 'Climatización invisible bajo toda la superficie del comedor.' },
+          { code: 'VMC1', name: 'Boca de Impulsión VMC Doble Flujo', x: 3.80, y: 1.00, h_cm: 270, isVMC: true, desc: 'Renovación constante de aire limpio en comidas con muchos invitados.' }
+        ]
+      },
+
+      // 4. DESPACHO / SUITE INVITADOS (CON LAS 3 VARIANTES DINÁMICAS)
+      {
+        id: 'despacho_pb', fl: 'PB', num: '3', short: '3. Despacho / Visitas ⭐',
+        title: '3. Despacho de Teletrabajo y Suite de Visitas en PB (11,2 m²)',
+        w: 3.6, h: 3.2, dims: '3,60 × 3,20 m · 11,2 m² útiles',
+        wN: 'Fachada exterior Norte con ventana alta de ventilación natural.',
+        wS: 'De x=0,00 a 2,60 m: Gran cristalera fija con estor oculto mirando al Patio Corrala. De x=2,60 a 3,60 m: Puerta corredera de paso directo a la Cocina.',
+        wE: 'Tabique medianero con el Baño Completo PB (Zona 4) con puerta corredera en suite (y=2,00..2,80).',
+        wW: 'Tabique con el Vestíbulo de Entrada (Zona 2) con puerta corredera de acceso.',
+        openings: [
+          { wall: 'W', pos: 0.90, len: 0.90, type: 'sliding', label: 'Desde Hall Entrada' },
+          { wall: 'S', pos: 0.05, len: 2.50, type: 'glass_fixed', label: 'Cristalera 2,50 m al Patio Corrala' },
+          { wall: 'S', pos: 2.65, len: 0.85, type: 'sliding', label: 'Paso a Cocina' },
+          { wall: 'E', pos: 2.00, len: 0.80, type: 'sliding', label: 'Al Baño PB en-suite' },
+          { wall: 'N', pos: 2.45, len: 0.95, type: 'window', label: 'Ventana Norte' }
+        ],
+        furn: [], elec: [],
+        sw: [
+          { code: 'I1', name: 'Doble Conmutador + Pulsador Estor Patio (Entrada Oeste)', x: 0.12, y: 0.78, h_cm: 110, desc: 'Al entrar desde el Hall: enciende luz general o luz indirecta y baja el estor motorizado de privacidad hacia el Patio Corrala cuando hay invitados.' },
+          { code: 'I2', name: 'Doble Conmutador junto a Paso Cocina y Baño (Esquina S-E)', x: 3.48, y: 2.92, h_cm: 110, desc: 'Permite encender/apagar al cruzar hacia la cocina o antes de entrar al baño.' },
+          { code: 'I3', name: 'Conmutador de Cabecero Cama Invitados', x: 3.48, y: 0.75, h_cm: 65, desc: 'Permite a los invitados apagar la luz general de la habitación desde la cama sin levantarse.' },
+          { code: 'L1', name: 'Plafón Acústico Circular + Foseado LED Cálido en Cortinero Sur', x: 1.80, y: 1.60, h_cm: 270, isLight: true, desc: 'Iluminación neutra (3500K) sin parpadeo para videoconferencias y cálida (2700K) en modo dormitorio.' }
+        ],
+        hvac: [
+          { code: 'T1', name: 'Termostato Digital Independiente (Zona Despacho)', x: 0.12, y: 1.95, h_cm: 150, desc: 'Permite mantener 21,5 °C mientras teletrabajas por el día o 19,5 °C de noche cuando duermen visitas.' },
+          { code: 'SR1', name: 'Circuito Independiente Suelo Radiante-Refrescante (C-DESP)', x: 1.80, y: 1.60, h_cm: 0, isFloor: true, desc: 'Calefacción y refrescamiento 100 % silenciosos bajo el pavimento de madera/porcelánico.' },
+          { code: 'VMC1', name: 'Boca de Impulsión VMC Doble Flujo (<18 dB)', x: 0.80, y: 2.60, h_cm: 270, isVMC: true, desc: 'Mantiene el nivel de CO2 bajo (<700 ppm) durante jornadas largas de teletrabajo con las puertas cerradas.' }
+        ]
+      },
+
+      // 5. BAÑO COMPLETO PB EN ESQUINA (DOBLE ACCESO)
+      {
+        id: 'bano_pb', fl: 'PB', num: '4', short: '4. Baño PB (Doble Acceso)',
+        title: '4. Baño Completo PB en Esquina con Doble Acceso (7,8 m²)',
+        w: 2.6, h: 3.2, dims: '2,60 × 3,20 m · 7,8 m² útiles',
+        wN: 'Fachada exterior Norte con Ducha Walk-In de 1,60 m y ventana oscilobatiente translúcida.',
+        wS: 'Colinda con el extremo Norte de la Cocina: tiene PUERTA CORREDERA (x=0,20..1,00) desde la cocina hacia el antebaño de lavabo.',
+        wE: 'Fachada Este con las bajantes unificadas (justo encima de la Cocina y debajo del Baño Suite P1) y el Radiador Toallero.',
+        wW: 'Tabique con el Despacho (Zona 3): tiene PUERTA CORREDERA (y=2,00..2,80) para acceso directo en-suite de los invitados.',
+        openings: [
+          { wall: 'W', pos: 2.00, len: 0.80, type: 'sliding', label: 'Desde Despacho' },
+          { wall: 'S', pos: 0.25, len: 0.80, type: 'sliding', label: 'Desde Cocina (Antebaño)' },
+          { wall: 'N', pos: 1.65, len: 0.75, type: 'window', label: 'Ventana Norte' }
+        ],
+        furn: [
+          { code: 'DUCH', name: '🚿 Ducha Walk-In Enrasada (1,60 × 0,90 m) con Mampara Fija', x: 0.12, y: 0.12, w: 1.55, h: 0.90, col: '#e0f2fe', str: '#0284c7', desc: 'Plato enrasado antideslizante Clase 3 con rociador de techo efecto lluvia y grifería termostática empotrada.' },
+          { code: 'WC', name: '🚽 Inodoro Suspendido Geberit en Cabina Norte (con Puerta Corredera)', x: 1.80, y: 0.15, w: 0.65, h: 0.70, col: '#f1f5f9', str: '#475569', desc: 'Separado de la zona Sur mediante tabique/corredera de vidrio mate en y=1,75 m (cumpliendo el Decreto 29/2010 de Habitabilidad de Galicia al tener acceso desde la cocina).' },
+          { code: 'SEP', name: '🚪 Tabique Interior Antebaño con Corredera Translúcida (y=1,75 m)', x: 0.12, y: 1.72, w: 2.36, h: 0.10, col: '#cbd5e1', str: '#334155', desc: 'Divide el baño en: 1) Antebaño/Tocador al Sur (donde abren las puertas de Cocina y Despacho) y 2) Zona de Ducha e Inodoro al Norte.' },
+          { code: 'LAVB', name: '🪞 Mueble Lavabo Roble (1,20 m) + Espejo Retroiluminado Antivaho', x: 1.25, y: 2.50, w: 1.20, h: 0.55, col: '#fef3c7', str: '#d97706', desc: 'Situado en la zona Sur (Antebaño): puedes entrar desde la cocina a lavarte las manos con total comodidad.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Doble Enchufe 16A Secador de Pelo / Afeitadora (a >60 cm del grifo)', x: 1.18, y: 3.05, h_cm: 105, cir: 'C5 (Baños)', desc: 'Ubicado en el lateral izquierdo del mueble lavabo cumpliendo el Volumen de Protección 3 del REBT ITC-BT-27.' },
+          { code: 'E2', name: 'Enchufe Oculto en Cajón para Cepillo Eléctrico + Alimentación Espejo Antivaho', x: 1.85, y: 3.05, h_cm: 85, cir: 'C5', desc: 'Permite dejar los cepillos eléctricos cargando dentro del cajón y alimenta la resistencia antivaho del espejo.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Interruptor Doble junto a Puerta del Despacho (Oeste)', x: 0.12, y: 1.90, h_cm: 110, desc: 'Enciende la luz del tocador/espejo y la luz de la zona de ducha/inodoro.' },
+          { code: 'I2', name: 'Interruptor Conmutado junto a Puerta de la Cocina (Sur)', x: 1.10, y: 3.05, h_cm: 110, desc: 'Permite encender la luz del baño al entrar desde la cocina.' },
+          { code: 'L1', name: 'Focos Empotrados IP65 en Ducha + Luz Perimetral Espejo 3000K', x: 0.90, y: 0.55, h_cm: 260, isLight: true, desc: 'Focos estancos IP65 sobre la ducha y luz frontal sin sombras en el espejo.' }
+        ],
+        hvac: [
+          { code: 'TR1', name: '🔥 Radiador Toallero Mural Negro Mate (120 × 50 cm — 500 W)', x: 2.42, y: 1.90, h_cm: 110, desc: 'Instalado en la pared Este entre el lavabo y la ducha: mantiene las toallas secas y calientes todo el invierno.' },
+          { code: 'SR1', name: 'Circuito Suelo Radiante (C-BANO-PB)', x: 1.30, y: 2.20, h_cm: 0, isFloor: true, desc: 'Suelo radiante bajo el pavimento del antebaño y el suelo de la ducha walk-in.' },
+          { code: 'VMC1', name: 'Boca de Extracción Higrorregulable VMC (30-45 m³/h)', x: 1.60, y: 0.55, h_cm: 260, isVMC: true, desc: 'Aumenta automáticamente el caudal al detectar vapor cuando alguien se ducha.' }
+        ]
+      }
+    ];
+  </script>
+  <script>
+    ROOMS.push(
+      // 6. PATIO CENTRAL CORRALA (CON TECHO DE CRISTAL MÓVIL)
+      {
+        id: 'patio_pb', fl: 'PB', num: '9', short: '9. Patio Corrala (Techado)',
+        title: '9. Patio Central "Corrala" con Techo de Cristal Móvil (19,0 m²)',
+        w: 3.8, h: 5.0, dims: '3,80 × 5,00 m · 19,0 m² útiles',
+        wN: 'De x=0..1,20 m colinda con el Hall; de x=1,20..3,80 m (2,60 m) colinda con la cristalera del Despacho (Zona 3). En esquina N-O lleva el Arce Japonés y en N-E el banco de lectura.',
+        wS: 'Puerta corredera de 2,60 m hacia el Salón y el Comedor + vista arriba al balcón del Pasillo Corrala P1.',
+        wE: 'Puerta corredera de 2,60 m a cota cero hacia la Isla de la Cocina (Zona 10).',
+        wW: 'Cristalera y puerta corredera hacia la Galería / Pasillo Interior PB (Zona 8).',
+        openings: [
+          { wall: 'N', pos: 1.20, len: 2.50, type: 'glass_fixed', label: 'Cristal del Despacho' },
+          { wall: 'E', pos: 1.10, len: 2.60, type: 'glass_sliding', label: 'Corredera a Cocina' },
+          { wall: 'S', pos: 0.60, len: 2.60, type: 'glass_sliding', label: 'Corredera a Salón-Comedor' },
+          { wall: 'W', pos: 1.10, len: 2.60, type: 'glass_sliding', label: 'Corredera a Pasillo PB' }
+        ],
+        furn: [
+          { code: 'ARCE', name: '🍁 Alcorque Esquina N-O con Arce Japonés (Acer palmatum)', x: 0.20, y: 0.20, w: 1.35, h: 1.35, col: '#dcfce7', str: '#16a34a', desc: 'Situado en la esquina Noroeste sobre tierra natural drenada con riego por goteo propio y foco uplight empotrado.' },
+          { code: 'BANCO', name: '🛋️ Banco de Lectura en L de Madera de Iroko con Cojines', x: 1.75, y: 0.18, w: 1.85, h: 0.70, col: '#fef3c7', str: '#d97706', desc: 'Banco a medida bajo la cristalera del despacho con arcón inferior para guardar cojines.' },
+          { code: 'MESA-P', name: '☕ Mesa de Café Redonda (Ø 80 cm) + 2 Butacas de Lectura', x: 1.45, y: 1.85, w: 1.65, h: 1.55, col: '#e0f2fe', str: '#0284c7', desc: 'Corazón habitable de la Corrala para desayunar, leer un libro cuando llueve o tomar el aperitivo.' },
+          { code: 'LUC', name: '☀️ Proyección Lucernario Motorizado con Sensor de Lluvia (Cota +6,30 m)', x: 0.35, y: 0.40, w: 3.10, h: 4.20, col: 'none', str: '#0ea5e9', dashed: true, desc: 'Techo bioclimático de vidrio laminado con control solar: se abre en verano por convección y se cierra solo al caer la primera gota de lluvia.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Doble Enchufe Estanco IP55 + USB-C junto al Banco de Lectura', x: 3.62, y: 0.45, h_cm: 45, cir: 'C2 / Ext', desc: 'Para cargar el portátil o el móvil mientras lees o teletrabajas desde el patio.' },
+          { code: 'E2', name: 'Enchufe Estanco IP55 esquina Suroeste', x: 0.15, y: 4.55, h_cm: 35, cir: 'C2 / Ext', desc: 'Para conectar lámpara portátil de exterior, guirnalda o equipo de limpieza.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Pulsador Apertura/Cierre Techo Móvil + Luz Patio', x: 3.65, y: 1.05, h_cm: 110, desc: 'Controla las hojas motorizadas del lucernario superior, el foco del arce y los apliques cálidos.' },
+          { code: 'L1', name: 'Proyector Uplight IP67 bajo el Arce + 2 Apliques Murales 2700K', x: 0.85, y: 0.85, h_cm: 0, isLight: true, desc: 'De noche ilumina las hojas rojizas del arce creando una escenografía cálida visible desde toda la casa.' }
+        ],
+        hvac: [
+          { code: 'CL1', name: 'Espacio Bioclimático Tamizado + Riego Goteo + Sumidero Perimetral', x: 0.85, y: 1.45, h_cm: 0, isFloor: true, desc: 'En invierno actúa como colchón térmico solar a 18-20 °C gratuitos; en verano evacúa el calor por efecto chimenea al abrir el techo.' }
+        ]
+      },
+
+      // 7. VESTÍBULO DE ENTRADA (HALL PB) + PASILLO GALERÍA
+      {
+        id: 'hall_pb', fl: 'PB', num: '2 y 8', short: '2. Hall Entrada y Galería',
+        title: '2 y 8. Vestíbulo Principal de Entrada y Galería junto al Patio (14,1 m²)',
+        w: 2.5, h: 4.5, dims: 'Hall 2,50 × 3,20 m + Galería 1,30 m',
+        wN: 'Fachada Norte con Puerta Principal Acorazada Pivotante (1,30 m) + Fijo lateral de vidrio.',
+        wS: 'De x=0..1,30 m: continúa en línea recta por el Pasillo Interior PB hacia el Salón. De x=1,30..2,50 m: cristalera hacia el Arce del Patio Corrala.',
+        wE: 'Tabique con el Despacho (Zona 3) con Puerta Corredera de acceso.',
+        wW: 'Arranque de la Escalera a P1 (Peldaño 1) y acceso a zona técnica.',
+        openings: [
+          { wall: 'N', pos: 0.55, len: 1.35, type: 'door', label: 'Puerta Principal Norte' },
+          { wall: 'E', pos: 0.90, len: 0.90, type: 'sliding', label: 'Al Despacho (y Cocina)' },
+          { wall: 'S', pos: 0.05, len: 1.25, type: 'open', label: 'Hacia Galería y Salón' },
+          { wall: 'S', pos: 1.30, len: 1.15, type: 'glass_fixed', label: 'Vista al Arce del Patio' }
+        ],
+        furn: [
+          { code: 'GAB', name: '🧥 Armario Gabanero y Zapatero Empotrado (1,50 × 0,60 m)', x: 0.12, y: 0.25, w: 0.60, h: 1.50, col: '#f1f5f9', str: '#475569', desc: 'Para abrigos de lluvia, paraguas, mochilas del cole y calzado diario.' },
+          { code: 'CGMP', name: '⚡ Cuadro Eléctrico General (CGMP) Oculto en Carpintería', x: 0.12, y: 1.80, w: 0.25, h: 0.65, col: '#fef3c7', str: '#d97706', desc: 'Cuadro eléctrico con sobretensiones permanentes/transitorias e interruptores diferenciales por planta.' },
+          { code: 'CONS', name: '🪵 Consola Recibidor Vacíabolsillos + Espejo Circular', x: 1.95, y: 2.00, w: 0.42, h: 1.00, col: '#fde68a', str: '#b45309', desc: 'Mueble suspendido con bandeja de carga inalámbrica Qi para dejar llaves y cartera al llegar a casa.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Enchufe 16A Interior Armario Gabanero (Cargador Patinete / Aspirador)', x: 0.20, y: 0.95, h_cm: 40, cir: 'C2', desc: 'Oculto dentro del armario de entrada.' },
+          { code: 'E2', name: 'Enchufe + Doble USB-C en Consola Recibidor', x: 2.38, y: 2.45, h_cm: 85, cir: 'C2', desc: 'Sobre la consola vacíabolsillos.' },
+          { code: 'RJ1', name: 'Monitor Videoportero IP PoE 10" + Pantalla Control Solar/Clima', x: 2.38, y: 0.65, h_cm: 150, cir: 'RACK-PoE', isRJ: true, desc: 'Al entrar a mano izquierda: abre el portal exterior, muestra quién llama al móvil y permite ver la producción solar en tiempo real.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Interruptor General Hall + Pulsador "Salir de Casa" (Todo Off)', x: 2.38, y: 0.40, h_cm: 110, desc: 'Al salir por la puerta principal, una pulsación larga apaga todas las luces olvidadas de PB y P1 (manteniendo frigo, rack y clima).' },
+          { code: 'L1', name: 'Balizas LED de Suelo (h=25 cm) con Detector de Presencia Nocturno', x: 0.20, y: 3.40, h_cm: 25, isLight: true, desc: 'Guían el paso por el vestíbulo y la galería junto al patio sin deslumbrar.' }
+        ],
+        hvac: [
+          { code: 'SR1', name: 'Circuito Suelo Radiante Hall y Galería (Seca calzado húmedo en invierno)', x: 1.25, y: 2.10, h_cm: 0, isFloor: true, desc: 'Mantiene templado todo el recibidor.' }
+        ]
+      },
+
+      // 8. LAVANDERÍA Y PLANCHA
+      {
+        id: 'lavanderia_pb', fl: 'PB', num: '6', short: '6. Lavandería y Plancha',
+        title: '6. Cuarto de Lavandería, Plancha y Limpieza (6,0 m²)',
+        w: 2.5, h: 2.5, dims: '2,50 × 2,50 m · 6,0 m² útiles',
+        wN: 'Tabique divisorio con el Trastero y Cuarto Técnico (Zona 5).',
+        wS: 'Muro acústico con el Salón Principal (Zona 11).',
+        wE: 'Puerta de acceso desde el distribuidor bajo el tramo alto de la escalera.',
+        wW: 'Fachada exterior Oeste con ventana oscilobatiente.',
+        openings: [
+          { wall: 'E', pos: 0.85, len: 0.80, type: 'door', label: 'Acceso desde Pasillo' },
+          { wall: 'W', pos: 0.75, len: 0.95, type: 'window', label: 'Ventana Oeste' }
+        ],
+        furn: [
+          { code: 'LAVD', name: '🧺 Lavadora 10 kg (Circuito C4) bajo Encimera de Plegado', x: 0.15, y: 0.15, w: 0.65, h: 0.65, col: '#dbeafe', str: '#2563eb', desc: 'Lavadora de carga frontal con autodosificación bajo encimera continua a h=92 cm para doblar ropa.' },
+          { code: 'SEC', name: '💨 Secadora Bomba de Calor A+++ con Desagüe Directo', x: 0.82, y: 0.15, w: 0.65, h: 0.65, col: '#e0f2fe', str: '#0284c7', desc: 'Conectada directamente al desagüe (no hay que vaciar el cajón de agua condensada).' },
+          { code: 'PILA', name: '🚰 Pila Lava-Ropa Profunda (50×45 cm) con Grifo Ducha', x: 1.50, y: 0.15, w: 0.65, h: 0.60, col: '#bae6fd', str: '#0369a1', desc: 'Para lavar zapatillas de deporte, ropa de playa o manchas difíciles.' },
+          { code: 'PLAN', name: '👔 Zona Centro de Planchado + Tabla Plegable + Tendedero Techo', x: 0.20, y: 1.65, w: 1.35, h: 0.65, col: '#fef3c7', str: '#d97706', desc: 'Espacio ergonómico para planchar con tendedero de barras abatible en techo para prendas delicadas.' },
+          { code: 'DYSON', name: '🧹 Armario Escobero con Cargador Mural Aspirador Dyson V15', x: 1.75, y: 1.75, w: 0.60, h: 0.60, col: '#f1f5f9', str: '#475569', desc: 'Armario alto con soporte mural cargador dentro para el aspirador sin cable y productos de limpieza.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Toma 16A Dedicada Lavadora (Circuito C4)', x: 0.45, y: 0.12, h_cm: 55, cir: 'C4 (Lavadora)', desc: 'Línea independiente desde el cuadro eléctrico.' },
+          { code: 'E2', name: 'Toma 16A Dedicada Secadora', x: 1.15, y: 0.12, h_cm: 55, cir: 'C4 / C9', desc: 'Toma para bomba de calor.' },
+          { code: 'E3', name: 'Doble Enchufe 16A sobre Encimera (Centro de Planchado 2400W)', x: 0.85, y: 2.38, h_cm: 110, cir: 'C5', desc: 'A la altura de la tabla de planchar con soporte recogecable.' },
+          { code: 'E4', name: 'Enchufe Interno Cargador Aspirador Dyson (h=130 cm)', x: 2.05, y: 2.38, h_cm: 130, cir: 'C2', desc: 'Dentro del armario escobero para que el aspirador esté siempre al 100 % de batería.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Interruptor en Entrada Este + Luz de Trabajo 4000K', x: 2.38, y: 0.70, h_cm: 110, desc: 'Luz blanca neutra de alta reproducción cromática (CRI>90) para ver bien las manchas al lavar y planchar.' }
+        ],
+        hvac: [
+          { code: 'SR1', name: 'Circuito Suelo Radiante + Boca Extracción VMC (45 m³/h)', x: 1.25, y: 1.15, h_cm: 260, isVMC: true, desc: 'La combinación de suelo templado + extracción constante de humedad VMC seca la ropa tendida en pocas horas incluso en días de temporal en Oleiros.' }
+        ]
+      },
+
+      // 9. TRASTERO BICIS/SURF + CUARTO TÉCNICO
+      {
+        id: 'trastero_pb', fl: 'PB', num: '5', short: '5. Trastero Bicis y Sala Técnica',
+        title: '5. Trastero Bicis/Surf + Sala Técnica Aerotermia/Solar/Rack (6,0 m²)',
+        w: 2.5, h: 2.5, dims: '2,50 × 2,50 m · 6,0 m² útiles',
+        wN: 'Muro Norte con puerta peatonal directa hacia la Pérgola de los Coches (Zona 1).',
+        wS: 'Tabique divisorio con la Lavandería (Zona 6).',
+        wE: 'Muro portante de la Escalera.',
+        wW: 'Fachada exterior Oeste.',
+        openings: [
+          { wall: 'N', pos: 0.80, len: 0.90, type: 'door', label: 'A Pérgola Coches' }
+        ],
+        furn: [
+          { code: 'AERO', name: '🌡️ Unidad Interior Aerotermia Bibloc + Depósito ACS 250 L', x: 1.65, y: 0.15, w: 0.70, h: 0.75, col: '#dcfce7', str: '#16a34a', desc: 'Torre hidráulica con acumulador de acero inoxidable de 250 litros de agua caliente sanitaria y colectores de suelo radiante.' },
+          { code: 'SOLAR', name: '☀️ Inversor Híbrido Solar 5 kW + Reserva Batería 5 kWh', x: 1.75, y: 0.98, w: 0.60, h: 0.55, col: '#fef3c7', str: '#d97706', desc: 'Recibe la corriente continua de los 10 paneles solares de cubierta y gestiona el autoconsumo y la batería virtual/física.' },
+          { code: 'RACK', name: '🌐 Armario Rack 19" 9U Mural (Fibra ONT + Router + Switch PoE 24p + SAI)', x: 1.75, y: 1.60, w: 0.60, h: 0.65, col: '#ede9fe', str: '#7c3aed', desc: 'Cerebro digital de la casa: de aquí salen los tubos con cable Cat6A S/FTP a las 22 tomas RJ45 de todas las estancias y a los 3 puntos WiFi.' },
+          { code: 'BICIS', name: '🚲 Soporte 4 Bicicletas + Rack Tablas de Surf y Neoprenos', x: 0.15, y: 0.65, w: 0.95, h: 1.65, col: '#e0f2fe', str: '#0284c7', desc: 'En la pared Oeste: entras directo desde el coche/pérgola sin pisar la vivienda con las bicis o tablas mojadas de la playa de Bastiagueiro.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Alimentación Trifásica/Monofásica Aerotermia (Circuito C9)', x: 2.35, y: 0.50, h_cm: 120, cir: 'C9 (Aerotermia)', desc: 'Línea exclusiva protegida para la bomba de calor.' },
+          { code: 'E2', name: 'Cuadro Protección DC/AC Fotovoltaica + Smart Meter', x: 2.35, y: 1.25, h_cm: 150, cir: 'C-SOLAR', desc: 'Conexión del inversor híbrido y preinstalación plug&play de batería LFP.' },
+          { code: 'RJ1', name: 'Patch Panel 24 Puertos Cat6A + Alimentación SAI Rack', x: 2.35, y: 1.90, h_cm: 165, cir: 'C-RACK + Fibra', isRJ: true, desc: 'Incluye SAI (batería de respaldo) para que internet y cámaras sigan funcionando aunque haya un corte de luz.' },
+          { code: 'E3', name: 'Doble Enchufe 16A Carga Bicicletas Eléctricas (E-Bikes)', x: 0.15, y: 1.40, h_cm: 90, cir: 'C2', desc: 'Junto al soporte de bicicletas en el muro Oeste.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Detector de Movimiento Encendido Automático + Interruptor Manual', x: 1.80, y: 0.15, h_cm: 110, desc: 'Se enciende solo al entrar cargado con las bicicletas o tablas.' }
+        ],
+        hvac: [
+          { code: 'VMC-M', name: '🌀 Central VMC Doble Flujo Zehnder ComfoAir Q350 en Techo', x: 1.15, y: 1.95, h_cm: 240, isVMC: true, desc: 'Ubicada en este cuarto técnico exterior a la vivienda para aislamiento acústico total y cambio de filtros en 2 minutos.' }
+        ]
+      },
+
+      // 10. PORCHE SUR + BARBACOA DE CARBÓN + CUARTO JARDÍN
+      {
+        id: 'porche_bbq_pb', fl: 'PB', num: '1, 13 y 14', short: '13-14. Porche, BBQ y Jardín',
+        title: '13 y 14. Porche Sur, Barbacoa de Carbón y Cuarto Jardín/Robot (27,1 m²)',
+        w: 8.4, h: 2.4, dims: 'Porche 10,60×2,20 m + Cuarto Jardín 3,8 m²',
+        wN: 'Grandes ventanales correderos del Salón (Oeste) y del Comedor (Este).',
+        wS: 'Abierto a cota cero hacia la pradera de césped del Jardín Sur y la futura piscina.',
+        wE: 'Muro cortavientos Este con la Barbacoa de Carbón (Churrasqueira), encimera de granito y fregadero.',
+        wW: 'Cuarto cerrado de Herramientas de Jardín + Base del Robot Cortacésped (Zona 13).',
+        openings: [
+          { wall: 'N', pos: 1.60, len: 3.20, type: 'glass_sliding', label: 'Corredera Salón' },
+          { wall: 'N', pos: 5.00, len: 3.10, type: 'glass_sliding', label: 'Corredera Comedor' },
+          { wall: 'S', pos: 0.30, len: 0.85, type: 'door', label: 'Puerta Cuarto Jardín' },
+          { wall: 'S', pos: 1.50, len: 6.70, type: 'open', label: 'Abierto al Jardín Sur' }
+        ],
+        furn: [
+          { code: 'CJARD', name: '🌱 Cuarto Herramientas Jardín + Riego Hunter + Hidrolimpiadora', x: 0.12, y: 0.12, w: 1.35, h: 2.15, col: '#dcfce7', str: '#16a34a', desc: 'Cuarto cerrado en el extremo Oeste: guarda cortabordes, herramientas, abonos, cojines de invierno y la centralita de riego.' },
+          { code: 'ROBOT', name: '🤖 Base de Carga Robot Cortacésped con Trampilla al Césped', x: 0.25, y: 1.70, w: 0.65, h: 0.50, col: '#bbf7d0', str: '#15803d', desc: 'El robot duerme protegido bajo llave y sale solo por su compuerta inferior a cortar los 380 m² de jardín.' },
+          { code: 'CHILL', name: '🛋️ Zona Chill-Out Exterior (Sofá + 2 Sillones Exterior)', x: 1.85, y: 0.45, w: 2.60, h: 1.55, col: '#e0f2fe', str: '#0284c7', desc: 'Frente a la salida del salón bajo techo cubierto.' },
+          { code: 'M-EXT', name: '🍽️ Mesa Comedor de Verano en Teca (8-10 Plazas)', x: 4.85, y: 0.55, w: 2.15, h: 1.20, col: '#fef3c7', str: '#d97706', desc: 'Situada justo entre la corredera del comedor/cocina y la Barbacoa de Carbón.' },
+          { code: 'BBQ', name: '🔥 Barbacoa de Carbón / Brasas + Fregadero Exterior + Leñero', x: 7.45, y: 0.20, w: 0.82, h: 1.95, col: '#fecaca', str: '#dc2626', desc: 'Churrasqueira gallega en ladrillo refractario negro con parrilla inox regulable en altura, campana con tiro a cubierta, fregadero con agua fría/caliente y leñero inferior para sacos de carbón.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Doble Enchufe Estanco IP55 en Encimera de Barbacoa', x: 8.22, y: 1.35, h_cm: 110, cir: 'C-EXT', desc: 'Para conectar tirador de cerveza, batidora, plancha auxiliar o cargar el móvil mientras haces el churrasco.' },
+          { code: 'E2', name: 'Enchufe 16A Base Robot Cortacésped + Centralita Riego WiFi Hunter', x: 0.20, y: 1.85, h_cm: 40, cir: 'C-JARDIN', desc: 'Dentro del Cuarto de Jardín junto al colector de 6 electroválvulas de riego y sensor de lluvia.' },
+          { code: 'E3', name: 'Toma Fuerza IP55 para Hidrolimpiadora Kärcher y Cargador Baterías', x: 1.35, y: 0.85, h_cm: 95, cir: 'C-JARDIN', desc: 'Junto al grifo exterior de manguera.' },
+          { code: 'RJ1', name: 'Punto de Acceso WiFi 6 Exterior IP67 (Cobertura total Jardín y Piscina)', x: 4.60, y: 0.18, h_cm: 255, cir: 'RACK-PoE', isRJ: true, desc: 'Garantiza cobertura WiFi máxima en el porche, la barbacoa y todo el jardín Sur.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Triple Interruptor Exterior (Luz Chill-Out, Luz Mesa/BBQ, Balizas Jardín)', x: 4.80, y: 0.18, h_cm: 110, desc: 'Junto a la salida del comedor: enciende por separado el porche, el foco interno de la parrilla de carbón y las estacas LED de los árboles del jardín.' },
+          { code: 'L1', name: 'Luz Interna Parrilla BBQ + Lineal LED Cálido en Techo Porche', x: 7.80, y: 0.80, h_cm: 210, isLight: true, desc: 'Foco específico sobre las brasas para ver el punto de la carne en cenas de noche.' }
+        ],
+        hvac: [
+          { code: 'CL-BBQ', name: 'Chimenea Extracción Humos BBQ a Cubierta + Preinstalación Calefactor Infrarrojos', x: 7.85, y: 0.55, h_cm: 260, isVMC: true, desc: 'Tiro vertical directo por encima de la cubierta de P1 para que el humo de las brasas nunca entre al porche.' }
+        ]
+      }
+    );
+  </script>
+  <script>
+    ROOMS.push(
+      // 11. PÉRGOLA NORTE 2 COCHES + WALLBOX
+      {
+        id: 'pergola_pb', fl: 'PB', num: '1', short: '1. Pérgola 2 Coches + EV',
+        title: '1. Pérgola Cubierta Norte para 2 Coches + Cargador EV (3,70 × 3,20 m + vuelo)',
+        w: 4.8, h: 5.0, dims: '3,70 × 3,20 m en planta (+ vuelo cubierto 4,80 × 5,00 m)',
+        wN: 'Abierta al Norte hacia el portalón motorizado de entrada de vehículos desde la calle.',
+        wS: 'Muro Sur: de x=0 a 2,50 m colinda con el Trastero de Bicis/Surf (Zona 5, cuarto estanco con puerta desde la pérgola); de x=2,50 a 3,70 m es el muro cerrado Norte de la Escalera.',
+        wE: 'Muro cerrado Oeste del Vestíbulo (Hall Zona 2): NO hay puerta en este muro; al bajar del coche das 2 pasos hacia el Este bajo el alero cubierto y entras por la ÚNICA Puerta Principal del Hall (en la fachada Norte).',
+        wW: 'Abierta hacia el retranqueo lateral Oeste.',
+        openings: [
+          { wall: 'N', pos: 0.40, len: 4.00, type: 'open', label: 'Entrada 2 Vehículos desde Calle Norte' },
+          { wall: 'S', pos: 0.80, len: 0.90, type: 'door', label: 'Puerta al Trastero Exterior Bicis (No entra a casa)' },
+          { wall: 'E', pos: 0.10, len: 1.30, type: 'open', label: 'Paso bajo alero hacia Puerta Principal del Hall →' }
+        ],
+        furn: [
+          { code: 'CAR1', name: '🚗 Plaza Coche 1 (SUV Familiar Eléctrico / Híbrido)', x: 0.35, y: 0.50, w: 1.95, h: 4.10, col: '#e2e8f0', str: '#475569', desc: 'Plaza izquierda frente a la puerta del Trastero exterior de Bicis/Surf.' },
+          { code: 'CAR2', name: '🚙 Plaza Coche 2 (Segundo Vehículo)', x: 2.50, y: 0.50, w: 1.95, h: 4.10, col: '#e2e8f0', str: '#475569', desc: 'Plaza derecha: bajas del coche y rodeas la esquina Noreste bajo techo hacia la Puerta Principal del Hall.' },
+          { code: 'WBOX', name: '⚡ Cargador Wallbox 7,4 / 22 kW con Gestión de Excedentes Solares', x: 2.15, y: 4.62, w: 0.45, h: 0.25, col: '#dcfce7', str: '#16a34a', desc: 'Situado en el muro Sur entre los dos coches para que la manguera Tipo 2 de 5 m alcance ambos vehículos.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Línea Dedicada Vehículo Eléctrico (ITC-BT-52 — 32A)', x: 2.35, y: 4.82, h_cm: 130, cir: 'C13 (Wallbox EV)', desc: 'Con medidor toroidal conectado al inversor solar para cargar el coche gratis con los excedentes de los paneles solares.' },
+          { code: 'E2', name: 'Doble Enchufe Estanco IP65 (Aspirador de Coche / Compresor)', x: 0.55, y: 4.82, h_cm: 100, cir: 'C-EXT', desc: 'Para aspirar los coches o inflar neumáticos bajo techo.' }
+        ],
+        sw: [
+          { code: 'L1', name: 'Detector de Movimiento Radar + 2 Lineales LED Estancos IP65', x: 2.40, y: 2.50, h_cm: 260, isLight: true, desc: 'Se enciende automáticamente al abrirse el portalón con el coche por la noche.' }
+        ],
+        hvac: [
+          { code: 'AERO-EXT', name: '🌀 Unidad Exterior Aerotermia Silenciosa (Oculta tras Celosía Acústica O)', x: 0.15, y: 4.30, w: 0.55, h: 0.55, h_cm: 40, isVMC: true, desc: 'Conectada a través del muro con la unidad interior del Trastero (Zona 5), lejos de los dormitorios.' }
+        ]
+      },
+
+      // 12. DORMITORIO DE LA NIÑA (P1 +3,15 m)
+      {
+        id: 'dorm_nina_p1', fl: 'P1', num: '20', short: '20. Dormitorio Niña (P1)',
+        title: '20. Dormitorio de la Niña en Planta Primera +3,15 m (15,8 m²)',
+        w: 4.3, h: 4.0, dims: '4,30 × 4,00 m · 15,8 m² útiles',
+        wN: 'Armarios empotrados de suelo a techo (2,60 m) + Puerta de entrada desde el Pasillo Corrala (Zona 18).',
+        wS: 'Ventanal corredero de salida directa (sin obstáculos delante) al Balcón Superior Sur (+3,15 m).',
+        wE: 'Tabique acústico con el Dormitorio del Niño + Escritorio de 1,80 m (recibe luz natural a 90° sin reflejos en la pantalla).',
+        wW: 'Fachada exterior Oeste con el cabecero de la cama de 135 cm.',
+        openings: [
+          { wall: 'N', pos: 3.15, len: 0.85, type: 'door', label: 'Desde Pasillo Corrala P1' },
+          { wall: 'S', pos: 0.85, len: 2.50, type: 'glass_sliding', label: 'Salida Libre al Balcón Sur (+3,15 m)' }
+        ],
+        furn: [
+          { code: 'ARM', name: '👗 Armario Empotrado Lacado (2,65 × 0,62 m) con LED Interior', x: 0.15, y: 0.12, w: 2.70, h: 0.62, col: '#f3e8ff', str: '#9333ea', desc: 'Tres cuerpos completos con cajoneras, barras abatibles y encendido automático al abrir.' },
+          { code: 'CAMA', name: '🛏️ Cama Juvenil 135 × 200 cm + 2 Mesillas con Cajón', x: 0.15, y: 1.35, w: 2.05, h: 1.65, col: '#fae8ff', str: '#c026d3', desc: 'Cabecero apoyado en el muro Oeste: desde la cama ve el jardín Sur y tiene paso totalmente despejado hacia el balcón.' },
+          { code: 'ESC', name: '💻 Escritorio Estudio 1,80 × 0,60 m en Pared Lateral Este (Luz a 90°)', x: 3.55, y: 1.55, w: 0.62, h: 1.80, col: '#fef3c7', str: '#d97706', desc: 'Perpendicular al ventanal Sur: cero contraluz y cero reflejos en el portátil. Incluye estantería superior.' },
+          { code: 'SILLA', name: '🪑 Silla de Estudio Ergonómica', x: 3.00, y: 2.15, w: 0.52, h: 0.52, col: '#e2e8f0', str: '#475569', desc: 'Espacio holgado detrás sin interferir con la salida al balcón.' },
+          { code: 'TV-N1', name: '📺 Preinstalación TV 43" / Espejo Tocador en Pared Este', x: 4.08, y: 0.80, w: 0.12, h: 0.65, col: '#0f172a', str: '#ef4444', desc: 'Toma preparada frente a los pies de la cama.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Enchufe 16A + USB-C Mesilla Norte', x: 0.12, y: 1.20, h_cm: 65, cir: 'C2 (Dormitorios P1)', desc: 'Para lámpara de noche y carga del móvil/tablet.' },
+          { code: 'E2', name: 'Enchufe 16A + USB-C Mesilla Sur', x: 0.12, y: 3.10, h_cm: 65, cir: 'C2', desc: 'Segunda mesilla junto al cabecero.' },
+          { code: 'E3', name: '3× Enchufes 16A + USB-C en Escritorio Este (Portátil, Monitor, Flexo)', x: 4.15, y: 2.30, h_cm: 75, cir: 'C2', desc: 'Dos enchufes sobre el tablero (h=75 cm) y uno bajo mesa (h=30 cm) para regleta/cargadores.' },
+          { code: 'RJ1', name: 'Doble Toma RJ45 Cat6A (10 Gbps) en Escritorio Este', x: 4.15, y: 2.65, h_cm: 75, cir: 'RACK-P1', isRJ: true, desc: 'Internet por cable directo para el ordenador de estudio.' },
+          { code: 'E4', name: 'Enchufe + RJ45 Preinstalación TV / Tocador (h=125 cm)', x: 4.15, y: 1.05, h_cm: 125, cir: 'C2 + RACK', isRJ: true, desc: 'En la pared Este.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Doble Conmutador en Puerta de Entrada Norte', x: 3.05, y: 0.15, h_cm: 110, desc: 'Enciende luz general de techo y foseado LED cálido.' },
+          { code: 'I2', name: 'Triple Mando en Cabecero (Conmutado Techo + Aplique Lectura + Persiana Sur)', x: 0.12, y: 1.38, h_cm: 65, desc: 'Permite apagar la luz de la habitación y subir/bajar la persiana motorizada Sur sin salir de la cama.' },
+          { code: 'L1', name: 'Plafón Central Regulable 3000K + Foseado Cortinero Sur + LED Interior Armario', x: 2.15, y: 2.00, h_cm: 265, isLight: true, desc: 'Luz general homogénea y tira LED automática dentro del armario empotrado.' }
+        ],
+        hvac: [
+          { code: 'T1', name: 'Termostato Digital Individual (Dormitorio Niña)', x: 2.90, y: 0.15, h_cm: 150, desc: 'Controla de forma independiente la temperatura de su habitación.' },
+          { code: 'SR1', name: 'Circuito Suelo Radiante-Refrescante (C-NINA — Cero Radiadores)', x: 2.15, y: 2.80, h_cm: 0, isFloor: true, desc: 'Todas las paredes quedan 100 % libres de radiadores para aprovechar los muebles.' },
+          { code: 'VMC1', name: 'Boca de Impulsión VMC Silenciosa (<18 dB)', x: 1.50, y: 0.95, h_cm: 265, isVMC: true, desc: 'Renueva el aire toda la noche sin necesidad de abrir ventanas en invierno.' }
+        ]
+      },
+
+      // 13. DORMITORIO DEL NIÑO (P1 +3,15 m)
+      {
+        id: 'dorm_nino_p1', fl: 'P1', num: '21', short: '21. Dormitorio Niño (P1)',
+        title: '21. Dormitorio del Niño en Planta Primera +3,15 m (15,5 m²)',
+        w: 4.2, h: 4.0, dims: '4,20 × 4,00 m · 15,5 m² útiles',
+        wN: 'Puerta de acceso desde el Pasillo Corrala (Oeste) + Armario empotrado de 2,50 m (Este).',
+        wS: 'Ventanal corredero de salida directa al Balcón Superior Sur (+3,15 m).',
+        wE: 'Tabique acústico con la Suite Principal + Escritorio Gaming/Estudio de 1,80 m (luz natural a 90°).',
+        wW: 'Tabique acústico con el Dormitorio de la Niña + Cabecero de Cama de 135 cm.',
+        openings: [
+          { wall: 'N', pos: 0.30, len: 0.85, type: 'door', label: 'Desde Pasillo Corrala P1' },
+          { wall: 'S', pos: 0.85, len: 2.50, type: 'glass_sliding', label: 'Salida Libre al Balcón Sur (+3,15 m)' }
+        ],
+        furn: [
+          { code: 'ARM', name: '👕 Armario Empotrado (2,55 × 0,62 m) con Iluminación LED Interior', x: 1.45, y: 0.12, w: 2.55, h: 0.62, col: '#e0e7ff', str: '#4f46e5', desc: 'Armario de suelo a techo en la pared Norte.' },
+          { code: 'CAMA', name: '🛏️ Cama Juvenil 135 × 200 cm + 2 Mesillas', x: 0.15, y: 1.40, w: 2.05, h: 1.65, col: '#dbeafe', str: '#2563eb', desc: 'En la pared Oeste, dejando libre el paso desde la puerta hasta el Balcón Sur.' },
+          { code: 'ESC', name: '🖥️ Escritorio Estudio/Gaming 1,80 × 0,60 m en Pared Lateral Este (Luz a 90°)', x: 3.45, y: 1.55, w: 0.62, h: 1.80, col: '#fef3c7', str: '#d97706', desc: 'Ubicado en la pared Este para que la luz del Sur entre de lado y no deslumbre el monitor.' },
+          { code: 'SILLA', name: '🪑 Silla Ergonómica de Estudio', x: 2.90, y: 2.15, w: 0.52, h: 0.52, col: '#e2e8f0', str: '#475569', desc: 'Zona de estudio amplia.' },
+          { code: 'TV-N2', name: '📺 Soporte TV 43" / Consola en Pared Este', x: 3.98, y: 0.90, w: 0.12, h: 0.60, col: '#0f172a', str: '#ef4444', desc: 'Frente a la cama.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Enchufe 16A + USB-C Mesilla Norte', x: 0.12, y: 1.25, h_cm: 65, cir: 'C2', desc: 'Lado izquierdo de la cama.' },
+          { code: 'E2', name: 'Enchufe 16A + USB-C Mesilla Sur', x: 0.12, y: 3.12, h_cm: 65, cir: 'C2', desc: 'Lado derecho de la cama.' },
+          { code: 'E3', name: '4× Enchufes 16A + USB-C en Escritorio Este (PC, Doble Monitor, Flexo)', x: 4.05, y: 2.25, h_cm: 75, cir: 'C2', desc: '4 tomas de corriente para equipo informático completo.' },
+          { code: 'RJ1', name: 'Doble Toma RJ45 Cat6A (10 Gbps) en Escritorio Este', x: 4.05, y: 2.65, h_cm: 75, cir: 'RACK-P1', isRJ: true, desc: 'Cable directo de red para PC y consola con ping mínimo.' },
+          { code: 'E4', name: 'Enchufe + RJ45 TV en Pared Este (h=125 cm)', x: 4.05, y: 1.10, h_cm: 125, cir: 'C2 + RACK', isRJ: true, desc: 'Para pantalla mural.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Doble Conmutador en Puerta de Entrada Norte', x: 1.22, y: 0.15, h_cm: 110, desc: 'Junto a la puerta desde el pasillo Corrala.' },
+          { code: 'I2', name: 'Triple Mando en Cabecero (Conmutado Techo + Aplique + Persiana Motorizada)', x: 0.12, y: 1.42, h_cm: 65, desc: 'Control total de luz y persiana desde la cama.' },
+          { code: 'L1', name: 'Plafón Central Regulable 3000K + Foseado Cortinero Sur', x: 2.10, y: 2.00, h_cm: 265, isLight: true, desc: 'Iluminación principal y ambiental.' }
+        ],
+        hvac: [
+          { code: 'T1', name: 'Termostato Digital Individual (Dormitorio Niño)', x: 1.32, y: 0.15, h_cm: 150, desc: 'Control independiente del circuito de suelo radiante-refrescante.' },
+          { code: 'SR1', name: 'Circuito Suelo Radiante-Refrescante (C-NINO)', x: 2.10, y: 2.80, h_cm: 0, isFloor: true, desc: 'Calor homogéneo en invierno y suelo fresco en verano.' },
+          { code: 'VMC1', name: 'Boca de Impulsión VMC Doble Flujo (<18 dB)', x: 1.10, y: 0.95, h_cm: 265, isVMC: true, desc: 'Aire limpio filtrado constante.' }
+        ]
+      },
+
+      // 14. BAÑO COMPARTIDO HIJOS (P1)
+      {
+        id: 'bano_hijos_p1', fl: 'P1', num: '16', short: '16. Baño Hijos (Doble Seno)',
+        title: '16. Baño Compartido de los Hijos con Doble Lavabo (11,8 m²)',
+        w: 2.5, h: 5.0, dims: '2,50 × 5,00 m · 11,8 m² útiles',
+        wN: 'Cierre Norte con Bañera / Ducha walk-in.',
+        wS: 'Tabique acústico con el Dormitorio de la Niña.',
+        wE: 'Muro con la Escalera y puerta de acceso desde el desembarco de P1.',
+        wW: 'Fachada exterior Oeste con ventana oscilobatiente.',
+        openings: [
+          { wall: 'E', pos: 3.70, len: 0.85, type: 'door', label: 'Desde Desembarco Escalera P1' },
+          { wall: 'W', pos: 1.80, len: 1.10, type: 'window', label: 'Ventana Oeste' }
+        ],
+        furn: [
+          { code: 'BAN', name: '🛁 Bañera Encastrada Norte (1,70 × 0,80 m)', x: 0.15, y: 0.15, w: 2.20, h: 0.85, col: '#e0f2fe', str: '#0284c7', desc: 'Bañera infantil/juvenil en el frente Norte.' },
+          { code: 'DUCH', name: '🚿 Ducha Walk-In (1,40 × 0,90 m) con Mampara de Cristal', x: 0.15, y: 1.10, w: 0.95, h: 1.40, col: '#bae6fd', str: '#0369a1', desc: 'Para ducha rápida diaria antes del colegio.' },
+          { code: 'LAV2', name: '🪞🪞 Mueble Doble Lavabo (1,65 m) con 2 Grifos y Espejo Antivaho XXL', x: 1.72, y: 1.45, w: 0.62, h: 1.75, col: '#fef3c7', str: '#d97706', desc: 'Permite que la niña y el niño se laven los dientes y se preparen a la vez sin esperas.' },
+          { code: 'WC', name: '🚽 Inodoro Suspendido Geberit en rincón Suroeste', x: 0.15, y: 3.95, w: 0.65, h: 0.75, col: '#f1f5f9', str: '#475569', desc: 'Queda oculto detrás de la visual de la puerta de entrada.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Enchufe 16A Lavabo 1 (Secador de Pelo / Plancha)', x: 2.38, y: 1.40, h_cm: 105, cir: 'C5 (Baños)', desc: 'A la izquierda del doble seno.' },
+          { code: 'E2', name: 'Enchufe 16A Lavabo 2 + Toma Oculta en Cajón (2 Cepillos Eléctricos)', x: 2.38, y: 3.25, h_cm: 105, cir: 'C5', desc: 'A la derecha del doble seno + base dentro del cajón para cargadores Oral-B.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Doble Interruptor en Entrada Este (Luz General + Luz Espejo/Antivaho)', x: 2.38, y: 3.55, h_cm: 110, desc: 'Al entrar desde el distribuidor superior.' },
+          { code: 'L1', name: 'Focos Estancos IP65 + Lineal LED Espejo Doble', x: 1.25, y: 2.30, h_cm: 260, isLight: true, desc: 'Iluminación sin sombras sobre ambos lavabos.' }
+        ],
+        hvac: [
+          { code: 'TR1', name: '🔥 Radiador Toallero Grande (150 × 50 cm — 650 W) para 2 Albornoces', x: 0.15, y: 3.00, h_cm: 115, desc: 'Dimensionado para secar simultáneamente las toallas de los dos hermanos.' },
+          { code: 'SR1', name: 'Circuito Suelo Radiante (C-BANO-HIJOS)', x: 1.25, y: 2.60, h_cm: 0, isFloor: true, desc: 'Suelo siempre cálido al salir de la ducha o bañera.' },
+          { code: 'VMC1', name: 'Doble Boca Extracción VMC (45 m³/h)', x: 1.15, y: 0.90, h_cm: 260, isVMC: true, desc: 'Extrae el vapor de la ducha y la bañera.' }
+        ]
+      },
+
+      // 15. DORMITORIO PRINCIPAL SUITE MATRIMONIO (P1)
+      {
+        id: 'dorm_suite_p1', fl: 'P1', num: '24', short: '24. Dormitorio Suite (P1)',
+        title: '24. Dormitorio Principal de Matrimonio en P1 +3,15 m (15,0 m²)',
+        w: 3.9, h: 4.0, dims: '3,90 × 4,00 m · 15,0 m² útiles',
+        wN: 'Paso directo desde el Vestidor Pasante de la Suite (Zona 22).',
+        wS: 'Gran ventanal corredero hacia el Balcón Superior Sur (+3,15 m) con vistas al jardín.',
+        wE: 'Fachada exterior Este con el cabecero tapizado de la cama King Size.',
+        wW: 'Tabique acústico de doble placa con el Dormitorio del Niño: alberga la TV 55" Frame frente a la cama.',
+        openings: [
+          { wall: 'N', pos: 1.35, len: 1.00, type: 'open', label: 'Desde Vestidor Suite' },
+          { wall: 'S', pos: 0.65, len: 2.60, type: 'glass_sliding', label: 'Ventanal al Balcón Sur (+3,15 m)' }
+        ],
+        furn: [
+          { code: 'KING', name: '🛏️ Cama King Size (180 × 200 cm) con Cabecero Tapizado al Este', x: 1.65, y: 1.00, w: 2.10, h: 1.90, col: '#ffe4e6', str: '#e11d48', desc: 'Mirando hacia la TV (Oeste) y con vistas diagonales al Jardín Sur.' },
+          { code: 'MES1', name: '🪵 Mesilla Suspendida Norte (55 × 45 cm)', x: 3.20, y: 0.38, w: 0.52, h: 0.55, col: '#fef3c7', str: '#d97706', desc: 'Con cajón ocultacables.' },
+          { code: 'MES2', name: '🪵 Mesilla Suspendida Sur (55 × 45 cm)', x: 3.20, y: 2.95, w: 0.52, h: 0.55, col: '#fef3c7', str: '#d97706', desc: 'Junto al ventanal del balcón.' },
+          { code: 'TV55', name: '🖼️ TV 55" Samsung The Frame (Modo Cuadro) en Pared Oeste', x: 0.08, y: 1.35, w: 0.14, h: 1.25, col: '#0f172a', str: '#ef4444', desc: 'Enrasada como un lienzo en el muro Oeste frente a la cama, con caja OneConnect oculta.' },
+          { code: 'BUT-S', name: '🪑 Butaca Descalzadora / Lectura junto al Balcón Sur', x: 0.35, y: 2.95, w: 0.75, h: 0.75, col: '#fce7f3', str: '#db2777', desc: 'Rincón tranquilo con vistas al jardín.' }
+        ],
+        elec: [
+          { code: 'E1', name: '2× Enchufes 16A + Doble USB-C 65W en Mesilla Norte', x: 3.75, y: 0.65, h_cm: 65, cir: 'C2 (Suite)', desc: 'Para cargar móvil, reloj y libro electrónico en el lado derecho de la cama.' },
+          { code: 'E2', name: '2× Enchufes 16A + Doble USB-C 65W en Mesilla Sur', x: 3.75, y: 3.20, h_cm: 65, cir: 'C2', desc: 'En el lado izquierdo de la cama.' },
+          { code: 'E3', name: '3× Enchufes 16A + Pasamuros Oculto tras TV 55" (h=125 cm)', x: 0.14, y: 1.85, h_cm: 125, cir: 'C2', desc: 'Sin ningún cable a la vista.' },
+          { code: 'RJ1', name: 'Doble Toma RJ45 Cat6A tras TV 55"', x: 0.14, y: 2.15, h_cm: 125, cir: 'RACK-P1', isRJ: true, desc: 'Streaming 4K por cable directo.' },
+          { code: 'E4', name: 'Enchufe Auxiliar / Limpieza junto a Butaca S-O', x: 0.14, y: 3.45, h_cm: 30, cir: 'C2', desc: 'Junto a la butaca de lectura.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Conmutador Doble en Entrada desde el Vestidor (Norte)', x: 1.20, y: 0.15, h_cm: 110, desc: 'Enciende el foseado cálido del cabecero o la luz general.' },
+          { code: 'I2', name: 'Triple Mando Cabecero Lado Norte (Luz Techo + Aplique Lectura + Persiana Sur)', x: 3.75, y: 0.85, h_cm: 65, desc: 'Control independiente desde el lado derecho.' },
+          { code: 'I3', name: 'Triple Mando Cabecero Lado Sur (Luz Techo + Aplique + Botón "Buenas Noches")', x: 3.75, y: 3.00, h_cm: 65, desc: 'Incluye pulsación larga para verificar que todas las luces de la casa estén apagadas.' },
+          { code: 'L1', name: 'Foseado LED 2700K en Cabecero Este y Cortinero Sur + 2 Apliques Lectura Focales', x: 2.70, y: 1.95, h_cm: 265, isLight: true, desc: 'Apliques de haz cerrado (pertenecen a cada lado sin molestar al otro cuando lee de noche).' }
+        ],
+        hvac: [
+          { code: 'T1', name: 'Termostato Digital Suite Principal', x: 2.50, y: 0.15, h_cm: 150, desc: 'Regulación nocturna independiente (p. ej. 19,5 °C óptimos para dormir).' },
+          { code: 'SR1', name: 'Circuito Suelo Radiante-Refrescante (C-SUITE)', x: 1.95, y: 2.20, h_cm: 0, isFloor: true, desc: 'Confort térmico total sin ruidos ni corrientes.' },
+          { code: 'VMC1', name: '2× Bocas de Impulsión VMC Ultrasilenciosas (<16 dB)', x: 1.20, y: 1.20, h_cm: 265, isVMC: true, desc: 'Doble caudal para 2 adultos asegurando aire puro toda la noche.' }
+        ]
+      },
+
+      // 16. VESTIDOR PASANTE DE LA SUITE (P1)
+      {
+        id: 'vestidor_suite_p1', fl: 'P1', num: '22', short: '22. Vestidor Suite (P1)',
+        title: '22. Vestidor Pasante de la Suite Principal (10,2 m²)',
+        w: 3.6, h: 3.0, dims: '3,60 × 3,00 m · 10,2 m² útiles',
+        wN: 'Puerta corredera hacia el Baño Privado de la Suite (Zona 23).',
+        wS: 'Paso hacia el Dormitorio Principal de Matrimonio (Zona 24).',
+        wE: 'Fachada Este con frente continuo de armarios de 3,00 m.',
+        wW: 'Puerta de entrada a la Suite desde el Pasillo Corrala (Sur-Oeste) + Ventana con celosía hacia la doble altura del Patio Corrala + Armario Oeste.',
+        openings: [
+          { wall: 'W', pos: 1.95, len: 0.85, type: 'door', label: 'Entrada Suite desde Corrala P1' },
+          { wall: 'W', pos: 0.35, len: 1.20, type: 'window', label: 'Celosía Luz del Patio' },
+          { wall: 'N', pos: 1.40, len: 0.85, type: 'sliding', label: 'Al Baño Suite' },
+          { wall: 'S', pos: 1.30, len: 1.00, type: 'open', label: 'Al Dormitorio Matrimonio' }
+        ],
+        furn: [
+          { code: 'ARM-E', name: '👔 Frente Armarios Este (3,00 × 0,62 m) de Suelo a Techo con LED Vertical', x: 2.85, y: 0.12, w: 0.62, h: 2.76, col: '#fce7f3', str: '#db2777', desc: '6 módulos con pantaloneros extraíbles, cajoneras con frente de vidrio y barras iluminadas.' },
+          { code: 'ARM-W', name: '👗 Armario y Cajonera Joyero/Relojero en Pared Norte-Oeste', x: 0.15, y: 0.15, w: 1.15, h: 0.62, col: '#fbcfe8', str: '#be185d', desc: 'Módulo con bandeja tapizada para relojes, joyas y accesorios.' },
+          { code: 'PUFF', name: '🪑 Banqueta Calzadora Central + Espejo de Cuerpo Entero', x: 1.45, y: 1.15, w: 0.70, h: 0.70, col: '#f1f5f9', str: '#475569', desc: 'Permite vestirse con luz natural tamizada del patio.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Enchufe 16A + 2× USB-C dentro del Cajón Joyero (Carga Apple Watch / Garmin)', x: 0.75, y: 0.20, h_cm: 90, cir: 'C2', desc: 'Oculto dentro de la cajonera para cargar los relojes inteligentes.' },
+          { code: 'E2', name: 'Enchufe 16A junto al Espejo (Vaporizador de Ropa Vertical / Steamer)', x: 0.15, y: 1.75, h_cm: 95, cir: 'C2', desc: 'Para repasar una camisa o vestido con vapor en 1 minuto antes de salir.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Sensor de Presencia + Interruptor Manual Vestidor', x: 0.15, y: 1.90, h_cm: 110, desc: 'Enciende suavemente las tiras LED interiores de los armarios al entrar al vestidor.' },
+          { code: 'L1', name: 'Tiras LED Verticales CRI>95 en Armarios + Carril Focal 3000K', x: 2.75, y: 1.50, h_cm: 260, isLight: true, desc: 'Reproducción cromática perfecta para distinguir azul marino de negro.' }
+        ],
+        hvac: [
+          { code: 'SR1', name: 'Circuito Suelo Radiante Vestidor (Paso hacia Baño y Dormitorio)', x: 1.80, y: 1.50, h_cm: 0, isFloor: true, desc: 'Permite caminar descalzo desde la cama hasta la ducha sobre suelo templado.' }
+        ]
+      },
+
+      // 17. BAÑO PRIVADO EN-SUITE MATRIMONIO (P1)
+      {
+        id: 'bano_suite_p1', fl: 'P1', num: '23', short: '23. Baño Suite (P1)',
+        title: '23. Baño Privado En-Suite Matrimonio (6,8 m² — Misma Vertical Bajantes)',
+        w: 3.6, h: 2.0, dims: '3,60 × 2,00 m · 6,8 m² útiles',
+        wN: 'Cierre Norte hacia la cubierta técnica: alberga el mueble de doble lavabo de 1,65 m.',
+        wS: 'Tabique con el Vestidor (Zona 22) con puerta corredera empotrada.',
+        wE: 'Fachada exterior Este con la Ducha Walk-In Doble, ventana oscilobatiente y la bajante unificada (exactamente encima del Baño PB y de la Cocina).',
+        wW: 'Cierre hacia la doble altura del Patio Corrala con fijo superior de luz cenital.',
+        openings: [
+          { wall: 'S', pos: 1.40, len: 0.85, type: 'sliding', label: 'Desde Vestidor Suite' },
+          { wall: 'E', pos: 0.55, len: 0.90, type: 'window', label: 'Ventana Este' }
+        ],
+        furn: [
+          { code: 'LAV-S', name: '🪞🪞 Mueble Doble Seno Suspendido (1,65 × 0,52 m) + Espejo Antivaho XXL', x: 0.85, y: 0.12, w: 1.65, h: 0.55, col: '#fef3c7', str: '#d97706', desc: 'Doble lavabo con grifería empotrada y espejo retroiluminado.' },
+          { code: 'DUCH-S', name: '🚿 Ducha Walk-In Doble (1,80 × 1,00 m) con Rociador Lluvia y Hornacina LED', x: 2.55, y: 0.12, w: 0.92, h: 1.76, col: '#e0f2fe', str: '#0284c7', desc: 'Ocupa todo el frente Este con hornacina iluminada para botes de gel/champú.' },
+          { code: 'WC-S', name: '🚽 Inodoro Suspendido Geberit (Preparado para Inodoro Japonés Washlet)', x: 0.15, y: 0.15, w: 0.62, h: 0.70, col: '#f1f5f9', str: '#475569', desc: 'Ubicado en la esquina Noroeste con toma de agua y electricidad ocultas.' }
+        ],
+        elec: [
+          { code: 'E1', name: 'Doble Enchufe 16A Lado Izquierdo Lavabo (Secador Dyson / Plancha Pelo)', x: 0.80, y: 0.15, h_cm: 105, cir: 'C5 (Baño Suite)', desc: 'Junto al espejo.' },
+          { code: 'E2', name: 'Enchufe 16A Lado Derecho + Toma Oculta en Cajón (Cepillos / Afeitadora)', x: 2.48, y: 0.15, h_cm: 105, cir: 'C5', desc: 'Con cargador interior oculto en el cajón.' },
+          { code: 'E3', name: 'Toma 16A Oculta junto al Inodoro (Para Tapa Bidé Electrónica / Washlet)', x: 0.15, y: 0.55, h_cm: 35, cir: 'C5', desc: 'Deja lista la conexión eléctrica para inodoro japonés con agua templada.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Doble Interruptor al entrar desde el Vestidor (Luz General + Modo Relax/Hornacina)', x: 1.25, y: 1.85, h_cm: 110, desc: 'Permite ducharse de noche solo con la luz cálida indirecta de la hornacina y del espejo.' },
+          { code: 'L1', name: 'Focos IP65 + Tira LED Hornacina Ducha 2700K + Espejo Retroiluminado', x: 3.00, y: 0.95, h_cm: 260, isLight: true, desc: 'Ambiente tipo spa.' }
+        ],
+        hvac: [
+          { code: 'TR1', name: '🔥 Radiador Toallero Negro Mate (120 × 50 cm — 500 W)', x: 0.15, y: 1.25, h_cm: 115, desc: 'En la pared Oeste junto a la salida del vestidor.' },
+          { code: 'SR1', name: 'Circuito Suelo Radiante (C-BANO-SUITE) incluso bajo el plato de ducha', x: 1.80, y: 1.20, h_cm: 0, isFloor: true, desc: 'Seca el suelo de la ducha rápidamente.' },
+          { code: 'VMC1', name: 'Boca de Extracción VMC sobre la Ducha (45 m³/h)', x: 2.95, y: 0.45, h_cm: 260, isVMC: true, desc: 'Evita que el vapor pase al vestidor.' }
+        ]
+      },
+
+      // 18. PASILLO SUPERIOR CORRALA + ESCALERA P1 + BALCÓN SUR + CUBIERTA SOLAR
+      {
+        id: 'corrala_p1', fl: 'P1', num: '15, 17, 18 y 25', short: '18. Pasillo Corrala, Balcón y Solar',
+        title: '15, 17, 18 y 25. Pasillo Superior "Corrala", Balcón Sur y Cubierta Solar',
+        w: 6.3, h: 3.0, dims: 'Pasillo 5,10×1,40 m + Escalera + Balcón 12,4 m',
+        wN: 'Barandilla de vidrio laminado asomada a la doble altura del Patio Corrala bajo el techo de cristal móvil (y vista a la Cubierta Norte con los 10 Paneles Solares).',
+        wS: 'Puertas de entrada al Dormitorio de la Niña (Oeste) y al Dormitorio del Niño (Centro-Este), más salida de los dormitorios al Balcón Sur.',
+        wE: 'Puerta de entrada privada al Vestidor de la Suite Principal (Zona 22).',
+        wW: 'Desembarco de la Escalera (Peldaño 17) y puerta de entrada al Baño de los Hijos (Zona 16).',
+        openings: [
+          { wall: 'W', pos: 1.60, len: 1.10, type: 'open', label: 'Llegada Escalera (Peldaño 17)' },
+          { wall: 'W', pos: 0.35, len: 0.85, type: 'door', label: 'Al Baño Hijos' },
+          { wall: 'N', pos: 1.20, len: 4.90, type: 'glass_fixed', label: 'Balcón Interior al Patio Corrala' },
+          { wall: 'S', pos: 1.50, len: 0.85, type: 'door', label: 'A Dorm. Niña' },
+          { wall: 'S', pos: 3.60, len: 0.85, type: 'door', label: 'A Dorm. Niño' },
+          { wall: 'E', pos: 1.65, len: 0.85, type: 'door', label: 'A Suite Principal' }
+        ],
+        furn: [
+          { code: 'ESC17', name: '🪜 Desembarco Escalera (Peldaños 12 a 17) con Barandilla de Vidrio', x: 0.15, y: 0.20, w: 1.15, h: 2.55, col: '#d1fae5', str: '#059669', desc: 'Llegas arriba en el extremo Suroeste del pasillo y giras al Este por el balcón de la Corrala.' },
+          { code: 'BAR', name: '🪟 Peto/Barandilla de Cristal Laminado 10+10 asomada al Patio y al Arce', x: 1.35, y: 0.18, w: 4.80, h: 0.20, col: '#bae6fd', str: '#0284c7', desc: 'Permite ver el patio inferior y recibe toda la luz del lucernario motorizado.' },
+          { code: 'SOL10', name: '☀️ (En Cubierta Norte): 10 Paneles Solares 4,5 kWp Ocultos tras Peto', x: 1.55, y: 0.50, w: 4.40, h: 0.70, col: '#e0e7ff', str: '#4338ca', dashed: true, desc: 'En la cubierta plana Norte (Zona 15) van los 10 módulos monocristalinos N-Type inclinados a 15° hacia el Sur.' }
+        ],
+        elec: [
+          { code: 'RJ-W', name: '📡 Punto de Acceso WiFi 6E PoE en Techo del Pasillo Corrala', x: 3.65, y: 1.95, h_cm: 265, cir: 'RACK-PoE', isRJ: true, desc: 'Situado en el centro exacto de la Planta Primera para dar cobertura 5GHz/6GHz máxima a los 3 dormitorios.' },
+          { code: 'E1', name: 'Enchufe 16A de Limpieza / Aspiración en Pasillo P1', x: 2.65, y: 2.82, h_cm: 30, cir: 'C2', desc: 'Centralizado para llegar a toda la planta superior.' },
+          { code: 'E2', name: '2× Enchufes Estancos IP55 en el Balcón Continuo Sur (Zona 25)', x: 5.20, y: 2.82, h_cm: 35, cir: 'C-EXT', desc: 'Ubicados en el balcón exterior Sur de los dormitorios.' }
+        ],
+        sw: [
+          { code: 'I1', name: 'Conmutadores de Escalera y Pasillo Corrala (Inicio y Final)', x: 1.40, y: 2.82, h_cm: 110, desc: 'Conmutado con el pie de la escalera en Planta Baja y con la entrada a la Suite.' },
+          { code: 'L1', name: '3× Balizas LED Nocturnas (h=25 cm) con Detector de Paso + Focos Techo', x: 2.80, y: 2.75, h_cm: 25, isLight: true, desc: 'Si los niños salen de noche hacia el baño, las balizas a ras de suelo se encienden al 15 % de forma automática sin despertarlos.' }
+        ],
+        hvac: [
+          { code: 'SR1', name: 'Colector Planta Primera Oculto en Tabique Técnico + Suelo Radiante Pasillo', x: 1.35, y: 1.40, h_cm: 45, isFloor: true, desc: 'Caja colectora empotrada que reparte los circuitos independientes a cada habitación y baño de P1.' }
+        ]
+      }
+    );
+  </script>
+  <script>
+    function getActiveRoomData(room) {
+      if (room.id !== 'despacho_pb') return room;
+      const v = DESPACHO_VARIANTS[currentDespachoOpt];
+      return {
+        ...room,
+        title: `3. Despacho y Suite Visitas — ${v.subtitle}`,
+        furn: v.furn,
+        elec: v.elec
+      };
+    }
+
+    function setFloorFilter(f) {
+      currentFilter = f;
+      ['ALL', 'PB', 'P1'].forEach(k => {
+        const b = document.getElementById('filter-' + k);
+        b.className = k === f
+          ? 'px-3 py-2 rounded-lg text-xs font-bold border border-indigo-600 bg-indigo-600 text-white shadow-sm transition'
+          : 'px-3 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--content)] hover:bg-slate-100 transition';
+      });
+      renderPills();
+      const visible = ROOMS.filter(r => f === 'ALL' || r.fl === f);
+      if (!visible.some(r => r.id === currentRoomId) && visible.length) {
+        selectRoom(visible[0].id);
+      }
+    }
+
+    function toggleLayer(k) {
+      layers[k] = !layers[k];
+      const labels = {
+        furn: '🛋️ Muebles y Aparatos',
+        elec: '🔌 Enchufes y RJ45',
+        sw: '💡 Interruptores y Luz',
+        hvac: '🌡️ Clima, Suelo y VMC'
+      };
+      const colors = {
+        furn: 'bg-slate-800 border-slate-800',
+        elec: 'bg-amber-600 border-amber-600',
+        sw: 'bg-blue-600 border-blue-600',
+        hvac: 'bg-emerald-600 border-emerald-600'
+      };
+      const btn = document.getElementById('btn-layer-' + k);
+      if (layers[k]) {
+        btn.className = `px-2.5 py-1.5 rounded-lg text-xs font-bold text-white border transition ${colors[k]}`;
+        btn.textContent = `${labels[k]}: ON`;
+      } else {
+        btn.className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium bg-white text-slate-500 border border-slate-300 transition';
+        btn.textContent = `${labels[k]}: OFF`;
+      }
+      renderCurrentRoom();
+    }
+
+    function setDespachoLayout(opt) {
+      currentDespachoOpt = opt;
+      ['D2', 'D3', 'D1'].forEach(k => {
+        const b = document.getElementById('btn-desp-' + k);
+        if (!b) return;
+        b.className = k === opt
+          ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white border border-amber-700 shadow-sm transition'
+          : 'px-3 py-1.5 rounded-lg text-xs font-medium bg-white text-amber-900 border border-amber-300 hover:bg-amber-100 transition';
+      });
+      selectedMarkerCode = null;
+      renderCurrentRoom();
+    }
+
+    function renderPills() {
+      const nav = document.getElementById('room-pills');
+      const visible = ROOMS.filter(r => currentFilter === 'ALL' || r.fl === currentFilter);
+      nav.innerHTML = visible.map(r => {
+        const active = r.id === currentRoomId;
+        const badgeCol = r.fl === 'PB' ? 'bg-emerald-100 text-emerald-800' : 'bg-indigo-100 text-indigo-800';
+        return `<button onclick="selectRoom('${r.id}')" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition flex items-center gap-1.5 ${
+          active
+            ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
+            : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+        }">
+          <span class="px-1.5 py-0.2 rounded text-[10px] font-bold ${active ? 'bg-amber-400 text-slate-900' : badgeCol}">${r.fl}</span>
+          <span>${r.short}</span>
+        </button>`;
+      }).join('');
+    }
+
+    function selectRoom(id) {
+      currentRoomId = id;
+      selectedMarkerCode = null;
+      renderPills();
+      renderCurrentRoom();
+    }
+
+    function selectMarker(code) {
+      selectedMarkerCode = code;
+      renderCurrentRoom();
+    }
+
+    function renderCurrentRoom() {
+      const rawRoom = ROOMS.find(r => r.id === currentRoomId) || ROOMS[0];
+      const room = getActiveRoomData(rawRoom);
+
+      // Show/Hide Despacho bar
+      const despBar = document.getElementById('despacho-options-bar');
+      if (room.id === 'despacho_pb') {
+        despBar.classList.remove('hidden');
+      } else {
+        despBar.classList.add('hidden');
+      }
+
+      document.getElementById('room-badge').textContent = room.fl === 'PB' ? 'PLANTA BAJA (COTA +0,00 m)' : 'PLANTA PRIMERA (COTA +3,15 m)';
+      document.getElementById('room-badge').className = room.fl === 'PB'
+        ? 'text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800'
+        : 'text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-100 text-indigo-800';
+      document.getElementById('room-title').textContent = room.title;
+      document.getElementById('room-dims').textContent = room.dims;
+
+      document.getElementById('wall-N').textContent = room.wN;
+      document.getElementById('wall-S').textContent = room.wS;
+      document.getElementById('wall-E').textContent = room.wE;
+      document.getElementById('wall-W').textContent = room.wW;
+
+      renderRoomSVG(room);
+      renderLists(room);
+    }
+
+    function renderRoomSVG(room) {
+      const svg = document.getElementById('room-svg');
+      const W = 820, H = 680;
+      const padX = 95, padY = 85;
+      const availW = W - padX * 2;
+      const availH = H - padY * 2;
+      const scale = Math.min(availW / room.w, availH / room.h);
+      const rw = room.w * scale;
+      const rh = room.h * scale;
+      const ox = (W - rw) / 2;
+      const oy = (H - rh) / 2;
+
+      const px = x => ox + x * scale;
+      const py = y => oy + y * scale;
+
+      let out = `
+        <defs>
+          <pattern id="cadGrid" width="${scale * 0.5}" height="${scale * 0.5}" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}">
+            <path d="M ${scale * 0.5} 0 L 0 0 0 ${scale * 0.5}" fill="none" stroke="#e2e8f0" stroke-width="0.8"/>
+          </pattern>
+          <pattern id="radiantLoops" width="28" height="28" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}">
+            <path d="M 4 0 L 4 24 Q 4 28 8 28 L 14 28 Q 18 28 18 24 L 18 4 Q 18 0 22 0 L 28 0" fill="none" stroke="#f43f5e" stroke-width="1.3" stroke-dasharray="4,3" opacity="0.28"/>
+          </pattern>
+        </defs>
+      `;
+
+      // Cardinal Orientation Labels
+      out += `
+        <text x="${W / 2}" y="24" text-anchor="middle" font-size="11" font-weight="800" fill="#334155">⬆️ NORTE (Arriba en plano)</text>
+        <text x="${W / 2}" y="${H - 12}" text-anchor="middle" font-size="11" font-weight="800" fill="#334155">⬇️ SUR (Abajo en plano · Sol y Jardín)</text>
+        <text x="16" y="${H / 2}" text-anchor="middle" font-size="11" font-weight="800" fill="#334155" transform="rotate(-90 16 ${H / 2})">⬅️ OESTE (Izquierda)</text>
+        <text x="${W - 16}" y="${H / 2}" text-anchor="middle" font-size="11" font-weight="800" fill="#334155" transform="rotate(90 ${W - 16} ${H / 2})">➡️ ESTE (Derecha)</text>
+      `;
+
+      // Room Floor Background + Grid (retícula cada 50 cm)
+      out += `
+        <rect x="${ox}" y="${oy}" width="${rw}" height="${rh}" fill="#ffffff" />
+        <rect x="${ox}" y="${oy}" width="${rw}" height="${rh}" fill="url(#cadGrid)" />
+      `;
+
+      // Radiant Floor Serpentine Layer (if HVAC layer ON)
+      if (layers.hvac && room.id !== 'patio_pb' && room.id !== 'pergola_pb' && room.id !== 'porche_bbq_pb') {
+        out += `
+          <rect x="${ox + 16}" y="${oy + 16}" width="${rw - 32}" height="${rh - 32}" rx="8" fill="url(#radiantLoops)" stroke="#fb7185" stroke-width="1" stroke-dasharray="5,4" opacity="0.65"/>
+        `;
+      }
+
+      // Outer Perimeter Thick Walls
+      out += `
+        <rect x="${ox - 5}" y="${oy - 5}" width="${rw + 10}" height="${rh + 10}" fill="none" stroke="#1e293b" stroke-width="10" rx="3"/>
+      `;
+
+      // Dimension Cotas (Width & Height in meters)
+      out += `
+        <line x1="${ox}" y1="${oy - 32}" x2="${ox + rw}" y2="${oy - 32}" stroke="#475569" stroke-width="1.5"/>
+        <line x1="${ox}" y1="${oy - 40}" x2="${ox}" y2="${oy - 22}" stroke="#475569" stroke-width="1.5"/>
+        <line x1="${ox + rw}" y1="${oy - 40}" x2="${ox + rw}" y2="${oy - 22}" stroke="#475569" stroke-width="1.5"/>
+        <rect x="${ox + rw / 2 - 42}" y="${oy - 44}" width="84" height="20" rx="4" fill="#0f172a"/>
+        <text x="${ox + rw / 2}" y="${oy - 30}" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" class="mono">${room.w.toFixed(2).replace('.', ',')} m</text>
+
+        <line x1="${ox - 34}" y1="${oy}" x2="${ox - 34}" y2="${oy + rh}" stroke="#475569" stroke-width="1.5"/>
+        <line x1="${ox - 42}" y1="${oy}" x2="${ox - 24}" y2="${oy}" stroke="#475569" stroke-width="1.5"/>
+        <line x1="${ox - 42}" y1="${oy + rh}" x2="${ox - 24}" y2="${oy + rh}" stroke="#475569" stroke-width="1.5"/>
+        <g transform="translate(${ox - 34}, ${oy + rh / 2}) rotate(-90)">
+          <rect x="-42" y="-10" width="84" height="20" rx="4" fill="#0f172a"/>
+          <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" class="mono">${room.h.toFixed(2).replace('.', ',')} m</text>
+        </g>
+      `;
+
+      // Wall Openings (Doors, Sliding Doors, Windows, Glass Walls)
+      (room.openings || []).forEach(op => {
+        const isHoriz = op.wall === 'N' || op.wall === 'S';
+        const x1 = isHoriz ? px(op.pos) : (op.wall === 'W' ? ox - 5 : ox + rw + 5);
+        const y1 = isHoriz ? (op.wall === 'N' ? oy - 5 : oy + rh + 5) : py(op.pos);
+        const lenPx = op.len * scale;
+
+        let fillCol = '#ffffff';
+        let strokeCol = '#0284c7';
+        if (op.type === 'sliding' || op.type === 'door') {
+          fillCol = '#fef3c7';
+          strokeCol = '#d97706';
+        } else if (op.type === 'open') {
+          fillCol = '#f8fafc';
+          strokeCol = '#94a3b8';
+        } else {
+          fillCol = '#bae6fd';
+          strokeCol = '#0284c7';
+        }
+
+        if (isHoriz) {
+          out += `<rect x="${x1}" y="${y1 - 6}" width="${lenPx}" height="12" fill="${fillCol}" stroke="${strokeCol}" stroke-width="2"/>`;
+          if (op.type === 'sliding' || op.type === 'glass_sliding') {
+            out += `<line x1="${x1 + 6}" y1="${y1}" x2="${x1 + lenPx - 6}" y2="${y1}" stroke="${strokeCol}" stroke-width="2.5" stroke-dasharray="6,3"/>`;
+          }
+          const ly = op.wall === 'N' ? y1 - 11 : y1 + 19;
+          out += `<text x="${x1 + lenPx / 2}" y="${ly}" text-anchor="middle" font-size="10" font-weight="700" fill="${strokeCol}">${op.label}</text>`;
+        } else {
+          out += `<rect x="${x1 - 6}" y="${y1}" width="12" height="${lenPx}" fill="${fillCol}" stroke="${strokeCol}" stroke-width="2"/>`;
+          if (op.type === 'sliding' || op.type === 'glass_sliding') {
+            out += `<line x1="${x1}" y1="${y1 + 6}" x2="${x1}" y2="${y1 + lenPx - 6}" stroke="${strokeCol}" stroke-width="2.5" stroke-dasharray="6,3"/>`;
+          }
+          const lx = op.wall === 'W' ? x1 - 12 : x1 + 12;
+          out += `<text x="${lx}" y="${y1 + lenPx / 2}" text-anchor="middle" font-size="10" font-weight="700" fill="${strokeCol}" transform="rotate(-90 ${lx} ${y1 + lenPx / 2})">${op.label}</text>`;
+        }
+      });
+
+      // 1. FURNITURE & APPLIANCES LAYER
+      if (layers.furn) {
+        (room.furn || []).forEach(f => {
+          const fx = px(f.x), fy = py(f.y), fw = f.w * scale, fh = f.h * scale;
+          const isSel = selectedMarkerCode === f.code;
+          const dashAttr = f.dashed ? 'stroke-dasharray="7,5"' : '';
+          const selClass = isSel ? 'marker-selected' : '';
+          out += `
+            <g class="marker-node ${selClass}" onclick="selectMarker('${f.code}')">
+              <rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="5" fill="${f.col}" stroke="${f.str}" stroke-width="${isSel ? 3 : 2}" ${dashAttr} fill-opacity="${f.col === 'none' ? 0 : 0.88}"/>
+              <rect x="${fx + 4}" y="${fy + 4}" width="${Math.min(fw - 8, 46)}" height="16" rx="3" fill="${f.str}"/>
+              <text x="${fx + 4 + Math.min(fw - 8, 46) / 2}" y="${fy + 15}" text-anchor="middle" font-size="9.5" font-weight="800" fill="#ffffff" class="mono">${f.code}</text>
+              ${fw > 65 && fh > 36 ? `<text x="${fx + fw / 2}" y="${fy + fh / 2 + 6}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0f172a">${f.name.split('(')[0].substring(0, 26)}</text>` : ''}
+            </g>
+          `;
+        });
+      }
+
+      // 2. SWITCHES & LIGHTING LAYER
+      if (layers.sw) {
+        (room.sw || []).forEach(s => {
+          const sx = px(s.x), sy = py(s.y);
+          const isSel = selectedMarkerCode === s.code;
+          if (s.isLight) {
+            out += `
+              <g class="marker-node ${isSel ? 'marker-selected' : ''}" onclick="selectMarker('${s.code}')">
+                <circle cx="${sx}" cy="${sy}" r="16" fill="#fef08a" fill-opacity="0.7" stroke="#ca8a04" stroke-width="2" stroke-dasharray="3,2"/>
+                <circle cx="${sx}" cy="${sy}" r="9" fill="#eab308"/>
+                <text x="${sx}" y="${sy + 3.5}" text-anchor="middle" font-size="9" font-weight="800" fill="#ffffff" class="mono">${s.code}</text>
+              </g>
+            `;
+          } else {
+            out += `
+              <g class="marker-node ${isSel ? 'marker-selected' : ''}" onclick="selectMarker('${s.code}')">
+                <circle cx="${sx}" cy="${sy}" r="12" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+                <text x="${sx}" y="${sy + 3.5}" text-anchor="middle" font-size="9.5" font-weight="800" fill="#ffffff" class="mono">${s.code}</text>
+              </g>
+            `;
+          }
+        });
+      }
+
+      // 3. HVAC LAYER (Thermostats, Towel Rails, VMC Ceiling Diffusers)
+      if (layers.hvac) {
+        (room.hvac || []).forEach(h => {
+          if (h.isFloor) return; // Floor serpentine already drawn
+          const hx = px(h.x), hy = py(h.y);
+          const isSel = selectedMarkerCode === h.code;
+          const bg = h.isVMC ? '#0d9488' : '#e11d48';
+          out += `
+            <g class="marker-node ${isSel ? 'marker-selected' : ''}" onclick="selectMarker('${h.code}')">
+              <rect x="${hx - 16}" y="${hy - 11}" width="32" height="22" rx="6" fill="${bg}" stroke="#ffffff" stroke-width="2"/>
+              <text x="${hx}" y="${hy + 3.5}" text-anchor="middle" font-size="9" font-weight="800" fill="#ffffff" class="mono">${h.code}</text>
+            </g>
+          `;
+        });
+      }
+
+      // 4. ELECTRICAL SOCKETS & RJ45 LAYER (Topmost so always easy to click)
+      if (layers.elec) {
+        (room.elec || []).forEach(e => {
+          const ex = px(e.x), ey = py(e.y);
+          const isSel = selectedMarkerCode === e.code;
+          const bg = e.isRJ ? '#7c3aed' : '#d97706';
+          out += `
+            <g class="marker-node ${isSel ? 'marker-selected' : ''}" onclick="selectMarker('${e.code}')">
+              <rect x="${ex - 15}" y="${ey - 11}" width="30" height="22" rx="${e.isRJ ? 4 : 11}" fill="${bg}" stroke="#ffffff" stroke-width="2"/>
+              <text x="${ex}" y="${ey + 3.5}" text-anchor="middle" font-size="9.5" font-weight="800" fill="#ffffff" class="mono">${e.code}</text>
+              <text x="${ex}" y="${ey + 21}" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0f172a" class="mono">h=${e.h_cm}cm</text>
+            </g>
+          `;
+        });
+      }
+
+      svg.innerHTML = out;
+    }
+
+    function renderLists(room) {
+      const allItems = [
+        ...(room.furn || []).map(x => ({ ...x, cat: 'Mueble / Electrodoméstico', badgeBg: 'bg-slate-800 text-white' })),
+        ...(room.elec || []).map(x => ({ ...x, cat: x.isRJ ? 'Red RJ45 / WiFi' : 'Toma de Corriente', badgeBg: x.isRJ ? 'bg-violet-600 text-white' : 'bg-amber-600 text-white' })),
+        ...(room.sw || []).map(x => ({ ...x, cat: x.isLight ? 'Luminaria LED' : 'Interruptor / Mando', badgeBg: x.isLight ? 'bg-yellow-500 text-slate-900' : 'bg-blue-600 text-white' })),
+        ...(room.hvac || []).map(x => ({ ...x, cat: 'Climatización / VMC', badgeBg: 'bg-emerald-600 text-white' }))
+      ];
+
+      const sel = allItems.find(i => i.code === selectedMarkerCode) || allItems[0];
+      if (sel) {
+        const hText = sel.h_cm !== undefined ? ` · Altura desde suelo: h = ${sel.h_cm} cm` : '';
+        const cirText = sel.cir ? ` · Circuito: ${sel.cir}` : '';
+        document.getElementById('clicked-item-title').innerHTML = `<span class="px-2 py-0.5 rounded text-xs mono font-bold ${sel.badgeBg} mr-1.5">${sel.code}</span> ${sel.name}`;
+        document.getElementById('clicked-item-desc').textContent = `${sel.desc}${hText}${cirText}`;
+      }
+
+      // 1. Furn
+      document.getElementById('count-furn').textContent = `${(room.furn || []).length} elementos`;
+      document.getElementById('list-furn').innerHTML = (room.furn || []).map(f => `
+        <div onclick="selectMarker('${f.code}')" class="p-2 rounded-lg border cursor-pointer transition ${selectedMarkerCode === f.code ? 'bg-amber-50 border-amber-500 shadow-sm' : 'bg-slate-50/70 border-slate-200 hover:bg-slate-100'}">
+          <div class="font-bold text-slate-900 flex items-center gap-1.5">
+            <span class="px-1.5 py-0.5 rounded text-[10px] mono font-bold bg-slate-800 text-white">${f.code}</span>
+            <span>${f.name}</span>
+          </div>
+          <p class="text-[11px] text-slate-600 mt-0.5 leading-snug">${f.desc}</p>
+        </div>
+      `).join('');
+
+      // 2. Elec & RJ45
+      document.getElementById('count-elec').textContent = `${(room.elec || []).length} puntos`;
+      document.getElementById('list-elec').innerHTML = (room.elec || []).map(e => `
+        <div onclick="selectMarker('${e.code}')" class="p-2 rounded-lg border cursor-pointer transition ${selectedMarkerCode === e.code ? 'bg-amber-50 border-amber-500 shadow-sm' : 'bg-slate-50/70 border-slate-200 hover:bg-slate-100'}">
+          <div class="font-bold text-slate-900 flex items-center justify-between gap-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-1.5 py-0.5 rounded text-[10px] mono font-bold ${e.isRJ ? 'bg-violet-600' : 'bg-amber-600'} text-white">${e.code}</span>
+              <span>${e.name}</span>
+            </div>
+            <span class="px-1.5 py-0.5 rounded bg-white border border-slate-300 mono text-[10px] font-bold text-slate-700 shrink-0">h=${e.h_cm} cm</span>
+          </div>
+          <p class="text-[11px] text-slate-600 mt-0.5 leading-snug">${e.desc} <strong class="text-slate-700">(${e.cir})</strong></p>
+        </div>
+      `).join('');
+
+      // 3. Switches & Lights
+      document.getElementById('count-sw').textContent = `${(room.sw || []).length} puntos`;
+      document.getElementById('list-sw').innerHTML = (room.sw || []).map(s => `
+        <div onclick="selectMarker('${s.code}')" class="p-2 rounded-lg border cursor-pointer transition ${selectedMarkerCode === s.code ? 'bg-blue-50 border-blue-500 shadow-sm' : 'bg-slate-50/70 border-slate-200 hover:bg-slate-100'}">
+          <div class="font-bold text-slate-900 flex items-center justify-between gap-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-1.5 py-0.5 rounded text-[10px] mono font-bold ${s.isLight ? 'bg-amber-400 text-slate-900' : 'bg-blue-600 text-white'}">${s.code}</span>
+              <span>${s.name}</span>
+            </div>
+            ${s.h_cm !== undefined ? `<span class="px-1.5 py-0.5 rounded bg-white border border-slate-300 mono text-[10px] font-bold text-slate-700 shrink-0">h=${s.h_cm} cm</span>` : ''}
+          </div>
+          <p class="text-[11px] text-slate-600 mt-0.5 leading-snug">${s.desc}</p>
+        </div>
+      `).join('');
+
+      // 4. HVAC
+      document.getElementById('count-hvac').textContent = `${(room.hvac || []).length} sistemas`;
+      document.getElementById('list-hvac').innerHTML = (room.hvac || []).map(h => `
+        <div onclick="selectMarker('${h.code}')" class="p-2 rounded-lg border cursor-pointer transition ${selectedMarkerCode === h.code ? 'bg-emerald-50 border-emerald-500 shadow-sm' : 'bg-slate-50/70 border-slate-200 hover:bg-slate-100'}">
+          <div class="font-bold text-slate-900 flex items-center justify-between gap-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="px-1.5 py-0.5 rounded text-[10px] mono font-bold ${h.isVMC ? 'bg-teal-600' : 'bg-rose-600'} text-white">${h.code}</span>
+              <span>${h.name}</span>
+            </div>
+            ${h.h_cm ? `<span class="px-1.5 py-0.5 rounded bg-white border border-slate-300 mono text-[10px] font-bold text-slate-700 shrink-0">h=${h.h_cm} cm</span>` : `<span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 mono text-[10px] font-bold shrink-0">Bajo Suelo</span>`}
+          </div>
+          <p class="text-[11px] text-slate-600 mt-0.5 leading-snug">${h.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    // Inicializar
+    renderPills();
+    renderCurrentRoom();
+  </script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto de Ejecución e Instalaciones — Opción C (Oleiros)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+    <style>
+    :root {
+      --background: #f8fafc;
+      --content: #f1f5f9;
+      --card: #ffffff;
+      --sidebar: #f1f5f9;
+      --border: #cbd5e1;
+      --foreground: #0f172a;
+      --muted-foreground: #475569;
+      --placeholder: #94a3b8;
+      --primary: #059669;
+      --primary-foreground: #ffffff;
+      --secondary: #e2e8f0;
+      --secondary-foreground: #0f172a;
+      --accent: #0ea5e9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #0b1120;
+        --content: #1e293b;
+        --card: #0f172a;
+        --sidebar: #0f172a;
+        --border: #334155;
+        --foreground: #f8fafc;
+        --muted-foreground: #94a3b8;
+        --placeholder: #64748b;
+        --primary: #10b981;
+        --primary-foreground: #ffffff;
+        --secondary: #1e293b;
+        --secondary-foreground: #f8fafc;
+        --accent: #38bdf8;
+      }
+    }
+    .cad-grid {
+      background-image:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    svg text { user-select: none; }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-6">
+  <div class="max-w-7xl mx-auto space-y-5">
+
+    <!-- Header -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-[var(--primary)] text-[var(--primary-foreground)]">PROYECTO DE EJECUCIÓN · INSTALACIONES Y CALIDADES</span>
+          <span class="text-xs text-[var(--muted-foreground)]">Opción C Optimizada · Liáns / Santa Cruz (Oleiros)</span>
+        </div>
+        <h1 class="text-xl font-bold mt-1">Planos Técnicos de Instalaciones, Red RJ45, Barbacoa y Jardín</h1>
+        <p class="text-sm text-[var(--muted-foreground)]">Selecciona la planta y activa las capas técnicas (Agua/Riego, Electricidad/Enchufes, Internet RJ45 por pared, Aerotermia/Solar) o consulta la Memoria de Calidades y Electrodomésticos.</p>
+      </div>
+
+      <!-- Floor / Section Mode Selector -->
+      <div class="flex flex-wrap gap-2">
+        <button id="btn-floor-PB" onclick="setFloor('PB')" class="px-3.5 py-2 rounded-lg text-sm font-semibold border transition">
+          Planta Baja + Jardín (Cota +0,00)
+        </button>
+        <button id="btn-floor-P1" onclick="setFloor('P1')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          Planta Primera + Cubierta (+3,15)
+        </button>
+        <button id="btn-floor-SPECS" onclick="setFloor('SPECS')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          Memoria Calidades y Electrodomésticos
+        </button>
+      </div>
+    </div>
+
+    <!-- CAD Plan View -->
+    <div id="cad-container" class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+      <!-- Left Column: Interactive Blueprint (8 cols) -->
+      <div class="lg:col-span-8 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col">
+        <!-- Engineering Layer Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[var(--border)]">
+          <div class="flex flex-wrap gap-1.5">
+            <button id="layer-ALL" onclick="setLayer('ALL')" class="px-2.5 py-1.5 rounded text-xs font-semibold border transition">Todas las Capas</button>
+            <button id="layer-WATER" onclick="setLayer('WATER')" class="px-2.5 py-1.5 rounded text-xs font-medium border transition">💧 Agua + Riego Jardín</button>
+            <button id="layer-ELEC" onclick="setLayer('ELEC')" class="px-2.5 py-1.5 rounded text-xs font-medium border transition">⚡ Luz + Enchufes</button>
+            <button id="layer-NET" onclick="setLayer('NET')" class="px-2.5 py-1.5 rounded text-xs font-medium border transition">🌐 Red RJ45 + Wi-Fi</button>
+            <button id="layer-HVAC" onclick="setLayer('HVAC')" class="px-2.5 py-1.5 rounded text-xs font-medium border transition">☀️ Aerotermia + VMC + Solar</button>
+          </div>
+        </div>
+
+        <!-- SVG Blueprint -->
+        <div class="w-full overflow-x-auto cad-grid rounded-lg border border-[var(--border)] p-2 flex justify-center">
+          <svg id="inst-svg" viewBox="0 0 780 860" class="w-full max-w-[740px] h-auto"></svg>
+        </div>
+
+        <!-- Symbol Legend -->
+        <div class="mt-3 pt-3 border-t border-[var(--border)] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 text-xs text-[var(--muted-foreground)]">
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-400 inline-block border border-amber-600"></span> Punto Luz LED / Foco</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500 inline-block"></span> Base Enchufe 16A</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-purple-600 inline-block"></span> Toma Doble RJ45 Cat6A</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-1.5 bg-sky-500 inline-block"></span> Agua Fría / Riego PE</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-1.5 bg-emerald-500 inline-block"></span> Suelo Radiante / VMC</div>
+        </div>
+      </div>
+
+      <!-- Right Column: Engineering Details & Answers (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+
+        <!-- Layer Technical Summary -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+          <span id="layer-badge" class="text-xs px-2 py-0.5 rounded bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold">Esquema General</span>
+          <h2 id="layer-title" class="text-base font-bold mt-1.5">Resumen de Instalaciones en Plano</h2>
+          <p id="layer-desc" class="text-xs text-[var(--muted-foreground)] mt-1.5 leading-relaxed"></p>
+          <ul id="layer-bullets" class="mt-3 space-y-1.5 text-xs text-[var(--muted-foreground)] list-disc pl-4"></ul>
+        </div>
+
+        <!-- Barbacoa & Herramientas de Jardín Detail Card -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+          <h3 class="text-sm font-bold text-amber-600">🔥 ¿Dónde va la Barbacoa / Cocina de Verano?</h3>
+          <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+            Se integra en el **muro Este del Porche Cubierto Sur** (ver esquina inferior derecha del edificio en el plano). Queda bajo techo (clave en Galicia por si cae un orballo), resguardada del viento Nordés por el propio muro lateral y a solo **3 metros de la isla de la cocina interior**. Incluye:
+          </p>
+          <ul class="text-xs text-[var(--muted-foreground)] list-disc pl-4 space-y-1">
+            <li>Bancada de granito negro Zimbabwe de 2,40 m con **barbacoa encastrada de gas/carbón + campana extractora** con salida a cubierta (0 humos en el porche).</li>
+            <li>Fregadero auxiliar exterior con agua fría/caliente, enchufe estanco IP66 y espacio para nevera bajo encimera.</li>
+          </ul>
+
+          <div class="pt-3 border-t border-[var(--border)]">
+            <h3 class="text-sm font-bold text-emerald-600">🌿 ¿Dónde guardamos las Herramientas de Jardín?</h3>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed">
+              Hemos diseñado **dos espacios diferenciados** para no mezclar barro/hierba con el resto de la casa:
+            </p>
+            <ul class="text-xs text-[var(--muted-foreground)] list-disc pl-4 space-y-1 mt-1">
+              <li><strong>1. Armario de Jardinería Sur + Base Robot Cortacésped (3,2 m²):</strong> Integrado en el lateral Oeste del porche (oculto tras listones de madera termotratada). Ahí se guarda el cortacésped/robot (con su enchufe de carga), tijeras de poda, abonos, cojines de terraza y las electroválvulas del riego automático.</li>
+              <li><strong>2. Trastero Norte junto a Pérgola (8,1 m²):</strong> Con doble puerta (a pérgola y a pasillo exterior Oeste) para bicicletas de toda la familia, tablas de surf, hidrolimpiadora (Kärcher) y herramientas de bricolaje.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Specs & Appliances View (Hidden until tab SPECS is clicked) -->
+    <div id="specs-container" class="hidden space-y-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- Kitchen & Appliances -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Capítulo 1 · Cocina y Electrodomésticos</span>
+          <h3 class="text-base font-bold mt-1">Equipamiento Completo de Cocina con Isla y Lavandería</h3>
+          <ul class="mt-3 space-y-2.5 text-xs">
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Mobiliario y Encimera:</strong> Muebles tipo Santos (fabricación gallega en Boqueixón) modelo Fine sin tiradores (gola), acabado laca seda mate y roble humo. Isla central y bancada en porcelánico **Dekton (Cosentino) 20 mm** resistente a cortes y calor directo.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Placa con Extractor Integrado en Isla:</strong> **Bora Pure** o **Bosch Serie 8** de 80 cm con extracción de humos descendente por conducto oculto bajo el forjado (evita poner campana colgante frente al patio de cristal).
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Frío (Doble Columna XXL):</strong> Frigorífico integrable 1 puerta **Bosch / Siemens Serie 6** (177 cm todo nevera) + Congelador vertical integrable independiente (177 cm No-Frost) en el frente de columnas.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Hornos y Lavavajillas:</strong> Horno pirolítico con vapor añadido **Bosch Serie 8** + Microondas integrable en columna + Lavavajillas integrado de 60 cm ultra silencioso (42 dB) con proyección de luz en suelo.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Fregadero y Grifería:</strong> Seno bajo encimera de 70 cm **Blanco Subline Silgranit** antracita con grifo extraíble **Grohe Minta** y dispensador de jabón integrado.
+            </li>
+            <li>
+              <strong>Lavandería Independiente:</strong> Lavadora 9 kg + Secadora Bomba de Calor 9 kg **Bosch Serie 6** en columna con bandeja extraíble intermedia de plegado.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Network, Electricity & Lighting -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-bold uppercase tracking-wider text-purple-600">Capítulo 2 · Telecomunicaciones, Red RJ45 y Electricidad</span>
+          <h3 class="text-base font-bold mt-1">Red Ethernet Cat 6A Empotrada, Wi-Fi PoE e Iluminación</h3>
+          <ul class="mt-3 space-y-2.5 text-xs">
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Armario Rack Centralizado (en Cuarto Técnico):</strong> Rack mural de 6U donde llega la fibra óptica de la calle, con **Switch PoE Gigabit de 16 puertos (Ubiquiti UniFi)** y Patch Panel donde se conectan todas las habitaciones.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Cableado Interior en Pared (Tubo corrugado Ø25 mm + Cable Cat 6A S/FTP 10 Gbps):</strong>
+              <br>• **Salón:** Toma doble RJ45 tras mueble TV (Smart TV, consola, Apple TV).
+              <br>• **Cocina:** 1 toma RJ45 junto a barra/isla.
+              <br>• **Despacho / Visitas (PB):** Toma doble RJ45 en zona escritorio + 1 en zona TV.
+              <br>• **Dormitorios Hijos (×2 en P1):** En cada dormitorio, **1 toma doble RJ45 en el escritorio** (ordenador fijo/portátil sin lag) + **1 toma RJ45 frente a la cama**.
+              <br>• **Suite Principal (P1):** Toma doble RJ45 junto a TV/mesilla.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Cobertura Wi-Fi Total sin repetidores de enchufe:</strong> **3 Puntos de Acceso Wi-Fi 7 en techo alimentados por el propio cable de red (PoE)** (1 en techo de Salón/Cocina PB, 1 en distribuidor P1 y 1 exterior IP65 en el Porche para cubrir todo el jardín).
+            </li>
+            <li>
+              <strong>Mecanismos e Iluminación:</strong> Mecanismos **Jung LS 990** blanco alpino (con enchufes con cargador **USB-C integrado de 45W** en mesillas de noche, escritorios infantiles e isla de cocina). Foseados con tira LED cálida 2700K regulable (DALI/Casambi) en salón, patio y cabeceros.
+            </li>
+          </ul>
+        </div>
+
+        <!-- HVAC, Aerotermia, Solar & Water -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Capítulo 3 · Climatización, Energía Solar y Agua</span>
+          <h3 class="text-base font-bold mt-1">Aerotermia, VMC, Fotovoltaica y Riego Automático</h3>
+          <ul class="mt-3 space-y-2.5 text-xs">
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Aerotermia + Suelo Radiante/Refrescante:</strong> Bomba de calor **Vaillant aroTHERM plus** o **Daikin Altherma 3** (8 kW) con depósito de Agua Caliente Sanitaria (ACS) de **250 litros** en acero inoxidable y bomba de recirculación instantánea (sale agua caliente al segundo de abrir el grifo). Termostatos independientes en cada dormitorio y salón.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Ventilación Mecánica Controlada (VMC Doble Flujo):</strong> Equipo **Zehnder ComfoAir Q350** con recuperador entálpico (92% de rendimiento) y filtros F7 antipolen. Extrae aire viciado/húmedo de los 3 baños, cocina y lavandería, e impulsa aire limpio precalentado en salón y los 4 dormitorios.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Paneles Solares + Cargador Coche Eléctrico:</strong> **10 paneles solares de 450 Wp (4,5 kWp totales)** monocristalinos Full Black en la cubierta plana inferior + Inversor híbrido **Huawei SUN2000** preparado para batería + Cargador **Wallbox Pulsar Plus 7,4 kW** en la pérgola.
+            </li>
+            <li>
+              <strong>Riego Automático del Jardín y Patio:</strong> Programador Wi-Fi **Hunter Hydrawise** (consulta la previsión de lluvia en Oleiros y no riega si va a llover) con **4 zonas de electroválvulas**: (Zona 1: Goteo en arce japonés y plantas del Patio Central; Zona 2: Difusores emergentes césped Sur; Zona 3: Goteo seto perimetral de cierre; Zona 4: Jardineras de entrada).
+            </li>
+          </ul>
+        </div>
+
+        <!-- Enclosures, Floors & Bathrooms -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-600">Capítulo 4 · Carpinterías, Suelos y Baños</span>
+          <h3 class="text-base font-bold mt-1">Acabados Constructivos para el Clima de A Coruña</h3>
+          <ul class="mt-3 space-y-2.5 text-xs">
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Ventanas y Cerramiento del Patio:</strong> Aluminio **Cortizo Cor Vision Plus** (perfilería oculta en suelo y techo, nudo central de solo 25 mm) con rotura de puente térmico y **triple vidrio** bajo emisivo con gas argón y control solar Guardian Sun (`4+4 / 16 Ar / 4 / 16 Ar / 4+4`). Persianas motorizadas o estores screen ocultos en dormitorios.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Pavimentos:</strong> En Planta Baja, patio y porche: porcelánico rectificado **Porcelanosa / Marazzi** formato `90 × 90 cm` tono piedra caliza suave (en interior acabado C1 sedoso y en porche/patio el mismo modelo exacto en acabado **C3 antideslizante**, creando continuidad visual total). En Planta Primera: madera multicapa de roble natural especial para suelo radiante.
+            </li>
+            <li class="border-b border-[var(--border)] pb-2">
+              <strong>Sanitarios y Griferías (3 Baños):</strong> Inodoros suspendidos **Roca Inspira Round** con cisterna empotrada **Geberit Sigma**; griferías empotradas termostáticas **Grohe SmartControl** (cromo o negro mate); platos de ducha de resina mineral enrasados a nivel de suelo con mampara fija de vidrio templado 8 mm con tratamiento antical.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Scale for Plot + Building (Plot excerpt: 16m wide x 19m deep shown to fit garden, irrigation, BBQ & pergola)
+    const S = 40;
+    const OX = 95;
+    const OY = 65;
+    const px = (m) => OX + m * S;
+    const py = (m) => OY + m * S;
+    const pw = (m) => m * S;
+
+    let currentFloor = 'PB';
+    let currentLayer = 'ALL';
+
+    const LAYER_INFO = {
+      ALL: {
+        badge: 'Vista Completa Integrada',
+        title: 'Todas las Instalaciones, Barbacoa y Almacenaje de Jardín',
+        desc: 'Visualización simultánea de la arquitectura con las redes de agua, riego automático, electricidad, puntos de luz, enchufes, red de datos RJ45 por el interior de los tabiques y climatización.',
+        bullets: [
+          'Usa los botones superiores para aislar cada instalación y ver su trazado limpio sin solapes.',
+          'En el Porche Sur (abajo) verás a la derecha la Cocina Exterior con Barbacoa y a la izquierda el Cuarto de Herramientas de Jardín + Base del Robot Cortacésped.',
+          'Todas las tuberías y conductos suben de Planta Baja a Planta Primera por un único patinillo técnico vertical entre la cocina/lavandería y los baños superiores.'
+        ]
+      },
+      WATER: {
+        badge: 'Fontanería, Saneamiento y Riego',
+        title: '💧 Red de Agua Fría/Caliente, Pluviales y Riego Automático',
+        desc: 'Tubería multicapa aislada por falso techo con llave de corte en cada cuarto húmedo y retorno de ACS para tener agua caliente instantánea.',
+        bullets: [
+          'Línea Azul: Agua Fría (AF) desde acometida Norte hasta Cuarto Técnico, Cocina, 3 Baños, Fregadero de Barbacoa y 2 grifos de manguera en jardín.',
+          'Línea Roja: Agua Caliente Sanitaria (ACS) desde acumulador Aerotermia (250 L) a Cocina, Lavandería, Baños y Barbacoa.',
+          'Línea Verde Punteada (Jardín y Patio): 4 sectores de Riego Automático (Hunter Wi-Fi) con difusores emergentes en césped Sur y goteo oculto en el Arce Japonés del Patio Central.',
+          'Sumidero sifónico oculto bajo la grava/tarima del Patio Central conectado a la red de aguas pluviales.'
+        ]
+      },
+      ELEC: {
+        badge: 'Baja Tensión e Iluminación (REBT)',
+        title: '⚡ Cuadro Eléctrico, Iluminación LED, Enchufes y Tomas USB-C',
+        desc: 'Grado de Electrificación Elevada con protección contra sobretensiones (muy importante en tormentas invernales en Galicia) y circuitos diferenciados.',
+        bullets: [
+          'Círculos Amarillos: Downlights LED empotrados (3000K), foseados lineales indirectos en Salón/Patio (2700K) y balizas crepusculares exteriores.',
+          'Cuadrados Rojos (E): Bases de enchufe 16A (mínimo 6 en salón, 8 en cocina/isla, 4 en cada dormitorio infantil + tomas USB-C en cabeceros y escritorios).',
+          'Enchufes Estancos IP66 en el Porche (zona comedor exterior y barbacoa), en el Patio Central y en el Cuarto de Jardinería (para cargar el robot cortacésped y baterías).',
+          'Línea dedicada 32A desde el cuadro hasta el Cargador Wallbox para Coche Eléctrico en la Pérgola.'
+        ]
+      },
+      NET: {
+        badge: 'Telecomunicaciones y Datos 10 Gbps',
+        title: '🌐 Cableado Ethernet RJ45 Cat 6A por el interior de la pared + Wi-Fi PoE',
+        desc: 'Cero cables vistos: todas las estancias van unidas mediante tubo corrugado empotrado en tabique hasta el Armario Rack del Cuarto Técnico.',
+        bullets: [
+          'Cuadrados Morados (RJ45): Tomas dobles de red empotradas en pared en Salón (TV), Cocina, Despacho/Visitas, Escritorio Niña, Escritorio Niño y Suite Principal.',
+          'Círculos Celestes ((Wi-Fi)): 3 Puntos de Acceso Wi-Fi 7 de techo (UniFi) alimentados por el propio cable de red (PoE): cobertura máxima en PB, P1 y Jardín/Porche.',
+          'Videoportero IP conectado al móvil (puedes abrir la cancela peatonal o hablar con el repartidor desde cualquier lugar).'
+        ]
+      },
+      HVAC: {
+        badge: 'Eficiencia Energética Clase A',
+        title: '☀️ Aerotermia, Suelo Radiante, Ventilación VMC y Paneles Solares',
+        desc: 'Confort térmico total a 21 ºC todo el invierno sin radiadores en las paredes y renovación constante de aire filtrado sin humedad.',
+        bullets: [
+          'Serpentines Verdes: Circuitos independientes de Suelo Radiante por agua a baja temperatura (35 ºC) con termostato digital en cada habitación.',
+          'VMC Doble Flujo: Impulsión de aire limpio en dormitorios y salón; extracción de humedad y olores en baños, cocina y lavandería.',
+          'En Planta Primera (Cubierta Norte): 10 Paneles Fotovoltaicos (4,5 kWp) que alimentan la Aerotermia durante las horas centrales del día.'
+        ]
+      }
+    };
+
+    function setFloor(fl) {
+      currentFloor = fl;
+      ['PB', 'P1', 'SPECS'].forEach(k => {
+        const b = document.getElementById('btn-floor-' + k);
+        if (k === fl) {
+          b.className = 'px-3.5 py-2 rounded-lg text-sm font-semibold border border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)] shadow-sm transition';
+        } else {
+          b.className = 'px-3.5 py-2 rounded-lg text-sm font-medium border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] hover:opacity-80 transition';
+        }
+      });
+
+      const cadCont = document.getElementById('cad-container');
+      const specsCont = document.getElementById('specs-container');
+      if (fl === 'SPECS') {
+        cadCont.classList.add('hidden');
+        specsCont.classList.remove('hidden');
+      } else {
+        cadCont.classList.remove('hidden');
+        specsCont.classList.add('hidden');
+        renderBlueprint();
+      }
+    }
+
+    function setLayer(ly) {
+      currentLayer = ly;
+      ['ALL', 'WATER', 'ELEC', 'NET', 'HVAC'].forEach(k => {
+        const b = document.getElementById('layer-' + k);
+        if (k === ly) {
+          b.className = 'px-2.5 py-1.5 rounded text-xs font-semibold border border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)] transition';
+        } else {
+          b.className = 'px-2.5 py-1.5 rounded text-xs font-medium border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] hover:opacity-80 transition';
+        }
+      });
+
+      const info = LAYER_INFO[ly];
+      document.getElementById('layer-badge').textContent = info.badge;
+      document.getElementById('layer-title').textContent = info.title;
+      document.getElementById('layer-desc').textContent = info.desc;
+      document.getElementById('layer-bullets').innerHTML = info.bullets.map(x => `<li>${x}</li>`).join('');
+
+      renderBlueprint();
+    }
+
+    // Helper symbols
+    function symSocket(x, y, label='E') {
+      return `
+        <g transform="translate(${px(x)}, ${py(y)})">
+          <rect x="-7" y="-7" width="14" height="14" rx="2" fill="#f43f5e" stroke="#fff" stroke-width="1"/>
+          <text x="0" y="3.5" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">${label}</text>
+        </g>
+      `;
+    }
+
+    function symRJ45(x, y) {
+      return `
+        <g transform="translate(${px(x)}, ${py(y)})">
+          <rect x="-13" y="-8" width="26" height="16" rx="3" fill="#9333ea" stroke="#fff" stroke-width="1.2"/>
+          <text x="0" y="3.5" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">RJ45</text>
+        </g>
+      `;
+    }
+
+    function symWifi(x, y) {
+      return `
+        <g transform="translate(${px(x)}, ${py(y)})">
+          <circle cx="0" cy="0" r="14" fill="#0ea5e9" fill-opacity="0.22" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <circle cx="0" cy="0" r="8" fill="#0284c7"/>
+          <text x="0" y="3" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">WiFi</text>
+        </g>
+      `;
+    }
+
+    function symLight(x, y) {
+      return `
+        <g transform="translate(${px(x)}, ${py(y)})">
+          <circle cx="0" cy="0" r="7" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"/>
+          <line x1="-5" y1="-5" x2="5" y2="5" stroke="#854d0e" stroke-width="1.2"/>
+          <line x1="-5" y1="5" x2="5" y2="-5" stroke="#854d0e" stroke-width="1.2"/>
+        </g>
+      `;
+    }
+
+    function renderBlueprint() {
+      const svg = document.getElementById('inst-svg');
+      const showW = currentLayer === 'ALL' || currentLayer === 'WATER';
+      const showE = currentLayer === 'ALL' || currentLayer === 'ELEC';
+      const showN = currentLayer === 'ALL' || currentLayer === 'NET';
+      const showH = currentLayer === 'ALL' || currentLayer === 'HVAC';
+
+      let html = '';
+
+      if (currentFloor === 'PB') {
+        // 1. Base Architectural Plan PB (12.2m x 14.2m + South Garden strip up to y=17.8m)
+        html += `
+          <!-- South Garden Area -->
+          <rect x="${px(-0.8)}" y="${py(14.2)}" width="${pw(13.8)}" height="${pw(3.8)}" rx="6" fill="#22c55e" fill-opacity="0.08" stroke="#16a34a" stroke-dasharray="5 4"/>
+          <text x="${px(6.1)}" y="${py(17.5)}" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">
+            JARDÍN PRIVADO SUR CON RIEGO AUTOMÁTICO POR SECTORES (CÉSPED + SETO PERIMETRAL)
+          </text>
+
+          <!-- Base Rooms PB -->
+          <g stroke="currentColor" stroke-opacity="0.5" stroke-width="2" fill="var(--card)" fill-opacity="0.65">
+            <!-- Pergola 2 Cars -->
+            <rect x="${px(0)}" y="${py(0)}" width="${pw(5.4)}" height="${pw(5.2)}" stroke-dasharray="6 4"/>
+            <!-- Trastero Bicis/Surf + Cuarto Tecnico -->
+            <rect x="${px(0)}" y="${py(5.2)}" width="${pw(3.0)}" height="${pw(2.8)}"/>
+            <!-- Lavanderia / Despensa -->
+            <rect x="${px(3.0)}" y="${py(5.2)}" width="${pw(2.4)}" height="${pw(2.8)}"/>
+            <!-- Hall -->
+            <rect x="${px(5.4)}" y="${py(0)}" width="${pw(2.4)}" height="${pw(3.0)}"/>
+            <!-- Patio Central -->
+            <rect x="${px(5.4)}" y="${py(3.0)}" width="${pw(3.4)}" height="${pw(5.0)}" fill="#22c55e" fill-opacity="0.12" stroke="#38bdf8" stroke-width="4"/>
+            <!-- Baño PB -->
+            <rect x="${px(7.8)}" y="${py(0)}" width="${pw(1.8)}" height="${pw(3.0)}"/>
+            <!-- Dormitorio Visitas / Despacho -->
+            <rect x="${px(9.6)}" y="${py(0)}" width="${pw(2.6)}" height="${pw(3.0)}"/>
+            <!-- Cocina con Isla -->
+            <rect x="${px(8.8)}" y="${py(3.0)}" width="${pw(3.4)}" height="${pw(5.0)}"/>
+            <!-- Salon - Comedor -->
+            <rect x="${px(0)}" y="${py(8.0)}" width="${pw(12.2)}" height="${pw(4.0)}"/>
+            <!-- Porche Sur -->
+            <rect x="${px(0)}" y="${py(12.0)}" width="${pw(12.2)}" height="${pw(2.2)}" fill="#eab308" fill-opacity="0.08"/>
+          </g>
+
+          <!-- NEW! Cuarto Herramientas Jardin + Robot Cortacesped (West side of Porch: x=0..1.6, y=12.0..14.2) -->
+          <rect x="${px(0)}" y="${py(12.0)}" width="${pw(1.6)}" height="${pw(2.2)}" fill="#10b981" fill-opacity="0.28" stroke="#059669" stroke-width="2.5"/>
+          <text x="${px(0.8)}" y="${py(12.9)}" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">Cuarto</text>
+          <text x="${px(0.8)}" y="${py(13.3)}" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor">Jardín</text>
+          <text x="${px(0.8)}" y="${py(13.7)}" text-anchor="middle" font-size="10" font-weight="600" fill="#059669">(3,5 m²)</text>
+
+          <!-- NEW! Zona Barbacoa Cubierta + Fregadero Exterior (East side of Porch: x=9.8..12.2, y=12.0..14.2) -->
+          <rect x="${px(9.8)}" y="${py(12.0)}" width="${pw(2.4)}" height="${pw(0.85)}" fill="#f59e0b" fill-opacity="0.35" stroke="#d97706" stroke-width="2.5"/>
+          <text x="${px(11.0)}" y="${py(12.5)}" text-anchor="middle" font-size="11" font-weight="700" fill="#b45309">🔥 BARBACOA + FREGADERO</text>
+
+          <!-- Room Base Labels -->
+          <g fill="currentColor" fill-opacity="0.55" font-size="11" font-weight="700" text-anchor="middle">
+            <text x="${px(2.7)}" y="${py(2.5)}">PÉRGOLA 2 COCHES</text>
+            <text x="${px(1.5)}" y="${py(6.5)}">CUARTO TÉCNICO / BICIS</text>
+            <text x="${px(4.2)}" y="${py(6.5)}">LAVANDERÍA</text>
+            <text x="${px(6.6)}" y="${py(1.5)}">HALL</text>
+            <text x="${px(7.1)}" y="${py(5.5)}" fill="#15803d">PATIO CENTRAL</text>
+            <text x="${px(8.7)}" y="${py(1.5)}">BAÑO PB</text>
+            <text x="${px(10.9)}" y="${py(1.5)}">DESPACHO / VISITAS</text>
+            <text x="${px(10.5)}" y="${py(5.5)}">COCINA ISLA</text>
+            <text x="${px(5.2)}" y="${py(10.0)}">SALÓN - COMEDOR SUR (46 m²)</text>
+            <text x="${px(5.7)}" y="${py(13.2)}">PORCHE CUBIERTO SUR</text>
+          </g>
+        `;
+
+        // LAYER: WATER + IRRIGATION
+        if (showW) {
+          html += `
+            <g fill="none">
+              <!-- Main Cold Water Supply from Street North to Tech Room -->
+              <path d="M ${px(1.2)} ${py(-0.8)} L ${px(1.2)} ${py(6.0)} L ${px(4.2)} ${py(6.0)} L ${px(8.7)} ${py(6.0)} L ${px(8.7)} ${py(1.8)}"
+                    stroke="#0284c7" stroke-width="3"/>
+              <!-- Branch to Kitchen Island & Outdoor BBQ Sink -->
+              <path d="M ${px(8.7)} ${py(6.0)} L ${px(10.5)} ${py(6.0)} L ${px(11.4)} ${py(12.4)}"
+                    stroke="#0284c7" stroke-width="2.5"/>
+              <!-- Hot Water (ACS) Red Line -->
+              <path d="M ${px(1.5)} ${py(6.3)} L ${px(8.9)} ${py(6.3)} L ${px(8.9)} ${py(2.0)} M ${px(8.9)} ${py(6.3)} L ${px(10.7)} ${py(6.3)} L ${px(11.6)} ${py(12.4)}"
+                    stroke="#e11d48" stroke-width="2.2" stroke-dasharray="5 2"/>
+
+              <!-- Garden Automatic Irrigation Loop (Hunter Wi-Fi in Garden Room) -->
+              <path d="M ${px(0.8)} ${py(13.8)} L ${px(0.8)} ${py(16.2)} L ${px(11.5)} ${py(16.2)} L ${px(11.5)} ${py(14.6)}"
+                    stroke="#16a34a" stroke-width="2.5" stroke-dasharray="4 3"/>
+              <!-- Irrigation pipe to Central Patio Maple Tree -->
+              <path d="M ${px(4.2)} ${py(6.0)} L ${px(7.1)} ${py(5.5)}" stroke="#16a34a" stroke-width="2" stroke-dasharray="3 3"/>
+
+              <!-- Pop-up Sprinklers in South Lawn -->
+              <circle cx="${px(1.5)}" cy="${py(16.2)}" r="8" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+              <circle cx="${px(4.5)}" cy="${py(16.2)}" r="8" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+              <circle cx="${px(7.8)}" cy="${py(16.2)}" r="8" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+              <circle cx="${px(11.0)}" cy="${py(16.2)}" r="8" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+              <text x="${px(6.2)}" y="${py(15.8)}" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">
+                💧 Red Riego Automático Enterrada (4 Difusores Emergentes + Goteo Patio)
+              </text>
+            </g>
+          `;
+        }
+
+        // LAYER: HVAC (Aerotermia + Underfloor Heating + VMC)
+        if (showH) {
+          html += `
+            <!-- Aerotermia Unit in Tech Room -->
+            <rect x="${px(0.2)}" y="${py(5.4)}" width="${pw(1.1)}" height="${pw(0.9)}" rx="3" fill="#10b981" stroke="#047857" stroke-width="2"/>
+            <text x="${px(0.75)}" y="${py(5.95)}" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">AEROTERMIA</text>
+
+            <!-- Underfloor Heating Loops (Serpentine in Living, Kitchen & Guest Room) -->
+            <path d="M ${px(0.6)} ${py(8.6)} h ${pw(3.2)} v ${pw(0.6)} h ${-pw(3.2)} v ${pw(0.6)} h ${pw(3.2)} v ${pw(0.6)} h ${-pw(3.2)}"
+                  fill="none" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.7"/>
+            <path d="M ${px(6.5)} ${py(8.6)} h ${pw(4.5)} v ${pw(0.6)} h ${-pw(4.5)} v ${pw(0.6)} h ${pw(4.5)} v ${pw(0.6)} h ${-pw(4.5)}"
+                  fill="none" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.7"/>
+            <path d="M ${px(9.3)} ${py(3.6)} h ${pw(2.3)} v ${pw(0.7)} h ${-pw(2.3)} v ${pw(0.7)} h ${pw(2.3)}"
+                  fill="none" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.7"/>
+          `;
+        }
+
+        // LAYER: NETWORK RJ45 CAT 6A IN WALLS + WIFI POE
+        if (showN) {
+          html += `
+            <!-- Central Rack in Tech Room (x=2.2, y=5.6) -->
+            <rect x="${px(1.8)}" y="${py(5.4)}" width="${pw(1.0)}" height="${pw(0.8)}" rx="3" fill="#7e22ce" stroke="#fff" stroke-width="1.5"/>
+            <text x="${px(2.3)}" y="${py(5.9)}" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">RACK FIBRA</text>
+
+            <!-- In-wall Cat6A conduits to every room -->
+            <g fill="none" stroke="#9333ea" stroke-width="2.2" stroke-dasharray="6 3">
+              <!-- To Living Room TV wall (West) -->
+              <path d="M ${px(2.3)} ${py(6.2)} L ${px(0.3)} ${py(6.2)} L ${px(0.3)} ${py(10.2)}"/>
+              <!-- To Kitchen Island/Wall -->
+              <path d="M ${px(2.3)} ${py(5.8)} L ${px(11.9)} ${py(5.8)}"/>
+              <!-- To Guest Room / Office Desk & TV -->
+              <path d="M ${px(2.3)} ${py(5.5)} L ${px(11.2)} ${py(5.5)} L ${px(11.2)} ${py(0.4)}"/>
+              <!-- To Ceiling Wi-Fi Access Points -->
+              <path d="M ${px(2.3)} ${py(6.2)} L ${px(6.8)} ${py(9.6)} L ${px(6.8)} ${py(12.8)}"/>
+            </g>
+
+            <!-- RJ45 Wall Outlets -->
+            ${symRJ45(0.35, 10.2)}
+            ${symRJ45(11.85, 5.8)}
+            ${symRJ45(11.2, 0.35)}
+            ${symRJ45(9.9, 2.7)}
+
+            <!-- Ceiling PoE Wi-Fi 7 Access Points -->
+            ${symWifi(6.8, 9.6)}
+            ${symWifi(6.8, 12.8)}
+          `;
+        }
+
+        // LAYER: ELECTRICITY, LIGHTING & SOCKETS
+        if (showE) {
+          html += `
+            <!-- Main Electrical Panel CGMP + Wallbox EV Charger in Pergola -->
+            <rect x="${px(2.4)}" y="${py(4.9)}" width="${pw(1.1)}" height="${pw(0.5)}" rx="2" fill="#dc2626"/>
+            <text x="${px(2.95)}" y="${py(5.23)}" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">WALLBOX 7.4kW</text>
+
+            <!-- LED Lights in rooms, porch, patio & BBQ -->
+            ${symLight(2.7, 2.6)}
+            ${symLight(1.5, 6.9)}
+            ${symLight(4.2, 6.9)}
+            ${symLight(6.6, 1.5)}
+            ${symLight(7.1, 4.2)}
+            ${symLight(8.7, 1.5)}
+            ${symLight(10.9, 1.5)}
+            ${symLight(10.2, 4.5)}
+            ${symLight(10.2, 6.5)}
+            ${symLight(2.5, 9.5)}
+            ${symLight(2.5, 11.0)}
+            ${symLight(8.8, 9.5)}
+            ${symLight(8.8, 11.0)}
+            ${symLight(4.2, 13.1)}
+            ${symLight(8.2, 13.1)}
+            ${symLight(11.0, 13.1)}
+
+            <!-- Power Sockets 16A + USB-C + Waterproof IP66 -->
+            ${symSocket(0.25, 8.8)}
+            ${symSocket(0.25, 11.2)}
+            ${symSocket(5.0, 11.8)}
+            ${symSocket(9.8, 4.8, 'I')}
+            ${symSocket(12.0, 4.0)}
+            ${symSocket(12.0, 6.8)}
+            ${symSocket(12.0, 1.5, 'U')}
+            ${symSocket(8.0, 0.3)}
+            ${symSocket(11.8, 12.4, 'IP')}
+            ${symSocket(0.3, 13.8, 'R')}
+          `;
+        }
+
+      } else {
+        // PLANTA PRIMERA (P1)
+        html += `
+          <!-- Base Rooms P1 -->
+          <g stroke="currentColor" stroke-opacity="0.5" stroke-width="2" fill="var(--card)" fill-opacity="0.65">
+            <!-- Lower Roof North (Solar Panels) -->
+            <rect x="${px(0)}" y="${py(0)}" width="${pw(12.2)}" height="${pw(3.0)}" fill="#94a3b8" fill-opacity="0.15" stroke-dasharray="5 3"/>
+            <!-- Patio Void -->
+            <rect x="${px(5.4)}" y="${py(3.0)}" width="${pw(3.4)}" height="${pw(3.6)}" fill="#22c55e" fill-opacity="0.12" stroke="#38bdf8" stroke-width="4"/>
+            <!-- Galeria Estudio -->
+            <rect x="${px(3.2)}" y="${py(6.6)}" width="${pw(5.6)}" height="${pw(1.4)}"/>
+            <!-- Baño Hijos -->
+            <rect x="${px(0)}" y="${py(5.0)}" width="${pw(3.2)}" height="${pw(3.0)}"/>
+            <!-- Dormitorio Niña (9 años) -->
+            <rect x="${px(0)}" y="${py(8.0)}" width="${pw(4.0)}" height="${pw(4.0)}"/>
+            <!-- Dormitorio Niño (7 años) -->
+            <rect x="${px(4.0)}" y="${py(8.0)}" width="${pw(4.0)}" height="${pw(4.0)}"/>
+            <!-- Vestidor + Baño Suite -->
+            <rect x="${px(8.8)}" y="${py(3.0)}" width="${pw(3.4)}" height="${pw(5.0)}"/>
+            <!-- Dormitorio Suite Principal -->
+            <rect x="${px(8.0)}" y="${py(8.0)}" width="${pw(4.2)}" height="${pw(4.0)}"/>
+          </g>
+
+          <g fill="currentColor" fill-opacity="0.55" font-size="11" font-weight="700" text-anchor="middle">
+            <text x="${px(6.1)}" y="${py(0.7)}">CUBIERTA PLANA TÉCNICA NORTE (10 PANELES SOLARES 4,5 kWp)</text>
+            <text x="${px(7.1)}" y="${py(4.8)}" fill="#15803d">VACÍO PATIO</text>
+            <text x="${px(6.0)}" y="${py(7.4)}">GALERÍA LECTURA / DISTRIBUIDOR</text>
+            <text x="${px(1.6)}" y="${py(6.5)}">BAÑO HIJOS (DOBLE)</text>
+            <text x="${px(2.0)}" y="${py(10.0)}">DORM. NIÑA (14,6 m²)</text>
+            <text x="${px(6.0)}" y="${py(10.0)}">DORM. NIÑO (14,6 m²)</text>
+            <text x="${px(10.5)}" y="${py(5.5)}">VESTIDOR + BAÑO SUITE</text>
+            <text x="${px(10.1)}" y="${py(10.0)}">SUITE MATRIMONIO</text>
+          </g>
+        `;
+
+        // LAYER HVAC & SOLAR ON P1
+        if (showH) {
+          for(let p=0; p<5; p++) {
+            html += `
+              <rect x="${px(0.8 + p*2.2)}" y="${py(1.1)}" width="${pw(1.8)}" height="${pw(1.3)}" rx="2" fill="#1d4ed8" fill-opacity="0.75" stroke="#fff" stroke-width="1.2"/>
+              <line x1="${px(0.8 + p*2.2)}" y1="${py(1.75)}" x2="${px(2.6 + p*2.2)}" y2="${py(1.75)}" stroke="#93c5fd" stroke-width="1"/>
+            `;
+          }
+          // Underfloor heating loops in all 3 bedrooms
+          html += `
+            <path d="M ${px(0.5)} ${py(8.5)} h ${pw(3.0)} v ${pw(0.6)} h ${-pw(3.0)} v ${pw(0.6)} h ${pw(3.0)}" fill="none" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.7"/>
+            <path d="M ${px(4.5)} ${py(8.5)} h ${pw(3.0)} v ${pw(0.6)} h ${-pw(3.0)} v ${pw(0.6)} h ${pw(3.0)}" fill="none" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.7"/>
+            <path d="M ${px(8.5)} ${py(8.5)} h ${pw(3.0)} v ${pw(0.6)} h ${-pw(3.0)} v ${pw(0.6)} h ${pw(3.0)}" fill="none" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.7"/>
+          `;
+        }
+
+        // LAYER WATER ON P1
+        if (showW) {
+          html += `
+            <path d="M ${px(2.8)} ${py(6.0)} L ${px(1.2)} ${py(6.0)} L ${px(1.2)} ${py(5.3)} M ${px(2.8)} ${py(6.0)} L ${px(10.5)} ${py(6.0)} L ${px(10.5)} ${py(3.6)}"
+                  fill="none" stroke="#0284c7" stroke-width="2.8"/>
+            <path d="M ${px(2.8)} ${py(6.3)} L ${px(1.4)} ${py(6.3)} L ${px(1.4)} ${py(5.3)} M ${px(2.8)} ${py(6.3)} L ${px(10.8)} ${py(6.3)} L ${px(10.8)} ${py(3.6)}"
+                  fill="none" stroke="#e11d48" stroke-width="2.2" stroke-dasharray="5 2"/>
+          `;
+        }
+
+        // LAYER NETWORK RJ45 ON P1 (Every bedroom has wired internet inside walls!)
+        if (showN) {
+          html += `
+            <g fill="none" stroke="#9333ea" stroke-width="2.2" stroke-dasharray="6 3">
+              <!-- Riser from PB Rack (x=2.3, y=5.8) branching to all 3 bedrooms -->
+              <path d="M ${px(2.6)} ${py(6.8)} L ${px(1.8)} ${py(11.7)}"/>
+              <path d="M ${px(2.6)} ${py(6.8)} L ${px(3.7)} ${py(9.5)}"/>
+              <path d="M ${px(2.6)} ${py(6.8)} L ${px(5.8)} ${py(11.7)}"/>
+              <path d="M ${px(2.6)} ${py(6.8)} L ${px(7.7)} ${py(9.5)}"/>
+              <path d="M ${px(2.6)} ${py(6.8)} L ${px(11.8)} ${py(10.2)}"/>
+              <path d="M ${px(2.6)} ${py(6.8)} L ${px(6.0)} ${py(7.2)}"/>
+            </g>
+            <!-- Girl Bedroom: Desk RJ45 + TV wall RJ45 -->
+            ${symRJ45(1.8, 11.7)}
+            ${symRJ45(3.7, 9.5)}
+            <!-- Boy Bedroom: Desk RJ45 + TV wall RJ45 -->
+            ${symRJ45(5.8, 11.7)}
+            ${symRJ45(7.7, 9.5)}
+            <!-- Master Suite RJ45 -->
+            ${symRJ45(11.8, 10.2)}
+            <!-- Ceiling Wi-Fi 7 PoE AP in Upper Gallery -->
+            ${symWifi(6.0, 7.2)}
+          `;
+        }
+
+        // LAYER ELECTRICITY ON P1
+        if (showE) {
+          html += `
+            ${symLight(1.6, 6.2)}
+            ${symLight(2.0, 9.6)}
+            ${symLight(6.0, 9.6)}
+            ${symLight(10.1, 9.6)}
+            ${symLight(10.5, 4.5)}
+            ${symLight(4.8, 7.2)}
+            ${symSocket(0.3, 8.6, 'U')}
+            ${symSocket(2.4, 11.7, 'U')}
+            ${symSocket(4.3, 8.6, 'U')}
+            ${symSocket(6.4, 11.7, 'U')}
+            ${symSocket(8.3, 8.6, 'U')}
+            ${symSocket(11.8, 8.6, 'U')}
+          `;
+        }
+      }
+
+      svg.innerHTML = html;
+    }
+
+    // Init
+    setLayer('ALL');
+    setFloor('PB');
+  </script>
+</body>
+</html>

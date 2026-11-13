@@ -1,0 +1,635 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto Optimizado Opción C (212 m²) — Pabellón con Patio Central (Oleiros)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .cad-bg {
+      background-image:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .room-zone {
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+    .room-zone:hover, .room-zone.selected {
+      fill-opacity: 0.38 !important;
+      stroke-width: 2.5px !important;
+    }
+    svg text { user-select: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #f8fafc;
+      --foreground: #0f172a;
+      --card: #ffffff;
+      --card-foreground: #0f172a;
+      --content: #ffffff;
+      --border: #e2e8f0;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --accent: #f1f5f9;
+      --accent-foreground: #0f172a;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-6">
+  <div class="max-w-7xl mx-auto space-y-5">
+
+    <!-- Header -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-600 text-white">VERSIÓN OPTIMIZADA · AHORRO -119.800 €</span>
+          <span class="text-xs text-[var(--muted-foreground)]">212 m² construidos + Pérgola 2 coches · Liáns / Santa Cruz (Oleiros)</span>
+        </div>
+        <h1 class="text-xl font-bold mt-1">Opción C Optimizada: "Pabellón con Patio de Luz" (Huella 12,20 × 14,20 m)</h1>
+        <p class="text-sm text-[var(--muted-foreground)]">Mantiene intactos el Patio Central y la Cocina con Isla, sustituye el garaje cerrado por Pérgola Cubierta + Trastero de 10 m² y ajusta las estancias a proporciones óptimas.</p>
+      </div>
+
+      <!-- View Selector -->
+      <div class="flex flex-wrap gap-2">
+        <button id="tab-PB" onclick="setView('PB')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          1. Planta Baja (1:50)
+        </button>
+        <button id="tab-P1" onclick="setView('P1')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          2. Planta Primera (1:50)
+        </button>
+        <button id="tab-SEC" onclick="setView('SEC')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          3. Sección Bioclimática (A-A')
+        </button>
+        <button id="tab-BUDGET" onclick="setView('BUDGET')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          4. Presupuesto Total + Terreno (€)
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Container for Plans / Section -->
+    <div id="plan-view-container" class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+      <!-- Left CAD Canvas (8 cols) -->
+      <div class="lg:col-span-8 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col">
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[var(--border)]">
+          <span id="canvas-title" class="text-sm font-bold">Planta Baja Optimizada (Cota +0,00)</span>
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="chk-flow" checked onchange="renderActiveSVG()" />
+              <span>Ruta de Compra / Accesos</span>
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="chk-cotas" checked onchange="renderActiveSVG()" />
+              <span>Cotas interiores</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="w-full overflow-x-auto cad-bg rounded-lg border border-[var(--border)] p-3 flex justify-center">
+          <svg id="detail-svg" viewBox="0 0 760 800" class="w-full max-w-[720px] h-auto"></svg>
+        </div>
+
+        <div class="mt-3 pt-3 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--muted-foreground)]">
+          <div class="flex flex-wrap gap-3">
+            <span class="flex items-center gap-1"><span class="w-3 h-1.5 bg-sky-400 inline-block"></span> Vidrio Suelo a Techo</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-1.5 bg-amber-500 inline-block"></span> Corredera Oculta Cocina</span>
+            <span class="flex items-center gap-1"><span class="w-3 h-1.5 bg-emerald-500 inline-block"></span> Acceso seco desde Pérgola</span>
+          </div>
+          <span>Huella más compacta (12,20 × 14,20 m) = +42 m² extra de jardín libre</span>
+        </div>
+      </div>
+
+      <!-- Right Inspector (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)]">Estancia Seleccionada</span>
+            <span id="det-zone-badge" class="text-xs px-2 py-0.5 rounded bg-[var(--secondary)] text-[var(--secondary-foreground)] font-medium">Zona de Día</span>
+          </div>
+          <h2 id="det-room-title" class="text-base font-bold mt-1.5">Cocina con Isla junto al Patio</h2>
+          <div class="grid grid-cols-2 gap-2 mt-3 text-xs">
+            <div class="p-2.5 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+              <span class="text-[var(--muted-foreground)] block">Superficie Útil</span>
+              <span id="det-room-area" class="text-sm font-bold mt-0.5 block">19,5 m²</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+              <span class="text-[var(--muted-foreground)] block">Dimensiones Libres</span>
+              <span id="det-room-dims" class="text-sm font-bold mt-0.5 block">3,55 × 5,50 m</span>
+            </div>
+          </div>
+          <p id="det-room-desc" class="text-xs text-[var(--muted-foreground)] mt-3 leading-relaxed"></p>
+          <div class="mt-3 pt-3 border-t border-[var(--border)]">
+            <span class="text-xs font-semibold block mb-1.5">Soluciones constructivas incluidas:</span>
+            <ul id="det-room-items" class="text-xs text-[var(--muted-foreground)] space-y-1 list-disc pl-4"></ul>
+          </div>
+        </div>
+
+        <!-- Comparison Card: Why this optimized plan is better -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-2.5">
+          <h3 class="text-sm font-bold">Ventajas del Ajuste Arquitectónico</h3>
+          <div class="space-y-2 text-xs text-[var(--muted-foreground)] leading-relaxed">
+            <p><strong>1. Pérgola Cubierta + Trastero (10,2 m²):</strong> Aparcas los 2 coches a cubierto de la lluvia bajo vigas de hormigón/madera integradas en el volumen de la casa, con acceso directo bajo techo a un cuarto cerrado para bicis, tablas de surf y cortacésped.</p>
+            <p><strong>2. El Patio (18,5 m²) y la Cocina (19,5 m²) no pierden protagonismo:</strong> Se mantienen como el corazón de la vivienda con su gran isla de 3,00 m mirando al arce japonés.</p>
+            <p><strong>3. Más jardín soleado:</strong> Al compactar 1,40 m el ancho y 1,60 m el fondo del edificio, ganas más de **40 m² adicionales de césped al Sur**.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Container (Tab 4) -->
+    <div id="budget-view-container" class="hidden grid-cols-1 lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-8 bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-base font-bold">Presupuesto Comparativo Llave en Mano (Opción C Optimizada vs. Original)</h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Incluye Construcción, Beneficio Constructor, Técnicos, Licencias en Oleiros, Impuestos (IVA/ITP) y Terreno.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-600 text-white">Ahorro Total: -119.840 €</span>
+        </div>
+
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full text-xs">
+            <thead>
+              <tr class="border-b border-[var(--border)] text-left text-[var(--muted-foreground)]">
+                <th class="py-2">Concepto</th>
+                <th class="py-2 text-right">Opción C Original (252 m²)</th>
+                <th class="py-2 text-right text-emerald-600 font-bold">Opción C Optimizada (212 m²)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[var(--border)]">
+              <tr>
+                <td class="py-2.5 font-semibold">1. Ejecución Material Vivienda (PEM)</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">404.000 €</td>
+                <td class="py-2.5 text-right font-semibold">324.000 €</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-semibold">2. Gastos Generales + Beneficio Constructor (15%)</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">60.600 €</td>
+                <td class="py-2.5 text-right font-semibold">48.600 €</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-semibold">3. Piscina (En Fase 2: se deja preinstalación de tubos/desagüe)</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">24.000 €</td>
+                <td class="py-2.5 text-right font-semibold text-emerald-600">1.200 € (Preinstalación)</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-semibold">4. IVA de Construcción (10% Autopromotor)</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">48.860 €</td>
+                <td class="py-2.5 text-right font-semibold">37.380 €</td>
+              </tr>
+              <tr class="bg-[var(--content)]">
+                <td class="py-2.5 px-2 font-bold">Subtotal Obra Terminada (IVA incluido)</td>
+                <td class="py-2.5 px-2 text-right text-[var(--muted-foreground)]">537.460 €</td>
+                <td class="py-2.5 px-2 text-right font-bold">411.180 €</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-semibold">5. Arquitecto + Aparejador + Geotécnico (21% IVA incl.)</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">41.382 €</td>
+                <td class="py-2.5 text-right font-semibold">36.900 €</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-semibold">6. Licencia Obra / ICIO Concello de Oleiros (~4%)</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">15.500 €</td>
+                <td class="py-2.5 text-right font-semibold">12.600 €</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-semibold">7. Notaría, Registro, AJD Obra Nueva y Acometidas</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">7.500 €</td>
+                <td class="py-2.5 text-right font-semibold">6.400 €</td>
+              </tr>
+              <tr class="bg-[var(--content)] font-bold">
+                <td class="py-2.5 px-2">TOTAL CASA + TÉCNICOS + LICENCIAS + IVA (Sin terreno)</td>
+                <td class="py-2.5 px-2 text-right text-[var(--muted-foreground)]">601.842 €</td>
+                <td class="py-2.5 px-2 text-right text-emerald-600 text-sm">467.080 €</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 font-semibold">8. Parcela en Liáns / Santa Cruz (~600 m²) + 8% ITP + Notaría</td>
+                <td class="py-2.5 text-right text-[var(--muted-foreground)]">195.900 €</td>
+                <td class="py-2.5 text-right font-semibold">195.900 €</td>
+              </tr>
+              <tr class="bg-[var(--primary)] text-[var(--primary-foreground)] font-bold text-sm">
+                <td class="py-3 px-3 rounded-l-lg">INVERSIÓN TOTAL LLAVE EN MANO (CASA + TERRENO + IMPUESTOS)</td>
+                <td class="py-3 px-2 text-right opacity-80 line-through">797.742 €</td>
+                <td class="py-3 px-3 text-right rounded-r-lg">662.980 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 space-y-4">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+          <h3 class="text-sm font-bold">Desglose de Superficies Optimizadas</h3>
+          <ul class="text-xs space-y-2">
+            <li class="flex justify-between border-b border-[var(--border)] pb-1.5">
+              <span class="text-[var(--muted-foreground)]">Planta Baja Cerrada (Vivienda + Trastero)</span>
+              <span class="font-semibold">118,0 m² const.</span>
+            </li>
+            <li class="flex justify-between border-b border-[var(--border)] pb-1.5">
+              <span class="text-[var(--muted-foreground)]">Pérgola Cubierta Coches + Porche Sur (computan 50%)</span>
+              <span class="font-semibold">22,0 m² comp.</span>
+            </li>
+            <li class="flex justify-between border-b border-[var(--border)] pb-1.5">
+              <span class="text-[var(--muted-foreground)]">Planta Primera (3 Dormitorios + 2 Baños + Galería)</span>
+              <span class="font-semibold">72,0 m² const.</span>
+            </li>
+            <li class="flex justify-between pt-1 font-bold text-sm">
+              <span>Total Construido Computable</span>
+              <span class="text-emerald-600">212,0 m²</span>
+            </li>
+          </ul>
+          <p class="text-xs text-[var(--muted-foreground)] pt-2 border-t border-[var(--border)] leading-relaxed">
+            <strong>Ventaja urbanística adicional:</strong> Al tener 212 m² construidos, esta vivienda encaja holgadamente incluso en parcelas de **500 m²** con edificabilidad restringida (0,42 m²/m²), ampliando mucho el abanico de terrenos disponibles en Liáns y Santa Cruz.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Scale for Optimized Footprint (12.20m wide x 14.20m deep)
+    const S = 44;
+    const BX = 95;
+    const BY = 65;
+    const px = (m) => BX + m * S;
+    const py = (m) => BY + m * S;
+    const pw = (m) => m * S;
+
+    let activeView = 'PB';
+    let selectedRoom = 'cocina';
+
+    const ROOM_DATA = {
+      PB: [
+        {
+          id: 'pergola', name: 'Pérgola Arquitectónica Cubierta (2 Coches)', zone: 'Exterior Cubierto',
+          x: 0, y: 0, w: 5.4, h: 5.2, area: '28,0 m²', dims: '5,40 × 5,20 m',
+          color: '#64748b',
+          desc: 'Estructura integrada en el diseño de la casa con techo plano e iluminación LED lineal. Protege 2 vehículos de la lluvia sin el sobrecoste de cimentar y aislar un garaje cerrado.',
+          items: ['2 plazas de aparcamiento amplias (5,40 × 5,20 m)', 'Cargador mural para coche eléctrico bajo techo', 'Paso cubierto directo hacia el Trastero y hacia la puerta principal']
+        },
+        {
+          id: 'trastero', name: 'Trastero Cerrado Bicis / Surf + Cuarto Técnico', zone: 'Servicio Cerrado',
+          x: 0, y: 5.2, w: 3.0, h: 2.8, area: '8,1 m²', dims: '2,85 × 2,75 m',
+          color: '#475569',
+          desc: 'Sustituye la función de almacenaje del antiguo garaje: acceso exterior desde la pérgola para dejar bicicletas, tablas de surf, cortacésped y equipos de Aerotermia/VMC.',
+          items: ['Puerta de seguridad desde la pérgola', 'Bastidor vertical para 4 bicicletas y tablas de surf', 'Grupo interior Aerotermia + Recuperador de calor VMC']
+        },
+        {
+          id: 'lavanderia', name: 'Lavandería + Despensa (Conexión Compra)', zone: 'Servicio Vivienda',
+          x: 3.0, y: 5.2, w: 2.4, h: 2.8, area: '6,4 m²', dims: '2,30 × 2,75 m',
+          color: '#64748b',
+          desc: 'Situada estratégicamente junto al vestíbulo de entrada para soltar las bolsas de la compra recién bajadas del coche y pasar a la cocina.',
+          items: ['Columna lavadora + secadora + pilón', 'Despensa de alimentos secos de suelo a techo', 'Tendedero interior ventilado por VMC']
+        },
+        {
+          id: 'hall', name: 'Vestíbulo + Escalera + Gabanero (Mudroom)', zone: 'Acceso Día',
+          x: 5.4, y: 0, w: 2.4, h: 3.0, area: '6,8 m²', dims: '2,30 × 2,90 m',
+          color: '#3b82f6',
+          desc: 'Entras bajo techo desde la pérgola y lo primero que ves de frente es el Patio de Luz con el arce japonés.',
+          items: ['Armario gabanero de entrada para abrigos y paraguas', 'Arranque de escalera ligera hacia Planta Primera']
+        },
+        {
+          id: 'patio', name: 'Patio Central Acristalado (Intacto)', zone: 'Corazón Bioclimático',
+          x: 5.4, y: 3.0, w: 3.4, h: 5.0, area: '17,0 m²', dims: '3,40 × 5,00 m',
+          color: '#10b981',
+          desc: 'Mantiene toda su presencia: un jardín interior de 17 m² cerrado en vidrio de suelo a techo que inunda de sol la cocina, el vestíbulo y el salón.',
+          items: ['Arce japonés central e iluminación indirecta', 'Hoja corredera hacia la cocina para ventilar o salir a tomar un café', 'Privacidad 100 % respecto a las parcelas colindantes']
+        },
+        {
+          id: 'bano_pb', name: 'Baño Completo PB (Cortesía + Visitas)', zone: 'Visitas / Día',
+          x: 7.8, y: 0, w: 1.8, h: 3.0, area: '5,1 m²', dims: '1,70 × 2,90 m',
+          color: '#14b8a6',
+          desc: 'Baño completo con ducha a ras de suelo que da servicio tanto a la zona de día como al dormitorio de invitados.',
+          items: ['Ducha walk-in de 1,70 × 0,85 m', 'Inodoro suspendido y lavabo sobre encimera']
+        },
+        {
+          id: 'visitas', name: 'Dormitorio Visitas / Estudio Polivalente', zone: 'Visitas',
+          x: 9.6, y: 0, w: 2.6, h: 3.0, area: '10,5 m²', dims: '3,45 × 3,00 m',
+          color: '#10b981',
+          desc: 'En esquina tranquila al Noreste, separado del salón por el patio y la cocina. Perfecto como despacho a diario y habitación doble para visitas.',
+          items: ['Cama doble abatible o sofá-cama italiano de 150 cm', 'Zona de escritorio y armario empotrado']
+        },
+        {
+          id: 'cocina', name: 'Cocina con Gran Isla junto al Patio', zone: 'Protagonista Día',
+          x: 8.8, y: 3.0, w: 3.4, h: 5.0, area: '16,5 m²', dims: '3,30 × 5,00 m',
+          color: '#f59e0b',
+          desc: 'Exactamente la configuración que te gustó: isla central de 3,00 m mirando directamente al jardín del patio interior y comunicada con el comedor y el porche.',
+          items: ['Isla de 3,00 × 1,05 m con placa, fregadero y 4 taburetes mirando al patio', 'Frente de columnas integradas de 3,60 m al Este', 'Tabique corredero de cristal oculto para independizar del comedor']
+        },
+        {
+          id: 'salon', name: 'Salón - Comedor Panorámico Sur', zone: 'Zona de Día',
+          x: 0, y: 8.0, w: 12.2, h: 4.0, area: '46,2 m²', dims: '11,85 × 3,90 m',
+          color: '#3b82f6',
+          desc: '46 m² útiles reales sin pilares intermedios y con casi 12 metros lineales de ventanal orientado al Sur.',
+          items: ['Mesa de comedor para 8-10 personas frente a la isla de cocina y el patio', 'Zona de estar amplia con sofá en L de 3,40 m', 'Salida directa a cota cero hacia el porche cubierto']
+        },
+        {
+          id: 'porche', name: 'Porche Cubierto Sur', zone: 'Exterior Cubierto',
+          x: 0, y: 12.0, w: 12.2, h: 2.2, area: '26,8 m²', dims: '12,20 × 2,20 m',
+          color: '#eab308',
+          desc: 'Protege todo el frente Sur de la lluvia oblicua de invierno y del sol alto de verano.',
+          items: ['Comedor exterior cubierto frente a cocina', 'Zona de sofás exteriores protegida del viento Nordés']
+        }
+      ],
+      P1: [
+        {
+          id: 'cubierta_p1', name: 'Cubierta Plana Inferior (Sobre Pérgola y Visitas)', zone: 'Cubierta Técnica',
+          x: 0, y: 0, w: 12.2, h: 3.0, area: '36,6 m²', dims: '12,20 × 3,00 m',
+          color: '#94a3b8',
+          desc: 'Espacio no pisable con grava blanca donde se alojan los paneles solares fotovoltaicos ocultos desde el jardín.',
+          items: ['Preinstalación e inversor para 8-10 paneles solares']
+        },
+        {
+          id: 'vacio_patio_p1', name: 'Vacío del Patio Central', zone: 'Patio de Luz',
+          x: 5.4, y: 3.0, w: 3.4, h: 3.6, area: '12,2 m²', dims: '3,40 × 3,60 m',
+          color: '#10b981',
+          desc: 'Aporta luz natural y vistas a la copa del árbol tanto a la pasarela de estudio como al vestidor de la suite.',
+          items: ['Vidrio fijo de alta eficiencia térmica']
+        },
+        {
+          id: 'galeria_p1', name: 'Pasarela de Estudio / Distribuidor Soleado', zone: 'Zona Hijos',
+          x: 3.2, y: 6.6, w: 5.6, h: 1.4, area: '7,8 m²', dims: '5,60 × 1,40 m',
+          color: '#a855f7',
+          desc: 'Distribuidor luminoso volcado al patio interior.',
+          items: ['Barandilla minimalista y luz natural todo el día']
+        },
+        {
+          id: 'bano_hijos_p1', name: 'Baño Compartido Hijos (Doble Seno)', zone: 'Zona Noche Hijos',
+          x: 0, y: 5.0, w: 3.2, h: 3.0, area: '8,8 m²', dims: '3,05 × 2,90 m',
+          color: '#8b5cf6',
+          desc: 'Baño completo compartimentado con doble lavabo para uso simultáneo de la niña (9) y el niño (7).',
+          items: ['Mueble doble seno de 1,50 m', 'Ducha amplia y zona de inodoro separada']
+        },
+        {
+          id: 'dorm_nina_p1', name: 'Dormitorio Niña (9 años)', zone: 'Zona Noche Hijos',
+          x: 0, y: 8.0, w: 4.0, h: 4.0, area: '14,6 m²', dims: '3,85 × 3,80 m',
+          color: '#a855f7',
+          desc: '14,6 m² útiles reales (muy por encima de los 10-11 m² habituales en promoción estándar), orientado al Sur.',
+          items: ['Cama de 135 cm, escritorio de 1,80 m y armario empotrado de 2,40 m']
+        },
+        {
+          id: 'dorm_nino_p1', name: 'Dormitorio Niño (7 años)', zone: 'Zona Noche Hijos',
+          x: 4.0, y: 8.0, w: 4.0, h: 4.0, area: '14,6 m²', dims: '3,85 × 3,80 m',
+          color: '#a855f7',
+          desc: 'Exactamente simétrico al de su hermana (14,6 m² útiles) con vistas al jardín Sur.',
+          items: ['Cama de 135 cm, escritorio de 1,80 m y armario empotrado de 2,40 m']
+        },
+        {
+          id: 'vestidor_suite_p1', name: 'Vestidor + Baño En-Suite Principal', zone: 'Suite Matrimonio',
+          x: 8.8, y: 3.0, w: 3.4, h: 5.0, area: '15,8 m²', dims: '3,25 × 4,85 m',
+          color: '#ec4899',
+          desc: 'Ubicado justo encima de la cocina (optimizando todas las tuberías y bajantes en una sola vertical para abaratar costes de fontanería).',
+          items: ['Vestidor pasante iluminado desde el patio central', 'Baño en suite con doble lavabo y gran ducha']
+        },
+        {
+          id: 'dorm_suite_p1', name: 'Dormitorio Principal Matrimonio', zone: 'Suite Matrimonio',
+          x: 8.0, y: 8.0, w: 4.2, h: 4.0, area: '15,4 m²', dims: '4,05 × 3,80 m',
+          color: '#ec4899',
+          desc: 'Conjunto total de Suite Principal de más de 31 m² útiles (15,4 m² dormitorio + 15,8 m² vestidor y baño).',
+          items: ['Cama King Size 180 cm orientada al Sur', 'Aislamiento acústico respecto a los dormitorios infantiles']
+        }
+      ]
+    };
+
+    function setView(v) {
+      activeView = v;
+      ['PB', 'P1', 'SEC', 'BUDGET'].forEach(k => {
+        const b = document.getElementById('tab-' + k);
+        if (k === v) {
+          b.className = 'px-3.5 py-2 rounded-lg text-sm font-semibold border border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)] shadow-sm transition';
+        } else {
+          b.className = 'px-3.5 py-2 rounded-lg text-sm font-medium border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] hover:opacity-80 transition';
+        }
+      });
+
+      const planCont = document.getElementById('plan-view-container');
+      const budgCont = document.getElementById('budget-view-container');
+
+      if (v === 'BUDGET') {
+        planCont.classList.add('hidden');
+        budgCont.classList.remove('hidden');
+        budgCont.classList.add('grid');
+        return;
+      } else {
+        planCont.classList.remove('hidden');
+        budgCont.classList.add('hidden');
+        budgCont.classList.remove('grid');
+      }
+
+      if (v === 'PB') {
+        document.getElementById('canvas-title').textContent = 'Planta Baja Optimizada (Escala 1:50 · 118 m² cerrados + Pérgola y Porche)';
+        selectRoomDetail('cocina');
+      } else if (v === 'P1') {
+        document.getElementById('canvas-title').textContent = 'Planta Primera Optimizada (Escala 1:50 · 72 m² construidos)';
+        selectRoomDetail('dorm_nina_p1');
+      } else if (v === 'SEC') {
+        document.getElementById('canvas-title').textContent = 'Sección Constructiva Longitudinal A-A\' (Opción C Optimizada)';
+      }
+
+      renderActiveSVG();
+    }
+
+    function selectRoomDetail(id) {
+      selectedRoom = id;
+      const list = ROOM_DATA[activeView === 'P1' ? 'P1' : 'PB'];
+      const r = list.find(item => item.id === id) || list[0];
+      if (!r) return;
+
+      document.getElementById('det-zone-badge').textContent = r.zone;
+      document.getElementById('det-room-title').textContent = r.name;
+      document.getElementById('det-room-area').textContent = r.area;
+      document.getElementById('det-room-dims').textContent = r.dims;
+      document.getElementById('det-room-desc').textContent = r.desc;
+      document.getElementById('det-room-items').innerHTML = r.items.map(i => `<li>${i}</li>`).join('');
+
+      document.querySelectorAll('.room-zone').forEach(el => {
+        if (el.getAttribute('data-id') === id) el.classList.add('selected');
+        else el.classList.remove('selected');
+      });
+    }
+
+    function drawFurnPB() {
+      const s = `stroke="currentColor" stroke-opacity="0.55" fill="none" stroke-width="1.3"`;
+      let out = '';
+
+      // Pergola beams (dashed overhead lines) + 2 cars (0..5.4, 0..5.2)
+      for(let b=0.6; b<5.0; b+=0.8) {
+        out += `<line x1="${px(0)}" y1="${py(b)}" x2="${px(5.4)}" y2="${py(b)}" stroke="currentColor" stroke-opacity="0.18" stroke-dasharray="4 3"/>`;
+      }
+      out += `<rect x="${px(0.5)}" y="${py(0.5)}" width="${pw(1.9)}" height="${pw(4.1)}" rx="8" ${s}/>`;
+      out += `<rect x="${px(2.9)}" y="${py(0.5)}" width="${pw(1.9)}" height="${pw(4.1)}" rx="8" ${s}/>`;
+
+      // Central Patio Tree (5.4..8.8, 3.0..8.0)
+      out += `<circle cx="${px(7.1)}" cy="${py(5.5)}" r="${pw(1.05)}" stroke="#16a34a" stroke-width="2" fill="#22c55e" fill-opacity="0.25" stroke-dasharray="5 3"/>`;
+      out += `<circle cx="${px(7.1)}" cy="${py(5.5)}" r="5" fill="#15803d"/>`;
+
+      // Kitchen Island facing Patio (8.8..12.2, 3.0..8.0)
+      out += `<rect x="${px(11.5)}" y="${py(3.3)}" width="${pw(0.6)}" height="${pw(4.4)}" fill="currentColor" fill-opacity="0.08" ${s}/>`;
+      out += `<rect x="${px(9.45)}" y="${py(3.8)}" width="${pw(1.05)}" height="${pw(3.2)}" rx="4" fill="#f59e0b" fill-opacity="0.2" stroke="#d97706" stroke-width="1.8"/>`;
+      for(let k=0; k<4; k++) {
+        out += `<circle cx="${px(9.18)}" cy="${py(4.2 + k*0.75)}" r="7" ${s}/>`;
+      }
+
+      // Sliding glass pocket door between Kitchen and Dining
+      out += `<line x1="${px(8.8)}" y1="${py(8.0)}" x2="${px(11.9)}" y2="${py(8.0)}" stroke="#f59e0b" stroke-width="5"/>`;
+
+      // Dining Table (7.5..11.2, 8.8..10.2)
+      out += `<rect x="${px(7.6)}" y="${py(9.1)}" width="${pw(3.1)}" height="${pw(1.1)}" rx="4" ${s}/>`;
+
+      // L-Sofa in Living Room (0.8..4.6, 8.6..11.4)
+      out += `<path d="M ${px(0.8)} ${py(8.6)} h ${pw(3.4)} v ${pw(0.85)} h ${-pw(2.55)} v ${pw(1.7)} h ${-pw(0.85)} z" ${s}/>`;
+
+      // Pre-installed Pool dashed outline in South Garden
+      out += `
+        <rect x="${px(3.2)}" y="${py(14.7)}" width="${pw(6.8)}" height="${pw(2.5)}" rx="6"
+              fill="#0ea5e9" fill-opacity="0.1" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="6 4"/>
+        <text x="${px(6.6)}" y="${py(16.0)}" text-anchor="middle" font-size="12" font-weight="600" fill="#0284c7">
+          Preinstalación Piscina Fase 2 (6,80 × 2,50 m) + Jardín Sur Ampliado
+        </text>
+      `;
+
+      return out;
+    }
+
+    function drawFurnP1() {
+      const s = `stroke="currentColor" stroke-opacity="0.55" fill="none" stroke-width="1.3"`;
+      let out = '';
+
+      // Patio Tree canopy
+      out += `<circle cx="${px(7.1)}" cy="${py(4.8)}" r="${pw(1.05)}" stroke="#16a34a" stroke-width="2" fill="#22c55e" fill-opacity="0.22" stroke-dasharray="4 3"/>`;
+
+      // Kids Beds
+      out += `<rect x="${px(0.3)}" y="${py(9.0)}" width="${pw(1.8)}" height="${pw(1.4)}" rx="3" ${s}/>`;
+      out += `<rect x="${px(4.3)}" y="${py(9.0)}" width="${pw(1.8)}" height="${pw(1.4)}" rx="3" ${s}/>`;
+
+      // Master Bed
+      out += `<rect x="${px(9.2)}" y="${py(9.0)}" width="${pw(1.8)}" height="${pw(1.9)}" rx="4" ${s}/>`;
+
+      return out;
+    }
+
+    function renderSectionSVG(svg) {
+      svg.innerHTML = `
+        <defs>
+          <marker id="sun-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b" />
+          </marker>
+        </defs>
+        <rect x="30" y="30" width="700" height="520" rx="12" fill="#0ea5e9" fill-opacity="0.06" stroke="currentColor" stroke-opacity="0.2"/>
+        <rect x="30" y="440" width="700" height="40" fill="#64748b" fill-opacity="0.3" stroke="currentColor" stroke-width="2"/>
+        <text x="380" y="465" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">LOSA DE CIMENTACIÓN UNIFICADA (MENOR HUELLA = AHORRO ESTRUCTURAL DIRECTO)</text>
+
+        <!-- Pergola / Guest Module North -->
+        <rect x="75" y="315" width="150" height="125" fill="#10b981" fill-opacity="0.18" stroke="#059669" stroke-width="2.5"/>
+        <text x="150" y="370" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">Pérgola / Módulo Visitas</text>
+        <text x="150" y="388" text-anchor="middle" font-size="12" fill="currentColor">Planta Baja (Cota +0,00)</text>
+
+        <!-- Central Courtyard -->
+        <rect x="225" y="190" width="160" height="250" fill="#22c55e" fill-opacity="0.08" stroke="#16a34a" stroke-dasharray="6 4" stroke-width="2"/>
+        <line x1="225" y1="315" x2="225" y2="440" stroke="#38bdf8" stroke-width="6"/>
+        <line x1="385" y1="190" x2="385" y2="440" stroke="#38bdf8" stroke-width="6"/>
+        <line x1="305" y1="440" x2="305" y2="305" stroke="#78350f" stroke-width="5"/>
+        <circle cx="305" cy="295" r="42" fill="#22c55e" fill-opacity="0.45" stroke="#15803d" stroke-width="2"/>
+        <text x="305" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">PATIO CENTRAL 17 m²</text>
+
+        <!-- South Volume PB: Kitchen + Living -->
+        <rect x="385" y="315" width="195" height="125" fill="#3b82f6" fill-opacity="0.2" stroke="#2563eb" stroke-width="2.5"/>
+        <text x="482" y="370" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">Cocina Isla + Salón 46 m²</text>
+        <text x="482" y="388" text-anchor="middle" font-size="12" fill="currentColor">Bajantes unificadas con P1</text>
+        <line x1="580" y1="315" x2="580" y2="440" stroke="#38bdf8" stroke-width="6"/>
+
+        <!-- South Volume P1 -->
+        <rect x="385" y="190" width="195" height="125" fill="#a855f7" fill-opacity="0.2" stroke="#9333ea" stroke-width="2.5"/>
+        <text x="482" y="245" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">P1: 2 Dorm. Hijos (14,6 m² c/u)</text>
+        <text x="482" y="263" text-anchor="middle" font-size="12" fill="currentColor">+ Suite Principal (31 m²)</text>
+        <line x1="580" y1="190" x2="580" y2="315" stroke="#38bdf8" stroke-width="6"/>
+
+        <!-- Porch overhang -->
+        <rect x="580" y="308" width="90" height="12" fill="currentColor"/>
+        <text x="632" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">Porche Sur 2,20 m</text>
+
+        <line x1="700" y1="90" x2="310" y2="425" stroke="#f59e0b" stroke-width="2.2" stroke-dasharray="6 4" marker-end="url(#sun-arrow)"/>
+      `;
+    }
+
+    function renderActiveSVG() {
+      const svg = document.getElementById('detail-svg');
+      if (activeView === 'SEC') {
+        renderSectionSVG(svg);
+        return;
+      }
+
+      const showFlow = document.getElementById('chk-flow').checked;
+      const showCotas = document.getElementById('chk-cotas').checked;
+      const rooms = ROOM_DATA[activeView];
+
+      let html = `
+        <defs>
+          <marker id="flow-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+          </marker>
+        </defs>
+        <text x="${px(6.1)}" y="${py(0)-22}" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">
+          FRENTE NORTE DE ACCESO (ANCHO OPTIMIZADO: 12,20 m · FONDO: 14,20 m)
+        </text>
+      `;
+
+      rooms.forEach(r => {
+        const isSel = r.id === selectedRoom;
+        const dash = r.id === 'pergola' ? 'stroke-dasharray="6 4"' : '';
+        html += `
+          <g onclick="selectRoomDetail('${r.id}')">
+            <rect data-id="${r.id}" class="room-zone ${isSel ? 'selected' : ''}"
+                  x="${px(r.x)}" y="${py(r.y)}" width="${pw(r.w)}" height="${pw(r.h)}"
+                  fill="${r.color}" fill-opacity="${r.id === 'pergola' ? '0.10' : '0.18'}"
+                  stroke="${r.color}" stroke-width="${isSel ? '3' : '2'}" ${dash} />
+          </g>
+        `;
+      });
+
+      html += activeView === 'PB' ? drawFurnPB() : drawFurnP1();
+
+      // Glazed walls around Courtyard and South Facade
+      if (activeView === 'PB') {
+        html += `<rect x="${px(5.4)}" y="${py(3.0)}" width="${pw(3.4)}" height="${pw(5.0)}" fill="none" stroke="#38bdf8" stroke-width="5"/>`;
+        html += `<line x1="${px(0.3)}" y1="${py(12.0)}" x2="${px(11.9)}" y2="${py(12.0)}" stroke="#38bdf8" stroke-width="6"/>`;
+      } else {
+        html += `<rect x="${px(5.4)}" y="${py(3.0)}" width="${pw(3.4)}" height="${pw(3.6)}" fill="none" stroke="#38bdf8" stroke-width="5"/>`;
+        html += `<line x1="${px(0.3)}" y1="${py(12.0)}" x2="${px(11.9)}" y2="${py(12.0)}" stroke="#38bdf8" stroke-width="6"/>`;
+      }
+
+      // Labels
+      rooms.forEach(r => {
+        const cx = px(r.x + r.w / 2);
+        const cy = py(r.y + r.h / 2);
+        html += `
+          <g style="pointer-events:none">
+            <rect x="${cx - 74}" y="${cy - 20}" width="148" height="${showCotas ? 40 : 28}" rx="4" fill="var(--card)" fill-opacity="0.88" stroke="${r.color}" stroke-width="1"/>
+            <text x="${cx}" y="${cy - 6}" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">
+              ${r.name.split(' (')[0]}
+            </text>
+            <text x="${cx}" y="${cy + 8}" text-anchor="middle" font-size="12" font-weight="700" fill="${r.color}">
+              ${r.area} ${showCotas ? '· ' + r.dims : ''}
+            </text>
+          </g>
+        `;
+      });
+
+      if (showFlow && activeView === 'PB') {
+        html += `
+          <path d="M ${px(4.2)} ${py(2.2)} L ${px(6.2)} ${py(2.2)} L ${px(4.2)} ${py(6.4)} L ${px(9.2)} ${py(6.4)}"
+                fill="none" stroke="#10b981" stroke-width="2.8" stroke-dasharray="6 4" marker-end="url(#flow-arrow)"/>
+        `;
+      }
+
+      svg.innerHTML = html;
+    }
+
+    setView('PB');
+  </script>
+</body>
+</html>

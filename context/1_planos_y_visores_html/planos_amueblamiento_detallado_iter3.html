@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planos Técnicos — Despacho frente al Patio + Baño PB en Esquina con Doble Acceso</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .cad-paper {
+      background-image:
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .room-poly {
+      transition: fill-opacity 0.15s ease, stroke-width 0.15s ease;
+      cursor: pointer;
+    }
+    .room-poly:hover {
+      fill-opacity: 0.35 !important;
+    }
+    .room-poly.selected {
+      fill-opacity: 0.45 !important;
+      stroke-width: 3.5px !important;
+    }
+    svg text { user-select: none; pointer-events: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #f8fafc;
+      --foreground: #0f172a;
+      --card: #ffffff;
+      --card-foreground: #0f172a;
+      --content: #ffffff;
+      --border: #e2e8f0;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --accent: #f1f5f9;
+      --accent-foreground: #0f172a;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-6">
+  <div class="max-w-7xl mx-auto space-y-5">
+
+    <!-- Header -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-600 text-white">NUEVA DISTRIBUCIÓN ALA NORTE · SIN DISTRIBUIDOR INÚTIL</span>
+          <span class="text-xs text-[var(--muted-foreground)]">Despacho frente al Patio Corrala + Baño en esquina junto a bajantes de Cocina</span>
+        </div>
+        <h1 class="text-xl font-bold mt-1">Planos Verificados: Despacho (11,2 m²) al Patio + Baño PB con Doble Acceso (Despacho y Cocina)</h1>
+        <p class="text-sm text-[var(--muted-foreground)]">Ahorramos el distribuidor, unificamos las bajantes del Baño PB con la Cocina y el Baño Suite superior, y damos al Despacho 2,60 m reales de cristal hacia el Patio Corrala.</p>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        <button id="btn-mode-PB" onclick="switchView('PB')" class="px-3.5 py-2 rounded-lg text-xs md:text-sm font-bold border transition">
+          1. Planta Baja (14 zonas)
+        </button>
+        <button id="btn-mode-P1" onclick="switchView('P1')" class="px-3.5 py-2 rounded-lg text-xs md:text-sm font-medium border transition">
+          2. Planta Primera (11 zonas)
+        </button>
+        <button id="btn-mode-ZOOM" onclick="switchView('ZOOM')" class="px-3.5 py-2 rounded-lg text-xs md:text-sm font-medium border transition">
+          3. Zoom 1:25 de la Zona Seleccionada
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+      <!-- Left Column: SVG Blueprint (8 cols) -->
+      <div class="lg:col-span-8 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col">
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[var(--border)]">
+          <span id="canvas-header" class="text-sm font-bold">Planta Baja (Cota +0,00)</span>
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="chk-routes" checked onchange="renderMainSVG()" />
+              <span class="font-semibold text-emerald-600">Mostrar Recorridos y Puertas Dobles</span>
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="chk-furn" checked onchange="renderMainSVG()" />
+              <span>Mobiliario Real en Plano</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="w-full overflow-x-auto cad-paper rounded-lg border border-[var(--border)] p-2 flex justify-center">
+          <svg id="main-svg" viewBox="0 0 780 860" class="w-full max-w-[740px] h-auto"></svg>
+        </div>
+
+        <div class="mt-3 pt-3 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--muted-foreground)]">
+          <span>💡 Haz clic entre <strong>3. Despacho / Suite Visitas</strong> y <strong>4. Baño Completo PB (Esquina)</strong> para ver cómo conectan entre sí, con el Patio y con la Cocina.</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Detailed Inspector (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+
+        <!-- Live Selected Room Card -->
+        <div class="bg-[var(--card)] border-2 border-emerald-600/40 rounded-xl p-4 shadow-sm space-y-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <span id="sel-cat" class="text-xs px-2 py-0.5 rounded bg-emerald-600 text-white font-bold"></span>
+            <span id="sel-dims" class="text-xs font-mono font-bold text-[var(--muted-foreground)]"></span>
+          </div>
+          <h2 id="sel-title" class="text-lg font-bold"></h2>
+
+          <div class="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs">
+            <strong class="text-amber-600 block">🧭 Orientación y Vistas Reales en Plano:</strong>
+            <p id="sel-views" class="text-[var(--foreground)] font-medium mt-0.5 leading-relaxed"></p>
+          </div>
+
+          <p id="sel-desc" class="text-xs text-[var(--muted-foreground)] leading-relaxed"></p>
+
+          <!-- 4 Walls Breakdown -->
+          <div class="pt-2 border-t border-[var(--border)] space-y-1.5 text-xs">
+            <span class="font-bold block text-[var(--foreground)]">Colindancia exacta de sus 4 Paredes en el plano:</span>
+            <div class="p-2 rounded bg-[var(--content)] border border-[var(--border)]">
+              <strong class="text-sky-600">⬆️ Pared Norte (Arriba):</strong>
+              <span id="sel-wN" class="block text-[var(--muted-foreground)] mt-0.5"></span>
+            </div>
+            <div class="p-2 rounded bg-[var(--content)] border border-[var(--border)]">
+              <strong class="text-amber-600">⬇️ Pared Sur (Abajo):</strong>
+              <span id="sel-wS" class="block text-[var(--muted-foreground)] mt-0.5"></span>
+            </div>
+            <div class="p-2 rounded bg-[var(--content)] border border-[var(--border)]">
+              <strong class="text-emerald-600">➡️ Pared Este (Derecha):</strong>
+              <span id="sel-wE" class="block text-[var(--muted-foreground)] mt-0.5"></span>
+            </div>
+            <div class="p-2 rounded bg-[var(--content)] border border-[var(--border)]">
+              <strong class="text-purple-600">⬅️ Pared Oeste (Izquierda):</strong>
+              <span id="sel-wW" class="block text-[var(--muted-foreground)] mt-0.5"></span>
+            </div>
+          </div>
+
+          <button id="btn-go-zoom" onclick="switchView('ZOOM')" class="w-full mt-2 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition">
+            🔍 Ver Zoom 1:25 de esta Estancia
+          </button>
+        </div>
+
+        <!-- Quick Room List -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)] mb-2">Lista de Estancias (Clic para inspeccionar)</h3>
+          <div id="room-list-buttons" class="grid grid-cols-1 gap-1 max-h-56 overflow-y-auto pr-1"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const S = 46;
+    const OX = 105;
+    const OY = 85;
+    const px = (m) => OX + m * S;
+    const py = (m) => OY + m * S;
+    const pw = (m) => m * S;
+
+    let currentView = 'PB';
+    let selectedId = 'despacho_pb';
+
+    // ============================================================================
+    // 25 SPACES WITH ELIMINATED DISTRIBUTOR & SWAPPED OFFICE / BATHROOM
+    // ============================================================================
+    const SPACES = {
+      // ---------------- PLANTA BAJA (14 SPACES) ----------------
+      pergola_pb: {
+        fl: 'PB', id: 'pergola_pb', name: '1. Pérgola Cubierta (2 Coches)',
+        x: 0.0, y: 0.0, w: 3.7, h: 3.2, area: '25,0 m² (con vuelo)', dims: '4,80 × 5,20 m reales', color: '#64748b',
+        views: 'Abierta al Norte (calle de entrada) y al Oeste.',
+        desc: 'Aparcamiento cubierto para 2 coches en la esquina Noroeste con acceso directo bajo techo a la Puerta Principal y al Trastero.',
+        wN: 'Abierta hacia la calle Norte.',
+        wS: 'Colinda con el Trastero de bicis/surf (x=0..2,50, con puerta exterior) y con el cierre Norte de la Escalera (x=2,50..3,70).',
+        wE: 'Colinda con el Vestíbulo Principal de Entrada (Zona 2, en x=3,70).',
+        wW: 'Abierta hacia el retranqueo lateral Oeste.'
+      },
+      hall_pb: {
+        fl: 'PB', id: 'hall_pb', name: '2. Vestíbulo Principal de Entrada (Hall)',
+        x: 3.7, y: 0.0, w: 2.5, h: 3.2, area: '8,0 m² útiles', dims: '2,50 × 3,20 m', color: '#0ea5e9',
+        views: 'Entras por el Norte y de frente ves el Patio Corrala (al Sur) y el paso hacia el Salón.',
+        desc: 'Desde aquí tienes 2 rutas: hacia el Sur por el Pasillo Interior (hacia Salón y Escalera), o a tu izquierda (Este) cruzando el Despacho directo a la Cocina.',
+        wN: 'FACHADA NORTE con la PUERTA PRINCIPAL DE ENTRADA (en x=4,40..5,50) + armario gabanero.',
+        wS: 'De x=3,70 a 5,00 (1,30 m): paso abierto al Pasillo Interior PB (Zona 8). De x=5,00 a 6,20 (1,20 m): cristalera fija mirando al Patio Central Corrala (Zona 9).',
+        wE: 'Tabique con Puerta Corredera (en y=2,00..2,90) para pasar directamente al Despacho / Suite de Invitados (Zona 3).',
+        wW: 'Cerramiento hacia la Pérgola de los coches (Zona 1).'
+      },
+      despacho_pb: {
+        fl: 'PB', id: 'despacho_pb', name: '3. Despacho / Suite Invitados (¡Ahora frente al Patio!)',
+        x: 6.2, y: 0.0, w: 3.6, h: 3.2, area: '11,2 m² útiles (+2,2 m² ganados)', dims: '3,60 × 3,20 m', color: '#10b981',
+        views: '¡Ahora SÍ da al Patio Corrala! Su Pared Sur tiene 2,60 metros reales de cristalera mirando al Patio Corrala.',
+        desc: 'Al eliminar el distribuidor y llevar el baño al fondo, el Despacho gana amplitud (11,2 m²) y se coloca justo frente al Patio Corrala. A diario sirve de paso corto entre el Hall y la Cocina; cuando hay invitados durmiendo, cierran sus puertas correderas y tienen una suite privada con baño propio.',
+        wN: 'FACHADA NORTE: a la izquierda lleva el Mueble de roble con Sofá de 2,00 m + Cama Abatible Vertical de 150×200 cm (x=6,35..8,35); a la derecha lleva el Armario Empotrado de puertas correderas de 1,30 m (x=8,45..9,70). ¡Todo el centro queda 100 % libre para abrir la cama y el armario!',
+        wS: '¡AHORA CUADRA AL 100 %!: De x=6,20 a 8,80 (2,60 m) colinda con el PATIO CORRALA (Zona 9) mediante gran cristalera (con estor oculto) y el Escritorio de teletrabajo mirando al patio. De x=8,80 a 9,80 (1,00 m) colinda con la COCINA (Zona 10) con una puerta corredera para pasar a la cocina a diario.',
+        wE: 'Tabique medianero con el Baño Completo PB (Zona 4), con Puerta Corredera (en y=2,00..2,80) para entrar al baño en suite.',
+        wW: 'Tabique medianero con el Vestíbulo de Entrada (Zona 2), con Puerta Corredera de acceso.'
+      },
+      bano_pb: {
+        fl: 'PB', id: 'bano_pb', name: '4. Baño Completo PB en Esquina (Doble Acceso: Despacho y Cocina)',
+        x: 9.8, y: 0.0, w: 2.6, h: 3.2, area: '7,8 m² útiles', dims: '2,60 × 3,20 m', color: '#14b8a6',
+        views: 'Ventanas a Fachada Norte y/o Este. Situado exactamente encima de las bajantes de la Cocina y debajo del Baño de la Suite P1.',
+        desc: '¡Tu idea llevada al plano! Está dividido en dos zonas interiores: al Sur tiene la zona de Lavabo/Antebaño con DOS puertas correderas (una desde el Despacho y otra desde el extremo Norte de la Cocina), y al Norte tiene la ducha walk-in y el inodoro en cabina. Así cumple la normativa de habitabilidad (el inodoro no abre directo a la cocina) y da servicio a toda la Planta Baja incluso cuando hay visitas durmiendo en el Despacho.',
+        wN: 'Fachada Norte con gran ducha walk-in de 1,60 × 0,90 m + cabina de inodoro suspendido con ventana oscilobatiente.',
+        wS: 'Colinda al 100 % con el extremo Norte de la Cocina (Zona 10): incluye una PUERTA CORREDERA (en x=10,00..10,80) que comunica el office de la cocina con el antebaño de lavabo (con pestillo interior en ambas puertas).',
+        wE: 'Fachada exterior Este (compartiendo la vertical de bajantes con las columnas de agua de la Cocina y con el Baño de la Suite de arriba).',
+        wW: 'Tabique medianero con el Despacho (Zona 3), con PUERTA CORREDERA (en y=2,00..2,80) para que las visitas entren directamente desde su habitación.'
+      },
+      trastero_pb: {
+        fl: 'PB', id: 'trastero_pb', name: '5. Trastero Bicis/Surf + Cuarto Técnico',
+        x: 0.0, y: 3.2, w: 2.5, h: 2.5, area: '6,0 m² útiles', dims: '2,40 × 2,45 m', color: '#475569',
+        views: 'Puerta exterior Norte hacia la Pérgola.',
+        desc: 'Para las 4 bicicletas, tablas de surf y equipos técnicos (Aerotermia, VMC y Rack de Fibra RJ45).',
+        wN: 'Muro Norte con puerta hacia la Pérgola de los coches (Zona 1).',
+        wS: 'Tabique divisorio con la Lavandería (Zona 6).',
+        wE: 'Muro portante Oeste de la Escalera (Zona 7).',
+        wW: 'Fachada exterior Oeste.'
+      },
+      lavanderia_pb: {
+        fl: 'PB', id: 'lavanderia_pb', name: '6. Lavandería y Despensa Auxiliar',
+        x: 0.0, y: 5.7, w: 2.5, h: 2.5, area: '6,0 m² útiles', dims: '2,40 × 2,45 m', color: '#64748b',
+        views: 'Ventana en Fachada Lateral Oeste.',
+        desc: 'Cuarto de lavado, secado, plancha y almacenaje.',
+        wN: 'Tabique con el Trastero (Zona 5).',
+        wS: 'Tabique con el Salón (Zona 11).',
+        wE: 'Puerta de acceso desde el hueco bajo el tramo alto de la Escalera / Pasillo.',
+        wW: 'Fachada exterior Oeste con ventana.'
+      },
+      escalera_pb: {
+        fl: 'PB', id: 'escalera_pb', name: '7. Escalera a Planta Primera (Peldaños 1 a 17)',
+        x: 2.5, y: 3.2, w: 1.2, h: 5.0, area: '6,0 m²', dims: '1,20 × 5,00 m', color: '#059669',
+        views: 'Mirando hacia el Pasillo Interior (Zona 8) y al Patio Corrala (Zona 9).',
+        desc: 'Sube de Norte (Peldaño 1 junto al Hall) hacia el Sur (Peldaño 17 llegando al Pasillo Corrala de P1).',
+        wN: 'Arranque (Peldaño 1) junto al Vestíbulo de Entrada (Zona 2).',
+        wS: 'Llegada arriba a P1 sobre el tabique del Salón.',
+        wE: 'Barandilla de vidrio junto al Pasillo Interior PB (Zona 8).',
+        wW: 'Muro con Trastero y Lavandería.'
+      },
+      pasillo_pb: {
+        fl: 'PB', id: 'pasillo_pb', name: '8. Galería / Pasillo Interior PB (Conecta Hall y Salón)',
+        x: 3.7, y: 3.2, w: 1.3, h: 5.0, area: '6,5 m² útiles', dims: '1,30 × 5,00 m', color: '#0284c7',
+        views: 'Bordeando los 5,00 m de cristal Oeste del Patio Corrala.',
+        desc: 'Conecta en línea recta el Vestíbulo de Entrada (Zona 2) con el Salón-Comedor (Zona 11). Cuando hay visitas durmiendo en el Despacho, esta es la ruta principal hacia el Salón, el Comedor y la Cocina.',
+        wN: 'Continuación abierta desde el Vestíbulo Principal de Entrada (Zona 2).',
+        wS: 'Llegada abierta al Salón Principal (Zona 11).',
+        wE: 'Cristalera de 5,00 m con puerta corredera al Patio Central Corrala (Zona 9).',
+        wW: 'Barandilla de cristal de la Escalera (Zona 7).'
+      },
+      patio_pb: {
+        fl: 'PB', id: 'patio_pb', name: '9. Patio Central "Corrala" (Con Techo de Cristal Móvil)',
+        x: 5.0, y: 3.2, w: 3.8, h: 5.0, area: '19,0 m² útiles', dims: '3,80 × 5,00 m', color: '#10b981',
+        views: 'Patio central cubierto arriba por el techo de cristal motorizado (Opción 2).',
+        desc: 'Ahora su cara Norte colinda con el Hall (1,20 m) y con el Despacho (2,60 m), su cara Este con la Cocina, su cara Sur con el Salón-Comedor y su cara Oeste con el Pasillo Interior.',
+        wN: 'De x=5,00 a 6,20 colinda con el Hall (Zona 2); de x=6,20 a 8,80 (2,60 m) colinda con la cristalera y el escritorio del Despacho (Zona 3). En el interior del patio van el Arce en esquina y el banco de lectura.',
+        wS: 'Puerta corredera de 2,60 m hacia el Salón y el Comedor + Balcón de la Corrala arriba en P1.',
+        wE: 'Puerta corredera de 2,60 m hacia la Isla de la Cocina (Zona 10).',
+        wW: 'Cristalera y puerta hacia el Pasillo Interior PB (Zona 8).'
+      },
+      cocina_pb: {
+        fl: 'PB', id: 'cocina_pb', name: '10. Cocina con Isla (Conectada a Patio, Despacho y Baño PB)',
+        x: 8.8, y: 3.2, w: 3.6, h: 5.0, area: '17,5 m² útiles', dims: '3,50 × 5,00 m', color: '#f59e0b',
+        views: 'Al Oeste mira al Patio Corrala; al Sur mira al Comedor y al Porche.',
+        desc: 'En su extremo Norte (y=3,20) tiene ahora el paso corto desde el Despacho (con la compra) y el acceso al antebaño del Baño PB, además de compartir la pared de fontanería con el baño.',
+        wN: 'De x=8,80 a 9,80: Puerta corredera de paso directo desde el Despacho (Zona 3). De x=9,80 a 12,40: colinda con el Baño PB (Zona 4), incluyendo la puerta corredera al antebaño/lavabo en x=10,00..10,80 y columna despensera.',
+        wS: 'Tabique corredero de cristal oculto de 3,40 m hacia el Comedor Principal (Zona 12).',
+        wE: 'Fachada exterior Este con el frente de 4,20 m de columnas Santos (Frigorífico XXL, Congelador, Hornos, Lavavajillas y Fregadero conectados a la misma bajante que el Baño PB).',
+        wW: 'Puerta corredera de cristal hacia el Patio Central Corrala (Zona 9) junto a la Isla de 3,00 m.'
+      },
+      salon_pb: {
+        fl: 'PB', id: 'salon_pb', name: '11. Zona de Salón (Sofá en L y Chimenea)',
+        x: 0.0, y: 8.2, w: 7.2, h: 4.0, area: '28,2 m² útiles', dims: '7,10 × 3,95 m', color: '#3b82f6',
+        views: 'Al Sur mira al Porche y Jardín Sur; al Noreste mira al Patio Corrala.',
+        desc: 'Zona de sofás y chimenea conectada a cota cero con el porche cubierto.',
+        wN: 'Colinda con Lavandería (x=0..2,5), Escalera (x=2,5..3,7), Pasillo Interior (x=3,7..5,0) y Patio Corrala (x=5,0..7,2).',
+        wS: 'Colinda con el Cuarto de Jardín (x=0..1,8) y abre con gran corredera al Porche Sur (x=1,8..7,2).',
+        wE: 'Unión abierta con la Zona de Comedor (Zona 12).',
+        wW: 'Fachada Oeste (mueble de TV, chimenea y 4 tomas RJ45).'
+      },
+      comedor_pb: {
+        fl: 'PB', id: 'comedor_pb', name: '12. Zona de Comedor Principal (10 Plazas)',
+        x: 7.2, y: 8.2, w: 5.2, h: 4.0, area: '20,2 m² útiles', dims: '5,10 × 3,95 m', color: '#2563eb',
+        views: 'Al Norte mira al Patio Corrala y a la Cocina; al Sur mira al Porche y a la Barbacoa.',
+        desc: 'Mesa de roble para 10 comensales frente a la cocina y al porche.',
+        wN: 'De x=7,20 a 8,80 colinda con el Patio Corrala (Zona 9); de x=8,80 a 12,40 colinda con la Cocina (Zona 10).',
+        wS: 'Ventanal corredero hacia el Porche Sur y la Barbacoa (Zona 14).',
+        wE: 'Fachada exterior Este.',
+        wW: 'Unión abierta con la Zona de Salón (Zona 11).'
+      },
+      cuarto_jardin_pb: {
+        fl: 'PB', id: 'cuarto_jardin_pb', name: '13. Cuarto Herramientas de Jardín + Robot',
+        x: 0.0, y: 12.2, w: 1.8, h: 2.2, area: '3,8 m² útiles', dims: '1,75 × 2,15 m', color: '#059669',
+        views: 'Puerta exterior hacia el Jardín Sur.',
+        desc: 'Cuarto integrado en el extremo Oeste del porche para herramientas de jardín, riego Hunter y robot cortacésped.',
+        wN: 'Muro Sur del Salón (Zona 11).',
+        wS: 'Puerta al Jardín Sur + compuerta del Robot Cortacésped.',
+        wE: 'Tabique revestido en madera hacia el Porche Sur (Zona 14).',
+        wW: 'Fachada Oeste.'
+      },
+      porche_bbq_pb: {
+        fl: 'PB', id: 'porche_bbq_pb', name: '14. Porche Cubierto Sur + Barbacoa de Carbón',
+        x: 1.8, y: 12.2, w: 10.6, h: 2.2, area: '23,3 m² útiles', dims: '10,60 × 2,20 m', color: '#eab308',
+        views: 'Abierto al Jardín Sur.',
+        desc: 'Estar exterior cubierto, comedor de verano y Churrasqueira de carbón en el muro Este.',
+        wN: 'Correderas del Salón y del Comedor.',
+        wS: 'Abierto a cota cero hacia el césped del Jardín Sur.',
+        wE: 'Muro cortavientos Este con la Barbacoa de Carbón en ladrillo refractario, fregadero y campana a cubierta.',
+        wW: 'Colinda con el Cuarto de Herramientas de Jardín (Zona 13).'
+      },
+
+      // ---------------- PLANTA PRIMERA (11 SPACES) ----------------
+      cubierta_norte_p1: {
+        fl: 'P1', id: 'cubierta_norte_p1', name: '15. Cubierta Plana Técnica Norte (10 Paneles Solares)',
+        x: 0.0, y: 0.0, w: 12.4, h: 3.2, area: '39,6 m²', dims: '12,40 × 3,20 m', color: '#94a3b8',
+        views: 'Cubierta técnica no pisable sobre Hall, Despacho y Baño PB.',
+        desc: 'Oculta los 10 paneles solares tras el peto Norte.',
+        wN: 'Peto Norte.', wS: 'Fachada Norte de P1.', wE: 'Peto Este.', wW: 'Peto Oeste.'
+      },
+      bano_hijos_p1: {
+        fl: 'P1', id: 'bano_hijos_p1', name: '16. Baño Compartido Hijos (Doble Seno)',
+        x: 0.0, y: 3.2, w: 2.5, h: 5.0, area: '11,8 m² útiles', dims: '2,40 × 4,90 m', color: '#8b5cf6',
+        views: 'Ventana en Fachada Oeste.',
+        desc: 'Baño infantil encima de la Lavandería y Trastero.',
+        wN: 'Cierre hacia Cubierta Norte.', wS: 'Tabique con Dormitorio Niña.', wE: 'Muro con Escalera y puerta de acceso.', wW: 'Fachada Oeste con ventana.'
+      },
+      escalera_p1: {
+        fl: 'P1', id: 'escalera_p1', name: '17. Desembarco de Escalera en P1 (Peldaño 17)',
+        x: 2.5, y: 3.2, w: 1.2, h: 5.0, area: '6,0 m²', dims: '1,20 × 5,00 m', color: '#059669',
+        views: 'Mira hacia el Pasillo Corrala y el Patio Central al Este.',
+        desc: 'Llegas arriba en y=7,00..8,20 conectando con el Baño de los Hijos (Oeste) y el Pasillo Superior Corrala (Este).',
+        wN: 'Cierre Norte.', wS: 'Tabique Dormitorio Niña.', wE: 'Vacío del Patio y paso al Pasillo Corrala.', wW: 'Tabique y puerta del Baño Hijos.'
+      },
+      corrala_p1: {
+        fl: 'P1', id: 'corrala_p1', name: '18. Pasillo Superior "Corrala" (Distribuidor P1)',
+        x: 3.7, y: 6.8, w: 5.1, h: 1.4, area: '7,1 m² útiles', dims: '5,10 × 1,40 m', color: '#10b981',
+        views: 'Balcón interior asomado al Patio Corrala bajo el techo de cristal motorizado.',
+        desc: 'Conecta la llegada de la Escalera con los 3 dormitorios superiores.',
+        wN: 'Balcón interior de la Corrala mirando al Patio.', wS: 'Puertas de entrada a los Dormitorios de la Niña y del Niño.', wE: 'Puerta de entrada al Vestidor de la Suite Principal.', wW: 'Llegada de la Escalera.'
+      },
+      vacio_patio_p1: {
+        fl: 'P1', id: 'vacio_patio_p1', name: '19. Doble Altura del Patio + Techo de Cristal Móvil',
+        x: 3.7, y: 3.2, w: 5.1, h: 3.6, area: '18,3 m²', dims: '5,10 × 3,60 m', color: '#38bdf8',
+        views: 'Doble altura sobre el Patio Corrala coronada por el techo acristalado retráctil.',
+        desc: 'Luz cenital para el patio y el pasillo superior.',
+        wN: 'Cierre Norte.', wS: 'Balcón del Pasillo Corrala.', wE: 'Pared Oeste de Baño y Vestidor Suite.', wW: 'Hueco de Escalera.'
+      },
+      dorm_nina_p1: {
+        fl: 'P1', id: 'dorm_nina_p1', name: '20. Dormitorio de la Niña (Planta Primera +3,15 m)',
+        x: 0.0, y: 8.2, w: 4.3, h: 4.0, area: '15,8 m² útiles', dims: '4,15 × 3,85 m', color: '#a855f7',
+        views: 'Mira al Sur hacia el Balcón Superior (+3,15 m) y el Jardín.',
+        desc: 'Escritorio en la pared lateral Este (luz a 90° sin contraluz) y paso libre al balcón.',
+        wN: 'Armarios empotrados (2,60 m) + Puerta desde el Pasillo Corrala.', wS: 'Balconera al Balcón Sur.', wE: 'Tabique con Dormitorio Niño + Escritorio lateral de 1,80 m.', wW: 'Fachada Oeste + Cama de 135 cm.'
+      },
+      dorm_nino_p1: {
+        fl: 'P1', id: 'dorm_nino_p1', name: '21. Dormitorio del Niño (Planta Primera +3,15 m)',
+        x: 4.3, y: 8.2, w: 4.2, h: 4.0, area: '15,5 m² útiles', dims: '4,05 × 3,85 m', color: '#6366f1',
+        views: 'Mira al Sur hacia el Balcón Superior (+3,15 m) y el Jardín.',
+        desc: 'Simétrico al de su hermana, con escritorio en la pared lateral Este.',
+        wN: 'Puerta desde el Pasillo Corrala + Armarios empotrados (2,50 m).', wS: 'Balconera al Balcón Sur.', wE: 'Tabique con Suite + Escritorio lateral de 1,80 m.', wW: 'Tabique con Dormitorio Niña + Cama de 135 cm.'
+      },
+      vestidor_suite_p1: {
+        fl: 'P1', id: 'vestidor_suite_p1', name: '22. Vestidor Pasante de la Suite Principal',
+        x: 8.8, y: 5.2, w: 3.6, h: 3.0, area: '10,2 m² útiles', dims: '3,50 × 2,95 m', color: '#ec4899',
+        views: 'Luz tamizada del Patio Corrala por el Oeste.',
+        desc: 'Articula la entrada a la Suite con el Baño Suite (al Norte) y el Dormitorio (al Sur).',
+        wN: 'Puerta al Baño Suite.', wS: 'Paso al Dormitorio Matrimonio.', wE: 'Fachada Este con armarios.', wW: 'Ventana con lamas al Patio + Puerta desde Pasillo Corrala.'
+      },
+      bano_suite_p1: {
+        fl: 'P1', id: 'bano_suite_p1', name: '23. Baño Privado En-Suite Matrimonio',
+        x: 8.8, y: 3.2, w: 3.6, h: 2.0, area: '6,8 m² útiles', dims: '3,50 × 1,95 m', color: '#db2777',
+        views: 'Ventana hacia la Fachada Este.',
+        desc: 'Unifica la vertical de bajantes con el Baño PB (Zona 4) y la Cocina (Zona 10) justo debajo.',
+        wN: 'Cierre Norte con doble lavabo.', wS: 'Puerta desde el Vestidor.', wE: 'Fachada Este con ducha y ventana.', wW: 'Cierre hacia el Patio.'
+      },
+      dorm_suite_p1: {
+        fl: 'P1', id: 'dorm_suite_p1', name: '24. Dormitorio Principal Matrimonio (P1 +3,15 m)',
+        x: 8.5, y: 8.2, w: 3.9, h: 4.0, area: '15,0 m² útiles', dims: '3,80 × 3,95 m', color: '#f43f5e',
+        views: 'Mira al Sur hacia el Balcón Superior (+3,15 m) y el Jardín.',
+        desc: 'Dormitorio de matrimonio en la esquina Sureste.',
+        wN: 'Paso desde el Vestidor.', wS: 'Ventanal al Balcón Sur.', wE: 'Fachada Este con cabecero King Size.', wW: 'Tabique acústico con Dormitorio Niño.'
+      },
+      balcon_sur_p1: {
+        fl: 'P1', id: 'balcon_sur_p1', name: '25. Balcón Continuo Sur con Barandilla de Cristal (+3,15 m)',
+        x: 0.0, y: 12.2, w: 12.4, h: 1.1, area: '13,6 m²', dims: '12,40 × 1,10 m', color: '#0ea5e9',
+        views: 'Vistas elevadas a +3,15 m sobre el Jardín Sur.',
+        desc: 'Balcón superior con barandilla de vidrio de seguridad.',
+        wN: 'Ventanales de los 3 dormitorios.', wS: 'Barandilla de vidrio hacia el Jardín Sur.', wE: 'Borde Este.', wW: 'Borde Oeste.'
+      }
+    };
+
+    function switchView(v) {
+      currentView = v;
+      ['PB', 'P1', 'ZOOM'].forEach(k => {
+        document.getElementById('btn-mode-' + k).className = k === v
+          ? 'px-3.5 py-2 rounded-lg text-xs md:text-sm font-bold border border-emerald-600 bg-emerald-600 text-white shadow-sm transition'
+          : 'px-3.5 py-2 rounded-lg text-xs md:text-sm font-medium border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] hover:opacity-80 transition';
+      });
+
+      if (v === 'PB' && SPACES[selectedId].fl !== 'PB') selectedId = 'despacho_pb';
+      if (v === 'P1' && SPACES[selectedId].fl !== 'P1') selectedId = 'corrala_p1';
+
+      document.getElementById('canvas-header').textContent =
+        v === 'PB' ? 'Planta Baja (Cota +0,00) — Despacho frente al Patio Corrala y Baño PB al fondo con doble acceso' :
+        v === 'P1' ? 'Planta Primera (Cota +3,15) — Baño Suite en la misma vertical que Cocina y Baño PB' :
+        `Zoom 1:25 de ${SPACES[selectedId].name}`;
+
+      selectSpace(selectedId);
+    }
+
+    function selectSpace(id) {
+      if (!SPACES[id]) return;
+      selectedId = id;
+      const sp = SPACES[id];
+
+      document.getElementById('sel-cat').textContent = sp.fl === 'PB' ? 'Planta Baja (+0,00)' : 'Planta Primera (+3,15)';
+      document.getElementById('sel-dims').textContent = `${sp.area} · ${sp.dims}`;
+      document.getElementById('sel-title').textContent = sp.name;
+      document.getElementById('sel-views').textContent = sp.views;
+      document.getElementById('sel-desc').textContent = sp.desc;
+      document.getElementById('sel-wN').textContent = sp.wN;
+      document.getElementById('sel-wS').textContent = sp.wS;
+      document.getElementById('sel-wE').textContent = sp.wE;
+      document.getElementById('sel-wW').textContent = sp.wW;
+
+      const activeFl = currentView === 'ZOOM' ? sp.fl : currentView;
+      const floorSpaces = Object.values(SPACES).filter(s => s.fl === activeFl);
+      document.getElementById('room-list-buttons').innerHTML = floorSpaces.map(s => `
+        <button onclick="selectSpace('${s.id}')" class="text-left px-2.5 py-1.5 rounded text-xs transition flex items-center justify-between ${
+          s.id === selectedId
+            ? 'bg-emerald-600 text-white font-bold'
+            : 'bg-[var(--content)] text-[var(--foreground)] hover:opacity-80'
+        }">
+          <span class="truncate">${s.name}</span>
+          <span class="text-[10px] opacity-80 ml-2 shrink-0">${s.dims}</span>
+        </button>
+      `).join('');
+
+      renderMainSVG();
+    }
+
+    function renderMainSVG() {
+      const svg = document.getElementById('main-svg');
+      const showRoutes = document.getElementById('chk-routes').checked;
+      const showFurn = document.getElementById('chk-furn').checked;
+
+      if (currentView === 'ZOOM') {
+        renderRoomZoomSVG(svg, SPACES[selectedId]);
+        return;
+      }
+      svg.setAttribute('viewBox', '0 0 780 860');
+
+      const floorSpaces = Object.values(SPACES).filter(s => s.fl === currentView);
+      let h = `
+        <defs>
+          <marker id="route-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+          </marker>
+        </defs>
+
+        <rect x="${px(0)}" y="14" width="${pw(12.4)}" height="32" rx="6" fill="currentColor" fill-opacity="0.07" stroke="currentColor" stroke-opacity="0.2"/>
+        <text x="${px(6.2)}" y="34" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">
+          ⬆️ FACHADA NORTE — CALLE DE ACCESO (Pérgola, Hall, Despacho al Centro y Baño PB al Fondo Este)
+        </text>
+
+        <rect x="${px(0)}" y="${py(14.8)}" width="${pw(12.4)}" height="34" rx="6" fill="#22c55e" fill-opacity="0.14" stroke="#16a34a"/>
+        <text x="${px(6.2)}" y="${py(15.22)}" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">
+          ⬇️ FACHADA SUR — JARDÍN SOLEADO (Salón, Comedor, Porche y los 3 Dormitorios Superiores)
+        </text>
+      `;
+
+      floorSpaces.forEach(sp => {
+        const isSel = sp.id === selectedId;
+        h += `
+          <g onclick="selectSpace('${sp.id}')">
+            <rect class="room-poly ${isSel ? 'selected' : ''}"
+                  x="${px(sp.x)}" y="${py(sp.y)}" width="${pw(sp.w)}" height="${pw(sp.h)}"
+                  fill="${sp.color}" fill-opacity="0.2"
+                  stroke="${sp.color}" stroke-width="${isSel ? '3.5' : '1.8'}"/>
+          </g>
+        `;
+      });
+
+      const s = `stroke="currentColor" stroke-opacity="0.55" fill="none" stroke-width="1.3"`;
+      if (showFurn && currentView === 'PB') {
+        h += `
+          <!-- Front Door at Hall (x=4.4..5.5, y=0) -->
+          <rect x="${px(4.3)}" y="${py(-0.18)}" width="${pw(1.3)}" height="16" rx="3" fill="#dc2626"/>
+          <text x="${px(4.95)}" y="${py(-0.02)}" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">🚪 PUERTA ENTRADA</text>
+
+          <!-- 2 Cars in Pergola -->
+          <rect x="${px(0.2)}" y="${py(0.2)}" width="${pw(1.6)}" height="${pw(2.8)}" rx="6" ${s}/>
+          <rect x="${px(2.0)}" y="${py(0.2)}" width="${pw(1.6)}" height="${pw(2.8)}" rx="6" ${s}/>
+
+          <!-- Staircase steps 1 to 17 -->
+          ${Array.from({length:14}, (_,i) => `<line x1="${px(2.6)}" y1="${py(3.4 + i*0.32)}" x2="${px(3.6)}" y2="${py(3.4 + i*0.32)}" stroke="#047857" stroke-width="1.4"/>`).join('')}
+
+          <!-- NEW! DESPACHO IN CENTER-NORTH (x=6.2..9.8, y=0..3.2) LOOKING INTO THE PATIO CORRALA (x=5.0..8.8)! -->
+          <!-- North Wall: Sofa + Murphy Bed (x=6.35..8.35) + Sliding Wardrobe (x=8.45..9.65) -->
+          <rect x="${px(6.35)}" y="${py(0.12)}" width="${pw(2.0)}" height="${pw(0.75)}" rx="3" fill="#3b82f6" fill-opacity="0.3" stroke="#2563eb" stroke-width="1.5"/>
+          <rect x="${px(8.45)}" y="${py(0.12)}" width="${pw(1.25)}" height="${pw(0.55)}" fill="#a855f7" fill-opacity="0.3" stroke="#9333ea" stroke-width="1.5"/>
+          <!-- South Wall of Despacho (x=6.2..8.8, y=3.2): 2.60 m GLASS WINDOW TO PATIO CORRALA + DESK! -->
+          <line x1="${px(6.3)}" y1="${py(3.2)}" x2="${px(8.7)}" y2="${py(3.2)}" stroke="#38bdf8" stroke-width="6"/>
+          <rect x="${px(6.6)}" y="${py(2.55)}" width="${pw(1.7)}" height="${pw(0.55)}" rx="2" fill="#10b981" fill-opacity="0.35" stroke="#059669" stroke-width="1.5"/>
+
+          <!-- NEW! BAÑO PB IN NORTHEAST CORNER (x=9.8..12.4, y=0..3.2) WITH DOUBLE ACCESS (From Despacho & From Kitchen!) -->
+          <!-- Internal partition separating Lavabo/Antebaño (South) from Shower/WC (North) -->
+          <line x1="${px(9.8)}" y1="${py(1.8)}" x2="${px(12.4)}" y2="${py(1.8)}" stroke="#0d9488" stroke-width="1.8" stroke-dasharray="4 2"/>
+          <!-- Door 1: From Despacho into Antebaño (x=9.8, y=2.1..2.8) -->
+          <circle cx="${px(9.8)}" cy="${py(2.45)}" r="6" fill="#f59e0b"/>
+          <!-- Door 2: From Kitchen into Antebaño (y=3.2, x=10.1..10.9) -->
+          <circle cx="${px(10.5)}" cy="${py(3.2)}" r="6" fill="#f59e0b"/>
+          <!-- Door 3: Direct pass-through from Despacho into Kitchen (y=3.2, x=9.0..9.6) -->
+          <circle cx="${px(9.3)}" cy="${py(3.2)}" r="6" fill="#10b981"/>
+
+          <!-- Patio Corrala Furniture -->
+          <rect x="${px(5.15)}" y="${py(3.35)}" width="${pw(1.0)}" height="${pw(1.0)}" rx="5" fill="#22c55e" fill-opacity="0.35" stroke="#15803d"/>
+          <rect x="${px(6.3)}" y="${py(3.35)}" width="${pw(2.3)}" height="${pw(0.55)}" rx="3" fill="#d97706" fill-opacity="0.3" stroke="#b45309"/>
+          <circle cx="${px(6.9)}" cy="${py(5.8)}" r="18" fill="#f59e0b" fill-opacity="0.3" stroke="#d97706" stroke-width="1.6"/>
+          <rect x="${px(5.6)}" y="${py(5.4)}" width="${pw(0.7)}" height="${pw(0.75)}" rx="5" fill="#10b981" fill-opacity="0.35" stroke="#059669"/>
+          <rect x="${px(7.6)}" y="${py(5.4)}" width="${pw(0.7)}" height="${pw(0.75)}" rx="5" fill="#10b981" fill-opacity="0.35" stroke="#059669"/>
+
+          <!-- Kitchen Island + Columns -->
+          <rect x="${px(11.7)}" y="${py(3.4)}" width="${pw(0.55)}" height="${pw(4.5)}" fill="currentColor" fill-opacity="0.12" ${s}/>
+          <rect x="${px(9.5)}" y="${py(4.0)}" width="${pw(1.0)}" height="${pw(3.2)}" rx="4" fill="#f59e0b" fill-opacity="0.28" stroke="#d97706" stroke-width="1.8"/>
+
+          <!-- Living Sofa + Dining Table -->
+          <path d="M ${px(0.8)} ${py(8.8)} h ${pw(3.2)} v ${pw(0.85)} h ${-pw(2.35)} v ${pw(1.6)} h ${-pw(0.85)} z" ${s}/>
+          <rect x="${px(8.0)}" y="${py(9.4)}" width="${pw(3.0)}" height="${pw(1.15)}" rx="4" ${s}/>
+        `;
+      }
+
+      if (showFurn && currentView === 'P1') {
+        h += `
+          ${Array.from({length:12}, (_,i) => `<line x1="${px(2.6)}" y1="${py(3.4 + i*0.32)}" x2="${px(3.6)}" y2="${py(3.4 + i*0.32)}" stroke="#047857" stroke-width="1.4"/>`).join('')}
+          <rect x="${px(0.2)}" y="${py(9.4)}" width="${pw(1.8)}" height="${pw(1.4)}" rx="3" ${s}/>
+          <rect x="${px(3.55)}" y="${py(9.2)}" width="${pw(0.6)}" height="${pw(1.8)}" rx="2" fill="#10b981" fill-opacity="0.35" stroke="#059669"/>
+          <rect x="${px(4.5)}" y="${py(9.4)}" width="${pw(1.8)}" height="${pw(1.4)}" rx="3" ${s}/>
+          <rect x="${px(7.75)}" y="${py(9.2)}" width="${pw(0.6)}" height="${pw(1.8)}" rx="2" fill="#10b981" fill-opacity="0.35" stroke="#059669"/>
+          <rect x="${px(10.2)}" y="${py(9.2)}" width="${pw(1.9)}" height="${pw(1.8)}" rx="4" ${s}/>
+          <rect x="${px(11.7)}" y="${py(5.4)}" width="${pw(0.55)}" height="${pw(2.6)}" ${s}/>
+        `;
+      }
+
+      floorSpaces.forEach(sp => {
+        const cx = px(sp.x + sp.w / 2);
+        const cy = py(sp.y + sp.h / 2);
+        const shortName = sp.name.replace(/^[0-9]+\.\s*/, '').split(' (')[0];
+        h += `
+          <rect x="${cx - 56}" y="${cy - 15}" width="112" height="28" rx="4" fill="var(--card)" fill-opacity="0.88" stroke="${sp.color}" stroke-width="1"/>
+          <text x="${cx}" y="${cy - 2}" text-anchor="middle" font-size="9.5" font-weight="700" fill="currentColor">${shortName.slice(0, 22)}</text>
+          <text x="${cx}" y="${cy + 9}" text-anchor="middle" font-size="9" font-weight="700" fill="${sp.color}">${sp.dims}</text>
+        `;
+      });
+
+      if (showRoutes && currentView === 'PB') {
+        h += `
+          <!-- Route 1: Main Hall -> Pasillo Interior -> Living Room (Always open even when guests sleep in Despacho!) -->
+          <path d="M ${px(4.95)} ${py(-0.3)} L ${px(4.95)} ${py(2.2)} L ${px(4.35)} ${py(2.2)} L ${px(4.35)} ${py(9.2)}"
+                fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="6 3" marker-end="url(#route-arrow)"/>
+          <!-- Route 2: Daily Shortcut from Hall -> Despacho -> Kitchen & Baño PB -->
+          <path d="M ${px(4.95)} ${py(2.2)} L ${px(9.3)} ${py(2.2)} L ${px(9.3)} ${py(4.0)} M ${px(9.3)} ${py(2.45)} L ${px(10.5)} ${py(2.45)} L ${px(10.5)} ${py(3.8)}"
+                fill="none" stroke="#059669" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#route-arrow)"/>
+        `;
+      }
+
+      if (showRoutes && currentView === 'P1') {
+        h += `
+          <path d="M ${px(3.1)} ${py(3.5)} L ${px(3.1)} ${py(7.5)} L ${px(8.8)} ${py(7.5)}"
+                fill="none" stroke="#dc2626" stroke-width="3.2" stroke-dasharray="6 3" marker-end="url(#route-arrow)"/>
+          <path d="M ${px(3.1)} ${py(7.5)} L ${px(1.8)} ${py(7.5)} M ${px(4.0)} ${py(7.5)} L ${px(4.0)} ${py(8.8)} M ${px(5.0)} ${py(7.5)} L ${px(5.0)} ${py(8.8)}"
+                fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="4 2" marker-end="url(#route-arrow)"/>
+        `;
+      }
+
+      svg.innerHTML = h;
+    }
+
+    function renderRoomZoomSVG(svg, sp) {
+      const prevView = currentView;
+      currentView = sp.fl;
+      renderMainSVG();
+      currentView = prevView;
+
+      const pad = 1.4;
+      const vx = px(sp.x - pad);
+      const vy = py(sp.y - pad);
+      const vw = pw(sp.w + pad * 2);
+      const vh = pw(sp.h + pad * 2);
+      svg.setAttribute('viewBox', `${vx} ${vy} ${vw} ${vh}`);
+
+      const rx = px(sp.x), ry = py(sp.y), rw = pw(sp.w), rh = pw(sp.h);
+      svg.innerHTML += `
+        <g>
+          <rect x="${rx + rw/2 - 55}" y="${ry - 22}" width="110" height="18" rx="4" fill="#0284c7"/>
+          <text x="${rx + rw/2}" y="${ry - 10}" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">⬆️ PARED NORTE</text>
+
+          <rect x="${rx + rw/2 - 55}" y="${ry + rh + 4}" width="110" height="18" rx="4" fill="#d97706"/>
+          <text x="${rx + rw/2}" y="${ry + rh + 16}" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">⬇️ PARED SUR</text>
+
+          <rect x="${rx - 52}" y="${ry + rh/2 - 9}" width="48" height="18" rx="4" fill="#9333ea"/>
+          <text x="${rx - 28}" y="${ry + rh/2 + 3}" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">⬅️ OESTE</text>
+
+          <rect x="${rx + rw + 4}" y="${ry + rh/2 - 9}" width="48" height="18" rx="4" fill="#059669"/>
+          <text x="${rx + rw + 28}" y="${ry + rh/2 + 3}" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">➡️ ESTE</text>
+        </g>
+      `;
+    }
+
+    switchView('PB');
+  </script>
+</body>
+</html>

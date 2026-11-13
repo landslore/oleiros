@@ -1,0 +1,781 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planos Arquitectónicos — Vivienda Unifamiliar en Oleiros</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .blueprint-grid {
+      background-image: radial-gradient(var(--border) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .room-poly {
+      transition: fill-opacity 0.18s ease, stroke-width 0.18s ease;
+      cursor: pointer;
+    }
+    .room-poly:hover, .room-poly.active-room {
+      fill-opacity: 0.42 !important;
+      stroke-width: 2.5px !important;
+    }
+    svg text {
+      user-select: none;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #f8fafc;
+      --foreground: #0f172a;
+      --card: #ffffff;
+      --card-foreground: #0f172a;
+      --content: #ffffff;
+      --border: #e2e8f0;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --accent: #f1f5f9;
+      --accent-foreground: #0f172a;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-4 md:p-6">
+  <div class="max-w-7xl mx-auto space-y-5">
+
+    <!-- Header -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-[var(--primary)] text-[var(--primary-foreground)]">ANTEPROYECTO TÉCNICO · ESCALA 1:100</span>
+          <span class="text-xs text-[var(--muted-foreground)]">Liáns / Santa Cruz (Oleiros, A Coruña)</span>
+        </div>
+        <h1 class="text-xl font-bold mt-1">Planos Acotados de Distribución y Parcela (600 m² · 20 × 30 m)</h1>
+        <p class="text-sm text-[var(--muted-foreground)]">Selecciona la propuesta y la planta. Haz clic sobre cualquier estancia del plano para ver sus medidas exactas, orientación y detalles constructivos.</p>
+      </div>
+
+      <!-- Option Selector -->
+      <div class="flex flex-wrap gap-2">
+        <button id="btn-opt-A" onclick="selectOption('A')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          Opción A · Planta en L
+        </button>
+        <button id="btn-opt-B" onclick="selectOption('B')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          Opción B · Topografía Escalonada
+        </button>
+        <button id="btn-opt-C" onclick="selectOption('C')" class="px-3.5 py-2 rounded-lg text-sm font-medium border transition">
+          Opción C · Pabellón con Patio
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+      <!-- Left Column: Blueprint Canvas (8 cols) -->
+      <div class="lg:col-span-8 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-col">
+        <!-- Toolbar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-3 mb-3 border-b border-[var(--border)]">
+          <!-- Floor Tabs -->
+          <div id="floor-tabs" class="flex flex-wrap gap-2"></div>
+
+          <!-- Layer Toggles -->
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="toggle-furniture" checked onchange="renderCurrentPlan()" class="rounded" />
+              <span>Mobiliario</span>
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="toggle-dims" checked onchange="renderCurrentPlan()" class="rounded" />
+              <span>Cotas (m)</span>
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="toggle-climate" checked onchange="renderCurrentPlan()" class="rounded" />
+              <span>Clima y Retranqueos</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- SVG Container -->
+        <div class="relative w-full overflow-x-auto blueprint-grid rounded-lg border border-[var(--border)] p-2 flex justify-center">
+          <svg id="blueprint-svg" viewBox="0 0 760 920" class="w-full max-w-[720px] h-auto"></svg>
+        </div>
+
+        <!-- Legend -->
+        <div class="mt-3 pt-3 border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--muted-foreground)]">
+          <div class="flex flex-wrap items-center gap-4">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 inline-block rounded-sm" style="background:rgba(59,130,246,0.28);border:1.5px solid #3b82f6"></span> Zona de Día</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 inline-block rounded-sm" style="background:rgba(168,85,247,0.28);border:1.5px solid #a855f7"></span> Zona Noche Familia</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 inline-block rounded-sm" style="background:rgba(16,185,129,0.28);border:1.5px solid #10b981"></span> Visitas / Polivalente</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 inline-block rounded-sm" style="background:rgba(245,158,11,0.28);border:1.5px solid #f59e0b"></span> Porche / Exterior</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 inline-block rounded-sm" style="background:rgba(148,163,184,0.28);border:1.5px solid #64748b"></span> Servicio / Garaje</span>
+          </div>
+          <span>Escala gráfica: 1 cuadrícula mayor = 1,00 m · Parcela 20,00 × 30,00 m</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Room Details & Surface Table (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+
+        <!-- Option Summary Card -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+          <h2 id="opt-title" class="text-base font-bold"></h2>
+          <p id="opt-subtitle" class="text-xs text-[var(--muted-foreground)] mt-0.5"></p>
+          <div id="opt-badges" class="flex flex-wrap gap-2 mt-3"></div>
+          <p id="opt-desc" class="text-xs text-[var(--muted-foreground)] mt-3 leading-relaxed"></p>
+        </div>
+
+        <!-- Selected Room Inspector -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)]">Detalle de Estancia</span>
+            <span id="room-tag" class="text-xs px-2 py-0.5 rounded bg-[var(--secondary)] text-[var(--secondary-foreground)] font-medium">Haz clic en el plano</span>
+          </div>
+          <h3 id="room-name" class="text-base font-bold mt-1.5">Selecciona una estancia en el plano</h3>
+          <div class="grid grid-cols-2 gap-2 mt-3 text-xs">
+            <div class="p-2.5 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+              <span class="text-[var(--muted-foreground)] block">Superficie Útil</span>
+              <span id="room-area" class="text-sm font-bold mt-0.5 block">— m²</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-[var(--content)] border border-[var(--border)]">
+              <span class="text-[var(--muted-foreground)] block">Dimensiones interiores</span>
+              <span id="room-dims" class="text-sm font-bold mt-0.5 block">— × — m</span>
+            </div>
+          </div>
+          <p id="room-notes" class="text-xs text-[var(--muted-foreground)] mt-3 leading-relaxed">
+            Pasa el cursor o haz clic sobre cualquier habitación del plano para inspeccionar su equipamiento, orientación solar y criterios de diseño.
+          </p>
+        </div>
+
+        <!-- Surface Schedule Table -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold">Cuadro de Superficies (Planta Actual)</h3>
+            <span id="floor-total-badge" class="text-xs font-bold px-2 py-0.5 rounded bg-[var(--primary)] text-[var(--primary-foreground)]"></span>
+          </div>
+          <div class="max-h-72 overflow-y-auto pr-1">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="border-b border-[var(--border)] text-left text-[var(--muted-foreground)]">
+                  <th class="py-1.5 font-medium">Estancia</th>
+                  <th class="py-1.5 font-medium">Cotas (m)</th>
+                  <th class="py-1.5 font-medium text-right">Sup. Útil</th>
+                </tr>
+              </thead>
+              <tbody id="surface-table-body" class="divide-y divide-[var(--border)]"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Coordinate conversion: Plot is 20m wide (X: 0..20) by 30m deep (Y: 0..30)
+    // Scale: 1m = 26px. Offset X = 110, Offset Y = 90
+    const SCALE = 26;
+    const OX = 110;
+    const OY = 85;
+    const mx = (m) => OX + m * SCALE;
+    const my = (m) => OY + m * SCALE;
+    const mw = (m) => m * SCALE;
+
+    const ZONE_COLORS = {
+      day:     { fill: '#3b82f6', stroke: '#2563eb', label: 'Zona de Día' },
+      night:   { fill: '#a855f7', stroke: '#9333ea', label: 'Zona de Noche' },
+      guest:   { fill: '#10b981', stroke: '#059669', label: 'Visitas / Polivalente' },
+      outdoor: { fill: '#f59e0b', stroke: '#d97706', label: 'Exterior Cubierto' },
+      service: { fill: '#64748b', stroke: '#475569', label: 'Servicio / Garaje' },
+      patio:   { fill: '#22c55e', stroke: '#16a34a', label: 'Patio Ajardinado' }
+    };
+
+    const PLANS = {
+      A: {
+        title: 'Opción A: "El Abrazo Atlántico" (Planta en L)',
+        subtitle: 'PB + P1 · Parcela llana de 600 m² (20 × 30 m) · Total construido: 258 m²',
+        badges: ['Ocupación PB: 24% (146 m²)', 'Jardín libre Sur-Oeste: 320 m²', 'Cortavientos Nordés'],
+        desc: 'El brazo Norte aloja garaje, acceso y suite de visitas; el brazo Este aloja salón-comedor-cocina volcando al jardín Sur-Oeste y protegiendo la piscina del viento Nordés.',
+        floors: {
+          PB: {
+            name: 'Planta Baja (Cota +0,00)',
+            totalBuilt: '152 m² const. / 133,5 m² útiles',
+            showGarden: true,
+            pool: { x: 4.2, y: 16.5, w: 4.0, h: 8.0, label: 'Piscina 8,0 × 4,0 m' },
+            rooms: [
+              { id:'garaje', name:'Garaje (2 Coches + Bicis)', x:3.0, y:5.0, w:6.4, h:6.0, area:'36,5', dims:'6,20 × 5,90', zone:'service',
+                notes:'Puerta seccional motorizada al Norte. Espacio para 2 SUVs en paralelo, cargador VE y estantería para tablas de surf/bicicletas.',
+                furn:'cars2' },
+              { id:'tecnico', name:'Cuarto Técnico + Lavandería', x:3.0, y:11.0, w:3.4, h:2.8, area:'8,8', dims:'3,25 × 2,70', zone:'service',
+                notes:'Bomba de calor Aerotermia, máquina VMC con recuperador de calor, lavadora, secadora y tendedero interior temperado.',
+                furn:'laundry' },
+              { id:'mudroom', name:'Mudroom / Gabanero', x:6.4, y:11.0, w:3.0, h:2.8, area:'7,8', dims:'2,85 × 2,70', zone:'service',
+                notes:'Esclusa cortavientos entre el garaje/entrada y la vivienda para dejar abrigos mojados, botas y mochilas de los niños.',
+                furn:'wardrobe_top' },
+              { id:'hall', name:'Vestíbulo + Escalera', x:9.4, y:5.0, w:3.4, h:5.2, area:'15,5', dims:'3,25 × 4,95', zone:'day',
+                notes:'Entrada principal peatonal desde el Norte con visión directa hacia el jardín Sur. Escalera abierta con peldaños de roble.',
+                furn:'stairs_v' },
+              { id:'bano_pb', name:'Baño Completo PB / Visitas', x:12.8, y:5.0, w:1.8, h:3.2, area:'5,2', dims:'1,70 × 3,05', zone:'guest',
+                notes:'Doble acceso (desde distribuidor como aseo de día y directo para el dormitorio de invitados) con ducha a ras de suelo.',
+                furn:'bath_v' },
+              { id:'visitas', name:'Dormitorio Visitas / Despacho', x:14.6, y:5.0, w:2.4, h:4.2, area:'11,2', dims:'2,80 × 4,00', zone:'guest',
+                notes:'En esquina tranquila. Equipada con sofá-cama doble de apertura italiana o cama abatible y mesa de teletrabajo. Ideal para abuelos o amigos.',
+                furn:'guest_bed' },
+              { id:'cocina', name:'Cocina con Isla Central', x:9.4, y:10.2, w:7.6, h:4.2, area:'28,5', dims:'7,30 × 3,95', zone:'day',
+                notes:'Isla de 3,20 m con 4 taburetes, columna de hornos, despensa oculta y tabique corredero de vidrio para aislar olores sin perder luz.',
+                furn:'kitchen_island' },
+              { id:'comedor', name:'Comedor Principal', x:11.2, y:14.4, w:5.8, h:4.0, area:'21,8', dims:'5,50 × 3,95', zone:'day',
+                notes:'Mesa para 10 comensales (familia + 6 invitados) con gran ventanal corredero a cota cero hacia el porche cubierto.',
+                furn:'dining10' },
+              { id:'salon', name:'Salón Principal', x:11.2, y:18.4, w:5.8, h:5.0, area:'27,2', dims:'5,50 × 4,90', zone:'day',
+                notes:'Doble orientación Sur y Oeste con chimenea bioetanol/leña y salida directa al porche y jardín.',
+                furn:'living_l' },
+              { id:'porche', name:'Porche Cubierto Sur-Oeste', x:7.4, y:16.4, w:3.8, h:7.0, area:'25,5', dims:'3,70 × 6,90', zone:'outdoor',
+                notes:'Alero profundo de hormigón visto y madera termotratada. Protegido del viento Nordés por los dos cuerpos de la vivienda.',
+                furn:'porch_lounge' }
+            ],
+            windows: [
+              { x1:9.4, y1:10.2, x2:9.4, y2:13.8 },
+              { x1:11.2, y1:14.8, x2:11.2, y2:22.8 },
+              { x1:11.8, y1:23.4, x2:16.2, y2:23.4 },
+              { x1:17.0, y1:6.0, x2:17.0, y2:8.5 }
+            ]
+          },
+          P1: {
+            name: 'Planta Primera (Cota +3,15)',
+            totalBuilt: '106 m² const. / 89,0 m² útiles',
+            showGarden: false,
+            roofBelow: [{ x:3.0, y:5.0, w:8.2, h:8.8, label:'Cubierta Plana Garaje / Paneles Solares Ocultos' }],
+            rooms: [
+              { id:'dist_p1', name:'Distribuidor + Zona Lectura', x:11.2, y:8.0, w:2.2, h:8.4, area:'16,8', dims:'2,05 × 8,20', zone:'night',
+                notes:'Galería iluminada desde el Oeste con estantería corrida de suelo a techo para libros y juegos de los niños.',
+                furn:'stairs_small' },
+              { id:'nina', name:'Dormitorio Niña (9 años)', x:13.4, y:8.0, w:3.6, h:4.2, area:'14,2', dims:'3,45 × 4,10', zone:'night',
+                notes:'Cama de 105/135 cm, escritorio de 1,80 m bajo ventana y armario empotrado de 2,40 m. Dimensionado para etapa adolescente.',
+                furn:'kid_room' },
+              { id:'nino', name:'Dormitorio Niño (7 años)', x:13.4, y:12.2, w:3.6, h:4.2, area:'14,2', dims:'3,45 × 4,10', zone:'night',
+                notes:'Exactamente igual en superficie y prestaciones al de su hermana para evitar agravios. Orientación soleada.',
+                furn:'kid_room' },
+              { id:'bano_ninos', name:'Baño Compartido Hijos', x:11.2, y:16.4, w:2.4, h:3.2, area:'7,1', dims:'2,25 × 3,15', zone:'night',
+                notes:'Encimera de doble lavabo (para que puedan arreglarse a la vez antes del colegio) y zona de inodoro/ducha independizada.',
+                furn:'bath_double' },
+              { id:'vestidor', name:'Vestidor Pasante Suite', x:13.6, y:16.4, w:3.4, h:2.4, area:'7,6', dims:'3,25 × 2,35', zone:'night',
+                notes:'Doble hilera de armarios iluminados con LED y lucernario superior. Actúa como colchón acústico entre los niños y los padres.',
+                furn:'wardrobe_both' },
+              { id:'bano_suite', name:'Baño Suite Principal', x:11.2, y:19.6, w:2.4, h:3.8, area:'8,5', dims:'2,25 × 3,75', zone:'night',
+                notes:'Doble seno, ducha walk-in efecto lluvia y bañera exenta junto a ventana con celosía de madera.',
+                furn:'bath_suite' },
+              { id:'suite', name:'Dormitorio Principal Matrimonio', x:13.6, y:18.8, w:3.4, h:4.6, area:'15,2', dims:'3,30 × 4,60', zone:'night',
+                notes:'Orientación Sur con vistas despejadas al jardín y acceso a terraza privada.',
+                furn:'master_bed' },
+              { id:'terraza_p1', name:'Terraza Solárium Suite', x:11.2, y:23.4, w:5.8, h:1.8, area:'9,8', dims:'5,60 × 1,75', zone:'outdoor',
+                notes:'Vuelo sobre el salón que sirve simultáneamente de alero protector solar para la Planta Baja.',
+                furn:'terrace' }
+            ],
+            windows: [
+              { x1:11.2, y1:9.0, x2:11.2, y2:15.5 },
+              { x1:17.0, y1:8.8, x2:17.0, y2:11.4 },
+              { x1:17.0, y1:13.0, x2:17.0, y2:15.6 },
+              { x1:13.8, y1:23.4, x2:16.6, y2:23.4 }
+            ]
+          }
+        }
+      },
+
+      B: {
+        title: 'Opción B: "Topografía Escalonada" (Semisótano + PB + Suite Alta)',
+        subtitle: '3 Niveles adaptados a pendiente · Parcela de 600 m² · Total construido: 285 m²',
+        badges: ['Semisótano no computa edificabilidad', 'Apartamento visitas + Sala ocio', 'Toda la familia en PB'],
+        desc: 'Aprovecha el desnivel típico de muchas parcelas de Liáns. El acceso rodado y la zona de invitados/ocio adolescente quedan en el nivel inferior, liberando la Planta Baja entera a cota de jardín para la vida familiar.',
+        floors: {
+          SEMI: {
+            name: 'Nivel Semisótano (Cota -3,00 · Acceso Calle)',
+            totalBuilt: '118 m² const. / 102,0 m² útiles',
+            showGarden: false,
+            rooms: [
+              { id:'garaje_b', name:'Garaje Doble + Taller/Surf', x:4.5, y:5.0, w:6.5, h:6.2, area:'38,5', dims:'6,30 × 6,10', zone:'service',
+                notes:'Acceso directo desde la calle en la cota baja de la parcela sin rampa pronunciada. Espacio para 2 coches, remolque o motos.',
+                furn:'cars2' },
+              { id:'inst_b', name:'Cuarto Instalaciones + Bodega', x:11.0, y:5.0, w:4.5, h:3.0, area:'12,4', dims:'4,35 × 2,85', zone:'service',
+                notes:'Sala de máquinas (Aerotermia, acumulador ACS 300L, cuadro domótico) y zona fresca para despensa/bodega.',
+                furn:'laundry' },
+              { id:'esc_b', name:'Vestíbulo Inferior + Escalera', x:11.0, y:8.0, w:4.5, h:3.2, area:'12,8', dims:'4,35 × 2,95', zone:'service',
+                notes:'Núcleo vertical que conecta el garaje y zona de ocio con la planta principal de vivienda.',
+                furn:'stairs_v' },
+              { id:'sala_ocio', name:'Sala Multiusos / Juegos / Amigos', x:4.5, y:11.2, w:6.5, h:4.6, area:'27,5', dims:'6,25 × 4,40', zone:'guest',
+                notes:'Con luz natural mediante patio inglés ajardinado al Sur. Zona de cine, juegos para los niños y reuniones con amigos sin molestar arriba.',
+                furn:'living_l' },
+              { id:'suite_inv_b', name:'Suite de Invitados Independiente', x:11.0, y:11.2, w:4.5, h:4.6, area:'18,8', dims:'4,30 × 4,40', zone:'guest',
+                notes:'Dormitorio doble con baño en suite integrado y salida a patio inglés soleado. Máxima independencia para visitas de varios días.',
+                furn:'guest_suite' },
+              { id:'patio_ing', name:'Patio Inglés Soleado (Cota -3,00)', x:4.5, y:15.8, w:11.0, h:2.4, area:'26,0', dims:'11,00 × 2,40', zone:'patio',
+                notes:'Terraza inferior con talud ajardinado escalonado que garantiza ventilación e iluminación natural directa como si fuera una planta baja.',
+                furn:'terrace' }
+            ],
+            windows: [
+              { x1:5.2, y1:15.8, x2:10.5, y2:15.8 },
+              { x1:11.5, y1:15.8, x2:15.0, y2:15.8 }
+            ]
+          },
+          PB: {
+            name: 'Planta Baja Principal (Cota +0,00 · Jardín)',
+            totalBuilt: '167 m² const. / 146,0 m² útiles',
+            showGarden: true,
+            pool: { x:4.5, y:22.0, w:8.5, h:3.8, label: 'Piscina Infinity 8,5 × 3,8 m' },
+            rooms: [
+              { id:'salon_b', name:'Salón - Comedor Panorámico', x:4.0, y:8.0, w:6.6, h:8.2, area:'51,0', dims:'6,35 × 8,05', zone:'day',
+                notes:'Gran pieza diáfana de más de 50 m² con triple orientación (Este, Sur, Oeste) y salida directa al porche y jardín.',
+                furn:'living_dining' },
+              { id:'cocina_b', name:'Cocina + Lavandería Anexa', x:4.0, y:5.0, w:6.6, h:3.0, area:'18,4', dims:'6,35 × 2,90', zone:'day',
+                notes:'Cocina abierta al comedor mediante península de desayuno y lavandería ventilada al Norte.',
+                furn:'kitchen_island' },
+              { id:'porche_b', name:'Gran Porche Sur con Barbacoa', x:4.0, y:16.2, w:6.6, h:3.6, area:'23,0', dims:'6,40 × 3,55', zone:'outdoor',
+                notes:'Conectado a ras de suelo con el salón y frente a la piscina. Incluye comedor de verano y cocina exterior cubierta.',
+                furn:'porch_lounge' },
+              { id:'dist_b', name:'Hall Principal + Galería Noche', x:10.6, y:5.0, w:2.0, h:11.2, area:'19,5', dims:'1,85 × 10,80', zone:'day',
+                notes:'Eje articulador que separa el volumen de día (Oeste) del ala de dormitorios familiares (Este).',
+                furn:'stairs_small' },
+              { id:'nina_b', name:'Dormitorio Niña (9 años)', x:12.6, y:5.0, w:4.2, h:3.6, area:'14,0', dims:'4,00 × 3,50', zone:'night',
+                notes:'Dormitorio amplio en planta baja con salida al jardín lateral Este (sol de mañana).',
+                furn:'kid_room' },
+              { id:'bano_ninos_b', name:'Baño Hijos (Doble Seno)', x:12.6, y:8.6, w:4.2, h:2.2, area:'8,4', dims:'4,00 × 2,10', zone:'night',
+                notes:'Situado entre los dos dormitorios infantiles, con luz natural y zona húmeda compartimentada.',
+                furn:'bath_double' },
+              { id:'nino_b', name:'Dormitorio Niño (7 años)', x:12.6, y:10.8, w:4.2, h:3.6, area:'14,0', dims:'4,00 × 3,50', zone:'night',
+                notes:'Idéntico al dormitorio contiguo, con zona de estudio amplia y armario empotrado.',
+                furn:'kid_room' },
+              { id:'suite_b', name:'Suite Principal (con Vestidor y Baño)', x:10.6, y:14.4, w:6.2, h:4.8, area:'27,5', dims:'6,00 × 4,60', zone:'night',
+                notes:'Situada en el extremo Sur-Este de la planta principal. Permite hacer toda la vida familiar en una sola planta sin escaleras.',
+                furn:'master_suite_full' }
+            ],
+            windows: [
+              { x1:4.0, y1:9.0, x2:4.0, y2:15.5 },
+              { x1:4.5, y1:16.2, x2:10.0, y2:16.2 },
+              { x1:11.5, y1:19.2, x2:16.2, y2:19.2 },
+              { x1:16.8, y1:5.6, x2:16.8, y2:8.0 },
+              { x1:16.8, y1:11.4, x2:16.8, y2:13.8 }
+            ]
+          }
+        }
+      },
+
+      C: {
+        title: 'Opción C: "Pabellón con Patio de Luz" (Alta Eficiencia / Passivhaus)',
+        subtitle: 'PB + P1 Compacta · Parcela de 600 m² · Total construido: 252 m²',
+        badges: ['Patio Central Acristalado 16 m²', 'Privacidad total entre vecinos', 'Mínima demanda energética'],
+        desc: 'Un volumen puro articulado en torno a un patio jardín acristalado que introduce sol del Sur hasta el centro de la casa y separa visual y acústicamente el módulo de visitas del salón familiar.',
+        floors: {
+          PB: {
+            name: 'Planta Baja (Cota +0,00)',
+            totalBuilt: '148 m² const. / 129,0 m² útiles',
+            showGarden: true,
+            pool: { x:6.5, y:21.5, w:7.5, h:3.6, label: 'Lámina de Agua / Piscina 7,5 × 3,6 m' },
+            rooms: [
+              { id:'garaje_c', name:'Garaje Doble Integrado', x:3.5, y:5.0, w:6.2, h:5.8, area:'34,2', dims:'6,00 × 5,70', zone:'service',
+                notes:'Integrado en la volumetría norte con puerta enrasada en madera tecnológica.',
+                furn:'cars2' },
+              { id:'lav_c', name:'Lavandería + Cuarto Aerotermia/VMC', x:3.5, y:10.8, w:3.4, h:3.2, area:'9,8', dims:'3,25 × 3,05', zone:'service',
+                notes:'Núcleo húmedo y técnico centralizado para acortar recorridos de conductos de ventilación.',
+                furn:'laundry' },
+              { id:'hall_c', name:'Hall de Entrada + Escalera', x:6.9, y:10.8, w:2.8, h:3.2, area:'8,2', dims:'2,70 × 3,05', zone:'day',
+                notes:'Al abrir la puerta principal, la vista atraviesa el patio acristalado central iluminado con vegetación.',
+                furn:'stairs_small' },
+              { id:'patio_c', name:'Patio de Luz Ajardinado (Abierto a Cielo)', x:9.7, y:8.2, w:4.0, h:4.0, area:'16,0', dims:'4,00 × 4,00', zone:'patio',
+                notes:'Cerrado en sus 4 caras con vidrio de suelo a techo. Puede plantarse un arce japonés o abedul que da privacidad y luz cenital.',
+                furn:'tree_patio' },
+              { id:'visitas_c', name:'Módulo Visitas / Estudio + Baño', x:9.7, y:5.0, w:6.8, h:3.2, area:'19,8', dims:'6,60 × 3,00', zone:'guest',
+                notes:'Suite completa para invitados (o despacho doble) volcada hacia el patio interior ajardinado, totalmente aislada del salón.',
+                furn:'guest_suite' },
+              { id:'cocina_c', name:'Cocina + Comedor Junto al Patio', x:13.7, y:8.2, w:2.8, h:5.8, area:'15,4', dims:'2,70 × 5,70', zone:'day',
+                notes:'Recibe luz tanto del Este como a través del patio central acristalado.',
+                furn:'kitchen_v' },
+              { id:'salon_c', name:'Gran Salón - Comedor Sur', x:3.5, y:14.0, w:13.0, h:4.6, area:'56,5', dims:'12,60 × 4,50', zone:'day',
+                notes:'Impresionante frente continuo de 12,60 metros orientado al Sur, conectando salón, comedor y porche.',
+                furn:'living_wide' },
+              { id:'porche_c', name:'Porche Longitudinal Sur', x:3.5, y:18.6, w:13.0, h:2.2, area:'28,0', dims:'12,80 × 2,20', zone:'outdoor',
+                notes:'Galería exterior cubierta que protege el gran ventanal sur de la radiación de verano y la lluvia.',
+                furn:'porch_wide' }
+            ],
+            windows: [
+              { x1:4.2, y1:18.6, x2:15.8, y2:18.6 },
+              { x1:9.7, y1:8.2, x2:13.7, y2:8.2 },
+              { x1:9.7, y1:12.2, x2:13.7, y2:12.2 }
+            ]
+          },
+          P1: {
+            name: 'Planta Primera (Cota +3,15)',
+            totalBuilt: '104 m² const. / 88,5 m² útiles',
+            showGarden: false,
+            roofBelow: [{ x:3.5, y:5.0, w:13.0, h:3.2, label:'Cubierta Vegetal / Fotovoltaica Norte' }],
+            rooms: [
+              { id:'pasarela_c', name:'Pasarela Estudio sobre Patio', x:6.9, y:12.2, w:6.8, h:1.8, area:'11,5', dims:'6,60 × 1,75', zone:'night',
+                notes:'Galería con escritorio corrido mirando al árbol del patio central; zona ideal para que los niños hagan deberes con luz natural.',
+                furn:'stairs_small' },
+              { id:'patio_vacio', name:'Vacío del Patio Central', x:9.7, y:8.2, w:4.0, h:4.0, area:'—', dims:'4,00 × 4,00', zone:'patio',
+                notes:'Doble altura exterior del patio jardín.',
+                furn:'tree_patio' },
+              { id:'nina_c', name:'Dormitorio Niña (9 años)', x:3.5, y:14.0, w:4.2, h:4.6, area:'17,8', dims:'4,05 × 4,40', zone:'night',
+                notes:'Gran dormitorio orientado al Sur con zona de vestidor, estudio y descanso.',
+                furn:'kid_room' },
+              { id:'nino_c', name:'Dormitorio Niño (7 años)', x:7.7, y:14.0, w:4.2, h:4.6, area:'17,8', dims:'4,05 × 4,40', zone:'night',
+                notes:'Simétrico al de su hermana, ambos volcados al jardín Sur.',
+                furn:'kid_room' },
+              { id:'bano_ninos_c', name:'Baño Hijos Compartimentado', x:3.5, y:10.8, w:3.4, h:3.2, area:'9,8', dims:'3,25 × 3,05', zone:'night',
+                notes:'Amplio baño con doble lavabo, bañera y ducha independiente.',
+                furn:'bath_double' },
+              { id:'suite_c', name:'Suite Principal + Vestidor + Baño', x:11.9, y:12.2, w:4.6, h:6.4, area:'27,6', dims:'4,45 × 6,20', zone:'night',
+                notes:'Ocupa toda el ala Sur-Este de la Planta Primera, con vistas al patio central desde el vestidor y al jardín sur desde la cama.',
+                furn:'master_suite_full' }
+            ],
+            windows: [
+              { x1:4.0, y1:18.6, x2:7.2, y2:18.6 },
+              { x1:8.2, y1:18.6, x2:11.4, y2:18.6 },
+              { x1:12.4, y1:18.6, x2:16.0, y2:18.6 }
+            ]
+          }
+        }
+      }
+    };
+
+    let currentOpt = 'A';
+    let currentFloor = 'PB';
+    let selectedRoomId = null;
+
+    function selectOption(opt) {
+      currentOpt = opt;
+      const floorKeys = Object.keys(PLANS[opt].floors);
+      currentFloor = floorKeys.includes('PB') ? 'PB' : floorKeys[0];
+      selectedRoomId = PLANS[opt].floors[currentFloor].rooms[0].id;
+      updateUI();
+    }
+
+    function selectFloor(fl) {
+      currentFloor = fl;
+      selectedRoomId = PLANS[currentOpt].floors[currentFloor].rooms[0].id;
+      updateUI();
+    }
+
+    function updateUI() {
+      // Option Buttons
+      ['A', 'B', 'C'].forEach(k => {
+        const btn = document.getElementById('btn-opt-' + k);
+        if (k === currentOpt) {
+          btn.className = 'px-3.5 py-2 rounded-lg text-sm font-semibold border border-[var(--primary)] bg-[var(--primary)] text-[var(--primary-foreground)] shadow-sm transition';
+        } else {
+          btn.className = 'px-3.5 py-2 rounded-lg text-sm font-medium border border-[var(--border)] bg-[var(--content)] text-[var(--foreground)] hover:opacity-80 transition';
+        }
+      });
+
+      const plan = PLANS[currentOpt];
+      document.getElementById('opt-title').textContent = plan.title;
+      document.getElementById('opt-subtitle').textContent = plan.subtitle;
+      document.getElementById('opt-desc').textContent = plan.desc;
+
+      const badgesEl = document.getElementById('opt-badges');
+      badgesEl.innerHTML = plan.badges.map(b =>
+        `<span class="text-xs px-2.5 py-1 rounded-md bg-[var(--secondary)] text-[var(--secondary-foreground)] font-medium">${b}</span>`
+      ).join('');
+
+      // Floor Tabs
+      const tabsEl = document.getElementById('floor-tabs');
+      tabsEl.innerHTML = Object.entries(plan.floors).map(([fKey, fObj]) => {
+        const active = fKey === currentFloor;
+        const cls = active
+          ? 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)]'
+          : 'px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--content)] text-[var(--foreground)] border border-[var(--border)] hover:opacity-80';
+        return `<button onclick="selectFloor('${fKey}')" class="${cls}">${fObj.name}</button>`;
+      }).join('');
+
+      renderCurrentPlan();
+      renderSurfaceTable();
+      const activeRoom = plan.floors[currentFloor].rooms.find(r => r.id === selectedRoomId) || plan.floors[currentFloor].rooms[0];
+      if (activeRoom) inspectRoom(activeRoom.id);
+    }
+
+    function inspectRoom(roomId) {
+      selectedRoomId = roomId;
+      const floorObj = PLANS[currentOpt].floors[currentFloor];
+      const room = floorObj.rooms.find(r => r.id === roomId);
+      if (!room) return;
+
+      const zc = ZONE_COLORS[room.zone] || ZONE_COLORS.day;
+      document.getElementById('room-tag').textContent = zc.label;
+      document.getElementById('room-name').textContent = room.name;
+      document.getElementById('room-area').textContent = room.area === '—' ? 'Exterior' : `${room.area} m²`;
+      document.getElementById('room-dims').textContent = `${room.dims} m`;
+      document.getElementById('room-notes').textContent = room.notes;
+
+      document.querySelectorAll('.room-poly').forEach(el => {
+        if (el.getAttribute('data-room') === roomId) {
+          el.classList.add('active-room');
+        } else {
+          el.classList.remove('active-room');
+        }
+      });
+
+      document.querySelectorAll('.surface-row').forEach(row => {
+        if (row.getAttribute('data-row') === roomId) {
+          row.classList.add('bg-[var(--secondary)]', 'font-semibold');
+        } else {
+          row.classList.remove('bg-[var(--secondary)]', 'font-semibold');
+        }
+      });
+    }
+
+    function renderSurfaceTable() {
+      const floorObj = PLANS[currentOpt].floors[currentFloor];
+      document.getElementById('floor-total-badge').textContent = floorObj.totalBuilt;
+      const tbody = document.getElementById('surface-table-body');
+      tbody.innerHTML = floorObj.rooms.map(r => {
+        const zc = ZONE_COLORS[r.zone] || ZONE_COLORS.day;
+        return `
+          <tr data-row="${r.id}" onclick="inspectRoom('${r.id}')" class="surface-row cursor-pointer hover:bg-[var(--content)] transition">
+            <td class="py-2 pr-2 flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background:${zc.fill}"></span>
+              <span>${r.name}</span>
+            </td>
+            <td class="py-2 pr-2 text-[var(--muted-foreground)] whitespace-nowrap">${r.dims}</td>
+            <td class="py-2 text-right font-medium whitespace-nowrap">${r.area === '—' ? '—' : r.area + ' m²'}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function drawFurnitureSVG(room) {
+      const x = mx(room.x);
+      const y = my(room.y);
+      const w = mw(room.w);
+      const h = mw(room.h);
+      const s = `stroke="currentColor" stroke-opacity="0.45" fill="none" stroke-width="1.2"`;
+      let out = '';
+
+      switch (room.furn) {
+        case 'cars2':
+          // Two cars in garage
+          out += `<rect x="${x+14}" y="${y+18}" width="52" height="110" rx="8" ${s}/>`;
+          out += `<rect x="${x+20}" y="${y+35}" width="40" height="55" rx="4" ${s}/>`;
+          out += `<rect x="${x+82}" y="${y+18}" width="52" height="110" rx="8" ${s}/>`;
+          out += `<rect x="${x+88}" y="${y+35}" width="40" height="55" rx="4" ${s}/>`;
+          break;
+        case 'kitchen_island':
+          // Counter along wall + center island with 4 stools
+          out += `<rect x="${x+8}" y="${y+6}" width="${w-16}" height="16" ${s}/>`;
+          out += `<rect x="${x+w*0.22}" y="${y+h*0.42}" width="${w*0.52}" height="28" rx="3" ${s}/>`;
+          for (let i=0; i<4; i++) {
+            out += `<circle cx="${x+w*0.28 + i*22}" cy="${y+h*0.42+36}" r="5" ${s}/>`;
+          }
+          break;
+        case 'dining10':
+          // Dining table + chairs
+          out += `<rect x="${x+w*0.2}" y="${y+h*0.22}" width="${w*0.6}" height="${h*0.52}" rx="4" ${s}/>`;
+          break;
+        case 'living_l':
+        case 'living_wide':
+          // L-shaped sofa + coffee table
+          out += `<path d="M ${x+18} ${y+18} h 85 v 24 h -61 v 42 h -24 z" ${s}/>`;
+          out += `<rect x="${x+52}" y="${y+50}" width="42" height="24" rx="2" ${s}/>`;
+          break;
+        case 'living_dining':
+          // Combined dining + sofa
+          out += `<rect x="${x+25}" y="${y+22}" width="85" height="40" rx="4" ${s}/>`;
+          out += `<path d="M ${x+22} ${y+110} h 95 v 26 h -68 v 45 h -27 z" ${s}/>`;
+          break;
+        case 'kid_room':
+          // Single bed + desk + wardrobe
+          out += `<rect x="${x+8}" y="${y+10}" width="54" height="30" rx="2" ${s}/>`;
+          out += `<rect x="${x+10}" y="${y+13}" width="14" height="24" rx="2" ${s}/>`;
+          out += `<rect x="${x+w-22}" y="${y+12}" width="16" height="45" ${s}/>`;
+          out += `<rect x="${x+8}" y="${y+h-16}" width="${w*0.6}" height="10" ${s}/>`;
+          break;
+        case 'master_bed':
+        case 'master_suite_full':
+          // King bed + nightstands
+          out += `<rect x="${x+w*0.22}" y="${y+14}" width="62" height="54" rx="3" ${s}/>`;
+          out += `<rect x="${x+w*0.22+6}" y="${y+18}" width="22" height="14" rx="2" ${s}/>`;
+          out += `<rect x="${x+w*0.22+34}" y="${y+18}" width="22" height="14" rx="2" ${s}/>`;
+          break;
+        case 'guest_bed':
+        case 'guest_suite':
+          out += `<rect x="${x+10}" y="${y+12}" width="50" height="46" rx="3" ${s}/>`;
+          break;
+        case 'porch_lounge':
+        case 'porch_wide':
+          out += `<rect x="${x+14}" y="${y+16}" width="56" height="34" rx="4" ${s}/>`;
+          out += `<circle cx="${x+42}" cy="${y+h-32}" r="18" ${s}/>`;
+          break;
+        case 'tree_patio':
+          out += `<circle cx="${x+w/2}" cy="${y+h/2}" r="26" stroke="#16a34a" stroke-opacity="0.7" fill="#22c55e" fill-opacity="0.2" stroke-dasharray="4 2"/>`;
+          out += `<circle cx="${x+w/2}" cy="${y+h/2}" r="4" fill="#15803d"/>`;
+          break;
+        case 'stairs_v':
+        case 'stairs_small':
+          for (let sIdx=0; sIdx<6; sIdx++) {
+            out += `<line x1="${x+8}" y1="${y+12+sIdx*8}" x2="${x+42}" y2="${y+12+sIdx*8}" ${s}/>`;
+          }
+          break;
+      }
+      return out;
+    }
+
+    function renderCurrentPlan() {
+      const svg = document.getElementById('blueprint-svg');
+      const showFurn = document.getElementById('toggle-furniture').checked;
+      const showDims = document.getElementById('toggle-dims').checked;
+      const showClimate = document.getElementById('toggle-climate').checked;
+      const floorObj = PLANS[currentOpt].floors[currentFloor];
+
+      let html = `
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="currentColor" />
+          </marker>
+          <pattern id="hatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="8" stroke="currentColor" stroke-opacity="0.18" stroke-width="1" />
+          </pattern>
+        </defs>
+      `;
+
+      // 1. North Street Header
+      html += `
+        <rect x="${mx(0)}" y="18" width="${mw(20)}" height="38" rx="6" fill="currentColor" fill-opacity="0.06" stroke="currentColor" stroke-opacity="0.2"/>
+        <text x="${mx(10)}" y="41" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor" fill-opacity="0.75">
+          VÍA PÚBLICA DE ACCESO RODADO Y PEATONAL (LINDE NORTE · 20,00 m)
+        </text>
+      `;
+
+      // 2. Plot Boundary (20m x 30m = 600 m²)
+      if (floorObj.showGarden) {
+        html += `<rect x="${mx(0)}" y="${my(0)}" width="${mw(20)}" height="${mw(30)}" fill="#22c55e" fill-opacity="0.06" stroke="currentColor" stroke-width="2" stroke-opacity="0.55"/>`;
+      } else {
+        html += `<rect x="${mx(0)}" y="${my(0)}" width="${mw(20)}" height="${mw(30)}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 4" stroke-opacity="0.35"/>`;
+      }
+
+      // 3. Setbacks (Retranqueos: 5m North, 3m East/West/South)
+      if (showClimate) {
+        html += `
+          <rect x="${mx(3)}" y="${my(5)}" width="${mw(14)}" height="${mw(22)}"
+                fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="5 5" stroke-opacity="0.65"/>
+          <text x="${mx(3.2)}" y="${my(4.6)}" font-size="12" fill="#ef4444" font-weight="500">
+            Línea límite de edificación (Retranqueo 5,0 m frente / 3,0 m lindes)
+          </text>
+        `;
+      }
+
+      // 4. Lower roof projection if on P1
+      if (floorObj.roofBelow) {
+        floorObj.roofBelow.forEach(rb => {
+          html += `
+            <rect x="${mx(rb.x)}" y="${my(rb.y)}" width="${mw(rb.w)}" height="${mw(rb.h)}"
+                  fill="url(#hatch)" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="4 3"/>
+            <text x="${mx(rb.x + rb.w/2)}" y="${my(rb.y + rb.h/2)}" text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.65">
+              ${rb.label}
+            </text>
+          `;
+        });
+      }
+
+      // 5. Pool & Garden Elements
+      if (floorObj.showGarden && floorObj.pool) {
+        const p = floorObj.pool;
+        html += `
+          <rect x="${mx(p.x)}" y="${my(p.y)}" width="${mw(p.w)}" height="${mw(p.h)}" rx="6"
+                fill="#0ea5e9" fill-opacity="0.28" stroke="#0284c7" stroke-width="2"/>
+          <text x="${mx(p.x + p.w/2)}" y="${my(p.y + p.h/2)}" text-anchor="middle" font-size="12" font-weight="600" fill="#0369a1">
+            ${p.label}
+          </text>
+        `;
+      }
+
+      // 6. Rooms
+      floorObj.rooms.forEach(r => {
+        const zc = ZONE_COLORS[r.zone] || ZONE_COLORS.day;
+        const isSelected = r.id === selectedRoomId;
+        const rx = mx(r.x);
+        const ry = my(r.y);
+        const rw = mw(r.w);
+        const rh = mw(r.h);
+
+        html += `
+          <g onclick="inspectRoom('${r.id}')">
+            <rect data-room="${r.id}" class="room-poly ${isSelected ? 'active-room' : ''}"
+                  x="${rx}" y="${ry}" width="${rw}" height="${rh}"
+                  fill="${zc.fill}" fill-opacity="0.22"
+                  stroke="${zc.stroke}" stroke-width="${isSelected ? '3' : '2'}" />
+            ${showFurn ? drawFurnitureSVG(r) : ''}
+            <text x="${rx + rw/2}" y="${ry + rh/2 - (showDims ? 6 : 0)}"
+                  text-anchor="middle" font-size="12" font-weight="700" fill="currentColor" style="pointer-events:none">
+              ${r.name.split(' (')[0]}
+            </text>
+            <text x="${rx + rw/2}" y="${ry + rh/2 + 10}"
+                  text-anchor="middle" font-size="12" font-weight="600" fill="${zc.stroke}" style="pointer-events:none">
+              ${r.area === '—' ? '' : r.area + ' m²'}
+            </text>
+            ${showDims ? `
+              <text x="${rx + rw/2}" y="${ry + rh/2 + 24}"
+                    text-anchor="middle" font-size="12" fill="currentColor" fill-opacity="0.65" style="pointer-events:none">
+                (${r.dims} m)
+              </text>
+            ` : ''}
+          </g>
+        `;
+      });
+
+      // 7. Highlighted Glazing / Large Windows
+      if (floorObj.windows) {
+        floorObj.windows.forEach(w => {
+          html += `
+            <line x1="${mx(w.x1)}" y1="${my(w.y1)}" x2="${mx(w.x2)}" y2="${my(w.y2)}"
+                  stroke="#38bdf8" stroke-width="5" stroke-linecap="round" />
+          `;
+        });
+      }
+
+      // 8. Exterior Plot Dimensions (Cotas Generales)
+      if (showDims) {
+        // Top 20.00 m dimension
+        html += `
+          <g fill="currentColor" stroke="currentColor" opacity="0.7">
+            <line x1="${mx(0)}" y1="${my(0)-12}" x2="${mx(20)}" y2="${my(0)-12}" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="${mx(10)}" y="${my(0)-18}" text-anchor="middle" font-size="12" font-weight="600" stroke="none">Ancho Parcela: 20,00 m</text>
+
+            <!-- Left 30.00 m dimension -->
+            <line x1="${mx(0)-16}" y1="${my(0)}" x2="${mx(0)-16}" y2="${my(30)}" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="${mx(0)-26}" y="${my(15)}" text-anchor="middle" font-size="12" font-weight="600" stroke="none" transform="rotate(-90, ${mx(0)-26}, ${my(15)})">
+              Fondo Parcela: 30,00 m (Superficie Total: 600 m²)
+            </text>
+          </g>
+        `;
+      }
+
+      // 9. Climate & Orientation Indicators (Sun & Wind in Oleiros)
+      if (showClimate) {
+        // Nordés Wind (NE)
+        html += `
+          <g transform="translate(${mx(20)+18}, ${my(2.5)})">
+            <rect x="0" y="0" width="112" height="54" rx="6" fill="#0ea5e9" fill-opacity="0.14" stroke="#0284c7"/>
+            <text x="56" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#0284c7">Viento Nordés</text>
+            <text x="56" y="36" text-anchor="middle" font-size="12" fill="currentColor">↙ Verano (NE)</text>
+          </g>
+          <!-- Sun Arc South-West -->
+          <g transform="translate(${mx(2)}, ${my(27.3)})">
+            <rect x="0" y="0" width="320" height="44" rx="8" fill="#f59e0b" fill-opacity="0.16" stroke="#d97706"/>
+            <text x="160" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">☀️ MÁXIMO SOLEAMIENTO SUR / SUROESTE</text>
+            <text x="160" y="35" text-anchor="middle" font-size="12" fill="currentColor">Jardín principal protegido del viento por la casa</text>
+          </g>
+          <!-- Compass -->
+          <g transform="translate(52, 52)">
+            <circle cx="0" cy="0" r="24" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.5"/>
+            <polygon points="0,-20 -6,6 0,2 6,6" fill="#ef4444"/>
+            <text x="0" y="-25" text-anchor="middle" font-size="12" font-weight="700" fill="#ef4444">N</text>
+            <text x="0" y="36" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">S</text>
+            <text x="30" y="4" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">E</text>
+            <text x="-30" y="4" text-anchor="middle" font-size="12" font-weight="600" fill="currentColor">O</text>
+          </g>
+        `;
+      }
+
+      svg.innerHTML = html;
+    }
+
+    // Initialize on load
+    selectOption('A');
+  </script>
+</body>
+</html>
