@@ -368,8 +368,11 @@
           <button type="button" onclick="showFloorSVG('p1')" id="btn-svg-p1" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
             Planta Primera (+3,15 m)
           </button>
-          <button type="button" onclick="showFloorSVG('norte')" id="btn-svg-norte" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-lg shadow-amber-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
-            🛠️ Detalle 1:50 Zona Norte PB
+          <button type="button" onclick="showFloorSVG('norte')" id="btn-svg-norte" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
+            🛠️ 1:50 Zona Norte PB
+          </button>
+          <button type="button" onclick="showFloorSVG('centro')" id="btn-svg-centro" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 text-slate-950 border border-emerald-300 shadow-lg shadow-emerald-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
+            🍳 1:50 Centro PB (Patio &amp; Cocina)
           </button>
         </div>
       </div>
@@ -1273,6 +1276,319 @@
   </g>
 </svg>
         </div>
+        <div id="svg-container-centro" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 950" width="100%" height="100%" style="background-color: #0b1120; font-family: 'SF Pro Text', -apple-system, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <pattern id="cad-grid-cen" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.6" opacity="0.6"/>
+    </pattern>
+    <pattern id="hatch-wall-cen" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M-2,2 l4,-4 M0,8 l8,-8 M6,10 l4,-4" stroke="#475569" stroke-width="0.8"/>
+    </pattern>
+    <pattern id="deck-iroko" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#3d2008" opacity="0.4"/>
+      <line x1="0" y1="6" x2="24" y2="6" stroke="#b45309" stroke-width="0.8" opacity="0.6"/>
+      <line x1="0" y1="18" x2="24" y2="18" stroke="#b45309" stroke-width="0.8" opacity="0.6"/>
+    </pattern>
+    <pattern id="porcelain-tile" width="35" height="35" patternUnits="userSpaceOnUse">
+      <rect width="35" height="35" fill="#1e293b" opacity="0.3" stroke="#334155" stroke-width="0.5"/>
+    </pattern>
+    <marker id="dim-arr-cen" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- BACKGROUND GRID -->
+  <rect width="100%" height="100%" fill="url(#cad-grid-cen)"/>
+
+  <!-- ========================================== -->
+  <!-- HEADER CAD -->
+  <!-- ========================================== -->
+  <rect x="30" y="20" width="1140" height="65" rx="6" fill="#131c31" stroke="#38bdf8" stroke-width="1"/>
+  <text x="50" y="45" fill="#38bdf8" font-size="14" font-weight="800" letter-spacing="1">PROYECTO DE EJECUCIÓN · DETALLE CONSTRUCTIVO 1:50 · CENTRO PLANTA BAJA</text>
+  <text x="50" y="65" fill="#94a3b8" font-size="11">Patio Corrala (16 m²), Cocina Isla Santos (15,2 m²), Lavandería, Escalera Volada y Sala Técnica Passivhaus</text>
+  <rect x="920" y="32" width="230" height="42" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="935" y="49" fill="#f8fafc" font-size="10" font-weight="700">PLANO Nº: E-02 (CENTRO PB)</text>
+  <text x="935" y="63" fill="#10b981" font-size="9" font-weight="600">FECHA: NOV 2026 · REV. DEFINITIVA</text>
+
+  <!-- ========================================== -->
+  <!-- ESPACIOS DE LA BANDA CENTRAL -->
+  <!-- ========================================== -->
+
+  <!-- 1. TRASTERO EXTERIOR DE SURF & BICIS + SALA TÉCNICA (OESTE x=50..250, y=100..420) -->
+  <g id="trastero-tecnica">
+    <rect x="50" y="100" width="200" height="320" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="150" y="130" fill="#38bdf8" font-size="12" font-weight="800" text-anchor="middle">TRASTERO SURF &amp; TÉCNICA</text>
+    <text x="150" y="145" fill="#94a3b8" font-size="9" text-anchor="middle">8,20 m² útiles · Pavimento hormigón pulido</text>
+
+    <!-- Soportes de Surf y Bicis -->
+    <rect x="60" y="160" width="70" height="80" fill="#0f172a" stroke="#0284c7" stroke-width="1" stroke-dasharray="4 2"/>
+    <text x="95" y="200" fill="#38bdf8" font-size="8" font-weight="700" text-anchor="middle">🏄 Racks 3 Tablas</text>
+    <text x="95" y="212" fill="#bae6fd" font-size="7" text-anchor="middle">+ Rejilla Neoprenos</text>
+
+    <rect x="60" y="260" width="70" height="60" fill="#0f172a" stroke="#10b981" stroke-width="1" stroke-dasharray="4 2"/>
+    <text x="95" y="295" fill="#10b981" font-size="8" font-weight="700" text-anchor="middle">🚲 Ganchos 3 Bicis</text>
+
+    <!-- EQUIPOS PASSIVHAUS SALA TÉCNICA -->
+    <!-- Aerotermia Vaillant bibloc -->
+    <rect x="150" y="160" width="40" height="40" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="170" y="182" fill="#ffffff" font-size="7" font-weight="700" text-anchor="middle">Aerotermia</text>
+    <text x="170" y="192" fill="#bae6fd" font-size="6" text-anchor="middle">aroTHERM</text>
+
+    <!-- Depósito ACS 250L -->
+    <circle cx="215" cy="180" r="18" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="215" y="183" fill="#ffffff" font-size="7" font-weight="800" text-anchor="middle">ACS 250L</text>
+
+    <!-- VMC Zehnder ComfoAir Q350 -->
+    <rect x="150" y="220" width="85" height="35" fill="#047857" stroke="#10b981" stroke-width="1.5"/>
+    <text x="192" y="238" fill="#ffffff" font-size="8" font-weight="800" text-anchor="middle">VMC Zehnder Q350</text>
+    <text x="192" y="248" fill="#a7f3d0" font-size="6" text-anchor="middle">Recuperador Entálpico 92%</text>
+
+    <!-- Inversor Solar 5 kW -->
+    <rect x="150" y="270" width="30" height="20" fill="#b45309" stroke="#f59e0b" stroke-width="1"/>
+    <text x="165" y="283" fill="#ffffff" font-size="6" font-weight="700" text-anchor="middle">Inversor 5kW</text>
+
+    <!-- Desagüe condensados con sifón seco -->
+    <circle cx="170" cy="310" r="5" fill="#ef4444"/>
+    <text x="180" y="313" fill="#fca5a5" font-size="7">Desagüe condensados Ø40</text>
+
+    <!-- Puerta exterior técnica hacia jardín -->
+    <line x1="50" y1="350" x2="50" y2="400" stroke="#0b1120" stroke-width="5"/>
+    <line x1="50" y1="350" x2="85" y2="380" stroke="#f59e0b" stroke-width="2.5"/>
+    <path d="M 50 400 A 50 50 0 0 1 85 380" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="95" y="370" fill="#f59e0b" font-size="8" font-weight="700">Puerta Chapa 0,90m</text>
+  </g>
+
+  <!-- MURO MEDIANERO OESTE DE LA CASA (35cm = 35px, x=250..285) -->
+  <rect x="250" y="100" width="35" height="380" fill="url(#hatch-wall-cen)" stroke="#38bdf8" stroke-width="1.5"/>
+
+  <!-- 2. ESCALERA PRINCIPAL VOLADA (x=285..390, y=100..380) -->
+  <g id="escalera-volada">
+    <rect x="285" y="100" width="105" height="280" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <!-- 17 Peldaños de Roble Macizo (80mm) con zanca oculta -->
+    <!-- Peldaño 1 a 17 de Norte a Sur -->
+    <g stroke="#475569" stroke-width="1">
+      <line x1="285" y1="116" x2="390" y2="116"/>
+      <line x1="285" y1="132" x2="390" y2="132"/>
+      <line x1="285" y1="148" x2="390" y2="148"/>
+      <line x1="285" y1="164" x2="390" y2="164"/>
+      <line x1="285" y1="180" x2="390" y2="180"/>
+      <line x1="285" y1="196" x2="390" y2="196"/>
+      <line x1="285" y1="212" x2="390" y2="212"/>
+      <line x1="285" y1="228" x2="390" y2="228"/>
+      <line x1="285" y1="244" x2="390" y2="244"/>
+      <line x1="285" y1="260" x2="390" y2="260"/>
+      <line x1="285" y1="276" x2="390" y2="276"/>
+      <line x1="285" y1="292" x2="390" y2="292"/>
+      <line x1="285" y1="308" x2="390" y2="308"/>
+      <line x1="285" y1="324" x2="390" y2="324"/>
+      <line x1="285" y1="340" x2="390" y2="340"/>
+      <line x1="285" y1="356" x2="390" y2="356"/>
+      <line x1="285" y1="372" x2="390" y2="372"/>
+    </g>
+    <!-- Flecha de Subida -->
+    <line x1="337" y1="110" x2="337" y2="365" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#dim-arr-cen)"/>
+    <text x="337" y="230" fill="#38bdf8" font-size="10" font-weight="800" text-anchor="middle">SUBE A P1 (+3,15m)</text>
+    <text x="337" y="245" fill="#94a3b8" font-size="8" text-anchor="middle">17 Peldaños · H=29 / CH=17,6</text>
+    <text x="337" y="258" fill="#f59e0b" font-size="7" text-anchor="middle">Roble macizo 80mm volado</text>
+
+    <!-- Barandilla de vidrio estructural 10+10mm -->
+    <line x1="390" y1="100" x2="390" y2="380" stroke="#0ea5e9" stroke-width="3" stroke-dasharray="8 2"/>
+    <text x="398" y="240" fill="#0ea5e9" font-size="7" font-weight="700" transform="rotate(90 398 240)" text-anchor="middle">Vidrio Estructural 10+10mm</text>
+  </g>
+
+  <!-- PASO GALERÍA OESTE DEL PATIO (x=390..430, y=100..380) -->
+  <rect x="390" y="100" width="40" height="280" fill="#0f172a" opacity="0.6"/>
+  <!-- Corredera Oeste Patio (2,50m) -->
+  <line x1="430" y1="130" x2="430" y2="350" stroke="#38bdf8" stroke-width="4" stroke-dasharray="20 10"/>
+  <text x="422" y="240" fill="#38bdf8" font-size="8" font-weight="700" transform="rotate(-90 422 240)" text-anchor="middle">Corredera Elevable 2,50m</text>
+
+  <!-- 3. PATIO CORRALA CENTRAL (x=430..710, y=100..380, 4,00 × 4,00 m = 16,0 m²) -->
+  <g id="patio-corrala">
+    <!-- Tarima de Iroko a cota cero -->
+    <rect x="430" y="100" width="280" height="280" fill="url(#deck-iroko)" stroke="#10b981" stroke-width="2.5"/>
+    
+    <!-- Alcorque del Arce Japonés (esquina Noroeste x=490, y=160) -->
+    <circle cx="490" cy="160" r="42" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
+    <circle cx="490" cy="160" r="22" fill="#dc2626" opacity="0.85"/>
+    <text x="490" y="157" fill="#ffffff" font-size="9" font-weight="900" text-anchor="middle">ACER PALMATUM</text>
+    <text x="490" y="169" fill="#fef3c7" font-size="7" font-weight="700" text-anchor="middle">Alcorque volcánico + Goteo</text>
+    <circle cx="460" cy="140" r="4" fill="#f59e0b"/>
+    <text x="450" y="132" fill="#fef3c7" font-size="6">Foco IP68</text>
+
+    <!-- Banco corrido de lectura de Iroko bajo alero Norte (x=550..690, y=105..135) -->
+    <rect x="550" y="105" width="140" height="30" rx="3" fill="#78350f" stroke="#d97706" stroke-width="1.5"/>
+    <text x="620" y="122" fill="#fef3c7" font-size="9" font-weight="800" text-anchor="middle">BANCO CORRIDO LECTURA IROKO</text>
+    <text x="620" y="132" fill="#fde68a" font-size="7" text-anchor="middle">Bajo alero perimetral 80cm · h=45cm</text>
+
+    <!-- Mesa café exterior + 2 butacas -->
+    <circle cx="590" cy="240" r="20" fill="#451a03" stroke="#d97706" stroke-width="1.5"/>
+    <circle cx="555" cy="240" r="11" fill="#78350f"/>
+    <circle cx="625" cy="240" r="11" fill="#78350f"/>
+    <text x="590" y="244" fill="#fef3c7" font-size="8" font-weight="700" text-anchor="middle">Café</text>
+
+    <!-- Sumideros pluviales sifónicos (2 uds) -->
+    <circle cx="450" cy="350" r="6" fill="#0284c7" stroke="#ffffff" stroke-width="1"/>
+    <text x="462" y="354" fill="#bae6fd" font-size="7">Sumidero Pluvial Ø110</text>
+    <circle cx="690" cy="350" r="6" fill="#0284c7" stroke="#ffffff" stroke-width="1"/>
+
+    <!-- Canaleta drenaje perimetral oculta cota cero -->
+    <rect x="432" y="102" width="276" height="276" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="4 2"/>
+    <text x="570" y="370" fill="#10b981" font-size="12" font-weight="900" text-anchor="middle">PATIO CORRALA (16,0 m²)</text>
+    <text x="570" y="384" fill="#a7f3d0" font-size="8" font-weight="700" text-anchor="middle">100% HABITABLE · COTA CERO · ABIERTO AL CIELO</text>
+  </g>
+
+  <!-- 4. COCINA CON ISLA SANTOS (ESTE DEL PATIO, x=710..970, y=100..380, 15,20 m²) -->
+  <g id="cocina-isla">
+    <rect x="710" y="100" width="260" height="280" fill="url(#porcelain-tile)"/>
+
+    <!-- CORREDERA ELEVABLE 3,00m A PATIO (Cara Oeste de la cocina) -->
+    <line x1="710" y1="120" x2="710" y2="360" stroke="#38bdf8" stroke-width="5" stroke-dasharray="25 10"/>
+    <text x="718" y="240" fill="#38bdf8" font-size="8" font-weight="800" transform="rotate(90 718 240)" text-anchor="middle">Corredera 3,00m a Patio (Abierta en desayunos)</text>
+
+    <!-- ISLA CENTRAL DE COCINA SANTOS (2,80 × 1,00 m = 180 × 65 px) -->
+    <!-- Pasos libres: 105cm a patio, 110cm a columnas -->
+    <rect x="755" y="160" width="170" height="65" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <rect x="755" y="160" width="170" height="65" rx="4" fill="#334155" opacity="0.5"/>
+    <text x="840" y="178" fill="#ffffff" font-size="10" font-weight="800" text-anchor="middle">ISLA DEKTON KELYA 20mm (2,80 × 1,00 m)</text>
+    
+    <!-- Placa Inducción con extracción Bora Pure -->
+    <rect x="765" y="185" width="45" height="32" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+    <circle cx="787" cy="201" r="7" fill="#ef4444" opacity="0.6"/>
+    <text x="787" y="204" fill="#ffffff" font-size="6" font-weight="700" text-anchor="middle">BORA</text>
+    <text x="787" y="226" fill="#fca5a5" font-size="6" text-anchor="middle">Pure 7,6kW (C3 25A)</text>
+
+    <!-- Fregadero Inox 70cm integrado + Grifo monomando -->
+    <rect x="840" y="185" width="45" height="30" rx="2" fill="#0284c7" opacity="0.4" stroke="#38bdf8" stroke-width="1"/>
+    <circle cx="880" cy="200" r="4" fill="#ffffff"/>
+    <text x="862" y="203" fill="#ffffff" font-size="6" text-anchor="middle">Seno 70</text>
+    <text x="862" y="226" fill="#bae6fd" font-size="6" text-anchor="middle">PEX + Desagüe Ø50</text>
+
+    <!-- Torre Enchufes escamoteable EVOline BackFlip -->
+    <rect x="905" y="190" width="12" height="20" fill="#f59e0b" stroke="#ffffff" stroke-width="0.8"/>
+    <text x="911" y="182" fill="#fef3c7" font-size="6" text-anchor="middle">2x+USB</text>
+
+    <!-- COLUMNAS SANTOS FINE EN PARED ESTE (x=945..970, y=100..380) -->
+    <rect x="945" y="100" width="25" height="280" fill="#475569" stroke="#94a3b8" stroke-width="1"/>
+    <!-- Desayunador con Pocket Doors -->
+    <rect x="947" y="120" width="21" height="60" fill="#78350f" stroke="#d97706" stroke-width="1"/>
+    <text x="958" y="150" fill="#fef3c7" font-size="6" font-weight="700" transform="rotate(90 958 150)" text-anchor="middle">Desayunador Pocket</text>
+    <!-- Horno + Microondas -->
+    <rect x="947" y="190" width="21" height="40" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+    <text x="958" y="210" fill="#bae6fd" font-size="6" transform="rotate(90 958 210)" text-anchor="middle">Horno+Micro C4</text>
+    <!-- Frigo Combi Integrable -->
+    <rect x="947" y="240" width="21" height="50" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+    <text x="958" y="265" fill="#a7f3d0" font-size="6" transform="rotate(90 958 265)" text-anchor="middle">Frigo Combi 70cm</text>
+
+    <!-- Bocas VMC en falso techo cocina -->
+    <circle cx="840" cy="120" r="8" fill="#0284c7" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="840" y="138" fill="#38bdf8" font-size="7" font-weight="700" text-anchor="middle">VMC Extracción Cocina (50 m³/h)</text>
+    <!-- Termostato digital independiente -->
+    <rect x="725" y="110" width="8" height="12" fill="#f59e0b"/>
+    <text x="738" y="120" fill="#fef3c7" font-size="7">Termostato Suelo (h=145)</text>
+
+    <text x="840" y="265" fill="#f8fafc" font-size="13" font-weight="900" text-anchor="middle">COCINA CON ISLA (15,20 m²)</text>
+    <text x="840" y="278" fill="#94a3b8" font-size="8" text-anchor="middle">Santos Modelo Fine Cashmere · Suelo Radiante Independiente</text>
+  </g>
+
+  <!-- MURO EXTERIOR ESTE (35cm = 35px, x=970..1005) -->
+  <rect x="970" y="100" width="35" height="380" fill="url(#hatch-wall-cen)" stroke="#38bdf8" stroke-width="1.5"/>
+
+  <!-- 5. LAVANDERÍA TÉCNICA Y DESPENSA (SUR DE COCINA, x=770..970, y=380..520, 5,60 m²) -->
+  <g id="lavanderia">
+    <rect x="770" y="380" width="200" height="140" fill="url(#porcelain-tile)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="870" y="410" fill="#38bdf8" font-size="11" font-weight="800" text-anchor="middle">LAVANDERÍA &amp; DESPENSA</text>
+    <text x="870" y="423" fill="#94a3b8" font-size="8" text-anchor="middle">5,60 m² útiles · Independiente de cocina</text>
+
+    <!-- Columna Lavadora + Secadora -->
+    <rect x="905" y="435" width="55" height="45" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+    <circle cx="932" cy="457" r="14" fill="#0284c7" opacity="0.4" stroke="#38bdf8" stroke-width="1"/>
+    <text x="932" y="455" fill="#ffffff" font-size="7" font-weight="700" text-anchor="middle">Lavadora +</text>
+    <text x="932" y="465" fill="#bae6fd" font-size="6" text-anchor="middle">Secadora C10</text>
+    <!-- Tomas 2x Schuko 16A h=120cm -->
+    <circle cx="955" cy="440" r="3" fill="#ef4444"/>
+    <text x="955" y="432" fill="#ef4444" font-size="6">2x 16A</text>
+
+    <!-- Pila de lavar de resina con grifo monomando -->
+    <rect x="845" y="435" width="40" height="35" rx="2" fill="#0284c7" opacity="0.3" stroke="#38bdf8" stroke-width="1"/>
+    <circle cx="865" cy="452" r="6" fill="#ffffff"/>
+    <text x="865" y="455" fill="#0f172a" font-size="6" font-weight="700" text-anchor="middle">Pila</text>
+    <text x="865" y="480" fill="#bae6fd" font-size="6" text-anchor="middle">PEX + Ø50</text>
+
+    <!-- Estantería Despensa modulares -->
+    <rect x="780" y="435" width="50" height="75" fill="#334155" stroke="#64748b" stroke-width="1" stroke-dasharray="4 2"/>
+    <text x="805" y="475" fill="#cbd5e1" font-size="7" font-weight="600" text-anchor="middle">Despensa</text>
+    <text x="805" y="486" fill="#94a3b8" font-size="6" text-anchor="middle">Alimentos</text>
+
+    <!-- Extracción VMC Lavandería -->
+    <circle cx="870" cy="505" r="6" fill="#0284c7" stroke="#ffffff" stroke-width="1"/>
+    <text x="880" y="510" fill="#38bdf8" font-size="7">VMC Extracción 30m³/h</text>
+
+    <!-- Puerta corredera empotrada de acceso desde cocina -->
+    <line x1="770" y1="390" x2="770" y2="440" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4 2"/>
+    <text x="755" y="415" fill="#f59e0b" font-size="7" font-weight="700">Corredera 0,80m</text>
+  </g>
+
+  <!-- LÍNEA SUR DE LA BANDA: GRANDES CORREDERAS A SALÓN-COMEDOR (y=380) -->
+  <line x1="430" y1="380" x2="710" y2="380" stroke="#38bdf8" stroke-width="5" stroke-dasharray="25 10"/>
+  <text x="570" y="402" fill="#38bdf8" font-size="8" font-weight="800" text-anchor="middle">CORREDERA 3,00m COMEDOR-SALÓN (VISTAS CRUZADAS Y PASO FLUIDO)</text>
+
+  <!-- ========================================== -->
+  <!-- ESPECIFICACIONES CONSTRUCTIVAS EJECUTIVAS -->
+  <!-- ========================================== -->
+  <g id="leyenda-cad-cen" transform="translate(50, 540)">
+    <rect width="1100" height="380" rx="8" fill="#131c31" stroke="#334155" stroke-width="1.5"/>
+    <text x="20" y="25" fill="#38bdf8" font-size="13" font-weight="800">CUADRO DE ESPECIFICACIONES CONSTRUCTIVAS DE EJECUCIÓN · BANDA CENTRAL PB</text>
+    
+    <!-- Columna 1: Patio Corrala y Drenaje -->
+    <g transform="translate(20, 45)">
+      <text x="0" y="0" fill="#10b981" font-size="11" font-weight="700">1. PATIO CORRALA Y EVACUACIÓN PLUVIAL</text>
+      <text x="0" y="18" fill="#e2e8f0" font-size="8.5">• Tarima Iroko Cota Cero: Rastrel de aluminio anodizado sobre plots autonivelantes. Tablas de 120x21mm con clip oculto inox A4.</text>
+      <text x="0" y="32" fill="#e2e8f0" font-size="8.5">• Drenaje Lineal Perimetral: Canaleta de hormigón polímero con ranura invisible inox AISI 316 bajo umbral de carpinterías.</text>
+      <text x="0" y="46" fill="#e2e8f0" font-size="8.5">• Alcorque Acer Palmatum: Grava volcánica 10-20mm drenante sobre tierra vegetal enriquecida (h=90cm) con tubo de riego goteo integrado.</text>
+      <text x="0" y="60" fill="#e2e8f0" font-size="8.5">• Sumideros Pluviales: 2 uds sifónicas Ø110mm con cesto de recogida de sólidos conectados a red separativa de pluviales.</text>
+      <text x="0" y="74" fill="#e2e8f0" font-size="8.5">• Banco Corrido: Madera maciza de iroko 240x50cm fijado con soportes ocultos de acero cincado bajo voladizo de hormigón de 80cm.</text>
+    </g>
+
+    <!-- Columna 2: Cocina con Isla Santos y Bora -->
+    <g transform="translate(20, 145)">
+      <text x="0" y="0" fill="#f59e0b" font-size="11" font-weight="700">2. MOBILIARIO COCINA SANTOS &amp; EXTRACCIÓN BORA PURE</text>
+      <text x="0" y="18" fill="#e2e8f0" font-size="8.5">• Isla 2,80x1,00m: Santos Modelo Fine Cashmere mate antihuella. Encimera Dekton Kelya 20mm con junta invisible ingleteada.</text>
+      <text x="0" y="32" fill="#e2e8f0" font-size="8.5">• Extracción Bora Pure: Placa 7,6 kW con conducto plano aerodinámico Ecotube conducido por cámara sanitaria hacia salida exterior norte.</text>
+      <text x="0" y="46" fill="#e2e8f0" font-size="8.5">• Desayunador Pocket: Puertas escamoteables laterales con 4 Schukos dedicados (circuito C4), baldas de roble e iluminación LED cálida 2700K.</text>
+      <text x="0" y="60" fill="#e2e8f0" font-size="8.5">• Fregadero Inox 70cm: Seno bajo encimera con válvula automática, triturador opcional y grifería monomando con caño extraíble doble chorro.</text>
+      <text x="0" y="74" fill="#e2e8f0" font-size="8.5">• Pasos Libres Reglamentarios: 105 cm libres hacia la corredera del patio y 110 cm hacia las columnas este (100% ergonomía y NHG).</text>
+    </g>
+
+    <!-- Columna 3: Escalera y Estructura Volada -->
+    <g transform="translate(560, 45)">
+      <text x="0" y="0" fill="#38bdf8" font-size="11" font-weight="700">3. ESCALERA VOLADA &amp; MAMPARA ESTRUCTURAL</text>
+      <text x="0" y="18" fill="#e2e8f0" font-size="8.5">• Zanca Oculta: Perfil metálico HEA 160 empotrado en muro perimetral de carga con cartelas de chapa 15mm soldadas para cada peldaño.</text>
+      <text x="0" y="32" fill="#e2e8f0" font-size="8.5">• Peldaños de Roble: Madera maciza de roble natural de 80mm de espesor enrasados sobre cartelas metálicas con elastómero acústico.</text>
+      <text x="0" y="46" fill="#e2e8f0" font-size="8.5">• Barandilla Vidrio: Cristal estructural templado y laminado 10+10.2mm fijado con perfil empotrado en forjado (resistencia 1,6 kN/m CTE DB-SE-AE).</text>
+      <text x="0" y="60" fill="#e2e8f0" font-size="8.5">• Iluminación Peldaños: Tira LED continua oculta 24V bajo huella con encendido progresivo mediante sensores microondas en desembarcos.</text>
+      <text x="0" y="74" fill="#e2e8f0" font-size="8.5">• Dimensiones: 17 peldaños. Huella = 29 cm, Contrahuella = 17,6 cm (Ley de Blondel: 2CH + H = 64,2 cm estricta ergonomía).</text>
+    </g>
+
+    <!-- Columna 4: Sala Técnica Passivhaus y Lavandería -->
+    <g transform="translate(560, 145)">
+      <text x="0" y="0" fill="#f43f5e" font-size="11" font-weight="700">4. SALA TÉCNICA PASSIVHAUS &amp; LAVANDERÍA</text>
+      <text x="0" y="18" fill="#e2e8f0" font-size="8.5">• Aerotermia: Vaillant aroTHERM plus bibloc con gas natural R290 (GWP=3). Interacumulador de ACS de 250 litros con bomba de recirculación.</text>
+      <text x="0" y="32" fill="#e2e8f0" font-size="8.5">• VMC Zehnder ComfoAir Q350: Caudales equilibrados con recuperador entálpico (92%). Silenciadores acústicos en impulsión y retorno.</text>
+      <text x="0" y="46" fill="#e2e8f0" font-size="8.5">• Desagües Condensados: Tubería PVC Ø40mm con sifón seco esférico de membrana para evitar entrada de olores de alcantarillado.</text>
+      <text x="0" y="60" fill="#e2e8f0" font-size="8.5">• Lavandería: Bancada de hormigón antivibratoria para lavadora y secadora en columna. Enchufes C10 16A h=120cm y llave de corte PEX.</text>
+      <text x="0" y="74" fill="#e2e8f0" font-size="8.5">• Trastero Surf/Bicis: Paredes con pintura epoxi lavable, solera de hormigón pulido con pendiente hacia sumidero sifónico exterior.</text>
+    </g>
+
+    <!-- Barra de Control Passivhaus -->
+    <g transform="translate(20, 245)">
+      <rect width="1060" height="50" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+      <text x="15" y="20" fill="#38bdf8" font-size="10" font-weight="800">CONTROL DE HUMEDAD ATLÁNTICA &amp; EFICIENCIA PASSIVHAUS ZONA C1 OLEIROS</text>
+      <text x="15" y="36" fill="#e2e8f0" font-size="8.5">✓ Renovación continua de aire sin corrientes ni aperturas en días de temporal. ✓ Extracción forzada en cocina (50 m³/h) y lavandería (30 m³/h). ✓ Desacoplamiento térmico y acústico absoluto entre trastero exterior y volumen calefactado interior.</text>
+    </g>
+  </g>
+</svg>
+        </div>
       </div>
     </section>
 
@@ -1377,17 +1693,21 @@
       const cPb = document.getElementById('svg-container-pb');
       const cP1 = document.getElementById('svg-container-p1');
       const cNorte = document.getElementById('svg-container-norte');
+      const cCentro = document.getElementById('svg-container-centro');
       const bPb = document.getElementById('btn-svg-pb');
       const bP1 = document.getElementById('btn-svg-p1');
       const bNorte = document.getElementById('btn-svg-norte');
+      const bCentro = document.getElementById('btn-svg-centro');
 
       cPb.classList.add('hidden');
       cP1.classList.add('hidden');
       cNorte.classList.add('hidden');
+      cCentro.classList.add('hidden');
 
       bPb.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
       bP1.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
       bNorte.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      bCentro.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
 
       if (fl === 'pb') {
         cPb.classList.remove('hidden');
@@ -1398,6 +1718,9 @@
       } else if (fl === 'norte') {
         cNorte.classList.remove('hidden');
         bNorte.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-lg shadow-amber-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      } else if (fl === 'centro') {
+        cCentro.classList.remove('hidden');
+        bCentro.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 text-slate-950 border border-emerald-300 shadow-lg shadow-emerald-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
       }
     }
   </script>
