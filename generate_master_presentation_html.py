@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Generador del Visor Master Interactivo Definitivo de la Propuesta D (Oleiros).
-Integra: Planos Generales, Galería Completa de Renders Fotorrealistas estancia a estancia,
-Visor 3D Three.js, Fichas Técnicas Zoom-In 1:20 y Enlace a la Presentación PowerPoint para Mac.
-"""
-
 import base64
 import os
+import shutil
 
 RENDERS_DIR = "/home/antigravity/landslore/oleiros/propuestas/renders"
+PROPUESTAS_DIR = "/home/antigravity/landslore/oleiros/propuestas"
+ARTIFACT_DIR = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e8f6a578-76cf-4abb-986f-afb074438ab7"
 
 def get_base64_image(filename):
     path = os.path.join(RENDERS_DIR, filename)
@@ -31,6 +28,13 @@ img_porche = get_base64_image("porche_sur_render.jpg")
 img_galeria = get_base64_image("galeria_escalera_render.jpg")
 img_suite = get_base64_image("suite_principal_render.jpg")
 img_ninos = get_base64_image("dormitorio_infantil_render.jpg")
+
+with open(os.path.join(PROPUESTAS_DIR, 'planta_baja_propuesta_d.svg'), 'r') as f:
+    raw_svg_pb = f.read()
+
+with open(os.path.join(PROPUESTAS_DIR, 'planta_alta_propuesta_d.svg'), 'r') as f:
+    raw_svg_p1 = f.read()
+
 
 html_content = f"""<!DOCTYPE html>
 <html lang="es">
@@ -407,11 +411,11 @@ html_content = f"""<!DOCTYPE html>
 
       <!-- VISOR SVG EMBEBIDO -->
       <div class="bg-slate-900 border border-slate-800 rounded-3xl p-4 md:p-6 shadow-2xl flex justify-center">
-        <div id="svg-container-pb" class="w-full flex justify-center overflow-x-auto">
-          <object data="planta_baja_propuesta_d.svg" type="image/svg+xml" class="w-full max-w-[1100px] h-auto rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner"></object>
+        <div id="svg-container-pb" class="w-full flex justify-center overflow-x-auto rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+          {raw_svg_pb}
         </div>
-        <div id="svg-container-p1" class="w-full flex justify-center overflow-x-auto hidden">
-          <object data="planta_alta_propuesta_d.svg" type="image/svg+xml" class="w-full max-w-[1100px] h-auto rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner"></object>
+        <div id="svg-container-p1" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+          {raw_svg_p1}
         </div>
       </div>
     </section>
@@ -549,3 +553,21 @@ def main():
 
 if __name__ == "__main__":
     main()
+    target_path = "/home/antigravity/landslore/oleiros/propuestas/presentacion_propuesta_d_master.html"
+    files_to_sync = [
+        'fichas_zoom_interactivas_propuesta_d.html',
+        'modelo_3d_propuesta_d_homemaker.html',
+        'planta_baja_propuesta_d.svg',
+        'planta_alta_propuesta_d.svg',
+        'Presentacion_Hogar_Oleiros_Propuesta_D.pptx'
+    ]
+    for fn in files_to_sync:
+        src = os.path.join(PROPUESTAS_DIR, fn)
+        if os.path.exists(src):
+            shutil.copyfile(src, fn)
+            shutil.copyfile(src, os.path.join(ARTIFACT_DIR, fn))
+            print(f'Synced {fn} to root and artifact')
+
+    shutil.copyfile(target_path, 'index.html')
+    shutil.copyfile(target_path, os.path.join(ARTIFACT_DIR, 'index.html'))
+    print('Updated index.html at root and artifact')

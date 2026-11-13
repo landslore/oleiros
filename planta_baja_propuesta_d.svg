@@ -1,0 +1,378 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900" width="100%" height="100%" style="background-color: #0b1120; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <pattern id="grid-cad" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" opacity="0.7"/>
+    </pattern>
+    <pattern id="deck-wood" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="#78350f" opacity="0.2"/>
+      <line x1="0" y1="5" x2="20" y2="5" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+      <line x1="0" y1="15" x2="20" y2="15" stroke="#d97706" stroke-width="1" opacity="0.4"/>
+    </pattern>
+    <pattern id="grass-fill" width="30" height="30" patternUnits="userSpaceOnUse">
+      <rect width="30" height="30" fill="#064e3b" opacity="0.25"/>
+      <circle cx="15" cy="15" r="1.5" fill="#10b981" opacity="0.4"/>
+    </pattern>
+    <marker id="arrow-cota" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M 0 0 L 6 3 L 0 6 z" fill="#94a3b8" />
+    </marker>
+    <marker id="arrow-flow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#38bdf8" />
+    </marker>
+    <filter id="wall-glow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- CUADRÍCULA CAD (1m = 40px) -->
+  <rect width="100%" height="100%" fill="url(#grid-cad)" />
+
+  <!-- NORMATIVA Y PARCELA -->
+  <g id="parcela-normativa">
+    <!-- Límite parcela -->
+    <rect x="50" y="30" width="900" height="840" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="10 5"/>
+    <text x="60" y="55" fill="#64748b" font-size="11" font-weight="700" letter-spacing="1">PARCELA TIPO 600 m² (20 × 30 m) — LIÁNS / SANTA CRUZ (OLEIROS)</text>
+    
+    <!-- Límite Retranqueo Frontal Norte 5,00 m -->
+    <line x1="50" y1="110" x2="950" y2="110" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.6"/>
+    <text x="760" y="104" fill="#ef4444" font-size="10" font-weight="600">Límite Retranqueo 5,00 m (PXOM)</text>
+    
+    <!-- Vial público Norte -->
+    <rect x="50" y="30" width="900" height="35" fill="#1e293b" opacity="0.5"/>
+    <text x="500" y="52" fill="#94a3b8" font-size="11" font-weight="700" text-anchor="middle">VIAL PÚBLICO (ACCESO NORTE)</text>
+  </g>
+
+  <!-- JARDÍN Y EXTERIORES -->
+  <g id="jardin-exteriores">
+    <rect x="110" y="670" width="780" height="180" fill="url(#grass-fill)"/>
+    <text x="500" y="780" fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" opacity="0.8">JARDÍN PRIVADO SUR (SOLEADO Y RESGUARDADO)</text>
+  </g>
+
+  <!-- PÉRGOLA APARCAMIENTO 2 COCHES -->
+  <g id="pergola-coches">
+    <!-- Pavimento drenante pérgola -->
+    <rect x="110" y="110" width="170" height="260" fill="#1e293b" opacity="0.6" stroke="#475569" stroke-width="2" stroke-dasharray="6 3"/>
+    <text x="195" y="140" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle">PÉRGOLA 2 VEHÍCULOS</text>
+    <text x="195" y="158" fill="#38bdf8" font-size="10" text-anchor="middle">28,0 m² · Wallbox 7,4 kW</text>
+
+    <!-- Coches -->
+    <rect x="125" y="180" width="65" height="125" rx="10" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
+    <text x="157" y="245" fill="#94a3b8" font-size="9" font-weight="600" text-anchor="middle">Coche 1</text>
+    <rect x="205" y="180" width="65" height="125" rx="10" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
+    <text x="237" y="245" fill="#94a3b8" font-size="9" font-weight="600" text-anchor="middle">Coche 2</text>
+
+    <!-- Flecha flujo llegada coche hacia mudroom -->
+    <path d="M 235 320 L 290 320 L 290 240" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow-flow)"/>
+    <text x="240" y="338" fill="#38bdf8" font-size="9" font-weight="600">Paso cubierto a Mudroom</text>
+  </g>
+
+  <!-- PORCHE DE ENTRADA PEATONAL (VISITAS) -->
+  <g id="porche-entrada-norte">
+    <rect x="350" y="70" width="90" height="60" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 2"/>
+    <text x="395" y="95" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">PORCHE NORTE</text>
+    <text x="395" y="110" fill="#94a3b8" font-size="8" text-anchor="middle">Acceso Cubierto</text>
+    <path d="M 395 50 L 395 110" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-flow)"/>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- MUROS EXTERIORES DE CARGA (ESPESOR 35 cm = 14 px) -->
+  <!-- ============================================================== -->
+  <g id="muros-exteriores" filter="url(#wall-glow)">
+    <!-- Contorno perimetral cerrado de la vivienda -->
+    <!-- Muro Norte completo con huecos -->
+    <rect x="280" y="130" width="95" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="415" y="130" width="55" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="550" y="130" width="80" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="680" y="130" width="60" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    
+    <!-- Muro Este completo -->
+    <rect x="726" y="130" width="14" height="420" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+
+    <!-- Muro Sur (huecos de correderas integrados) -->
+    <rect x="280" y="540" width="30" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="440" y="540" width="20" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="630" y="540" width="110" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+
+    <!-- Muro Oeste del cuerpo principal -->
+    <rect x="280" y="130" width="14" height="60" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="280" y="230" width="14" height="255" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+
+    <!-- Muros Trastero Exterior (Oeste de la casa) -->
+    <rect x="110" y="370" width="170" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="110" y="370" width="14" height="140" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="110" y="500" width="170" height="14" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- PATIO CORRALA HABITABLE (4,00 × 4,00 m = 160 × 160 px) -->
+  <!-- ============================================================== -->
+  <g id="patio-corrala-habitable">
+    <!-- Pavimento de tarima de iroko y alcorque natural -->
+    <rect x="440" y="250" width="160" height="160" fill="url(#deck-wood)" stroke="#10b981" stroke-width="2"/>
+    
+    <!-- Alcorque del Arce Japonés (esquina Noroeste del patio) -->
+    <circle cx="485" cy="295" r="32" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+    <circle cx="485" cy="295" r="16" fill="#f43f5e" opacity="0.85"/>
+    <text x="485" y="299" fill="#ffffff" font-size="9" font-weight="800" text-anchor="middle">ARCE</text>
+
+    <!-- Banco corrido de lectura de Iroko bajo alero -->
+    <rect x="535" y="255" width="60" height="20" rx="3" fill="#b45309" stroke="#d97706" stroke-width="1"/>
+    <text x="565" y="269" fill="#fef3c7" font-size="8" font-weight="700" text-anchor="middle">Banco Iroko</text>
+
+    <!-- Mesa de café exterior y 2 sillones -->
+    <circle cx="555" cy="345" r="16" fill="#451a03" stroke="#d97706" stroke-width="1"/>
+    <circle cx="530" cy="345" r="8" fill="#78350f"/>
+    <circle cx="580" cy="345" r="8" fill="#78350f"/>
+    <text x="555" y="349" fill="#fef3c7" font-size="7" font-weight="600" text-anchor="middle">Café</text>
+
+    <text x="520" y="390" fill="#34d399" font-size="11" font-weight="800" text-anchor="middle">PATIO CORRALA (16,0 m²)</text>
+    <text x="520" y="402" fill="#a7f3d0" font-size="8" font-weight="600" text-anchor="middle">100% HABITABLE Y PISABLE</text>
+
+    <!-- CARPINTERÍAS ELEVABLES CORREDERAS DEL PATIO (ABIERTO EN VERANO / CERRADO EN LLUVIA) -->
+    <!-- Corredera Oeste (Galería) -->
+    <line x1="440" y1="260" x2="440" y2="400" stroke="#38bdf8" stroke-width="4" stroke-dasharray="20 10"/>
+    <text x="433" y="330" fill="#38bdf8" font-size="7" transform="rotate(-90 433 330)" text-anchor="middle">Corredera 2,50m</text>
+
+    <!-- Corredera Sur (Salón-Comedor) -->
+    <line x1="450" y1="410" x2="590" y2="410" stroke="#38bdf8" stroke-width="4" stroke-dasharray="25 10"/>
+    <text x="520" y="422" fill="#38bdf8" font-size="7" text-anchor="middle">Corredera 3,00m a Salón</text>
+
+    <!-- Corredera Este (Cocina) -->
+    <line x1="600" y1="260" x2="600" y2="400" stroke="#38bdf8" stroke-width="4" stroke-dasharray="25 10"/>
+    <text x="608" y="330" fill="#38bdf8" font-size="7" transform="rotate(90 608 330)" text-anchor="middle">Corredera 3,00m a Cocina</text>
+
+    <!-- Cristalera fija Norte (Despacho) -->
+    <line x1="450" y1="250" x2="590" y2="250" stroke="#38bdf8" stroke-width="4"/>
+    <text x="520" y="244" fill="#38bdf8" font-size="7" text-anchor="middle">Ventanal Despacho a Patio</text>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- TABIQUERÍA INTERIOR Y ESTANCIAS -->
+  <!-- ============================================================== -->
+  <g id="tabiqueria-y-estancias">
+
+    <!-- 1. ZAGUÁN ATLÁNTICO / MUDROOM (x=280..340, y=144..260) -->
+    <rect x="285" y="144" width="65" height="116" fill="#0284c7" opacity="0.15"/>
+    <!-- Zapatero & Banco descalzador en pared Norte -->
+    <rect x="290" y="150" width="55" height="24" rx="3" fill="#0369a1" stroke="#38bdf8" stroke-width="1"/>
+    <text x="317" y="165" fill="#e0f2fe" font-size="8" font-weight="600" text-anchor="middle">Banco/Zapatero</text>
+
+    <!-- Puerta 1: Entrada DESDE PÉRGOLA (en muro Oeste x=280, y=190..230) -->
+    <!-- Hueco en muro x=280 -->
+    <rect x="278" y="190" width="16" height="40" fill="#0b1120"/>
+    <!-- Hoja de puerta y barrido -->
+    <line x1="280" y1="190" x2="315" y2="210" stroke="#f59e0b" stroke-width="2.5"/>
+    <path d="M 280 230 A 40 40 0 0 1 315 210" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="260" y="205" fill="#f59e0b" font-size="8" font-weight="700" text-anchor="middle">Entrada</text>
+    <text x="260" y="215" fill="#f59e0b" font-size="7" text-anchor="middle">Pérgola</text>
+
+    <!-- Puerta 2: Corredera hacia Trastero Sur (x=295..335, y=260) -->
+    <line x1="295" y1="260" x2="335" y2="260" stroke="#38bdf8" stroke-width="3"/>
+    <text x="317" y="255" fill="#94a3b8" font-size="7" text-anchor="middle">A Trastero/Técnica</text>
+
+    <!-- Puerta 3: Corredera de vidrio hacia Hall Este (x=350, y=190..230) -->
+    <line x1="350" y1="190" x2="350" y2="230" stroke="#38bdf8" stroke-width="3"/>
+    <text x="343" y="210" fill="#38bdf8" font-size="7" transform="rotate(-90 343 210)" text-anchor="middle">Puerta Vidrio</text>
+
+    <text x="317" y="195" fill="#38bdf8" font-size="10" font-weight="800" text-anchor="middle">ZAGUÁN</text>
+    <text x="317" y="207" fill="#94a3b8" font-size="8" text-anchor="middle">Mudroom 5,8 m²</text>
+    <text x="317" y="218" fill="#22c55e" font-size="7" font-weight="700" text-anchor="middle">ESCLUSA TÉRMICA</text>
+
+    <!-- Muro separador Zaguán / Hall -->
+    <rect x="345" y="144" width="6" height="116" fill="#334155"/>
+
+    <!-- 2. HALL Y RECIBIDOR PRINCIPAL (x=350..440, y=144..250) -->
+    <!-- Hueco Puerta Principal Norte (x=375..415, y=130) -->
+    <rect x="375" y="128" width="40" height="16" fill="#0b1120"/>
+    <!-- Hoja puerta batiente 1,00m -->
+    <line x1="375" y1="130" x2="405" y2="160" stroke="#f59e0b" stroke-width="3"/>
+    <path d="M 415 130 A 40 40 0 0 1 405 160" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <text x="395" y="122" fill="#f59e0b" font-size="8" font-weight="700" text-anchor="middle">PUERTA PRINCIPAL (VISITAS)</text>
+
+    <!-- Armario gabanero -->
+    <rect x="352" y="150" width="20" height="45" rx="2" fill="#334155" stroke="#64748b" stroke-width="1"/>
+    <text x="362" y="175" fill="#cbd5e1" font-size="7" transform="rotate(-90 362 175)" text-anchor="middle">Armario</text>
+
+    <text x="400" y="190" fill="#f8fafc" font-size="11" font-weight="800" text-anchor="middle">HALL</text>
+    <text x="400" y="203" fill="#94a3b8" font-size="9" text-anchor="middle">10,4 m²</text>
+    <text x="400" y="216" fill="#38bdf8" font-size="8" text-anchor="middle">Vistas al Claustro</text>
+
+    <!-- Muro separador Hall / Despacho -->
+    <rect x="435" y="144" width="6" height="106" fill="#334155"/>
+
+    <!-- 3. DESPACHO SANCTASANCTÓRUM / SUITE INVITADOS (x=440..580, y=144..250) -->
+    <!-- Ventana Norte a fachada (Legalidad NHG) x=470..550, y=130 -->
+    <rect x="470" y="128" width="80" height="16" fill="#0b1120"/>
+    <line x1="470" y1="136" x2="550" y2="136" stroke="#38bdf8" stroke-width="3"/>
+    <text x="510" y="124" fill="#38bdf8" font-size="8" font-weight="600" text-anchor="middle">Ventana Norte 2,00m (NHG)</text>
+
+    <!-- Puerta acústica desde el Hall (x=440, y=190..225) -->
+    <rect x="433" y="190" width="10" height="35" fill="#0b1120"/>
+    <line x1="440" y1="190" x2="470" y2="210" stroke="#f59e0b" stroke-width="2.5"/>
+    <path d="M 440 225 A 35 35 0 0 1 470 210" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- Mesa de teletrabajo ergonómica 1,80 × 0,80 m -->
+    <rect x="460" y="150" width="72" height="32" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <circle cx="496" cy="195" r="8" fill="#475569"/>
+    <text x="496" y="170" fill="#e2e8f0" font-size="8" font-weight="700" text-anchor="middle">Mesa 1,80 m</text>
+
+    <!-- Sofá-cama de matrimonio visitas (1,40 × 2,00 m) -->
+    <rect x="545" y="150" width="32" height="75" rx="4" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+    <text x="561" y="190" fill="#cbd5e1" font-size="7" transform="rotate(90 561 190)" text-anchor="middle">Sofá-Cama 140</text>
+
+    <text x="500" y="225" fill="#38bdf8" font-size="11" font-weight="800" text-anchor="middle">DESPACHO</text>
+    <text x="500" y="237" fill="#94a3b8" font-size="8" text-anchor="middle">11,5 m² · Suite Invitados</text>
+
+    <!-- Muro separador Despacho / Núcleo Baño -->
+    <rect x="580" y="144" width="6" height="106" fill="#334155"/>
+
+    <!-- 4. NÚCLEO BAÑO COMPLETO PB Y DISTRIBUIDOR NEUTRO -->
+    <!-- Ventana Norte Baño (x=630..680, y=130) -->
+    <rect x="630" y="128" width="50" height="16" fill="#0b1120"/>
+    <line x1="630" y1="136" x2="680" y2="136" stroke="#38bdf8" stroke-width="3"/>
+
+    <!-- Ducha Walk-in (x=670..725, y=145..190) -->
+    <rect x="670" y="145" width="55" height="45" fill="#0284c7" opacity="0.3" stroke="#38bdf8" stroke-width="1"/>
+    <text x="697" y="172" fill="#ffffff" font-size="8" text-anchor="middle">Ducha Inox</text>
+
+    <!-- Inodoro suspendido Geberit -->
+    <rect x="635" y="150" width="20" height="25" rx="5" fill="#f8fafc"/>
+    
+    <!-- Lavabo con mueble suspendido -->
+    <rect x="595" y="150" width="32" height="18" rx="2" fill="#f8fafc"/>
+
+    <!-- Puerta Baño hacia Distribuidor (x=610..645, y=190) -->
+    <rect x="610" y="187" width="35" height="8" fill="#0b1120"/>
+    <line x1="610" y1="190" x2="635" y2="215" stroke="#f59e0b" stroke-width="2"/>
+    <path d="M 645 190 A 35 35 0 0 1 635 215" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+    <!-- Distribuidor Neutro (x=585..725, y=195..250) -->
+    <rect x="585" y="195" width="140" height="55" fill="#0f172a" opacity="0.5"/>
+    <text x="655" y="225" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle">BAÑO PB (5,2 m²)</text>
+    <text x="655" y="237" fill="#10b981" font-size="8" text-anchor="middle">✓ Legal NHG · Sin paso a Cocina</text>
+
+    <!-- 5. ESCALERA (OESTE DEL PATIO) SUBE NORTE A SUR -->
+    <g id="escalera-pb">
+      <rect x="360" y="250" width="75" height="160" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+      <!-- Peldaños -->
+      <line x1="360" y1="266" x2="435" y2="266" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="282" x2="435" y2="282" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="298" x2="435" y2="298" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="314" x2="435" y2="314" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="330" x2="435" y2="330" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="346" x2="435" y2="346" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="362" x2="435" y2="362" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="378" x2="435" y2="378" stroke="#475569" stroke-width="1"/>
+      <line x1="360" y1="394" x2="435" y2="394" stroke="#475569" stroke-width="1"/>
+      <!-- Flecha de subida -->
+      <line x1="397" y1="260" x2="397" y2="395" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-flow)"/>
+      <text x="397" y="335" fill="#38bdf8" font-size="9" font-weight="800" text-anchor="middle">SUBE A P1</text>
+      <text x="397" y="348" fill="#94a3b8" font-size="7" text-anchor="middle">17 Peldaños</text>
+    </g>
+
+    <!-- 6. COCINA CON ISLA (ESTE DEL PATIO) -->
+    <rect x="605" y="255" width="120" height="155" fill="#1e293b" opacity="0.25"/>
+    <!-- Isla de Cocina 2,80 × 1,00 m (112 × 40 px) -->
+    <rect x="615" y="290" width="100" height="40" rx="3" fill="#334155" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="625" y="298" width="25" height="24" fill="#0f172a" stroke="#ef4444" stroke-width="1"/>
+    <text x="637" y="313" fill="#fca5a5" font-size="7" text-anchor="middle">Bora</text>
+    <text x="675" y="314" fill="#f8fafc" font-size="9" font-weight="700" text-anchor="middle">Isla Dekton 2,80m</text>
+
+    <!-- Columnas cocina pared Este -->
+    <rect x="714" y="255" width="12" height="155" fill="#475569"/>
+    
+    <text x="665" y="360" fill="#f8fafc" font-size="11" font-weight="800" text-anchor="middle">COCINA CON ISLA</text>
+    <text x="665" y="374" fill="#94a3b8" font-size="9" text-anchor="middle">15,2 m² · Conexión directa a Patio</text>
+
+    <!-- 7. LAVANDERÍA TÉCNICA (x=640..725, y=415..535) -->
+    <rect x="640" y="415" width="85" height="120" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <!-- Columna lavadora / secadora -->
+    <rect x="685" y="425" width="35" height="35" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+    <text x="702" y="445" fill="#ffffff" font-size="7" text-anchor="middle">Columna</text>
+    <text x="702" y="453" fill="#bae6fd" font-size="6" text-anchor="middle">Lav+Sec</text>
+    <rect x="650" y="425" width="30" height="25" rx="2" fill="#0284c7" opacity="0.4"/>
+    <text x="665" y="440" fill="#ffffff" font-size="7" text-anchor="middle">Pila</text>
+    <text x="682" y="490" fill="#94a3b8" font-size="9" font-weight="700" text-anchor="middle">LAVANDERÍA</text>
+    <text x="682" y="503" fill="#64748b" font-size="8" text-anchor="middle">5,6 m²</text>
+
+    <!-- 8. SALÓN - COMEDOR PRINCIPAL (x=295..635, y=415..535) -->
+    <rect x="295" y="415" width="340" height="120" fill="#0f172a"/>
+    
+    <!-- Chimenea y Muro TV 77" en pared Oeste -->
+    <rect x="295" y="435" width="10" height="60" fill="#ef4444"/>
+    <text x="310" y="470" fill="#fca5a5" font-size="8" transform="rotate(-90 310 470)" text-anchor="middle">TV 77" + Chimenea</text>
+
+    <!-- Sofá modular en L -->
+    <path d="M 325 435 L 390 435 L 390 495 L 360 495 L 360 465 L 325 465 Z" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
+    <text x="355" y="455" fill="#cbd5e1" font-size="8" text-anchor="middle">Sofá L</text>
+
+    <!-- Ventanal en Esquina Suroeste -->
+    <line x1="280" y1="485" x2="280" y2="540" stroke="#38bdf8" stroke-width="5"/>
+    <text x="270" y="515" fill="#38bdf8" font-size="7" transform="rotate(-90 270 515)" text-anchor="middle">Ventanal Esquina SW</text>
+
+    <text x="365" y="518" fill="#f8fafc" font-size="12" font-weight="800" text-anchor="middle">SALÓN (26,5 m²)</text>
+
+    <!-- Comedor Principal Interior (10 Plazas) -->
+    <rect x="470" y="440" width="130" height="48" rx="4" fill="#334155" stroke="#f8fafc" stroke-width="1.5"/>
+    <text x="535" y="468" fill="#f8fafc" font-size="10" font-weight="800" text-anchor="middle">COMEDOR (10 Pax)</text>
+    <text x="535" y="518" fill="#f8fafc" font-size="11" font-weight="800" text-anchor="middle">COMEDOR (17,5 m²)</text>
+
+    <!-- GRANDES CORREDERAS SUR A PORCHE -->
+    <line x1="310" y1="540" x2="440" y2="540" stroke="#38bdf8" stroke-width="5" stroke-dasharray="25 10"/>
+    <line x1="460" y1="540" x2="630" y2="540" stroke="#38bdf8" stroke-width="5" stroke-dasharray="25 10"/>
+    <text x="470" y="552" fill="#38bdf8" font-size="8" font-weight="700" text-anchor="middle">Correderas Elevables Cortizo Cor Vision Plus a cota cero</text>
+
+    <!-- 9. TRASTERO DE SURF / BICIS / SALA TÉCNICA (EXTERIOR) -->
+    <rect x="115" y="375" width="160" height="120" fill="#1e293b"/>
+    <text x="195" y="420" fill="#38bdf8" font-size="11" font-weight="800" text-anchor="middle">TRASTERO / TÉCNICA</text>
+    <text x="195" y="435" fill="#94a3b8" font-size="9" text-anchor="middle">8,2 m² · Acceso Mudroom y Pérgola</text>
+    <text x="195" y="450" fill="#cbd5e1" font-size="8" text-anchor="middle">🏄 Surf · Bicis · Aerotermia Bibloc</text>
+    <text x="195" y="462" fill="#cbd5e1" font-size="8" text-anchor="middle">📶 Rack 19" 9U · VMC Zehnder</text>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- PORCHE SUR EXPANDIDO (FONDO 3,00 m = 120 px) -->
+  <!-- ============================================================== -->
+  <g id="porche-sur-expandido">
+    <rect x="280" y="554" width="460" height="120" fill="url(#deck-wood)" stroke="#d97706" stroke-width="2"/>
+    
+    <!-- Mesa Exterior Comedor de Verano (10 Plazas) -->
+    <rect x="470" y="580" width="130" height="50" rx="4" fill="#78350f" stroke="#fef3c7" stroke-width="1.5"/>
+    <text x="535" y="610" fill="#fef3c7" font-size="10" font-weight="800" text-anchor="middle">Comedor Exterior (10 Pax)</text>
+
+    <!-- Barbacoa tradicional de carbón en muro lateral Este -->
+    <rect x="705" y="565" width="35" height="80" fill="#991b1b" stroke="#f87171" stroke-width="1.5"/>
+    <text x="722" y="600" fill="#ffffff" font-size="8" font-weight="800" transform="rotate(90 722 600)" text-anchor="middle">CHURRASQUEIRA</text>
+
+    <!-- Zona Lounge de Porche frente al Salón -->
+    <rect x="310" y="580" width="80" height="50" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+    <text x="350" y="610" fill="#cbd5e1" font-size="8" font-weight="600" text-anchor="middle">Zona Lounge</text>
+
+    <!-- Cuarto de Herramientas + Garaje Robot en lateral exterior Oeste -->
+    <rect x="210" y="490" width="70" height="50" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="245" y="515" fill="#38bdf8" font-size="8" font-weight="700" text-anchor="middle">ROBOT CORTACÉSPED</text>
+    <text x="245" y="527" fill="#94a3b8" font-size="7" text-anchor="middle">y Útiles Jardín</text>
+
+    <!-- Acotación de fondo 3,00 m -->
+    <line x1="260" y1="554" x2="260" y2="674" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-cota)" marker-start="url(#arrow-cota)"/>
+    <text x="245" y="618" fill="#fbbf24" font-size="10" font-weight="800" text-anchor="middle">3,00 m</text>
+    <text x="535" y="660" fill="#fbbf24" font-size="11" font-weight="800" text-anchor="middle">PORCHE CUBIERTO SUR EXPANDIDO (FONDO 3,00 m — 36,0 m²)</text>
+  </g>
+
+  <!-- CARTELA TÉCNICA Y ROSA DE LOS VIENTOS -->
+  <g id="cartela-y-norte">
+    <!-- Rosa de los vientos -->
+    <g transform="translate(880, 160)">
+      <circle cx="0" cy="0" r="26" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <polygon points="0,-22 6,-5 0,-10 -6,-5" fill="#ef4444"/>
+      <polygon points="0,22 6,5 0,10 -6,5" fill="#64748b"/>
+      <text x="0" y="-10" fill="#ffffff" font-size="9" font-weight="900" text-anchor="middle">N</text>
+      <text x="0" y="35" fill="#94a3b8" font-size="8" font-weight="700" text-anchor="middle">NORTE</text>
+    </g>
+
+    <!-- Cartela Informativa Oficial CAD -->
+    <rect x="50" y="800" width="900" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="70" y="822" fill="#38bdf8" font-size="12" font-weight="800">PROPUESTA D (CORREGIDA Y PRECISA) — PABELLÓN BIOCLIMÁTICO ATLÁNTICO</text>
+    <text x="70" y="838" fill="#94a3b8" font-size="9">PLANTA BAJA (Cota ±0,00 m) · Escala 1:100 (1m = 40px) · Huella cerrada PB: 116,5 m² (Cumple estrictamente 20% PXOM Oleiros)</text>
+    <text x="70" y="852" fill="#10b981" font-size="9" font-weight="700">✓ Acceso Mudroom desde Pérgola + Entrada Noble · Patio Corrala 100% HABITABLE (correderas elevables 3m) · Zaguán cortavientos</text>
+  </g>
+</svg>
