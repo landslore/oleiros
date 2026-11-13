@@ -69,20 +69,25 @@ flowchart TD
 
 ## 3. Las 7 Grandes Mejoras Espaciales y Técnicas
 
-### 1. El Patio Claustro Atlántico (Abierto al Cielo, Verde y Limpio)
-* **El cambio:** El patio central de `16,0 m²` se abre al cielo como un verdadero **claustro contemporáneo**, rodeado en sus 4 lados por paños fijos de vidrio de suelo a techo con carpintería oculta enrasada (*Cortizo Cor Vision Plus*).
+### 1. El Patio Corrala Habitable y Accesible (Opción A Validada por el Promotor)
+* **La solución:** Patio central de **`16,0 m² útiles`** a cielo abierto pero **100 % HABITABLE, PISABLE Y VIVIDERO**.
+  * **Accesibilidad total mediante 3 grandes correderas elevables (*Cortizo Cor Vision Plus*):**
+    1. Corredera de **3,00 m en Cocina** (desayunar en el patio en dos pasos).
+    2. Corredera de **3,00 m en Salón** (fusión salón-patio en un gran espacio continuo de >80 m²).
+    3. Corredera de **2,50 m en Galería Oeste** (ventilación cruzada y paso directo).
+  * **Equipamiento interior:** Pavimento continuo de tarima tecnológica de iroko / granito gallego enrasado a cota cero, banco de lectura corrido bajo alero perimetral de 80 cm, mesa de café con 2 sillones de exterior y alcorque natural drenante con el Arce Japonés.
 * **Por qué es infinitamente mejor:**
-  1. **Cumplimiento legal del PXOM:** Al no tener techo cerrado, **no computa ocupación**. La huella construida cerrada de PB baja a `116,5 m²`, cumpliendo con holgura el límite del 20 % (120 m² en parcela de 600 m²).
-  2. **Legalidad NHG:** El Despacho y la Cocina ventilan e iluminan directamente a espacio libre exterior, siendo 100 % legales como dormitorios/estancias vivideras.
-  3. **Cero condensaciones y cero efecto invernadero:** Desaparece la trampa térmica del lucernario horizontal. En días de lluvia atlántica, ver caer el agua y la niebla sobre el arce japonés y el musgo desde el interior cálido de la casa crea una atmósfera poética inigualable.
-  4. **Protección Radón 100 % (CTE DB-HS6):** El forjado sanitario ventilado Cáviti y la lámina antirradón discurren continuos y herméticos bajo la vivienda. El patio tiene suelo vegetal en contacto con la tierra drenante natural fuera de la envolvente estanca.
+  1. **Cumplimiento legal estricto del PXOM de Oleiros:** Al no tener techo cerrado, **no computa ocupación sobre rasante**. La huella construida cerrada de PB baja a `116,5 m²`, cumpliendo con holgura el límite del 20 % (120 m² en parcela de 600 m²).
+  2. **Legalidad NHG (Galicia):** El Despacho y la Cocina ventilan e iluminan directamente a espacio libre exterior reglamentario, calificando 100 % como estancias vivideras y dormitorios oficiales.
+  3. **Cero condensaciones, cero goteras y cero efecto invernadero:** Desaparece la trampa térmica del lucernario plano horizontal. El arce se riega y nutre de lluvia natural; en verano la casa entera respira con ventilación cruzada protegida de los vientos de la ría por los cuatro muros envolventes.
+  4. **Protección Radón 100 % (CTE DB-HS6):** El forjado sanitario ventilado Cáviti y la lámina antirradón discurren continuos y herméticos bajo la vivienda. El patio tiene suelo vegetal drenante fuera de la envolvente estanca.
 
-### 2. El Zaguán Atlántico / Mudroom Térmico
+### 2. El Zaguán Atlántico / Mudroom Térmico y Doble Acceso Exterior
 * **El cambio:** Se sustituye el desembarco exterior descubierto por un **Zaguán / Mudroom acristalado de 5,8 m²** que une físicamente la Pérgola con la casa.
-* **Funcionalidad:**
-  * Bajar del coche bajo temporal de lluvia sin mojarse un solo segundo.
-  * Dispone de banco descalzador de roble, armario calefactado para abrigos mojados y paraguas, y zapatero ventilado.
-  * **Doble esclusa:** Puerta de servicio directa al Trastero de Surf/Bicis (para descargar la compra o neoprenos) y puerta noble de vidrio estanco hacia el Hall. Actúa de esclusa térmica (cero pérdidas de calor al abrir la puerta).
+* **Flujos de acceso exactos:**
+  * **Llegada diaria en coche (Pérgola):** Bajar del coche bajo techo, recorrer 2 pasos y entrar por la **puerta en el muro Oeste del Zaguán**. Allí se ubica el banco descalzador de roble, armario calefactado para ropa de lluvia y zapatero ventilado.
+  * **Doble esclusa interior:** Puerta corredera directa al Trastero/Técnica al Sur (descarga de compras pesadas y neoprenos) y puerta noble de vidrio estanco hacia el Hall al Este.
+  * **Acceso peatonal independiente para visitas:** Caminito Norte desde el vial hasta el **Porche Cubierto Norte**, con la **Puerta Principal pivotante de 1,00 m** que abre directamente al Hall, sin invadir la zona familiar de descalzarse.
 
 ### 3. Despacho "Sanctasanctórum" & Suite Serena de Invitados
 * **El cambio:** Se **elimina el atajo de paso continuo a la cocina**.
