@@ -38,6 +38,8 @@ with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_zona_norte_pb.svg'), 
     raw_svg_norte = f.read()
 with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_centro_patio_cocina_pb.svg'), 'r') as f:
     raw_svg_centro = f.read()
+with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_sur_salon_porche_pb.svg'), 'r') as f:
+    raw_svg_sur = f.read()
 
 
 html_content = f"""<!DOCTYPE html>
@@ -413,8 +415,11 @@ html_content = f"""<!DOCTYPE html>
           <button type="button" onclick="showFloorSVG('norte')" id="btn-svg-norte" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
             🛠️ 1:50 Zona Norte PB
           </button>
-          <button type="button" onclick="showFloorSVG('centro')" id="btn-svg-centro" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 text-slate-950 border border-emerald-300 shadow-lg shadow-emerald-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
-            🍳 1:50 Centro PB (Patio &amp; Cocina)
+          <button type="button" onclick="showFloorSVG('centro')" id="btn-svg-centro" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
+            🍳 1:50 Centro PB
+          </button>
+          <button type="button" onclick="showFloorSVG('sur')" id="btn-svg-sur" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-orange-500 text-slate-950 border border-orange-300 shadow-lg shadow-orange-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
+            🔥 1:50 Sur PB (Salón, Porche &amp; Piscina)
           </button>
         </div>
       </div>
@@ -432,6 +437,9 @@ html_content = f"""<!DOCTYPE html>
         </div>
         <div id="svg-container-centro" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
           {raw_svg_centro}
+        </div>
+        <div id="svg-container-sur" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+          {raw_svg_sur}
         </div>
       </div>
     </section>
@@ -538,20 +546,24 @@ html_content = f"""<!DOCTYPE html>
       const cP1 = document.getElementById('svg-container-p1');
       const cNorte = document.getElementById('svg-container-norte');
       const cCentro = document.getElementById('svg-container-centro');
+      const cSur = document.getElementById('svg-container-sur');
       const bPb = document.getElementById('btn-svg-pb');
       const bP1 = document.getElementById('btn-svg-p1');
       const bNorte = document.getElementById('btn-svg-norte');
       const bCentro = document.getElementById('btn-svg-centro');
+      const bSur = document.getElementById('btn-svg-sur');
 
       cPb.classList.add('hidden');
       cP1.classList.add('hidden');
       cNorte.classList.add('hidden');
       cCentro.classList.add('hidden');
+      cSur.classList.add('hidden');
 
       bPb.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
       bP1.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
       bNorte.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
       bCentro.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      bSur.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
 
       if (fl === 'pb') {{
         cPb.classList.remove('hidden');
@@ -565,6 +577,9 @@ html_content = f"""<!DOCTYPE html>
       }} else if (fl === 'centro') {{
         cCentro.classList.remove('hidden');
         bCentro.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 text-slate-950 border border-emerald-300 shadow-lg shadow-emerald-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
+      }} else if (fl === 'sur') {{
+        cSur.classList.remove('hidden');
+        bSur.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-orange-500 text-slate-950 border border-orange-300 shadow-lg shadow-orange-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
       }}
     }}
   </script>
@@ -593,7 +608,8 @@ if __name__ == "__main__":
         'planta_alta_propuesta_d.svg',
         'Presentacion_Hogar_Oleiros_Propuesta_D.pptx',
         'plano_constructivo_zona_norte_pb.svg',
-        'plano_constructivo_centro_patio_cocina_pb.svg'
+        'plano_constructivo_centro_patio_cocina_pb.svg',
+        'plano_constructivo_sur_salon_porche_pb.svg'
     ]
     for fn in files_to_sync:
         src = os.path.join(PROPUESTAS_DIR, fn)
