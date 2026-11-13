@@ -1,0 +1,846 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Script generador del Visor 3D Interactivo de la Vivienda en Oleiros (Propuesta D),
+inspirado en la arquitectura Three.js y patrones de bayllama/homemaker.
+"""
+
+import os
+import json
+
+html_code = """<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor 3D Interactivo — Hogar Oleiros (Propuesta D · Three.js / Homemaker)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Three.js r128 & OrbitControls from reliable CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #080c14;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #f8fafc;
+      user-select: none;
+    }
+    #canvas-container {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+    .hud-panel {
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .control-btn {
+      transition: all 0.15s ease;
+    }
+    .control-btn:hover {
+      background-color: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      transform: translateY(-1px);
+    }
+    .control-btn.active {
+      background-color: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(2, 132, 199, 0.5);
+    }
+    #crosshair {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 4px rgba(0,0,0,0.8);
+      z-index: 40;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 3D WebGL Canvas -->
+  <div id="canvas-container"></div>
+  <div id="crosshair"></div>
+
+  <!-- TOP BAR: PROJECT HEADER & CAMERA PRESETS -->
+  <header class="hud-panel fixed top-4 left-4 right-4 z-30 rounded-2xl p-3 px-5 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-sky-600 flex items-center justify-center font-black text-white shadow-lg shadow-sky-500/30">
+        3D
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">PROPUESTA D · OLEIROS</span>
+          <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">THREE.JS &amp; PBR</span>
+          <span class="badge bg-amber-500/20 text-amber-400 border border-amber-500/30">PATIO CORRALA CLAUSTRADO</span>
+        </div>
+        <h1 class="text-sm md:text-base font-extrabold text-white tracking-tight mt-0.5">
+          Vivienda Bioclimática en Liáns / Santa Cruz — Modelo 3D Interactivo
+        </h1>
+      </div>
+    </div>
+
+    <!-- ROOM TELEPORT BUTTONS -->
+    <div class="flex flex-wrap items-center gap-1.5 text-xs">
+      <span class="text-slate-400 font-semibold mr-1 hidden lg:inline">Vistas:</span>
+      <button onclick="teleportTo('overview')" class="control-btn active px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium" id="btn-overview">
+        🌐 Maqueta 3D
+      </button>
+      <button onclick="teleportTo('patio')" class="control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium" id="btn-patio">
+        🍁 Patio Corrala
+      </button>
+      <button onclick="teleportTo('salon')" class="control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium" id="btn-salon">
+        🛋️ Salón &amp; Chimenea
+      </button>
+      <button onclick="teleportTo('cocina')" class="control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium" id="btn-cocina">
+        🏝️ Cocina con Isla
+      </button>
+      <button onclick="teleportTo('despacho')" class="control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium" id="btn-despacho">
+        💼 Despacho
+      </button>
+      <button onclick="teleportTo('porche')" class="control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium" id="btn-porche">
+        🌿 Porche Sur
+      </button>
+      <button onclick="teleportTo('suite')" class="control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium" id="btn-suite">
+        🛏️ Suite P1
+      </button>
+    </div>
+  </header>
+
+  <!-- BOTTOM FLOATING CONTROLLER (ENVIRONMENT, CAMERA MODE, SNAPSHOT) -->
+  <footer class="hud-panel fixed bottom-4 left-4 right-4 z-30 rounded-2xl p-3 px-5 flex flex-wrap items-center justify-between gap-3 shadow-2xl">
+    
+    <!-- NAVIGATION MODE TOGGLE -->
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-bold text-slate-300">Modo de Cámara:</span>
+      <button onclick="setCameraMode('orbit')" id="btn-mode-orbit" class="control-btn active px-3 py-1.5 rounded-xl bg-sky-600 text-white font-bold text-xs border border-sky-400">
+        🔄 Órbita Libre 360°
+      </button>
+      <button onclick="setCameraMode('walk')" id="btn-mode-walk" class="control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 font-medium text-xs border border-slate-700">
+        🚶 Paseo 1ª Persona (WASD)
+      </button>
+    </div>
+
+    <!-- CEILING & WALL CUT LEVEL -->
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-bold text-slate-300">Corte Sección:</span>
+      <button onclick="setCutMode('full')" id="btn-cut-full" class="control-btn active px-2.5 py-1.5 rounded-xl bg-slate-800 text-slate-200 text-xs border border-slate-700">
+        P1 + PB
+      </button>
+      <button onclick="setCutMode('pb')" id="btn-cut-pb" class="control-btn px-2.5 py-1.5 rounded-xl bg-slate-800 text-slate-200 text-xs border border-slate-700">
+        Solo PB (Corte Cenital)
+      </button>
+    </div>
+
+    <!-- SUN / TIME OF DAY SLIDER -->
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-bold text-amber-400">☀️ Iluminación:</span>
+      <button onclick="setTimeOfDay('morning')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-800 text-slate-300 hover:text-white border border-slate-700">Mañana</button>
+      <button onclick="setTimeOfDay('noon')" class="px-2.5 py-1 rounded-lg text-xs bg-sky-950 text-sky-300 border border-sky-800">Mediodía</button>
+      <button onclick="setTimeOfDay('sunset')" class="px-2.5 py-1 rounded-lg text-xs bg-amber-950 text-amber-300 border border-amber-800">Atardecer Dorado</button>
+      <button onclick="setTimeOfDay('night')" class="px-2.5 py-1 rounded-lg text-xs bg-indigo-950 text-indigo-300 border border-indigo-800">Noche LED</button>
+    </div>
+
+    <!-- SCREENSHOT / RENDER CAPTURE BUTTON -->
+    <div class="flex items-center gap-2">
+      <button onclick="takeSnapshot()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs shadow-lg hover:brightness-110 transition flex items-center gap-1.5">
+        📸 Capturar Render
+      </button>
+    </div>
+
+  </footer>
+
+  <!-- HELP OVERLAY FOR 1ST PERSON -->
+  <div id="walk-help" class="hidden hud-panel fixed top-24 left-4 z-20 rounded-2xl p-4 max-w-xs text-xs space-y-1.5 shadow-xl text-slate-300 border border-slate-700/80">
+    <div class="font-bold text-sky-400 uppercase tracking-wider text-[11px]">🎮 Controles de Paseo (WASD)</div>
+    <p>• <strong>W / S :</strong> Avanzar / Retroceder</p>
+    <p>• <strong>A / D :</strong> Desplazamiento lateral (strafe)</p>
+    <p>• <strong>Ratón :</strong> Girar la cabeza / Mirar</p>
+    <p>• <strong>Shift :</strong> Correr (2× velocidad)</p>
+    <p>• <strong>ESC :</strong> Liberar el cursor</p>
+  </div>
+
+  <script>
+    // ─── THREE.JS SETUP ────────────────────────────────────────────────────────
+    let scene, camera, renderer, controls;
+    let cameraMode = 'orbit'; // 'orbit' or 'walk'
+    let currentCutMode = 'full';
+    let sunLight, ambientLight, hemisphereLight;
+    let p1Group, pbGroup, treeGroup;
+    let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false, sprint = false;
+    let prevTime = performance.now();
+    const velocity = new THREE.Vector3();
+    const direction = new THREE.Vector3();
+
+    const container = document.getElementById('canvas-container');
+
+    function init() {
+      // Scene
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0a101d);
+      scene.fog = new THREE.FogExp2(0x0a101d, 0.018);
+
+      // Camera
+      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 150);
+      camera.position.set(16, 14, 22);
+
+      // Renderer
+      renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.0;
+      renderer.outputEncoding = THREE.sRGBEncoding;
+      container.appendChild(renderer.domElement);
+
+      // Orbit Controls
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.maxPolarAngle = Math.PI / 2 - 0.02; // Don't go below ground
+      controls.minDistance = 3;
+      controls.maxDistance = 55;
+      controls.target.set(0, 1.5, 0);
+
+      // Lights
+      setupLighting();
+
+      // Build the Architecture
+      buildGroundAndLandscape();
+      buildPlantaBaja();
+      buildPlantaPrimera();
+
+      // Events
+      window.addEventListener('resize', onWindowResize);
+      setupWalkControls();
+
+      // Render Loop
+      animate();
+    }
+
+    // ─── LIGHTING ─────────────────────────────────────────────────────────────
+    function setupLighting() {
+      ambientLight = new THREE.AmbientLight(0xfff1e0, 0.5);
+      scene.add(ambientLight);
+
+      hemisphereLight = new THREE.HemisphereLight(0x7dd3fc, 0x1e293b, 0.6);
+      scene.add(hemisphereLight);
+
+      sunLight = new THREE.DirectionalLight(0xfffaed, 1.6);
+      sunLight.position.set(18, 26, 14); // Southwest afternoon sun in Oleiros
+      sunLight.castShadow = true;
+      sunLight.shadow.mapSize.width = 2048;
+      sunLight.shadow.mapSize.height = 2048;
+      sunLight.shadow.camera.near = 0.5;
+      sunLight.shadow.camera.far = 70;
+      const d = 20;
+      sunLight.shadow.camera.left = -d;
+      sunLight.shadow.camera.right = d;
+      sunLight.shadow.camera.top = d;
+      sunLight.shadow.camera.bottom = -d;
+      sunLight.shadow.bias = -0.0005;
+      scene.add(sunLight);
+    }
+
+    function setTimeOfDay(time) {
+      if (time === 'morning') {
+        sunLight.position.set(-22, 14, 18);
+        sunLight.color.setHex(0xffe4cc);
+        sunLight.intensity = 1.4;
+        scene.background.setHex(0x0f1c2e);
+        ambientLight.color.setHex(0xdbeafe);
+        ambientLight.intensity = 0.45;
+      } else if (time === 'noon') {
+        sunLight.position.set(2, 32, 12);
+        sunLight.color.setHex(0xffffff);
+        sunLight.intensity = 1.8;
+        scene.background.setHex(0x1e293b);
+        ambientLight.color.setHex(0xffffff);
+        ambientLight.intensity = 0.6;
+      } else if (time === 'sunset') {
+        sunLight.position.set(24, 6, 12);
+        sunLight.color.setHex(0xfb923c); // Golden hour
+        sunLight.intensity = 2.0;
+        scene.background.setHex(0x28171d);
+        ambientLight.color.setHex(0xfecdd3);
+        ambientLight.intensity = 0.4;
+      } else if (time === 'night') {
+        sunLight.position.set(0, -20, 0); // Sun gone
+        sunLight.intensity = 0;
+        scene.background.setHex(0x030712);
+        ambientLight.color.setHex(0x1e1b4b);
+        ambientLight.intensity = 0.2;
+      }
+    }
+
+    // ─── MATERIALS (PBR PALETTE OLEIROS) ───────────────────────────────────────
+    const whiteWallMat = new THREE.MeshStandardMaterial({
+      color: 0xf8fafc,
+      roughness: 0.85,
+      metalness: 0.05
+    });
+    const stoneWallMat = new THREE.MeshStandardMaterial({
+      color: 0xd6d3d1,
+      roughness: 0.9,
+      metalness: 0.0
+    });
+    const limestoneFloorMat = new THREE.MeshStandardMaterial({
+      color: 0xded8cc, // NCS S 1505-Y20R Arena caliza
+      roughness: 0.5,
+      metalness: 0.05
+    });
+    const woodDeckMat = new THREE.MeshStandardMaterial({
+      color: 0x854d0e, // Iroko / Tarima tecnológica
+      roughness: 0.6,
+      metalness: 0.0
+    });
+    const oakWoodMat = new THREE.MeshStandardMaterial({
+      color: 0xb45309, // Roble tostado
+      roughness: 0.4,
+      metalness: 0.0
+    });
+    const dektonDarkMat = new THREE.MeshStandardMaterial({
+      color: 0x1e293b, // Dekton Kelya
+      roughness: 0.2,
+      metalness: 0.1
+    });
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0xbae6fd,
+      transparent: true,
+      opacity: 0.28,
+      roughness: 0.05,
+      metalness: 0.1,
+      transmission: 0.9,
+      ior: 1.5,
+      side: THREE.DoubleSide
+    });
+    const metalDarkMat = new THREE.MeshStandardMaterial({
+      color: 0x0f172a, // Cortizo negro forja
+      roughness: 0.35,
+      metalness: 0.8
+    });
+    const lawnGrassMat = new THREE.MeshStandardMaterial({
+      color: 0x15803d, // Césped atlántico verde
+      roughness: 0.95,
+      metalness: 0.0
+    });
+    const mapleLeafMat = new THREE.MeshStandardMaterial({
+      color: 0x9f1239, // Arce japonés Atropurpureum rojo vino
+      roughness: 0.6,
+      metalness: 0.0,
+      side: THREE.DoubleSide
+    });
+
+    // ─── GEOMETRY HELPERS ──────────────────────────────────────────────────────
+    function createBox(w, h, d, mat, x, y, z, castShadow = true, receiveShadow = true) {
+      const geom = new THREE.BoxGeometry(w, h, d);
+      const mesh = new THREE.Mesh(geom, mat);
+      mesh.position.set(x, y, z);
+      mesh.castShadow = castShadow;
+      mesh.receiveShadow = receiveShadow;
+      return mesh;
+    }
+
+    // ─── GROUND & LANDSCAPE ────────────────────────────────────────────────────
+    function buildGroundAndLandscape() {
+      // Grass parcel 600 m² (20 × 30 m)
+      const parcel = createBox(28, 0.4, 38, lawnGrassMat, 0, -0.2, 0, false, true);
+      scene.add(parcel);
+
+      // Swimming pool in South garden
+      const poolWaterMat = new THREE.MeshPhysicalMaterial({
+        color: 0x0284c7,
+        transparent: true,
+        opacity: 0.75,
+        roughness: 0.1,
+        transmission: 0.6
+      });
+      const pool = createBox(3.5, 0.2, 7.5, poolWaterMat, 3.5, 0.05, 11, false, false);
+      scene.add(pool);
+
+      // Stone border around pool
+      const poolBorder = createBox(4.2, 0.1, 8.2, limestoneFloorMat, 3.5, 0.02, 11, false, true);
+      scene.add(poolBorder);
+
+      // Car Pergola on West side (2 cars)
+      const pergolaPillar1 = createBox(0.18, 2.6, 0.18, metalDarkMat, -8.5, 1.3, -4);
+      const pergolaPillar2 = createBox(0.18, 2.6, 0.18, metalDarkMat, -5.5, 1.3, -4);
+      const pergolaPillar3 = createBox(0.18, 2.6, 0.18, metalDarkMat, -8.5, 1.3, 1);
+      const pergolaRoof = createBox(3.6, 0.15, 6.2, metalDarkMat, -7.0, 2.65, -1.5);
+      scene.add(pergolaPillar1, pergolaPillar2, pergolaPillar3, pergolaRoof);
+    }
+
+    // ─── PLANTA BAJA ───────────────────────────────────────────────────────────
+    function buildPlantaBaja() {
+      pbGroup = new THREE.Group();
+      scene.add(pbGroup);
+
+      const H = 2.70; // PB Wall Height
+
+      // Ground Floor Slab (Porcelain Tile 15.0 × 12.0 m)
+      const slab = createBox(15.0, 0.3, 12.0, limestoneFloorMat, 0, 0.15, 0, false, true);
+      pbGroup.add(slab);
+
+      // South Covered Porch Slab (12.0 × 3.0 m in iroko wood deck)
+      const porchSlab = createBox(12.0, 0.3, 3.0, woodDeckMat, 1.5, 0.15, 7.5, false, true);
+      pbGroup.add(porchSlab);
+
+      // Porch Pillars and Roof
+      const p1 = createBox(0.15, 2.8, 0.15, metalDarkMat, -4.0, 1.4, 8.9);
+      const p2 = createBox(0.15, 2.8, 0.15, metalDarkMat, 1.5, 1.4, 8.9);
+      const p3 = createBox(0.15, 2.8, 0.15, metalDarkMat, 7.0, 1.4, 8.9);
+      const porchRoof = createBox(12.4, 0.25, 3.2, whiteWallMat, 1.5, 2.85, 7.5);
+      pbGroup.add(p1, p2, p3, porchRoof);
+
+      // Outdoor BBQ Churrasqueira in East Porch
+      const bbq = createBox(1.2, 2.4, 0.7, stoneWallMat, 7.0, 1.2, 7.5);
+      const bbqFlue = createBox(0.5, 1.2, 0.5, metalDarkMat, 7.0, 3.0, 7.5);
+      pbGroup.add(bbq, bbqFlue);
+
+      // Outdoor Dining Table 10 Pax in Porch
+      const outTable = createBox(2.6, 0.75, 1.0, woodDeckMat, 1.5, 0.5, 7.5);
+      pbGroup.add(outTable);
+
+      // ── PATIO CORRALA (HABITABLE Y ACCESIBLE, 4.0 × 4.0 m) ───────────────────
+      // Unroofed central space at x: -0.5 to 3.5, z: -1.5 to 2.5
+      const patioDeck = createBox(4.0, 0.05, 4.0, woodDeckMat, 1.5, 0.31, 0.5);
+      pbGroup.add(patioDeck);
+
+      // Soil Alcorque in Patio with Acer Palmatum (Japanese Maple)
+      const soilMat = new THREE.MeshStandardMaterial({ color: 0x3f2e18, roughness: 0.95 });
+      const soil = createBox(1.4, 0.08, 1.4, soilMat, 0.5, 0.32, -0.5);
+      pbGroup.add(soil);
+
+      // Procedural Maple Tree
+      treeGroup = new THREE.Group();
+      const trunkMat = new THREE.MeshStandardMaterial({ color: 0x4a3728, roughness: 0.8 });
+      const trunk = createBox(0.18, 2.2, 0.18, trunkMat, 0.5, 1.3, -0.5);
+      treeGroup.add(trunk);
+
+      // Layered Japanese Maple Foliage (Red/Purple)
+      const f1 = createBox(1.8, 0.6, 1.8, mapleLeafMat, 0.5, 2.2, -0.5);
+      const f2 = createBox(1.4, 0.6, 1.4, mapleLeafMat, 0.4, 2.6, -0.4);
+      const f3 = createBox(0.9, 0.5, 0.9, mapleLeafMat, 0.6, 2.9, -0.5);
+      treeGroup.add(f1, f2, f3);
+      pbGroup.add(treeGroup);
+
+      // Iroko Reading Bench under perimeter overhang in Patio
+      const patioBench = createBox(2.2, 0.45, 0.5, oakWoodMat, 2.2, 0.52, -1.2);
+      pbGroup.add(patioBench);
+
+      // ── GLASS SLIDING DOORS AROUND PATIO (CORTIZO COR VISION PLUS) ───────────
+      // North Face (Despacho): Fixed Glass
+      const glassN = createBox(3.8, H - 0.2, 0.06, glassMat, 1.5, H/2 + 0.2, -1.5);
+      // South Face (Salón): 3.0 m Sliding Door
+      const glassS = createBox(3.8, H - 0.2, 0.06, glassMat, 1.5, H/2 + 0.2, 2.5);
+      // East Face (Cocina): 3.0 m Sliding Door
+      const glassE = createBox(0.06, H - 0.2, 3.8, glassMat, 3.5, H/2 + 0.2, 0.5);
+      // West Face (Galería / Hall): 2.5 m Sliding Door
+      const glassW = createBox(0.06, H - 0.2, 3.8, glassMat, -0.5, H/2 + 0.2, 0.5);
+      pbGroup.add(glassN, glassS, glassE, glassW);
+
+      // ── EXTERIOR ENVELOPE WALLS PB ───────────────────────────────────────────
+      // North Wall (Front): Entrance Porch + Zaguán + Despacho Window
+      const wallN1 = createBox(3.0, H, 0.35, whiteWallMat, -5.5, H/2 + 0.3, -5.8);
+      const wallN2 = createBox(3.5, H, 0.35, whiteWallMat, 5.0, H/2 + 0.3, -5.8);
+      const wallN_top = createBox(8.0, 0.8, 0.35, whiteWallMat, 0, H - 0.1, -5.8);
+      pbGroup.add(wallN1, wallN2, wallN_top);
+
+      // North Pivot Front Door (1.10 m in Iroko)
+      const frontDoor = createBox(1.1, 2.4, 0.08, oakWoodMat, -1.8, 1.35, -5.8);
+      pbGroup.add(frontDoor);
+
+      // South Wall (Salón + Comedor -> Porche Sur Glass Wall)
+      const glassSouthWall = createBox(11.0, H - 0.2, 0.08, glassMat, 1.5, H/2 + 0.2, 5.8);
+      const southPillarL = createBox(0.6, H, 0.35, whiteWallMat, -4.5, H/2 + 0.3, 5.8);
+      const southPillarR = createBox(0.6, H, 0.35, whiteWallMat, 7.2, H/2 + 0.3, 5.8);
+      pbGroup.add(glassSouthWall, southPillarL, southPillarR);
+
+      // West Wall (Zaguán & Trastero with access from Pergola)
+      const wallW1 = createBox(0.35, H, 11.6, whiteWallMat, -7.3, H/2 + 0.3, 0);
+      pbGroup.add(wallW1);
+
+      // West Door to Zaguán from Pérgola (100% accessible under roof)
+      const zaguanDoor = createBox(0.08, 2.2, 0.95, oakWoodMat, -7.3, 1.25, -2.5);
+      pbGroup.add(zaguanDoor);
+
+      // East Wall (Cocina & Comedor)
+      const wallE1 = createBox(0.35, H, 11.6, whiteWallMat, 7.3, H/2 + 0.3, 0);
+      pbGroup.add(wallE1);
+
+      // ── INTERIOR PARTITIONS PB ───────────────────────────────────────────────
+      // Wall separating Zaguán/Trastero from Main Hall
+      const wallZaguanInner = createBox(0.15, H, 8.0, whiteWallMat, -4.5, H/2 + 0.3, -1.8);
+      pbGroup.add(wallZaguanInner);
+
+      // ── FURNITURE PB ─────────────────────────────────────────────────────────
+      // COCINA: Dekton Island (2.8 × 1.0 m)
+      const island = createBox(2.8, 0.92, 1.0, dektonDarkMat, 5.4, 0.65, 0.5);
+      const inductionBora = createBox(0.8, 0.02, 0.5, metalDarkMat, 5.4, 1.12, 0.5);
+      pbGroup.add(island, inductionBora);
+
+      // 3 Kitchen Barstools
+      for (let i = -1; i <= 1; i++) {
+        const stool = createBox(0.35, 0.65, 0.35, oakWoodMat, 4.4, 0.5, 0.5 + i * 0.8);
+        pbGroup.add(stool);
+      }
+
+      // Tall kitchen cabinets (Santos Fine) on East wall
+      const kitchenTall = createBox(0.65, 2.4, 3.6, dektonDarkMat, 6.9, 1.35, 0.5);
+      pbGroup.add(kitchenTall);
+
+      // COMEDOR: Oak Dining Table (2.80 × 1.00 m) for 10 Pax
+      const diningTable = createBox(2.8, 0.76, 1.0, oakWoodMat, 5.2, 0.55, 4.2);
+      pbGroup.add(diningTable);
+
+      // SALÓN: L-Shaped Modular Sofa (3.20 × 2.40 m) in sand fabric
+      const sofaMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.9 });
+      const sofa1 = createBox(3.0, 0.75, 1.0, sofaMat, -2.0, 0.55, 3.8);
+      const sofa2 = createBox(1.0, 0.75, 2.0, sofaMat, -3.0, 0.55, 4.8);
+      const coffeeTable = createBox(1.2, 0.42, 0.7, oakWoodMat, -2.0, 0.38, 4.8);
+      pbGroup.add(sofa1, sofa2, coffeeTable);
+
+      // Airtight Wood Fireplace on West Living Wall
+      const fireplace = createBox(0.45, 1.1, 1.0, metalDarkMat, -4.2, 0.8, 3.2);
+      const fireGlow = new THREE.PointLight(0xf97316, 1.2, 4);
+      fireGlow.position.set(-3.9, 0.8, 3.2);
+      pbGroup.add(fireplace, fireGlow);
+
+      // 77" OLED TV on Media Wall
+      const tvScreen = createBox(0.04, 1.05, 1.85, metalDarkMat, -4.2, 1.6, 4.8);
+      pbGroup.add(tvScreen);
+
+      // DESPACHO SANCTASANCTÓRUM: Desk (1.80 × 0.80 m)
+      const desk = createBox(1.8, 0.74, 0.8, oakWoodMat, 1.5, 0.55, -4.2);
+      const monitor = createBox(0.85, 0.38, 0.06, metalDarkMat, 1.5, 1.15, -4.2);
+      const officeChair = createBox(0.55, 0.95, 0.55, sofaMat, 1.5, 0.65, -3.4);
+      const sofaBed = createBox(1.5, 0.75, 0.85, sofaMat, 3.8, 0.55, -4.0);
+      pbGroup.add(desk, monitor, officeChair, sofaBed);
+
+      // ZAGUÁN MUDROOM: Shoe Rack and Bench
+      const mudBench = createBox(1.2, 0.45, 0.45, oakWoodMat, -5.8, 0.4, -2.5);
+      pbGroup.add(mudBench);
+    }
+
+    // ─── PLANTA PRIMERA (P1) ───────────────────────────────────────────────────
+    function buildPlantaPrimera() {
+      p1Group = new THREE.Group();
+      scene.add(p1Group);
+
+      const Y1 = 3.15; // P1 Level
+      const H = 2.65;  // P1 Wall Height
+
+      // P1 Floor Slab with Central Cutout for Patio Claustro
+      // Floor West (Kids Bedrooms)
+      const slabW = createBox(7.0, 0.3, 12.0, oakWoodMat, -3.8, Y1, 0, false, true);
+      // Floor East (Master Suite)
+      const slabE = createBox(4.5, 0.3, 12.0, oakWoodMat, 5.0, Y1, 0, false, true);
+      // Floor North (Corridor Gallery)
+      const slabN = createBox(4.0, 0.3, 4.0, oakWoodMat, 0.5, Y1, -4.0, false, true);
+      p1Group.add(slabW, slabE, slabN);
+
+      // Balcón Corrido Sur P1 (11.5 × 1.2 m)
+      const balconyFloor = createBox(11.5, 0.25, 1.2, woodDeckMat, 0.5, Y1, 6.4, false, true);
+      // Continuous Structural Glass Railing 10+10 mm
+      const glassRail = createBox(11.5, 1.05, 0.04, glassMat, 0.5, Y1 + 0.6, 6.95);
+      p1Group.add(balconyFloor, glassRail);
+
+      // Upper Acoustic Glass Screen over Patio Claustro (4+4 Silence)
+      const upperGlassPatio = createBox(4.0, H, 0.06, glassMat, 1.5, Y1 + H/2, 0.5);
+      p1Group.add(upperGlassPatio);
+
+      // Exterior Walls P1
+      const wallP1_N = createBox(15.0, H, 0.35, whiteWallMat, 0, Y1 + H/2, -5.8);
+      const wallP1_W = createBox(0.35, H, 11.6, whiteWallMat, -7.3, Y1 + H/2, 0);
+      const wallP1_E = createBox(0.35, H, 11.6, whiteWallMat, 7.3, Y1 + H/2, 0);
+      p1Group.add(wallP1_N, wallP1_W, wallP1_E);
+
+      // South Facade Glass Openings to Balcony
+      const southGlassP1 = createBox(11.0, H - 0.2, 0.08, glassMat, 0.5, Y1 + H/2, 5.8);
+      p1Group.add(southGlassP1);
+
+      // ── FURNITURE P1 ─────────────────────────────────────────────────────────
+      // SUITE PRINCIPAL: King Size Bed (1.80 × 2.00 m) facing South
+      const bedMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.8 });
+      const kingBed = createBox(1.8, 0.55, 2.0, bedMat, 5.0, Y1 + 0.45, 3.8);
+      const bedHeadboard = createBox(2.8, 1.1, 0.1, oakWoodMat, 5.0, Y1 + 0.8, 2.7);
+      p1Group.add(kingBed, bedHeadboard);
+
+      // Double Dressing Room (Vestidor)
+      const dressing1 = createBox(0.6, 2.4, 2.2, dektonDarkMat, 3.8, Y1 + 1.35, -1.0);
+      const dressing2 = createBox(0.6, 2.4, 2.2, dektonDarkMat, 6.2, Y1 + 1.35, -1.0);
+      p1Group.add(dressing1, dressing2);
+
+      // KIDS BEDROOM 1 (Dormitorio Niña, West): Bed + Desk at 90° to window
+      const bedGirl = createBox(1.2, 0.5, 2.0, bedMat, -5.8, Y1 + 0.45, 3.8);
+      const deskGirl = createBox(0.65, 0.74, 1.8, oakWoodMat, -4.0, Y1 + 0.55, 3.8);
+      p1Group.add(bedGirl, deskGirl);
+
+      // KIDS BEDROOM 2 (Dormitorio Niño, Center-West): Bed + Desk at 90°
+      const bedBoy = createBox(1.2, 0.5, 2.0, bedMat, -2.2, Y1 + 0.45, 3.8);
+      const deskBoy = createBox(0.65, 0.74, 1.8, oakWoodMat, -0.8, Y1 + 0.55, 3.8);
+      p1Group.add(bedBoy, deskBoy);
+
+      // Roof (Plana invertida transitable técnica para fotovoltaica)
+      const roof = createBox(15.2, 0.35, 12.2, stoneWallMat, 0, Y1 + H + 0.2, 0, true, true);
+      p1Group.add(roof);
+    }
+
+    // ─── CUT MODE (FULL / ONLY PB) ─────────────────────────────────────────────
+    function setCutMode(mode) {
+      currentCutMode = mode;
+      document.getElementById('btn-cut-full').className = mode === 'full'
+        ? 'control-btn active px-2.5 py-1.5 rounded-xl bg-sky-600 text-white font-bold text-xs border border-sky-400'
+        : 'control-btn px-2.5 py-1.5 rounded-xl bg-slate-800 text-slate-200 text-xs border border-slate-700';
+      document.getElementById('btn-cut-pb').className = mode === 'pb'
+        ? 'control-btn active px-2.5 py-1.5 rounded-xl bg-sky-600 text-white font-bold text-xs border border-sky-400'
+        : 'control-btn px-2.5 py-1.5 rounded-xl bg-slate-800 text-slate-200 text-xs border border-slate-700';
+
+      if (mode === 'pb') {
+        p1Group.visible = false;
+        // Move camera to nice isometric top view of ground floor
+        animateCamera(new THREE.Vector3(0, 18, 12), new THREE.Vector3(0, 1.5, 0));
+      } else {
+        p1Group.visible = true;
+      }
+    }
+
+    // ─── CAMERA MODES & PRESETS ────────────────────────────────────────────────
+    function setCameraMode(mode) {
+      cameraMode = mode;
+      const btnOrbit = document.getElementById('btn-mode-orbit');
+      const btnWalk = document.getElementById('btn-mode-walk');
+      const help = document.getElementById('walk-help');
+      const crosshair = document.getElementById('crosshair');
+
+      if (mode === 'orbit') {
+        controls.enabled = true;
+        btnOrbit.className = 'control-btn active px-3 py-1.5 rounded-xl bg-sky-600 text-white font-bold text-xs border border-sky-400';
+        btnWalk.className = 'control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 font-medium text-xs border border-slate-700';
+        help.classList.add('hidden');
+        crosshair.style.display = 'none';
+        document.exitPointerLock();
+      } else {
+        controls.enabled = false;
+        btnOrbit.className = 'control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 font-medium text-xs border border-slate-700';
+        btnWalk.className = 'control-btn active px-3 py-1.5 rounded-xl bg-sky-600 text-white font-bold text-xs border border-sky-400';
+        help.classList.remove('hidden');
+        crosshair.style.display = 'block';
+
+        // Position camera inside Zaguán / Hall at human eye height (1.70 m)
+        camera.position.set(-3.5, 1.70, -2.5);
+        controls.target.set(0, 1.70, 0);
+        container.requestPointerLock();
+      }
+    }
+
+    function teleportTo(target) {
+      // Highlight button
+      const buttons = ['overview', 'patio', 'salon', 'cocina', 'despacho', 'porche', 'suite'];
+      buttons.forEach(b => {
+        const btn = document.getElementById('btn-' + b);
+        if (btn) {
+          btn.className = b === target
+            ? 'control-btn active px-3 py-1.5 rounded-xl bg-sky-600 text-white font-bold text-xs border border-sky-400'
+            : 'control-btn px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium text-xs';
+        }
+      });
+
+      if (target === 'overview') {
+        setCutMode('full');
+        animateCamera(new THREE.Vector3(16, 14, 22), new THREE.Vector3(0, 1.5, 0));
+      } else if (target === 'patio') {
+        setCutMode('pb');
+        animateCamera(new THREE.Vector3(1.5, 3.2, 4.5), new THREE.Vector3(1.5, 1.4, 0.5));
+      } else if (target === 'salon') {
+        setCutMode('pb');
+        animateCamera(new THREE.Vector3(-0.5, 2.4, 7.5), new THREE.Vector3(-2.0, 1.2, 4.0));
+      } else if (target === 'cocina') {
+        setCutMode('pb');
+        animateCamera(new THREE.Vector3(3.2, 2.4, 2.8), new THREE.Vector3(5.5, 1.2, 0.5));
+      } else if (target === 'despacho') {
+        setCutMode('pb');
+        animateCamera(new THREE.Vector3(1.5, 2.2, -1.8), new THREE.Vector3(1.5, 1.0, -4.5));
+      } else if (target === 'porche') {
+        setCutMode('full');
+        animateCamera(new THREE.Vector3(1.5, 2.0, 13.5), new THREE.Vector3(1.5, 1.5, 7.5));
+      } else if (target === 'suite') {
+        setCutMode('full');
+        animateCamera(new THREE.Vector3(5.0, 4.8, 8.0), new THREE.Vector3(5.0, 3.8, 3.8));
+      }
+    }
+
+    function animateCamera(targetPos, targetLookAt) {
+      const startPos = camera.position.clone();
+      const startLookAt = controls.target.clone();
+      const duration = 1200; // ms
+      const startTime = performance.now();
+
+      function update() {
+        const now = performance.now();
+        const progress = Math.min((now - startTime) / duration, 1);
+        const ease = 0.5 - Math.cos(progress * Math.PI) / 2; // Ease in-out
+
+        camera.position.lerpVectors(startPos, targetPos, ease);
+        controls.target.lerpVectors(startLookAt, targetLookAt, ease);
+        controls.update();
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    // ─── 1ST PERSON WASD & POINTER LOCK ────────────────────────────────────────
+    function setupWalkControls() {
+      const onKeyDown = (event) => {
+        switch (event.code) {
+          case 'ArrowUp':
+          case 'KeyW': moveForward = true; break;
+          case 'ArrowLeft':
+          case 'KeyA': moveLeft = true; break;
+          case 'ArrowDown':
+          case 'KeyS': moveBackward = true; break;
+          case 'ArrowRight':
+          case 'KeyD': moveRight = true; break;
+          case 'ShiftLeft':
+          case 'ShiftRight': sprint = true; break;
+        }
+      };
+
+      const onKeyUp = (event) => {
+        switch (event.code) {
+          case 'ArrowUp':
+          case 'KeyW': moveForward = false; break;
+          case 'ArrowLeft':
+          case 'KeyA': moveLeft = false; break;
+          case 'ArrowDown':
+          case 'KeyS': moveBackward = false; break;
+          case 'ArrowRight':
+          case 'KeyD': moveRight = false; break;
+          case 'ShiftLeft':
+          case 'ShiftRight': sprint = false; break;
+        }
+      };
+
+      document.addEventListener('keydown', onKeyDown);
+      document.addEventListener('keyup', onKeyUp);
+
+      // Pointer lock mouse look
+      document.addEventListener('mousemove', (event) => {
+        if (document.pointerLockElement === container && cameraMode === 'walk') {
+          const movementX = event.movementX || 0;
+          const movementY = event.movementY || 0;
+
+          const euler = new THREE.Euler(0, 0, 0, 'YXZ');
+          euler.setFromQuaternion(camera.quaternion);
+
+          euler.y -= movementX * 0.0022;
+          euler.x -= movementY * 0.0022;
+          euler.x = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, euler.x));
+
+          camera.quaternion.setFromEuler(euler);
+        }
+      });
+    }
+
+    // ─── RESIZE & ANIMATE ──────────────────────────────────────────────────────
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const time = performance.now();
+      const delta = (time - prevTime) / 1000;
+
+      if (cameraMode === 'walk' && document.pointerLockElement === container) {
+        velocity.x -= velocity.x * 10.0 * delta;
+        velocity.z -= velocity.z * 10.0 * delta;
+
+        direction.z = Number(moveForward) - Number(moveBackward);
+        direction.x = Number(moveRight) - Number(moveLeft);
+        direction.normalize();
+
+        const speed = sprint ? 16.0 : 7.0;
+
+        if (moveForward || moveBackward) velocity.z -= direction.z * speed * delta;
+        if (moveLeft || moveRight) velocity.x -= direction.x * speed * delta;
+
+        // Move relative to camera look angle
+        const camYaw = new THREE.Euler(0, 0, 0, 'YXZ').setFromQuaternion(camera.quaternion).y;
+        camera.position.x += (-velocity.z * Math.sin(camYaw) + velocity.x * Math.cos(camYaw)) * delta;
+        camera.position.z += (-velocity.z * Math.cos(camYaw) - velocity.x * Math.sin(camYaw)) * delta;
+        camera.position.y = 1.70; // Keep eye level
+      } else {
+        controls.update();
+      }
+
+      // Gentle maple foliage breeze animation
+      if (treeGroup) {
+        treeGroup.rotation.y = Math.sin(time * 0.001) * 0.03;
+      }
+
+      prevTime = time;
+      renderer.render(scene, camera);
+    }
+
+    // ─── RENDER CAPTURE ────────────────────────────────────────────────────────
+    function takeSnapshot() {
+      renderer.render(scene, camera);
+      const dataURL = renderer.domElement.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = `render_3d_oleiros_${new Date().toISOString().slice(0,19).replace(/[:T]/g, '-')}.png`;
+      link.href = dataURL;
+      link.click();
+    }
+
+    // Launch!
+    init();
+  </script>
+</body>
+</html>
+"""
+
+def main():
+    target_path = "/home/antigravity/landslore/oleiros/propuestas/modelo_3d_propuesta_d_homemaker.html"
+    with open(target_path, "w", encoding="utf-8") as f:
+        f.write(html_code)
+    print(f"Generated 3D Viewer: {target_path} ({len(html_code)} bytes)")
+
+    # Save to artifacts directory as well
+    artifact_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e8f6a578-76cf-4abb-986f-afb074438ab7/modelo_3d_propuesta_d.html"
+    with open(artifact_path, "w", encoding="utf-8") as f:
+        f.write(html_code)
+    print(f"Artifact updated: {artifact_path} ({len(html_code)} bytes)")
+
+if __name__ == "__main__":
+    main()
