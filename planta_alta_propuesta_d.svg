@@ -1,188 +1,860 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 820" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1220" width="100%" height="100%" style="background-color: #070b14; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;">
+
   <defs>
-    <pattern id="grid-p1" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1"/>
+    <!-- Retícula técnica milimetrada CAD (0.50m y 1.00m) -->
+    <pattern id="cad-grid-minor" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#1e293b" stroke-width="0.35" opacity="0.55"/>
     </pattern>
-    <pattern id="wood-balcon" width="20" height="20" patternUnits="userSpaceOnUse">
-      <rect width="20" height="20" fill="#78350f" opacity="0.15"/>
-      <line x1="0" y1="5" x2="20" y2="5" stroke="#b45309" stroke-width="1" opacity="0.3"/>
-      <line x1="0" y1="15" x2="20" y2="15" stroke="#b45309" stroke-width="1" opacity="0.3"/>
+    <pattern id="cad-grid-major" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="url(#cad-grid-minor)"/>
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#334155" stroke-width="0.7" opacity="0.7"/>
     </pattern>
-    <filter id="shadow-p1" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
-    </filter>
+
+    <!-- Rayado ANSI31 (45 grados) para muros seccionados -->
+    <pattern id="hatch-ansi31" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#94a3b8" stroke-width="0.8"/>
+    </pattern>
+
+    <!-- Rayado cruzado ANSI37 para pilares estructurales de hormigón/acero -->
+    <pattern id="hatch-pillar" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5" stroke="#e2e8f0" stroke-width="1.1"/>
+      <line x1="0" y1="0" x2="5" y2="0" stroke="#e2e8f0" stroke-width="1.1"/>
+    </pattern>
+
+    <!-- Patrón de aislamiento térmico SATE / XPS -->
+    <pattern id="hatch-insulation" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 0 4 Q 2 0 4 4 T 8 4" fill="none" stroke="#38bdf8" stroke-width="0.6" opacity="0.85"/>
+    </pattern>
+
+    <!-- Patrón de pavimento cerámico / porcelánico técnico (cuadrícula ortogonal fina) -->
+    <pattern id="hatch-tile-60" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M 18 0 L 0 0 0 18" fill="none" stroke="#334155" stroke-width="0.45" opacity="0.6"/>
+    </pattern>
+
+    <!-- Patrón de tarima de madera (Iroko / Roble) -->
+    <pattern id="hatch-wood-deck" width="40" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="6" x2="40" y2="6" stroke="#475569" stroke-width="0.45" opacity="0.65"/>
+      <line x1="15" y1="0" x2="15" y2="6" stroke="#475569" stroke-width="0.35" opacity="0.5"/>
+    </pattern>
+
+    <!-- Patrón de terreno / grava drenante -->
+    <pattern id="hatch-gravel" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="4" r="0.7" fill="#64748b" opacity="0.6"/>
+      <circle cx="9" cy="3" r="0.9" fill="#64748b" opacity="0.5"/>
+      <circle cx="6" cy="10" r="0.8" fill="#64748b" opacity="0.6"/>
+      <circle cx="12" cy="11" r="0.6" fill="#64748b" opacity="0.5"/>
+    </pattern>
+
+    <!-- Patrón de lámina de agua (piscina) -->
+    <pattern id="hatch-water" width="24" height="12" patternUnits="userSpaceOnUse">
+      <path d="M 0 6 Q 6 3 12 6 T 24 6" fill="none" stroke="#0284c7" stroke-width="0.5" opacity="0.55"/>
+    </pattern>
+
+    <!-- Patrón de serpentín de suelo radiante PEX Ø16mm -->
+    <pattern id="hatch-radiant" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M 0 4 L 16 4 M 0 12 L 16 12" fill="none" stroke="#f43f5e" stroke-width="0.45" stroke-dasharray="3,2" opacity="0.45"/>
+    </pattern>
+
+    <!-- Marcadores de acotación arquitectónica (Trazo oblicuo a 45° ISO 129) -->
+    <marker id="tick-45" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#38bdf8" stroke-width="1.2"/>
+    </marker>
+    <marker id="tick-45-amber" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#f59e0b" stroke-width="1.2"/>
+    </marker>
+    <marker id="tick-45-white" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#cbd5e1" stroke-width="1.1"/>
+    </marker>
+    <marker id="arrow-tech" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M 0 1 L 6 3.5 L 0 6 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-sec" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 0 0.5 L 7 4 L 0 7.5 z" fill="#f43f5e"/>
+    </marker>
   </defs>
 
-  <!-- CUADRÍCULA DE FONDO (1m = 40px) -->
-  <rect width="100%" height="100%" fill="url(#grid-p1)" />
-
-  <!-- HUECO DEL CLAUSTRO CENTRAL (VISTAS CENITALES AL PATIO INFERIOR) -->
-  <g id="hueco-claustro">
-    <rect x="440" y="220" width="160" height="160" fill="#022c22" stroke="#10b981" stroke-width="2" stroke-dasharray="6 3"/>
-    <circle cx="520" cy="300" r="30" fill="#047857" opacity="0.3"/>
-    <circle cx="520" cy="300" r="14" fill="#f43f5e" opacity="0.6"/>
-    <text x="520" y="295" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">HUECO CLAUSTRO</text>
-    <text x="520" y="312" fill="#94a3b8" font-size="9" text-anchor="middle">Vistas a copa del Arce</text>
-  </g>
-
-  <!-- CUBIERTAS TÉCNICAS INFERIORES EN PB (PÉRGOLA Y TRASTERO) -->
-  <g id="cubiertas-bajas" opacity="0.4">
-    <rect x="120" y="80" width="160" height="390" fill="#1e293b" stroke="#475569" stroke-width="1.5" stroke-dasharray="4 4"/>
-    <text x="200" y="260" fill="#64748b" font-size="11" font-weight="600" text-anchor="middle">Cubierta Plana Pérgola/Técnica</text>
-    <text x="200" y="278" fill="#38bdf8" font-size="9" text-anchor="middle">☀️ 10 Paneles Solares FV (4,5 kWp)</text>
-  </g>
-
-  <!-- CAPA: BALCÓN CORRIDO SUR P1 -->
-  <g id="balcon-sur-p1">
-    <rect x="280" y="500" width="480" height="60" fill="url(#wood-balcon)" stroke="#38bdf8" stroke-width="2"/>
-    <!-- Peto de Vidrio de Seguridad Estructural -->
-    <line x1="280" y1="560" x2="760" y2="560" stroke="#0ea5e9" stroke-width="3"/>
-    <text x="520" y="535" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle">BALCÓN CORRIDO SUR (14,0 m²) · BARANDILLA DE VIDRIO ESTRUCTURAL</text>
-  </g>
-
-  <!-- CAPA: MUROS EXTERIORES PLANTA PRIMERA -->
-  <g id="muros-exteriores-p1" filter="url(#shadow-p1)">
-    <path d="
-      M 280 180 
-      L 760 180 
-      L 760 500 
-      L 280 500 
-      Z" 
-      fill="#1e293b" stroke="#0ea5e9" stroke-width="3"/>
-    
-    <!-- Hueco central del claustro -->
-    <rect x="440" y="220" width="160" height="160" fill="#0f172a" stroke="#0ea5e9" stroke-width="2.5"/>
-  </g>
-
-  <!-- CAPA: TABIQUERÍA INTERIOR P1 -->
-  <g id="tabiqueria-interior-p1">
-    <!-- Muro separador Baño Hijos / Galería -->
-    <line x1="440" y1="180" x2="440" y2="220" stroke="#475569" stroke-width="4"/>
-    <!-- Muro separador Dormitorio Niña / Niño -->
-    <line x1="440" y1="380" x2="440" y2="500" stroke="#475569" stroke-width="5"/>
-    <!-- Muro separador Dormitorio Niño / Suite -->
-    <line x1="600" y1="380" x2="600" y2="500" stroke="#475569" stroke-width="5"/>
-    <!-- Muro separador Suite Dormitorio / Vestidor -->
-    <line x1="600" y1="340" x2="760" y2="340" stroke="#475569" stroke-width="4"/>
-    <!-- Muro separador Vestidor / Baño Suite -->
-    <line x1="600" y1="240" x2="760" y2="240" stroke="#475569" stroke-width="4"/>
-  </g>
-
-  <!-- CAPA: CARPINTERÍAS ACÚSTICAS Y BALCONERAS -->
-  <g id="carpinterias-p1">
-    <!-- Cerramiento Acristalado Acústico sobre el Claustro (4+4 Silence) -->
-    <line x1="440" y1="380" x2="600" y2="380" stroke="#38bdf8" stroke-width="3" stroke-dasharray="8 2"/>
-    <text x="520" y="375" fill="#38bdf8" font-size="7" font-weight="600" text-anchor="middle">Mampara Acústica 4+4 Silence (Corta ruidos PB)</text>
-
-    <!-- Balconeras correderas al Balcón Sur -->
-    <line x1="300" y1="500" x2="420" y2="500" stroke="#38bdf8" stroke-width="4"/>
-    <line x1="460" y1="500" x2="580" y2="500" stroke="#38bdf8" stroke-width="4"/>
-    <line x1="620" y1="500" x2="740" y2="500" stroke="#38bdf8" stroke-width="4"/>
-  </g>
-
-  <!-- CAPA: ESTANCIAS Y MOBILIARIO PLANTA PRIMERA -->
-  <g id="mobiliario-p1">
-    <!-- 1. DESEMBARCO DE ESCALERA Y PASILLO GALERÍA -->
-    <g id="desembarco-escalera">
-      <rect x="360" y="220" width="75" height="155" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
-      <line x1="360" y1="235" x2="435" y2="235" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="250" x2="435" y2="250" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="265" x2="435" y2="265" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="280" x2="435" y2="280" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="295" x2="435" y2="295" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="310" x2="435" y2="310" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="325" x2="435" y2="325" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="340" x2="435" y2="340" stroke="#475569" stroke-width="1"/>
-      <line x1="360" y1="355" x2="435" y2="355" stroke="#475569" stroke-width="1"/>
-      <!-- Llegada cota +3,15m -->
-      <circle cx="397" cy="365" r="5" fill="#10b981"/>
-      <text x="397" y="375" fill="#10b981" font-size="8" font-weight="700" text-anchor="middle">+3,15 m</text>
+<rect x="12" y="12" width="1476" height="1196" fill="#0b1120" stroke="#94a3b8" stroke-width="1.8"/>
+<rect x="20" y="20" width="1460" height="1180" fill="url(#cad-grid-major)" stroke="#cbd5e1" stroke-width="0.9"/>
+<g id="parcela-y-retranqueos">
+<line x1="283.0" y1="67.6" x2="283.0" y2="920.4" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="283.0" cy="67.6" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="283.0" y="70.8" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">A</text>
+<line x1="394.8" y1="67.6" x2="394.8" y2="920.4" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="394.8" cy="67.6" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="394.8" y="70.8" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">B</text>
+<line x1="517.0" y1="67.6" x2="517.0" y2="920.4" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="517.0" cy="67.6" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="517.0" y="70.8" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">C</text>
+<line x1="725.0" y1="67.6" x2="725.0" y2="920.4" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="725.0" cy="67.6" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="725.0" y="70.8" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">D</text>
+<line x1="959.0" y1="67.6" x2="959.0" y2="920.4" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="959.0" cy="67.6" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="959.0" y="70.8" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">E</text>
+<line x1="106.2" y1="130.0" x2="1000.6" y2="130.0" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="106.2" cy="130.0" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="106.2" y="133.2" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">1</text>
+<line x1="106.2" y1="306.8" x2="1000.6" y2="306.8" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="106.2" cy="306.8" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="106.2" y="310.0" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">2</text>
+<line x1="106.2" y1="514.8" x2="1000.6" y2="514.8" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="106.2" cy="514.8" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="106.2" y="518.0" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">3</text>
+<line x1="106.2" y1="728.0" x2="1000.6" y2="728.0" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="106.2" cy="728.0" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="106.2" y="731.2" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">3B</text>
+<line x1="106.2" y1="829.4" x2="1000.6" y2="829.4" stroke="#64748b" stroke-width="0.65" stroke-dasharray="14,4,2,4" opacity="0.75"/>
+<circle cx="106.2" cy="829.4" r="9.5" fill="#0b1120" stroke="#64748b" stroke-width="1.1"/><text x="106.2" y="832.6" fill="#e2e8f0" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">4</text>
+<rect x="127.0" y="130.0" width="267.8" height="384.8" fill="url(#hatch-gravel)" stroke="#64748b" stroke-width="1.0" stroke-dasharray="6,3"/>
+<text x="259.6" y="153.4" fill="#94a3b8" font-size="6.8" font-weight="700" text-anchor="middle">CUBIERTA PLANA TÉCNICA NO TRANSITABLE (GRAVA DRENANTE · COTA +3,05 m)</text>
+<rect x="145.2" y="171.6" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="145.2" y1="198.6" x2="213.8" y2="198.6" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="179.5" y="201.8" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-01 450W</text>
+<rect x="222.2" y="171.6" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="222.2" y1="198.6" x2="290.8" y2="198.6" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="256.5" y="201.8" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-02 450W</text>
+<rect x="299.1" y="171.6" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="299.1" y1="198.6" x2="367.8" y2="198.6" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="333.4" y="201.8" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-03 450W</text>
+<rect x="145.2" y="241.8" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="145.2" y1="268.8" x2="213.8" y2="268.8" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="179.5" y="272.0" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-04 450W</text>
+<rect x="222.2" y="241.8" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="222.2" y1="268.8" x2="290.8" y2="268.8" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="256.5" y="272.0" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-05 450W</text>
+<rect x="299.1" y="241.8" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="299.1" y1="268.8" x2="367.8" y2="268.8" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="333.4" y="272.0" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-06 450W</text>
+<rect x="145.2" y="312.0" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="145.2" y1="339.0" x2="213.8" y2="339.0" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="179.5" y="342.2" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-07 450W</text>
+<rect x="222.2" y="312.0" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="222.2" y1="339.0" x2="290.8" y2="339.0" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="256.5" y="342.2" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-08 450W</text>
+<rect x="299.1" y="312.0" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="299.1" y1="339.0" x2="367.8" y2="339.0" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="333.4" y="342.2" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-09 450W</text>
+<rect x="145.2" y="382.2" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="145.2" y1="409.2" x2="213.8" y2="409.2" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="179.5" y="412.4" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-10 450W</text>
+<rect x="222.2" y="382.2" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="222.2" y1="409.2" x2="290.8" y2="409.2" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="256.5" y="412.4" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-11 450W</text>
+<rect x="299.1" y="382.2" width="68.6" height="54.6" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>
+<line x1="299.1" y1="409.2" x2="367.8" y2="409.2" stroke="#1e3a8a" stroke-width="0.4"/>
+<text x="333.4" y="412.4" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-12 450W</text>
+<g class="mep-sym">
+          <circle cx="142.6" cy="494.0" r="4.5" fill="#0b1120" stroke="#ef4444" stroke-width="1.2"/>
+          <circle cx="142.6" cy="494.0" r="1.8" fill="#ef4444"/>
+          <text x="148.6" y="496.0" fill="#fca5a5" font-family="monospace" font-size="5.5" font-weight="700">CAZ-01 Ø90 (p=2%)</text>
+        </g>
+<g class="mep-sym">
+          <circle cx="376.6" cy="494.0" r="4.5" fill="#0b1120" stroke="#ef4444" stroke-width="1.2"/>
+          <circle cx="376.6" cy="494.0" r="1.8" fill="#ef4444"/>
+          <text x="382.6" y="496.0" fill="#fca5a5" font-family="monospace" font-size="5.5" font-weight="700">CAZ-02 Ø90 (p=2%)</text>
+        </g>
+</g>
+<g id="pavimentos-p1">
+<rect x="394.8" y="130.0" width="564.2" height="598.0" fill="url(#hatch-wood-deck)"/>
+<rect x="405.2" y="148.2" width="538.2" height="564.2" fill="url(#hatch-radiant)" opacity="0.45"/>
+<rect x="517.0" y="306.8" width="208.0" height="208.0" fill="#070b14" stroke="#10b981" stroke-width="1.4"/>
+<line x1="517.0" y1="306.8" x2="725.0" y2="514.8" stroke="#10b981" stroke-width="0.6" stroke-dasharray="6,4" opacity="0.6"/>
+<line x1="725.0" y1="306.8" x2="517.0" y2="514.8" stroke="#10b981" stroke-width="0.6" stroke-dasharray="6,4" opacity="0.6"/>
+<rect x="558.6" y="348.4" width="124.8" height="124.8" fill="none" stroke="#34d399" stroke-width="0.7" stroke-dasharray="3,3"/>
+<circle cx="571.6" cy="366.6" r="33.8" fill="none" stroke="#10b981" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="621.0" y="405.6" fill="#10b981" font-size="7.5" font-weight="700" text-anchor="middle">VACÍO PATIO CORRALA (4,00 × 4,00 m)</text>
+<text x="621.0" y="421.2" fill="#6ee7b7" font-size="6.0" text-anchor="middle">Abierto al cielo · Proyección copa Acer palmatum</text>
+<rect x="394.8" y="728.0" width="564.2" height="72.8" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="394.8" y1="798.7" x2="959.0" y2="798.7" stroke="#38bdf8" stroke-width="2.2"/>
+<line x1="394.8" y1="801.8" x2="959.0" y2="801.8" stroke="#e2e8f0" stroke-width="0.6"/>
+<rect x="394.8" y="800.8" width="564.2" height="109.2" fill="none" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>
+<text x="676.6" y="863.2" fill="#64748b" font-size="6.5" text-anchor="middle">PROYECCIÓN CUBIERTA PORCHE SUR INFERIOR (COTA +3,00 m · PENDIENTE 1,5%)</text>
+<g class="room-stamp">
+      <rect x="628.6" y="746.4" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="628.6" y1="758.4" x2="724.6" y2="758.4" stroke="#334155" stroke-width="0.6"/>
+      <text x="676.6" y="755.4" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-23] BALCÓN CORRIDO SUR P1</text>
+      <text x="676.6" y="767.4" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 14,00 m²</text>
+      <text x="676.6" y="776.9" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Iroko · Vidrio 10+10mm · Z=+3,15m</text>
     </g>
-
-    <!-- Galería Pasillo Superior -->
-    <rect x="440" y="380" width="160" height="40" fill="#0f172a"/>
-    <text x="520" y="405" fill="#f8fafc" font-size="10" font-weight="700" text-anchor="middle">GALERÍA SUPERIOR (8,2 m²)</text>
-    <text x="520" y="415" fill="#94a3b8" font-size="7" text-anchor="middle">Balizas nocturnas a 25 cm</text>
-
-    <!-- 2. BAÑO COMPARTIDO HIJOS (NORTE) -->
-    <rect x="285" y="185" width="150" height="90" fill="#0c4a6e" opacity="0.2"/>
-    <!-- Bañera / Ducha amplia -->
-    <rect x="290" y="190" width="65" height="35" rx="3" fill="#0284c7" opacity="0.4"/>
-    <text x="322" y="212" fill="#ffffff" font-size="8" text-anchor="middle">Bañera</text>
-    <!-- Doble seno integrado -->
-    <rect x="370" y="190" width="60" height="20" rx="3" fill="#e2e8f0"/>
-    <circle cx="385" cy="200" r="6" fill="#94a3b8"/>
-    <circle cx="415" cy="200" r="6" fill="#94a3b8"/>
-    <!-- Inodoro -->
-    <rect x="375" y="225" width="20" height="25" rx="4" fill="#e2e8f0"/>
-    <!-- Toallero radiador -->
-    <line x1="425" y1="225" x2="425" y2="250" stroke="#f43f5e" stroke-width="3"/>
-    <text x="360" y="265" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle">BAÑO HIJOS (6,8 m²)</text>
-    <text x="360" y="276" fill="#94a3b8" font-size="8" text-anchor="middle">Doble lavabo + Toallero</text>
-
-    <!-- 3. DORMITORIO NIÑA (SUR-OESTE) -->
-    <rect x="285" y="385" width="150" height="110" fill="#0f172a"/>
-    <!-- Cama 1,20 × 2,00 m -->
-    <rect x="290" y="395" width="60" height="80" rx="4" fill="#334155" stroke="#cbd5e1" stroke-width="1"/>
-    <rect x="295" y="400" width="50" height="20" rx="2" fill="#475569"/>
-    <!-- Escritorio en pared ESTE (a 90° sin reflejos) -->
-    <rect x="405" y="415" width="30" height="75" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <circle cx="395" cy="452" r="9" fill="#475569"/>
-    <text x="420" y="457" fill="#38bdf8" font-size="8" font-weight="700" transform="rotate(-90 420 457)" text-anchor="middle">Mesa 1,80 m</text>
-    <!-- Armario empotrado al Norte -->
-    <rect x="360" y="385" width="75" height="18" fill="#475569"/>
-    <text x="360" y="485" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">DORMITORIO NIÑA (14,6 m²)</text>
-    <text x="360" y="495" fill="#10b981" font-size="8" text-anchor="middle">✓ Luz Este a 90° · Cero reflejos</text>
-
-    <!-- 4. DORMITORIO NIÑO (SUR-CENTRO) -->
-    <rect x="445" y="385" width="150" height="110" fill="#0f172a"/>
-    <!-- Cama 1,20 × 2,00 m -->
-    <rect x="450" y="395" width="60" height="80" rx="4" fill="#334155" stroke="#cbd5e1" stroke-width="1"/>
-    <rect x="455" y="400" width="50" height="20" rx="2" fill="#475569"/>
-    <!-- Escritorio en pared ESTE (a 90° sin reflejos) -->
-    <rect x="565" y="415" width="30" height="75" rx="3" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <circle cx="555" cy="452" r="9" fill="#475569"/>
-    <text x="580" y="457" fill="#38bdf8" font-size="8" font-weight="700" transform="rotate(-90 580 457)" text-anchor="middle">Mesa 1,80 m</text>
-    <!-- Armario empotrado al Norte -->
-    <rect x="520" y="385" width="75" height="18" fill="#475569"/>
-    <text x="520" y="485" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">DORMITORIO NIÑO (14,6 m²)</text>
-    <text x="520" y="495" fill="#10b981" font-size="8" text-anchor="middle">✓ Luz Este a 90° · Cero reflejos</text>
-
-    <!-- 5. SUITE PRINCIPAL MATRIMONIO (ALA ESTE) -->
-    <!-- Baño Privado Suite (Norte) -->
-    <rect x="605" y="185" width="150" height="50" fill="#0c4a6e" opacity="0.2"/>
-    <rect x="615" y="190" width="50" height="18" rx="2" fill="#e2e8f0"/>
-    <text x="640" y="202" fill="#0f172a" font-size="7" text-anchor="middle">Doble Seno</text>
-    <rect x="695" y="188" width="55" height="35" rx="3" fill="#0284c7" opacity="0.4"/>
-    <text x="722" y="208" fill="#ffffff" font-size="8" text-anchor="middle">Ducha Doble</text>
-    <text x="680" y="230" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">BAÑO SUITE (6,3 m²)</text>
-
-    <!-- Vestidor de Paso Suite (Centro) -->
-    <rect x="605" y="245" width="150" height="90" fill="#1e293b"/>
-    <!-- Armarios a ambos lados -->
-    <rect x="605" y="245" width="18" height="90" fill="#475569"/>
-    <rect x="737" y="245" width="18" height="90" fill="#475569"/>
-    <text x="675" y="295" fill="#f8fafc" font-size="10" font-weight="700" text-anchor="middle">VESTIDOR (8,4 m²)</text>
-    <text x="675" y="310" fill="#94a3b8" font-size="8" text-anchor="middle">Módulos con LED interior</text>
-
-    <!-- Dormitorio Suite Matrimonio (Sur) -->
-    <rect x="605" y="345" width="150" height="150" fill="#0f172a"/>
-    <!-- Cama King Size 1,80 × 2,00 m -->
-    <rect x="635" y="365" width="85" height="85" rx="5" fill="#334155" stroke="#cbd5e1" stroke-width="1.5"/>
-    <rect x="640" y="370" width="35" height="20" rx="2" fill="#475569"/>
-    <rect x="680" y="370" width="35" height="20" rx="2" fill="#475569"/>
-    <!-- Mesillas de noche suspendidas -->
-    <rect x="615" y="375" width="15" height="25" fill="#475569"/>
-    <rect x="725" y="375" width="15" height="25" fill="#475569"/>
-    <text x="680" y="475" fill="#f8fafc" font-size="12" font-weight="700" text-anchor="middle">SUITE MATRIMONIO</text>
-    <text x="680" y="490" fill="#94a3b8" font-size="9" text-anchor="middle">16,5 m² · Salida directa Balcón Sur</text>
-  </g>
-
-  <!-- CARTELA TÉCNICA PLANTA PRIMERA -->
-  <g id="cartela-p1">
-    <rect x="40" y="720" width="840" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-    <text x="60" y="742" fill="#38bdf8" font-size="12" font-weight="700">PROPUESTA D — PABELLÓN BIOCLIMÁTICO ATLÁNTICO (OLEIROS EVOLUCIÓN)</text>
-    <text x="60" y="760" fill="#94a3b8" font-size="10">PLANTA PRIMERA (Cota +3,15 m) · Escala 1:100 (1m = 40px) · Superficie Útil P1: 78,5 m² + 14,0 m² Balcón Corrido Sur</text>
-    <text x="60" y="774" fill="#10b981" font-size="9" font-weight="600">✓ Galería acristalada acústica (cero ruidos de PB a dormitorios) · Puestos de estudio a 90° sin deslumbramiento · Suite aislada al Este</text>
-  </g>
+</g>
+<g id="muros-exteriores">
+<rect x="394.8" y="130.0" width="96.2" height="18.2" fill="#1e293b" stroke="none"/>
+<rect x="394.8" y="130.0" width="96.2" height="18.2" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="394.8" y1="135.8" x2="491.0" y2="135.8" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="553.4" y="130.0" width="260.0" height="18.2" fill="#1e293b" stroke="none"/>
+<rect x="553.4" y="130.0" width="260.0" height="18.2" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="553.4" y1="135.8" x2="813.4" y2="135.8" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="886.2" y="130.0" width="72.8" height="18.2" fill="#1e293b" stroke="none"/>
+<rect x="886.2" y="130.0" width="72.8" height="18.2" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="886.2" y1="135.8" x2="959.0" y2="135.8" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="394.8" y="130.0" width="18.2" height="598.0" fill="#1e293b" stroke="none"/>
+<rect x="394.8" y="130.0" width="18.2" height="598.0" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="400.6" y1="130.0" x2="400.6" y2="728.0" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="940.8" y="130.0" width="18.2" height="598.0" fill="#1e293b" stroke="none"/>
+<rect x="940.8" y="130.0" width="18.2" height="598.0" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="946.6" y1="130.0" x2="946.6" y2="728.0" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="394.8" y="709.8" width="44.2" height="18.2" fill="#1e293b" stroke="none"/>
+<rect x="394.8" y="709.8" width="44.2" height="18.2" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="394.8" y1="715.6" x2="439.0" y2="715.6" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="553.4" y="709.8" width="59.8" height="18.2" fill="#1e293b" stroke="none"/>
+<rect x="553.4" y="709.8" width="59.8" height="18.2" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="553.4" y1="715.6" x2="613.2" y2="715.6" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="727.6" y="709.8" width="44.2" height="18.2" fill="#1e293b" stroke="none"/>
+<rect x="727.6" y="709.8" width="44.2" height="18.2" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="727.6" y1="715.6" x2="771.8" y2="715.6" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="927.8" y="709.8" width="31.2" height="18.2" fill="#1e293b" stroke="none"/>
+<rect x="927.8" y="709.8" width="31.2" height="18.2" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="927.8" y1="715.6" x2="959.0" y2="715.6" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="517.0" y="293.8" width="208.0" height="13.0" fill="#1e293b" stroke="none"/>
+<rect x="517.0" y="293.8" width="208.0" height="13.0" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="517.0" y1="298.0" x2="725.0" y2="298.0" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="725.0" y="293.8" width="13.0" height="221.0" fill="#1e293b" stroke="none"/>
+<rect x="725.0" y="293.8" width="13.0" height="221.0" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.35"/>
+<line x1="729.2" y1="293.8" x2="729.2" y2="514.8" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,2"/>
+<rect x="398.6" y="133.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="411.6" y="131.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-02</text>
+<rect x="512.0" y="133.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="525.0" y="131.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-03</text>
+<rect x="720.0" y="133.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="733.0" y="131.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-04</text>
+<rect x="944.6" y="133.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="957.6" y="131.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-05</text>
+<rect x="398.6" y="301.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="411.6" y="299.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-07</text>
+<rect x="512.0" y="301.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="525.0" y="299.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-08</text>
+<rect x="720.0" y="301.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="733.0" y="299.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-09</text>
+<rect x="944.6" y="301.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="957.6" y="299.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-10</text>
+<rect x="398.6" y="509.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="411.6" y="507.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-12</text>
+<rect x="512.0" y="509.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="525.0" y="507.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-13</text>
+<rect x="720.0" y="509.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="733.0" y="507.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-14</text>
+<rect x="944.6" y="509.8" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="957.6" y="507.8" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-15</text>
+<rect x="398.6" y="713.6" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="411.6" y="711.6" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-16</text>
+<rect x="579.6" y="713.6" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="592.6" y="711.6" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-17A</text>
+<rect x="746.0" y="713.6" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="759.0" y="711.6" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-17B</text>
+<rect x="944.6" y="713.6" width="10.0" height="10.0" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/><text x="957.6" y="711.6" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">P-18</text>
+</g>
+<g id="tabiqueria-interior">
+<rect x="413.0" y="293.8" width="104.0" height="6.2" fill="#334155" stroke="#cbd5e1" stroke-width="0.95"/>
+<rect x="725.0" y="148.2" width="6.2" height="145.6" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<line x1="728.1" y1="148.2" x2="728.1" y2="293.8" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3,2"/>
+<rect x="732.8" y="262.6" width="208.0" height="6.2" fill="#334155" stroke="#cbd5e1" stroke-width="0.95"/>
+<rect x="732.8" y="431.6" width="208.0" height="6.2" fill="#334155" stroke="#cbd5e1" stroke-width="0.95"/>
+<rect x="413.0" y="514.8" width="104.0" height="6.2" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<line x1="413.0" y1="517.9" x2="517.0" y2="517.9" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3,2"/>
+<rect x="517.0" y="574.6" width="234.0" height="6.2" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<line x1="517.0" y1="577.7" x2="751.0" y2="577.7" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3,2"/>
+<rect x="582.0" y="574.6" width="7.3" height="135.2" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<line x1="585.6" y1="574.6" x2="585.6" y2="709.8" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3,2"/>
+<g transform="translate(577.3, 642.2) rotate(-90)"><text x="0" y="0" fill="#f59e0b" font-size="5.5" font-weight="700" text-anchor="middle">MEDIANERA CIEGA Rw≥50dB (CERO HUECOS)</text></g>
+<rect x="751.0" y="514.8" width="7.3" height="195.0" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<line x1="754.6" y1="514.8" x2="754.6" y2="709.8" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3,2"/>
+</g>
+<g id="carpinterias">
+<g class="cad-window">
+<rect x="491.0" y="129.7" width="62.4" height="18.2" fill="#0b1120" stroke="#cbd5e1" stroke-width="0.8"/>
+<line x1="491.0" y1="137.0" x2="553.4" y2="137.0" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="491.0" y1="140.6" x2="553.4" y2="140.6" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="522.2" y1="129.7" x2="522.2" y2="147.9" stroke="#cbd5e1" stroke-width="0.8"/>
+<text x="522.2" y="126.7" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">C-10 1,20x0,60 (h=160)</text>
+</g>
+<g class="cad-window">
+<rect x="813.4" y="129.7" width="72.8" height="18.2" fill="#0b1120" stroke="#cbd5e1" stroke-width="0.8"/>
+<line x1="813.4" y1="137.0" x2="886.2" y2="137.0" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="813.4" y1="140.6" x2="886.2" y2="140.6" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="849.8" y1="129.7" x2="849.8" y2="147.9" stroke="#cbd5e1" stroke-width="0.8"/>
+<text x="849.8" y="126.7" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">C-11 1,40x0,60 (h=160)</text>
+</g>
+<g class="cad-sliding">
+<rect x="439.0" y="709.5" width="114.4" height="18.2" fill="#0b1120" stroke="#64748b" stroke-width="0.6"/>
+<line x1="439.0" y1="716.8" x2="501.9" y2="716.8" stroke="#38bdf8" stroke-width="1.6"/>
+<line x1="490.5" y1="720.4" x2="553.4" y2="720.4" stroke="#38bdf8" stroke-width="1.6"/>
+<rect x="439.0" y="709.5" width="3" height="18.2" fill="#e2e8f0"/>
+<rect x="550.4" y="709.5" width="3" height="18.2" fill="#e2e8f0"/>
+<text x="496.2" y="706.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">C-12 2,20x2,40 COR 80</text>
+</g>
+<g class="cad-sliding">
+<rect x="613.2" y="709.5" width="114.4" height="18.2" fill="#0b1120" stroke="#64748b" stroke-width="0.6"/>
+<line x1="613.2" y1="716.8" x2="676.1" y2="716.8" stroke="#38bdf8" stroke-width="1.6"/>
+<line x1="664.7" y1="720.4" x2="727.6" y2="720.4" stroke="#38bdf8" stroke-width="1.6"/>
+<rect x="613.2" y="709.5" width="3" height="18.2" fill="#e2e8f0"/>
+<rect x="724.6" y="709.5" width="3" height="18.2" fill="#e2e8f0"/>
+<text x="670.4" y="706.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">C-13 2,20x2,40 COR 80</text>
+</g>
+<g class="cad-sliding">
+<rect x="771.8" y="709.5" width="156.0" height="18.2" fill="#0b1120" stroke="#64748b" stroke-width="0.6"/>
+<line x1="771.8" y1="716.8" x2="857.6" y2="716.8" stroke="#38bdf8" stroke-width="1.6"/>
+<line x1="842.0" y1="720.4" x2="927.8" y2="720.4" stroke="#38bdf8" stroke-width="1.6"/>
+<rect x="771.8" y="709.5" width="3" height="18.2" fill="#e2e8f0"/>
+<rect x="924.8" y="709.5" width="3" height="18.2" fill="#e2e8f0"/>
+<text x="849.8" y="706.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">C-14 3,00x2,40 Cor Vision</text>
+</g>
+<g class="cad-window">
+<rect x="513.5" y="306.8" width="7.0" height="208.0" fill="#0b1120" stroke="#cbd5e1" stroke-width="0.8"/>
+<line x1="515.2" y1="306.8" x2="515.2" y2="514.8" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="518.8" y1="306.8" x2="518.8" y2="514.8" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="513.5" y1="410.8" x2="520.5" y2="410.8" stroke="#cbd5e1" stroke-width="0.8"/>
+<g transform="translate(510.5, 410.8) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">C-15A Mampara 4+4 Silence 42dB</text></g>
+</g>
+<g class="cad-window">
+<rect x="517.0" y="511.3" width="208.0" height="7.0" fill="#0b1120" stroke="#cbd5e1" stroke-width="0.8"/>
+<line x1="517.0" y1="513.0" x2="725.0" y2="513.0" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="517.0" y1="516.6" x2="725.0" y2="516.6" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="621.0" y1="511.3" x2="621.0" y2="518.3" stroke="#cbd5e1" stroke-width="0.8"/>
+<text x="621.0" y="508.3" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">C-15B Mampara Acústica 4+4 Silence (4,00x2,60m · Aísla 42 dB)</text>
+</g>
+<g class="cad-door">
+<polygon points="459.8,293.8 459.8,251.2 462.3,251.2 462.3,293.8" fill="#0b1120" stroke="#f8fafc" stroke-width="1.0"/>
+<path d="M 502.4 293.8 A 42.6 42.6 0 0 0 459.8 251.2" fill="none" stroke="#94a3b8" stroke-width="0.65" stroke-dasharray="3,2"/>
+<text x="476.0" y="277.6" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">P-11</text>
+<text x="476.0" y="284.6" fill="#cbd5e1" font-family="monospace" font-size="5.8" text-anchor="middle">0,82</text>
+</g>
+<g class="cad-door">
+<polygon points="462.4,521.0 462.4,563.7 464.9,563.7 464.9,521.0" fill="#0b1120" stroke="#f8fafc" stroke-width="1.0"/>
+<path d="M 505.0 521.0 A 42.6 42.6 0 0 1 462.4 563.7" fill="none" stroke="#94a3b8" stroke-width="0.65" stroke-dasharray="3,2"/>
+<text x="478.6" y="537.2" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">P-12</text>
+<text x="478.6" y="544.2" fill="#cbd5e1" font-family="monospace" font-size="5.8" text-anchor="middle">0,82</text>
+</g>
+<g class="cad-door">
+<polygon points="597.6,580.8 597.6,623.5 600.1,623.5 600.1,580.8" fill="#0b1120" stroke="#f8fafc" stroke-width="1.0"/>
+<path d="M 640.2 580.8 A 42.6 42.6 0 0 1 597.6 623.5" fill="none" stroke="#94a3b8" stroke-width="0.65" stroke-dasharray="3,2"/>
+<text x="613.8" y="597.0" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">P-13</text>
+<text x="613.8" y="604.0" fill="#cbd5e1" font-family="monospace" font-size="5.8" text-anchor="middle">0,82</text>
+</g>
+<g class="cad-door">
+<polygon points="758.3,525.2 802.5,525.2 802.5,527.7 758.3,527.7" fill="#0b1120" stroke="#f8fafc" stroke-width="1.0"/>
+<path d="M 758.3 569.4 A 44.2 44.2 0 0 0 802.5 525.2" fill="none" stroke="#94a3b8" stroke-width="0.65" stroke-dasharray="3,2"/>
+<text x="775.1" y="542.0" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">P-14</text>
+<text x="775.1" y="549.0" fill="#cbd5e1" font-family="monospace" font-size="5.8" text-anchor="middle">0,85</text>
+</g>
+<g class="cad-sliding">
+<rect x="813.4" y="431.1" width="46.8" height="6.2" fill="#0b1120" stroke="#64748b" stroke-width="0.6"/>
+<line x1="813.4" y1="432.4" x2="839.1" y2="432.4" stroke="#38bdf8" stroke-width="1.6"/>
+<line x1="834.5" y1="436.0" x2="860.2" y2="436.0" stroke="#38bdf8" stroke-width="1.6"/>
+<rect x="813.4" y="431.1" width="3" height="6.2" fill="#e2e8f0"/>
+<rect x="857.2" y="431.1" width="3" height="6.2" fill="#e2e8f0"/>
+<text x="836.8" y="428.1" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">P-15 0,90</text>
+</g>
+<g class="cad-sliding">
+<rect x="813.4" y="262.1" width="44.2" height="6.2" fill="#0b1120" stroke="#64748b" stroke-width="0.6"/>
+<line x1="813.4" y1="263.4" x2="837.7" y2="263.4" stroke="#38bdf8" stroke-width="1.6"/>
+<line x1="833.3" y1="267.0" x2="857.6" y2="267.0" stroke="#38bdf8" stroke-width="1.6"/>
+<rect x="813.4" y="262.1" width="3" height="6.2" fill="#e2e8f0"/>
+<rect x="854.6" y="262.1" width="3" height="6.2" fill="#e2e8f0"/>
+<text x="835.5" y="259.1" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">P-16 0,85</text>
+</g>
+</g>
+<g id="mobiliario-nhg">
+<rect x="415.6" y="306.8" width="54.6" height="203.3" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.9"/>
+<line x1="415.6" y1="318.8" x2="470.2" y2="318.8" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="330.7" x2="470.2" y2="330.7" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="342.7" x2="470.2" y2="342.7" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="354.6" x2="470.2" y2="354.6" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="366.6" x2="470.2" y2="366.6" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="378.6" x2="470.2" y2="378.6" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="390.5" x2="470.2" y2="390.5" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="402.5" x2="470.2" y2="402.5" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="414.4" x2="470.2" y2="414.4" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="426.4" x2="470.2" y2="426.4" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="438.4" x2="470.2" y2="438.4" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="450.3" x2="470.2" y2="450.3" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="462.3" x2="470.2" y2="462.3" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="474.2" x2="470.2" y2="474.2" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="486.2" x2="470.2" y2="486.2" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="498.2" x2="470.2" y2="498.2" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="415.6" y1="510.1" x2="470.2" y2="510.1" stroke="#94a3b8" stroke-width="0.65"/>
+<line x1="442.9" y1="316.8" x2="442.9" y2="498.2" stroke="#10b981" stroke-width="0.9" marker-end="url(#arrow-tech)"/>
+<text x="442.9" y="504.1" fill="#10b981" font-size="5.5" font-weight="700" text-anchor="middle">LLEGADA +3,15m</text>
+<g class="room-stamp">
+      <rect x="580.8" y="528.0" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="580.8" y1="540.0" x2="676.8" y2="540.0" stroke="#334155" stroke-width="0.6"/>
+      <text x="628.8" y="537.0" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-16] GALERÍA ACÚSTICA P1</text>
+      <text x="628.8" y="549.0" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 8,20 m²</text>
+      <text x="628.8" y="558.5" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Roble 14mm · Balizas 25cm · Z=+3,15m</text>
+    </g>
+<g class="cad-shower">
+      <rect x="418.2" y="153.4" width="88.4" height="41.6" fill="#0f172a" stroke="#64748b" stroke-width="0.8"/>
+      <!-- Líneas de caída de pendiente 2% hacia sumidero lineal -->
+      <line x1="418.2" y1="153.4" x2="502.6" y2="156.4" stroke="#475569" stroke-width="0.5" stroke-dasharray="3,2"/>
+      <line x1="418.2" y1="195.0" x2="502.6" y2="192.0" stroke="#475569" stroke-width="0.5" stroke-dasharray="3,2"/>
+      <line x1="431.5" y1="174.2" x2="499.6" y2="174.2" stroke="#38bdf8" stroke-width="0.6" marker-end="url(#arrow-tech)"/>
+      <!-- Sumidero lineal oculto AISI 316 -->
+      <rect x="501.1" y="156.4" width="3" height="35.6" fill="#38bdf8" opacity="0.8"/>
+      <!-- Rociador cenital Ø25cm -->
+      <circle cx="462.4" cy="174.2" r="5" fill="none" stroke="#94a3b8" stroke-width="0.6" stroke-dasharray="2,1"/>
+      <text x="458.0" y="192.0" fill="#94a3b8" font-family="monospace" font-size="5.2" text-anchor="middle">BAÑERA/DUCHA 1,70x0,75</text>
+    </g>
+<g class="cad-sanitary" stroke="#cbd5e1" stroke-width="0.85" fill="#0f172a">
+<rect x="561.2" y="151.8" width="72.8" height="26.0" rx="1"/>
+<ellipse cx="580.9" cy="165.4" rx="13.1" ry="8.3" fill="none" stroke="#94a3b8" stroke-width="0.7"/>
+<circle cx="580.9" cy="165.4" r="1.5" fill="#38bdf8"/>
+<ellipse cx="614.3" cy="165.4" rx="13.1" ry="8.3" fill="none" stroke="#94a3b8" stroke-width="0.7"/>
+<circle cx="614.3" cy="165.4" r="1.5" fill="#38bdf8"/>
+</g>
+<g class="cad-sanitary" stroke="#cbd5e1" stroke-width="0.85" fill="#0f172a">
+<rect x="654.8" y="151.8" width="21.8" height="6.4" fill="#1e293b"/>
+<path d="M 657.0 158.2 L 674.5 158.2 Q 675.5 181.0 665.7 181.0 Q 655.9 181.0 657.0 158.2 Z"/>
+<ellipse cx="665.7" cy="169.9" rx="6.1" ry="7.3" fill="none" stroke="#64748b" stroke-width="0.6"/>
+</g>
+<g class="nhg-circle" opacity="0.65">
+      <circle cx="574.2" cy="239.2" r="31.2" fill="none" stroke="#10b981" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <line x1="570.2" y1="239.2" x2="578.2" y2="239.2" stroke="#10b981" stroke-width="0.5"/>
+      <line x1="574.2" y1="235.2" x2="574.2" y2="243.2" stroke="#10b981" stroke-width="0.5"/>
+      <text x="574.2" y="267.4" fill="#10b981" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="middle">Ø1,20m NHG</text>
+    </g>
+<g class="room-stamp">
+      <rect x="606.8" y="229.0" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="606.8" y1="241.0" x2="702.8" y2="241.0" stroke="#334155" stroke-width="0.6"/>
+      <text x="654.8" y="238.0" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-19] BAÑO COMPARTIDO HIJOS</text>
+      <text x="654.8" y="250.0" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 6,80 m²</text>
+      <text x="654.8" y="259.5" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Porcelánico C3 · Doble Seno · Z=+3,15m</text>
+    </g>
+<g class="cad-wardrobe" stroke="#94a3b8" stroke-width="0.75" fill="#131c31">
+<rect x="501.4" y="524.2" width="78.0" height="30.2"/>
+<line x1="501.4" y1="524.2" x2="579.4" y2="554.3" stroke="#475569" stroke-width="0.45"/>
+<line x1="579.4" y1="524.2" x2="501.4" y2="554.3" stroke="#475569" stroke-width="0.45"/>
+<line x1="504.4" y1="539.2" x2="576.4" y2="539.2" stroke="#64748b" stroke-width="0.6" stroke-dasharray="2,2"/>
+<text x="540.4" y="541.2" fill="#cbd5e1" font-family="monospace" font-size="5.5" text-anchor="middle">ARMARIO 1,50m</text>
+</g>
+<g class="cad-bed" stroke="#94a3b8" stroke-width="0.8" fill="#0f172a">
+<rect x="417.2" y="579.8" width="101.4" height="62.4" rx="1.5"/>
+<rect x="417.2" y="579.8" width="7.1" height="62.4" fill="#334155"/>
+<rect x="427.3" y="587.3" width="16.2" height="47.4" rx="1.5" fill="#1e293b"/>
+<line x1="449.6" y1="579.8" x2="449.6" y2="642.2" stroke="#64748b" stroke-width="0.6"/>
+<text x="467.9" y="622.2" fill="#94a3b8" font-family="monospace" font-size="6" text-anchor="middle">CAMA 1,20x2,00</text>
+</g>
+<rect x="545.6" y="590.2" width="33.8" height="93.6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
+<circle cx="530.0" cy="637.0" r="12.5" fill="none" stroke="#94a3b8" stroke-width="0.7"/>
+<g transform="translate(563.8, 637.0) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.3" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>
+<g class="nhg-circle" opacity="0.65">
+      <circle cx="480.6" cy="673.4" r="39.0" fill="none" stroke="#10b981" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <line x1="476.6" y1="673.4" x2="484.6" y2="673.4" stroke="#10b981" stroke-width="0.5"/>
+      <line x1="480.6" y1="669.4" x2="480.6" y2="677.4" stroke="#10b981" stroke-width="0.5"/>
+      <text x="480.6" y="709.4" fill="#10b981" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="middle">Ø1,50m NHG</text>
+    </g>
+<g class="room-stamp">
+      <rect x="432.6" y="535.8" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="432.6" y1="547.8" x2="528.6" y2="547.8" stroke="#334155" stroke-width="0.6"/>
+      <text x="480.6" y="544.8" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-17] DORMITORIO NIÑA</text>
+      <text x="480.6" y="556.8" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 14,60 m²</text>
+      <text x="480.6" y="566.3" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Roble 14mm · Luz 90° · Z=+3,15m</text>
+    </g>
+<g class="cad-wardrobe" stroke="#94a3b8" stroke-width="0.75" fill="#131c31">
+<rect x="654.8" y="582.4" width="91.0" height="30.2"/>
+<line x1="654.8" y1="582.4" x2="745.8" y2="612.6" stroke="#475569" stroke-width="0.45"/>
+<line x1="745.8" y1="582.4" x2="654.8" y2="612.6" stroke="#475569" stroke-width="0.45"/>
+<line x1="657.8" y1="597.5" x2="742.8" y2="597.5" stroke="#64748b" stroke-width="0.6" stroke-dasharray="2,2"/>
+<text x="700.3" y="599.5" fill="#cbd5e1" font-family="monospace" font-size="5.5" text-anchor="middle">ARMARIO 1,75m</text>
+</g>
+<g class="cad-bed" stroke="#94a3b8" stroke-width="0.8" fill="#0f172a">
+<rect x="592.4" y="616.2" width="98.8" height="62.4" rx="1.5"/>
+<rect x="592.4" y="616.2" width="6.9" height="62.4" fill="#334155"/>
+<rect x="602.3" y="623.7" width="15.8" height="47.4" rx="1.5" fill="#1e293b"/>
+<line x1="624.0" y1="616.2" x2="624.0" y2="678.6" stroke="#64748b" stroke-width="0.6"/>
+<text x="641.8" y="658.6" fill="#94a3b8" font-family="monospace" font-size="6" text-anchor="middle">CAMA 1,20x2,00</text>
+</g>
+<rect x="714.6" y="613.6" width="33.8" height="91.0" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
+<circle cx="700.0" cy="657.8" r="12.5" fill="none" stroke="#94a3b8" stroke-width="0.7"/>
+<g transform="translate(732.8, 657.8) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.3" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>
+<g class="room-stamp">
+      <rect x="606.8" y="669.4" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="606.8" y1="681.4" x2="702.8" y2="681.4" stroke="#334155" stroke-width="0.6"/>
+      <text x="654.8" y="678.4" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-18] DORMITORIO NIÑO</text>
+      <text x="654.8" y="690.4" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 14,60 m²</text>
+      <text x="654.8" y="699.9" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Roble 14mm · Luz 90° · Z=+3,15m</text>
+    </g>
+<g class="cad-sanitary" stroke="#cbd5e1" stroke-width="0.85" fill="#0f172a">
+<rect x="740.6" y="151.8" width="83.2" height="26.0" rx="1"/>
+<ellipse cx="763.1" cy="165.4" rx="15.0" ry="8.3" fill="none" stroke="#94a3b8" stroke-width="0.7"/>
+<circle cx="763.1" cy="165.4" r="1.5" fill="#38bdf8"/>
+<ellipse cx="801.3" cy="165.4" rx="15.0" ry="8.3" fill="none" stroke="#94a3b8" stroke-width="0.7"/>
+<circle cx="801.3" cy="165.4" r="1.5" fill="#38bdf8"/>
+</g>
+<g class="cad-sanitary" stroke="#cbd5e1" stroke-width="0.85" fill="#0f172a">
+<rect x="831.6" y="151.8" width="21.8" height="6.4" fill="#1e293b"/>
+<path d="M 833.8 158.2 L 851.3 158.2 Q 852.3 181.0 842.5 181.0 Q 832.7 181.0 833.8 158.2 Z"/>
+<ellipse cx="842.5" cy="169.9" rx="6.1" ry="7.3" fill="none" stroke="#64748b" stroke-width="0.6"/>
+</g>
+<g class="cad-shower">
+      <rect x="860.2" y="151.8" width="78.0" height="49.4" fill="#0f172a" stroke="#64748b" stroke-width="0.8"/>
+      <!-- Líneas de caída de pendiente 2% hacia sumidero lineal -->
+      <line x1="860.2" y1="151.8" x2="934.2" y2="154.8" stroke="#475569" stroke-width="0.5" stroke-dasharray="3,2"/>
+      <line x1="860.2" y1="201.2" x2="934.2" y2="198.2" stroke="#475569" stroke-width="0.5" stroke-dasharray="3,2"/>
+      <line x1="871.9" y1="176.5" x2="931.2" y2="176.5" stroke="#38bdf8" stroke-width="0.6" marker-end="url(#arrow-tech)"/>
+      <!-- Sumidero lineal oculto AISI 316 -->
+      <rect x="932.7" y="154.8" width="3" height="43.4" fill="#38bdf8" opacity="0.8"/>
+      <!-- Rociador cenital Ø25cm -->
+      <circle cx="899.2" cy="176.5" r="5" fill="none" stroke="#94a3b8" stroke-width="0.6" stroke-dasharray="2,1"/>
+      <text x="895.3" y="198.2" fill="#94a3b8" font-family="monospace" font-size="5.2" text-anchor="middle">DUCHA DOBLE 1,50x0,95</text>
+    </g>
+<g class="room-stamp">
+      <rect x="788.8" y="213.4" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="788.8" y1="225.4" x2="884.8" y2="225.4" stroke="#334155" stroke-width="0.6"/>
+      <text x="836.8" y="222.4" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-22] BAÑO PRIVADO SUITE</text>
+      <text x="836.8" y="234.4" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 6,30 m²</text>
+      <text x="836.8" y="243.9" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Dekton Kelya · Ducha Doble · Z=+3,15m</text>
+    </g>
+<g class="cad-wardrobe" stroke="#94a3b8" stroke-width="0.75" fill="#131c31">
+<rect x="738.0" y="275.6" width="31.2" height="148.2"/>
+<line x1="738.0" y1="275.6" x2="769.2" y2="423.8" stroke="#475569" stroke-width="0.45"/>
+<line x1="769.2" y1="275.6" x2="738.0" y2="423.8" stroke="#475569" stroke-width="0.45"/>
+<line x1="753.6" y1="278.6" x2="753.6" y2="420.8" stroke="#64748b" stroke-width="0.6" stroke-dasharray="2,2"/>
+<g transform="translate(755.6, 349.7) rotate(-90)"><text x="0" y="0" fill="#cbd5e1" font-family="monospace" font-size="5.5" text-anchor="middle">VESTIDOR W (0,60m)</text></g>
+</g>
+<g class="cad-wardrobe" stroke="#94a3b8" stroke-width="0.75" fill="#131c31">
+<rect x="907.0" y="275.6" width="31.2" height="148.2"/>
+<line x1="907.0" y1="275.6" x2="938.2" y2="423.8" stroke="#475569" stroke-width="0.45"/>
+<line x1="938.2" y1="275.6" x2="907.0" y2="423.8" stroke="#475569" stroke-width="0.45"/>
+<line x1="922.6" y1="278.6" x2="922.6" y2="420.8" stroke="#64748b" stroke-width="0.6" stroke-dasharray="2,2"/>
+<g transform="translate(924.6, 349.7) rotate(-90)"><text x="0" y="0" fill="#cbd5e1" font-family="monospace" font-size="5.5" text-anchor="middle">VESTIDOR E (0,60m)</text></g>
+</g>
+<g class="room-stamp">
+      <rect x="788.8" y="333.0" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="788.8" y1="345.0" x2="884.8" y2="345.0" stroke="#334155" stroke-width="0.6"/>
+      <text x="836.8" y="342.0" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-21] VESTIDOR DE PASO SUITE</text>
+      <text x="836.8" y="354.0" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 8,40 m²</text>
+      <text x="836.8" y="363.5" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Vidrio Ahumado · LED · Z=+3,15m</text>
+    </g>
+<g class="cad-bed" stroke="#94a3b8" stroke-width="0.8" fill="#0f172a">
+<rect x="803.0" y="447.2" width="93.6" height="104.0" rx="1.5"/>
+<rect x="803.0" y="447.2" width="93.6" height="7.3" fill="#334155"/>
+<rect x="810.5" y="457.6" width="35.6" height="16.6" rx="1.5" fill="#1e293b"/>
+<rect x="853.5" y="457.6" width="35.6" height="16.6" rx="1.5" fill="#1e293b"/>
+<line x1="803.0" y1="480.5" x2="896.6" y2="480.5" stroke="#64748b" stroke-width="0.6"/>
+<text x="849.8" y="517.9" fill="#94a3b8" font-family="monospace" font-size="6" text-anchor="middle">KING SIZE 1,80 × 2,00 m</text>
+</g>
+<rect x="777.0" y="447.2" width="23.4" height="21.8" fill="#131c31" stroke="#cbd5e1" stroke-width="0.7"/>
+<rect x="899.2" y="447.2" width="23.4" height="21.8" fill="#131c31" stroke="#cbd5e1" stroke-width="0.7"/>
+<g class="nhg-circle" opacity="0.65">
+      <circle cx="849.8" cy="605.8" r="39.0" fill="none" stroke="#10b981" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <line x1="845.8" y1="605.8" x2="853.8" y2="605.8" stroke="#10b981" stroke-width="0.5"/>
+      <line x1="849.8" y1="601.8" x2="849.8" y2="609.8" stroke="#10b981" stroke-width="0.5"/>
+      <text x="849.8" y="641.8" fill="#10b981" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="middle">Ø1,50m NHG</text>
+    </g>
+<g class="room-stamp">
+      <rect x="801.8" y="650.2" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="801.8" y1="662.2" x2="897.8" y2="662.2" stroke="#334155" stroke-width="0.6"/>
+      <text x="849.8" y="659.2" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-20] MASTER SUITE MATRIMONIO</text>
+      <text x="849.8" y="671.2" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 16,50 m²</text>
+      <text x="849.8" y="680.7" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Roble 14mm · Balcón Sur · Z=+3,15m</text>
+    </g>
+</g>
+<g id="instalaciones-mep-p1">
+<g class="mep-sym">
+          <rect x="652.4" y="187.4" width="10" height="10" fill="#0b1120" stroke="#06b6d4" stroke-width="1.1"/>
+          <line x1="652.4" y1="187.4" x2="662.4" y2="197.4" stroke="#06b6d4" stroke-width="0.8"/>
+          <text x="664.4" y="194.4" fill="#22d3ee" font-family="monospace" font-size="5.8" font-weight="700">VMC-E 40m³/h</text>
+        </g>
+<g class="mep-sym">
+          <rect x="891.6" y="208.2" width="10" height="10" fill="#0b1120" stroke="#06b6d4" stroke-width="1.1"/>
+          <line x1="891.6" y1="208.2" x2="901.6" y2="218.2" stroke="#06b6d4" stroke-width="0.8"/>
+          <text x="903.6" y="215.2" fill="#22d3ee" font-family="monospace" font-size="5.8" font-weight="700">VMC-E 40m³/h</text>
+        </g>
+<g class="mep-sym">
+          <circle cx="449.4" cy="681.2" r="5.5" fill="#0b1120" stroke="#10b981" stroke-width="1.1"/>
+          <path d="M 446.4 681.2 L 452.4 681.2 M 449.4 678.2 L 449.4 684.2" stroke="#10b981" stroke-width="0.8"/>
+          <text x="456.4" y="683.2" fill="#10b981" font-family="monospace" font-size="5.8" font-weight="700">VMC-I 30m³/h</text>
+        </g>
+<g class="mep-sym">
+          <circle cx="610.6" cy="681.2" r="5.5" fill="#0b1120" stroke="#10b981" stroke-width="1.1"/>
+          <path d="M 607.6 681.2 L 613.6 681.2 M 610.6 678.2 L 610.6 684.2" stroke="#10b981" stroke-width="0.8"/>
+          <text x="617.6" y="683.2" fill="#10b981" font-family="monospace" font-size="5.8" font-weight="700">VMC-I 30m³/h</text>
+        </g>
+<g class="mep-sym">
+          <circle cx="907.0" cy="587.6" r="5.5" fill="#0b1120" stroke="#10b981" stroke-width="1.1"/>
+          <path d="M 904.0 587.6 L 910.0 587.6 M 907.0 584.6 L 907.0 590.6" stroke="#10b981" stroke-width="0.8"/>
+          <text x="914.0" y="589.6" fill="#10b981" font-family="monospace" font-size="5.8" font-weight="700">VMC-I 40m³/h</text>
+        </g>
+<g class="mep-sym">
+          <polygon points="571.6,609.1 576.1,617.1 567.1,617.1" fill="#0b1120" stroke="#a855f7" stroke-width="1.1"/>
+          <text x="577.6" y="615.6" fill="#c084fc" font-family="monospace" font-size="5.5" font-weight="700">2×RJ45+3×16A (h=80)</text>
+        </g>
+<g class="mep-sym">
+          <polygon points="740.6,635.1 745.1,643.1 736.1,643.1" fill="#0b1120" stroke="#a855f7" stroke-width="1.1"/>
+          <text x="746.6" y="641.6" fill="#c084fc" font-family="monospace" font-size="5.5" font-weight="700">2×RJ45+3×16A (h=80)</text>
+        </g>
+<g class="mep-sym">
+          <circle cx="680.8" cy="158.6" r="4.5" fill="#0b1120" stroke="#ef4444" stroke-width="1.2"/>
+          <circle cx="680.8" cy="158.6" r="1.8" fill="#ef4444"/>
+          <text x="686.8" y="160.6" fill="#fca5a5" font-family="monospace" font-size="5.5" font-weight="700">BAJANTE B-02 Ø110</text>
+        </g>
+<g class="mep-sym">
+          <circle cx="930.4" cy="158.6" r="4.5" fill="#0b1120" stroke="#ef4444" stroke-width="1.2"/>
+          <circle cx="930.4" cy="158.6" r="1.8" fill="#ef4444"/>
+          <text x="936.4" y="160.6" fill="#fca5a5" font-family="monospace" font-size="5.5" font-weight="700">BAJANTE B-01 Ø110</text>
+        </g>
+</g>
+<g id="textos-cotas-norte">
+<g class="cad-dim">
+      <line x1="127.0" y1="127.0" x2="127.0" y2="81.8" stroke="#94a3b8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="394.8" y1="127.0" x2="394.8" y2="81.8" stroke="#94a3b8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="127.0" y1="85.8" x2="394.8" y2="85.8" stroke="#94a3b8" stroke-width="0.75" marker-start="url(#tick-45-white)" marker-end="url(#tick-45-white)"/>
+      <rect x="192.8" y="76.8" width="136.2" height="10.5" fill="#0b1120" opacity="0.9"/>
+      <text x="260.9" y="84.3" fill="#94a3b8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">5,15 m (Cubierta Técnica FV)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="394.8" y1="127.0" x2="394.8" y2="81.8" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="725.0" y1="127.0" x2="725.0" y2="81.8" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="394.8" y1="85.8" x2="725.0" y2="85.8" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="487.1" y="76.8" width="145.5" height="10.5" fill="#0b1120" opacity="0.9"/>
+      <text x="559.9" y="84.3" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">6,35 m (Baño Hijos + Escalera)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="725.0" y1="127.0" x2="725.0" y2="81.8" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="959.0" y1="127.0" x2="959.0" y2="81.8" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="725.0" y1="85.8" x2="959.0" y2="85.8" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="769.2" y="76.8" width="145.5" height="10.5" fill="#0b1120" opacity="0.9"/>
+      <text x="842.0" y="84.3" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">4,50 m (Ala Master Suite Este)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="394.8" y1="82.8" x2="394.8" y2="45.4" stroke="#f59e0b" stroke-width="0.45" opacity="0.75"/>
+      <line x1="959.0" y1="82.8" x2="959.0" y2="45.4" stroke="#f59e0b" stroke-width="0.45" opacity="0.75"/>
+      <line x1="394.8" y1="49.4" x2="959.0" y2="49.4" stroke="#f59e0b" stroke-width="0.75" marker-start="url(#tick-45-amber)" marker-end="url(#tick-45-amber)"/>
+      <rect x="558.0" y="39.4" width="237.9" height="11.5" fill="#0b1120" opacity="0.9"/>
+      <text x="676.9" y="47.9" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">10,85 m (ANCHO TOTAL VOLUMEN PLANTA PRIMERA)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="394.8" y1="803.8" x2="394.8" y2="833.4" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="582.0" y1="803.8" x2="582.0" y2="833.4" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="394.8" y1="829.4" x2="582.0" y2="829.4" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="441.2" y="820.4" width="94.4" height="10.5" fill="#0b1120" opacity="0.9"/>
+      <text x="488.4" y="827.9" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">3,60 m (Dorm. Niña)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="582.0" y1="803.8" x2="582.0" y2="833.4" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="751.0" y1="803.8" x2="751.0" y2="833.4" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="582.0" y1="829.4" x2="751.0" y2="829.4" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="619.3" y="820.4" width="94.4" height="10.5" fill="#0b1120" opacity="0.9"/>
+      <text x="666.5" y="827.9" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">3,25 m (Dorm. Niño)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="751.0" y1="803.8" x2="751.0" y2="833.4" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="959.0" y1="803.8" x2="959.0" y2="833.4" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="751.0" y1="829.4" x2="959.0" y2="829.4" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="803.2" y="820.4" width="103.7" height="10.5" fill="#0b1120" opacity="0.9"/>
+      <text x="855.0" y="827.9" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">4,00 m (Master Suite)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="124.0" y1="130.0" x2="86.6" y2="130.0" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="124.0" y1="306.8" x2="86.6" y2="306.8" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="90.6" y1="130.0" x2="90.6" y2="306.8" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(90.6, 218.4) rotate(-90)">
+        <rect x="-56.5" y="-9.0" width="113.0" height="10.5" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="-1.5" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">3,40 m (Núcleo Baños N)</text>
+      </g>
+    </g>
+<g class="cad-dim">
+      <line x1="124.0" y1="306.8" x2="86.6" y2="306.8" stroke="#10b981" stroke-width="0.45" opacity="0.75"/>
+      <line x1="124.0" y1="514.8" x2="86.6" y2="514.8" stroke="#10b981" stroke-width="0.45" opacity="0.75"/>
+      <line x1="90.6" y1="306.8" x2="90.6" y2="514.8" stroke="#10b981" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(90.6, 410.8) rotate(-90)">
+        <rect x="-56.5" y="-9.0" width="113.0" height="10.5" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="-1.5" fill="#10b981" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">4,00 m (Vacío Claustro)</text>
+      </g>
+    </g>
+<g class="cad-dim">
+      <line x1="391.8" y1="514.8" x2="86.6" y2="514.8" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="391.8" y1="728.0" x2="86.6" y2="728.0" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
+      <line x1="90.6" y1="514.8" x2="90.6" y2="728.0" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(90.6, 621.4) rotate(-90)">
+        <rect x="-58.8" y="-9.0" width="117.6" height="10.5" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="-1.5" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">4,10 m (Dormitorios Sur)</text>
+      </g>
+    </g>
+<g class="cad-dim">
+      <line x1="391.8" y1="728.0" x2="86.6" y2="728.0" stroke="#f59e0b" stroke-width="0.45" opacity="0.75"/>
+      <line x1="391.8" y1="800.8" x2="86.6" y2="800.8" stroke="#f59e0b" stroke-width="0.45" opacity="0.75"/>
+      <line x1="90.6" y1="728.0" x2="90.6" y2="800.8" stroke="#f59e0b" stroke-width="0.75" marker-start="url(#tick-45-amber)" marker-end="url(#tick-45-amber)"/>
+      <g transform="translate(90.6, 764.4) rotate(-90)">
+        <rect x="-47.2" y="-9.0" width="94.4" height="10.5" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="-1.5" fill="#f59e0b" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">1,40 m (Balcón Sur)</text>
+      </g>
+    </g>
+<g transform="translate(257.0, 676.0)">
+      <!-- Rosa de los vientos técnica -->
+      <circle cx="0" cy="0" r="24" fill="#0b1120" stroke="#475569" stroke-width="1.0"/>
+      <circle cx="0" cy="0" r="18" fill="none" stroke="#334155" stroke-width="0.6" stroke-dasharray="2,2"/>
+      <line x1="-26" y1="0" x2="26" y2="0" stroke="#475569" stroke-width="0.6"/>
+      <line x1="0" y1="-26" x2="0" y2="26" stroke="#475569" stroke-width="0.6"/>
+      <!-- Aguja Norte -->
+      <polygon points="0,-23 5,-4 0,-8 -5,-4" fill="#38bdf8"/>
+      <polygon points="0,23 4,4 0,8 -4,4" fill="#475569"/>
+      <text x="0" y="-27" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">N (0°)</text>
+      <text x="31" y="3" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="start">E</text>
+      <text x="-31" y="3" fill="#64748b" font-family="monospace" font-size="6.5" text-anchor="end">W</text>
+      <text x="0" y="34" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">S (SOL)</text>
+      <!-- Viento Nordés NE -->
+      <line x1="22" y1="-22" x2="10" y2="-10" stroke="#38bdf8" stroke-width="0.8" marker-end="url(#arrow-tech)"/>
+      <text x="24" y="-24" fill="#38bdf8" font-family="monospace" font-size="5.5">Nordés NE</text>
+      <!-- Escala gráfica -->
+      <g transform="translate(-45, 48)">
+        <text x="45" y="-5" fill="#cbd5e1" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">ESCALA GRÁFICA 1:75</text>
+        <rect x="0" y="0" width="52.0" height="4.5" fill="#38bdf8" stroke="#cbd5e1" stroke-width="0.5"/>
+        <rect x="52.0" y="0" width="52.0" height="4.5" fill="#0b1120" stroke="#cbd5e1" stroke-width="0.5"/>
+        <rect x="104.0" y="0" width="52.0" height="4.5" fill="#38bdf8" stroke="#cbd5e1" stroke-width="0.5"/>
+        <text x="0" y="13" fill="#94a3b8" font-family="monospace" font-size="6" text-anchor="middle">0</text>
+        <text x="52.0" y="13" fill="#94a3b8" font-family="monospace" font-size="6" text-anchor="middle">1m</text>
+        <text x="104.0" y="13" fill="#94a3b8" font-family="monospace" font-size="6" text-anchor="middle">2m</text>
+        <text x="156.0" y="13" fill="#94a3b8" font-family="monospace" font-size="6" text-anchor="middle">3m</text>
+      </g>
+    </g>
+</g>
+<g id="panel-tecnico-p1" transform="translate(990, 35)">
+<rect x="0" y="0" width="480" height="1040" fill="#090e1a" stroke="#64748b" stroke-width="1.2"/>
+<rect x="0" y="0" width="480" height="34" fill="#131c31" stroke="#64748b" stroke-width="0.8"/>
+<text x="240" y="15" fill="#38bdf8" font-size="9.0" font-weight="700" text-anchor="middle">CUADRO DE SUPERFICIES Y DETALLE TÉCNICO — PLANTA PRIMERA</text>
+<text x="240" y="27" fill="#94a3b8" font-size="6.5" text-anchor="middle">Cota de Pavimento Terminado: +3,15 m · Altura Libre: 2,65 m · Coronación: +6,80 m</text>
+<text x="14" y="52" fill="#38bdf8" font-size="7.8" font-weight="700">1. DESGLOSE DE SUPERFICIES ÚTILES Y ACABADOS (PLANTA PRIMERA +3,15 m)</text>
+<rect x="14" y="60" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="72" fill="#38bdf8" font-size="6.0" font-weight="700">E-16</text>
+<text x="65" y="72" fill="#e2e8f0" font-size="6.0" font-weight="400">12. Desembarco Escalera y Galería Acústica</text>
+<text x="275" y="72" fill="#e2e8f0" font-size="6.3" font-weight="700">8,20 m²</text>
+<text x="330" y="72" fill="#94a3b8" font-size="5.6">Roble 14mm + Vidrio 4+4 Silence</text>
+<rect x="14" y="78" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="90" fill="#38bdf8" font-size="6.0" font-weight="700">E-17</text>
+<text x="65" y="90" fill="#e2e8f0" font-size="6.0" font-weight="400">13. Dormitorio Infantil Niña (Estudio 90°)</text>
+<text x="275" y="90" fill="#e2e8f0" font-size="6.3" font-weight="700">14,60 m²</text>
+<text x="330" y="90" fill="#94a3b8" font-size="5.6">Roble 14mm + Balconera 2,20m</text>
+<rect x="14" y="96" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="108" fill="#38bdf8" font-size="6.0" font-weight="700">E-18</text>
+<text x="65" y="108" fill="#e2e8f0" font-size="6.0" font-weight="400">14. Dormitorio Infantil Niño (Estudio 90°)</text>
+<text x="275" y="108" fill="#e2e8f0" font-size="6.3" font-weight="700">14,60 m²</text>
+<text x="330" y="108" fill="#94a3b8" font-size="5.6">Roble 14mm + Balconera 2,20m</text>
+<rect x="14" y="114" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="126" fill="#38bdf8" font-size="6.0" font-weight="700">E-19</text>
+<text x="65" y="126" fill="#e2e8f0" font-size="6.0" font-weight="400">15. Baño Compartido Hijos (Doble Seno)</text>
+<text x="275" y="126" fill="#e2e8f0" font-size="6.3" font-weight="700">6,80 m²</text>
+<text x="330" y="126" fill="#94a3b8" font-size="5.6">Porcelánico C3 + Bañera 1,70m</text>
+<rect x="14" y="132" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="144" fill="#38bdf8" font-size="6.0" font-weight="700">E-20</text>
+<text x="65" y="144" fill="#e2e8f0" font-size="6.0" font-weight="400">16. Dormitorio Master Suite Matrimonio</text>
+<text x="275" y="144" fill="#e2e8f0" font-size="6.3" font-weight="700">16,50 m²</text>
+<text x="330" y="144" fill="#94a3b8" font-size="5.6">Roble 14mm + Balconera 3,00m</text>
+<rect x="14" y="150" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="162" fill="#38bdf8" font-size="6.0" font-weight="700">E-21</text>
+<text x="65" y="162" fill="#e2e8f0" font-size="6.0" font-weight="400">17. Vestidor de Paso Doble Hilera Suite</text>
+<text x="275" y="162" fill="#e2e8f0" font-size="6.3" font-weight="700">8,40 m²</text>
+<text x="330" y="162" fill="#94a3b8" font-size="5.6">Roble 14mm + Vidrio Ahumado</text>
+<rect x="14" y="168" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="180" fill="#38bdf8" font-size="6.0" font-weight="700">E-22</text>
+<text x="65" y="180" fill="#e2e8f0" font-size="6.0" font-weight="400">18. Baño Privado Suite (Ducha Doble 1,50m)</text>
+<text x="275" y="180" fill="#e2e8f0" font-size="6.3" font-weight="700">6,30 m²</text>
+<text x="330" y="180" fill="#94a3b8" font-size="5.6">Porcelánico C3 + Dekton Kelya</text>
+<rect x="14" y="186" width="452" height="18" fill="#131c31" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="198" fill="#38bdf8" font-size="6.0" font-weight="700">SUB-P1</text>
+<text x="65" y="198" fill="#f59e0b" font-size="6.0" font-weight="700">TOTAL SUPERFICIE ÚTIL INTERIOR P1</text>
+<text x="275" y="198" fill="#f59e0b" font-size="6.3" font-weight="700">75,40 m²</text>
+<text x="330" y="198" fill="#94a3b8" font-size="5.6">(Construida cerrada P1: 98,50 m²)</text>
+<rect x="14" y="204" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="216" fill="#38bdf8" font-size="6.0" font-weight="700">E-23</text>
+<text x="65" y="216" fill="#e2e8f0" font-size="6.0" font-weight="400">19. Balcón Corrido Sur en Voladizo (Fondo 1,4m)</text>
+<text x="275" y="216" fill="#e2e8f0" font-size="6.3" font-weight="700">14,00 m²</text>
+<text x="330" y="216" fill="#94a3b8" font-size="5.6">Tarima Iroko s/ Plots + Vidrio</text>
+<rect x="14" y="222" width="452" height="18" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="234" fill="#38bdf8" font-size="6.0" font-weight="700">CUB-FV</text>
+<text x="65" y="234" fill="#e2e8f0" font-size="6.0" font-weight="400">Cubierta Plana Técnica Inferior (12 Módulos)</text>
+<text x="275" y="234" fill="#e2e8f0" font-size="6.3" font-weight="700">38,10 m²</text>
+<text x="330" y="234" fill="#94a3b8" font-size="5.6">Grava + 5,40 kWp Solar FV</text>
+<rect x="14" y="240" width="452" height="18" fill="#131c31" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="252" fill="#38bdf8" font-size="6.0" font-weight="700">TOT-VIV</text>
+<text x="65" y="252" fill="#f59e0b" font-size="6.0" font-weight="700">SUPERFICIE ÚTIL TOTAL VIVIENDA (PB + P1)</text>
+<text x="275" y="252" fill="#f59e0b" font-size="6.3" font-weight="700">188,40 m²</text>
+<text x="330" y="252" fill="#94a3b8" font-size="5.6">(Construida Total: 215,00 m²)</text>
+<text x="14" y="280" fill="#10b981" font-size="7.8" font-weight="700">2. CUADRO DE CARPINTERÍAS DE PLANTA PRIMERA (C-10 A C-15)</text>
+<rect x="14" y="290" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="301.5" fill="#f59e0b" font-size="6.0" font-weight="700">C-10</text>
+<text x="55" y="301.5" fill="#e2e8f0" font-size="5.8">Baño Hijos Norte</text>
+<text x="145" y="301.5" fill="#94a3b8" font-size="5.8">Oscilobatiente Alta</text>
+<text x="235" y="301.5" fill="#38bdf8" font-size="6.0" font-weight="700">1,20 × 0,60 m</text>
+<text x="300" y="301.5" fill="#cbd5e1" font-size="5.8">h=160 cm</text>
+<text x="345" y="301.5" fill="#94a3b8" font-size="5.6">Cortizo COR 80 RPT Mate</text>
+<rect x="14" y="307" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="318.5" fill="#f59e0b" font-size="6.0" font-weight="700">C-11</text>
+<text x="55" y="318.5" fill="#e2e8f0" font-size="5.8">Baño Suite Norte</text>
+<text x="145" y="318.5" fill="#94a3b8" font-size="5.8">Oscilobatiente Alta</text>
+<text x="235" y="318.5" fill="#38bdf8" font-size="6.0" font-weight="700">1,40 × 0,60 m</text>
+<text x="300" y="318.5" fill="#cbd5e1" font-size="5.8">h=160 cm</text>
+<text x="345" y="318.5" fill="#94a3b8" font-size="5.6">Cortizo COR 80 RPT Mate</text>
+<rect x="14" y="324" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="335.5" fill="#f59e0b" font-size="6.0" font-weight="700">C-12</text>
+<text x="55" y="335.5" fill="#e2e8f0" font-size="5.8">Dorm. Niña → Balcón</text>
+<text x="145" y="335.5" fill="#94a3b8" font-size="5.8">Balconera Corredera</text>
+<text x="235" y="335.5" fill="#38bdf8" font-size="6.0" font-weight="700">2,20 × 2,40 m</text>
+<text x="300" y="335.5" fill="#cbd5e1" font-size="5.8">h=0 cm</text>
+<text x="345" y="335.5" fill="#94a3b8" font-size="5.6">COR 80 RPT + Persiana Motor.</text>
+<rect x="14" y="341" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="352.5" fill="#f59e0b" font-size="6.0" font-weight="700">C-13</text>
+<text x="55" y="352.5" fill="#e2e8f0" font-size="5.8">Dorm. Niño → Balcón</text>
+<text x="145" y="352.5" fill="#94a3b8" font-size="5.8">Balconera Corredera</text>
+<text x="235" y="352.5" fill="#38bdf8" font-size="6.0" font-weight="700">2,20 × 2,40 m</text>
+<text x="300" y="352.5" fill="#cbd5e1" font-size="5.8">h=0 cm</text>
+<text x="345" y="352.5" fill="#94a3b8" font-size="5.6">COR 80 RPT + Persiana Motor.</text>
+<rect x="14" y="358" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="369.5" fill="#f59e0b" font-size="6.0" font-weight="700">C-14</text>
+<text x="55" y="369.5" fill="#e2e8f0" font-size="5.8">Suite → Balcón Sur</text>
+<text x="145" y="369.5" fill="#94a3b8" font-size="5.8">Balconera Corredera</text>
+<text x="235" y="369.5" fill="#38bdf8" font-size="6.0" font-weight="700">3,00 × 2,40 m</text>
+<text x="300" y="369.5" fill="#cbd5e1" font-size="5.8">h=0 cm</text>
+<text x="345" y="369.5" fill="#94a3b8" font-size="5.6">Cortizo Cor Vision + Persiana</text>
+<rect x="14" y="375" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
+<text x="18" y="386.5" fill="#f59e0b" font-size="6.0" font-weight="700">C-15</text>
+<text x="55" y="386.5" fill="#e2e8f0" font-size="5.8">Galería → Claustro</text>
+<text x="145" y="386.5" fill="#94a3b8" font-size="5.8">Fijo Acústico Suelo-Techo</text>
+<text x="235" y="386.5" fill="#38bdf8" font-size="6.0" font-weight="700">4,00 × 2,60 m</text>
+<text x="300" y="386.5" fill="#cbd5e1" font-size="5.8">h=0 cm</text>
+<text x="345" y="386.5" fill="#94a3b8" font-size="5.6">Laminado Acústico 4+4 Silence</text>
+<text x="14" y="415" fill="#f59e0b" font-size="7.8" font-weight="700">3. ESPECIFICACIONES DE EJECUCIÓN Y ACÚSTICA EN PLANTA PRIMERA</text>
+<rect x="14" y="425" width="452" height="260" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>
+<text x="20" y="441.0" fill="#f8fafc" font-size="5.8" font-weight="700">1. MAMPARA ACÚSTICA 4+4 SILENCE (C-15): Cerramiento fijo de vidrio laminado acústico con</text>
+<text x="20" y="459.5" fill="#94a3b8" font-size="5.8" font-weight="400">   butiral PVB Silence que cierra la galería sobre el vacío del Patio Corrala. Atenuación Rw = 42 dB.</text>
+<text x="20" y="478.0" fill="#f8fafc" font-size="5.8" font-weight="700">2. ERGONOMÍA DE ESTUDIO A 90° (CERO REFLEJOS): En ambos dormitorios infantiles (E-17 y E-18),</text>
+<text x="20" y="496.5" fill="#94a3b8" font-size="5.8" font-weight="400">   las mesas de estudio de 1,80 × 0,65 m se anclan en la pared lateral Este. La luz del Sur entra</text>
+<text x="20" y="515.0" fill="#94a3b8" font-size="5.8" font-weight="400">   perpendicularmente por la izquierda, evitando deslumbramiento y contraluz en pantallas.</text>
+<text x="20" y="533.5" fill="#f8fafc" font-size="5.8" font-weight="700">3. TABIQUE MEDIANERO DE ALTA MASA ACÚSTICA (Rw ≥ 50 dB): La divisoria entre ambos dormitorios</text>
+<text x="20" y="552.0" fill="#94a3b8" font-size="5.8" font-weight="400">   infantiles se ejecuta con doble placa Pladur Fonic 13mm por cara y lana mineral 70 kg/m³.</text>
+<text x="20" y="570.5" fill="#94a3b8" font-size="5.8" font-weight="400">   Prohibido enfrentar cajas de mecanismos eléctricos (desfase mínimo horizontal de 30 cm).</text>
+<text x="20" y="589.0" fill="#f8fafc" font-size="5.8" font-weight="700">4. UNIFICACIÓN VERTICAL DE BAJANTES: El Baño de Hijos (E-19) y el Baño Suite (E-22) descargan</text>
+<text x="20" y="607.5" fill="#94a3b8" font-size="5.8" font-weight="400">   verticalmente por las bajantes B-02 y B-01 (Geberit Silent-PP Ø110 mm) sin colectores colgados</text>
+<text x="20" y="626.0" fill="#94a3b8" font-size="5.8" font-weight="400">   sobre el techo del Salón ni del Comedor.</text>
+<text x="20" y="644.5" fill="#f8fafc" font-size="5.8" font-weight="700">5. BARANDILLA ESTRUCTURAL DEL BALCÓN SUR: Perfil en U de aluminio anodizado embutido en el canto</text>
+<text x="20" y="663.0" fill="#94a3b8" font-size="5.8" font-weight="400">   del forjado de hormigón para alojar vidrio laminar templado 10+10.2 mm sin montantes verticales.</text>
+<text x="14" y="705" fill="#38bdf8" font-size="7.8" font-weight="700">4. DETALLE SECCIÓN CONSTRUCTIVA DE FORJADO P1 Y BALCÓN SUR (E 1:20)</text>
+<rect x="14" y="715" width="452" height="310" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>
+<rect x="40" y="850" width="380" height="45" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="230" y="876" fill="#f8fafc" font-size="6.5" font-weight="700" text-anchor="middle">LOSA / FORJADO HORMIGÓN ARMADO HA-25 (e = 25,0 cm)</text>
+<rect x="40" y="836" width="210" height="14" fill="url(#hatch-insulation)" stroke="#38bdf8" stroke-width="0.7"/>
+<rect x="40" y="818" width="210" height="18" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.8"/>
+<circle cx="60" cy="828" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>
+<circle cx="88" cy="828" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>
+<circle cx="116" cy="828" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>
+<circle cx="144" cy="828" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>
+<circle cx="172" cy="828" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>
+<circle cx="200" cy="828" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>
+<circle cx="228" cy="828" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>
+<rect x="40" y="812" width="210" height="6" fill="#78350f" stroke="#f59e0b" stroke-width="0.7"/>
+<rect x="250" y="812" width="24" height="38" fill="#334155" stroke="#f59e0b" stroke-width="1.1"/>
+<rect x="254" y="755" width="16" height="57" fill="#0b1120" stroke="#38bdf8" stroke-width="1.2"/>
+<rect x="274" y="812" width="130" height="6" fill="#78350f" stroke="#f59e0b" stroke-width="0.8"/>
+<rect x="290" y="818" width="10" height="30" fill="#475569" stroke="#cbd5e1" stroke-width="0.6"/>
+<rect x="335" y="818" width="10" height="30" fill="#475569" stroke="#cbd5e1" stroke-width="0.6"/>
+<rect x="380" y="818" width="10" height="30" fill="#475569" stroke="#cbd5e1" stroke-width="0.6"/>
+<rect x="406" y="812" width="12" height="32" fill="#334155" stroke="#e2e8f0" stroke-width="1.0"/>
+<rect x="409" y="725" width="6" height="95" fill="#38bdf8" fill-opacity="0.35" stroke="#38bdf8" stroke-width="1.1"/>
+<text x="140" y="804" fill="#f8fafc" font-size="6.2" font-weight="700" text-anchor="middle">INTERIOR DORMITORIO (+3,15 m)</text>
+<text x="140" y="793" fill="#94a3b8" font-size="5.6" text-anchor="middle">Roble 14mm + Anhidrita 50mm (PEX Ø16) + XPS 30mm</text>
+<text x="335" y="804" fill="#38bdf8" font-size="6.2" font-weight="700" text-anchor="middle">BALCÓN SUR ENRASADO (+3,15 m)</text>
+<text x="335" y="793" fill="#94a3b8" font-size="5.6" text-anchor="middle">Tarima Iroko 21mm s/ Plots + EPDM p=1,5%</text>
+<text x="262" y="912" fill="#f59e0b" font-size="5.8" font-weight="700" text-anchor="middle">RPT Purenit 50mm (Cero Puente Térmico)</text>
+<text x="395" y="740" fill="#38bdf8" font-size="5.8" font-weight="700" text-anchor="end">Vidrio Estructural 10+10.2 mm (h=1,10 m)</text>
+</g>
+<g class="iso-title-block" transform="translate(30.0, 1125.0)">
+<rect x="0" y="0" width="1440.0" height="65.0" fill="#090e1a" stroke="#cbd5e1" stroke-width="1.3"/>
+<line x1="489.6" y1="0" x2="489.6" y2="65.0" stroke="#64748b" stroke-width="0.8"/>
+<line x1="979.2" y1="0" x2="979.2" y2="65.0" stroke="#64748b" stroke-width="0.8"/>
+<line x1="1224.0" y1="0" x2="1224.0" y2="65.0" stroke="#64748b" stroke-width="0.8"/>
+<line x1="0" y1="31.2" x2="489.6" y2="31.2" stroke="#334155" stroke-width="0.6"/>
+<line x1="979.2" y1="32.5" x2="1440.0" y2="32.5" stroke="#334155" stroke-width="0.6"/>
+<text x="10" y="13" fill="#64748b" font-family="monospace" font-size="6.5" font-weight="700">PROYECTO DE EJECUCIÓN · VIVIENDA UNIFAMILIAR AISLADA PASSIVHAUS</text>
+<text x="10" y="25" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="700">PABELLÓN BIOCLIMÁTICO ATLÁNTICO — PROPUESTA D</text>
+<text x="10" y="44.2" fill="#94a3b8" font-family="monospace" font-size="6.8">EMPLAZAMIENTO: Liáns / Santa Cruz · Concello de Oleiros (A Coruña) · Clima C1</text>
+<text x="10" y="56.2" fill="#10b981" font-family="monospace" font-size="6.8" font-weight="700">NORMATIVA: PGOM Oleiros Ord. 2B (Ocup. ≤ 20%) · Decreto 29/2010 NHG · CTE DB-HE/HS6</text>
+<text x="499.6" y="13" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700">ESPECIFICACIONES Y PARÁMETROS GEOMÉTRICOS DE HOJA</text>
+<text x="499.6" y="25.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">• Superficie Útil Interior P1: 75,40 m² + Balcón Corrido Sur: 14,00 m² · Total Útil Vivienda: 188,40 m²</text>
+<text x="499.6" y="36.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">• Aislamiento Acústico: Mampara 4+4 Silence (42 dB) sobre Claustro + Medianera Dormitorios Rw ≥ 50 dB</text>
+<text x="499.6" y="48.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">• Ergonomía Visual: Pupitres de 1,80 m en pared Este con luz natural lateral a 90° (cero reflejos)</text>
+<text x="499.6" y="59.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">• Cubierta Técnica Inferior: 12 Módulos Fotovoltaicos Monocristalinos 450W (5,40 kWp) con Inversor 5kW</text>
+<text x="987.2" y="12" fill="#64748b" font-family="monospace" font-size="6">TÍTULO DEL PLANO:</text>
+<text x="987.2" y="24" fill="#38bdf8" font-family="monospace" font-size="8" font-weight="700">PLANTA PRIMERA GENERAL (COTA +3,15 m) Y CUBIERTAS</text>
+<text x="987.2" y="44.5" fill="#64748b" font-family="monospace" font-size="6">SUBTÍTULO / CONTENIDO:</text>
+<text x="987.2" y="55.5" fill="#e2e8f0" font-family="monospace" font-size="6.5">Zonificación Nocturna, Mampara Acústica 4+4 Silence, Estudio a 90° y Campo FV 5,4 kWp</text>
+<text x="1232.0" y="12" fill="#64748b" font-family="monospace" font-size="6">PLANO Nº:</text>
+<text x="1432.0" y="25" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="700" text-anchor="end">A-02</text>
+<text x="1232.0" y="44.5" fill="#64748b" font-family="monospace" font-size="6">ESCALA / FECHA:</text>
+<text x="1432.0" y="55.5" fill="#f8fafc" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="end">ESCALA 1:75 / 1:20 · NOV 2026</text>
+</g>
 </svg>

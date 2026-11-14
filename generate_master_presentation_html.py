@@ -6,7 +6,8 @@ import shutil
 
 RENDERS_DIR = "/home/antigravity/landslore/oleiros/propuestas/renders"
 PROPUESTAS_DIR = "/home/antigravity/landslore/oleiros/propuestas"
-ARTIFACT_DIR = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e8f6a578-76cf-4abb-986f-afb074438ab7"
+ARTIFACT_DIR = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e1ba5ab5-6618-481c-aa11-2f67e0876cc9"
+os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
 def get_base64_image(filename):
     path = os.path.join(RENDERS_DIR, filename)
@@ -40,6 +41,10 @@ with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_centro_patio_cocina_p
     raw_svg_centro = f.read()
 with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_sur_salon_porche_pb.svg'), 'r') as f:
     raw_svg_sur = f.read()
+with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_planta_primera_p1.svg'), 'r') as f:
+    raw_svg_p1_50 = f.read()
+with open(os.path.join(PROPUESTAS_DIR, 'plano_secciones_y_detalle_constructivo.svg'), 'r') as f:
+    raw_svg_sec = f.read()
 
 
 html_content = f"""<!DOCTYPE html>
@@ -396,50 +401,62 @@ html_content = f"""<!DOCTYPE html>
     </section>
 
     <!-- ═════════════════════════════════════════════════════════════════════════
-         SECCIÓN 2: PLANOS GENERALES DEFINITIVOS (SVG)
+         SECCIÓN 2: PLANOS TÉCNICOS DE EJECUCIÓN CAD (7 LÁMINAS SVG)
          ═════════════════════════════════════════════════════════════════════════ -->
     <section id="sec-planos" class="hidden space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-5 rounded-3xl shadow-xl">
         <div>
-          <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">PLANOS ARQUITECTÓNICOS VECTORIALES</span>
-          <h2 class="text-xl md:text-2xl font-black text-white mt-1">Planos Definitivos — Planta Baja y Planta Primera</h2>
-          <p class="text-xs md:text-sm text-slate-400 mt-0.5">Planos a escala con cotas métricas, circulaciones, carpinterías y amueblamiento normativo.</p>
+          <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">PLANOS TÉCNICOS DE EJECUCIÓN ISO 128 / UNE 1032</span>
+          <h2 class="text-xl md:text-2xl font-black text-white mt-1">Colección Completa de Planos Constructivos CAD (Escalas 1:100 · 1:50 · 1:20)</h2>
+          <p class="text-xs md:text-sm text-slate-400 mt-0.5">Ejes estructurales A-E / 1-5, muros multicapa con rayado ANSI31, acotación encadenada con trazos a 45°, instalaciones MEP y cajetín ISO 7200.</p>
         </div>
-        <div class="flex flex-wrap gap-2.5 w-full sm:w-auto">
-          <button type="button" onclick="showFloorSVG('pb')" id="btn-svg-pb" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
-            Planta Baja (±0,00 m)
+        <div class="flex flex-wrap gap-2 w-full">
+          <button type="button" onclick="showFloorSVG('pb')" id="btn-svg-pb" class="py-2 px-3.5 rounded-xl text-xs font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[40px] flex items-center justify-center cursor-pointer transition">
+            A-01 · Planta Baja General (1:100)
           </button>
-          <button type="button" onclick="showFloorSVG('p1')" id="btn-svg-p1" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
-            Planta Primera (+3,15 m)
+          <button type="button" onclick="showFloorSVG('p1')" id="btn-svg-p1" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
+            A-02 · Planta Primera General (1:75)
           </button>
-          <button type="button" onclick="showFloorSVG('norte')" id="btn-svg-norte" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
-            🛠️ 1:50 Zona Norte PB
+          <button type="button" onclick="showFloorSVG('norte')" id="btn-svg-norte" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
+            E-01 · 1:50 Zona Norte PB + MEP
           </button>
-          <button type="button" onclick="showFloorSVG('centro')" id="btn-svg-centro" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition">
-            🍳 1:50 Centro PB
+          <button type="button" onclick="showFloorSVG('centro')" id="btn-svg-centro" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
+            E-02 · 1:50 Banda Central (Patio &amp; Cocina)
           </button>
-          <button type="button" onclick="showFloorSVG('sur')" id="btn-svg-sur" class="py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-orange-500 text-slate-950 border border-orange-300 shadow-lg shadow-orange-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition">
-            🔥 1:50 Sur PB (Salón, Porche &amp; Piscina)
+          <button type="button" onclick="showFloorSVG('sur')" id="btn-svg-sur" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
+            E-03 · 1:50 Zona Sur PB &amp; Piscina
+          </button>
+          <button type="button" onclick="showFloorSVG('p1_50')" id="btn-svg-p1_50" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
+            E-04 · 1:50 Planta Primera + MEP
+          </button>
+          <button type="button" onclick="showFloorSVG('sec')" id="btn-svg-sec" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
+            E-05 · Secciones A-A'/B-B' y Detalles 1:20
           </button>
         </div>
       </div>
 
       <!-- VISOR SVG EMBEBIDO -->
       <div class="bg-slate-900 border border-slate-800 rounded-3xl p-4 md:p-6 shadow-2xl flex justify-center">
-        <div id="svg-container-pb" class="w-full flex justify-center overflow-x-auto rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+        <div id="svg-container-pb" class="w-full flex justify-center overflow-x-auto rounded-2xl border border-slate-800 bg-[#070b14] shadow-inner p-2">
           {raw_svg_pb}
         </div>
-        <div id="svg-container-p1" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+        <div id="svg-container-p1" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-inner p-2">
           {raw_svg_p1}
         </div>
-        <div id="svg-container-norte" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+        <div id="svg-container-norte" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-inner p-2">
           {raw_svg_norte}
         </div>
-        <div id="svg-container-centro" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+        <div id="svg-container-centro" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-inner p-2">
           {raw_svg_centro}
         </div>
-        <div id="svg-container-sur" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#0f172a] shadow-inner p-2">
+        <div id="svg-container-sur" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-inner p-2">
           {raw_svg_sur}
+        </div>
+        <div id="svg-container-p1_50" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-inner p-2">
+          {raw_svg_p1_50}
+        </div>
+        <div id="svg-container-sec" class="w-full flex justify-center overflow-x-auto hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-inner p-2">
+          {raw_svg_sec}
         </div>
       </div>
     </section>
@@ -542,45 +559,19 @@ html_content = f"""<!DOCTYPE html>
     }}
 
     function showFloorSVG(fl) {{
-      const cPb = document.getElementById('svg-container-pb');
-      const cP1 = document.getElementById('svg-container-p1');
-      const cNorte = document.getElementById('svg-container-norte');
-      const cCentro = document.getElementById('svg-container-centro');
-      const cSur = document.getElementById('svg-container-sur');
-      const bPb = document.getElementById('btn-svg-pb');
-      const bP1 = document.getElementById('btn-svg-p1');
-      const bNorte = document.getElementById('btn-svg-norte');
-      const bCentro = document.getElementById('btn-svg-centro');
-      const bSur = document.getElementById('btn-svg-sur');
-
-      cPb.classList.add('hidden');
-      cP1.classList.add('hidden');
-      cNorte.classList.add('hidden');
-      cCentro.classList.add('hidden');
-      cSur.classList.add('hidden');
-
-      bPb.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      bP1.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      bNorte.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      bCentro.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      bSur.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[44px] flex items-center justify-center cursor-pointer transition';
-
-      if (fl === 'pb') {{
-        cPb.classList.remove('hidden');
-        bPb.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      }} else if (fl === 'p1') {{
-        cP1.classList.remove('hidden');
-        bP1.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      }} else if (fl === 'norte') {{
-        cNorte.classList.remove('hidden');
-        bNorte.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 border border-amber-300 shadow-lg shadow-amber-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      }} else if (fl === 'centro') {{
-        cCentro.classList.remove('hidden');
-        bCentro.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 text-slate-950 border border-emerald-300 shadow-lg shadow-emerald-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      }} else if (fl === 'sur') {{
-        cSur.classList.remove('hidden');
-        bSur.className = 'py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-orange-500 text-slate-950 border border-orange-300 shadow-lg shadow-orange-500/30 min-h-[44px] flex items-center justify-center cursor-pointer transition';
-      }}
+      const keys = ['pb', 'p1', 'norte', 'centro', 'sur', 'p1_50', 'sec'];
+      keys.forEach(k => {{
+        const c = document.getElementById('svg-container-' + k);
+        const b = document.getElementById('btn-svg-' + k);
+        if (!c || !b) return;
+        if (k === fl) {{
+          c.classList.remove('hidden');
+          b.className = 'py-2 px-3.5 rounded-xl text-xs font-bold bg-sky-600 text-white border border-sky-400 shadow-lg shadow-sky-600/30 min-h-[40px] flex items-center justify-center cursor-pointer transition';
+        }} else {{
+          c.classList.add('hidden');
+          b.className = 'py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition';
+        }}
+      }});
     }}
   </script>
 </body>
@@ -593,7 +584,7 @@ def main():
         f.write(html_content)
     print(f"Generated Master HTML: {target_path} ({len(html_content)} bytes)")
 
-    artifact_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e8f6a578-76cf-4abb-986f-afb074438ab7/presentacion_propuesta_d_master.html"
+    artifact_path = os.path.join(ARTIFACT_DIR, "presentacion_propuesta_d_master.html")
     with open(artifact_path, "w", encoding="utf-8") as f:
         f.write(html_content)
     print(f"Artifact Master HTML: {artifact_path} ({len(html_content)} bytes)")
@@ -609,7 +600,9 @@ if __name__ == "__main__":
         'Presentacion_Hogar_Oleiros_Propuesta_D.pptx',
         'plano_constructivo_zona_norte_pb.svg',
         'plano_constructivo_centro_patio_cocina_pb.svg',
-        'plano_constructivo_sur_salon_porche_pb.svg'
+        'plano_constructivo_sur_salon_porche_pb.svg',
+        'plano_constructivo_planta_primera_p1.svg',
+        'plano_secciones_y_detalle_constructivo.svg'
     ]
     for fn in files_to_sync:
         src = os.path.join(PROPUESTAS_DIR, fn)

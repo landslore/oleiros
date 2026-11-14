@@ -998,165 +998,316 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
     function renderRoomSVG(room) {
       const svg = document.getElementById('room-svg');
-      const W = 840, H = 680;
-      const padX = 100, padY = 90;
+      const W = 900, H = 720;
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      const padX = 125, padY = 110;
       const availW = W - padX * 2;
-      const availH = H - padY * 2;
+      const availH = H - padY * 2 - 28;
       const scale = Math.min(availW / room.w, availH / room.h);
       const rw = room.w * scale;
       const rh = room.h * scale;
       const ox = (W - rw) / 2;
-      const oy = (H - rh) / 2;
+      const oy = (H - 28 - rh) / 2 + 6;
+      const wallT = 14;
 
       const px = x => ox + x * scale;
       const py = y => oy + y * scale;
+      const fmtM = v => v.toFixed(2).replace('.', ',');
 
       let out = `
         <defs>
-          <pattern id="cadGrid" width="${scale * 0.5}" height="${scale * 0.5}" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}">
-            <path d="M ${scale * 0.5} 0 L 0 0 0 ${scale * 0.5}" fill="none" stroke="#1e293b" stroke-width="0.8"/>
+          <pattern id="cadGridMinor" width="${scale * 0.25}" height="${scale * 0.25}" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}">
+            <path d="M ${scale * 0.25} 0 L 0 0 0 ${scale * 0.25}" fill="none" stroke="#1e293b" stroke-width="0.45"/>
           </pattern>
-          <pattern id="radiantLoops" width="28" height="28" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}">
-            <path d="M 4 0 L 4 24 Q 4 28 8 28 L 14 28 Q 18 28 18 24 L 18 4 Q 18 0 22 0 L 28 0" fill="none" stroke="#f43f5e" stroke-width="1.3" stroke-dasharray="4,3" opacity="0.32"/>
+          <pattern id="cadGridMajor" width="${scale * 1.0}" height="${scale * 1.0}" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}">
+            <rect width="${scale * 1.0}" height="${scale * 1.0}" fill="url(#cadGridMinor)"/>
+            <path d="M ${scale * 1.0} 0 L 0 0 0 ${scale * 1.0}" fill="none" stroke="#334155" stroke-width="0.85"/>
           </pattern>
+          <pattern id="hatchAnsi31" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#94a3b8" stroke-width="0.9"/>
+          </pattern>
+          <pattern id="radiantLoops" width="24" height="24" patternUnits="userSpaceOnUse" x="${ox}" y="${oy}">
+            <path d="M 0 6 L 24 6 M 0 18 L 24 18" fill="none" stroke="#f43f5e" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.38"/>
+          </pattern>
+          <marker id="tick45" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+            <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#38bdf8" stroke-width="1.3"/>
+          </marker>
+          <marker id="tick45Amber" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+            <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#fbbf24" stroke-width="1.2"/>
+          </marker>
         </defs>
       `;
 
-      // Cardinal Labels
+      // Outer CAD Sheet Frame
       out += `
-        <text x="${W / 2}" y="26" text-anchor="middle" font-size="11" font-weight="800" fill="#94a3b8">⬆️ NORTE (Arriba en plano)</text>
-        <text x="${W / 2}" y="${H - 14}" text-anchor="middle" font-size="11" font-weight="800" fill="#94a3b8">⬇️ SUR (Abajo · Soleamiento y Jardín)</text>
-        <text x="18" y="${H / 2}" text-anchor="middle" font-size="11" font-weight="800" fill="#94a3b8" transform="rotate(-90 18 ${H / 2})">⬅️ OESTE</text>
-        <text x="${W - 18}" y="${H / 2}" text-anchor="middle" font-size="11" font-weight="800" fill="#94a3b8" transform="rotate(90 ${W - 18} ${H / 2})">➡️ ESTE</text>
+        <rect x="8" y="8" width="${W - 16}" height="${H - 16}" fill="#070b14" stroke="#475569" stroke-width="1.4"/>
+        <rect x="13" y="13" width="${W - 26}" height="${H - 26}" fill="none" stroke="#334155" stroke-width="0.6"/>
       `;
 
-      // Room Floor & Grid
+      // Technical Cardinal & Axis Labels (No Emojis)
       out += `
-        <rect x="${ox}" y="${oy}" width="${rw}" height="${rh}" fill="#0f172a" />
-        <rect x="${ox}" y="${oy}" width="${rw}" height="${rh}" fill="url(#cadGrid)" />
+        <text x="${W / 2}" y="29" text-anchor="middle" font-size="9.5" font-weight="700" fill="#94a3b8" class="mono">FACHADA / COLINDANCIA NORTE (0° N)</text>
+        <text x="${W / 2}" y="${H - 48}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fbbf24" class="mono">ORIENTACIÓN SUR (180° S · CAPTACIÓN SOLAR)</text>
+        <text x="27" y="${oy + rh / 2}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#94a3b8" class="mono" transform="rotate(-90 27 ${oy + rh / 2})">OESTE (270° W)</text>
+        <text x="${W - 23}" y="${oy + rh / 2}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#94a3b8" class="mono" transform="rotate(90 ${W - 23} ${oy + rh / 2})">ESTE (90° E)</text>
       `;
 
-      // Radiant Floor Loops
+      // Room Floor & Metric CAD Grid (0.25m minor / 1.00m major)
+      out += `
+        <rect x="${ox}" y="${oy}" width="${rw}" height="${rh}" fill="#0c1322" />
+        <rect x="${ox}" y="${oy}" width="${rw}" height="${rh}" fill="url(#cadGridMajor)" />
+      `;
+
+      // Radiant Floor Loops PEX-a Ø16mm
       if (layers.hvac && room.id !== 'r05' && room.id !== 'r10' && room.id !== 'r17') {
         out += `
-          <rect x="${ox + 12}" y="${oy + 12}" width="${rw - 24}" height="${rh - 24}" rx="8" fill="url(#radiantLoops)" stroke="#fb7185" stroke-width="1" stroke-dasharray="5,4" opacity="0.55"/>
+          <rect x="${ox + 10}" y="${oy + 10}" width="${rw - 20}" height="${rh - 20}" fill="url(#radiantLoops)" stroke="#f43f5e" stroke-width="0.75" stroke-dasharray="5,3" opacity="0.55"/>
         `;
       }
 
-      // Outer Structural Walls (thick stroke)
+      // Multi-Layer Sectioned Walls with ANSI31 Hatching & Thermal Chamber Line
       out += `
-        <rect x="${ox - 6}" y="${oy - 6}" width="${rw + 12}" height="${rh + 12}" fill="none" stroke="#334155" stroke-width="12" rx="4"/>
-      `;
-
-      // Cotas de Dimensiones
-      out += `
-        <line x1="${ox}" y1="${oy - 30}" x2="${ox + rw}" y2="${oy - 30}" stroke="#64748b" stroke-width="1.5"/>
-        <line x1="${ox}" y1="${oy - 38}" x2="${ox}" y2="${oy - 22}" stroke="#64748b" stroke-width="1.5"/>
-        <line x1="${ox + rw}" y1="${oy - 38}" x2="${ox + rw}" y2="${oy - 22}" stroke="#64748b" stroke-width="1.5"/>
-        <rect x="${ox + rw / 2 - 45}" y="${oy - 42}" width="90" height="22" rx="6" fill="#0284c7"/>
-        <text x="${ox + rw / 2}" y="${oy - 27}" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff" class="mono">${room.w.toFixed(2).replace('.', ',')} m</text>
-
-        <line x1="${ox - 30}" y1="${oy}" x2="${ox - 30}" y2="${oy + rh}" stroke="#64748b" stroke-width="1.5"/>
-        <line x1="${ox - 38}" y1="${oy}" x2="${ox - 22}" y2="${oy}" stroke="#64748b" stroke-width="1.5"/>
-        <line x1="${ox - 38}" y1="${oy + rh}" x2="${ox - 22}" y2="${oy + rh}" stroke="#64748b" stroke-width="1.5"/>
-        <g transform="translate(${ox - 30}, ${oy + rh / 2}) rotate(-90)">
-          <rect x="-45" y="-11" width="90" height="22" rx="6" fill="#0284c7"/>
-          <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff" class="mono">${room.h.toFixed(2).replace('.', ',')} m</text>
+        <g class="cad-walls">
+          <rect x="${ox - wallT}" y="${oy - wallT}" width="${rw + wallT * 2}" height="${wallT}" fill="#1e293b"/>
+          <rect x="${ox - wallT}" y="${oy - wallT}" width="${rw + wallT * 2}" height="${wallT}" fill="url(#hatchAnsi31)" stroke="#e2e8f0" stroke-width="1.4"/>
+          <rect x="${ox - wallT}" y="${oy + rh}" width="${rw + wallT * 2}" height="${wallT}" fill="#1e293b"/>
+          <rect x="${ox - wallT}" y="${oy + rh}" width="${rw + wallT * 2}" height="${wallT}" fill="url(#hatchAnsi31)" stroke="#e2e8f0" stroke-width="1.4"/>
+          <rect x="${ox - wallT}" y="${oy}" width="${wallT}" height="${rh}" fill="#1e293b"/>
+          <rect x="${ox - wallT}" y="${oy}" width="${wallT}" height="${rh}" fill="url(#hatchAnsi31)" stroke="#e2e8f0" stroke-width="1.4"/>
+          <rect x="${ox + rw}" y="${oy}" width="${wallT}" height="${rh}" fill="#1e293b"/>
+          <rect x="${ox + rw}" y="${oy}" width="${wallT}" height="${rh}" fill="url(#hatchAnsi31)" stroke="#e2e8f0" stroke-width="1.4"/>
+          <!-- Corner Structural Pillars -->
+          <rect x="${ox - wallT}" y="${oy - wallT}" width="${wallT}" height="${wallT}" fill="#334155" stroke="#f8fafc" stroke-width="1.5"/>
+          <rect x="${ox + rw}" y="${oy - wallT}" width="${wallT}" height="${wallT}" fill="#334155" stroke="#f8fafc" stroke-width="1.5"/>
+          <rect x="${ox - wallT}" y="${oy + rh}" width="${wallT}" height="${wallT}" fill="#334155" stroke="#f8fafc" stroke-width="1.5"/>
+          <rect x="${ox + rw}" y="${oy + rh}" width="${wallT}" height="${wallT}" fill="#334155" stroke="#f8fafc" stroke-width="1.5"/>
         </g>
       `;
 
-      // Openings (Doors, Windows, Sliding Doors)
+      // NHG Ø1,50m Turning Circle inside room free area
+      if (room.w >= 1.30 && room.h >= 1.30) {
+        const rNhg = Math.min(0.75 * scale, Math.min(rw, rh) * 0.34);
+        const cxNhg = ox + rw * 0.52;
+        const cyNhg = oy + rh * 0.54;
+        out += `
+          <g opacity="0.58">
+            <circle cx="${cxNhg}" cy="${cyNhg}" r="${rNhg}" fill="none" stroke="#10b981" stroke-width="0.95" stroke-dasharray="5,3"/>
+            <line x1="${cxNhg - 5}" y1="${cyNhg}" x2="${cxNhg + 5}" y2="${cyNhg}" stroke="#10b981" stroke-width="0.8"/>
+            <line x1="${cxNhg}" y1="${cyNhg - 5}" x2="${cxNhg}" y2="${cyNhg + 5}" stroke="#10b981" stroke-width="0.8"/>
+            <text x="${cxNhg}" y="${cyNhg + rNhg - 4}" text-anchor="middle" font-size="8" font-weight="700" fill="#10b981" class="mono">Ø1,50m NHG</text>
+          </g>
+        `;
+      }
+
+      // ISO 129 Architectural Dimension Lines with 45° Ticks (Overall + Chained Openings)
+      const yDimTop = oy - wallT - 28;
+      const xDimLeft = ox - wallT - 28;
+      out += `
+        <g class="cad-dims mono">
+          <!-- Overall Horizontal Dimension -->
+          <line x1="${ox}" y1="${oy - wallT - 3}" x2="${ox}" y2="${yDimTop - 5}" stroke="#38bdf8" stroke-width="0.6"/>
+          <line x1="${ox + rw}" y1="${oy - wallT - 3}" x2="${ox + rw}" y2="${yDimTop - 5}" stroke="#38bdf8" stroke-width="0.6"/>
+          <line x1="${ox}" y1="${yDimTop}" x2="${ox + rw}" y2="${yDimTop}" stroke="#38bdf8" stroke-width="1.0" marker-start="url(#tick45)" marker-end="url(#tick45)"/>
+          <rect x="${ox + rw / 2 - 52}" y="${yDimTop - 11}" width="104" height="14" fill="#070b14"/>
+          <text x="${ox + rw / 2}" y="${yDimTop - 1.5}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#38bdf8">L = ${fmtM(room.w)} m (${Math.round(room.w * 100)} cm)</text>
+
+          <!-- Overall Vertical Dimension -->
+          <line x1="${ox - wallT - 3}" y1="${oy}" x2="${xDimLeft - 5}" y2="${oy}" stroke="#38bdf8" stroke-width="0.6"/>
+          <line x1="${ox - wallT - 3}" y1="${oy + rh}" x2="${xDimLeft - 5}" y2="${oy + rh}" stroke="#38bdf8" stroke-width="0.6"/>
+          <line x1="${xDimLeft}" y1="${oy}" x2="${xDimLeft}" y2="${oy + rh}" stroke="#38bdf8" stroke-width="1.0" marker-start="url(#tick45)" marker-end="url(#tick45)"/>
+          <g transform="translate(${xDimLeft}, ${oy + rh / 2}) rotate(-90)">
+            <rect x="-52" y="-11" width="104" height="14" fill="#070b14"/>
+            <text x="0" y="-1.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#38bdf8">A = ${fmtM(room.h)} m (${Math.round(room.h * 100)} cm)</text>
+          </g>
+        </g>
+      `;
+
+      // Normalized CAD Openings (Doors with Swing Arc, Sliding Doors with Double Rail, Windows with Triple Glass)
       (room.openings || []).forEach(op => {
         const isHoriz = op.wall === 'N' || op.wall === 'S';
-        const x1 = isHoriz ? px(op.pos) : (op.wall === 'W' ? ox - 6 : ox + rw + 6);
-        const y1 = isHoriz ? (op.wall === 'N' ? oy - 6 : oy + rh + 6) : py(op.pos);
         const lenPx = op.len * scale;
-
-        let fillCol = '#1e293b';
-        let strokeCol = '#38bdf8';
-        if (op.type === 'sliding') { fillCol = '#fef3c7'; strokeCol = '#f59e0b'; }
-        else if (op.type === 'door') { fillCol = '#f8fafc'; strokeCol = '#10b981'; }
-        else if (op.type === 'open') { fillCol = '#0f172a'; strokeCol = '#64748b'; }
+        const dimLbl = `${op.label} (${fmtM(op.len)}m)`;
 
         if (isHoriz) {
-          out += `<rect x="${x1}" y="${y1 - 7}" width="${lenPx}" height="14" fill="${fillCol}" stroke="${strokeCol}" stroke-width="2" rx="2"/>`;
-          if (op.type === 'sliding') {
-            out += `<line x1="${x1 + 6}" y1="${y1}" x2="${x1 + lenPx - 6}" y2="${y1}" stroke="${strokeCol}" stroke-width="2.5" stroke-dasharray="6,3"/>`;
+          const x1 = px(op.pos);
+          const wy = op.wall === 'N' ? oy - wallT : oy + rh;
+          // Clear wall opening
+          out += `<rect x="${x1}" y="${wy}" width="${lenPx}" height="${wallT}" fill="#070b14" stroke="#cbd5e1" stroke-width="0.8"/>`;
+          if (op.type === 'door') {
+            // CAD Door Leaf + 90 deg Swing Arc into room
+            const dirY = op.wall === 'N' ? 1 : -1;
+            const hy = op.wall === 'N' ? oy : oy + rh;
+            const openY = hy + dirY * lenPx;
+            const sweep = op.wall === 'N' ? 1 : 0;
+            out += `
+              <rect x="${x1}" y="${op.wall === 'N' ? hy : openY}" width="3.5" height="${lenPx}" fill="#0f172a" stroke="#f8fafc" stroke-width="1.1"/>
+              <path d="M ${x1 + lenPx} ${hy} A ${lenPx} ${lenPx} 0 0 ${sweep} ${x1} ${openY}" fill="none" stroke="#94a3b8" stroke-width="0.85" stroke-dasharray="4,3"/>
+            `;
+          } else if (op.type === 'sliding') {
+            out += `
+              <line x1="${x1}" y1="${wy + wallT * 0.35}" x2="${x1 + lenPx * 0.55}" y2="${wy + wallT * 0.35}" stroke="#38bdf8" stroke-width="2.0"/>
+              <line x1="${x1 + lenPx * 0.45}" y1="${wy + wallT * 0.65}" x2="${x1 + lenPx}" y2="${wy + wallT * 0.65}" stroke="#38bdf8" stroke-width="2.0"/>
+            `;
+          } else if (op.type === 'window') {
+            out += `
+              <line x1="${x1}" y1="${wy + wallT * 0.32}" x2="${x1 + lenPx}" y2="${wy + wallT * 0.32}" stroke="#38bdf8" stroke-width="1.2"/>
+              <line x1="${x1}" y1="${wy + wallT * 0.68}" x2="${x1 + lenPx}" y2="${wy + wallT * 0.68}" stroke="#38bdf8" stroke-width="1.2"/>
+              <line x1="${x1 + lenPx / 2}" y1="${wy}" x2="${x1 + lenPx / 2}" y2="${wy + wallT}" stroke="#cbd5e1" stroke-width="0.9"/>
+            `;
           }
-          const ly = op.wall === 'N' ? y1 - 12 : y1 + 22;
-          out += `<text x="${x1 + lenPx / 2}" y="${ly}" text-anchor="middle" font-size="10" font-weight="700" fill="${strokeCol}">${op.label}</text>`;
+          const ly = op.wall === 'N' ? wy - 5 : wy + wallT + 11;
+          out += `<text x="${x1 + lenPx / 2}" y="${ly}" text-anchor="middle" font-size="8.2" font-weight="700" fill="#fbbf24" class="mono">${dimLbl}</text>`;
         } else {
-          out += `<rect x="${x1 - 7}" y="${y1}" width="14" height="${lenPx}" fill="${fillCol}" stroke="${strokeCol}" stroke-width="2" rx="2"/>`;
-          if (op.type === 'sliding') {
-            out += `<line x1="${x1}" y1="${y1 + 6}" x2="${x1}" y2="${y1 + lenPx - 6}" stroke="${strokeCol}" stroke-width="2.5" stroke-dasharray="6,3"/>`;
+          const y1 = py(op.pos);
+          const wx = op.wall === 'W' ? ox - wallT : ox + rw;
+          out += `<rect x="${wx}" y="${y1}" width="${wallT}" height="${lenPx}" fill="#070b14" stroke="#cbd5e1" stroke-width="0.8"/>`;
+          if (op.type === 'door') {
+            const dirX = op.wall === 'W' ? 1 : -1;
+            const hx = op.wall === 'W' ? ox : ox + rw;
+            const openX = hx + dirX * lenPx;
+            const sweep = op.wall === 'W' ? 0 : 1;
+            out += `
+              <rect x="${op.wall === 'W' ? hx : openX}" y="${y1}" width="${lenPx}" height="3.5" fill="#0f172a" stroke="#f8fafc" stroke-width="1.1"/>
+              <path d="M ${hx} ${y1 + lenPx} A ${lenPx} ${lenPx} 0 0 ${sweep} ${openX} ${y1}" fill="none" stroke="#94a3b8" stroke-width="0.85" stroke-dasharray="4,3"/>
+            `;
+          } else if (op.type === 'sliding') {
+            out += `
+              <line x1="${wx + wallT * 0.35}" y1="${y1}" x2="${wx + wallT * 0.35}" y2="${y1 + lenPx * 0.55}" stroke="#38bdf8" stroke-width="2.0"/>
+              <line x1="${wx + wallT * 0.65}" y1="${y1 + lenPx * 0.45}" x2="${wx + wallT * 0.65}" y2="${y1 + lenPx}" stroke="#38bdf8" stroke-width="2.0"/>
+            `;
+          } else if (op.type === 'window') {
+            out += `
+              <line x1="${wx + wallT * 0.32}" y1="${y1}" x2="${wx + wallT * 0.32}" y2="${y1 + lenPx}" stroke="#38bdf8" stroke-width="1.2"/>
+              <line x1="${wx + wallT * 0.68}" y1="${y1}" x2="${wx + wallT * 0.68}" y2="${y1 + lenPx}" stroke="#38bdf8" stroke-width="1.2"/>
+              <line x1="${wx}" y1="${y1 + lenPx / 2}" x2="${wx + wallT}" y2="${y1 + lenPx / 2}" stroke="#cbd5e1" stroke-width="0.9"/>
+            `;
           }
-          const lx = op.wall === 'W' ? x1 - 14 : x1 + 14;
-          out += `<text x="${lx}" y="${y1 + lenPx / 2}" text-anchor="middle" font-size="10" font-weight="700" fill="${strokeCol}" transform="rotate(-90 ${lx} ${y1 + lenPx / 2})">${op.label}</text>`;
+          const lx = op.wall === 'W' ? wx - 6 : wx + wallT + 10;
+          out += `<text x="${lx}" y="${y1 + lenPx / 2}" text-anchor="middle" font-size="8.2" font-weight="700" fill="#fbbf24" class="mono" transform="rotate(-90 ${lx} ${y1 + lenPx / 2})">${dimLbl}</text>`;
         }
       });
 
-      // 1. Furniture
+      // 1. Technical CAD Furniture Blocks (with internal architectural symbology & dimensions)
       if (layers.furn) {
         (room.furn || []).forEach(f => {
           const fx = px(f.x), fy = py(f.y), fw = f.w * scale, fh = f.h * scale;
           const isSel = selectedMarkerCode === f.code;
           const dashAttr = f.dashed ? 'stroke-dasharray="6,4"' : '';
           const selClass = isSel ? 'marker-selected' : '';
+          const codeUp = (f.code || '').toUpperCase();
+          let cadDetail = '';
+
+          // Internal CAD details by furniture category
+          if (codeUp.includes('ARM') || codeUp.includes('VEST') || codeUp.includes('GAB') || codeUp.includes('COL')) {
+            cadDetail = `
+              <line x1="${fx}" y1="${fy}" x2="${fx + fw}" y2="${fy + fh}" stroke="#64748b" stroke-width="0.6"/>
+              <line x1="${fx + fw}" y1="${fy}" x2="${fx}" y2="${fy + fh}" stroke="#64748b" stroke-width="0.6"/>
+            `;
+          } else if (codeUp.includes('CAMA') || codeUp.includes('KING')) {
+            const isHorizBed = fw > fh;
+            cadDetail = isHorizBed
+              ? `<rect x="${fx + 4}" y="${fy + 6}" width="${fw * 0.18}" height="${fh - 12}" fill="#0f172a" stroke="#94a3b8" stroke-width="0.8"/>
+                 <line x1="${fx + fw * 0.28}" y1="${fy}" x2="${fx + fw * 0.28}" y2="${fy + fh}" stroke="#94a3b8" stroke-width="0.8"/>`
+              : `<rect x="${fx + 6}" y="${fy + 4}" width="${fw - 12}" height="${fh * 0.18}" fill="#0f172a" stroke="#94a3b8" stroke-width="0.8"/>
+                 <line x1="${fx}" y1="${fy + fh * 0.28}" x2="${fx + fw}" y2="${fy + fh * 0.28}" stroke="#94a3b8" stroke-width="0.8"/>`;
+          } else if (codeUp.includes('DUCHA') || codeUp.includes('BAN')) {
+            cadDetail = `
+              <line x1="${fx}" y1="${fy}" x2="${fx + fw}" y2="${fy + fh}" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,3"/>
+              <line x1="${fx + fw}" y1="${fy}" x2="${fx}" y2="${fy + fh}" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,3"/>
+              <circle cx="${fx + fw / 2}" cy="${fy + fh / 2}" r="5" fill="#070b14" stroke="#38bdf8" stroke-width="1.1"/>
+            `;
+          } else if (codeUp.includes('LAV') || codeUp.includes('FREG') || codeUp.includes('PILA')) {
+            cadDetail = `
+              <ellipse cx="${fx + fw / 2}" cy="${fy + fh / 2}" rx="${Math.max(4, fw * 0.32)}" ry="${Math.max(4, fh * 0.32)}" fill="none" stroke="#38bdf8" stroke-width="0.9"/>
+              <circle cx="${fx + fw / 2}" cy="${fy + fh / 2}" r="2" fill="#38bdf8"/>
+            `;
+          } else if (codeUp.includes('WC') || codeUp.includes('INOD')) {
+            cadDetail = `
+              <ellipse cx="${fx + fw / 2}" cy="${fy + fh / 2}" rx="${Math.max(4, fw * 0.34)}" ry="${Math.max(4, fh * 0.34)}" fill="none" stroke="#cbd5e1" stroke-width="0.9"/>
+            `;
+          } else if (codeUp.includes('ISLA') || codeUp.includes('BORA')) {
+            cadDetail = `
+              <rect x="${fx + fw * 0.15}" y="${fy + fh * 0.15}" width="${fw * 0.70}" height="${fh * 0.28}" fill="none" stroke="#38bdf8" stroke-width="0.9"/>
+              <rect x="${fx + fw * 0.15}" y="${fy + fh * 0.55}" width="${fw * 0.70}" height="${fh * 0.30}" fill="none" stroke="#f59e0b" stroke-width="0.9"/>
+            `;
+          }
+
+          const dimStr = `${fmtM(f.w)}×${fmtM(f.h)}m`;
           out += `
             <g class="marker-node ${selClass}" onclick="selectMarker('${f.code}')">
-              <rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" rx="5" fill="${f.col}" stroke="${f.str}" stroke-width="${isSel ? 3 : 1.8}" ${dashAttr} fill-opacity="${f.col === 'none' ? 0 : 0.85}"/>
-              <rect x="${fx + 3}" y="${fy + 3}" width="${Math.min(fw - 6, 44)}" height="16" rx="3" fill="${f.str}"/>
-              <text x="${fx + 3 + Math.min(fw - 6, 44) / 2}" y="${fy + 14}" text-anchor="middle" font-size="9" font-weight="800" fill="#ffffff" class="mono">${f.code}</text>
-              ${fw > 60 && fh > 32 ? `<text x="${fx + fw / 2}" y="${fy + fh / 2 + 5}" text-anchor="middle" font-size="10" font-weight="700" fill="#f8fafc">${f.name.split('(')[0].substring(0, 24)}</text>` : ''}
+              <rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" fill="#131c31" stroke="${f.str || '#94a3b8'}" stroke-width="${isSel ? 2.6 : 1.25}" ${dashAttr} fill-opacity="${f.col === 'none' ? 0.05 : 0.88}"/>
+              ${cadDetail}
+              <rect x="${fx + 2}" y="${fy + 2}" width="${Math.min(fw - 4, 42)}" height="13" fill="#070b14" stroke="${f.str || '#64748b'}" stroke-width="0.7"/>
+              <text x="${fx + 2 + Math.min(fw - 4, 42) / 2}" y="${fy + 11}" text-anchor="middle" font-size="7.8" font-weight="700" fill="#38bdf8" class="mono">${f.code}</text>
+              ${fw > 52 && fh > 28 ? `<text x="${fx + fw / 2}" y="${fy + fh / 2 + 2}" text-anchor="middle" font-size="8.2" font-weight="700" fill="#e2e8f0" class="mono">${f.name.split('(')[0].substring(0, 22)}</text>` : ''}
+              ${fw > 52 && fh > 42 ? `<text x="${fx + fw / 2}" y="${fy + fh / 2 + 12}" text-anchor="middle" font-size="7.2" fill="#94a3b8" class="mono">[${dimStr}]</text>` : ''}
             </g>
           `;
         });
       }
 
-      // 2. Switches & Lighting
+      // 2. Normalized Switches & Lighting Controls (IEC CAD Symbol)
       if (layers.sw) {
         (room.sw || []).forEach(s => {
           const sx = px(s.x), sy = py(s.y);
           const isSel = selectedMarkerCode === s.code;
           out += `
             <g class="marker-node ${isSel ? 'marker-selected' : ''}" onclick="selectMarker('${s.code}')">
-              <circle cx="${sx}" cy="${sy}" r="12" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
-              <text x="${sx}" y="${sy + 3.5}" text-anchor="middle" font-size="9" font-weight="800" fill="#ffffff" class="mono">${s.code}</text>
+              <circle cx="${sx}" cy="${sy}" r="8" fill="#070b14" stroke="#38bdf8" stroke-width="1.6"/>
+              <line x1="${sx}" y1="${sy - 8}" x2="${sx + 7}" y2="${sy - 14}" stroke="#38bdf8" stroke-width="1.4"/>
+              <text x="${sx}" y="${sy + 2.8}" text-anchor="middle" font-size="7.2" font-weight="700" fill="#38bdf8" class="mono">${s.code}</text>
             </g>
           `;
         });
       }
 
-      // 3. HVAC
+      // 3. Normalized HVAC & VMC Valves (Zehnder Ø90/Ø125 & KNX Thermostat)
       if (layers.hvac) {
         (room.hvac || []).forEach(h => {
           if (h.isFloor) return;
           const hx = px(h.x), hy = py(h.y);
           const isSel = selectedMarkerCode === h.code;
-          const bg = h.isVMC ? '#0d9488' : '#e11d48';
+          const col = h.isVMC ? '#10b981' : '#f43f5e';
           out += `
             <g class="marker-node ${isSel ? 'marker-selected' : ''}" onclick="selectMarker('${h.code}')">
-              <rect x="${hx - 15}" y="${hy - 11}" width="30" height="22" rx="6" fill="${bg}" stroke="#ffffff" stroke-width="2"/>
-              <text x="${hx}" y="${hy + 3.5}" text-anchor="middle" font-size="8.5" font-weight="800" fill="#ffffff" class="mono">${h.code}</text>
+              <rect x="${hx - 14}" y="${hy - 9}" width="28" height="18" fill="#070b14" stroke="${col}" stroke-width="1.5"/>
+              <line x1="${hx - 14}" y1="${hy - 9}" x2="${hx - 6}" y2="${hy - 1}" stroke="${col}" stroke-width="0.7"/>
+              <text x="${hx}" y="${hy + 2.8}" text-anchor="middle" font-size="7.2" font-weight="700" fill="${col}" class="mono">${h.code}</text>
             </g>
           `;
         });
       }
 
-      // 4. Electrical & RJ45
+      // 4. Normalized Electrical Sockets (16A/25A) & RJ45 Data Outlets (Cat 6A)
       if (layers.elec) {
         (room.elec || []).forEach(e => {
           const ex = px(e.x), ey = py(e.y);
           const isSel = selectedMarkerCode === e.code;
-          const bg = e.isRJ ? '#7c3aed' : '#d97706';
+          const col = e.isRJ ? '#c084fc' : '#f59e0b';
           out += `
             <g class="marker-node ${isSel ? 'marker-selected' : ''}" onclick="selectMarker('${e.code}')">
-              <circle cx="${ex}" cy="${ey}" r="12" fill="${bg}" stroke="#ffffff" stroke-width="2"/>
-              <text x="${ex}" y="${ey + 3.5}" text-anchor="middle" font-size="8.5" font-weight="800" fill="#ffffff" class="mono">${e.code}</text>
+              <circle cx="${ex}" cy="${ey}" r="9" fill="#070b14" stroke="${col}" stroke-width="1.6"/>
+              <line x1="${ex - 6}" y1="${ey - 3}" x2="${ex + 6}" y2="${ey - 3}" stroke="${col}" stroke-width="0.8"/>
+              <text x="${ex}" y="${ey + 3.5}" text-anchor="middle" font-size="7.0" font-weight="700" fill="${col}" class="mono">${e.code}</text>
             </g>
           `;
         });
       }
+
+      // Bottom ISO 7200 Mini Title Strip inside each 1:20 Room Sheet
+      const zTxt = room.fl === 'PB' ? 'COTA ±0,00 m' : 'COTA +3,15 m';
+      out += `
+        <g transform="translate(13, ${H - 38})" class="mono">
+          <rect x="0" y="0" width="${W - 26}" height="25" fill="#090e1a" stroke="#475569" stroke-width="1.0"/>
+          <line x1="210" y1="0" x2="210" y2="25" stroke="#334155" stroke-width="0.8"/>
+          <line x1="560" y1="0" x2="560" y2="25" stroke="#334155" stroke-width="0.8"/>
+          <line x1="740" y1="0" x2="740" y2="25" stroke="#334155" stroke-width="0.8"/>
+          <text x="10" y="16" font-size="8.5" font-weight="700" fill="#38bdf8">PLANO DETALLE 1:20 · ESTANCIA #${room.num}</text>
+          <text x="220" y="16" font-size="8.5" font-weight="700" fill="#f8fafc">${room.title.toUpperCase()} (${room.area})</text>
+          <text x="570" y="16" font-size="8.0" fill="#10b981" font-weight="700">${zTxt} · NHG OK</text>
+          <text x="750" y="16" font-size="8.0" fill="#fbbf24" font-weight="700">ESC. 1:20 (m/cm)</text>
+        </g>
+      `;
 
       svg.innerHTML = out;
     }
@@ -1170,7 +1321,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div onclick="selectMarker('${f.code}')" class="p-2 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 transition cursor-pointer flex items-start gap-2 ${selectedMarkerCode === f.code ? 'border-sky-500 bg-sky-950/40' : ''}">
           <span class="px-1.5 py-0.5 rounded bg-slate-800 text-sky-400 font-bold mono text-[10px] shrink-0">${f.code}</span>
           <div>
-            <div class="font-bold text-slate-200 text-xs">${f.name}</div>
+            <div class="font-bold text-slate-200 text-xs">${f.name} <span class="text-sky-400 font-mono text-[10px]">[${f.w.toFixed(2).replace('.', ',')} × ${f.h.toFixed(2).replace('.', ',')} m]</span></div>
             <div class="text-[11px] text-slate-400 mt-0.5">${f.desc || ''}</div>
           </div>
         </div>
@@ -1228,20 +1379,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 """
 
 def main():
+    import os
     json_rooms = json.dumps(ROOMS, ensure_ascii=False)
     html_content = HTML_TEMPLATE.replace("__ROOMS_DATA_JSON__", json_rooms)
     
-    # Save to propuestas/
-    target_path = "/home/antigravity/landslore/oleiros/propuestas/fichas_zoom_interactivas_propuesta_d.html"
-    with open(target_path, "w", encoding="utf-8") as f:
-        f.write(html_content)
-    print(f"Generated: {target_path} ({len(html_content)} bytes)")
-    
-    # Save to artifacts directory
-    artifact_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e8f6a578-76cf-4abb-986f-afb074438ab7/fichas_zoom_propuesta_d.html"
-    with open(artifact_path, "w", encoding="utf-8") as f:
-        f.write(html_content)
-    print(f"Artifact updated: {artifact_path} ({len(html_content)} bytes)")
+    paths = [
+        "/home/antigravity/landslore/oleiros/fichas_zoom_interactivas_propuesta_d.html",
+        "/home/antigravity/landslore/oleiros/propuestas/fichas_zoom_interactivas_propuesta_d.html",
+    ]
+    for p in paths:
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        with open(p, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        print(f"Generated: {p} ({len(html_content)} bytes)")
 
 if __name__ == "__main__":
     main()
+
