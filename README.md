@@ -1,62 +1,73 @@
-# Hogar Oleiros — Pabellón con Patio Corrala Habitable
+# Hogar Oleiros — Pabellón Bioclimático Atlántico (Propuesta D)
 
-Proyecto integral de diseño, arquitectura y ejecución de vivienda unifamiliar en **Liáns / Santa Cruz, Concello de Oleiros (A Coruña)**.
-
----
-
-## 📌 Resumen Ejecutivo del Proyecto
-
-* **Tipología arquitectónica:** Pabellón en U articulado alrededor de un **Patio Corrala Central Habitable (19,0 m² útiles)** con lucernario motorizado de cristal.
-* **Superficie:** **`212,0 m² construidos cerrados`** + Pérgola exterior cubierta para 2 vehículos (`28,0 m²`) exenta de cómputo.
-* **Familia:** Pareja + 2 hijos (niña de 9 años y niño de 7 años) + espacio polivalente de teletrabajo diario / suite privada para visitas familiares.
-* **Parcela objetivo:** `500 – 700 m²` (`~600 m²`, `20 × 30 m`) en Oleiros (PGOM Ordenanza 2B).
-* **Presupuesto llave en mano cerrado:** **`662.980 €`** (Terreno `180.000 €` + Obra `381.600 €` + Técnicos, Licencias, Aerotermia, Solar FV 4,5 kWp, Cocina completa Santos/Dekton y Riego Hunter).
-* **Estado actual:** **Iteración 3 validada.** Distribución definitiva aprobada, zoom técnico 1:20 de estancias completado y metodología de renderizado estancia a estancia con control geométrico estricto en marcha.
+Proyecto integral de arquitectura, bioclimática y ejecución de vivienda unifamiliar en **Liáns / Santa Cruz, Concello de Oleiros (A Coruña)**.
 
 ---
 
-## 🧭 Estructura del Repositorio y Módulos de Contexto
+## 📌 Resumen Ejecutivo del Proyecto (Propuesta D)
 
-Para garantizar que **cualquier agente de IA o sesión de trabajo mantenga el contexto íntegro sin perder detalles ni alucinar decisiones ya cerradas**, el proyecto se estructura en módulos documentales independientes dentro de [`context/`](file:///home/antigravity/landslore/oleiros/context):
+* **Tipología arquitectónica:** Pabellón articulado alrededor de un **Patio Corrala Central Habitable (16,00 m² libres · 4,00 × 4,00 m)** a cota cero ($\pm 0,00\text{ m}$) abierto al cielo, con *Acer palmatum*, banco de iroko corrido bajo alero de 80 cm y drenaje lineal perimetral oculto.
+* **Superficie:** **`215,0 m² construidos cerrados`** (PB: 116,50 m² + P1: 98,50 m²) + Porche Sur cubierto de fondo 3,00 m (`36,0 m²`) + Pérgola exterior para 2 vehículos (`28,0 m²`).
+* **Familia:** Pareja + 2 hijos (niña de 9 años y niño de 7 años) + despacho sanctasanctórum de teletrabajo diario / suite privada para invitados familiares.
+* **Parcela objetivo:** `600,00 m²` (`20,00 × 30,00 m`) en Oleiros (PGOM Ordenanza 2B: Ocupación máxima 20% = 120,00 m²; Proyecto ocupa 116,50 m² cerrados en PB).
+* **Presupuesto llave en mano cerrado:** **`662.980 €`** (Terreno `180.000 €` + Obra PEM `381.600 €` + Técnicos, Licencias, Aerotermia Vaillant, VMC Zehnder Q350, Solar FV 5,4 kWp, Cocina Santos/Dekton, Porche con Churrasqueira de granito y Piscina 7,5×3,5m).
+* **Estado actual:** **Propuesta D consolidada al nivel de Proyecto de Ejecución (1:50 y 1:20)** con documentación agéntica completa en Markdown (SSOT).
+
+---
+
+## 🧭 Estructura del Repositorio y Documentación Agéntica (SSOT)
+
+> **REGLA AGÉNTICA PRIMORDIAL:** Cualquier agente de IA que trabaje en este proyecto **NO necesita leer ni parsear archivos HTML**. Todo el proyecto está completamente documentado y acotado al milímetro en archivos Markdown (`.md`) para que dos agentes distintos plasmen con exactitud paramétrica el mismo plano técnico.
 
 ```
-├── README.md                                             # Este documento (visión general e índice)
-├── context/                                              # Contexto vivo, estructurado y modular
-│   ├── 00_ESTADO_DEL_PROYECTO_Y_HOJA_DE_RUTA.md         # Estado vigente, próximas tareas y Reglas de Oro
-│   ├── 01_PROGRAMA_NECESIDADES_Y_MODELO_FINANCIERO.md    # Perfil familiar, cuadro de áreas y finanzas completas
-│   ├── 02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md         # Zonificación exhaustiva PB y P1, flujos y cotas
-│   ├── 03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md   # Clima invisible, VMC, solar FV, domótica, materiales
-│   ├── 04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md # Qué se decidió, qué se descartó y por qué
-│   └── 05_CATALOGO_VISUAL_Y_DOCUMENTAL.md                # Mapa de planos HTML interactivos y 19 renders
+├── README.md                                                        # Este documento (visión general e índice)
 │
-├── history/                                              # Histórico íntegro de las conversaciones previas
-│   ├── context/                                          # Entregables de la Iteración 2 y 3
-│   │   ├── 1_planos_y_visores_html/                      # Visores web navegables y zoom 1:20
-│   │   ├── 2_renders_alta_resolucion/                    # Renders HD por iteración (1, 2 y 3)
-│   │   └── 3_conversacion_y_contexto/                    # Transcripción del chat y logs crudos (JSONL)
-│   └── iteracion1/                                       # Archivo original de la Iteración 1
+├── docs/                                                            # Documentación de Ejecución Oficial
+│   ├── PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md       # ⭐ SINGLE SOURCE OF TRUTH (Cotas, coordenadas, REBT, fontanería, VMC)
+│   ├── FICHAS_TECNICAS_ESTANCIAS_ZOOM_PROPUESTA_D.md                # Fichas técnicas 1:20 de las 17 zonas
+│   └── PROPUESTA_D_PABELLON_BIOCLIMATICO_OLEIROS.md                 # Memoria conceptual y bioclimática de Propuesta D
 │
-└── .agents/                                              # Skills de arquitectura y diseño avanzado
+├── context/                                                         # Contexto vivo sincronizado
+│   ├── 00_ESTADO_DEL_PROYECTO_Y_HOJA_DE_RUTA.md                    # Estado vigente, mandamientos y fases
+│   ├── 01_PROGRAMA_NECESIDADES_Y_MODELO_FINANCIERO.md               # Programa, finanzas y costes desglosados
+│   ├── 02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md                    # Zonificación, cotas X/Y/Z y superficies
+│   ├── 03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md              # Climatización Passivhaus, Bora, churrasqueira y piscina
+│   └── 04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md        # Historial de decisiones y alternativas rechazadas
+│
+├── propuestas/                                                      # Planos vectoriales SVG a escala y Renders
+│   ├── plano_constructivo_zona_norte_pb.svg                         # Detalle 1:50 Zona Norte PB
+│   ├── plano_constructivo_centro_patio_cocina_pb.svg                # Detalle 1:50 Centro PB (Patio, Cocina, Escalera)
+│   ├── plano_constructivo_sur_salon_porche_pb.svg                   # Detalle 1:50 Zona Sur PB (Salón, Porche, Piscina)
+│   ├── planta_baja_propuesta_d.svg                                  # Planta Baja General 1:100
+│   ├── planta_alta_propuesta_d.svg                                  # Planta Primera General 1:100
+│   ├── Presentacion_Hogar_Oleiros_Propuesta_D.pptx                  # PowerPoint 16:9 compatible con Mac (Keynote)
+│   └── renders/                                                     # Galería de 12 renders fotorrealistas
+│
+└── .agents/                                                         # Skills de arquitectura, bioclimática y cálculo
 ```
 
 ---
 
-## 🤖 Protocolo para Agentes de IA en Nuevas Conversaciones
+## 🤖 Protocolo Obligatorio para Agentes de IA
 
-Cuando inicies una nueva conversación o sesión de trabajo en este repositorio, **sigue este orden de lectura obligatorio**:
+Si eres un agente de IA que retoma o continúa este proyecto:
 
-1. **Lectura de arranque:** Consulta [`context/00_ESTADO_DEL_PROYECTO_Y_HOJA_DE_RUTA.md`](file:///home/antigravity/landslore/oleiros/context/00_ESTADO_DEL_PROYECTO_Y_HOJA_DE_RUTA.md) para situarte en el punto exacto de avance y revisar los mandamientos innegociables.
-2. **Consultas temáticas:**
-   * Si vas a tocar **distribución o geometría:** consulta [`context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md`](file:///home/antigravity/landslore/oleiros/context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md).
-   * Si vas a revisar **materiales, enchufes o instalaciones:** consulta [`context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md`](file:///home/antigravity/landslore/oleiros/context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md).
-   * Antes de proponer cualquier cambio espacial: **revisa [`context/04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md`](file:///home/antigravity/landslore/oleiros/context/04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md)** para no volver a plantear soluciones ya rechazadas por el usuario.
-3. **Plano de referencia:** El plano oficial vigente es [`planos_amueblamiento_detallado_iter3.html`](file:///home/antigravity/landslore/oleiros/history/context/1_planos_y_visores_html/planos_amueblamiento_detallado_iter3.html). Toda visual o render debe ser 100 % coherente con su orientación geográfica y distribución.
+1. **Lectura Obligatoria #1 (SSOT):** Lee [`docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md`](file:///home/antigravity/landslore/oleiros/docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md). Contiene las coordenadas exactas $(X, Y, Z)$, las dimensiones de muros, carpinterías, muebles, tomas de corriente Schuko/RJ45, caudales de ventilación VMC y trazado de fontanería.
+2. **Consultas de Contexto Rápido:**
+   * Para cotas y superficies: [`context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md`](file:///home/antigravity/landslore/oleiros/context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md).
+   * Para instalaciones Passivhaus y calidades: [`context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md`](file:///home/antigravity/landslore/oleiros/context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md).
+   * Para no reintroducir ideas descartadas: [`context/04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md`](file:///home/antigravity/landslore/oleiros/context/04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md).
+3. **Reglas de Oro Innegociables:**
+   * 🚫 **El Patio Corrala (16 m²) es a cielo abierto:** Jamás colocar cubiertas de cristal cerradas ni lucernarios motorizados. Es una corrala habitable a cota cero.
+   * 🚫 **Un solo patio en toda la casa:** El salón no tiene 2 patios. Al Norte linda con el Patio Corrala y al Sur se abre al Porche techado y la piscina.
+   * 🚫 **Escritorios infantiles siempre a 90°:** Apoyan en la pared Este para recibir luz lateral de la balconera Sur sin reflejos en las pantallas. Cero ventanas en tabiques medianeros.
+   * 🚫 **Baño PB legal NHG:** Requiere siempre distribuidor neutro con puerta corredera que evite comunicación directa con la cocina.
+   * 🚫 **Chimenea estanca:** Siempre con toma de aire exterior directa $\varnothing 150\text{ mm}$ (compatible con VMC Zehnder).
 
 ---
 
-## 🛠️ Entregables Interactivos Destacados
+## 📱 Visualizadores y Entregables en Vivo
 
-* 📐 **Plano General Clicable:** [`history/context/1_planos_y_visores_html/planos_amueblamiento_detallado_iter3.html`](file:///home/antigravity/landslore/oleiros/history/context/1_planos_y_visores_html/planos_amueblamiento_detallado_iter3.html)
-* 🔍 **Fichas Técnicas Zoom-In 1:20:** [`history/context/1_planos_y_visores_html/planos_zoom_estancias_detalle_iter3.html`](file:///home/antigravity/landslore/oleiros/history/context/1_planos_y_visores_html/planos_zoom_estancias_detalle_iter3.html)
-* 📸 **Radar de Cámaras 3D:** [`history/context/1_planos_y_visores_html/galeria_interactiva_casa_completa_iter3.html`](file:///home/antigravity/landslore/oleiros/history/context/1_planos_y_visores_html/galeria_interactiva_casa_completa_iter3.html)
-* 🏡 **Web Presentación Hogar:** [`history/context/1_planos_y_visores_html/presentacion_hogar_oleiros.html`](file:///home/antigravity/landslore/oleiros/history/context/1_planos_y_visores_html/presentacion_hogar_oleiros.html)
+* 🌐 **Web Móvil en Vivo (GitHub Pages):** [https://landslore.github.io/oleiros/](https://landslore.github.io/oleiros/) *(Planos SVG 1:50 interactivos, galería de renders y visor 3D Three.js)*.
+* 📊 **Presentación PowerPoint (.pptx):** [Presentacion_Hogar_Oleiros_Propuesta_D.pptx](file:///home/antigravity/landslore/oleiros/propuestas/Presentacion_Hogar_Oleiros_Propuesta_D.pptx) *(14 diapositivas maquetadas para Mac / Keynote)*.
+* ☁️ **Versión Cloud:** [Google Slides](https://docs.google.com/presentation/d/1AHYDhaDiH4zxxbKxN8ffe-7R8t2RK37y-VMJbs5lKhw/edit)

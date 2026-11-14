@@ -1,118 +1,124 @@
-# Distribución Arquitectónica, Zonificación y Cotas — Hogar Oleiros
+# Distribución Arquitectónica, Zonificación y Cotas — Hogar Oleiros (Propuesta D)
+## Documento Maestro de Zonificación y Coordenadas CAD
 
 ---
 
-## 1. Esquema Volumétrico: "Pabellón con Patio Corrala"
+## 1. Esquema Volumétrico: "Pabellón con Patio Corrala Habitable"
 
-La vivienda se organiza como una reinterpretación contemporánea de la corrala y el pazo gallego:
-* **Volumen compacto en forma de U articulado alrededor de un Patio Central:** Este esquema optimiza la eficiencia térmica en invierno y la ventilación cruzada en verano.
-* **Corrala Habitable Central (Opción 2):** En lugar de un pozo de luz inaccesible de cristal (patio "pecera"), es una estancia habitable de **19,0 m² útiles**, techada con un **lucernario motorizado de cristal con sensor de lluvia y viento**, solado enrasado continuo a cota cero con el interior, banco de lectura en iroko macizo y un alcorque con arce japonés (*Acer palmatum*).
+La vivienda se organiza como una reinterpretación bioclimática contemporánea del pazo gallego y la corrala tradicional:
+* **Volumen compacto en forma de U articulado alrededor del Patio Corrala:** Este esquema optimiza la captación solar pasiva, protege los espacios vivideros del viento Nordés y permite ventilación cruzada natural.
+* **Patio Corrala Central (16,0 m² libres · 4,00 × 4,00 m):** Claustro interior **100% habitable, accesible a cota cero ($\pm 0,00\text{ m}$) y abierto al cielo**. Evita el sobrecoste y el efecto invernadero de los lucernarios cerrados (~26.500 € de ahorro). Alberga un ejemplar de *Acer palmatum* en alcorque natural con grava volcánica, banco corrido de lectura en madera de iroko bajo alero perimetral de 80 cm y drenaje lineal perimetral oculto en acero inoxidable AISI 316.
 * **Orientación Solar Pasiva:**
-  * **Norte:** Espacios servidores y de transición (Pérgola, Trastero técnico, Hall, Despacho y Baño).
-  * **Sur:** Espacios nobles y de convivencia bañados por el sol (Salón, Comedor, Porche con Barbacoa y todos los Dormitorios).
-  * **Centro (Patio Corrala):** Inyecta luz cenital a la Galería interior, la Cocina, el Despacho y el Pasillo de Planta Primera.
+  * **Norte:** Espacios de acceso, amortiguación térmica y servicios (Pérgola 2 coches, Zaguán Mudroom cortavientos, Hall noble, Despacho Sanctasanctórum con luz a 90° y Baño PB con distribuidor neutro).
+  * **Centro:** Patio Corrala (16 m²), Escalera volada de roble y Cocina con isla Santos (15,2 m²).
+  * **Sur:** Espacios nobles de convivencia y descanso bañados por el sol (Salón con chimenea y TV 77", Comedor 10 pax, Porche techado de 3 m de fondo con churrasqueira, y en P1 todos los dormitorios orientados al mediodía con salida a Balcón Corrido Sur).
+  * **Oeste exterior:** Trastero de Surf/Bicis y Sala Técnica Passivhaus (aerotermia, VMC Zehnder e inversor solar).
 
 ---
 
-## 2. Planta Baja (Cota ±0,00 m) — Zonificación al Detalle
+## 2. Planta Baja (Cota ±0,00 m) — Cuadro de Cotas y Coordenadas
 
 ```
-+---------------------------------------------------------------------------------------+
-|                                    VIAL NORTE (Acceso)                                |
-+---------------------------+---------------------------+-------------------------------+
-| ZONA 1                    | ZONA 2                    | ZONA 3            | ZONA 4    |
-| Pérgola 2 Coches (28 m²)  | Hall Principal (12,4 m²)  | Despacho / Suite  | Baño PB   |
-| Wallbox 7,4 kW            | Única Puerta Exterior     | Visitas (11,2 m²) | Doble Acc.|
-| + Paso cubierto alero 2m  | Armario recibidor         | Corredera Cocina  | (7,8 m²)  |
-+---------------------------+---------------------------+-------------------+-----------+
-| ZONA 5                    | ZONA 6 y 7                | ZONA 8            | ZONA 10   |
-| Trastero Bicis / Surf     | Galería Oeste             | PATIO CORRALA     | Cocina    |
-| + Sala Técnica (8,1 m²)   | + Escalera a P1           | HABITABLE         | con Isla  |
-| Acceso exterior exclusivo | (Sube Norte -> Sur)       | (19,0 m²)         | (16,5 m²) |
-| (Cero barro en casa)      |                           | Lucernario motor. | + Lavand. |
-+---------------------------+---------------------------+-------------------+-----------+
-| ZONA 9                                                | ZONA 11                       |
-| Salón Principal con Chimenea panorámica               | Comedor Principal (10 plazas) |
-| y Muro TV 77" (28,2 m²)                               | abierto a cocina y porche     |
-+-------------------------------------------------------+-------------------------------+
-| ZONA 13                                                                               |
-| PORCHE CUBIERTO SUR (26,0 m²)                                                         |
-| [Oeste: Cuarto Jardín + Robot Cortacésped]         [Este: Churrasqueira Carbón 2,4m]  |
-+---------------------------------------------------------------------------------------+
-|                                    JARDÍN SUR                                         |
-+---------------------------------------------------------------------------------------+
+                                  VIAL PÚBLICO (ACCESO NORTE)
+   [ Retranqueo Frontal 5,00 m ]                       [ Retranqueo Frontal 5,00 m ]
++-------------------------------+      +-----------------------------------------+
+| PÉRGOLA 2 VEHÍCULOS (28,0 m²) | ===> | PORCHE NORTE PEATONAL (3,5 m²)          |
+| [X: 1,1..3,9m | Y: 5,0..12,0m]|      | Granito abujardado cota +0,05 m         |
+| Wallbox 7,4 kW + Paso cubierto|      +--------------------+--------------------+
++---------------+---------------+                           | Puerta pivotante 1,00m
+                |                                           v
+                v (Puerta COR 80 RPT)  +-----------------------------------------+
++-------------------------------+      | 02. HALL / RECIBIDOR (10,4 m²)          |
+| 01. ZAGUÁN MUDROOM (5,8 m²)   | ===> | [X: 6,2..9,7m | Y: 5,3..8,3m]           |
+| [X: 4,2..6,1m | Y: 5,3..8,4m] | Vidr.| Armario gabanero 1,80m + CGMP / RITI    |
+| C3 Pizarra · Banco zapatero   |      +--------------------+--------------------+
+| Armario secador ropa lluvia   |                           |
++---------------+---------------+      +--------------------+--------------------+
+                |                      | 03. DESPACHO SANCTASANCTÓRUM (11,5 m²)  |
+                v                      | [X: 9,8..13,6m | Y: 5,3..8,4m]          |
++-------------------------------+      | Ventana Norte 1,80m (Luz 90° sin reflej)|
+| TRASTERO SURF / SALA TÉCNICA  |      | Sofá-cama invitados + Puerta acústica   |
+| (8,2 m² útiles)               |      +--------------------+--------------------+
+| [X: 3,7..6,1m | Y: 8,5..11,9m]|                           |
+| Aerotermia + VMC Zehnder      |      +--------------------+--------------------+
+| Inversor 5kW + Racks 3 tablas |      | 04. BAÑO COMPLETO PB (5,2 m²)           |
++---------------+---------------+      | [X: 13,7..16,0m | Y: 5,3..7,6m]         |
+                |                      | Distribuidor neutro NHG · Ducha cota 0  |
+                |                      +-----------------------------------------+
+                |
+                |                      +-----------------------------------------+
+| ESCALERA VOLADA ROBLE 80mm    |      | 06. COCINA CON ISLA SANTOS (15,2 m²)    |
+| (17 peldaños · H=29 / CH=17,6)| <==> | [X: 12,6..16,8m | Y: 8,4..12,0m]        |
+| Sube Norte -> Sur a +3,15 m   | PATIO| Isla Dekton 2,80x1,00m + Bora Pure      |
+| Zanca oculta HEA 160 en muro  | 16m² | Desayunador Pocket + Columnas horno/frigo|
+| Barandilla vidrio 10+10 mm    |      +--------------------+--------------------+
++-------------------------------+                           |
+                                                            v
++-------------------------------+      +-----------------------------------------+
+| 08. SALÓN PRINCIPAL (26,5 m²) |      | 07. LAVANDERÍA & DESPENSA (5,6 m²)      |
+| [X: 7,9..13,2m | Y: 13,4..18,4| <==> | [X: 14,4..16,8m | Y: 12,1..14,4m]       |
+| Pared Oeste: Granito + TV 77\" | PASO | Lavadora+secadora en columna + Pila     |
+| Chimenea estanca leña Ø150 ext| COMED+-----------------------------------------+
+| Sofá modular L hacia TV y Sur |      | 09. COMEDOR PRINCIPAL 10 PAX (17,5 m²)  |
+| Gran corredera Cortizo 5,00 m |      | [X: 13,2..17,4m | Y: 13,4..17,6m]       |
++-------------------------------+      | Mesa roble 2,80x1,00m + Corredera 3,50m |
++--------------------------------------------------------------------------------+
+| 10. PORCHE SUR EXPANDIDO TECHADO (36,0 m² cubiertos · Fondo libre real 3,00 m) |
+| [X: 7,5..19,5m | Y: 18,4..21,4m] · Cota ±0,00 m tarima Iroko                   |
+| [Oeste: Lounge exterior Sunbrella]  [Centro: Mesa 10pax]  [Este: CHURRASQUEIRA]|
++--------------------------------------------------------------------------------+
+                                       |
+                                       v
++--------------------------------------------------------------------------------+
+| 11. PISCINA PRIVADA (7,5 × 3,5 m) & JARDÍN SUR SOLEADO                         |
+| [X: 9,5..17,0m | Y: 22,5..26,0m] · Profundidad 1,20 - 1,50 m · Cloración salina|
++--------------------------------------------------------------------------------+
 ```
-
-### Zonas Específicas de Planta Baja:
-* **Zona 1 — Pérgola para 2 vehículos (28,0 m²):** Muro ciego hacia el Hall. Desde la plaza de aparcamiento se camina 2 metros bajo el alero cubierto hasta la única puerta de entrada. Equipada con cargador inteligente de coche eléctrico Wallbox de 7,4 kW.
-* **Zona 2 — Hall y Vestíbulo Principal (12,4 m²):** Puerta blindada pivotante en fachada Norte. Incluye armario empotrado gabanero para abrigos y calzado, con vista directa a la cristalera del Patio Corrala.
-* **Zona 3 — Despacho / Suite de Invitados (11,2 m²):**
-  * Situado en la franja centro-norte.
-  * **Pared Sur:** Cristalera de 2,60 m de longitud con vistas panorámicas al Patio Corrala y **puerta corredera de 1,00 m de paso directo a la Cocina**.
-  * **Pared Este:** Sofá-cama ergonómico y puerta corredera hacia el antebaño del Baño PB.
-  * **Pared Oeste:** Mesa de teletrabajo de 1,80 m, estanterías, tomas de red dobles Cat 6A y monitor/TV de 43".
-  * **Funcionalidad doble:** Durante la semana funciona como despacho diario con atajo directo `Hall → Despacho → Cocina`; los fines de semana con invitados, las correderas se cierran y se convierte en una suite privada e independiente.
-* **Zona 4 — Baño Completo PB en Esquina Noreste (7,8 m²):**
-  * **Unificación vertical de bajantes:** Se sitúa justo al lado de la Cocina y directamente debajo del Baño de la Suite Principal de P1, concentrando el saneamiento y reduciendo recorridos y ruidos.
-  * **Doble Acceso:** Dispone de un antebaño/tocador accesible tanto desde el Despacho (visitas) como desde la Cocina (uso general de planta baja), con puertas correderas acústicas.
-  * Sector húmedo al Norte con plato de ducha enrasado walk-in e inodoro suspendido con cisterna empotrada Geberit.
-* **Zona 5 — Trastero de Surf/Bicis y Cuarto Técnico (8,1 m²):**
-  * Acceso exclusivamente exterior desde el fondo de la pérgola.
-  * Almacenaje de 4 bicicletas, tablas de surf, neoprenos con barra de secado y toma de agua exterior para lavado previo.
-  * Alberga la unidad interior de Aerotermia, el depósito de ACS, el recuperador VMC y el Rack de telecomunicaciones de 19".
-* **Zona 8 — Patio Central Corrala (19,0 m²):**
-  * Lucernario motorizado de apertura deslizante con sensor de lluvia y viento.
-  * Arce japonés en alcorque drenante con riego por goteo, banco corrido de iroko y dos sillones de exterior bajo techo.
-* **Zona 9 y 11 — Salón y Comedor Principal (46,2 m² conjunto):**
-  * Salón al Oeste con chimenea de biomasa/leña integrada, mueble suspendido y TV OLED 77" empotrada sin cableado visible.
-  * Comedor al Este con mesa para 10 personas, comunicado fluidamente con la Cocina y con salida a la zona de barbacoa del porche.
-* **Zona 10 y 12 — Cocina con Isla y Lavandería (22,5 m² conjunto):**
-  * Isla central de 3,00 × 1,05 m en Dekton con placa de inducción y extracción integrada Bora Pure.
-  * Mueble desayunador escamoteable para cafetera, tostadora y pequeño electrodoméstico.
-  * Lavandería técnica independiente (6,0 m²) con lavadora y secadora montadas en columna, pila de fregar y armario de plancha/Dyson.
-* **Zona 13, 14 y 15 — Porche Sur y Exteriores (26,0 m² cubiertos):**
-  * **Extremo Este (Zona 14):** Cocina de verano con barbacoa tradicional de carbón (*churrasqueira*), bancada de granito Zimbabwe de 2,40 m, fregadero auxiliar exterior y campana de tiro forzado integrada en el alero.
-  * **Extremo Oeste (Zona 15):** Cuarto estanco para herramientas de jardinería y base/garaje inferior automatizada para el robot cortacésped.
 
 ---
 
-## 3. Planta Primera (Cota +3,15 m) — Zonificación y Ergonomía
+## 3. Planta Primera (Cota +3,15 m) — Distribución y Privacidad
 
 ```
-+---------------------------------------------------------------------------------------+
-|                                  FACHADA NORTE (Técnica)                              |
-+---------------------------------------+-----------------------------------------------+
-| ZONA 20                               | ZONA 17                                       |
-| Baño Compartido Hijos (6,8 m²)        | Pasillo Galería Acristalado Superior Corrala  |
-| Doble lavabo, bañera/ducha, toallero  | (8,2 m²) con vistas cenitales al patio        |
-+---------------------------------------+-----------------------+-----------------------+
-| ZONA 18               | ZONA 19               | ZONA 22       | ZONA 23               |
-| Dormitorio Niña       | Dormitorio Niño       | Vestidor      | Baño Privado Suite    |
-| (14,6 m²)             | (14,6 m²)             | Suite (8,4 m²)| (6,3 m² - Ducha doble)|
-| Escritorio pared Este | Escritorio pared Este +---------------+-----------------------+
-| Cama + armario emp.   | Cama + armario emp.   | ZONA 21                               |
-| Salida a Balcón Sur   | Salida a Balcón Sur   | Suite Matrimonio Principal (16,5 m²)  |
-+-----------------------+-----------------------+---------------------------------------+
-| ZONA 24                                                                               |
-| BALCÓN CORRIDO SUR CON BARANDILLA DE VIDRIO (14,0 m²)                                 |
-+---------------------------------------------------------------------------------------+
+                            FACHADA NORTE (Técnica & Baños)
++---------------------------------------+---------------------------------------+
+| 15. BAÑO COMPARTIDO HIJOS (6,8 m²)    | 18. BAÑO PRIVADO SUITE (6,3 m²)       |
+| [X: 6,8..10,6m | Y: 6,5..8,3m]        | [X: 14,6..18,9m | Y: 6,3..7,7m]       |
+| Doble lavabo + Bañera/ducha 1,70x0,75 | Doble seno Dekton + Ducha doble 1,50m |
++---------------------------------------+---------------------------------------+
+| 12. DESEMBARCO & GALERÍA ACÚSTICA     | 17. VESTIDOR DE PASO SUITE (8,4 m²)   |
+| (8,2 m² útiles)                       | [X: 14,6..18,9m | Y: 7,8..9,8m]       |
+| [Pared Norte: MAMPARA 4+4 SILENCE]    | Armarios suelo a techo vidrio ahumado |
+| Vistas cenitales al Patio Corrala     +---------------------------------------+
+| Balizas nocturnas zócalo h=25 cm      | 16. MASTER SUITE MATRIMONIO (16,5 m²) |
++---------------------------------------+ [X: 14,6..18,9m | Y: 9,9..13,7m]      |
+| 13. DORMITORIO NIÑA (14,6 m²)         | Cama King Size 1,80x2,00m hacia el Sur|
+| [X: 6,8..10,6m | Y: 9,9..13,7m]       | Balconera corredera Cortizo 3,00 m    |
+| Mesa suspendida 1,80m en pared Este   | Salida directa a Balcón Corrido Sur   |
+| Luz a 90° · Cero contraluz en monitor |                                       |
+| Salida a Balcón Corrido Sur           |                                       |
+|---------------------------------------|                                       |
+| 14. DORMITORIO NIÑO (14,6 m²)         |                                       |
+| [X: 10,7..14,5m | Y: 9,9..13,7m]      |                                       |
+| Distribución gemela · Mesa pared Este |                                       |
+| Tabique acústico medianero Rw ≥ 50 dB |                                       |
++---------------------------------------+---------------------------------------+
+| 19. BALCÓN CORRIDO SUR P1 (14,0 m² · Fondo 1,40 m)                            |
+| [X: 8,5..18,5m | Y: 13,8..15,2m] · Barandilla continua vidrio 10+10 mm         |
++-------------------------------------------------------------------------------+
 ```
 
-### Ergonomía y Soluciones de Planta Primera:
-* **Escalera y Pasillo Superior "Corrala" (Zona 16 y 17):**
-  * La escalera arranca junto al Hall en planta baja y asciende en un solo tramo de Norte a Sur hasta la cota `+3,15 m`.
-  * Desembarca en una galería acristalada interior que bordea el Patio Corrala, dotada de barandilla de vidrio templado e iluminación de cortesía nocturna en zócalos (balizas LED a 25 cm para trayectos nocturnos de los niños).
-* **Dormitorios Infantiles (Zonas 18 y 19 — 14,6 m² cada uno):**
-  * **Orientación 100 % Sur:** Máxima luminosidad natural y aporte térmico en los meses fríos de invierno.
-  * **Ergonomía de estudio sin deslumbramiento:** Los escritorios de 1,80 m se sitúan **apoyados en la pared lateral Este**. La luz de los ventanales Sur entra perpendicular a 90°, eliminando completamente reflejos en las pantallas de portátiles/tablets y evitando la fatiga visual.
-  * Salida directa a través de balconeras correderas al Balcón Corrido Sur.
-* **Baño de los Hijos (Zona 20 — 6,8 m²):**
-  * Situado estratégicamente frente a ambos dormitorios en la fachada Norte.
-  * Mueble de doble seno para uso simultáneo matutino, bañera/ducha amplia y toallero radiador eléctrico programable.
-* **Suite Principal de Matrimonio (Zonas 21, 22 y 23 — 31,2 m² en conjunto):**
-  * Situada en el ala Este de la planta superior para máxima privacidad.
-  * **Dormitorio (16,5 m²):** Cama King Size (1,80 × 2,00 m) orientada al Sur con vistas panorámicas al jardín.
-  * **Vestidor de paso (8,4 m²):** Módulos de armario a ambos lados con puertas escamoteables y retroiluminación LED.
-  * **Baño privado (6,3 m²):** Dos lavabos suspendidos, ducha italiana doble con rociador de techo e inodoro en cabina semindependiente. Situado sobre el Baño de PB para optimización de bajantes.
-* **Balcón Corrido Sur (Zona 24 — 14,0 m²):**
-  * Balconada continua protegida con peto de vidrio estructural de seguridad que no interrumpe las vistas al jardín desde el interior de las camas.
+---
+
+## 4. Parámetros Urbanísticos y Cumplimiento Legal
+
+1. **Parcela:** $600,00\text{ m}^2$ (20 × 30 m). PGOM Oleiros (Ordenanza 2B).
+2. **Ocupación en Planta Baja:**
+   * Superficie cerrada PB: **$116,50\text{ m}^2$ ($19,42\% \le 20,00\%$)** $\rightarrow$ **CUMPLE**.
+   * Porche Sur cubierto ($36,00\text{ m}^2$): Computa al 50% ($18,00\text{ m}^2$).
+3. **Retranqueos:** Frontal $5,00\text{ m}$ al Norte, Laterales $3,00\text{ m}$ a Este y Oeste, Posterior $> 10,00\text{ m}$ al Sur $\rightarrow$ **CUMPLE**.
+4. **Normas do Hábitat Galego (NHG):**
+   * Despacho con luz y ventilación natural directa a Fachada Norte (hueco ventana $2,16\text{ m}^2 > 12\%$).
+   * Baño PB independizado de la cocina mediante distribuidor neutro con doble puerta.
+   * Todos los dormitorios con paso libre $> 80\text{ cm}$ alrededor de camas y armarios.
+   * Cocina con pasos libres de $105\text{ cm}$ y $110\text{ cm}$ alrededor de la isla central.

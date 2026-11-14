@@ -1,62 +1,71 @@
 # Estado del Proyecto y Hoja de Ruta — Hogar Oleiros
+## Versión Definitiva: Propuesta D (Proyecto de Ejecución y Aparejador)
 
-> **Documento de Contexto Vivo — Versión:** Iteración 3 (Validada)  
-> **Última actualización:** Noviembre 2026  
-> **Ubicación:** Oleiros (A Coruña) — Zona Liáns / Santa Cruz  
-> **Fórmula arquitectónica:** "Pabellón con Patio Corrala Habitable" (Opción C Optimizada — 212 m² construidos)
-
----
-
-## 1. Estado Actual del Proyecto
-
-El proyecto se encuentra en la **Iteración 3 completamente validada a nivel geométrico, de distribución y de zoom técnico (1:20)**.
-
-### Lo que está 100 % CERRADO Y VALIDADO:
-1. **Distribución en Planta Baja y Planta Primera:**
-   * Geometría en U alrededor del **Patio Corrala Central Habitable (19,0 m² útiles)** cubierto por lucernario motorizado de cristal con sensor de lluvia.
-   * **Reordenación del Ala Norte:** Despacho centralizado con vistas al patio corrala y puerta corredera de paso directo a cocina. Baño completo PB en esquina Noreste unificando bajantes con la cocina y la suite superior, dotado de antebaño con doble acceso corredero (desde despacho y desde cocina).
-   * **Accesos exteriores:** Única puerta principal en fachada Norte del Hall. La pérgola comunica únicamente con el exterior y con el trastero estanco de bicis/surf y cuarto técnico (sin paso interior para no meter barro ni arena).
-   * **Planta Primera (+3,15 m):** Pasillo superior acristalado sobre la corrala. Dormitorios infantiles con escritorios apoyados en pared lateral Este (luz natural a 90° sin reflejos en pantalla) y salida limpia al balcón corrido Sur con barandilla de cristal.
-2. **Plano General y Zoom Técnico Estancia a Estancia:**
-   * Archivo interactivo [`planos_amueblamiento_detallado_iter3.html`](file:///home/antigravity/landslore/oleiros/history/context/1_planos_y_visores_html/planos_amueblamiento_detallado_iter3.html).
-   * Archivo de zoom al centímetro [`planos_zoom_estancias_detalle_iter3.html`](file:///home/antigravity/landslore/oleiros/history/context/1_planos_y_visores_html/planos_zoom_estancias_detalle_iter3.html) con cotas, alturas de mecanismos eléctricos, tomas RJ45 Cat 6A, circuitos de suelo radiante/refrescante, bocas VMC y mobiliario exacto.
-3. **Instalaciones y Memoria Técnica:**
-   * Climatización invisible (Aerotermia + suelo radiante-refrescante + VMC doble flujo Zehnder con recuperador entálpico). Cero radiadores en paredes (solo toalleros en 3 baños) y cero splits de aire acondicionado.
-   * Fotovoltaica (10 paneles solares 4,5 kWp, inversor 5 kW híbrido, batería virtual + preinstalación batería física).
-   * Telecomunicaciones (Cat 6A S/FTP a todas las estancias, rack 19" 9U en cuarto técnico, 3 AP WiFi PoE).
-   * Porche Sur con barbacoa/churrasqueira de carbón tradicional en muro Este y cuarto de herramientas de jardín con base para robot cortacésped en muro Oeste. Riego automático Hunter Hydrawise de 3 zonas.
-4. **Presupuesto y Plan Financiero:**
-   * Presupuesto llave en mano cerrado: **662.980 €** (con preinstalación de piscina, o 689.380 € con piscina en Fase 1). Financiación calculada con fondos propios (468.000 € brutos, 383.000 € aplicados) e hipoteca de autopromoción (~280.000–306.000 €), preservando 58.000 € de colchón intocable y 27.000 € de fondo de imprevistos.
+> **Documento de Contexto Vivo — Versión:** Propuesta D (Consolidada y Auditada)  
+> **Fecha:** Noviembre 2026  
+> **Ubicación:** Liáns / Santa Cruz, Concello de Oleiros (A Coruña)  
+> **Fórmula arquitectónica:** "Pabellón Bioclimático Atlántico con Patio Corrala Abierto a Cota Cero"  
+> **Superficie Construida:** 215,00 m² (PB: 116,50 m² cerrados + P1: 98,50 m²)  
+> **Presupuesto Llave en Mano:** **662.980 €** (incluye autopromoción, licencias, aparejador y Passivhaus)
 
 ---
 
-## 2. Los Mandamientos Innegociables del Proyecto (Reglas de Oro)
+## 1. Estado Actual del Proyecto: Propuesta D Consolidada
 
-Cualquier agente de IA o diseñador que trabaje en este proyecto **DEBE RESPETAR ESTRICTAMENTE** las siguientes directrices acordadas con la familia:
+El proyecto ha completado su **auditoría crítica de habitabilidad, bioclimática y técnica**, resolviendo todas las incoherencias previas y alcanzando el nivel de **Proyecto de Ejecución (1:50 y 1:20)** para constructor:
 
-1. 🚫 **No inventar distribuciones en los renders:** Las imágenes deben ser 100 % fieles al plano 2D validado. Si una cámara mira de Norte a Sur en el Despacho, la Cocina está a la izquierda (Este) y el Patio Corrala a la derecha (Oeste). Jamás invertir orientaciones.
-2. 🚫 **No reintroducir radiadores ni splits vistos:** La climatización es 100 % invisible por suelo y techo.
-3. 🚫 **No abrir paso directo entre Pérgola de coches y Hall interior:** El muro entre la pérgola y el hall es ciego. El trastero de surf/bicis es estanco.
-4. 🚫 **No colocar escritorios frente a ventanas Sur o a contraluz:** Los puestos de estudio de los niños van en la pared Este con luz natural lateral a 90°.
-5. 🚫 **No usar patio pecera cerrado:** El patio central es una Corrala habitable todo el año con techo de vidrio retráctil/motorizado y suelo a cota cero.
-6. 🚫 **No modificar las bajantes unificadas:** La vertical de saneamiento en la esquina Noreste (Baño PB + Cocina + Baño Suite P1) debe mantenerse agrupada.
+### Decisiones Arquitectónicas Definitivas:
+1. **Patio Corrala Central (16,00 m² · 4,00 × 4,00 m):**
+   * Se descarta el lucernario cerrado de vidrio (ahorro de ~26.500 € y eliminación del sobrecalentamiento estival).
+   * Es un **claustro interior 100% habitable, accesible a cota cero ($\pm 0,00\text{ m}$) y abierto al cielo**.
+   * Tarima de Iroko macizo con clips inox ocultos, alcorque de grava volcánica con *Acer palmatum*, banco corrido de lectura bajo alero perimetral de 80 cm y canaleta de drenaje oculta en acero inoxidable AISI 316.
+2. **Esclusa Térmica: Zaguán Atlántico / Mudroom (5,80 m²):**
+   * Doble acceso: noble peatonal desde el Norte y acceso diario cubierto desde la pérgola de coches.
+   * Banco descalzador con zapatero ventilado para 16 pares, armario secador de ropa de lluvia con bandeja de goteo y extracción VMC directa.
+3. **Despacho Sanctasanctórum & Suite Invitados (11,50 m²):**
+   * Luz natural a 90° desde ventana Norte (cero reflejos en monitor). Cristalera fija al Patio Corrala con cortina acústica motorizada de lino. Puerta acústica pesada isofónica ($R_w \ge 38\text{ dB}$).
+4. **Baño Completo PB & Distribuidor Neutro (5,20 m²):**
+   * Totalmente legal según Normas do Hábitat Galego (NHG): independizado de la cocina mediante distribuidor neutro con puerta corredera oculta. Ducha walk-in enrasada cota cero con mampara de 8 mm y sanitarios suspendidos Geberit.
+5. **Cocina Santos Fine con Isla Central (15,20 m²):**
+   * Isla de $2,80 \times 1,00\text{ m}$ en Dekton Kelya con campana descendente integrada *Bora Pure* (cero campanas colgadas). Pasos libres reglamentarios: $105\text{ cm}$ al patio y $110\text{ cm}$ a columnas. Mueble desayunador con *Pocket Doors* escamoteables.
+6. **Salón-Comedor con Chimenea y Muro TV 77" (44,00 m² conjunto):**
+   * Muro Oeste de granito moreno gallego con pantalla OLED de 77" enrasada y chimenea panorámica estanca de leña con toma de aire exterior directa $\varnothing 150\text{ mm}$ (compatible 100% con VMC).
+   * Sofá modular en L orientado al Oeste (TV/chimenea) y al Sur (jardín/piscina).
+   * Gran corredera elevable *Cortizo Cor Vision Plus* de $5,00 \times 2,60\text{ m}$ a cota cero.
+7. **Porche Sur Expandido (Fondo real de 3,00 m · 36,00 m² cubiertos):**
+   * Protegido de la lluvia atlántica para comer fuera todo el año. Churrasqueira tradicional de granito gallego de obra en extremo Este con campana forja, bancada de granito Zimbabwe y leñero inferior.
+8. **Planta Primera (+3,15 m):**
+   * Galería acústica superior con mampara de vidrio laminar `4+4 Silence` sobre el claustro (aísla 42 dB de ruido entre plantas).
+   * Dormitorios infantiles (14,6 m² cada uno) con pupitres suspendidos en pared lateral Este (luz a 90° sin reflejos) y salida directa a Balcón Corrido Sur. Cero ventanas laterales en tabiques medianeros.
+   * Master Suite Matrimonio (31,2 m² con vestidor de paso doble con frentes de vidrio ahumado y baño privado doble).
 
 ---
 
-## 3. Hoja de Ruta y Próximos Pasos
+## 2. Mapa de Documentación Agéntica (SSOT Markdown)
 
-### Fase Actual:
-* **Generación visual estancia a estancia (Ángulos complementarios):**
-  * La primera vista rigurosamente verificada fue el **Despacho mirando al Sur** ([`iter3_estancia03_despacho_vista_sur_1794546084600.jpg`](file:///home/antigravity/landslore/oleiros/history/context/2_renders_alta_resolucion/iteracion_3/iter3_estancia03_despacho_vista_sur_1794546084600.jpg)).
-  * **Siguiente render pendiente:** Generar el **Ángulo 2 del Despacho (mirando de Sur a Norte)** utilizando la imagen de referencia del Ángulo 1 para garantizar coherencia exacta de materiales, iluminación y texturas.
-  * Continuar estancia a estancia con la misma metodología:
-    1. Cocina con isla y mueble desayunador.
-    2. Salón-Comedor hacia Porche y Chimenea.
-    3. Lavandería (lavadora y secadora en columna, encimera de doblado).
-    4. Suite Principal P1 (cama, vestidor y baño).
-    5. Dormitorios infantiles P1 (escritorio en pared Este y balcón Sur).
+Para garantizar que cualquier agente de IA o técnico pueda reproducir con exactitud milimétrica la vivienda sin necesidad de leer archivos HTML:
 
-### Fases Futuras del Proyecto:
-* **Enero – Marzo 2027:** Búsqueda activa y adquisición de la parcela en Liáns / Santa Cruz (500–700 m²).
-* **Abril – Noviembre 2027:** Contratación de arquitecto colegiado para Proyecto Básico y de Ejecución + Solicitud de Licencia Municipal en el Concello de Oleiros.
-* **Diciembre 2027 – Otoño 2028:** Licitación constructora a precio cerrado, inicio de obra y entrega llave en mano.
+| Documento | Ubicación | Contenido Técnico |
+|---|---|---|
+| **Memoria Maestra de Ejecución** | [`docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md`](file:///home/antigravity/landslore/oleiros/docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md) | Cotas milimétricas, coordenadas CAD, tabla de carpinterías, puntos de luz, tomas Schuko/RJ45, PEX fontanería, caudales VMC y pliego de condiciones de obra. |
+| **Distribución y Zonificación** | [`context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md`](file:///home/antigravity/landslore/oleiros/context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md) | Coordenadas por estancia, cuadros de superficies, cumplimiento PXOM 2B y habitabilidad NHG. |
+| **Memoria de Instalaciones** | [`context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md`](file:///home/antigravity/landslore/oleiros/context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md) | Aerotermia Vaillant, VMC Zehnder Q350, red Cat 6A, suelo radiante, radón y carpinterías Cortizo. |
+| **Fichas Técnicas 1:20** | [`docs/FICHAS_TECNICAS_ESTANCIAS_ZOOM_PROPUESTA_D.md`](file:///home/antigravity/landslore/oleiros/docs/FICHAS_TECNICAS_ESTANCIAS_ZOOM_PROPUESTA_D.md) | Detalle constructivo centímetro a centímetro de las 17 zonas. |
+
+---
+
+## 3. Planos Vectoriales Generados (Escala 1:50 y 1:100)
+
+* **Planta Baja General:** [`propuestas/planta_baja_propuesta_d.svg`](file:///home/antigravity/landslore/oleiros/propuestas/planta_baja_propuesta_d.svg)
+* **Planta Primera General:** [`propuestas/planta_alta_propuesta_d.svg`](file:///home/antigravity/landslore/oleiros/propuestas/planta_alta_propuesta_d.svg)
+* **Detalle 1:50 Zona Norte PB:** [`propuestas/plano_constructivo_zona_norte_pb.svg`](file:///home/antigravity/landslore/oleiros/propuestas/plano_constructivo_zona_norte_pb.svg)
+* **Detalle 1:50 Centro PB:** [`propuestas/plano_constructivo_centro_patio_cocina_pb.svg`](file:///home/antigravity/landslore/oleiros/propuestas/plano_constructivo_centro_patio_cocina_pb.svg)
+* **Detalle 1:50 Zona Sur PB:** [`propuestas/plano_constructivo_sur_salon_porche_pb.svg`](file:///home/antigravity/landslore/oleiros/propuestas/plano_constructivo_sur_salon_porche_pb.svg)
+
+---
+
+## 4. Canales de Visualización Interactiva
+
+1. **GitHub Pages (Web Móvil en Vivo):** [https://landslore.github.io/oleiros/](https://landslore.github.io/oleiros/)
+2. **Presentación PowerPoint Ejecutiva:** [`Presentacion_Hogar_Oleiros_Propuesta_D.pptx`](file:///home/antigravity/landslore/oleiros/propuestas/Presentacion_Hogar_Oleiros_Propuesta_D.pptx) (14 diapositivas 16:9 compatibles con Mac/Keynote).
+3. **Versión en la Nube:** [Google Slides](https://docs.google.com/presentation/d/1AHYDhaDiH4zxxbKxN8ffe-7R8t2RK37y-VMJbs5lKhw/edit)
