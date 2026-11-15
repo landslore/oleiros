@@ -5,18 +5,23 @@ description: Genera planos vectoriales SVG a escala con cotas, mobiliario reglam
 
 # Generador de Esquemas de Distribución (SVG - Oleiros)
 
-## Instrucciones
-1. Confirma antes de dibujar: orientación Norte exacta, cota de acceso desde el vial, pendiente del terreno y superficie máxima de ocupación en planta.
-2. Guarda cada propuesta en `/propuestas/` (ej. `planta-baja-v1.svg`, `planta-alta-v1.svg`, `implantacion-parcela.svg`).
-3. Usa escala precisa (`1 metro = 40 píxeles`) y estructura el código SVG en capas (`<g id="...">`):
-   - `parcela-y-retranqueos` (límites de finca y línea discontinua de ocupación máxima).
-   - `muros-exteriores` (espesor 35-40 cm contemplando aislamiento SATE o fachada ventilada).
-   - `tabiqueria-interior` (10-12 cm).
-   - `carpinterias` (puertas con ancho mínimo libre de 0,80 m y ventanas con barrido de apertura).
-   - `mobiliario-nhg` (mobiliario mínimo reglamentario en Galicia: cama doble 1,50x2,00 m con pasos libres, mesa comedor, sofás, sanitarios con espacio de uso).
-   - `textos-cotas-norte` (superficie útil de cada pieza, cotas generales, rosa de los vientos indicando Norte y vientos dominantes SW/NE).
-4. Si el navegador integrado de Antigravity está disponible, renderiza el archivo SVG para revisarlo visualmente con el usuario.
+## ⛔ Regla Primordial de Consulta Espacial
+> **NUNCA leas ni parsees archivos `.svg` previos para calcular cotas, superficies o adyacencias.**
+> Toda la información geométrica, cotas exactas, bounding boxes y puntos de enganche de puertas/ventanas está unificada en Markdown dentro de:
+> - [`espacios/PLANTA_BAJA_TOPOLOGIA.md`](espacios/PLANTA_BAJA_TOPOLOGIA.md)
+> - [`espacios/PLANTA_ALTA_TOPOLOGIA.md`](espacios/PLANTA_ALTA_TOPOLOGIA.md)
+> - Fichas particulares en [`espacios/estancias/`](espacios/estancias/)
+> - Criterios de materiales en [`espacios/CRITERIOS_MATERIALES_Y_ARMONIA.md`](espacios/CRITERIOS_MATERIALES_Y_ARMONIA.md)
 
-## Reglas de diseño
-- **Orientación:** Abre las piezas principales de día (salón, comedor, porche) hacia el **Sur / Suroeste** para captar el sol de tarde y resguarda la fachada **Norte** ubicando allí accesos, escaleras, baños, lavadero y garaje.
-- **Protección de lluvia:** Diseña el acceso peatonal principal bajo cubierta o retranqueado para evitar entrada directa de agua y viento.
+## Instrucciones
+1. **Extracción Paramétrica:** Obtén las coordenadas $(X, Y)$ y dimensiones directamente desde las tablas de `espacios/` antes de trazar cualquier línea.
+2. **Escala y Ejes:** Usa escala precisa (`1 metro = 50 píxeles` en plantas generales; `1 metro = 100 píxeles` en detalles 1:20) con origen `(0,0)` en el vértice Noroeste exterior.
+3. **Estructura de Capas SVG (`<g id="...">`):**
+   - `ejes-estructurales` (Líneas finas de trazo y punto con rotulación de ejes A-E y 1-6).
+   - `muros-exteriores` (Espesor 35-40 cm con rayado técnico ANSI31 o aislamiento SATE).
+   - `tabiqueria-interior` (Espesor 10-15 cm según aislamiento acústico).
+   - `carpinterias` (Puertas con barrido de apertura y cotas de paso libre reglamentarias NHG $\ge 0,80\text{ m}$).
+   - `mobiliario-fijo-y-nhg` (Círculos libres $\varnothing 1,20\text{ m}$ / $\varnothing 1,50\text{ m}$, bancada cocina Santos, sanitarios y armarios).
+   - `cotas-y-rotulacion` (Superficie útil de cada pieza, identificador `PB-XX` / `PA-XX` y cota de nivel Z).
+4. Guarda las propuestas y versiones vectoriales en `propuestas/` o `v2/planos/`.
+5. Si actualizas alguna cota o puerta en el dibujo, refleja inmediatamente el cambio en la ficha `.md` correspondiente de `espacios/estancias/`.
