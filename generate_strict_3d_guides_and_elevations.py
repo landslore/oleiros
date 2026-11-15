@@ -166,7 +166,7 @@ def build_4_elevations_svg() -> str:
         out.append(f'<circle cx="{xx:.1f}" cy="102" r="7.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>')
         out.append(f'<text x="{xx:.1f}" y="105" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="6.2" font-weight="700">{lbl}</text>')
 
-    # Cuerpo Oeste 1 Planta visto desde el Sur (Muro de Granito del Salón X=4.00..6.15, Z=0..3.45m + Chimenea +7.25m)
+    # Cuerpo Oeste 1 Planta visto desde el Sur (Muro de Granito del Salón extendido hasta el Porche X=4.00..6.15, Z=0..3.45m + Chimenea +7.25m)
     out.append(f'<rect x="{sx(4.00):.1f}" y="{sy(3.45):.1f}" width="{2.15*S:.1f}" height="{3.45*S:.1f}" fill="#334155" stroke="#cbd5e1" stroke-width="1.4"/>')
     out.append(f'<rect x="{sx(4.40):.1f}" y="{sy(7.25):.1f}" width="{0.55*S:.1f}" height="{3.80*S:.1f}" fill="#0f172a" stroke="#94a3b8" stroke-width="1.1"/>')
     out.append(f'<text x="{sx(5.07):.1f}" y="{sy(1.75):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.8" transform="rotate(-90 {sx(5.07):.1f} {sy(1.75):.1f})">MURO GRANITO SALÓN</text>')
@@ -249,23 +249,29 @@ def build_4_elevations_svg() -> str:
     out.append(f'<rect x="{ex(18.00):.1f}" y="{ey(6.80):.1f}" width="{13.00*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
     out.append(f'<rect x="{ex(18.05):.1f}" y="{ey(6.80):.1f}" width="{13.10*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
 
-    # Vuelo del Porche Sur (Y=21.45..18.45 -> 3,00 m) + Churrasqueira + Vuelo del Balcón Sur P1 (Y=19.40..18.00 -> 1,40 m)
+    # Vuelo del Porche Sur (Y=21.45..18.45 -> 3,00 m) + Muro Ciego Posterior de la Churrasqueira de Granito + Balcón Sur P1 unificado a 3,00m
     out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(3.15):.1f}" width="{3.00*S:.1f}" height="{0.30*S:.1f}" fill="#334155" stroke="#f8fafc" stroke-width="1.3"/>')
     out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(2.85):.1f}" width="{0.35*S:.1f}" height="{2.85*S:.1f}" fill="#334155" stroke="#cbd5e1" stroke-width="1.2"/>')
-    out.append(f'<rect x="{ex(21.10):.1f}" y="{ey(2.85):.1f}" width="{1.60*S:.1f}" height="{2.85*S:.1f}" fill="#334155" stroke="#f59e0b" stroke-width="1.0"/>')
-    out.append(f'<text x="{ex(20.30):.1f}" y="{ey(1.50):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="5.0">CHURRASQUEIRA</text>')
-    # Balcón Sur P1 (Y=19.40..18.00) con barandilla vidrio y celosía Iroko
-    out.append(f'<rect x="{ex(19.40):.1f}" y="{ey(3.15):.1f}" width="{1.40*S:.1f}" height="{0.25*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>')
-    out.append(f'<rect x="{ex(19.40):.1f}" y="{ey(4.25):.1f}" width="{1.40*S:.1f}" height="{1.10*S:.1f}" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>')
+    # Muro ciego posterior de piedra de la Churrasqueira (mira al interior del porche, ciego al Este)
+    out.append(f'<rect x="{ex(21.10):.1f}" y="{ey(2.85):.1f}" width="{1.60*S:.1f}" height="{2.85*S:.1f}" fill="#334155" stroke="#64748b" stroke-width="1.2"/>')
+    out.append(f'<text x="{ex(20.30):.1f}" y="{ey(1.50):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.0">MURO TRASERO CHURRASQUEIRA</text>')
+    # Balcón Sur P1 unificado (Y=21.45..18.00 -> 3,00 m) con celosía Iroko
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(3.15):.1f}" width="{3.00*S:.1f}" height="{0.25*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>')
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(4.25):.1f}" width="{3.00*S:.1f}" height="{1.10*S:.1f}" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>')
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(6.60):.1f}" width="{0.30*S:.1f}" height="{3.25*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="1.0"/>')
 
-    # Huecos Fachada Este:
-    # PB: C-04 Ventana Lavandería (Y=11.95..12.85, Z=1.40..2.40)
+    # Huecos Fachada Este Actualizados:
+    # PB: C-04 Ventana Lavandería (Y=11.95..12.85, Z=1.40..2.40) + C-04B Ventana Corrida Cocina sobre encimera (Y=9.20..11.20, Z=1.15..1.65)
     out.append(f'<rect x="{ex(12.85):.1f}" y="{ey(2.40):.1f}" width="{0.90*S:.1f}" height="{1.00*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
     out.append(f'<text x="{ex(12.40):.1f}" y="{ey(2.60):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">C-04 LAVANDERÍA (0,90×1,00)</text>')
-    # P1: C-14B Ventana Vestidor Master Suite (Y=9.40..10.40, Z=4.15..5.35) + Listones Iroko
+    out.append(f'<rect x="{ex(11.20):.1f}" y="{ey(1.65):.1f}" width="{2.00*S:.1f}" height="{0.50*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
+    out.append(f'<text x="{ex(10.20):.1f}" y="{ey(1.85):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.8">C-04B COCINA CORRIDA (2,00×0,50)</text>')
+    # P1: C-14B Ventana Vestidor Master Suite (Y=9.40..10.40, Z=4.15..5.35) + C-14C Ventana Este Suite (Y=14.00..15.20, Z=4.15..5.35)
     out.append(f'<rect x="{ex(10.75):.1f}" y="{ey(5.55):.1f}" width="{1.70*S:.1f}" height="{1.60*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>')
     out.append(f'<rect x="{ex(10.40):.1f}" y="{ey(5.35):.1f}" width="{1.00*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<text x="{ex(9.90):.1f}" y="{ey(5.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.2" font-weight="700">C-14B VESTIDOR SUITE (1,00×1,20)</text>')
+    out.append(f'<text x="{ex(9.90):.1f}" y="{ey(5.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0" font-weight="700">C-14B VESTIDOR (1,00×1,20)</text>')
+    out.append(f'<rect x="{ex(15.20):.1f}" y="{ey(5.35):.1f}" width="{1.20*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
+    out.append(f'<text x="{ex(14.60):.1f}" y="{ey(5.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0" font-weight="700">C-14C SUITE ESTE (1,20×1,20)</text>')
 
     # Copa del Arce Japonés asomando en sección/proyección central (Y=8.40..12.40)
     out.append(f'<line x1="{ex(12.40):.1f}" y1="{ey(3.15):.1f}" x2="{ex(12.40):.1f}" y2="{ey(6.80):.1f}" stroke="#10b981" stroke-width="0.9" stroke-dasharray="4,3"/>')
@@ -274,8 +280,7 @@ def build_4_elevations_svg() -> str:
 
     # Cotas Horizontales Alzado Este
     out.append(dim_h(ex(21.45), ex(18.45), gy3, 32, "3,00 m (Porche Sur)", "#fbbf24"))
-    out.append(dim_h(ex(19.40), ex(18.00), gy3, 14, "1,40m Balcón", "#38bdf8"))
-    out.append(dim_h(ex(18.00), ex(12.40), gy3, 32, "5,60 m (Crujía Sur)", "#38bdf8"))
+    out.append(dim_h(ex(18.45), ex(12.40), gy3, 32, "6,05 m (Crujía Sur)", "#38bdf8"))
     out.append(dim_h(ex(12.40), ex(8.40), gy3, 32, "4,00 m (Crujía Central)", "#10b981"))
     out.append(dim_h(ex(8.40), ex(5.00), gy3, 32, "3,40 m (Crujía Norte)", "#38bdf8"))
     out.append(dim_h(ex(21.45), ex(5.00), gy3, 56, "16,45 m (LONGITUD TOTAL EDIFICACIÓN + PORCHE SUR EN EJE E)", "#f8fafc"))
@@ -308,18 +313,17 @@ def build_4_elevations_svg() -> str:
         out.append(f'<circle cx="{xx:.1f}" cy="632" r="7.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>')
         out.append(f'<text x="{xx:.1f}" y="635" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="6.0" font-weight="700">{lbl}</text>')
 
-    # Tercer plano al fondo (X=6.15): Volumen Planta Primera SATE blanco (Y=5.00..18.00, Z=3.45..6.80) + Balcón Sur (Y=18.00..19.40) + Porche Sur (Y=18.45..21.45)
+    # Tercer plano al fondo (X=6.15): Volumen Planta Primera SATE blanco (Y=5.00..18.00, Z=3.45..6.80) + Balcón Sur unificado (Y=18.00..21.45)
     out.append(f'<rect x="{wx(5.00):.1f}" y="{wy(6.80):.1f}" width="{13.00*S:.1f}" height="{3.35*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
     out.append(f'<rect x="{wx(4.95):.1f}" y="{wy(6.80):.1f}" width="{13.10*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
-    out.append(f'<text x="{wx(11.50):.1f}" y="{wy(5.20):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.5" font-weight="700">FACHADA OESTE P1 CIEGA (SATE BLANCO · PROTECCIÓN TÉRMICA NOROESTE)</text>')
-    # Vuelo Balcón Sur P1 (Y=18.00..19.40) y Porche Sur PB (Y=18.45..21.45)
-    out.append(f'<rect x="{wx(18.00):.1f}" y="{wy(3.15):.1f}" width="{1.40*S:.1f}" height="{0.25*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>')
-    out.append(f'<rect x="{wx(18.00):.1f}" y="{wy(4.25):.1f}" width="{1.40*S:.1f}" height="{1.10*S:.1f}" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>')
-    out.append(f'<rect x="{wx(18.45):.1f}" y="{wy(3.15):.1f}" width="{3.00*S:.1f}" height="{0.30*S:.1f}" fill="#334155" stroke="#f8fafc" stroke-width="1.3"/>')
-    out.append(f'<rect x="{wx(21.10):.1f}" y="{wy(2.85):.1f}" width="{0.35*S:.1f}" height="{2.85*S:.1f}" fill="#334155" stroke="#cbd5e1" stroke-width="1.2"/>')
+    out.append(f'<text x="{wx(11.50):.1f}" y="{wy(5.20):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.5" font-weight="700">FACHADA OESTE P1 CIEGA (SATE BLANCO · BLINDAJE TÉRMICO NOROESTE)</text>')
+    # Vuelo Balcón Sur P1 unificado (Y=18.00..21.45 -> 3,45 m)
+    out.append(f'<rect x="{wx(18.00):.1f}" y="{wy(3.15):.1f}" width="{3.45*S:.1f}" height="{0.25*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>')
+    out.append(f'<rect x="{wx(18.00):.1f}" y="{wy(4.25):.1f}" width="{3.45*S:.1f}" height="{1.10*S:.1f}" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>')
 
-    # Segundo plano (X=4.00): Cuerpo 1 Planta en Mampostería de Granito Gallego (Y=5.00..18.45, Z=0..3.45)
-    out.append(f'<rect x="{wx(5.00):.1f}" y="{wy(3.45):.1f}" width="{13.45*S:.1f}" height="{3.45*S:.1f}" fill="#334155" stroke="#e2e8f0" stroke-width="1.5"/>')
+    # Segundo plano (X=4.00): Muro de Granito Continuo extendido hasta el final del Porche (Y=5.00..21.45 -> 16,45 m continuos)
+    out.append(f'<rect x="{wx(5.00):.1f}" y="{wy(3.45):.1f}" width="{16.45*S:.1f}" height="{3.45*S:.1f}" fill="#334155" stroke="#e2e8f0" stroke-width="1.5"/>')
+    out.append(f'<text x="{wx(19.95):.1f}" y="{wy(1.75):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">MURO OESTE CIERRE PORCHE</text>')
     # Puerta P-02 Zaguán Mudroom (Y=6.60..7.50, Z=0..2.20)
     out.append(f'<rect x="{wx(6.60):.1f}" y="{wy(2.20):.1f}" width="{0.90*S:.1f}" height="{2.20*S:.1f}" fill="#78350f" stroke="#fbbf24" stroke-width="1.2"/>')
     out.append(f'<text x="{wx(7.05):.1f}" y="{wy(2.40):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">P-02 MUDROOM</text>')
@@ -340,21 +344,21 @@ def build_4_elevations_svg() -> str:
     # Cotas Horizontales Alzado Oeste
     out.append(dim_h(wx(5.00), wx(11.80), gy4, 32, "6,80 m (Pérgola 2 Coches + Mudroom/Surf)", "#38bdf8"))
     out.append(dim_h(wx(11.80), wx(18.45), gy4, 32, "6,65 m (Muro Granito Salón + Chimenea)", "#cbd5e1"))
-    out.append(dim_h(wx(18.45), wx(21.45), gy4, 32, "3,00 m (Porche Sur)", "#fbbf24"))
-    out.append(dim_h(wx(5.00), wx(21.45), gy4, 56, "16,45 m (DESARROLLO TOTAL OESTE · EJES 1 - 5)", "#f8fafc"))
+    out.append(dim_h(wx(18.45), wx(21.45), gy4, 32, "3,00 m (Cierre Lateral Granito Porche Sur)", "#fbbf24"))
+    out.append(dim_h(wx(5.00), wx(21.45), gy4, 56, "16,45 m (DESARROLLO TOTAL OESTE CERRADO Y PROTEGIDO)", "#f8fafc"))
 
     out.append(title_block(
         28, H - 155, W - 56, 128,
         plano_id="A-03",
         title="ALZADOS EXTERIORES DE LAS 4 FACHADAS (NORTE, SUR, ESTE Y OESTE)",
         scale="1:100 (Cotas en m)",
-        phase="PROYECTO DE EJECUCIÓN (GEOMETRÍA ESTRICTA)",
-        subtitle="Correspondencia 1:1 con Plantas A-01, A-02 y E-04 · Zócalo Granito Gallego + SATE Blanco Cálido + Carpintería Cortizo + Iroko",
+        phase="PROYECTO DE EJECUCIÓN (GEOMETRÍA ESTRICTA ITERACIÓN #02)",
+        subtitle="Muro Cortaviento Oeste Continuo + Vuelo Sur Unificado Sin Escalón + Preinstalación Piscina en Césped + Ventanas Este",
         extra_notes=[
             "Alzado Norte: Puerta Pivotante P-01 (1,10m), Despacho C-02 (1,80m), Baño PB C-03 (1,00m), Baño Hijos C-10 (1,00m), Sala Polivalente C-10B (1,80m) y Baño Suite C-11 (1,20m)",
-            "Alzado Sur: Correderas Salón C-08 (4,80m) y Comedor C-09 (3,60m) bajo Porche de 3,00m; en P1 Balconeras C-12 (2,20m), C-13 (2,20m) y C-14 (2,70m) a Balcón Sur de 1,40m",
-            "Alzado Este: Ventana Lavandería C-04 (0,90m) en PB y Ventana Vestidor Suite C-14B (1,00×1,20m) en P1; Churrasqueira de granito en extremo Este del Porche Sur",
-            "Alzado Oeste: Escalonamiento Pérgola (+2,90m) -> Cuerpo 1 Planta Mudroom/Sala Técnica/Salón en granito (+3,45m con 12 paneles FV) -> Cuerpo 2 Plantas SATE (+6,80m)",
+            "Alzado Sur: Correderas Salón C-08 (4,80m) y Comedor C-09 (3,60m) bajo Porche de 3,00m cerrado al Oeste por muro de granito; Balcón corrido P1 de 3,00m unificado con 3 balconeras",
+            "Alzado Este: Ventana Lavandería C-04 (0,90m) + Ventana Corrida Cocina C-04B (2,00×0,50m) en PB; Ventanas Vestidor C-14B y Suite C-14C en P1; Muro ciego trasero de Churrasqueira",
+            "Alzado Oeste: Muro de granito continuo de 16,45m (Mudroom, Sala Técnica, Salón y Cierre Porche Sur) con chimenea +7,25m, 12 paneles FV y Pérgola 2 coches",
         ]
     ))
 
@@ -425,19 +429,18 @@ def get_strict_3d_faces():
         ny = max(1, int(round(abs(yb - ya) / 1.5)))
         add_subdivided_quad((x0, ya, z_val), (x1, ya, z_val), (x1, yb, z_val), (x0, yb, z_val), color, edgecolor, alpha, layer, bias, nx, ny)
 
-    # CAPA 0: Parcela Césped (20 x 30 m), Vial, Piscina Sur, Solárium, Tarima Porche y Suelo Patio
+    # CAPA 0: Parcela Césped Completa (20 x 30 m), Vial, Tarima Porche y Suelo Patio (SIN PISCINA, SOLO CÉSPED)
     add_rect_on_z(0, 20, 0, 30, 0.0, "#4d7c0f", "#3f6212", 1.0, layer=0, bias=1.5)
     add_rect_on_z(1.0, 4.5, 0.0, 11.8, 0.02, "#94a3b8", "#64748b", 1.0, layer=0, bias=0.6)
     add_rect_on_z(6.5, 9.1, 0.0, 5.0, 0.02, "#cbd5e1", "#94a3b8", 1.0, layer=0, bias=0.6)
-    add_rect_on_z(6.15, 16.00, 22.50, 27.00, 0.03, "#e7e5e4", "#a8a29e", 1.0, layer=0, bias=0.4)
-    add_rect_on_z(6.15, 8.00, 23.00, 26.50, 0.05, "#92400e", "#78350f", 1.0, layer=0, bias=-0.5)
-    add_rect_on_z(8.00, 15.50, 23.00, 26.50, 0.05, "#06b6d4", "#0284c7", 1.0, layer=0, bias=-0.5)
+    # Tarima Iroko Porche Sur (X=6.15..17.00, Y=18.45..21.45)
     add_rect_on_z(6.15, 17.00, 18.45, 21.45, 0.04, "#92400e", "#78350f", 1.0, layer=0, bias=-0.3)
+    # Suelo Patio Central
     add_rect_on_z(8.50, 12.50, 8.40, 12.40, 0.06, "#92400e", "#78350f", 1.0, layer=0, bias=-0.4)
 
     # CAPA 1: VOLÚMENES ARQUITECTÓNICOS ESTRICTOS
-    # 1. Cuerpo Oeste de 1 Sola Planta en Mampostería de Granito Gallego (X=4.00..6.15, Y=5.00..18.45, Z=0..3.45)
-    add_box(4.00, 6.15, 5.00, 18.45, 0.0, 3.45, "#9ca3af", "#4b5563", 1.0, layer=1)
+    # 1. Cuerpo Oeste Continuo en Granito Gallego extendido hasta el final del Porche Sur (X=4.00..6.15, Y=5.00..21.45, Z=0..3.45)
+    add_box(4.00, 6.15, 5.00, 21.45, 0.0, 3.45, "#9ca3af", "#4b5563", 1.0, layer=1)
     # Cubierta Grava + 12 Paneles Solares FV (X=4.25..5.90, Y=7.20..17.00, Z=3.50)
     add_rect_on_z(4.08, 6.12, 5.08, 18.35, 3.47, "#cbd5e1", "#64748b", 1.0, layer=1, bias=-0.2)
     for r in range(6):
@@ -472,10 +475,12 @@ def get_strict_3d_faces():
     # 5. Porche Sur Cubierto (X=6.15..17.00, Y=18.45..21.45, techo en Z=2.90..3.15) + Churrasqueira Este
     add_box(6.15, 17.00, 18.45, 21.45, 2.90, 3.15, "#f8fafc", "#cbd5e1", 1.0, layer=1)
     add_box(16.65, 17.00, 21.10, 21.45, 0.0, 2.90, "#d6d3d1", "#78716c", 1.0, layer=1)
+    # Muro de cierre posterior de la Churrasqueira al Este (ciego en cara exterior)
     add_box(15.60, 16.95, 19.20, 21.00, 0.0, 2.90, "#4b5563", "#1f2937", 1.0, layer=1)
 
-    # 6. Balcón Corrido Sur P1 (X=6.15..17.00, Y=18.00..19.40, losa Z=3.15..3.35)
-    add_box(6.15, 17.00, 18.00, 19.40, 3.15, 3.35, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 6. Balcón Corrido Sur P1 UNIFICADO (X=6.15..17.00, Y=18.00..21.45, losa Z=3.15..3.35)
+    # Vuela exactamente los 3.00 m del porche, eliminando el doble escalón
+    add_box(6.15, 17.00, 18.00, 21.45, 3.15, 3.35, "#f8fafc", "#cbd5e1", 1.0, layer=1)
 
     # CAPA 1 CON BIAS FRONTAL: CARPINTERÍAS Y HUECOS ESTRICTOS EN LAS 4 FACHADAS
     # --- FACHADA NORTE (Y = 4.92) ---
@@ -497,15 +502,17 @@ def get_strict_3d_faces():
     add_rect_on_y(12.85, 13.80, 18.08, 3.35, 5.75, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5)# Paño Iroko entre D2 y Suite
     add_rect_on_y(13.80, 16.50, 18.08, 3.35, 5.75, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-14 Balconera Suite (2,70x2,40)
 
-    # Barandilla de vidrio del Balcón Sur (Y = 19.42)
-    add_rect_on_y(6.15, 17.00, 19.42, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
-    add_rect_on_x(6.15, 18.00, 19.40, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
-    add_rect_on_x(17.00, 18.00, 19.40, 3.35, 6.60, "#92400e", "#78350f", 0.92, layer=1, bias=-0.3)
+    # Barandilla de vidrio del Balcón Sur al borde de los 3.00 m (Y = 21.42)
+    add_rect_on_y(6.15, 17.00, 21.42, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
+    add_rect_on_x(6.15, 18.00, 21.40, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
+    add_rect_on_x(17.00, 18.00, 21.40, 3.35, 6.60, "#92400e", "#78350f", 0.92, layer=1, bias=-0.3)
 
     # --- FACHADA ESTE (X = 17.08) ---
     add_rect_on_x(17.08, 11.95, 12.85, 1.40, 2.40, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-04 Ventana Lavandería PB (0,90x1,00)
+    add_rect_on_x(17.08, 9.20, 11.20, 1.15, 1.65, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-04B Ventana Corrida Cocina PB (2,00x0,50)
     add_rect_on_x(17.08, 9.40, 10.40, 4.15, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-14B Ventana Vestidor Suite P1 (1,00x1,20)
     add_rect_on_x(17.08, 10.40, 11.20, 4.15, 5.55, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5)# Listones Iroko Este
+    add_rect_on_x(17.08, 14.00, 15.20, 4.15, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-14C Ventana Suite Este (1,20x1,20)
 
     # --- FACHADA OESTE (X = 3.92 en PB) ---
     add_rect_on_x(3.92, 6.60, 7.50, 0.0, 2.20, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)    # P-02 Puerta Mudroom

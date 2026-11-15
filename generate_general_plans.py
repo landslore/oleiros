@@ -200,7 +200,7 @@ def build_planta_baja_svg():
     # =========================================================================
     out.append('<g id="muros-exteriores">')
     wt = L(0.35)  # 14 px
-    # Muro Norte Ala Oeste (Zaguán): X=3.85..6.15, Y=5.00..5.35
+    # Muro Norte Ala Oeste (Zaguán Mudroom): X=3.85..6.15, Y=5.00..5.35
     out.append(draw_wall_segment(X(3.85), Y(5.00), L(2.30), wt, "ext"))
     # Muro Norte Cuerpo Principal: X=6.15..17.00, Y=5.00..5.35 (con huecos C-01, C-03, C-04)
     out.append(draw_wall_segment(X(6.15), Y(5.00), L(1.55), wt, "ext"))   # Tramo hasta puerta C-01 (X=7.70..8.70)
@@ -208,14 +208,17 @@ def build_planta_baja_svg():
     out.append(draw_wall_segment(X(12.40), Y(5.00), L(2.10), wt, "ext"))  # Tramo hasta ventana Baño C-04 (X=14.50..15.30)
     out.append(draw_wall_segment(X(15.30), Y(5.00), L(1.70), wt, "ext"))  # Esquina NE hasta X=17.00
 
-    # Muro Oeste Ala Mudroom + Trastero: X=3.85..4.20, Y=5.00..12.40 (con huecos C-02 y C-09)
+    # Muro Oeste Ala de Servicios Técnica (Mudroom + Surf + Lavandería + Caseta Jardín): X=3.85..4.20, Y=5.00..18.45 (13,45 m continuos)
     out.append(draw_wall_segment(X(3.85), Y(5.00), wt, L(1.40), "ext"))   # Hasta puerta C-02 (Y=6.40..7.30)
     out.append(draw_wall_segment(X(3.85), Y(7.30), wt, L(2.50), "ext"))   # Hasta puerta Trastero C-09 (Y=9.80..10.70)
-    out.append(draw_wall_segment(X(3.85), Y(10.70), wt, L(1.70), "ext"))  # Hasta esquina SW trastero Y=12.40
-    # Cierre Sur Trastero: X=3.85..6.15, Y=12.05..12.40
-    out.append(draw_wall_segment(X(3.85), Y(12.05), L(2.30), wt, "ext"))
+    out.append(draw_wall_segment(X(3.85), Y(10.70), wt, L(4.50), "ext"))  # Tramo ciego lavandería y caseta
+    out.append(draw_wall_segment(X(3.85), Y(15.20), wt, L(1.40), "ext"))  # Hasta puerta Caseta Jardín (Y=16.60..17.50)
+    out.append(draw_wall_segment(X(3.85), Y(17.50), wt, L(0.95), "ext"))  # Esquina SW
 
-    # Muro Oeste Salón y Escalera: X=6.15..6.50, Y=12.05..18.45
+    # Cierre Sur Caseta Jardín y Muro Cortaviento Porche Sur (Y=18.10..18.45, X=3.85..6.15)
+    out.append(draw_wall_segment(X(3.85), Y(18.10), L(2.30), wt, "ext"))
+
+    # Muro Oeste Salón y Escalera (separación con lavandería y caseta): X=6.15..6.50, Y=5.35..18.45
     out.append(draw_wall_segment(X(6.15), Y(12.05), wt, L(6.40), "ext"))
 
     # Muro Este Completo: X=16.65..17.00, Y=5.00..18.45
@@ -231,6 +234,7 @@ def build_planta_baja_svg():
         (4.00, 5.17, "P-01"), (6.32, 5.17, "P-02"), (8.50, 5.17, "P-03"), (12.50, 5.17, "P-04"), (16.82, 5.17, "P-05"),
         (4.00, 8.40, "P-06"), (6.32, 8.40, "P-07"), (8.50, 8.40, "P-08"), (12.50, 8.40, "P-09"), (16.82, 8.40, "P-10"),
         (4.00, 12.22, "P-11"), (6.32, 12.40, "P-12"), (8.50, 12.40, "P-13"), (12.50, 12.40, "P-14"), (16.82, 12.40, "P-15"),
+        (4.00, 15.20, "P-11B"), (4.00, 18.28, "P-11C"),
         (6.32, 18.28, "P-16"), (12.45, 18.28, "P-17"), (16.82, 18.28, "P-18"),
         # Pilares metálicos HEB 160 de Porche Sur y Pérgola
         (1.15, 5.15, "PM-1"), (1.15, 8.50, "PM-2"), (1.15, 11.85, "PM-3"),
@@ -246,8 +250,13 @@ def build_planta_baja_svg():
     # =========================================================================
     out.append('<g id="tabiqueria-interior">')
     pt = L(0.12)  # 4.8 px
-    # Separación Zaguán Mudroom / Trastero (Y=8.40, X=4.20..6.15) con puerta corredera
+    # Separación Zaguán Mudroom / Sala Técnica (Y=8.40, X=4.20..6.15)
     out.append(draw_wall_segment(X(4.20), Y(8.35), L(1.95), pt, "int"))
+    # Separación Sala Técnica / Lavandería (Y=11.60, X=4.20..6.15)
+    out.append(draw_wall_segment(X(4.20), Y(11.55), L(1.95), pt, "int"))
+    # Separación Lavandería / Caseta Jardín y Aperos (Y=14.80, X=4.20..6.15)
+    out.append(draw_wall_segment(X(4.20), Y(14.75), L(1.95), pt, "int"))
+
     # Separación Zaguán-Trastero / Hall-Escalera (X=6.15, Y=5.35..12.05)
     out.append(draw_wall_segment(X(6.15), Y(5.35), pt, L(1.15), "int"))   # Tramo Norte hasta corredera vidrio (Y=6.50..7.35)
     out.append(draw_wall_segment(X(6.15), Y(7.35), pt, L(4.70), "acoustic"))  # Muro acústico Trastero/Sala Técnica - Escalera
@@ -265,10 +274,10 @@ def build_planta_baja_svg():
     # Tabique Sur del Distribuidor Neutro separándolo de la Cocina (Y=8.40, X=13.65..16.65)
     out.append(draw_wall_segment(X(12.50), Y(8.35), L(4.15), pt, "int"))
 
-    # Lavandería Técnica y Despensa: X=[14.25..16.65], Y=[12.10..14.40]
-    out.append(draw_wall_segment(X(14.25), Y(12.10), L(2.40), pt, "int"))
-    out.append(draw_wall_segment(X(14.25), Y(12.10), pt, L(2.30), "int"))
-    out.append(draw_wall_segment(X(14.25), Y(14.40), L(2.40), pt, "int"))
+    # Despensa Walk-In en Cocina-Comedor (liberada tras mover la lavandería al Oeste): X=[14.85..16.65], Y=[12.10..13.60]
+    out.append(draw_wall_segment(X(14.85), Y(12.10), L(1.80), pt, "int"))
+    out.append(draw_wall_segment(X(14.85), Y(12.10), pt, L(1.50), "int"))
+    out.append(draw_wall_segment(X(14.85), Y(13.60), L(1.80), pt, "int"))
     out.append('</g>')
 
     # =========================================================================
@@ -312,11 +321,19 @@ def build_planta_baja_svg():
     out.append(f'<rect x="{X(3.85):.1f}" y="{Y(9.80):.1f}" width="{wt:.1f}" height="{L(0.90):.1f}" fill="#0b1120"/>')
     out.append(draw_door_swing(X(3.85), Y(9.80), L(0.90), WallDir="S", SwingDir="W", code="C-09", dim_txt="0,90x2,05"))
 
+    # C-09B: Puerta Batiente Exterior Caseta Jardín / Cortacésped (0,90 x 2,05 m) en X=3.85, Y=16.60..17.50
+    out.append(f'<rect x="{X(3.85):.1f}" y="{Y(16.60):.1f}" width="{wt:.1f}" height="{L(0.90):.1f}" fill="#0b1120"/>')
+    out.append(draw_door_swing(X(3.85), Y(16.60), L(0.90), WallDir="S", SwingDir="W", code="C-09B", dim_txt="JARDÍN 0,90"))
+
     # Puertas interiores de paso:
     # P-Int 1: Corredera vidrio estriado Zaguán → Hall (0,85m) en X=6.15, Y=6.50..7.35
     out.append(draw_sliding_door(X(6.15), Y(6.50), X(6.15), Y(7.35), wall_thick=pt, leaves=1, code="P-01", dim_txt="0,85"))
-    # P-Int 2: Corredera Zaguán → Trastero (0,80m) en Y=8.37, X=4.75..5.55
+    # P-Int 2: Corredera Zaguán → Sala Técnica (0,80m) en Y=8.37, X=4.75..5.55
     out.append(draw_sliding_door(X(4.75), Y(8.37), X(5.55), Y(8.37), wall_thick=pt, leaves=1, code="P-02", dim_txt="0,80"))
+    # P-Int 2B: Corredera Sala Técnica → Lavandería (0,80m) en Y=11.55, X=4.75..5.55
+    out.append(draw_sliding_door(X(4.75), Y(11.55), X(5.55), Y(11.55), wall_thick=pt, leaves=1, code="P-02B", dim_txt="0,80"))
+    # P-Int 2C: Puerta estanca Lavandería → Escalera/Salón interior (0,80m) en X=6.15, Y=12.50..13.30
+    out.append(draw_sliding_door(X(6.15), Y(12.50), X(6.15), Y(13.30), wall_thick=pt, leaves=1, code="P-02C", dim_txt="0,80 PASO"))
     # P-Int 3: Puerta Acústica Rw≥38dB Hall → Despacho (0,82m) en X=9.75, Y=7.00..7.82
     out.append(draw_door_swing(X(9.80), Y(7.00), L(0.82), WallDir="S", SwingDir="E", code="P-03", dim_txt="0,82 Rw38dB"))
     # P-Int 4: Puerta corredera Despacho → Distribuidor Neutro Baño (0,80m) en X=13.65, Y=7.50..8.30
@@ -325,8 +342,8 @@ def build_planta_baja_svg():
     out.append(draw_sliding_door(X(14.50), Y(7.47), X(15.25), Y(7.47), wall_thick=pt, leaves=1, code="P-05", dim_txt="0,75 NHG"))
     # P-Int 6: Puerta corredera Distribuidor Neutro → Pasillo Cocina (0,80m) en Y=8.37, X=13.80..14.60
     out.append(draw_sliding_door(X(13.80), Y(8.37), X(14.60), Y(8.37), wall_thick=pt, leaves=1, code="P-06", dim_txt="0,80 NHG"))
-    # P-Int 7: Puerta corredera Lavandería (0,80m) en X=14.25, Y=12.85..13.65
-    out.append(draw_sliding_door(X(14.25), Y(12.85), X(14.25), Y(13.65), wall_thick=pt, leaves=1, code="P-07", dim_txt="0,80"))
+    # P-Int 7: Puerta Despensa Walk-In Cocina (0,75m) en X=14.85, Y=12.45..13.25
+    out.append(draw_sliding_door(X(14.85), Y(12.45), X(14.85), Y(13.25), wall_thick=pt, leaves=1, code="P-07", dim_txt="DESP. 0,75"))
     out.append('</g>')
 
     # =========================================================================
@@ -341,19 +358,16 @@ def build_planta_baja_svg():
 
     # 02. HALL / RECIBIDOR PRINCIPAL (X=6.25..9.75, Y=5.35..8.35 → 3.50 x 3.00 m = 10.40 m²)
     out.append(draw_wardrobe_block(X(6.30), Y(5.42), L(1.25), L(0.60), "GABANERO 1,25x0,60"))
-    # Cuadros CGMP y RITI empotrados
     out.append(f'<rect x="{X(6.27):.1f}" y="{Y(7.45):.1f}" width="{L(0.22):.1f}" height="{L(0.80):.1f}" fill="#0b1120" stroke="#ef4444" stroke-width="0.9"/>')
     out.append(f'<text x="{X(6.58):.1f}" y="{Y(7.90):.1f}" fill="#fca5a5" font-size="5.2">CGMP+RITI</text>')
     out.append(draw_nhg_circle(X(8.20), Y(6.80), 1.50, S, "Ø1,50m NHG"))
     out.append(draw_room_stamp(X(8.20), Y(7.75), "E-04", "HALL PRINCIPAL", 10.40, "Roble 14mm", "±0,00"))
 
     # 03. DESPACHO SANCTASANCTÓRUM (X=9.85..13.65, Y=5.35..8.35 → 3.80 x 3.00 m = 11.50 m²)
-    # Mesa de trabajo 1,80 x 0,80 m perpendicular a fachada norte (luz a 90° por la izquierda)
     out.append(f'<rect x="{X(9.95):.1f}" y="{Y(5.50):.1f}" width="{L(0.80):.1f}" height="{L(1.40):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.9"/>')
     out.append(f'<rect x="{X(10.02):.1f}" y="{Y(5.90):.1f}" width="{L(0.18):.1f}" height="{L(0.60):.1f}" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.6"/>')
     out.append(f'<circle cx="{X(11.00):.1f}" cy="{Y(6.20):.1f}" r="{L(0.26):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
     out.append(f'<text x="{X(10.35):.1f}" y="{Y(5.78):.1f}" fill="#38bdf8" font-size="5.0" text-anchor="middle">MESA 90°</text>')
-    # Sofá-cama invitados 1,40 x 2,00 m en pared Este
     out.append(draw_bed_block(X(12.70), Y(5.45), L(0.90), L(1.90), orient="N", kind="single", label="SOFÁ-CAMA 140"))
     out.append(draw_nhg_circle(X(11.80), Y(6.95), 1.50, S, "Ø1,50m NHG"))
     out.append(draw_room_stamp(X(11.75), Y(7.80), "E-05", "DESPACHO / SUITE", 11.50, "Roble 14mm · Rw38dB", "±0,00"))
@@ -365,20 +379,30 @@ def build_planta_baja_svg():
     out.append(draw_room_stamp(X(15.20), Y(6.85), "E-06", "BAÑO COMPLETO PB", 5.20, "Porcelánico C3", "±0,00"))
     out.append(f'<text x="{X(15.20):.1f}" y="{Y(8.05):.1f}" fill="#10b981" font-size="5.5" font-weight="700" text-anchor="middle">DISTRIBUIDOR NEUTRO NHG (DOBLE PUERTA)</text>')
 
-    # 11. TRASTERO EXTERIOR SURF/BICIS y SALA TÉCNICA PASSIVHAUS (X=4.20..6.15, Y=8.50..12.05 → 8,20 m²)
-    # Equipos técnicos a escala
+    # 11A. SALA TÉCNICA Y SURF PASSIVHAUS (X=4.20..6.15, Y=8.50..11.55 → 6,00 m²)
     out.append(f'<rect x="{X(5.40):.1f}" y="{Y(8.60):.1f}" width="{L(0.68):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.85"/>')
     out.append(f'<text x="{X(5.74):.1f}" y="{Y(8.95):.1f}" fill="#38bdf8" font-size="4.8" font-weight="700" text-anchor="middle">AEROTERMIA</text>')
     out.append(f'<circle cx="{X(5.74):.1f}" cy="{Y(9.65):.1f}" r="{L(0.30):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.85"/>')
     out.append(f'<text x="{X(5.74):.1f}" y="{Y(9.70):.1f}" fill="#f8fafc" font-size="4.8" font-weight="700" text-anchor="middle">ACS 250L</text>')
     out.append(f'<rect x="{X(5.40):.1f}" y="{Y(10.15):.1f}" width="{L(0.68):.1f}" height="{L(0.75):.1f}" fill="#0f172a" stroke="#10b981" stroke-width="0.85"/>')
     out.append(f'<text x="{X(5.74):.1f}" y="{Y(10.55):.1f}" fill="#10b981" font-size="4.8" font-weight="700" text-anchor="middle">VMC Q350</text>')
-    out.append(f'<rect x="{X(5.45):.1f}" y="{Y(11.05):.1f}" width="{L(0.60):.1f}" height="{L(0.55):.1f}" fill="#0f172a" stroke="#a855f7" stroke-width="0.85"/>')
-    out.append(f'<text x="{X(5.75):.1f}" y="{Y(11.35):.1f}" fill="#c084fc" font-size="4.8" font-weight="700" text-anchor="middle">RACK 19"+FV</text>')
-    # Racks tablas surf y bicis en pared oeste
-    out.append(f'<rect x="{X(4.25):.1f}" y="{Y(8.60):.1f}" width="{L(0.45):.1f}" height="{L(1.10):.1f}" fill="none" stroke="#f59e0b" stroke-width="0.7" stroke-dasharray="3,2"/>')
-    out.append(f'<text x="{X(4.47):.1f}" y="{Y(9.20):.1f}" fill="#f59e0b" font-size="4.8" text-anchor="middle">RACK SURF</text>')
-    out.append(draw_room_stamp(X(4.85), Y(11.55), "E-13", "SALA TÉCNICA / SURF", 8.20, "Epoxi C3", "-0,05"))
+    out.append(f'<rect x="{X(4.25):.1f}" y="{Y(8.60):.1f}" width="{L(0.45):.1f}" height="{L(1.40):.1f}" fill="none" stroke="#f59e0b" stroke-width="0.7" stroke-dasharray="3,2"/>')
+    out.append(f'<text x="{X(4.47):.1f}" y="{Y(9.30):.1f}" fill="#f59e0b" font-size="4.8" text-anchor="middle">RACK SURF</text>')
+    out.append(draw_room_stamp(X(4.85), Y(11.05), "E-13", "SALA TÉCNICA / SURF", 6.00, "Epoxi C3", "-0,05"))
+
+    # 11B. LAVANDERÍA Y PLANCHA OESTE (X=4.20..6.15, Y=11.65..14.75 → 6,00 m²)
+    out.append(f'<rect x="{X(4.25):.1f}" y="{Y(11.85):.1f}" width="{L(0.65):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.8"/>')
+    out.append(f'<circle cx="{X(4.57):.1f}" cy="{Y(12.17):.1f}" r="7" fill="none" stroke="#38bdf8" stroke-width="0.6"/>')
+    out.append(f'<text x="{X(4.57):.1f}" y="{Y(12.20):.1f}" fill="#cbd5e1" font-size="4.5" text-anchor="middle">LAV+SEC</text>')
+    out.append(draw_sink_block(X(4.25), Y(12.65), L(0.65), L(0.60), basins=1, orient="W"))
+    out.append(draw_wardrobe_block(X(5.45), Y(12.00), L(0.60), L(1.60), "PLANCHA"))
+    out.append(draw_room_stamp(X(4.85), Y(13.95), "E-13B", "LAVANDERÍA OESTE", 6.00, "Porcelánico C3", "±0,00"))
+
+    # 11C. CASETA DE JARDÍN, CORTACÉSPED Y APEROS (X=4.20..6.15, Y=14.85..18.10 → 6,00 m²)
+    out.append(f'<rect x="{X(4.35):.1f}" y="{Y(15.20):.1f}" width="{L(1.00):.1f}" height="{L(0.70):.1f}" fill="#131c31" stroke="#22c55e" stroke-width="0.8"/>')
+    out.append(f'<text x="{X(4.85):.1f}" y="{Y(15.60):.1f}" fill="#86efac" font-size="5.0" font-weight="700" text-anchor="middle">CORTACÉSPED</text>')
+    out.append(draw_wardrobe_block(X(5.45), Y(15.10), L(0.60), L(1.80), "HERRAMIENTAS"))
+    out.append(draw_room_stamp(X(4.85), Y(17.35), "E-13C", "CASETA JARDÍN APEROS", 6.00, "Epoxi C3", "±0,00"))
 
     # 10. ESCALERA PRINCIPAL VOLADA (X=6.55..7.65, Y=8.40..13.33 → 17 peldaños H=29cm, CH=17,6cm)
     st_x, st_y, st_w = X(6.55), Y(8.40), L(1.05)
