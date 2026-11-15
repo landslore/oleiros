@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estudio Técnico de Cocina · Hogar Oleiros (Propuesta D)</title>
+  <title>Estudio Técnico: Cocina + Despensa/Bodega Santos · Hogar Oleiros (Propuesta D v2)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background-color: #070b14; color: #f8fafc; font-family: ui-sans-serif, system-ui, sans-serif; }
@@ -15,19 +15,19 @@
   <header class="border-b border-slate-800 pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
     <div>
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/60 border border-sky-800 text-sky-400 text-xs font-mono mb-2">
-        <span>RAMA ACTIVA: feature/cocina-diseno-elevaciones</span>
+        <span>RAMA: feature/cocina-diseno-elevaciones (Rebased s/ v2 definitiva)</span>
       </div>
       <h1 class="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
-        <span>🍳 Estudio Técnico Independiente: Cocina Isla Santos</span>
+        <span>🍳 Suite Culinaria: Cocina Isla Santos + Despensa & Cava Bodega</span>
       </h1>
-      <p class="text-slate-400 text-sm mt-1">Geometría esquemática, alzados interiores, alturas ergonómicas normalizadas y circulaciones NHG</p>
+      <p class="text-slate-400 text-sm mt-1">Superficie ampliada a 20,80 m² (15,20 m² cocina + 5,60 m² despensa/bodega) tras reubicación de lavandería a ala Oeste</p>
     </div>
     <div class="flex gap-2">
       <a href="plano_cocina_planta_esquematica.svg" target="_blank" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 rounded-lg text-xs font-mono transition">
-        Descargar SVG Planta
+        Descargar SVG Planta K-01
       </a>
       <a href="plano_cocina_elevaciones_alturas.svg" target="_blank" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 rounded-lg text-xs font-mono transition">
-        Descargar SVG Alzados
+        Descargar SVG Alzados K-02
       </a>
     </div>
   </header>
@@ -35,13 +35,13 @@
   <!-- Pestañas de Navegación de Planos -->
   <div class="flex border-b border-slate-800 mb-6 gap-2">
     <button onclick="showTab('planta')" id="tab-planta" class="tab-btn active px-5 py-3 font-mono text-sm border-b-2 font-bold transition flex items-center gap-2">
-      <span>📐 Plano K-01: Planta Esquemática (1:20)</span>
+      <span>📐 Plano K-01: Planta Suite Cocina + Bodega (1:20)</span>
     </button>
     <button onclick="showTab('elevaciones')" id="tab-elevaciones" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
-      <span>📏 Plano K-02: Alzados y Alturas (1:20)</span>
+      <span>📏 Plano K-02: Alzados Cocina & Interior Bodega (1:20)</span>
     </button>
     <button onclick="showTab('resumen')" id="tab-resumen" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
-      <span>📋 Resumen de Cotas & Módulos</span>
+      <span>📋 Análisis Espacial & Ventajas v2</span>
     </button>
   </div>
 
@@ -49,7 +49,7 @@
   <div id="content-planta" class="space-y-4">
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
       <div class="flex justify-between items-center mb-3 px-2">
-        <span class="text-xs font-mono text-sky-400">ISLA 2,80×1,00m · FRENTE COLUMNAS 3,60m · PASOS LIBRES >1,00m</span>
+        <span class="text-xs font-mono text-sky-400">ISLA SANTOS 2,80×1,00m · FRENTE COLUMNAS 3,60m · NUEVA DESPENSA/BODEGA 5,60m²</span>
         <span class="text-xs font-mono text-slate-500">Vector SVG ISO 128 (Zoom Nativo)</span>
       </div>
       <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
@@ -62,7 +62,7 @@
   <div id="content-elevaciones" class="space-y-4 hidden">
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
       <div class="flex justify-between items-center mb-3 px-2">
-        <span class="text-xs font-mono text-amber-400">ALZADO COLUMNAS (H=2,65m) · ALZADO ISLA SANTOS (H=0,92m)</span>
+        <span class="text-xs font-mono text-amber-400">ALZADO COLUMNAS (H=2,65m) · ALZADO ISLA (H=0,92m) · ALZADO D BODEGA & CAVA (H=2,65m)</span>
         <span class="text-xs font-mono text-slate-500">Vector SVG ISO 128</span>
       </div>
       <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
@@ -74,44 +74,41 @@
   <!-- Contenedor Tab 3: Resumen & Siguientes Pasos -->
   <div id="content-resumen" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-      <h3 class="text-lg font-bold text-sky-400 font-mono mb-4">📐 Geometría & Distribución</h3>
+      <h3 class="text-lg font-bold text-sky-400 font-mono mb-4">📐 Suite Culinaria Ampliada (20,80 m²)</h3>
       <ul class="space-y-2 text-sm text-slate-300 font-mono">
-        <li>• <strong class="text-white">Ancho total:</strong> 3,80 m</li>
-        <li>• <strong class="text-white">Longitud total:</strong> 4,60 m</li>
-        <li>• <strong class="text-white">Superficie neta:</strong> 15,20 m²</li>
-        <li>• <strong class="text-white">Isla Central:</strong> 2,80 × 1,00 m</li>
-        <li>• <strong class="text-white">Frente Columnas:</strong> 3,60 × 0,65 m (6 col.)</li>
+        <li>• <strong class="text-white">Cocina Isla Santos:</strong> 15,20 m² ($3,80 	imes 4,60$ m)</li>
+        <li>• <strong class="text-white">Despensa Walk-in Santos:</strong> 5,60 m² ($2,30 	imes 2,45$ m)</li>
+        <li>• <strong class="text-white">Isla Central:</strong> 2,80 × 1,00 m (encimera Dekton Kelya)</li>
+        <li>• <strong class="text-white">Frente Columnas:</strong> 3,60 × 0,65 m (6 columnas × 60 cm)</li>
         <li>• <strong class="text-white">Paso a Patio:</strong> 1,15 m (holgura taburetes)</li>
         <li>• <strong class="text-white">Paso Culinario:</strong> 1,00 m (apertura cajones)</li>
       </ul>
     </div>
 
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-      <h3 class="text-lg font-bold text-amber-400 font-mono mb-4">📏 Alturas Ergonómicas</h3>
+      <h3 class="text-lg font-bold text-amber-400 font-mono mb-4">🍷 Equipamiento Bodega & Cava</h3>
       <ul class="space-y-2 text-sm text-slate-300 font-mono">
-        <li>• <strong class="text-white">Falso techo:</strong> +2,65 m</li>
-        <li>• <strong class="text-white">Coronación muebles:</strong> +2,20 m</li>
-        <li>• <strong class="text-white">Microondas:</strong> +1,30 a +1,75 m</li>
-        <li>• <strong class="text-white">Horno pirolítico:</strong> +0,70 a +1,30 m</li>
-        <li>• <strong class="text-white">Tomas encimera C5:</strong> +1,10 m</li>
-        <li>• <strong class="text-white">Encimera Dekton:</strong> +0,92 m</li>
-        <li>• <strong class="text-white">Asiento taburetes:</strong> +0,65 m</li>
-        <li>• <strong class="text-white">Zócalo técnico:</strong> +0,08 m</li>
+        <li>• <strong class="text-white">Cava Santos climatizada:</strong> 60 botellas, doble zona Tª</li>
+        <li>• <strong class="text-white">Bancada "Back Kitchen":</strong> Para robots (Thermomix, etc.)</li>
+        <li>• <strong class="text-white">Estantes en U (40 cm):</strong> Conservas, víveres y menaje</li>
+        <li>• <strong class="text-white">Puerta pocket (0,85 m):</strong> Oculta en tabique</li>
+        <li>• <strong class="text-white">Encimera auxiliar:</strong> A cota +0,92 m con tomas C5</li>
+        <li>• <strong class="text-white">Iluminación LED:</strong> Tiras cálidas 3000K en baldas</li>
       </ul>
     </div>
 
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
       <h3 class="text-lg font-bold text-emerald-400 font-mono mb-4">⚡ Siguiente Hoja de Ruta</h3>
-      <p class="text-xs text-slate-400 mb-3">Con la geometría esquemática y alturas fijadas, podemos detallar:</p>
+      <p class="text-xs text-slate-400 mb-3">Con el espacio de cocina y bodega consolidado, podemos detallar:</p>
       <div class="space-y-2 text-sm text-slate-300">
         <div class="p-2 rounded bg-slate-800/60 border border-slate-700">
-          <strong class="text-sky-300">1. Enchufes y Potencias:</strong> Torres escamoteables en isla, tomas ocultas en desayunador pocket, líneas C3 (25A), C4 (16A) y C5.
+          <strong class="text-sky-300">1. Enchufes y Potencias:</strong> Torres escamoteables en isla, tomas de bancada en bodega (C5) y líneas dedicadas C3 (25A) y C4 (16A).
         </div>
         <div class="p-2 rounded bg-slate-800/60 border border-slate-700">
-          <strong class="text-amber-300">2. Iluminación IES:</strong> Carril magnético de superficie/empotrado sobre la isla, tiras LED cálidas 3000K bajo muebles altos.
+          <strong class="text-amber-300">2. Iluminación IES:</strong> Carril magnético empotrado en falso techo de cocina + luz cálida ambiental en cava de vinos.
         </div>
         <div class="p-2 rounded bg-slate-800/60 border border-slate-700">
-          <strong class="text-emerald-300">3. Ventanal y Vano:</strong> Encuentro con carpintería Cortizo Cor Vision Plus y salida directa al banco de iroko del Patio Claustro.
+          <strong class="text-emerald-300">3. Ventanal y Vano:</strong> Encuentro con corredera Cortizo Cor Vision Plus y salida directa al banco de iroko del Patio Claustro.
         </div>
       </div>
     </div>
