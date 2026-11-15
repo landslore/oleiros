@@ -59,7 +59,11 @@
 <text x="46" y="50" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="700">PLANO K-01 · PLANTA COCINA UNIFICADA: FRENTE MIXTO CON VENTANAL PANORÁMICO ESTE (20,80 m² · 1:20)</text>
 <text x="46" y="64" fill="#94a3b8" font-family="monospace" font-size="8.0">Propuesta A · Ventana Faja Este (Luz de Mañana) · Gran Isla Santos 3,60 m · Abierta a Patio Oeste y Comedor Sur (4,20 m libres)</text>
 <rect x="32" y="80" width="1400" height="1100" fill="url(#grid-cad-major)" stroke="#334155" stroke-width="0.8"/>
-<rect x="212.8" y="189.8" width="627.8" height="20.2" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="212.8" y="189.8" width="155.2" height="20.2" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="368.0" y="189.8" width="108.0" height="20.2" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<line x1="374.8" y1="199.9" x2="469.2" y2="199.9" stroke="#38bdf8" stroke-width="2.2"/>
+<text x="422.0" y="183.0" fill="#38bdf8" font-family="monospace" font-size="7.0" font-weight="700" text-anchor="middle">PUERTA CORREDERA P-06 (0,80 m)</text>
+<rect x="476.0" y="189.8" width="364.5" height="20.2" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
 <rect x="243.8" y="189.8" width="33.8" height="33.8" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/>
 <text x="238.4" y="185.7" fill="#94a3b8" font-family="monospace" font-size="6.0" font-weight="700">P-09</text>
 <rect x="804.1" y="189.8" width="33.8" height="33.8" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/>

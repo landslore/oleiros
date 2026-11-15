@@ -16,6 +16,7 @@ Generador de Planos Técnicos de la Cocina Unificada Santos (Opción A: Frente M
 import os
 import math
 import xml.etree.ElementTree as ET
+from generate_cocina_tech_extensions import build_cocina_electricidad_svg, build_cocina_iluminacion_svg
 
 def svg_defs_technical():
     return """
@@ -143,8 +144,15 @@ def build_cocina_planta_svg():
     tw = 0.15 * S
     tw_ext = 0.35 * S
 
-    # 1. Muro Norte (Y = 0.00, de X = -0.35 a X = 4.30)
-    out.append(f'<rect x="{mx(-0.35):.1f}" y="{my(-0.15):.1f}" width="{4.65*S:.1f}" height="{tw:.1f}" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>')
+    # 1. Muro Norte con Puerta Corredera P-06 (0,80 m hacia Distribuidor Neutro)
+    # Tramo izquierdo del muro norte (X = -0.35 .. 0.80)
+    out.append(f'<rect x="{mx(-0.35):.1f}" y="{my(-0.15):.1f}" width="{1.15*S:.1f}" height="{tw:.1f}" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>')
+    # Hueco de paso Puerta Corredera P-06 (0,80 m)
+    out.append(f'<rect x="{mx(0.80):.1f}" y="{my(-0.15):.1f}" width="{0.80*S:.1f}" height="{tw:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>')
+    out.append(f'<line x1="{mx(0.85):.1f}" y1="{my(-0.075):.1f}" x2="{mx(1.55):.1f}" y2="{my(-0.075):.1f}" stroke="#38bdf8" stroke-width="2.2"/>')
+    out.append(f'<text x="{mx(1.20):.1f}" y="{my(-0.20):.1f}" fill="#38bdf8" font-family="monospace" font-size="7.0" font-weight="700" text-anchor="middle">PUERTA CORREDERA P-06 (0,80 m)</text>')
+    # Tramo derecho del muro norte (X = 1.60 .. 4.30)
+    out.append(f'<rect x="{mx(1.60):.1f}" y="{my(-0.15):.1f}" width="{2.70*S:.1f}" height="{tw:.1f}" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>')
     # Pilares estructurales en muro norte (P-09 en X=0.00, P-10 en X=4.15)
     out.append(f'<rect x="{mx(-0.12):.1f}" y="{my(-0.15):.1f}" width="{0.25*S:.1f}" height="{0.25*S:.1f}" fill="url(#hatch-pillar)" stroke="#f8fafc" stroke-width="1.3"/>')
     out.append(f'<text x="{mx(-0.16):.1f}" y="{my(-0.18):.1f}" fill="#94a3b8" font-family="monospace" font-size="6.0" font-weight="700">P-09</text>')
@@ -780,29 +788,41 @@ def build_cocina_interactivo_html():
       </h1>
       <p class="text-slate-400 text-sm mt-1">Luz solar de mañana (Este) + Luz de tarde (Patio Claustro Oeste) + Comedor diáfano Sur (4,20 m libres)</p>
     </div>
-    <div class="flex gap-2">
-      <a href="plano_cocina_planta_esquematica.svg" target="_blank" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 rounded-lg text-xs font-mono transition">
-        Descargar SVG Planta K-01
+    <div class="flex flex-wrap gap-2">
+      <a href="plano_cocina_planta_esquematica.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-01 Planta
       </a>
-      <a href="plano_cocina_elevaciones_alturas.svg" target="_blank" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 rounded-lg text-xs font-mono transition">
-        Descargar SVG Alzados K-02
+      <a href="plano_cocina_elevaciones_alturas.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-02 Alzados
+      </a>
+      <a href="plano_cocina_electricidad_fuerza.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-03 Electricidad
+      </a>
+      <a href="plano_cocina_iluminacion_escenas.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-yellow-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-04 Iluminación
       </a>
     </div>
   </header>
 
   <!-- Pestañas de Navegación de Planos -->
-  <div class="flex border-b border-slate-800 mb-6 gap-2">
-    <button onclick="showTab('planta')" id="tab-planta" class="tab-btn active px-5 py-3 font-mono text-sm border-b-2 font-bold transition flex items-center gap-2">
-      <span>📐 Plano K-01: Planta (1:20)</span>
+  <div class="flex flex-wrap border-b border-slate-800 mb-6 gap-2">
+    <button onclick="showTab('planta')" id="tab-planta" class="tab-btn active px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 font-bold transition flex items-center gap-1.5">
+      <span>📐 K-01: Planta (1:20)</span>
     </button>
-    <button onclick="showTab('elevaciones')" id="tab-elevaciones" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
-      <span>📏 Plano K-02: Alzados & Cortes (1:20)</span>
+    <button onclick="showTab('elevaciones')" id="tab-elevaciones" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>📏 K-02: Alzados (1:20)</span>
     </button>
-    <button onclick="showTab('renders')" id="tab-renders" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
-      <span>🖼️ Renders Fotorrealistas (3 Vistas)</span>
+    <button onclick="showTab('electricidad')" id="tab-electricidad" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>⚡ K-03: Electricidad & Fuerza (1:20)</span>
     </button>
-    <button onclick="showTab('resumen')" id="tab-resumen" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
-      <span>📋 Memoria de Luz & Almacenaje</span>
+    <button onclick="showTab('iluminacion')" id="tab-iluminacion" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>💡 K-04: Iluminación & Escenas (1:20)</span>
+    </button>
+    <button onclick="showTab('renders')" id="tab-renders" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>🖼️ Renders (3 Vistas)</span>
+    </button>
+    <button onclick="showTab('resumen')" id="tab-resumen" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>📋 Memoria Técnica</span>
     </button>
   </div>
 
@@ -832,7 +852,33 @@ def build_cocina_interactivo_html():
     </div>
   </div>
 
-  <!-- Contenedor Tab 3: Renders Fotorrealistas -->
+  <!-- Contenedor Tab 3: Electricidad & Fuerza K-03 -->
+  <div id="content-electricidad" class="space-y-4 hidden">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center mb-3 px-2">
+        <span class="text-xs font-mono text-emerald-400">CIRCUITO C3 (25A BORA PURE) · CIRCUITOS C4.1-C4.6 (16A) · TOMAS BANCADA C5 (+1,05m) · CUADRO DE CARGAS</span>
+        <span class="text-xs font-mono text-slate-500">REBT ITC-BT-25 (1:20)</span>
+      </div>
+      <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
+        <img src="plano_cocina_electricidad_fuerza.svg" alt="Plano Electricidad Cocina" class="w-full min-w-[900px] h-auto block"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 4: Iluminación & Escenas K-04 -->
+  <div id="content-iluminacion" class="space-y-4 hidden">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center mb-3 px-2">
+        <span class="text-xs font-mono text-yellow-400">CARRIL MAGNÉTICO 48V (3,00m) · TIRA LED CONTINUA COB 2700K · CURVAS ISOLUX &gt;500 LUX · DALI / CASAMBI</span>
+        <span class="text-xs font-mono text-slate-500">CTE DB-HE3 / IESNA (1:20)</span>
+      </div>
+      <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
+        <img src="plano_cocina_iluminacion_escenas.svg" alt="Plano Iluminación Cocina" class="w-full min-w-[900px] h-auto block"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 5: Renders Fotorrealistas -->
   <div id="content-renders" class="space-y-8 hidden">
     <!-- Render 1 -->
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-2xl">
@@ -847,7 +893,7 @@ def build_cocina_interactivo_html():
         <img src="v2/renders/render_cocina_salon.jpg" alt="Render Cocina desde Salón" class="w-full h-auto block"/>
       </div>
       <p class="text-sm text-slate-300 font-mono leading-relaxed">
-        <strong>Fidelidad técnica:</strong> En primer plano a la derecha, las columnas altas con la Cava de Vinos Santos (60 botellas) iluminada en ámbar y vitrina despensa. Al fondo del frente Este, el ventanal horizontal C-07 (3,00 × 0,80 m) inundando de luz de mañana la encimera Dekton Kelya y coffee station. En el centro, la Gran Isla Santos Fine de 3,60 m con placa Bora Pure enrasada y fregadero bajo encimera. A la izquierda, la cristalera corredera Cortizo conectando directamente con el arce japonés del Patio Claustro.
+        <strong>Fidelidad técnica:</strong> Pared norte con puerta corredera P-06 hacia el distribuidor. En la pared derecha (Este), una única columna de 60 cm para la Cava Santos climatizada y despensa, bancada baja de 3 m con el ventanal faja corrido C-07 (3,00 × 0,80 m), y columnas de hornos al fondo derecho. En el centro, isla de 3,60 m con taburetes al patio a la izquierda.
       </p>
     </div>
 
@@ -864,7 +910,7 @@ def build_cocina_interactivo_html():
         <img src="v2/renders/render_cocina_patio.jpg" alt="Render Cocina desde Patio Claustro" class="w-full h-auto block"/>
       </div>
       <p class="text-sm text-slate-300 font-mono leading-relaxed">
-        <strong>Fidelidad técnica:</strong> Vista tomada desde la tarima de iroko del patio central junto al arce japonés. La corredera Cortizo Cor Vision Plus abierta crea una transición continua a cota cero hacia la barra social de la isla (vuelo de 35 cm con 5 taburetes de diseño). Al fondo, se aprecia el frente Este completo: columnas de hornos a la izquierda, bancada con ventanal panorámico en el centro y cava de vinos a la derecha.
+        <strong>Fidelidad técnica:</strong> A la izquierda se observa la pared y puerta norte P-06 hacia el distribuidor, junto a las columnas de hornos. En el centro, el ventanal horizontal corrido de 3 m iluminando la bancada. A la derecha, una única columna de 60 cm para la cava de vinos y despensa cerrada. En la isla, los 5 taburetes de diseño bajo el voladizo de 35 cm.
       </p>
     </div>
 
@@ -881,12 +927,12 @@ def build_cocina_interactivo_html():
         <img src="v2/renders/render_cocina_norte.jpg" alt="Render Cocina desde Norte" class="w-full h-auto block"/>
       </div>
       <p class="text-sm text-slate-300 font-mono leading-relaxed">
-        <strong>Fidelidad técnica:</strong> Perspectiva a lo largo de los 6 metros de longitud de cocina, con las columnas de hornos en primer plano izquierdo, el ventanal faja bañando de sol la bancada y suelo continuo, y la isla central de 3,60 m. Al fondo se abre de par en par el comedor diáfano de 17,50 m² con mesa de roble macizo para 10 comensales (4,20 m libres), con amplios ventanales orientados al jardín sur.
+        <strong>Fidelidad técnica:</strong> Perspectiva a lo largo de los 6 metros de longitud de cocina, con los taburetes perfectamente visibles a lo largo de la isla encarada al patio claustro. Al fondo se abre de par en par el comedor diáfano de 17,50 m² con mesa de roble macizo para 10 comensales (4,20 m libres), con amplios ventanales orientados al jardín sur.
       </p>
     </div>
   </div>
 
-  <!-- Contenedor Tab 4: Resumen & Siguientes Pasos -->
+  <!-- Contenedor Tab 6: Resumen & Memoria Técnica -->
   <div id="content-resumen" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
       <h3 class="text-lg font-bold text-amber-400 font-mono mb-4">☀️ Luz Solar & Ventanal Este</h3>
@@ -926,20 +972,20 @@ def build_cocina_interactivo_html():
 
   <script>
     function showTab(tab) {
-      document.getElementById('content-planta').classList.toggle('hidden', tab !== 'planta');
-      document.getElementById('content-elevaciones').classList.toggle('hidden', tab !== 'elevaciones');
-      document.getElementById('content-renders').classList.toggle('hidden', tab !== 'renders');
-      document.getElementById('content-resumen').classList.toggle('hidden', tab !== 'resumen');
-      
-      const tabs = ['planta', 'elevaciones', 'renders', 'resumen'];
+      const tabs = ['planta', 'elevaciones', 'electricidad', 'iluminacion', 'renders', 'resumen'];
       tabs.forEach(t => {
+        const content = document.getElementById('content-' + t);
+        if (content) content.classList.toggle('hidden', t !== tab);
+        
         const btn = document.getElementById('tab-' + t);
-        if(t === tab) {
-          btn.classList.add('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-          btn.classList.remove('border-transparent', 'text-slate-400');
-        } else {
-          btn.classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-          btn.classList.add('border-transparent', 'text-slate-400');
+        if (btn) {
+          if (t === tab) {
+            btn.classList.add('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
+            btn.classList.remove('border-transparent', 'text-slate-400');
+          } else {
+            btn.classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
+            btn.classList.add('border-transparent', 'text-slate-400');
+          }
         }
       });
     }
@@ -961,18 +1007,36 @@ def main():
         f.write(elev_svg)
     print(" -> Guardado en plano_cocina_elevaciones_alturas.svg")
 
+    print("Generando Plano K-03: Electricidad, Fuerza y Mecanismos (REBT)...")
+    elec_svg = build_cocina_electricidad_svg()
+    with open("plano_cocina_electricidad_fuerza.svg", "w", encoding="utf-8") as f:
+        f.write(elec_svg)
+    print(" -> Guardado en plano_cocina_electricidad_fuerza.svg")
+
+    print("Generando Plano K-04: Iluminación Técnica, Fotometría y Escenas (CTE DB-HE3)...")
+    ilum_svg = build_cocina_iluminacion_svg()
+    with open("plano_cocina_iluminacion_escenas.svg", "w", encoding="utf-8") as f:
+        f.write(ilum_svg)
+    print(" -> Guardado en plano_cocina_iluminacion_escenas.svg")
+
     print("Generando Visor Web Interactivo...")
     html_content = build_cocina_interactivo_html()
     with open("cocina_estudio_interactivo.html", "w", encoding="utf-8") as f:
         f.write(html_content)
     print(" -> Guardado en cocina_estudio_interactivo.html")
 
-    # Validación XML estricta
-    for fname in ["plano_cocina_planta_esquematica.svg", "plano_cocina_elevaciones_alturas.svg"]:
+    # Validación XML estricta en todos los planos generados
+    for fname in [
+        "plano_cocina_planta_esquematica.svg",
+        "plano_cocina_elevaciones_alturas.svg",
+        "plano_cocina_electricidad_fuerza.svg",
+        "plano_cocina_iluminacion_escenas.svg"
+    ]:
         ET.parse(fname)
         print(f" -> {fname}: 100% VALID XML (0 errores)")
 
-    print("Completado con éxito.")
+    print("Completado con éxito todos los planos técnicos.")
 
 if __name__ == "__main__":
     main()
+

@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1220" width="100%" height="100%" style="background-color:#070b14;">
+
+    <defs>
+      <!-- Retícula CAD milimétrica -->
+      <pattern id="grid-cad-fine" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.35" opacity="0.6"/>
+      </pattern>
+      <pattern id="grid-cad-major" width="100" height="100" patternUnits="userSpaceOnUse">
+        <rect width="100" height="100" fill="url(#grid-cad-fine)"/>
+        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#334155" stroke-width="0.8" opacity="0.75"/>
+      </pattern>
+
+      <!-- Rayado técnico muros ANSI31 -->
+      <pattern id="hatch-wall" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#94a3b8" stroke-width="0.8"/>
+      </pattern>
+      <pattern id="hatch-pillar" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="5" stroke="#e2e8f0" stroke-width="1.1"/>
+        <line x1="0" y1="0" x2="5" y2="0" stroke="#e2e8f0" stroke-width="1.1"/>
+      </pattern>
+
+      <!-- Marcadores de cota -->
+      <marker id="tick-45" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#38bdf8" stroke-width="1.2"/>
+      </marker>
+      <marker id="tick-amber" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#f59e0b" stroke-width="1.2"/>
+      </marker>
+      <marker id="tick-emerald" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#10b981" stroke-width="1.2"/>
+      </marker>
+      <marker id="arrow-elec" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+        <path d="M 0 0 L 6 3 L 0 6 Z" fill="#38bdf8"/>
+      </marker>
+
+      <!-- Gradientes fotométricos isolux -->
+      <radialGradient id="lux-isla" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+        <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.10"/>
+        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.0"/>
+      </radialGradient>
+      <radialGradient id="lux-bancada" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.30"/>
+        <stop offset="70%" stop-color="#f59e0b" stop-opacity="0.10"/>
+        <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+      </radialGradient>
+      <radialGradient id="lux-cava" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#eab308" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#eab308" stop-opacity="0.0"/>
+      </radialGradient>
+      <linearGradient id="lux-foso" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
+        <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0"/>
+      </linearGradient>
+    </defs>
+    
+<rect x="16" y="16" width="1888" height="1188" fill="none" stroke="#475569" stroke-width="1.6"/>
+<rect x="22" y="22" width="1876" height="1176" fill="none" stroke="#334155" stroke-width="0.8"/>
+<rect x="32" y="30" width="1400" height="42" fill="#0f172a" stroke="#334155" stroke-width="0.9"/>
+<text x="46" y="50" fill="#f59e0b" font-family="monospace" font-size="12" font-weight="700">PLANO K-04 · ILUMINACIÓN TÉCNICA, NIVELES DE LUX Y ESCENAS LUMÍNICAS (CTE DB-HE3 / IESNA · 1:20)</text>
+<text x="46" y="64" fill="#94a3b8" font-family="monospace" font-size="8.0">Carril Magnético 48V Trimless (3,00 m) · Tira LED COB 2700K Bancada Este · Foso Perimetral Patio Claustro · Sistema DALI/Casambi</text>
+<rect x="32" y="80" width="1400" height="1100" fill="url(#grid-cad-major)" stroke="#334155" stroke-width="0.8"/>
+<rect x="212.8" y="189.8" width="155.2" height="20.2" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="368.0" y="189.8" width="108.0" height="20.2" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<line x1="374.8" y1="199.9" x2="469.2" y2="199.9" stroke="#38bdf8" stroke-width="2.2"/>
+<text x="422.0" y="183.0" fill="#38bdf8" font-family="monospace" font-size="7.0" font-weight="700" text-anchor="middle">PUERTA CORREDERA P-06</text>
+<rect x="476.0" y="189.8" width="364.5" height="20.2" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="820.2" y="189.8" width="47.2" height="263.2" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.4"/>
+<rect x="820.2" y="453.0" width="47.2" height="405.0" fill="#0f172a" stroke="#f59e0b" stroke-width="1.4"/>
+<line x1="840.5" y1="453.0" x2="840.5" y2="858.0" stroke="#38bdf8" stroke-width="2.5"/>
+<rect x="820.2" y="858.0" width="47.2" height="189.0" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.4"/>
+<rect x="251.9" y="250.5" width="16.2" height="459.0" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>
+<line x1="260.0" y1="750.0" x2="260.0" y2="1020.0" stroke="#38bdf8" stroke-width="1.0" stroke-dasharray="6,4"/>
+<line x1="260.0" y1="1020.0" x2="820.2" y2="1020.0" stroke="#10b981" stroke-width="1.2" stroke-dasharray="8,4"/>
+<rect x="260.0" y="210.0" width="560.2" height="810.0" fill="#0f172a" opacity="0.88"/>
+<rect x="732.5" y="210.0" width="87.8" height="810.0" fill="none" stroke="#475569" stroke-width="0.9"/>
+<rect x="428.8" y="345.0" width="148.5" height="486.0" fill="#131c31" stroke="#475569" stroke-width="1.1"/>
+<ellipse cx="503.0" cy="588.0" rx="148.5" ry="283.5" fill="url(#lux-isla)"/>
+<ellipse cx="503.0" cy="588.0" rx="94.5" ry="229.5" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.6"/>
+<text x="503.0" y="378.8" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700" text-anchor="middle">ZONA TRABAJO ISLA: 550 LUX (CRI ≥ 95 · UGR &lt; 16)</text>
+<ellipse cx="775.7" cy="655.5" rx="94.5" ry="229.5" fill="url(#lux-bancada)"/>
+<ellipse cx="775.7" cy="655.5" rx="54.0" ry="189.0" fill="none" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.6"/>
+<text x="705.5" y="655.5" fill="#f59e0b" font-family="monospace" font-size="6.0" font-weight="700" transform="rotate(90 705.5 655.5)" text-anchor="middle">ZONA BANCADA ESTE: 500 LUX CONTINUOS</text>
+<rect x="732.5" y="858.0" width="87.8" height="81.0" fill="url(#lux-cava)"/>
+<rect x="260.0" y="250.5" width="54.0" height="459.0" fill="url(#lux-foso)"/>
+<rect x="498.0" y="385.5" width="10" height="405.0" rx="2" fill="#090e1a" stroke="#38bdf8" stroke-width="1.4"/>
+<line x1="503.0" y1="385.5" x2="503.0" y2="790.5" stroke="#06b6d4" stroke-width="1.8"/>
+<rect x="499.0" y="412.5" width="8" height="121.5" fill="#f8fafc" stroke="#38bdf8" stroke-width="0.8"/>
+<rect x="499.0" y="628.5" width="8" height="121.5" fill="#f8fafc" stroke="#38bdf8" stroke-width="0.8"/>
+<circle cx="503.0" cy="392.2" r="7" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.2"/>
+<line x1="503.0" y1="392.2" x2="521.0" y2="386.2" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="525.0" y="389.2" fill="#f59e0b" font-family="monospace" font-size="5.2" font-weight="700">FOCO 01 FREGADERO (24° · 2700K)</text>
+<circle cx="503.0" cy="567.8" r="7" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.2"/>
+<line x1="503.0" y1="567.8" x2="521.0" y2="561.8" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="525.0" y="564.8" fill="#f59e0b" font-family="monospace" font-size="5.2" font-weight="700">FOCO 02 BORA PURE (24° · 2700K)</text>
+<circle cx="503.0" cy="777.0" r="7" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.2"/>
+<line x1="503.0" y1="777.0" x2="521.0" y2="771.0" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="525.0" y="774.0" fill="#f59e0b" font-family="monospace" font-size="5.2" font-weight="700">FOCO 03 EMPLATADO (24° · 2700K)</text>
+<text x="489.0" y="588.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" transform="rotate(-90 489.0 588.0)" text-anchor="middle">L-01 · CARRIL MAGNÉTICO 48V TRIMLESS (3,00 m · DALI / CASAMBI)</text>
+<line x1="766.2" y1="453.0" x2="766.2" y2="858.0" stroke="#f59e0b" stroke-width="2.6" stroke-linecap="round"/>
+<line x1="766.2" y1="453.0" x2="766.2" y2="858.0" stroke="#fef08a" stroke-width="1.0" stroke-dasharray="4,2"/>
+<text x="776.2" y="655.5" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" transform="rotate(90 776.2 655.5)" text-anchor="middle">L-02 · TIRA LED COB CONTINUA ENRASADA (14,4 W/m · 2700K · CRI &gt; 95 · 1200 lm/m)</text>
+<rect x="746.0" y="871.5" width="4" height="54.0" fill="#eab308"/>
+<text x="738.0" y="898.5" fill="#eab308" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="end">L-03 · LED ÁMBAR CAVA (2400K)</text>
+<line x1="270.8" y1="237.0" x2="270.8" y2="723.0" stroke="#f59e0b" stroke-width="2.2" stroke-dasharray="6,3"/>
+<text x="280.8" y="480.0" fill="#f59e0b" font-family="monospace" font-size="6.0" font-weight="700" transform="rotate(90 280.8 480.0)" text-anchor="middle">L-04 · FOSO CORNER INDIRECTO PATIO CLAUSTRO (2700K)</text>
+<circle cx="341.0" cy="318.0" r="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.3"/>
+<circle cx="341.0" cy="318.0" r="3" fill="#38bdf8"/>
+<circle cx="341.0" cy="318.0" r="16" fill="none" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="3,2"/>
+<text x="341.0" y="336.0" fill="#94a3b8" font-family="monospace" font-size="5.2" text-anchor="middle">DL-01 (150 lux)</text>
+<circle cx="341.0" cy="642.0" r="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.3"/>
+<circle cx="341.0" cy="642.0" r="3" fill="#38bdf8"/>
+<circle cx="341.0" cy="642.0" r="16" fill="none" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="3,2"/>
+<text x="341.0" y="660.0" fill="#94a3b8" font-family="monospace" font-size="5.2" text-anchor="middle">DL-02 (150 lux)</text>
+<circle cx="658.2" cy="318.0" r="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.3"/>
+<circle cx="658.2" cy="318.0" r="3" fill="#38bdf8"/>
+<circle cx="658.2" cy="318.0" r="16" fill="none" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="3,2"/>
+<text x="658.2" y="336.0" fill="#94a3b8" font-family="monospace" font-size="5.2" text-anchor="middle">DL-03 (200 lux)</text>
+<circle cx="658.2" cy="912.0" r="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.3"/>
+<circle cx="658.2" cy="912.0" r="3" fill="#38bdf8"/>
+<circle cx="658.2" cy="912.0" r="16" fill="none" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="3,2"/>
+<text x="658.2" y="930.0" fill="#94a3b8" font-family="monospace" font-size="5.2" text-anchor="middle">DL-04 (200 lux)</text>
+<rect x="344.5" y="193.2" width="20" height="20" rx="3" fill="#38bdf8" stroke="#f8fafc" stroke-width="1.2"/>
+<text x="354.5" y="206.2" fill="#070b14" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">M-01</text>
+<text x="340.5" y="189.2" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700" text-anchor="end">TECLADO 4 ESCENAS NORTE</text>
+<rect x="277.0" y="996.5" width="20" height="20" rx="3" fill="#38bdf8" stroke="#f8fafc" stroke-width="1.2"/>
+<text x="287.0" y="1009.5" fill="#070b14" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">M-02</text>
+<text x="303.0" y="1010.5" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700">TECLADO 4 ESCENAS COMEDOR</text>
+<rect x="1460" y="80" width="430" height="1100" fill="#090e1a" stroke="#334155" stroke-width="0.8"/>
+<text x="1476" y="105" fill="#f59e0b" font-family="monospace" font-size="9.5" font-weight="700">TABLA DE LUMINARIAS Y FOTOMETRÍA</text>
+<line x1="1476" y1="112" x2="1874" y2="112" stroke="#f59e0b" stroke-width="0.8"/>
+<rect x="1476" y="130" width="398" height="20" fill="#1e293b"/>
+<text x="1482" y="143" fill="#f59e0b" font-family="monospace" font-size="6.0" font-weight="700">CÓDIGO</text>
+<text x="1530" y="143" fill="#e2e8f0" font-family="monospace" font-size="6.0" font-weight="700">TIPO / MODELO</text>
+<text x="1695" y="143" fill="#38bdf8" font-family="monospace" font-size="6.0" font-weight="700">POT.</text>
+<text x="1730" y="143" fill="#10b981" font-family="monospace" font-size="6.0" font-weight="700">CCT</text>
+<text x="1785" y="143" fill="#e2e8f0" font-family="monospace" font-size="6.0" font-weight="700">CONTROL</text>
+<rect x="1476" y="151" width="398" height="18" fill="none"/>
+<text x="1482" y="163" fill="#f59e0b" font-family="monospace" font-size="5.8" font-weight="700">L-01A</text>
+<text x="1530" y="163" fill="#cbd5e1" font-family="monospace" font-size="5.4">Módulo Lineal Difuso Carril 48V (2x)</text>
+<text x="1695" y="163" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700">32 W</text>
+<text x="1730" y="163" fill="#10b981" font-family="monospace" font-size="5.4">2700 K</text>
+<text x="1785" y="163" fill="#f8fafc" font-family="monospace" font-size="5.4">DALI 0-100%</text>
+<rect x="1476" y="171" width="398" height="18" fill="none"/>
+<text x="1482" y="183" fill="#f59e0b" font-family="monospace" font-size="5.8" font-weight="700">L-01B</text>
+<text x="1530" y="183" fill="#cbd5e1" font-family="monospace" font-size="5.4">Proyector Orientable 24° Carril (3x)</text>
+<text x="1695" y="183" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700">27 W</text>
+<text x="1730" y="183" fill="#10b981" font-family="monospace" font-size="5.4">2700 K</text>
+<text x="1785" y="183" fill="#f8fafc" font-family="monospace" font-size="5.4">UGR &lt; 16 DALI</text>
+<rect x="1476" y="191" width="398" height="18" fill="none"/>
+<text x="1482" y="203" fill="#f59e0b" font-family="monospace" font-size="5.8" font-weight="700">L-02</text>
+<text x="1530" y="203" fill="#cbd5e1" font-family="monospace" font-size="5.4">Tira LED COB Enrasada Bancada (3m)</text>
+<text x="1695" y="203" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700">43 W</text>
+<text x="1730" y="203" fill="#10b981" font-family="monospace" font-size="5.4">2700 K</text>
+<text x="1785" y="203" fill="#f8fafc" font-family="monospace" font-size="5.4">Regulable PWM</text>
+<rect x="1476" y="211" width="398" height="18" fill="none"/>
+<text x="1482" y="223" fill="#f59e0b" font-family="monospace" font-size="5.8" font-weight="700">L-03</text>
+<text x="1530" y="223" fill="#cbd5e1" font-family="monospace" font-size="5.4">Microperfil LED Ámbar Cava Santos</text>
+<text x="1695" y="223" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700">15 W</text>
+<text x="1730" y="223" fill="#10b981" font-family="monospace" font-size="5.4">2400 K</text>
+<text x="1785" y="223" fill="#f8fafc" font-family="monospace" font-size="5.4">Regulación 10%</text>
+<rect x="1476" y="231" width="398" height="18" fill="none"/>
+<text x="1482" y="243" fill="#f59e0b" font-family="monospace" font-size="5.8" font-weight="700">L-04</text>
+<text x="1530" y="243" fill="#cbd5e1" font-family="monospace" font-size="5.4">Foso Cortinero Patio Claustro (4m)</text>
+<text x="1695" y="243" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700">48 W</text>
+<text x="1730" y="243" fill="#10b981" font-family="monospace" font-size="5.4">2700 K</text>
+<text x="1785" y="243" fill="#f8fafc" font-family="monospace" font-size="5.4">Casambi</text>
+<rect x="1476" y="251" width="398" height="18" fill="none"/>
+<text x="1482" y="263" fill="#f59e0b" font-family="monospace" font-size="5.8" font-weight="700">L-05</text>
+<text x="1530" y="263" fill="#cbd5e1" font-family="monospace" font-size="5.4">Downlights Trimless Ø50mm IP44 (4x)</text>
+<text x="1695" y="263" fill="#38bdf8" font-family="monospace" font-size="5.8" font-weight="700">28 W</text>
+<text x="1730" y="263" fill="#10b981" font-family="monospace" font-size="5.4">3000 K</text>
+<text x="1785" y="263" fill="#f8fafc" font-family="monospace" font-size="5.4">DALI</text>
+<text x="1476" y="299" fill="#38bdf8" font-family="monospace" font-size="9.0" font-weight="700">MATRIZ DE PROGRAMACIÓN DE ESCENAS</text>
+<line x1="1476" y1="305" x2="1874" y2="305" stroke="#38bdf8" stroke-width="0.7"/>
+<rect x="1476" y="319" width="398" height="60" rx="3" fill="#131c31" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="1484" y="332" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700">ESCENA 1 · CHEF / TRABAJO</text>
+<text x="1484" y="343" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-01 Carril Isla: <tspan fill="#f8fafc" font-weight="700">100% (550 lux)</tspan></text>
+<text x="1484" y="353" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-02 LED Bancada: <tspan fill="#f8fafc" font-weight="700">100% (500 lux)</tspan></text>
+<text x="1484" y="363" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-03 Cava Santos: <tspan fill="#f8fafc" font-weight="700">50% cálido</tspan></text>
+<text x="1680" y="343" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-04 Foso Patio: <tspan fill="#f8fafc" font-weight="700">Apagado</tspan></text>
+<text x="1680" y="353" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-05 Downlights: <tspan fill="#f8fafc" font-weight="700">60% paso</tspan></text>
+<rect x="1476" y="387" width="398" height="60" rx="3" fill="#131c31" stroke="#f59e0b" stroke-width="0.8"/>
+<text x="1484" y="400" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700">ESCENA 2 · DESAYUNO SOLEADO</text>
+<text x="1484" y="411" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-01 Carril Isla: <tspan fill="#f8fafc" font-weight="700">30% difuso</tspan></text>
+<text x="1484" y="421" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-02 LED Bancada: <tspan fill="#f8fafc" font-weight="700">40% soporte</tspan></text>
+<text x="1484" y="431" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-03 Cava Santos: <tspan fill="#f8fafc" font-weight="700">Apagado</tspan></text>
+<text x="1680" y="411" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-04 Foso Patio: <tspan fill="#f8fafc" font-weight="700">20% suave</tspan></text>
+<text x="1680" y="421" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-05 Downlights: <tspan fill="#f8fafc" font-weight="700">Apagado</tspan></text>
+<rect x="1476" y="455" width="398" height="60" rx="3" fill="#131c31" stroke="#eab308" stroke-width="0.8"/>
+<text x="1484" y="468" fill="#eab308" font-family="monospace" font-size="6.5" font-weight="700">ESCENA 3 · CENA &amp; COPAS SOCIAL</text>
+<text x="1484" y="479" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-01 Carril Isla: <tspan fill="#f8fafc" font-weight="700">15% foco barra</tspan></text>
+<text x="1484" y="489" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-02 LED Bancada: <tspan fill="#f8fafc" font-weight="700">10% foso</tspan></text>
+<text x="1484" y="499" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-03 Cava Santos: <tspan fill="#f8fafc" font-weight="700">100% ámbar</tspan></text>
+<text x="1680" y="479" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-04 Foso Patio: <tspan fill="#f8fafc" font-weight="700">50% escénico</tspan></text>
+<text x="1680" y="489" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-05 Downlights: <tspan fill="#f8fafc" font-weight="700">Apagado</tspan></text>
+<rect x="1476" y="523" width="398" height="60" rx="3" fill="#131c31" stroke="#10b981" stroke-width="0.8"/>
+<text x="1484" y="536" fill="#10b981" font-family="monospace" font-size="6.5" font-weight="700">ESCENA 4 · CORTESÍA NOCHE</text>
+<text x="1484" y="547" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-01 Carril Isla: <tspan fill="#f8fafc" font-weight="700">Apagado</tspan></text>
+<text x="1484" y="557" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-02 LED Bancada: <tspan fill="#f8fafc" font-weight="700">5% zócalo</tspan></text>
+<text x="1484" y="567" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-03 Cava Santos: <tspan fill="#f8fafc" font-weight="700">5% balizado</tspan></text>
+<text x="1680" y="547" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-04 Foso Patio: <tspan fill="#f8fafc" font-weight="700">Apagado</tspan></text>
+<text x="1680" y="557" fill="#94a3b8" font-family="monospace" font-size="5.2">• L-05 Downlights: <tspan fill="#f8fafc" font-weight="700">10% nocturno</tspan></text>
+<text x="1476" y="606" fill="#10b981" font-family="monospace" font-size="9.0" font-weight="700">CUMPLIMIENTO CTE DB-HE3 / CONFORT IESNA</text>
+<line x1="1476" y1="612" x2="1874" y2="612" stroke="#10b981" stroke-width="0.7"/>
+<text x="1480" y="622" fill="#cbd5e1" font-family="monospace" font-size="5.4">• EFICIENCIA ENERGÉTICA (VEEI): 2,8 W/m²/100 lux (Límite CTE: 3,5).</text>
+<text x="1480" y="635" fill="#cbd5e1" font-family="monospace" font-size="5.4">• ÍNDICE DE REPRODUCCIÓN CROMÁTICA: CRI ≥ 95 en toda el área de corte y</text>
+<text x="1480" y="648" fill="#cbd5e1" font-family="monospace" font-size="5.4">  preparación de alimentos para máxima fidelidad visual y seguridad.</text>
+<text x="1480" y="661" fill="#cbd5e1" font-family="monospace" font-size="5.4">• CONFORT VISUAL: Ópticas oscuras antideslumbrantes UGR &lt; 16 en carril.</text>
+<text x="1480" y="674" fill="#cbd5e1" font-family="monospace" font-size="5.4">• RIESGO FOTOBIOLÓGICO: Grupo RG0 (Exento de riesgo fotobiológico).</text>
+</svg>
