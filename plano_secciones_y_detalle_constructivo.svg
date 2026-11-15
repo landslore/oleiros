@@ -81,7 +81,7 @@
 <g font-family="monospace">
 <rect x="28" y="68" width="1132" height="485" fill="url(#grid-minor)" stroke="#334155" stroke-width="0.8"/>
 <rect x="28" y="68" width="1132" height="24" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>
-<text x="42" y="84" fill="#38bdf8" font-size="8.5" font-weight="700">SECCIÓN CONSTRUCTIVA LONGITUDINAL A-A' (CORTE NORTE - SUR POR HALL, PATIO CORRALA, SALÓN, PORCHE Y PISCINA · ESCALA 1:50)</text>
+<text x="42" y="84" fill="#38bdf8" font-size="8.5" font-weight="700">SECCIÓN CONSTRUCTIVA LONGITUDINAL A-A' (CORTE NORTE - SUR POR HALL, PATIO CORRALA, SALÓN, PORCHE Y JARDÍN SUR · ESCALA 1:50)</text>
 <line x1="154.0" y1="105" x2="154.0" y2="515" stroke="#64748b" stroke-width="0.65" stroke-dasharray="12,4,2,4"/>
 <circle cx="154.0" cy="105" r="8.5" fill="#0b1120" stroke="#64748b" stroke-width="1.0"/>
 <text x="154.0" y="108" text-anchor="middle" fill="#e2e8f0" font-size="7.5" font-weight="700">1</text>
@@ -136,8 +136,8 @@
 <rect x="431.2" y="164.1" width="327.6" height="21.0" fill="url(#hatch-ansi31)" stroke="#f8fafc" stroke-width="1.3"/>
 <rect x="431.2" y="149.4" width="14.7" height="14.7" fill="url(#hatch-ansi31)" stroke="#f8fafc" stroke-width="1.2"/>
 <rect x="744.1" y="149.4" width="14.7" height="14.7" fill="url(#hatch-ansi31)" stroke="#f8fafc" stroke-width="1.2"/>
-<path d="M 859.6,435.0 V 498.0 H 1006.6 V 435.0" fill="#082f49" stroke="#38bdf8" stroke-width="2.2"/>
-<rect x="859.6" y="438.4" width="147.0" height="59.6" fill="url(#hatch-water)"/>
+<line x1="826.0" y1="435.0" x2="1057.0" y2="435.0" stroke="#10b981" stroke-width="2.2"/>
+<text x="941.5" y="449.7" fill="#10b981" font-size="6.0" font-weight="700" text-anchor="middle">PRADERA DE CÉSPED NATURAL (±0,00)</text>
 <line x1="876.4" y1="157.8" x2="826.0" y2="306.9" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow-tech)"/>
 <line x1="826.0" y1="306.9" x2="777.7" y2="435.0" stroke="#f59e0b" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.6"/>
 <text x="882.7" y="166.2" fill="#f59e0b" font-size="6.0" font-weight="700">SOL VERANO 70° (SOMBRA TOTAL EN VIDRIO C-07)</text>
@@ -152,8 +152,8 @@
 <text x="574.0" y="387.3" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">(H=2,80 m · Suelo Radiante)</text>
 <text x="763.0" y="378.3" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">12. PORCHE SUR</text>
 <text x="763.0" y="387.3" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">(Fondo 3,00 m)</text>
-<text x="933.1" y="466.5" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">13. PISCINA</text>
-<text x="933.1" y="475.5" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">(-1,50 m)</text>
+<text x="933.1" y="416.1" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">13. JARDÍN SUR</text>
+<text x="933.1" y="425.1" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">(Césped ±0,00)</text>
 <text x="471.1" y="250.2" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">GALERÍA</text>
 <text x="471.1" y="259.2" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">4+4 SILENCE</text>
 <text x="599.2" y="250.2" text-anchor="middle" fill="#e2e8f0" font-size="6.0" font-weight="700">14/15/16. DORMITORIOS P1</text>
@@ -194,11 +194,11 @@
       <text x="763.0" y="480.6" fill="#fbbf24" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">3,00 m (Porche Sur)</text>
     </g>
 <g class="cad-dim">
-      <line x1="859.6" y1="501.0" x2="859.6" y2="524.0" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
-      <line x1="1006.6" y1="501.0" x2="1006.6" y2="524.0" stroke="#38bdf8" stroke-width="0.45" opacity="0.75"/>
-      <line x1="859.6" y1="520.0" x2="1006.6" y2="520.0" stroke="#38bdf8" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
-      <rect x="883.7" y="511.7" width="98.8" height="9.8" fill="#0b1120" opacity="0.9"/>
-      <text x="933.1" y="518.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">3,50 m (Ancho Piscina)</text>
+      <line x1="826.0" y1="461.1" x2="826.0" y2="486.1" stroke="#10b981" stroke-width="0.45" opacity="0.75"/>
+      <line x1="1057.0" y1="461.1" x2="1057.0" y2="486.1" stroke="#10b981" stroke-width="0.45" opacity="0.75"/>
+      <line x1="826.0" y1="482.1" x2="1057.0" y2="482.1" stroke="#10b981" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="881.6" y="473.8" width="119.8" height="9.8" fill="#0b1120" opacity="0.9"/>
+      <text x="941.5" y="480.6" fill="#10b981" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">5,50 m (Pradera Césped Sur)</text>
     </g>
 </g>
 <g font-family="monospace">
@@ -401,7 +401,7 @@
 <text x="10" y="74.4" fill="#94a3b8" font-family="monospace" font-size="6.8">EMPLAZAMIENTO: Liáns / Santa Cruz · Concello de Oleiros (A Coruña) · Clima C1</text>
 <text x="10" y="86.4" fill="#10b981" font-family="monospace" font-size="6.8" font-weight="700">NORMATIVA: PGOM Oleiros Ord. 2B (Ocup. ≤ 20%) · Decreto 29/2010 NHG · CTE DB-HE/HS6</text>
 <text x="603.0" y="13" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700">ESPECIFICACIONES Y PARÁMETROS GEOMÉTRICOS DE HOJA</text>
-<text x="603.0" y="25.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Sección Longitudinal A-A': Porche Norte -> Hall -> Patio -> Salón-Comedor -> Porche Sur (Fondo 3,00m) -> Preinstalación Piscina en Césped</text>
+<text x="603.0" y="25.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Sección Longitudinal A-A': Porche Norte -> Hall -> Patio -> Salón-Comedor -> Porche Sur (Fondo 3,00m) -> Pradera Césped Natural Sur</text>
 <text x="603.0" y="36.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Sección Transversal B-B': Ala Técnica Oeste (Lavandería + Claraboyas Velux) -> Escalera -> Patio Central -> Cocina Isla Santos -> Despensa Walk-in</text>
 <text x="603.0" y="48.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Detalle D-03: Cubierta plana invertida sin tejas (2% pendiente, EPDM continuo, XPS 200mm, grava 60mm y sumideros interiores calefactados)</text>
 <text x="603.0" y="59.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Salidas de humos y ventilación: Campana BORA sin puente térmico, tiro barbacoa oculto tras celosía iroko y chimenea salón en ala Oeste</text>

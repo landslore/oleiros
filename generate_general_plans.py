@@ -152,21 +152,11 @@ def build_planta_baja_svg():
     out.append(f'<rect x="{X(8.25):.1f}" y="{Y(20.15):.1f}" width="{L(1.20):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#64748b" stroke-width="0.7"/>')
     out.append(draw_room_stamp(X(11.30), Y(20.80), "E-14", "PORCHE SUR EXPANDIDO", 36.00, "Tarima Iroko (Fondo 3,00m)", "±0,00"))
 
-    # Piscina Privada Soleada (7,50 x 3,50 m = 26,25 m²): X=[8.50..16.00], Y=[23.00..26.50]
-    # Albardilla perimetral de piedra caliza C3 de 50 cm
-    out.append(f'<rect x="{X(8.00):.1f}" y="{Y(22.50):.1f}" width="{L(8.50):.1f}" height="{L(4.50):.1f}" fill="url(#hatch-tile-60)" stroke="#94a3b8" stroke-width="0.8"/>')
-    out.append(f'<rect x="{X(8.50):.1f}" y="{Y(23.00):.1f}" width="{L(7.50):.1f}" height="{L(3.50):.1f}" fill="#082f49" stroke="#38bdf8" stroke-width="1.5"/>')
-    out.append(f'<rect x="{X(8.50):.1f}" y="{Y(23.00):.1f}" width="{L(7.50):.1f}" height="{L(3.50):.1f}" fill="url(#hatch-water)"/>')
-    # Playa sumergida Oeste (1.20m ancho, h=-0.40m) y peldaños de bajada
-    out.append(f'<line x1="{X(9.70):.1f}" y1="{Y(23.00):.1f}" x2="{X(9.70):.1f}" y2="{Y(26.50):.1f}" stroke="#38bdf8" stroke-width="0.9" stroke-dasharray="4,2"/>')
-    for xp_s in [9.95, 10.20, 10.45]:
-        out.append(f'<line x1="{X(xp_s):.1f}" y1="{Y(23.00):.1f}" x2="{X(xp_s):.1f}" y2="{Y(24.10):.1f}" stroke="#38bdf8" stroke-width="0.6"/>')
-    out.append(f'<text x="{X(9.10):.1f}" y="{Y(24.80):.1f}" fill="#7dd3fc" font-size="5.8" text-anchor="middle">PLAYA -0,40m</text>')
-    out.append(draw_room_stamp(X(12.60), Y(24.75), "E-15", "PISCINA PRIVADA", 26.25, "Gunitado Porcelánico", "-1,20/-1,50"))
-    # Caseta técnica enterrada depuración salina: X=[16.80..18.80], Y=[24.50..26.00]
-    out.append(f'<rect x="{X(16.80):.1f}" y="{Y(24.50):.1f}" width="{L(2.00):.1f}" height="{L(1.50):.1f}" fill="#0f172a" stroke="#64748b" stroke-width="0.8" stroke-dasharray="4,2"/>')
-    out.append(f'<text x="{X(17.80):.1f}" y="{Y(25.20):.1f}" fill="#94a3b8" font-size="6" font-weight="700" text-anchor="middle">ARQUETA TÉCNICA PISCINA</text>')
-    out.append(f'<text x="{X(17.80):.1f}" y="{Y(25.45):.1f}" fill="#64748b" font-size="5.5" text-anchor="middle">2,00x1,50m · Clorador Salino</text>')
+    # Pradera de Césped Natural Sur (Soleamiento Pleno Sur · Sin Piscina): X=[0.00..20.00], Y=[21.45..30.00]
+    out.append(f'<rect x="{X(0.00):.1f}" y="{Y(21.45):.1f}" width="{L(20.00):.1f}" height="{L(8.55):.1f}" fill="#041f14" stroke="#10b981" stroke-width="0.7" stroke-dasharray="8,4"/>')
+    out.append(f'<text x="{X(10.00):.1f}" y="{Y(25.00):.1f}" fill="#34d399" font-size="7.5" font-weight="700" text-anchor="middle">PRADERA DE CÉSPED NATURAL (JARDÍN SUR)</text>')
+    out.append(f'<text x="{X(10.00):.1f}" y="{Y(25.75):.1f}" fill="#6ee7b7" font-size="5.8" text-anchor="middle">Superficie Ajardinada Libre (171,00 m²) · Riego Automático alimentado por Depósito Pluviales</text>')
+    out.append(draw_room_stamp(X(10.00), Y(27.00), "E-15", "JARDÍN PRINCIPAL SUR", 171.00, "Césped Natural Riego Pluviales", "±0,00"))
     out.append('</g>')
 
     # =========================================================================
@@ -470,15 +460,14 @@ def build_planta_baja_svg():
         out.append(f'<circle cx="{X(13.52):.1f}" cy="{Y(ys_b):.1f}" r="5.5" fill="#0f172a" stroke="#94a3b8" stroke-width="0.65"/>')
     out.append(draw_room_stamp(X(14.35), Y(11.82), "E-08", "COCINA ISLA SANTOS", 15.20, "Porcelánico C2 · Dekton", "±0,00"))
 
-    # 07. LAVANDERÍA TÉCNICA y DESPENSA (X=14.35..16.65, Y=12.15..14.40 → 5,60 m²)
-    # Columna Lavadora + Secadora (0,65 x 0,65m) y Pila de lavar (0,60 x 0,55m)
-    out.append(f'<rect x="{X(15.95):.1f}" y="{Y(12.22):.1f}" width="{L(0.65):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.8"/>')
-    out.append(f'<circle cx="{X(16.27):.1f}" cy="{Y(12.54):.1f}" r="7" fill="none" stroke="#38bdf8" stroke-width="0.6"/>')
-    out.append(f'<text x="{X(16.27):.1f}" y="{Y(12.56):.1f}" fill="#cbd5e1" font-size="4.5" text-anchor="middle">LAV+SEC</text>')
-    out.append(draw_sink_block(X(15.95), Y(12.92), L(0.65), L(0.65), basins=1, orient="E"))
-    # Estanterías despensa 40cm fondo
-    out.append(draw_wardrobe_block(X(14.40), Y(13.92), L(2.15), L(0.42), "DESPENSA 40cm"))
-    out.append(draw_room_stamp(X(15.30), Y(13.25), "E-09", "LAVANDERÍA / DESP.", 5.60, "Porcelánico C2", "±0,00"))
+    # 06B. DESPENSA WALK-IN Y BODEGA SANTOS (X=14.35..16.65, Y=12.15..14.40 → 5,60 m²)
+    # Estanterías modulares Santos en U (fondo 40 cm) para víveres secos, conservas y vajilla
+    out.append(draw_wardrobe_block(X(15.95), Y(12.22), L(0.65), L(2.10), "ESTANTES"))
+    out.append(draw_wardrobe_block(X(14.40), Y(13.92), L(2.15), L(0.42), "DESPENSA SANTOS 40cm"))
+    # Mueble cava bodega y encimera pequeños electrodomésticos
+    out.append(f'<rect x="{X(14.40):.1f}" y="{Y(12.22):.1f}" width="{L(0.65):.1f}" height="{L(0.95):.1f}" fill="#131c31" stroke="#f59e0b" stroke-width="0.8"/>')
+    out.append(f'<text x="{X(14.72):.1f}" y="{Y(12.75):.1f}" fill="#fde68a" font-size="4.8" font-weight="700" text-anchor="middle">CAVA / BODEGA</text>')
+    out.append(draw_room_stamp(X(15.30), Y(13.25), "E-08B", "DESPENSA SANTOS", 5.60, "Porcelánico C2 · Estanterías", "±0,00"))
 
     # 08. SALÓN PRINCIPAL CON CHIMENEA (X=6.50..12.20, Y=13.35..18.10 → 26,50 m²)
     # Muro Oeste de Granito Moreno + Chimenea Estanca Stûv 21 + TV OLED 77" enrasada
@@ -582,15 +571,13 @@ def build_planta_baja_svg():
     out.append(draw_dim_v(Y(8.40), Y(12.40), X(3.85), X(-0.65), "4,00 (Claustro)", S, "#38bdf8"))
     out.append(draw_dim_v(Y(12.40), Y(18.45), X(6.15), X(-0.65), "6,05 (Salón/Com)", S, "#38bdf8"))
     out.append(draw_dim_v(Y(18.45), Y(21.45), X(6.15), X(-0.65), "3,00 (Porche Sur)", S, "#38bdf8"))
-    out.append(draw_dim_v(Y(21.45), Y(30.00), X(0.00), X(-0.65), "8,55 (Jardín/Pisc)", S, "#10b981"))
+    out.append(draw_dim_v(Y(21.45), Y(30.00), X(0.00), X(-0.65), "8,55 (Jardín Sur)", S, "#10b981"))
 
     # Línea 2: Cota Total Fondo Parcela (X = -1.55 m)
     out.append(draw_dim_v(Y(0.00), Y(30.00), X(-0.65), X(-1.55), "30,00 m (FONDO TOTAL PARCELA NORTE-SUR · 600,00 m²)", S, "#f59e0b", "tick-45-amber", font_size=8.5))
 
-    # Cotas interiores del Patio Corrala y Piscina
+    # Cotas interiores del Patio Corrala
     out.append(draw_dim_h(X(8.50), X(12.50), Y(12.40), Y(12.85), "4,00 m (Patio Corrala)", S, "#10b981"))
-    out.append(draw_dim_h(X(8.50), X(16.00), Y(26.50), Y(27.05), "7,50 m (Lámina Agua Piscina)", S, "#38bdf8"))
-    out.append(draw_dim_v(Y(23.00), Y(26.50), X(16.00), X(16.50), "3,50 m", S, "#38bdf8"))
 
     # Rosa de los vientos y escala gráfica (arriba a la derecha del plano)
     out.append(draw_north_rose_and_scale(X(18.50), Y(2.20), scale_px_per_m=S, scale_label="1:100"))
@@ -643,19 +630,19 @@ def build_planta_baja_svg():
         ("E-05", "03. Despacho Sanctasanctórum / Suite Visitas", "11,50 m²", "Roble 14 mm + Lamas Acúst.", "±0,00 m"),
         ("E-06", "04. Baño Completo PB + Distribuidor Neutro", "5,20 m²", "Porcelánico C3 + Kerdi", "±0,00 m"),
         ("E-08", "05. Cocina con Isla Santos Fine + Desayunador", "15,20 m²", "Porcelánico C2 120×60", "±0,00 m"),
-        ("E-08B", "06. Despensa Walk-in Santos", "4,50 m²", "Porcelánico C2 Técnico", "±0,00 m"),
+        ("E-08B", "06. Despensa Walk-in Santos (Bodega/Víveres)", "5,60 m²", "Porcelánico C2 Técnico", "±0,00 m"),
         ("E-10", "07. Salón Principal con Chimenea Estanca", "26,50 m²", "Caliza Natural Apomazada", "±0,00 m"),
         ("E-11", "08. Comedor Principal Interior (10 Pax)", "17,50 m²", "Caliza Natural Apomazada", "±0,00 m"),
         ("E-12", "09. Escalera Volada Roble 80mm (17 Peldaños)", "5,20 m²", "Roble Macizo 80 mm", "±0,00/+3,15"),
         ("E-13", "10. Sala Técnica / Surf & Bicis Passivhaus", "7,60 m²", "Hormigón Pulido Epoxi", "-0,05 m"),
         ("E-13B", "11. Lavandería y Plancha Oeste (Velux)", "11,60 m²", "Porcelánico C2 Técnico", "±0,00 m"),
         ("E-13C", "12. Caseta Jardín / Cortacésped (Cierre Porche)", "5,20 m²", "Hormigón Fratasado", "±0,00 m"),
-        ("SUB-1", "TOTAL SUPERFICIE ÚTIL INTERIOR PLANTA BAJA", "108,15 m²", "(Huella PB computable: 119,50 m² ≤ 120m²)", ""),
+        ("SUB-1", "TOTAL SUPERFICIE ÚTIL INTERIOR PLANTA BAJA", "109,25 m²", "(Huella PB computable: 119,50 m² ≤ 120m²)", ""),
         ("E-01", "Pérgola Cubierta Aparcamiento (2 Vehículos)", "28,00 m²", "Adoquín Drenante Granito", "-0,10 m"),
         ("E-02", "Porche Entrada Peatonal Noble Norte", "3,50 m²", "Granito Abujardado C3", "+0,05 m"),
         ("E-07", "05. Patio Corrala Central Habitable (Abierto)", "16,00 m²", "Tarima Iroko s/ Plots", "±0,00 m"),
         ("E-14", "10. Porche Sur Expandido Techado (Fondo 3,00 m)", "32,55 m²", "Tarima Iroko Cota Cero", "±0,00 m"),
-        ("E-15", "11. Piscina Privada Soleada (7,50 × 3,50 m)", "26,25 m²", "Gresite Porcelánico Arena", "-1,20/-1,50"),
+        ("E-15", "11. Pradera de Césped Natural Sur (Sin Piscina)", "171,00 m²", "Césped Natural Riego Pluviales", "±0,00 m"),
     ]
     yr0 = y_t2 + 10
     out.append(f'<rect x="14" y="{yr0}" width="487" height="16" fill="#1e293b" stroke="#475569" stroke-width="0.6"/>')

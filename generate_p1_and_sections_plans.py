@@ -380,13 +380,13 @@ def build_secciones_y_detalles_svg() -> str:
     ]
 
     # ==========================================================================
-    # 1. SECCIÓN LONGITUDINAL A-A' (NORTE - SUR POR EL PATIO CENTRAL Y PISCINA)
+    # 1. SECCIÓN LONGITUDINAL A-A' (NORTE - SUR POR EL PATIO CENTRAL Y JARDÍN SUR)
     # ==========================================================================
     # Viewport: x=28..1160, y=68..555
     out.append('<g font-family="monospace">')
     out.append('<rect x="28" y="68" width="1132" height="485" fill="url(#grid-minor)" stroke="#334155" stroke-width="0.8"/>')
     out.append('<rect x="28" y="68" width="1132" height="24" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>')
-    out.append('<text x="42" y="84" fill="#38bdf8" font-size="8.5" font-weight="700">SECCIÓN CONSTRUCTIVA LONGITUDINAL A-A\' (CORTE NORTE - SUR POR HALL, PATIO CORRALA, SALÓN, PORCHE Y PISCINA · ESCALA 1:50)</text>')
+    out.append('<text x="42" y="84" fill="#38bdf8" font-size="8.5" font-weight="700">SECCIÓN CONSTRUCTIVA LONGITUDINAL A-A\' (CORTE NORTE - SUR POR HALL, PATIO CORRALA, SALÓN, PORCHE Y JARDÍN SUR · ESCALA 1:50)</text>')
 
     # Scale for Section A-A': 1m horizontal = 42px, 1m vertical = 42px
     S_sec = 42.0
@@ -470,9 +470,9 @@ def build_secciones_y_detalles_svg() -> str:
     out.append(f'<rect x="{sx(11.60):.1f}" y="{sz(6.80):.1f}" width="{0.35*S_sec:.1f}" height="{0.35*S_sec:.1f}" fill="url(#hatch-ansi31)" stroke="#f8fafc" stroke-width="1.2"/>')
     out.append(f'<rect x="{sx(19.05):.1f}" y="{sz(6.80):.1f}" width="{0.35*S_sec:.1f}" height="{0.35*S_sec:.1f}" fill="url(#hatch-ansi31)" stroke="#f8fafc" stroke-width="1.2"/>')
 
-    # Vaso de Piscina Seccionado al Sur (Y=21.80..25.30, Z=-1.50..0.00)
-    out.append(f'<path d="M {sx(21.80):.1f},{sz(0.00):.1f} V {sz(-1.50):.1f} H {sx(25.30):.1f} V {sz(0.00):.1f}" fill="#082f49" stroke="#38bdf8" stroke-width="2.2"/>')
-    out.append(f'<rect x="{sx(21.80):.1f}" y="{sz(-0.08):.1f}" width="{3.50*S_sec:.1f}" height="{1.42*S_sec:.1f}" fill="url(#hatch-water)"/>')
+    # Terreno Natural y Pradera de Césped Sur (Y=21.00..26.50, Z=0.00)
+    out.append(f'<line x1="{sx(21.00):.1f}" y1="{sz(0.00):.1f}" x2="{sx(26.50):.1f}" y2="{sz(0.00):.1f}" stroke="#10b981" stroke-width="2.2"/>')
+    out.append(f'<text x="{sx(23.75):.1f}" y="{sz(-0.35):.1f}" fill="#10b981" font-size="6.0" font-weight="700" text-anchor="middle">PRADERA DE CÉSPED NATURAL (±0,00)</text>')
 
     # ==========================================================================
     # DIAGRAMAS SOLARES BIOCLIMÁTICOS (LATITUD 43°20' N — OLEIROS)
@@ -492,7 +492,7 @@ def build_secciones_y_detalles_svg() -> str:
         (10.00, 1.35, "00. PATIO CENTRAL\n(4,00 m · Cota ±0,00)"),
         (15.00, 1.35, "11. SALÓN - COMEDOR\n(H=2,80 m · Suelo Radiante)"),
         (19.50, 1.35, "12. PORCHE SUR\n(Fondo 3,00 m)"),
-        (23.55, -0.75, "13. PISCINA\n(-1,50 m)"),
+        (23.55, 0.45, "13. JARDÍN SUR\n(Césped ±0,00)"),
         (12.55, 4.40, "GALERÍA\n4+4 SILENCE"),
         (15.60, 4.40, "14/15/16. DORMITORIOS P1\n(Cota +3,15 m · H=2,60 m)"),
     ]
@@ -507,7 +507,7 @@ def build_secciones_y_detalles_svg() -> str:
     out.append(dim_h(sx(8.00), sx(12.00), sz(-0.55), 24, "4,00 m (Patio Corrala)", "#10b981"))
     out.append(dim_h(sx(12.00), sx(18.00), sz(-0.55), 24, "6,00 m (Salón-Comedor)"))
     out.append(dim_h(sx(18.00), sx(21.00), sz(-0.55), 24, "3,00 m (Porche Sur)", "#fbbf24"))
-    out.append(dim_h(sx(21.80), sx(25.30), sz(-1.50), 22, "3,50 m (Ancho Piscina)", "#38bdf8"))
+    out.append(dim_h(sx(21.00), sx(26.50), sz(-0.55), 24, "5,50 m (Pradera Césped Sur)", "#10b981"))
     out.append('</g>')
 
     # ==========================================================================
@@ -731,7 +731,7 @@ def build_secciones_y_detalles_svg() -> str:
         phase="PROYECTO DE EJECUCIÓN",
         subtitle="Altimetría Z, Soleamiento, Anti-Radón DB-HS6, Umbral Purenit Cota Cero y Cubierta Invertida",
         extra_notes=[
-            "Sección Longitudinal A-A': Porche Norte -> Hall -> Patio -> Salón-Comedor -> Porche Sur (Fondo 3,00m) -> Preinstalación Piscina en Césped",
+            "Sección Longitudinal A-A': Porche Norte -> Hall -> Patio -> Salón-Comedor -> Porche Sur (Fondo 3,00m) -> Pradera Césped Natural Sur",
             "Sección Transversal B-B': Ala Técnica Oeste (Lavandería + Claraboyas Velux) -> Escalera -> Patio Central -> Cocina Isla Santos -> Despensa Walk-in",
             "Detalle D-03: Cubierta plana invertida sin tejas (2% pendiente, EPDM continuo, XPS 200mm, grava 60mm y sumideros interiores calefactados)",
             "Salidas de humos y ventilación: Campana BORA sin puente térmico, tiro barbacoa oculto tras celosía iroko y chimenea salón en ala Oeste",
