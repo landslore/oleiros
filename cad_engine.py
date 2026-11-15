@@ -614,12 +614,15 @@ def draw_iso_title_block(x, y, w, h, sheet_num, sheet_title, scale_txt, subtitle
 
 def sanitize_svg_text(svg_str: str) -> str:
     import re
+    # 1. Escapar cualquier ampersand que no sea una entidad XML valida
+    svg_str = re.sub(r'&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)', '&amp;', svg_str)
+    # 2. Reemplazar operadores de comparacion dentro de etiquetas de texto
     def repl(m):
         open_tag, content, close_tag = m.group(1), m.group(2), m.group(3)
-        content = content.replace('&amp;', '&').replace('&', '&amp;').replace('<=', '≤').replace('>=', '≥').replace('<', '&lt;').replace('>', '&gt;')
+        content = content.replace('<=', '≤').replace('>=', '≥')
         return f'{open_tag}{content}{close_tag}'
-    return re.sub(r'(<text[^>]*>)(.*?)(</text>)', repl, svg_str, flags=re.DOTALL)
-
+    svg_str = re.sub(r'(<text\s[^>]*>)(.*?)(</text>)', repl, svg_str, flags=re.DOTALL)
+    return svg_str
 
 
 # ==============================================================================

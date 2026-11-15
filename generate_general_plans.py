@@ -761,7 +761,7 @@ def build_planta_baja_svg():
     )
 
     out.append("</svg>")
-    return "\n".join(out)
+    return sanitize_svg_text("\n".join(out))
 
 
 def build_planta_alta_svg():
@@ -1264,7 +1264,7 @@ def build_planta_alta_svg():
     )
 
     out.append("</svg>")
-    return "\n".join(out)
+    return sanitize_svg_text("\n".join(out))
 
 
 def main():
@@ -1274,8 +1274,10 @@ def main():
     paths_pb = [
         "/home/antigravity/landslore/oleiros/planta_baja_propuesta_d.svg",
         "/home/antigravity/landslore/oleiros/propuestas/planta_baja_propuesta_d.svg",
+        "/home/antigravity/landslore/oleiros/v2/planos/planta_baja_definitiva.svg",
     ]
     for p in paths_pb:
+        os.makedirs(os.path.dirname(p), exist_ok=True)
         with open(p, "w", encoding="utf-8") as f:
             f.write(pb_svg)
         print(f"Written {p} ({len(pb_svg)} bytes)")
@@ -1283,8 +1285,10 @@ def main():
     paths_p1 = [
         "/home/antigravity/landslore/oleiros/planta_alta_propuesta_d.svg",
         "/home/antigravity/landslore/oleiros/propuestas/planta_alta_propuesta_d.svg",
+        "/home/antigravity/landslore/oleiros/v2/planos/planta_alta_definitiva.svg",
     ]
     for p in paths_p1:
+        os.makedirs(os.path.dirname(p), exist_ok=True)
         with open(p, "w", encoding="utf-8") as f:
             f.write(p1_svg)
         print(f"Written {p} ({len(p1_svg)} bytes)")
