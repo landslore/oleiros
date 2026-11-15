@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="100%" height="100%" style="background-color:#070b14;">
+
+    <defs>
+      <!-- Retícula CAD milimétrica -->
+      <pattern id="grid-cad-fine" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.35" opacity="0.6"/>
+      </pattern>
+      <pattern id="grid-cad-major" width="100" height="100" patternUnits="userSpaceOnUse">
+        <rect width="100" height="100" fill="url(#grid-cad-fine)"/>
+        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#334155" stroke-width="0.8" opacity="0.75"/>
+      </pattern>
+
+      <!-- Rayado técnico muros ANSI31 -->
+      <pattern id="hatch-wall" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#94a3b8" stroke-width="0.8"/>
+      </pattern>
+
+      <!-- Rayado madera roble / muebles -->
+      <pattern id="hatch-wood" width="30" height="6" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="6" x2="30" y2="6" stroke="#475569" stroke-width="0.4" opacity="0.6"/>
+        <line x1="12" y1="0" x2="12" y2="6" stroke="#475569" stroke-width="0.3" opacity="0.5"/>
+      </pattern>
+
+      <!-- Marcadores de cota a 45 grados (UNE-EN ISO 129) -->
+      <marker id="tick-45" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#38bdf8" stroke-width="1.2"/>
+      </marker>
+      <marker id="tick-amber" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#f59e0b" stroke-width="1.2"/>
+      </marker>
+      <marker id="tick-emerald" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#10b981" stroke-width="1.2"/>
+      </marker>
+      <marker id="arrow-cad" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <path d="M 0 1 L 5 3 L 0 5 z" fill="#38bdf8"/>
+      </marker>
+
+      <!-- Gradientes decorativos -->
+      <linearGradient id="grad-columnas" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1e293b"/>
+        <stop offset="100%" stop-color="#0f172a"/>
+      </linearGradient>
+      <linearGradient id="grad-dekton" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#27272a"/>
+        <stop offset="50%" stop-color="#3f3f46"/>
+        <stop offset="100%" stop-color="#27272a"/>
+      </linearGradient>
+    </defs>
+    
+<rect x="16" y="16" width="1568" height="1068" fill="none" stroke="#475569" stroke-width="1.6"/>
+<rect x="22" y="22" width="1556" height="1056" fill="none" stroke="#334155" stroke-width="0.8"/>
+<rect x="32" y="30" width="1120" height="42" fill="#0f172a" stroke="#334155" stroke-width="0.9"/>
+<text x="46" y="50" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="700">PLANO K-01 · DISTRIBUCIÓN Y GEOMETRÍA ESQUEMÁTICA DE COCINA (DETALLE 1:20)</text>
+<text x="46" y="64" fill="#94a3b8" font-family="monospace" font-size="8.0">Propuesta D · Hogar Oleiros · Isla Santos Fine 2,80×1,00m · Frente Columnas 3,60m · Circulaciones reglamentarias NHG</text>
+<rect x="32" y="80" width="1120" height="970" fill="url(#grid-cad-major)" stroke="#334155" stroke-width="0.8"/>
+<rect x="211.0" y="179.0" width="630.0" height="21.0" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="792.0" y="179.0" width="21.0" height="686.0" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="211.0" y="179.0" width="49.0" height="63.0" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="211.0" y="746.0" width="49.0" height="119.0" fill="url(#hatch-wall)" stroke="#e2e8f0" stroke-width="1.3"/>
+<rect x="251.6" y="242.0" width="16.8" height="504.0" fill="#0f172a" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="257.2" y1="242.0" x2="257.2" y2="494.0" stroke="#38bdf8" stroke-width="2.2"/>
+<line x1="262.8" y1="487.0" x2="262.8" y2="746.0" stroke="#38bdf8" stroke-width="2.2"/>
+<text x="246.0" y="494.0" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700" transform="rotate(-90 246.0 494.0)" text-anchor="middle">VENTANAL CORREDERO PATIO CLAUSTRO (3,60×2,65 m)</text>
+<rect x="260.0" y="200.0" width="532.0" height="644.0" fill="#0f172a" opacity="0.85"/>
+<circle cx="554.0" cy="522.0" r="105.0" fill="#38bdf8" fill-opacity="0.04" stroke="#38bdf8" stroke-width="1.0" stroke-dasharray="6,4"/>
+<text x="554.0" y="527.6" fill="#38bdf8" font-family="monospace" font-size="6.8" text-anchor="middle">CIRCULACIÓN LIBRE Ø1,50 m (NHG)</text>
+<rect x="701.0" y="242.0" width="91.0" height="504.0" fill="url(#grad-columnas)" stroke="#e2e8f0" stroke-width="1.4"/>
+<line x1="701.0" y1="242.0" x2="792.0" y2="242.0" stroke="#475569" stroke-width="0.9"/>
+<text x="746.5" y="260.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">COL 01 (60 cm)</text>
+<text x="746.5" y="278.0" fill="#f8fafc" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">FRIGORÍFICO XXL</text>
+<text x="746.5" y="294.0" fill="#94a3b8" font-family="monospace" font-size="5.5" text-anchor="middle">Integrado 1-puerta</text>
+<line x1="701.0" y1="326.0" x2="792.0" y2="326.0" stroke="#475569" stroke-width="0.9"/>
+<text x="746.5" y="344.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">COL 02 (60 cm)</text>
+<text x="746.5" y="362.0" fill="#f8fafc" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">CONGELADOR NO-FROST</text>
+<text x="746.5" y="378.0" fill="#94a3b8" font-family="monospace" font-size="5.5" text-anchor="middle">Integrado vertical</text>
+<line x1="701.0" y1="410.0" x2="792.0" y2="410.0" stroke="#475569" stroke-width="0.9"/>
+<text x="746.5" y="428.0" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">COL 03 (60 cm)</text>
+<text x="746.5" y="446.0" fill="#f8fafc" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">TORRE HORNO + MIC</text>
+<text x="746.5" y="462.0" fill="#94a3b8" font-family="monospace" font-size="5.5" text-anchor="middle">Bosch Serie 8</text>
+<line x1="701.0" y1="494.0" x2="792.0" y2="494.0" stroke="#475569" stroke-width="0.9"/>
+<text x="746.5" y="512.0" fill="#10b981" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">COL 04 (60 cm)</text>
+<text x="746.5" y="530.0" fill="#f8fafc" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">DESAYUNADOR (A)</text>
+<text x="746.5" y="546.0" fill="#94a3b8" font-family="monospace" font-size="5.5" text-anchor="middle">Puerta escamoteable</text>
+<line x1="701.0" y1="578.0" x2="792.0" y2="578.0" stroke="#475569" stroke-width="0.9"/>
+<text x="746.5" y="596.0" fill="#10b981" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">COL 05 (60 cm)</text>
+<text x="746.5" y="614.0" fill="#f8fafc" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">DESAYUNADOR (B)</text>
+<text x="746.5" y="630.0" fill="#94a3b8" font-family="monospace" font-size="5.5" text-anchor="middle">Encimera café/tost.</text>
+<line x1="701.0" y1="662.0" x2="792.0" y2="662.0" stroke="#475569" stroke-width="0.9"/>
+<text x="746.5" y="680.0" fill="#cbd5e1" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">COL 06 (60 cm)</text>
+<text x="746.5" y="698.0" fill="#f8fafc" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">DESPENSERO TOTAL</text>
+<text x="746.5" y="714.0" fill="#94a3b8" font-family="monospace" font-size="5.5" text-anchor="middle">Gavetas interiores</text>
+<rect x="780.8" y="760.0" width="11.2" height="119.0" fill="#1e293b" stroke="#38bdf8" stroke-width="1.1"/>
+<text x="808.8" y="823.0" fill="#38bdf8" font-family="monospace" font-size="7.0" font-weight="700" transform="rotate(90 808.8 823.0)" text-anchor="middle">PASO A LAVANDERÍA (0,85 m)</text>
+<rect x="421.0" y="298.0" width="140.0" height="392.0" fill="#0f172a" stroke="#f8fafc" stroke-width="1.8"/>
+<rect x="424.0" y="301.0" width="134.0" height="386.0" fill="url(#grad-dekton)" opacity="0.35" stroke="#475569" stroke-width="0.8"/>
+<line x1="470.0" y1="298.0" x2="470.0" y2="690.0" stroke="#38bdf8" stroke-width="0.9" stroke-dasharray="4,2"/>
+<text x="439.0" y="494.0" fill="#38bdf8" font-family="monospace" font-size="6.0" font-weight="700" transform="rotate(-90 439.0 494.0)" text-anchor="middle">BARRA SNACK VOLADA (0,35 m)</text>
+<circle cx="390.2" cy="347.0" r="25.2" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<circle cx="390.2" cy="347.0" r="11.2" fill="#334155" stroke="#94a3b8" stroke-width="0.6"/>
+<circle cx="390.2" cy="438.0" r="25.2" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<circle cx="390.2" cy="438.0" r="11.2" fill="#334155" stroke="#94a3b8" stroke-width="0.6"/>
+<circle cx="390.2" cy="529.0" r="25.2" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<circle cx="390.2" cy="529.0" r="11.2" fill="#334155" stroke="#94a3b8" stroke-width="0.6"/>
+<circle cx="390.2" cy="620.0" r="25.2" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.1"/>
+<circle cx="390.2" cy="620.0" r="11.2" fill="#334155" stroke="#94a3b8" stroke-width="0.6"/>
+<rect x="479.8" y="347.0" width="70.0" height="98.0" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1.3"/>
+<rect x="483.8" y="351.0" width="62.0" height="90.0" rx="2" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<circle cx="514.8" cy="396.0" r="5.5" fill="#38bdf8" stroke="#f8fafc" stroke-width="1.1"/>
+<line x1="514.8" y1="396.0" x2="504.8" y2="396.0" stroke="#f8fafc" stroke-width="1.5"/>
+<text x="514.8" y="461.0" fill="#38bdf8" font-family="monospace" font-size="6.0" font-weight="700" text-anchor="middle">FREGADERO 70×45 cm</text>
+<rect x="477.0" y="515.0" width="72.8" height="114.8" rx="2" fill="#18181b" stroke="#f59e0b" stroke-width="1.4"/>
+<circle cx="492.0" cy="535.0" r="11" fill="none" stroke="#f59e0b" stroke-width="0.9"/>
+<circle cx="492.0" cy="535.0" r="3" fill="#f59e0b"/>
+<circle cx="534.8" cy="535.0" r="11" fill="none" stroke="#f59e0b" stroke-width="0.9"/>
+<circle cx="534.8" cy="535.0" r="3" fill="#f59e0b"/>
+<circle cx="492.0" cy="609.8" r="11" fill="none" stroke="#f59e0b" stroke-width="0.9"/>
+<circle cx="492.0" cy="609.8" r="3" fill="#f59e0b"/>
+<circle cx="534.8" cy="609.8" r="11" fill="none" stroke="#f59e0b" stroke-width="0.9"/>
+<circle cx="534.8" cy="609.8" r="3" fill="#f59e0b"/>
+<rect x="505.4" y="556.4" width="16" height="32" rx="3" fill="#0f172a" stroke="#06b6d4" stroke-width="1.2"/>
+<circle cx="513.4" cy="572.4" r="5" fill="none" stroke="#06b6d4" stroke-width="1.0"/>
+<text x="513.4" y="645.8" fill="#f59e0b" font-family="monospace" font-size="6.0" font-weight="700" text-anchor="middle">PLACA BORA PURE 80 cm</text>
+<text x="516.2" y="477.2" fill="#94a3b8" font-family="monospace" font-size="6.0" text-anchor="middle">[ LAVAVAJILLAS 60 cm ]</text>
+<g class="cad-dim">
+      <line x1="260.0" y1="219.0" x2="260.0" y2="217.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="421.0" y1="219.0" x2="421.0" y2="217.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="260.0" y1="221.0" x2="421.0" y2="221.0" stroke="#38bdf8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="270.5" y="215.4" width="139.9" height="11.2" fill="#0b1120" opacity="0.9"/>
+      <text x="340.5" y="223.6" fill="#38bdf8" font-family="monospace" font-size="7.2" font-weight="700" text-anchor="middle">1,15 m (Paso Libre y Taburetes)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="421.0" y1="219.0" x2="421.0" y2="217.0" stroke="#f8fafc" stroke-width="0.5" opacity="0.6"/>
+      <line x1="561.0" y1="219.0" x2="561.0" y2="217.0" stroke="#f8fafc" stroke-width="0.5" opacity="0.6"/>
+      <line x1="421.0" y1="221.0" x2="561.0" y2="221.0" stroke="#f8fafc" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="459.9" y="215.4" width="62.2" height="11.2" fill="#0b1120" opacity="0.9"/>
+      <text x="491.0" y="223.6" fill="#f8fafc" font-family="monospace" font-size="7.2" font-weight="700" text-anchor="middle">1,00 m (Isla)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="561.0" y1="219.0" x2="561.0" y2="217.0" stroke="#10b981" stroke-width="0.5" opacity="0.6"/>
+      <line x1="701.0" y1="219.0" x2="701.0" y2="217.0" stroke="#10b981" stroke-width="0.5" opacity="0.6"/>
+      <line x1="561.0" y1="221.0" x2="701.0" y2="221.0" stroke="#10b981" stroke-width="0.8" marker-start="url(#tick-emerald)" marker-end="url(#tick-emerald)"/>
+      <rect x="578.3" y="215.4" width="105.4" height="11.2" fill="#0b1120" opacity="0.9"/>
+      <text x="631.0" y="223.6" fill="#10b981" font-family="monospace" font-size="7.2" font-weight="700" text-anchor="middle">1,00 m (Paso Culinario)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="701.0" y1="219.0" x2="701.0" y2="217.0" stroke="#94a3b8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="792.0" y1="219.0" x2="792.0" y2="217.0" stroke="#94a3b8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="701.0" y1="221.0" x2="792.0" y2="221.0" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="730.9" y="215.5" width="31.2" height="11.0" fill="#0b1120" opacity="0.9"/>
+      <text x="746.5" y="223.5" fill="#94a3b8" font-family="monospace" font-size="7.0" font-weight="700" text-anchor="middle">0,65 m</text>
+    </g>
+<g class="cad-dim">
+      <line x1="260.0" y1="191.0" x2="260.0" y2="164.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="792.0" y1="191.0" x2="792.0" y2="164.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="260.0" y1="168.0" x2="792.0" y2="168.0" stroke="#38bdf8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="454.1" y="161.8" width="143.7" height="12.5" fill="#0b1120" opacity="0.9"/>
+      <text x="526.0" y="171.2" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">3,80 m (Ancho Total Cocina)</text>
+    </g>
+<g class="cad-dim">
+      <line x1="419.0" y1="200.0" x2="382.0" y2="200.0" stroke="#94a3b8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="419.0" y1="298.0" x2="382.0" y2="298.0" stroke="#94a3b8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="386.0" y1="200.0" x2="386.0" y2="298.0" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(386.0, 249.0) rotate(-90)">
+        <rect x="-15.6" y="-5.5" width="31.2" height="11.0" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="2.5" fill="#94a3b8" font-family="monospace" font-size="7.0" font-weight="700" text-anchor="middle">0,70 m</text>
+      </g>
+    </g>
+<g class="cad-dim">
+      <line x1="419.0" y1="298.0" x2="382.0" y2="298.0" stroke="#f8fafc" stroke-width="0.5" opacity="0.6"/>
+      <line x1="419.0" y1="690.0" x2="382.0" y2="690.0" stroke="#f8fafc" stroke-width="0.5" opacity="0.6"/>
+      <line x1="386.0" y1="298.0" x2="386.0" y2="690.0" stroke="#f8fafc" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(386.0, 494.0) rotate(-90)">
+        <rect x="-55.8" y="-6.0" width="111.6" height="12.0" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="3.0" fill="#f8fafc" font-family="monospace" font-size="8.0" font-weight="700" text-anchor="middle">2,80 m (Longitud Isla)</text>
+      </g>
+    </g>
+<g class="cad-dim">
+      <line x1="419.0" y1="690.0" x2="382.0" y2="690.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="419.0" y1="844.0" x2="382.0" y2="844.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="386.0" y1="690.0" x2="386.0" y2="844.0" stroke="#38bdf8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(386.0, 767.0) rotate(-90)">
+        <rect x="-52.7" y="-5.6" width="105.4" height="11.2" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="2.6" fill="#38bdf8" font-family="monospace" font-size="7.2" font-weight="700" text-anchor="middle">1,10 m (Paso a Comedor)</text>
+      </g>
+    </g>
+<g class="cad-dim">
+      <line x1="258.0" y1="200.0" x2="201.0" y2="200.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="258.0" y1="844.0" x2="201.0" y2="844.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="205.0" y1="200.0" x2="205.0" y2="844.0" stroke="#38bdf8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(205.0, 522.0) rotate(-90)">
+        <rect x="-79.5" y="-6.2" width="159.0" height="12.5" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="3.2" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">4,60 m (Longitud Total Cocina)</text>
+      </g>
+    </g>
+<g class="cad-dim">
+      <line x1="794.0" y1="242.0" x2="826.0" y2="242.0" stroke="#f59e0b" stroke-width="0.5" opacity="0.6"/>
+      <line x1="794.0" y1="746.0" x2="826.0" y2="746.0" stroke="#f59e0b" stroke-width="0.5" opacity="0.6"/>
+      <line x1="822.0" y1="242.0" x2="822.0" y2="746.0" stroke="#f59e0b" stroke-width="0.8" marker-start="url(#tick-amber)" marker-end="url(#tick-amber)"/>
+      <g transform="translate(822.0, 494.0) rotate(-90)">
+        <rect x="-81.8" y="-5.8" width="163.5" height="11.5" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="2.8" fill="#f59e0b" font-family="monospace" font-size="7.5" font-weight="700" text-anchor="middle">3,60 m (6 Módulos Columnas × 60 cm)</text>
+      </g>
+    </g>
+<rect x="1180" y="30" width="390" height="1020" fill="#0f172a" stroke="#334155" stroke-width="1.0"/>
+<rect x="1190" y="42" width="370" height="26" fill="#1e293b"/>
+<text x="1200" y="59" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="700">MEMORIA ESQUEMÁTICA COCINA</text>
+<text x="1196" y="85" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="700">1. ZONIFICACIÓN Y TRIÁNGULO DE TRABAJO</text>
+<line x1="1196" y1="89" x2="1554" y2="89" stroke="#38bdf8" stroke-width="0.7" opacity="0.6"/>
+<text x="1200" y="101" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Zona Frío / Almacén:</text>
+<text x="1208" y="112" fill="#94a3b8" font-family="monospace" font-size="6.0">Frente Este (Frigo XXL + Congelador)</text>
+<text x="1200" y="122" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Zona Cocción:</text>
+<text x="1208" y="133" fill="#94a3b8" font-family="monospace" font-size="6.0">Isla Central (Bora Pure 80 cm)</text>
+<text x="1200" y="143" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Zona Aguas / Limpieza:</text>
+<text x="1208" y="154" fill="#94a3b8" font-family="monospace" font-size="6.0">Isla Central (Fregadero 70 + LVV 60)</text>
+<text x="1200" y="164" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Zona Desayunador Pocket:</text>
+<text x="1208" y="175" fill="#94a3b8" font-family="monospace" font-size="6.0">Módulo 120 cm escamoteable</text>
+<text x="1200" y="185" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Zona Social / Barra:</text>
+<text x="1208" y="196" fill="#94a3b8" font-family="monospace" font-size="6.0">4 taburetes orientados al patio</text>
+<text x="1196" y="214" fill="#10b981" font-family="monospace" font-size="7.5" font-weight="700">2. DIMENSIONES Y ANTROPOMETRÍA</text>
+<line x1="1196" y1="218" x2="1554" y2="218" stroke="#10b981" stroke-width="0.7" opacity="0.6"/>
+<text x="1200" y="230" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Superficie útil neta:</text>
+<text x="1208" y="241" fill="#94a3b8" font-family="monospace" font-size="6.0">15,20 m² de estancia cocina</text>
+<text x="1200" y="251" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Longitud Isla Santos:</text>
+<text x="1208" y="262" fill="#94a3b8" font-family="monospace" font-size="6.0">2,80 m x 1,00 m (Encimera Dekton)</text>
+<text x="1200" y="272" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Paso libre patio-isla:</text>
+<text x="1208" y="283" fill="#94a3b8" font-family="monospace" font-size="6.0">1,15 m (holgura para sentarse y paso)</text>
+<text x="1200" y="293" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Paso libre culinario:</text>
+<text x="1208" y="304" fill="#94a3b8" font-family="monospace" font-size="6.0">1,00 m (apertura total de cajones)</text>
+<text x="1200" y="314" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Accesibilidad:</text>
+<text x="1208" y="325" fill="#94a3b8" font-family="monospace" font-size="6.0">Giro libre Ø1,50 m cumpliendo NHG</text>
+<text x="1196" y="343" fill="#f59e0b" font-family="monospace" font-size="7.5" font-weight="700">3. MOBILIARIO SANTOS FINE</text>
+<line x1="1196" y1="347" x2="1554" y2="347" stroke="#f59e0b" stroke-width="0.7" opacity="0.6"/>
+<text x="1200" y="359" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Acabado frentes:</text>
+<text x="1208" y="370" fill="#94a3b8" font-family="monospace" font-size="6.0">Laca mate seda antihuellas Cashmere</text>
+<text x="1200" y="380" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Columnas integradas:</text>
+<text x="1208" y="391" fill="#94a3b8" font-family="monospace" font-size="6.0">Roble humo con tirador gola oculto</text>
+<text x="1200" y="401" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Herrajes interiores:</text>
+<text x="1208" y="412" fill="#94a3b8" font-family="monospace" font-size="6.0">Blum Legrabox con amortiguación</text>
+<text x="1200" y="422" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Mueble Desayunador:</text>
+<text x="1208" y="433" fill="#94a3b8" font-family="monospace" font-size="6.0">Puertas escamoteables pocket 120cm</text>
+<text x="1200" y="443" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Zócalo inferior:</text>
+<text x="1208" y="454" fill="#94a3b8" font-family="monospace" font-size="6.0">Aluminio negro retranqueado (h=6cm)</text>
+<text x="1196" y="472" fill="#cbd5e1" font-family="monospace" font-size="7.5" font-weight="700">4. RELACIÓN CON EL ENTORNO</text>
+<line x1="1196" y1="476" x2="1554" y2="476" stroke="#cbd5e1" stroke-width="0.7" opacity="0.6"/>
+<text x="1200" y="488" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Conexión exterior:</text>
+<text x="1208" y="499" fill="#94a3b8" font-family="monospace" font-size="6.0">Corredera 3,60 m hacia Patio Claustro</text>
+<text x="1200" y="509" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Conexión técnica:</text>
+<text x="1208" y="520" fill="#94a3b8" font-family="monospace" font-size="6.0">Puerta corredera oculta a Lavandería</text>
+<text x="1200" y="530" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Conexión diáfana:</text>
+<text x="1208" y="541" fill="#94a3b8" font-family="monospace" font-size="6.0">Fluidez total con Comedor y Salón Sur</text>
+<text x="1196" y="559" fill="#f43f5e" font-family="monospace" font-size="7.5" font-weight="700">5. PRÓXIMAS FASES DE DEFINICIÓN</text>
+<line x1="1196" y1="563" x2="1554" y2="563" stroke="#f43f5e" stroke-width="0.7" opacity="0.6"/>
+<text x="1200" y="575" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Fase 2:</text>
+<text x="1208" y="586" fill="#94a3b8" font-family="monospace" font-size="6.0">Tomas de enchufe (C3, C4, C5) y potencias</text>
+<text x="1200" y="596" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Fase 3:</text>
+<text x="1208" y="607" fill="#94a3b8" font-family="monospace" font-size="6.0">Iluminación técnica IES (carriles/LEDs)</text>
+<text x="1200" y="617" fill="#f1f5f9" font-family="monospace" font-size="6.5" font-weight="700">• Fase 4:</text>
+<text x="1208" y="628" fill="#94a3b8" font-family="monospace" font-size="6.0">Detalle carpinterías Cortizo y dintel</text>
+</svg>
