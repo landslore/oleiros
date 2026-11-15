@@ -793,10 +793,13 @@ def build_cocina_interactivo_html():
   <!-- Pestañas de Navegación de Planos -->
   <div class="flex border-b border-slate-800 mb-6 gap-2">
     <button onclick="showTab('planta')" id="tab-planta" class="tab-btn active px-5 py-3 font-mono text-sm border-b-2 font-bold transition flex items-center gap-2">
-      <span>📐 Plano K-01: Planta Frente Mixto & Ventanal Este (1:20)</span>
+      <span>📐 Plano K-01: Planta (1:20)</span>
     </button>
     <button onclick="showTab('elevaciones')" id="tab-elevaciones" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
-      <span>📏 Plano K-02: Alzado Ventana 3m & Sección Patio (1:20)</span>
+      <span>📏 Plano K-02: Alzados & Cortes (1:20)</span>
+    </button>
+    <button onclick="showTab('renders')" id="tab-renders" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
+      <span>🖼️ Renders Fotorrealistas (3 Vistas)</span>
     </button>
     <button onclick="showTab('resumen')" id="tab-resumen" class="tab-btn px-5 py-3 font-mono text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-2">
       <span>📋 Memoria de Luz & Almacenaje</span>
@@ -829,7 +832,61 @@ def build_cocina_interactivo_html():
     </div>
   </div>
 
-  <!-- Contenedor Tab 3: Resumen & Siguientes Pasos -->
+  <!-- Contenedor Tab 3: Renders Fotorrealistas -->
+  <div id="content-renders" class="space-y-8 hidden">
+    <!-- Render 1 -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4">
+        <div>
+          <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Perspectiva 1</span>
+          <h3 class="text-xl font-bold text-white">Vista desde el Salón / Comedor (Hacia el Norte)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">Encuadre Eje Sur → Norte</span>
+      </div>
+      <div class="overflow-hidden rounded-xl border border-slate-700 shadow-xl mb-4 bg-slate-950">
+        <img src="v2/renders/render_cocina_salon.jpg" alt="Render Cocina desde Salón" class="w-full h-auto block"/>
+      </div>
+      <p class="text-sm text-slate-300 font-mono leading-relaxed">
+        <strong>Fidelidad técnica:</strong> En primer plano a la derecha, las columnas altas con la Cava de Vinos Santos (60 botellas) iluminada en ámbar y vitrina despensa. Al fondo del frente Este, el ventanal horizontal C-07 (3,00 × 0,80 m) inundando de luz de mañana la encimera Dekton Kelya y coffee station. En el centro, la Gran Isla Santos Fine de 3,60 m con placa Bora Pure enrasada y fregadero bajo encimera. A la izquierda, la cristalera corredera Cortizo conectando directamente con el arce japonés del Patio Claustro.
+      </p>
+    </div>
+
+    <!-- Render 2 -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4">
+        <div>
+          <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Perspectiva 2</span>
+          <h3 class="text-xl font-bold text-white">Vista desde el Patio Claustro (Hacia el Este)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">Encuadre Exterior → Interior</span>
+      </div>
+      <div class="overflow-hidden rounded-xl border border-slate-700 shadow-xl mb-4 bg-slate-950">
+        <img src="v2/renders/render_cocina_patio.jpg" alt="Render Cocina desde Patio Claustro" class="w-full h-auto block"/>
+      </div>
+      <p class="text-sm text-slate-300 font-mono leading-relaxed">
+        <strong>Fidelidad técnica:</strong> Vista tomada desde la tarima de iroko del patio central junto al arce japonés. La corredera Cortizo Cor Vision Plus abierta crea una transición continua a cota cero hacia la barra social de la isla (vuelo de 35 cm con 5 taburetes de diseño). Al fondo, se aprecia el frente Este completo: columnas de hornos a la izquierda, bancada con ventanal panorámico en el centro y cava de vinos a la derecha.
+      </p>
+    </div>
+
+    <!-- Render 3 -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4">
+        <div>
+          <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Perspectiva 3</span>
+          <h3 class="text-xl font-bold text-white">Vista desde el Norte (Hacia el Comedor y Jardín Sur)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">Encuadre Eje Norte → Sur</span>
+      </div>
+      <div class="overflow-hidden rounded-xl border border-slate-700 shadow-xl mb-4 bg-slate-950">
+        <img src="v2/renders/render_cocina_norte.jpg" alt="Render Cocina desde Norte" class="w-full h-auto block"/>
+      </div>
+      <p class="text-sm text-slate-300 font-mono leading-relaxed">
+        <strong>Fidelidad técnica:</strong> Perspectiva a lo largo de los 6 metros de longitud de cocina, con las columnas de hornos en primer plano izquierdo, el ventanal faja bañando de sol la bancada y suelo continuo, y la isla central de 3,60 m. Al fondo se abre de par en par el comedor diáfano de 17,50 m² con mesa de roble macizo para 10 comensales (4,20 m libres), con amplios ventanales orientados al jardín sur.
+      </p>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 4: Resumen & Siguientes Pasos -->
   <div id="content-resumen" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
     <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
       <h3 class="text-lg font-bold text-amber-400 font-mono mb-4">☀️ Luz Solar & Ventanal Este</h3>
@@ -871,25 +928,20 @@ def build_cocina_interactivo_html():
     function showTab(tab) {
       document.getElementById('content-planta').classList.toggle('hidden', tab !== 'planta');
       document.getElementById('content-elevaciones').classList.toggle('hidden', tab !== 'elevaciones');
+      document.getElementById('content-renders').classList.toggle('hidden', tab !== 'renders');
       document.getElementById('content-resumen').classList.toggle('hidden', tab !== 'resumen');
       
-      document.getElementById('tab-planta').classList.toggle('active', tab === 'planta');
-      document.getElementById('tab-elevaciones').classList.toggle('active', tab === 'elevaciones');
-      document.getElementById('tab-resumen').classList.toggle('active', tab === 'resumen');
-      
-      if(tab === 'planta') {
-        document.getElementById('tab-planta').classList.add('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-        document.getElementById('tab-elevaciones').classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-        document.getElementById('tab-resumen').classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-      } else if (tab === 'elevaciones') {
-        document.getElementById('tab-elevaciones').classList.add('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-        document.getElementById('tab-planta').classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-        document.getElementById('tab-resumen').classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-      } else {
-        document.getElementById('tab-resumen').classList.add('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-        document.getElementById('tab-planta').classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-        document.getElementById('tab-elevaciones').classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
-      }
+      const tabs = ['planta', 'elevaciones', 'renders', 'resumen'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        if(t === tab) {
+          btn.classList.add('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
+          btn.classList.remove('border-transparent', 'text-slate-400');
+        } else {
+          btn.classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
+          btn.classList.add('border-transparent', 'text-slate-400');
+        }
+      });
     }
   </script>
 </body>
