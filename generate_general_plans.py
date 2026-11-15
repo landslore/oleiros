@@ -98,7 +98,13 @@ def build_planta_baja_svg():
     out.append('<g id="urbanizacion-exteriores">')
     # Acceso rodado y Pérgola 2 Vehículos: X=[1.00..3.85], Y=[5.00..12.00] (28,00 m²)
     out.append(f'<rect x="{X(1.00):.1f}" y="{Y(0.00):.1f}" width="{L(2.85):.1f}" height="{L(5.00):.1f}" fill="url(#hatch-gravel)" stroke="#475569" stroke-width="0.7"/>')
-    out.append(f'<text x="{X(2.42):.1f}" y="{Y(2.50):.1f}" fill="#94a3b8" font-size="6.5" text-anchor="middle">RAMPA ACCESO RODADO (p=2%)</text>')
+    out.append(f'<text x="{X(2.42):.1f}" y="{Y(1.30):.1f}" fill="#94a3b8" font-size="6.5" text-anchor="middle">RAMPA ACCESO RODADO (p=2%)</text>')
+    # Depósito Pluviales Enterrado 6.000 L (X=1.20..3.65, Y=1.70..4.30)
+    out.append(f'<rect x="{X(1.30):.1f}" y="{Y(1.70):.1f}" width="{L(2.35):.1f}" height="{L(2.60):.1f}" rx="6" fill="#082f49" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="4,2"/>')
+    out.append(f'<circle cx="{X(2.47):.1f}" cy="{Y(3.00):.1f}" r="{L(0.40):.1f}" fill="#0369a1" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<text x="{X(2.47):.1f}" y="{Y(2.75):.1f}" fill="#38bdf8" font-size="6.0" font-weight="700" text-anchor="middle">DEPÓSITO PLUVIALES 6.000 L</text>')
+    out.append(f'<text x="{X(2.47):.1f}" y="{Y(3.35):.1f}" fill="#bae6fd" font-size="5.2" text-anchor="middle">Filtro Vórtex + Bomba Presión</text>')
+    out.append(f'<text x="{X(2.47):.1f}" y="{Y(3.55):.1f}" fill="#7dd3fc" font-size="4.8" text-anchor="middle">(Red Doble: Inodoros + Riego)</text>')
     out.append(f'<rect x="{X(1.00):.1f}" y="{Y(5.00):.1f}" width="{L(2.85):.1f}" height="{L(7.00):.1f}" fill="url(#hatch-tile-60)" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="8,3"/>')
     # Vigas de pérgola
     for ym_beam in [5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5]:
@@ -146,29 +152,19 @@ def build_planta_baja_svg():
     out.append(f'<rect x="{X(8.25):.1f}" y="{Y(20.15):.1f}" width="{L(1.20):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#64748b" stroke-width="0.7"/>')
     out.append(draw_room_stamp(X(11.30), Y(20.80), "E-14", "PORCHE SUR EXPANDIDO", 36.00, "Tarima Iroko (Fondo 3,00m)", "±0,00"))
 
-    # Piscina Privada Soleada (7,50 x 3,50 m = 26,25 m²): X=[8.50..16.00], Y=[23.00..26.50]
-    # Albardilla perimetral de piedra caliza C3 de 50 cm
-    out.append(f'<rect x="{X(8.00):.1f}" y="{Y(22.50):.1f}" width="{L(8.50):.1f}" height="{L(4.50):.1f}" fill="url(#hatch-tile-60)" stroke="#94a3b8" stroke-width="0.8"/>')
-    out.append(f'<rect x="{X(8.50):.1f}" y="{Y(23.00):.1f}" width="{L(7.50):.1f}" height="{L(3.50):.1f}" fill="#082f49" stroke="#38bdf8" stroke-width="1.5"/>')
-    out.append(f'<rect x="{X(8.50):.1f}" y="{Y(23.00):.1f}" width="{L(7.50):.1f}" height="{L(3.50):.1f}" fill="url(#hatch-water)"/>')
-    # Playa sumergida Oeste (1.20m ancho, h=-0.40m) y peldaños de bajada
-    out.append(f'<line x1="{X(9.70):.1f}" y1="{Y(23.00):.1f}" x2="{X(9.70):.1f}" y2="{Y(26.50):.1f}" stroke="#38bdf8" stroke-width="0.9" stroke-dasharray="4,2"/>')
-    for xp_s in [9.95, 10.20, 10.45]:
-        out.append(f'<line x1="{X(xp_s):.1f}" y1="{Y(23.00):.1f}" x2="{X(xp_s):.1f}" y2="{Y(24.10):.1f}" stroke="#38bdf8" stroke-width="0.6"/>')
-    out.append(f'<text x="{X(9.10):.1f}" y="{Y(24.80):.1f}" fill="#7dd3fc" font-size="5.8" text-anchor="middle">PLAYA -0,40m</text>')
-    out.append(draw_room_stamp(X(12.60), Y(24.75), "E-15", "PISCINA PRIVADA", 26.25, "Gunitado Porcelánico", "-1,20/-1,50"))
-    # Caseta técnica enterrada depuración salina: X=[16.80..18.80], Y=[24.50..26.00]
-    out.append(f'<rect x="{X(16.80):.1f}" y="{Y(24.50):.1f}" width="{L(2.00):.1f}" height="{L(1.50):.1f}" fill="#0f172a" stroke="#64748b" stroke-width="0.8" stroke-dasharray="4,2"/>')
-    out.append(f'<text x="{X(17.80):.1f}" y="{Y(25.20):.1f}" fill="#94a3b8" font-size="6" font-weight="700" text-anchor="middle">ARQUETA TÉCNICA PISCINA</text>')
-    out.append(f'<text x="{X(17.80):.1f}" y="{Y(25.45):.1f}" fill="#64748b" font-size="5.5" text-anchor="middle">2,00x1,50m · Clorador Salino</text>')
+    # Pradera de Césped Natural Sur (Soleamiento Pleno Sur · Sin Piscina): X=[0.00..20.00], Y=[21.45..30.00]
+    out.append(f'<rect x="{X(0.00):.1f}" y="{Y(21.45):.1f}" width="{L(20.00):.1f}" height="{L(8.55):.1f}" fill="#041f14" stroke="#10b981" stroke-width="0.7" stroke-dasharray="8,4"/>')
+    out.append(f'<text x="{X(10.00):.1f}" y="{Y(25.00):.1f}" fill="#34d399" font-size="7.5" font-weight="700" text-anchor="middle">PRADERA DE CÉSPED NATURAL (JARDÍN SUR)</text>')
+    out.append(f'<text x="{X(10.00):.1f}" y="{Y(25.75):.1f}" fill="#6ee7b7" font-size="5.8" text-anchor="middle">Superficie Ajardinada Libre (171,00 m²) · Riego Automático alimentado por Depósito Pluviales</text>')
+    out.append(draw_room_stamp(X(10.00), Y(27.00), "E-15", "JARDÍN PRINCIPAL SUR", 171.00, "Césped Natural Riego Pluviales", "±0,00"))
     out.append('</g>')
 
     # =========================================================================
     # CAPA 3: PAVIMENTOS INTERIORES Y PATIO CORRALA
     # =========================================================================
     out.append('<g id="pavimentos-interiores">')
-    # Cuerpo interior principal PB: X=[6.15..17.00], Y=[5.00..18.45] + Ala Oeste Mudroom/Trastero X=[3.85..6.15], Y=[5.00..12.40]
-    out.append(f'<rect x="{X(3.85):.1f}" y="{Y(5.00):.1f}" width="{L(2.30):.1f}" height="{L(7.40):.1f}" fill="url(#hatch-tile-60)"/>')
+    # Cuerpo interior principal PB: X=[6.15..17.00], Y=[5.00..18.45] + Ala Oeste Continua X=[3.85..6.15], Y=[5.00..21.45] (16,45 m hasta final de Porche)
+    out.append(f'<rect x="{X(3.85):.1f}" y="{Y(5.00):.1f}" width="{L(2.30):.1f}" height="{L(16.45):.1f}" fill="url(#hatch-tile-60)"/>')
     out.append(f'<rect x="{X(6.15):.1f}" y="{Y(5.00):.1f}" width="{L(10.85):.1f}" height="{L(13.45):.1f}" fill="url(#hatch-tile-60)"/>')
     # Serpentín de suelo radiante-refrescante (sombreado técnico sutil en zonas interiores)
     out.append(f'<rect x="{X(6.30):.1f}" y="{Y(5.35):.1f}" width="{L(10.35):.1f}" height="{L(12.75):.1f}" fill="url(#hatch-radiant)" opacity="0.5"/>')
@@ -200,7 +196,7 @@ def build_planta_baja_svg():
     # =========================================================================
     out.append('<g id="muros-exteriores">')
     wt = L(0.35)  # 14 px
-    # Muro Norte Ala Oeste (Zaguán): X=3.85..6.15, Y=5.00..5.35
+    # Muro Norte Ala Oeste (Zaguán Mudroom): X=3.85..6.15, Y=5.00..5.35
     out.append(draw_wall_segment(X(3.85), Y(5.00), L(2.30), wt, "ext"))
     # Muro Norte Cuerpo Principal: X=6.15..17.00, Y=5.00..5.35 (con huecos C-01, C-03, C-04)
     out.append(draw_wall_segment(X(6.15), Y(5.00), L(1.55), wt, "ext"))   # Tramo hasta puerta C-01 (X=7.70..8.70)
@@ -208,14 +204,20 @@ def build_planta_baja_svg():
     out.append(draw_wall_segment(X(12.40), Y(5.00), L(2.10), wt, "ext"))  # Tramo hasta ventana Baño C-04 (X=14.50..15.30)
     out.append(draw_wall_segment(X(15.30), Y(5.00), L(1.70), wt, "ext"))  # Esquina NE hasta X=17.00
 
-    # Muro Oeste Ala Mudroom + Trastero: X=3.85..4.20, Y=5.00..12.40 (con huecos C-02 y C-09)
-    out.append(draw_wall_segment(X(3.85), Y(5.00), wt, L(1.40), "ext"))   # Hasta puerta C-02 (Y=6.40..7.30)
-    out.append(draw_wall_segment(X(3.85), Y(7.30), wt, L(2.50), "ext"))   # Hasta puerta Trastero C-09 (Y=9.80..10.70)
-    out.append(draw_wall_segment(X(3.85), Y(10.70), wt, L(1.70), "ext"))  # Hasta esquina SW trastero Y=12.40
-    # Cierre Sur Trastero: X=3.85..6.15, Y=12.05..12.40
-    out.append(draw_wall_segment(X(3.85), Y(12.05), L(2.30), wt, "ext"))
+    # Muro Oeste Ala Técnica Continua: X=3.85..4.20, Y=5.00..21.45 (16,45 m CONTINUOS HASTA EL FINAL DEL PORCHE SUR)
+    out.append(draw_wall_segment(X(3.85), Y(5.00), wt, L(1.40), "ext"))   # Hasta puerta C-02 Mudroom (Y=6.40..7.30)
+    out.append(draw_wall_segment(X(3.85), Y(7.30), wt, L(2.50), "ext"))   # Hasta puerta C-09 Surf (Y=9.80..10.70)
+    out.append(draw_wall_segment(X(3.85), Y(10.70), wt, L(8.80), "ext"))  # Tramo ciego lavandería hasta C-09B Caseta Jardín (Y=19.50..20.40)
+    out.append(draw_wall_segment(X(3.85), Y(20.40), wt, L(1.05), "ext"))  # Esquina SW de Caseta Jardín a Y=21.45
 
-    # Muro Oeste Salón y Escalera: X=6.15..6.50, Y=12.05..18.45
+    # Muro Sur Caseta Jardín: Y=21.10..21.45, X=3.85..6.15 (cierre SW del volumen a cota del Porche)
+    out.append(draw_wall_segment(X(3.85), Y(21.10), L(2.30), wt, "ext"))
+
+    # Muro Cortaviento y Cierre Lateral Oeste del Porche Sur (X=6.15..6.50, Y=18.45..21.45)
+    # Este muro de granito de 3,00m cierra el porche sur por el oeste protegiéndolo de los temporales atlánticos
+    out.append(draw_wall_segment(X(6.15), Y(18.45), wt, L(3.00), "ext"))
+
+    # Muro Oeste Salón y Escalera (separación interior con lavandería): X=6.15..6.50, Y=12.05..18.45
     out.append(draw_wall_segment(X(6.15), Y(12.05), wt, L(6.40), "ext"))
 
     # Muro Este Completo: X=16.65..17.00, Y=5.00..18.45
@@ -231,6 +233,7 @@ def build_planta_baja_svg():
         (4.00, 5.17, "P-01"), (6.32, 5.17, "P-02"), (8.50, 5.17, "P-03"), (12.50, 5.17, "P-04"), (16.82, 5.17, "P-05"),
         (4.00, 8.40, "P-06"), (6.32, 8.40, "P-07"), (8.50, 8.40, "P-08"), (12.50, 8.40, "P-09"), (16.82, 8.40, "P-10"),
         (4.00, 12.22, "P-11"), (6.32, 12.40, "P-12"), (8.50, 12.40, "P-13"), (12.50, 12.40, "P-14"), (16.82, 12.40, "P-15"),
+        (4.00, 15.20, "P-11B"), (4.00, 18.28, "P-11C"), (4.00, 21.30, "P-11D"),
         (6.32, 18.28, "P-16"), (12.45, 18.28, "P-17"), (16.82, 18.28, "P-18"),
         # Pilares metálicos HEB 160 de Porche Sur y Pérgola
         (1.15, 5.15, "PM-1"), (1.15, 8.50, "PM-2"), (1.15, 11.85, "PM-3"),
@@ -246,8 +249,13 @@ def build_planta_baja_svg():
     # =========================================================================
     out.append('<g id="tabiqueria-interior">')
     pt = L(0.12)  # 4.8 px
-    # Separación Zaguán Mudroom / Trastero (Y=8.40, X=4.20..6.15) con puerta corredera
+    # Separación Zaguán Mudroom / Sala Técnica (Y=8.40, X=4.20..6.15)
     out.append(draw_wall_segment(X(4.20), Y(8.35), L(1.95), pt, "int"))
+    # Separación Sala Técnica / Lavandería (Y=12.40, X=4.20..6.15)
+    out.append(draw_wall_segment(X(4.20), Y(12.35), L(1.95), pt, "int"))
+    # Separación Lavandería / Caseta Jardín y Aperos (Y=18.45, X=4.20..6.15)
+    out.append(draw_wall_segment(X(4.20), Y(18.40), L(1.95), pt, "int"))
+
     # Separación Zaguán-Trastero / Hall-Escalera (X=6.15, Y=5.35..12.05)
     out.append(draw_wall_segment(X(6.15), Y(5.35), pt, L(1.15), "int"))   # Tramo Norte hasta corredera vidrio (Y=6.50..7.35)
     out.append(draw_wall_segment(X(6.15), Y(7.35), pt, L(4.70), "acoustic"))  # Muro acústico Trastero/Sala Técnica - Escalera
@@ -265,10 +273,10 @@ def build_planta_baja_svg():
     # Tabique Sur del Distribuidor Neutro separándolo de la Cocina (Y=8.40, X=13.65..16.65)
     out.append(draw_wall_segment(X(12.50), Y(8.35), L(4.15), pt, "int"))
 
-    # Lavandería Técnica y Despensa: X=[14.25..16.65], Y=[12.10..14.40]
-    out.append(draw_wall_segment(X(14.25), Y(12.10), L(2.40), pt, "int"))
-    out.append(draw_wall_segment(X(14.25), Y(12.10), pt, L(2.30), "int"))
-    out.append(draw_wall_segment(X(14.25), Y(14.40), L(2.40), pt, "int"))
+    # Despensa Walk-In en Cocina-Comedor (liberada tras mover la lavandería al Oeste): X=[14.85..16.65], Y=[12.10..13.60]
+    out.append(draw_wall_segment(X(14.85), Y(12.10), L(1.80), pt, "int"))
+    out.append(draw_wall_segment(X(14.85), Y(12.10), pt, L(1.50), "int"))
+    out.append(draw_wall_segment(X(14.85), Y(13.60), L(1.80), pt, "int"))
     out.append('</g>')
 
     # =========================================================================
@@ -312,11 +320,19 @@ def build_planta_baja_svg():
     out.append(f'<rect x="{X(3.85):.1f}" y="{Y(9.80):.1f}" width="{wt:.1f}" height="{L(0.90):.1f}" fill="#0b1120"/>')
     out.append(draw_door_swing(X(3.85), Y(9.80), L(0.90), WallDir="S", SwingDir="W", code="C-09", dim_txt="0,90x2,05"))
 
+    # C-09B: Puerta Batiente Exterior Caseta Jardín / Cortacésped (0,90 x 2,05 m) en X=3.85, Y=19.50..20.40
+    out.append(f'<rect x="{X(3.85):.1f}" y="{Y(19.50):.1f}" width="{wt:.1f}" height="{L(0.90):.1f}" fill="#0b1120"/>')
+    out.append(draw_door_swing(X(3.85), Y(19.50), L(0.90), WallDir="S", SwingDir="W", code="C-09B", dim_txt="JARDÍN 0,90"))
+
     # Puertas interiores de paso:
     # P-Int 1: Corredera vidrio estriado Zaguán → Hall (0,85m) en X=6.15, Y=6.50..7.35
     out.append(draw_sliding_door(X(6.15), Y(6.50), X(6.15), Y(7.35), wall_thick=pt, leaves=1, code="P-01", dim_txt="0,85"))
-    # P-Int 2: Corredera Zaguán → Trastero (0,80m) en Y=8.37, X=4.75..5.55
+    # P-Int 2: Corredera Zaguán → Sala Técnica (0,80m) en Y=8.37, X=4.75..5.55
     out.append(draw_sliding_door(X(4.75), Y(8.37), X(5.55), Y(8.37), wall_thick=pt, leaves=1, code="P-02", dim_txt="0,80"))
+    # P-Int 2B: Corredera Sala Técnica → Lavandería (0,80m) en Y=12.35, X=4.75..5.55
+    out.append(draw_sliding_door(X(4.75), Y(12.35), X(5.55), Y(12.35), wall_thick=pt, leaves=1, code="P-02B", dim_txt="0,80"))
+    # P-Int 2C: Puerta estanca Lavandería → Interior (0,80m) en X=6.15, Y=13.00..13.80
+    out.append(draw_sliding_door(X(6.15), Y(13.00), X(6.15), Y(13.80), wall_thick=pt, leaves=1, code="P-02C", dim_txt="0,80 PASO"))
     # P-Int 3: Puerta Acústica Rw≥38dB Hall → Despacho (0,82m) en X=9.75, Y=7.00..7.82
     out.append(draw_door_swing(X(9.80), Y(7.00), L(0.82), WallDir="S", SwingDir="E", code="P-03", dim_txt="0,82 Rw38dB"))
     # P-Int 4: Puerta corredera Despacho → Distribuidor Neutro Baño (0,80m) en X=13.65, Y=7.50..8.30
@@ -325,8 +341,8 @@ def build_planta_baja_svg():
     out.append(draw_sliding_door(X(14.50), Y(7.47), X(15.25), Y(7.47), wall_thick=pt, leaves=1, code="P-05", dim_txt="0,75 NHG"))
     # P-Int 6: Puerta corredera Distribuidor Neutro → Pasillo Cocina (0,80m) en Y=8.37, X=13.80..14.60
     out.append(draw_sliding_door(X(13.80), Y(8.37), X(14.60), Y(8.37), wall_thick=pt, leaves=1, code="P-06", dim_txt="0,80 NHG"))
-    # P-Int 7: Puerta corredera Lavandería (0,80m) en X=14.25, Y=12.85..13.65
-    out.append(draw_sliding_door(X(14.25), Y(12.85), X(14.25), Y(13.65), wall_thick=pt, leaves=1, code="P-07", dim_txt="0,80"))
+    # P-Int 7: Puerta Despensa Walk-In Cocina (0,75m) en X=14.85, Y=12.45..13.25
+    out.append(draw_sliding_door(X(14.85), Y(12.45), X(14.85), Y(13.25), wall_thick=pt, leaves=1, code="P-07", dim_txt="DESP. 0,75"))
     out.append('</g>')
 
     # =========================================================================
@@ -341,19 +357,16 @@ def build_planta_baja_svg():
 
     # 02. HALL / RECIBIDOR PRINCIPAL (X=6.25..9.75, Y=5.35..8.35 → 3.50 x 3.00 m = 10.40 m²)
     out.append(draw_wardrobe_block(X(6.30), Y(5.42), L(1.25), L(0.60), "GABANERO 1,25x0,60"))
-    # Cuadros CGMP y RITI empotrados
     out.append(f'<rect x="{X(6.27):.1f}" y="{Y(7.45):.1f}" width="{L(0.22):.1f}" height="{L(0.80):.1f}" fill="#0b1120" stroke="#ef4444" stroke-width="0.9"/>')
     out.append(f'<text x="{X(6.58):.1f}" y="{Y(7.90):.1f}" fill="#fca5a5" font-size="5.2">CGMP+RITI</text>')
     out.append(draw_nhg_circle(X(8.20), Y(6.80), 1.50, S, "Ø1,50m NHG"))
     out.append(draw_room_stamp(X(8.20), Y(7.75), "E-04", "HALL PRINCIPAL", 10.40, "Roble 14mm", "±0,00"))
 
     # 03. DESPACHO SANCTASANCTÓRUM (X=9.85..13.65, Y=5.35..8.35 → 3.80 x 3.00 m = 11.50 m²)
-    # Mesa de trabajo 1,80 x 0,80 m perpendicular a fachada norte (luz a 90° por la izquierda)
     out.append(f'<rect x="{X(9.95):.1f}" y="{Y(5.50):.1f}" width="{L(0.80):.1f}" height="{L(1.40):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.9"/>')
     out.append(f'<rect x="{X(10.02):.1f}" y="{Y(5.90):.1f}" width="{L(0.18):.1f}" height="{L(0.60):.1f}" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.6"/>')
     out.append(f'<circle cx="{X(11.00):.1f}" cy="{Y(6.20):.1f}" r="{L(0.26):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
     out.append(f'<text x="{X(10.35):.1f}" y="{Y(5.78):.1f}" fill="#38bdf8" font-size="5.0" text-anchor="middle">MESA 90°</text>')
-    # Sofá-cama invitados 1,40 x 2,00 m en pared Este
     out.append(draw_bed_block(X(12.70), Y(5.45), L(0.90), L(1.90), orient="N", kind="single", label="SOFÁ-CAMA 140"))
     out.append(draw_nhg_circle(X(11.80), Y(6.95), 1.50, S, "Ø1,50m NHG"))
     out.append(draw_room_stamp(X(11.75), Y(7.80), "E-05", "DESPACHO / SUITE", 11.50, "Roble 14mm · Rw38dB", "±0,00"))
@@ -365,20 +378,39 @@ def build_planta_baja_svg():
     out.append(draw_room_stamp(X(15.20), Y(6.85), "E-06", "BAÑO COMPLETO PB", 5.20, "Porcelánico C3", "±0,00"))
     out.append(f'<text x="{X(15.20):.1f}" y="{Y(8.05):.1f}" fill="#10b981" font-size="5.5" font-weight="700" text-anchor="middle">DISTRIBUIDOR NEUTRO NHG (DOBLE PUERTA)</text>')
 
-    # 11. TRASTERO EXTERIOR SURF/BICIS y SALA TÉCNICA PASSIVHAUS (X=4.20..6.15, Y=8.50..12.05 → 8,20 m²)
-    # Equipos técnicos a escala
+    # 11A. SALA TÉCNICA Y SURF PASSIVHAUS (X=4.20..6.15, Y=8.40..12.40 → 7,60 m²)
     out.append(f'<rect x="{X(5.40):.1f}" y="{Y(8.60):.1f}" width="{L(0.68):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.85"/>')
     out.append(f'<text x="{X(5.74):.1f}" y="{Y(8.95):.1f}" fill="#38bdf8" font-size="4.8" font-weight="700" text-anchor="middle">AEROTERMIA</text>')
     out.append(f'<circle cx="{X(5.74):.1f}" cy="{Y(9.65):.1f}" r="{L(0.30):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.85"/>')
     out.append(f'<text x="{X(5.74):.1f}" y="{Y(9.70):.1f}" fill="#f8fafc" font-size="4.8" font-weight="700" text-anchor="middle">ACS 250L</text>')
     out.append(f'<rect x="{X(5.40):.1f}" y="{Y(10.15):.1f}" width="{L(0.68):.1f}" height="{L(0.75):.1f}" fill="#0f172a" stroke="#10b981" stroke-width="0.85"/>')
     out.append(f'<text x="{X(5.74):.1f}" y="{Y(10.55):.1f}" fill="#10b981" font-size="4.8" font-weight="700" text-anchor="middle">VMC Q350</text>')
-    out.append(f'<rect x="{X(5.45):.1f}" y="{Y(11.05):.1f}" width="{L(0.60):.1f}" height="{L(0.55):.1f}" fill="#0f172a" stroke="#a855f7" stroke-width="0.85"/>')
-    out.append(f'<text x="{X(5.75):.1f}" y="{Y(11.35):.1f}" fill="#c084fc" font-size="4.8" font-weight="700" text-anchor="middle">RACK 19"+FV</text>')
-    # Racks tablas surf y bicis en pared oeste
-    out.append(f'<rect x="{X(4.25):.1f}" y="{Y(8.60):.1f}" width="{L(0.45):.1f}" height="{L(1.10):.1f}" fill="none" stroke="#f59e0b" stroke-width="0.7" stroke-dasharray="3,2"/>')
-    out.append(f'<text x="{X(4.47):.1f}" y="{Y(9.20):.1f}" fill="#f59e0b" font-size="4.8" text-anchor="middle">RACK SURF</text>')
-    out.append(draw_room_stamp(X(4.85), Y(11.55), "E-13", "SALA TÉCNICA / SURF", 8.20, "Epoxi C3", "-0,05"))
+    out.append(f'<rect x="{X(4.25):.1f}" y="{Y(8.60):.1f}" width="{L(0.45):.1f}" height="{L(1.80):.1f}" fill="none" stroke="#f59e0b" stroke-width="0.7" stroke-dasharray="3,2"/>')
+    out.append(f'<text x="{X(4.47):.1f}" y="{Y(9.50):.1f}" fill="#f59e0b" font-size="4.8" text-anchor="middle">RACK SURF (4 TABLAS)</text>')
+    out.append(draw_room_stamp(X(4.85), Y(11.45), "E-13", "SALA TÉCNICA / SURF", 7.60, "Epoxi C3", "-0,05"))
+
+    # 11B. LAVANDERÍA Y PLANCHA OESTE (X=4.20..6.15, Y=12.40..18.45 → 11,60 m²)
+    out.append(f'<rect x="{X(4.25):.1f}" y="{Y(12.65):.1f}" width="{L(0.65):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.8"/>')
+    out.append(f'<circle cx="{X(4.57):.1f}" cy="{Y(12.97):.1f}" r="7" fill="none" stroke="#38bdf8" stroke-width="0.6"/>')
+    out.append(f'<text x="{X(4.57):.1f}" y="{Y(13.00):.1f}" fill="#cbd5e1" font-size="4.5" text-anchor="middle">LAVADORA</text>')
+    out.append(f'<rect x="{X(4.25):.1f}" y="{Y(13.35):.1f}" width="{L(0.65):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.8"/>')
+    out.append(f'<circle cx="{X(4.57):.1f}" cy="{Y(13.67):.1f}" r="7" fill="none" stroke="#38bdf8" stroke-width="0.6"/>')
+    out.append(f'<text x="{X(4.57):.1f}" y="{Y(13.70):.1f}" fill="#cbd5e1" font-size="4.5" text-anchor="middle">SECADORA</text>')
+    out.append(draw_sink_block(X(4.25), Y(14.05), L(0.65), L(0.60), basins=1, orient="W"))
+    out.append(draw_wardrobe_block(X(5.45), Y(13.20), L(0.60), L(2.40), "LENCERÍA"))
+    # Claraboyas Velux SunTunnel
+    out.append(f'<circle cx="{X(5.17):.1f}" cy="{Y(15.20):.1f}" r="{L(0.35):.1f}" fill="#082f49" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<text x="{X(5.17):.1f}" y="{Y(15.25):.1f}" fill="#7dd3fc" font-size="4.2" text-anchor="middle">VELUX Ø35</text>')
+    out.append(f'<circle cx="{X(5.17):.1f}" cy="{Y(17.20):.1f}" r="{L(0.35):.1f}" fill="#082f49" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<text x="{X(5.17):.1f}" y="{Y(17.25):.1f}" fill="#7dd3fc" font-size="4.2" text-anchor="middle">VELUX Ø35</text>')
+    out.append(draw_room_stamp(X(4.85), Y(16.20), "E-13B", "LAVANDERÍA Y PLANCHA", 11.60, "Porcelánico C3", "±0,00"))
+
+    # 11C. CASETA DE JARDÍN, CORTACÉSPED Y APEROS (X=4.20..6.15, Y=18.45..21.45 → 5,20 m²)
+    out.append(f'<rect x="{X(4.35):.1f}" y="{Y(18.80):.1f}" width="{L(1.10):.1f}" height="{L(0.80):.1f}" fill="#131c31" stroke="#22c55e" stroke-width="0.8"/>')
+    out.append(f'<text x="{X(4.90):.1f}" y="{Y(19.25):.1f}" fill="#86efac" font-size="5.2" font-weight="700" text-anchor="middle">CORTACÉSPED</text>')
+    out.append(draw_wardrobe_block(X(5.45), Y(18.80), L(0.60), L(1.80), "APEROS"))
+    out.append(f'<text x="{X(4.85):.1f}" y="{Y(20.40):.1f}" fill="#f59e0b" font-size="4.5" text-anchor="middle">CIERRE OESTE PORCHE</text>')
+    out.append(draw_room_stamp(X(4.85), Y(20.85), "E-13C", "CASETA JARDINERÍA", 5.20, "Hormigón Fratasado", "±0,00"))
 
     # 10. ESCALERA PRINCIPAL VOLADA (X=6.55..7.65, Y=8.40..13.33 → 17 peldaños H=29cm, CH=17,6cm)
     st_x, st_y, st_w = X(6.55), Y(8.40), L(1.05)
@@ -428,15 +460,14 @@ def build_planta_baja_svg():
         out.append(f'<circle cx="{X(13.52):.1f}" cy="{Y(ys_b):.1f}" r="5.5" fill="#0f172a" stroke="#94a3b8" stroke-width="0.65"/>')
     out.append(draw_room_stamp(X(14.35), Y(11.82), "E-08", "COCINA ISLA SANTOS", 15.20, "Porcelánico C2 · Dekton", "±0,00"))
 
-    # 07. LAVANDERÍA TÉCNICA y DESPENSA (X=14.35..16.65, Y=12.15..14.40 → 5,60 m²)
-    # Columna Lavadora + Secadora (0,65 x 0,65m) y Pila de lavar (0,60 x 0,55m)
-    out.append(f'<rect x="{X(15.95):.1f}" y="{Y(12.22):.1f}" width="{L(0.65):.1f}" height="{L(0.65):.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.8"/>')
-    out.append(f'<circle cx="{X(16.27):.1f}" cy="{Y(12.54):.1f}" r="7" fill="none" stroke="#38bdf8" stroke-width="0.6"/>')
-    out.append(f'<text x="{X(16.27):.1f}" y="{Y(12.56):.1f}" fill="#cbd5e1" font-size="4.5" text-anchor="middle">LAV+SEC</text>')
-    out.append(draw_sink_block(X(15.95), Y(12.92), L(0.65), L(0.65), basins=1, orient="E"))
-    # Estanterías despensa 40cm fondo
-    out.append(draw_wardrobe_block(X(14.40), Y(13.92), L(2.15), L(0.42), "DESPENSA 40cm"))
-    out.append(draw_room_stamp(X(15.30), Y(13.25), "E-09", "LAVANDERÍA / DESP.", 5.60, "Porcelánico C2", "±0,00"))
+    # 06B. DESPENSA WALK-IN Y BODEGA SANTOS (X=14.35..16.65, Y=12.15..14.40 → 5,60 m²)
+    # Estanterías modulares Santos en U (fondo 40 cm) para víveres secos, conservas y vajilla
+    out.append(draw_wardrobe_block(X(15.95), Y(12.22), L(0.65), L(2.10), "ESTANTES"))
+    out.append(draw_wardrobe_block(X(14.40), Y(13.92), L(2.15), L(0.42), "DESPENSA SANTOS 40cm"))
+    # Mueble cava bodega y encimera pequeños electrodomésticos
+    out.append(f'<rect x="{X(14.40):.1f}" y="{Y(12.22):.1f}" width="{L(0.65):.1f}" height="{L(0.95):.1f}" fill="#131c31" stroke="#f59e0b" stroke-width="0.8"/>')
+    out.append(f'<text x="{X(14.72):.1f}" y="{Y(12.75):.1f}" fill="#fde68a" font-size="4.8" font-weight="700" text-anchor="middle">CAVA / BODEGA</text>')
+    out.append(draw_room_stamp(X(15.30), Y(13.25), "E-08B", "DESPENSA SANTOS", 5.60, "Porcelánico C2 · Estanterías", "±0,00"))
 
     # 08. SALÓN PRINCIPAL CON CHIMENEA (X=6.50..12.20, Y=13.35..18.10 → 26,50 m²)
     # Muro Oeste de Granito Moreno + Chimenea Estanca Stûv 21 + TV OLED 77" enrasada
@@ -540,15 +571,13 @@ def build_planta_baja_svg():
     out.append(draw_dim_v(Y(8.40), Y(12.40), X(3.85), X(-0.65), "4,00 (Claustro)", S, "#38bdf8"))
     out.append(draw_dim_v(Y(12.40), Y(18.45), X(6.15), X(-0.65), "6,05 (Salón/Com)", S, "#38bdf8"))
     out.append(draw_dim_v(Y(18.45), Y(21.45), X(6.15), X(-0.65), "3,00 (Porche Sur)", S, "#38bdf8"))
-    out.append(draw_dim_v(Y(21.45), Y(30.00), X(0.00), X(-0.65), "8,55 (Jardín/Pisc)", S, "#10b981"))
+    out.append(draw_dim_v(Y(21.45), Y(30.00), X(0.00), X(-0.65), "8,55 (Jardín Sur)", S, "#10b981"))
 
     # Línea 2: Cota Total Fondo Parcela (X = -1.55 m)
     out.append(draw_dim_v(Y(0.00), Y(30.00), X(-0.65), X(-1.55), "30,00 m (FONDO TOTAL PARCELA NORTE-SUR · 600,00 m²)", S, "#f59e0b", "tick-45-amber", font_size=8.5))
 
-    # Cotas interiores del Patio Corrala y Piscina
+    # Cotas interiores del Patio Corrala
     out.append(draw_dim_h(X(8.50), X(12.50), Y(12.40), Y(12.85), "4,00 m (Patio Corrala)", S, "#10b981"))
-    out.append(draw_dim_h(X(8.50), X(16.00), Y(26.50), Y(27.05), "7,50 m (Lámina Agua Piscina)", S, "#38bdf8"))
-    out.append(draw_dim_v(Y(23.00), Y(26.50), X(16.00), X(16.50), "3,50 m", S, "#38bdf8"))
 
     # Rosa de los vientos y escala gráfica (arriba a la derecha del plano)
     out.append(draw_north_rose_and_scale(X(18.50), Y(2.20), scale_px_per_m=S, scale_label="1:100"))
@@ -596,22 +625,24 @@ def build_planta_baja_svg():
     y_t2 = 205
     out.append(f'<text x="14" y="{y_t2}" fill="#38bdf8" font-size="8" font-weight="700">2. CUADRO DE SUPERFICIES ÚTILES Y ACABADOS — PLANTA BAJA (COTA ±0,00 m)</text>')
     pb_rooms = [
-        ("E-03", "01. Zaguán Atlántico / Mudroom Térmico", "5,80 m²", "Porcelánico C3 Pizarra", "±0,00 m"),
+        ("E-03", "01. Zaguán Atlántico / Mudroom Térmico", "5,95 m²", "Porcelánico C3 Pizarra", "±0,00 m"),
         ("E-04", "02. Hall / Recibidor Principal", "10,40 m²", "Roble Multicapa 14 mm", "±0,00 m"),
         ("E-05", "03. Despacho Sanctasanctórum / Suite Visitas", "11,50 m²", "Roble 14 mm + Lamas Acúst.", "±0,00 m"),
         ("E-06", "04. Baño Completo PB + Distribuidor Neutro", "5,20 m²", "Porcelánico C3 + Kerdi", "±0,00 m"),
-        ("E-08", "06. Cocina con Isla Santos Fine + Desayunador", "15,20 m²", "Porcelánico C2 120×60", "±0,00 m"),
-        ("E-09", "07. Lavandería Técnica y Despensa", "5,60 m²", "Porcelánico C2 Técnico", "±0,00 m"),
-        ("E-10", "08. Salón Principal con Chimenea Estanca", "26,50 m²", "Caliza Natural Apomazada", "±0,00 m"),
-        ("E-11", "09. Comedor Principal Interior (10 Pax)", "17,50 m²", "Caliza Natural Apomazada", "±0,00 m"),
-        ("E-12", "10. Escalera Volada Roble 80mm (17 Peldaños)", "5,20 m²", "Roble Macizo 80 mm", "±0,00/+3,15"),
-        ("E-13", "11. Trastero Surf/Bicis y Sala Técnica Passivhaus", "8,20 m²", "Hormigón Pulido Epoxi", "-0,05 m"),
-        ("SUB-1", "TOTAL SUPERFICIE ÚTIL INTERIOR PLANTA BAJA", "98,90 m²", "(Construida cerrada: 116,50 m²)", ""),
+        ("E-08", "05. Cocina con Isla Santos Fine + Desayunador", "15,20 m²", "Porcelánico C2 120×60", "±0,00 m"),
+        ("E-08B", "06. Despensa Walk-in Santos (Bodega/Víveres)", "5,60 m²", "Porcelánico C2 Técnico", "±0,00 m"),
+        ("E-10", "07. Salón Principal con Chimenea Estanca", "26,50 m²", "Caliza Natural Apomazada", "±0,00 m"),
+        ("E-11", "08. Comedor Principal Interior (10 Pax)", "17,50 m²", "Caliza Natural Apomazada", "±0,00 m"),
+        ("E-12", "09. Escalera Volada Roble 80mm (17 Peldaños)", "5,20 m²", "Roble Macizo 80 mm", "±0,00/+3,15"),
+        ("E-13", "10. Sala Técnica / Surf & Bicis Passivhaus", "7,60 m²", "Hormigón Pulido Epoxi", "-0,05 m"),
+        ("E-13B", "11. Lavandería y Plancha Oeste (Velux)", "11,60 m²", "Porcelánico C2 Técnico", "±0,00 m"),
+        ("E-13C", "12. Caseta Jardín / Cortacésped (Cierre Porche)", "5,20 m²", "Hormigón Fratasado", "±0,00 m"),
+        ("SUB-1", "TOTAL SUPERFICIE ÚTIL INTERIOR PLANTA BAJA", "109,25 m²", "(Huella PB computable: 119,50 m² ≤ 120m²)", ""),
         ("E-01", "Pérgola Cubierta Aparcamiento (2 Vehículos)", "28,00 m²", "Adoquín Drenante Granito", "-0,10 m"),
         ("E-02", "Porche Entrada Peatonal Noble Norte", "3,50 m²", "Granito Abujardado C3", "+0,05 m"),
         ("E-07", "05. Patio Corrala Central Habitable (Abierto)", "16,00 m²", "Tarima Iroko s/ Plots", "±0,00 m"),
-        ("E-14", "10. Porche Sur Expandido Techado (Fondo 3,00 m)", "36,00 m²", "Tarima Iroko Cota Cero", "±0,00 m"),
-        ("E-15", "11. Piscina Privada Soleada (7,50 × 3,50 m)", "26,25 m²", "Gresite Porcelánico Arena", "-1,20/-1,50"),
+        ("E-14", "10. Porche Sur Expandido Techado (Fondo 3,00 m)", "32,55 m²", "Tarima Iroko Cota Cero", "±0,00 m"),
+        ("E-15", "11. Pradera de Césped Natural Sur (Sin Piscina)", "171,00 m²", "Césped Natural Riego Pluviales", "±0,00 m"),
     ]
     yr0 = y_t2 + 10
     out.append(f'<rect x="14" y="{yr0}" width="487" height="16" fill="#1e293b" stroke="#475569" stroke-width="0.6"/>')
@@ -687,7 +718,7 @@ def build_planta_baja_svg():
     # Bloque 5: Notas Constructivas de Obligado Cumplimiento en Obra
     y_t5 = 925
     out.append(f'<text x="14" y="{y_t5}" fill="#f43f5e" font-size="8" font-weight="700">5. PRESCRIPCIONES TÉCNICAS OBLIGATORIAS DE EJECUCIÓN EN OBRA</text>')
-    out.append(f'<rect x="14" y="{y_t5+10}" width="487" height="285" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>')
+    out.append(f'<rect x="14" y="{y_t5+10}" width="487" height="330" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>')
     notas = [
         "1. BARRERA ANTI-RADÓN (CTE DB-HS6 ZONA II OLEIROS): Lámina elastomérica continua de e ≥ 2,0 mm",
         "   (D ≤ 10^-11 m²/s) bajo solera con solapes de 15 cm termosoldados y pasamuros sellados con manguito.",
@@ -701,11 +732,13 @@ def build_planta_baja_svg():
         "   sanitaria hacia compuerta mural motorizada estanca en fachada. Circuito eléctrico dedicado C3 (6 mm²).",
         "6. INDEPENDENCIA DEL BAÑO PB (NHG GALICIA): El Baño E-06 cuenta con distribuidor neutro previo y doble",
         "   puerta (P-05 y P-06) respecto a la cocina y comedor, cumpliendo estrictamente el Decreto 29/2010.",
+        "7. APROVECHAMIENTO PLUVIALES (177.000 L/AÑO): Depósito enterrado 6.000 L PEAD con filtro vórtex",
+        "   autolimpiable y grupo de presión hidroneumático para alimentar cisternas WC y riego de jardín.",
     ]
     for idx_n, n_line in enumerate(notas):
         col_n = "#f8fafc" if n_line[0].isdigit() else "#94a3b8"
         fw_n = "700" if n_line[0].isdigit() else "400"
-        out.append(f'<text x="22" y="{y_t5 + 28 + idx_n*21}" fill="{col_n}" font-size="6.1" font-weight="{fw_n}">{n_line}</text>')
+        out.append(f'<text x="22" y="{y_t5 + 26 + idx_n*20}" fill="{col_n}" font-size="6.0" font-weight="{fw_n}">{n_line}</text>')
     out.append('</g>')
 
     # =========================================================================
@@ -728,12 +761,22 @@ def build_planta_baja_svg():
     )
 
     out.append("</svg>")
-    return "\n".join(out)
+    return sanitize_svg_text("\n".join(out))
 
 
 def build_planta_alta_svg():
     """
     Construye el Plano Técnico A-02: Planta Primera General (+3,15 m) y Cubiertas Técnicas Inferiores.
+    Geometría 100% coherente con ejes de Planta Baja y áreas reales a escala:
+      - E-19 Baño Compartido Hijos: 2,32 × 2,93 m = 6,80 m²
+      - E-19B Sala Polivalente (Cine / TV / Gaming / 4º Dorm.): 4,78 × 2,93 m = 14,00 m²
+      - E-22 Baño Privado Suite: 2,81 × 2,25 m = 6,30 m²
+      - E-21 Vestidor de Paso Doble Suite: 8,40 m² útiles libres entre armarios
+      - E-16 Desembarco Escalera y Galería Acústica P1: 8,20 m² útiles
+      - E-17 Dormitorio Infantil Niña: 3,42 × 4,27 m = 14,60 m²
+      - E-18 Dormitorio Infantil Niño: 3,42 × 4,27 m = 14,60 m²
+      - E-20 Master Suite Matrimonio: 3,05 × 5,41 m = 16,50 m²
+      - E-23 Balcón Corrido Sur P1: 10,85 × 1,40 m = 14,00 m² útiles
     """
     W_SVG, H_SVG = 1500, 1220
     out = [
@@ -744,10 +787,10 @@ def build_planta_alta_svg():
         f'<rect x="20" y="20" width="{W_SVG - 40}" height="{H_SVG - 40}" fill="url(#cad-grid-major)" stroke="#cbd5e1" stroke-width="0.9"/>',
     ]
 
-    # Usando factor de escala 1m = 52px para Planta Primera para máximo nivel de detalle en la lámina
-    S1 = 52.0
-    OX1 = 75.0
-    OY1 = -130.0
+    # Factor de escala 1m = 48px para encajar hasta Y=21.45m con máxima precisión
+    S1 = 48.0
+    OX1 = 78.0
+    OY1 = -105.0
 
     def X1(m):
         return OX1 + m * S1
@@ -764,14 +807,14 @@ def build_planta_alta_svg():
     out.append('<g id="parcela-y-retranqueos">')
     v_axes = [(4.00, "A"), (6.15, "B"), (8.50, "C"), (12.50, "D"), (17.00, "E")]
     for xm, lbl in v_axes:
-        out.append(draw_structural_axis(X1(xm), Y1(3.8), X1(xm), Y1(20.2), lbl, bubble_at="start"))
-    h_axes = [(5.00, "1"), (8.40, "2"), (12.40, "3"), (16.50, "3B"), (18.45, "4")]
+        out.append(draw_structural_axis(X1(xm), Y1(3.8), X1(xm), Y1(21.6), lbl, bubble_at="start"))
+    h_axes = [(5.00, "1"), (8.40, "2"), (12.40, "3"), (18.00, "4"), (19.40, "4B")]
     for ym, lbl in h_axes:
         out.append(draw_structural_axis(X1(0.6), Y1(ym), X1(17.8), Y1(ym), lbl, bubble_at="start"))
 
     # Cubierta plana técnica sobre Pérgola y Trastero (X=1.00..6.15, Y=5.00..12.40) con 12 paneles solares FV
     out.append(f'<rect x="{X1(1.00):.1f}" y="{Y1(5.00):.1f}" width="{L1(5.15):.1f}" height="{L1(7.40):.1f}" fill="url(#hatch-gravel)" stroke="#64748b" stroke-width="1.0" stroke-dasharray="6,3"/>')
-    out.append(f'<text x="{X1(3.55):.1f}" y="{Y1(5.45):.1f}" fill="#94a3b8" font-size="6.8" font-weight="700" text-anchor="middle">CUBIERTA PLANA TÉCNICA NO TRANSITABLE (GRAVA DRENANTE · COTA +3,05 m)</text>')
+    out.append(f'<text x="{X1(3.55):.1f}" y="{Y1(5.45):.1f}" fill="#94a3b8" font-size="6.5" font-weight="700" text-anchor="middle">CUBIERTA PLANA TÉCNICA NO TRANSITABLE (GRAVA DRENANTE · COTA +3,05 m)</text>')
     # 12 Paneles Fotovoltaicos Monocristalinos (1,75 x 1,10 m cada uno → 5,40 kWp)
     for row_i in range(4):
         for col_j in range(3):
@@ -779,7 +822,7 @@ def build_planta_alta_svg():
             py_pv = Y1(5.80 + row_i * 1.35)
             out.append(f'<rect x="{px_pv:.1f}" y="{py_pv:.1f}" width="{L1(1.32):.1f}" height="{L1(1.05):.1f}" fill="#0c192c" stroke="#38bdf8" stroke-width="0.75"/>')
             out.append(f'<line x1="{px_pv:.1f}" y1="{py_pv + L1(0.52):.1f}" x2="{px_pv + L1(1.32):.1f}" y2="{py_pv + L1(0.52):.1f}" stroke="#1e3a8a" stroke-width="0.4"/>')
-            out.append(f'<text x="{px_pv + L1(0.66):.1f}" y="{py_pv + L1(0.58):.1f}" fill="#7dd3fc" font-size="4.8" text-anchor="middle">FV-{row_i*3+col_j+1:02d} 450W</text>')
+            out.append(f'<text x="{px_pv + L1(0.66):.1f}" y="{py_pv + L1(0.58):.1f}" fill="#7dd3fc" font-size="4.6" text-anchor="middle">FV-{row_i*3+col_j+1:02d} 450W</text>')
     # Cazoletas pluviales y líneas de pendiente de cubierta
     out.append(draw_mep_symbol(X1(1.30), Y1(12.00), "drain", "CAZ-01 Ø90 (p=2%)"))
     out.append(draw_mep_symbol(X1(5.80), Y1(12.00), "drain", "CAZ-02 Ø90 (p=2%)"))
@@ -789,30 +832,51 @@ def build_planta_alta_svg():
     # CAPA 2: PAVIMENTOS DE PLANTA PRIMERA Y VACÍO CENTRAL DEL PATIO CORRALA
     # =========================================================================
     out.append('<g id="pavimentos-p1">')
-    # Huella interior Planta Primera: X=[6.15..17.00], Y=[5.00..16.50]
-    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(5.00):.1f}" width="{L1(10.85):.1f}" height="{L1(11.50):.1f}" fill="url(#hatch-wood-deck)"/>')
-    out.append(f'<rect x="{X1(6.35):.1f}" y="{Y1(5.35):.1f}" width="{L1(10.35):.1f}" height="{L1(10.85):.1f}" fill="url(#hatch-radiant)" opacity="0.45"/>')
+    # Huella interior Planta Primera: X=[6.15..17.00], Y=[5.00..18.00]
+    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(5.00):.1f}" width="{L1(10.85):.1f}" height="{L1(13.00):.1f}" fill="url(#hatch-wood-deck)"/>')
+    out.append(f'<rect x="{X1(6.50):.1f}" y="{Y1(5.35):.1f}" width="{L1(10.15):.1f}" height="{L1(12.30):.1f}" fill="url(#hatch-radiant)" opacity="0.45"/>')
+
+    # Solado cerámico antideslizante C3 en los dos cuartos húmedos Norte:
+    # Baño Hijos (X=6.50..8.82, Y=5.35..8.28) y Baño Suite (X=13.84..16.65, Y=5.35..7.60)
+    out.append(f'<rect x="{X1(6.50):.1f}" y="{Y1(5.35):.1f}" width="{L1(2.32):.1f}" height="{L1(2.93):.1f}" fill="url(#hatch-tile-60)"/>')
+    out.append(f'<rect x="{X1(13.84):.1f}" y="{Y1(5.35):.1f}" width="{L1(2.81):.1f}" height="{L1(2.25):.1f}" fill="url(#hatch-tile-60)"/>')
 
     # Vacío Cenital del Patio Corrala Central: X=[8.50..12.50], Y=[8.40..12.40] (4,00 x 4,00 m)
+    # Con galería de paso Norte sobre el alero estructural de 80 cm (Y=8.28..9.15, X=8.50..10.15)
     out.append(f'<rect x="{X1(8.50):.1f}" y="{Y1(8.40):.1f}" width="{L1(4.00):.1f}" height="{L1(4.00):.1f}" fill="#070b14" stroke="#10b981" stroke-width="1.4"/>')
-    # Líneas diagonales técnicas de vacío / doble altura
-    out.append(f'<line x1="{X1(8.50):.1f}" y1="{Y1(8.40):.1f}" x2="{X1(12.50):.1f}" y2="{Y1(12.40):.1f}" stroke="#10b981" stroke-width="0.6" stroke-dasharray="6,4" opacity="0.6"/>')
+    # Pasarela Norte sobre el alero de hormigón de 80 cm para acceso directo a Sala Polivalente (P-11B)
+    out.append(f'<rect x="{X1(8.50):.1f}" y="{Y1(8.28):.1f}" width="{L1(1.65):.1f}" height="{L1(0.87):.1f}" fill="url(#hatch-wood-deck)" stroke="#10b981" stroke-width="0.9"/>')
+    # Líneas diagonales técnicas de vacío / doble altura en el hueco libre al cielo
+    out.append(f'<line x1="{X1(8.50):.1f}" y1="{Y1(9.15):.1f}" x2="{X1(12.50):.1f}" y2="{Y1(12.40):.1f}" stroke="#10b981" stroke-width="0.6" stroke-dasharray="6,4" opacity="0.6"/>')
     out.append(f'<line x1="{X1(12.50):.1f}" y1="{Y1(8.40):.1f}" x2="{X1(8.50):.1f}" y2="{Y1(12.40):.1f}" stroke="#10b981" stroke-width="0.6" stroke-dasharray="6,4" opacity="0.6"/>')
     # Proyección de alero perimetral de 80 cm y copa del Arce Japonés inferior
     out.append(f'<rect x="{X1(9.30):.1f}" y="{Y1(9.20):.1f}" width="{L1(2.40):.1f}" height="{L1(2.40):.1f}" fill="none" stroke="#34d399" stroke-width="0.7" stroke-dasharray="3,3"/>')
-    out.append(f'<circle cx="{X1(9.55):.1f}" cy="{Y1(9.55):.1f}" r="{L1(0.65):.1f}" fill="none" stroke="#10b981" stroke-width="0.8" stroke-dasharray="2,2"/>')
-    out.append(f'<text x="{X1(10.50):.1f}" y="{Y1(10.30):.1f}" fill="#10b981" font-size="7.5" font-weight="700" text-anchor="middle">VACÍO PATIO CORRALA (4,00 × 4,00 m)</text>')
-    out.append(f'<text x="{X1(10.50):.1f}" y="{Y1(10.60):.1f}" fill="#6ee7b7" font-size="6.0" text-anchor="middle">Abierto al cielo · Proyección copa Acer palmatum</text>')
+    out.append(f'<circle cx="{X1(10.50):.1f}" cy="{Y1(10.55):.1f}" r="{L1(0.65):.1f}" fill="none" stroke="#10b981" stroke-width="0.8" stroke-dasharray="2,2"/>')
+    out.append(f'<text x="{X1(10.50):.1f}" y="{Y1(10.45):.1f}" fill="#10b981" font-size="7.0" font-weight="700" text-anchor="middle">VACÍO PATIO CORRALA (4,00 × 4,00 m)</text>')
+    out.append(f'<text x="{X1(10.50):.1f}" y="{Y1(10.75):.1f}" fill="#6ee7b7" font-size="5.6" text-anchor="middle">Abierto al cielo · Proyección copa Acer palmatum</text>')
 
-    # 19. BALCÓN CORRIDO SUR P1: X=[6.15..17.00], Y=[16.50..17.90] (Fondo 1,40 m · 14,00 m² útiles)
-    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(16.50):.1f}" width="{L1(10.85):.1f}" height="{L1(1.40):.1f}" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="1.1"/>')
-    # Barandilla continua de vidrio estructural laminar 10+10.2 mm en borde Sur (Y=17.90)
-    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(17.86):.1f}" x2="{X1(17.00):.1f}" y2="{Y1(17.86):.1f}" stroke="#38bdf8" stroke-width="2.2"/>')
-    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(17.92):.1f}" x2="{X1(17.00):.1f}" y2="{Y1(17.92):.1f}" stroke="#e2e8f0" stroke-width="0.6"/>')
-    # Proyección del vuelo inferior del Porche Sur de PB (Y=17.90..21.45)
-    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(17.90):.1f}" width="{L1(10.85):.1f}" height="{L1(2.10):.1f}" fill="none" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>')
-    out.append(f'<text x="{X1(11.57):.1f}" y="{Y1(19.10):.1f}" fill="#64748b" font-size="6.5" text-anchor="middle">PROYECCIÓN CUBIERTA PORCHE SUR INFERIOR (COTA +3,00 m · PENDIENTE 1,5%)</text>')
-    out.append(draw_room_stamp(X1(11.57), Y1(17.20), "E-23", "BALCÓN CORRIDO SUR P1", 14.00, "Iroko · Vidrio 10+10mm", "+3,15"))
+    # 19. BALCÓN CORRIDO SUR P1: X=[6.15..16.30], Y=[18.00..19.40] (Fondo 1,40 m · 13,20 m² útiles limpios)
+    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(18.00):.1f}" width="{L1(10.15):.1f}" height="{L1(1.40):.1f}" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="1.1"/>')
+    # Barandilla continua de vidrio estructural laminar 10+10.2 mm en borde Sur (Y=19.40, remate en celosía X=16.30)
+    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(19.36):.1f}" x2="{X1(16.30):.1f}" y2="{Y1(19.36):.1f}" stroke="#38bdf8" stroke-width="2.2"/>')
+    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(19.42):.1f}" x2="{X1(16.30):.1f}" y2="{Y1(19.42):.1f}" stroke="#e2e8f0" stroke-width="0.6"/>')
+
+    # Celosía cortaviento de Iroko en testero Este del balcón (X=16.30, Y=18.00..19.40)
+    out.append(f'<line x1="{X1(16.30):.1f}" y1="{Y1(18.00):.1f}" x2="{X1(16.30):.1f}" y2="{Y1(19.40):.1f}" stroke="#d97706" stroke-width="2.8"/>')
+    for y_lama in [18.15, 18.35, 18.55, 18.75, 18.95, 19.15, 19.35]:
+        out.append(f'<line x1="{X1(16.22):.1f}" y1="{Y1(y_lama):.1f}" x2="{X1(16.38):.1f}" y2="{Y1(y_lama):.1f}" stroke="#f59e0b" stroke-width="1.2"/>')
+    out.append(f'<text x="{X1(16.15):.1f}" y="{Y1(18.70):.1f}" fill="#f59e0b" font-size="5.2" font-weight="700" text-anchor="end">CELOSÍA IROKO CORTAVIENTO</text>')
+
+    # Shunt exterior y tiro de chimenea de la barbacoa FUERA de la terraza (X=16.40..17.00, Y=18.45..19.10)
+    out.append(f'<rect x="{X1(16.45):.1f}" y="{Y1(18.45):.1f}" width="{L1(0.50):.1f}" height="{L1(0.60):.1f}" fill="#1e293b" stroke="#64748b" stroke-width="0.8"/>')
+    out.append(f'<circle cx="{X1(16.70):.1f}" cy="{Y1(18.75):.1f}" r="{L1(0.18):.1f}" fill="#0f172a" stroke="#ef4444" stroke-width="1.0"/>')
+    out.append(f'<text x="{X1(16.70):.1f}" y="{Y1(19.22):.1f}" fill="#ef4444" font-size="4.8" font-weight="700" text-anchor="middle">TIRO BBQ Ø250</text>')
+    out.append(f'<text x="{X1(16.70):.1f}" y="{Y1(19.36):.1f}" fill="#94a3b8" font-size="4.2" text-anchor="middle">(EXTERIOR)</text>')
+
+    # Proyección del vuelo inferior del Porche Sur de PB (Y=19.40..21.45)
+    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(19.40):.1f}" width="{L1(10.85):.1f}" height="{L1(2.05):.1f}" fill="none" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>')
+    out.append(f'<text x="{X1(11.22):.1f}" y="{Y1(20.55):.1f}" fill="#64748b" font-size="6.2" text-anchor="middle">PROYECCIÓN CUBIERTA PORCHE SUR INFERIOR (COTA +3,00 m · PENDIENTE 1,5%)</text>')
+    out.append(draw_room_stamp(X1(11.22), Y1(18.70), "E-23", "BALCÓN CORRIDO SUR P1", 13.20, "Iroko · Vidrio 10+10mm", "+3,15"))
     out.append('</g>')
 
     # =========================================================================
@@ -820,33 +884,35 @@ def build_planta_alta_svg():
     # =========================================================================
     out.append('<g id="muros-exteriores">')
     wt = L1(0.35)
-    # Fachada Norte P1 (Y=5.00, X=6.15..17.00) con huecos C-10 (Baño Hijos) y C-11 (Baño Suite)
-    out.append(draw_wall_segment(X1(6.15), Y1(5.00), L1(1.85), wt, "ext"))   # Hasta C-10 (X=8.00..9.20)
-    out.append(draw_wall_segment(X1(9.20), Y1(5.00), L1(5.00), wt, "ext"))   # Tramo central hasta C-11 (X=14.20..15.60)
-    out.append(draw_wall_segment(X1(15.60), Y1(5.00), L1(1.40), wt, "ext"))  # Esquina NE
+    # Fachada Norte P1 (Y=5.00, X=6.15..17.00) con huecos C-10 (Baño Hijos), C-10B (Sala Polivalente) y C-11 (Baño Suite)
+    out.append(draw_wall_segment(X1(6.15), Y1(5.00), L1(1.00), wt, "ext"))   # Hasta C-10 (X=7.15..8.15)
+    out.append(draw_wall_segment(X1(8.15), Y1(5.00), L1(2.25), wt, "ext"))   # Hasta C-10B (X=10.40..12.20)
+    out.append(draw_wall_segment(X1(12.20), Y1(5.00), L1(2.45), wt, "ext"))  # Hasta C-11 (X=14.65..15.85)
+    out.append(draw_wall_segment(X1(15.85), Y1(5.00), L1(1.15), wt, "ext"))  # Esquina NE
 
-    # Fachada Oeste P1 (X=6.15, Y=5.00..16.50) — Ciega para aislamiento térmico/acústico
-    out.append(draw_wall_segment(X1(6.15), Y1(5.00), wt, L1(11.50), "ext"))
+    # Fachada Oeste P1 (X=6.15, Y=5.00..18.00) — Ciega de alta inercia térmica/acústica
+    out.append(draw_wall_segment(X1(6.15), Y1(5.00), wt, L1(13.00), "ext"))
 
-    # Fachada Este P1 (X=16.65, Y=5.00..16.50) — Ciega de alta inercia
-    out.append(draw_wall_segment(X1(16.65), Y1(5.00), wt, L1(11.50), "ext"))
+    # Fachada Este P1 (X=16.65, Y=5.00..18.00) — Con ventana C-14B en Vestidor (Y=9.40..10.40)
+    out.append(draw_wall_segment(X1(16.65), Y1(5.00), wt, L1(4.40), "ext"))
+    out.append(draw_wall_segment(X1(16.65), Y1(10.40), wt, L1(7.60), "ext"))
 
-    # Fachada Sur P1 hacia Balcón Corrido (Y=16.15..16.50, X=6.15..17.00) con huecos C-12, C-13, C-14
-    out.append(draw_wall_segment(X1(6.15), Y1(16.15), L1(0.85), wt, "ext"))   # Machón SW hasta C-12 (X=7.00..9.20)
-    out.append(draw_wall_segment(X1(9.20), Y1(16.15), L1(1.15), wt, "ext"))   # Machón entre C-12 y C-13 (X=10.35..12.55)
-    out.append(draw_wall_segment(X1(12.55), Y1(16.15), L1(0.85), wt, "ext"))  # Machón entre C-13 y C-14 (X=13.40..16.40)
-    out.append(draw_wall_segment(X1(16.40), Y1(16.15), L1(0.60), wt, "ext"))  # Machón SE
+    # Fachada Sur P1 hacia Balcón Corrido (Y=17.65..18.00, X=6.15..17.00) con huecos C-12, C-13, C-14
+    out.append(draw_wall_segment(X1(6.15), Y1(17.65), L1(0.95), wt, "ext"))   # Machón SW hasta C-12 (X=7.10..9.30)
+    out.append(draw_wall_segment(X1(9.30), Y1(17.65), L1(1.35), wt, "ext"))   # Machón entre C-12 y C-13 (X=10.65..12.85)
+    out.append(draw_wall_segment(X1(12.85), Y1(17.65), L1(0.90), wt, "ext"))  # Machón entre C-13 y C-14 (X=13.75..16.45)
+    out.append(draw_wall_segment(X1(16.45), Y1(17.65), L1(0.55), wt, "ext"))  # Machón SE
 
-    # Muros perimetrales del Claustro en Norte y Este (X=8.50..12.50, Y=8.40..12.40)
-    out.append(draw_wall_segment(X1(8.50), Y1(8.15), L1(4.00), L1(0.25), "ext"))
-    out.append(draw_wall_segment(X1(12.50), Y1(8.15), L1(0.25), L1(4.25), "ext"))
+    # Muros estructurales del Claustro en Norte (X=10.15..12.50, Y=8.28..8.53) y Este (X=12.50..12.75, Y=8.28..12.40)
+    out.append(draw_wall_segment(X1(10.15), Y1(8.28), L1(2.35), L1(0.25), "ext"))
+    out.append(draw_wall_segment(X1(12.50), Y1(8.28), L1(0.25), L1(4.12), "ext"))
 
-    # Pilares estructurales P1
+    # Pilares estructurales P1 (100% coincidentes en vertical con Planta Baja A-01)
     for px_m, py_m, plbl in [
         (6.32, 5.17, "P-02"), (8.50, 5.17, "P-03"), (12.50, 5.17, "P-04"), (16.82, 5.17, "P-05"),
         (6.32, 8.40, "P-07"), (8.50, 8.40, "P-08"), (12.50, 8.40, "P-09"), (16.82, 8.40, "P-10"),
         (6.32, 12.40, "P-12"), (8.50, 12.40, "P-13"), (12.50, 12.40, "P-14"), (16.82, 12.40, "P-15"),
-        (6.32, 16.32, "P-16"), (9.80, 16.32, "P-17A"), (13.00, 16.32, "P-17B"), (16.82, 16.32, "P-18"),
+        (6.32, 17.82, "P-16"), (9.99, 17.82, "P-17A"), (13.54, 17.82, "P-17B"), (16.82, 17.82, "P-18"),
     ]:
         out.append(draw_pillar(X1(px_m), Y1(py_m), size_px=10, label=plbl))
     out.append('</g>')
@@ -856,68 +922,82 @@ def build_planta_alta_svg():
     # =========================================================================
     out.append('<g id="tabiqueria-interior">')
     pt = L1(0.12)
-    # 15. Baño Compartido Hijos (X=6.50..12.50, Y=5.35..8.15): cierre sur y este
-    out.append(draw_wall_segment(X1(6.50), Y1(8.15), L1(2.00), pt, "int"))
-    out.append(draw_wall_segment(X1(12.50), Y1(5.35), pt, L1(2.80), "acoustic"))
+    # 15. Baño Compartido Hijos (X=6.50..8.82, Y=5.35..8.28 → 2,32 × 2,93 m = 6,80 m²):
+    out.append(draw_wall_segment(X1(6.50), Y1(8.28), L1(2.32), pt, "int"))
+    out.append(draw_wall_segment(X1(8.82), Y1(5.35), pt, L1(2.93), "acoustic"))
 
-    # 18. Baño Privado Suite (X=12.65..16.65, Y=5.35..7.55)
-    out.append(draw_wall_segment(X1(12.65), Y1(7.55), L1(4.00), pt, "int"))
+    # 15B. Sala Polivalente / Cine, TV & Gaming / 4º Dormitorio (X=8.94..13.72, Y=5.35..8.28 → 4,78 × 2,93 m = 14,00 m²):
+    # Tabique Sur acústico Rw≥50dB (X=8.94..13.72, Y=8.28) y Tabique Este acústico Rw≥50dB (X=13.72, Y=5.35..8.28)
+    out.append(draw_wall_segment(X1(8.94), Y1(8.28), L1(4.78), pt, "acoustic"))
+    out.append(draw_wall_segment(X1(13.72), Y1(5.35), pt, L1(2.93), "acoustic"))
 
-    # 17. Vestidor de Paso Doble Suite (X=12.65..16.65, Y=7.65..10.80)
-    out.append(draw_wall_segment(X1(12.65), Y1(10.80), L1(4.00), pt, "int"))
+    # 18. Baño Privado Suite (X=13.84..16.65, Y=5.35..7.60 → 2,81 × 2,25 m = 6,30 m²):
+    out.append(draw_wall_segment(X1(13.84), Y1(7.60), L1(2.81), pt, "int"))
+    out.append(draw_wall_segment(X1(13.72), Y1(7.60), pt, L1(0.80), "int"))
 
-    # Separación Galería Acústica (Y=12.40..13.55) / Dormitorios Infantiles (Y=12.50..16.15)
-    # Dormitorio Niña: X=6.50..9.75, Y=12.50..16.15 (3,25 x 4,50 m = 14,60 m²)
-    # Dormitorio Niño: X=9.87..13.00, Y=12.50..16.15 (3,13 x 4,66 m = 14,60 m²)
-    # Master Suite Dormitorio: X=13.12..16.65, Y=10.92..16.15 (16,50 m²)
-    out.append(draw_wall_segment(X1(6.50), Y1(12.40), L1(2.00), pt, "acoustic"))
-    out.append(draw_wall_segment(X1(8.50), Y1(13.55), L1(4.50), pt, "acoustic"))
+    # 17. Vestidor de Paso Doble Suite (X=12.75..16.65, Y=7.72..12.12 → 8,40 m² útiles libres entre armarios):
+    out.append(draw_wall_segment(X1(12.75), Y1(12.12), L1(3.90), pt, "int"))
 
-    # TABIQUE MEDIANERO CIEGO DE ALTA MASA ACÚSTICA (Rw ≥ 50 dB) entre Dormitorio Niña y Niño (X=9.75)
-    out.append(draw_wall_segment(X1(9.75), Y1(13.55), L1(0.14), L1(2.60), "acoustic"))
-    out.append(f'<g transform="translate({X1(9.66):.1f}, {Y1(14.85):.1f}) rotate(-90)"><text x="0" y="0" fill="#f59e0b" font-size="5.5" font-weight="700" text-anchor="middle">MEDIANERA CIEGA Rw≥50dB (CERO HUECOS)</text></g>')
+    # Separación Galería Acústica Sur (Y=12.40..13.26) / Dormitorios Infantiles (Y=13.38..17.65):
+    # Dormitorio Niña (E-17): X=6.50..9.92, Y=13.38..17.65 (3,42 × 4,27 m = 14,60 m²)
+    # Dormitorio Niño (E-18): X=10.06..13.48, Y=13.38..17.65 (3,42 × 4,27 m = 14,60 m²)
+    # Master Suite (E-20): X=13.60..16.65, Y=12.24..17.65 (3,05 × 5,41 m = 16,50 m²)
+    out.append(draw_wall_segment(X1(6.50), Y1(13.26), L1(6.98), pt, "acoustic"))
 
-    # Tabique acústico entre Dormitorio Niño y Master Suite (X=13.00, Y=12.40..16.15)
-    out.append(draw_wall_segment(X1(13.00), Y1(12.40), L1(0.14), L1(3.75), "acoustic"))
+    # TABIQUE MEDIANERO CIEGO DE ALTA MASA ACÚSTICA (Rw ≥ 50 dB) entre Dormitorio Niña y Niño (X=9.92..10.06)
+    out.append(draw_wall_segment(X1(9.92), Y1(13.38), L1(0.14), L1(4.27), "acoustic"))
+    out.append(f'<g transform="translate({X1(9.83):.1f}, {Y1(15.50):.1f}) rotate(-90)"><text x="0" y="0" fill="#f59e0b" font-size="5.3" font-weight="700" text-anchor="middle">MEDIANERA CIEGA Rw≥50dB (CERO HUECOS)</text></g>')
+
+    # Tabique acústico entre Dormitorio Niño / Galería y Master Suite (X=13.48..13.60, Y=12.12..17.65)
+    out.append(draw_wall_segment(X1(13.48), Y1(12.12), pt, L1(5.53), "acoustic"))
     out.append('</g>')
 
     # =========================================================================
     # CAPA 5: CARPINTERÍAS DE PLANTA PRIMERA (C-10 a C-15) (id="carpinterias")
     # =========================================================================
     out.append('<g id="carpinterias">')
-    # C-10: Ventana Norte Baño Hijos (1,20 x 0,60 m, h=160cm) en X=8.00..9.20, Y=5.17
-    out.append(draw_window_cad(X1(8.00), Y1(5.17), X1(9.20), Y1(5.17), wall_thick=wt, code="C-10", dim_txt="1,20x0,60 (h=160)"))
+    # C-10: Ventana Norte Baño Hijos (1,00 x 0,60 m, h=160cm) en X=7.15..8.15, Y=5.17
+    out.append(draw_window_cad(X1(7.15), Y1(5.17), X1(8.15), Y1(5.17), wall_thick=wt, code="C-10", dim_txt="1,00x0,60 (h=160)"))
 
-    # C-11: Ventana Norte Baño Suite (1,40 x 0,60 m, h=160cm) en X=14.20..15.60, Y=5.17
-    out.append(draw_window_cad(X1(14.20), Y1(5.17), X1(15.60), Y1(5.17), wall_thick=wt, code="C-11", dim_txt="1,40x0,60 (h=160)"))
+    # C-10B: Ventana Norte Sala Polivalente / 4º Dormitorio (1,80 x 1,20 m, h=95cm) en X=10.40..12.20, Y=5.17
+    out.append(draw_window_cad(X1(10.40), Y1(5.17), X1(12.20), Y1(5.17), wall_thick=wt, code="C-10B", dim_txt="1,80x1,20 COR 80"))
 
-    # C-12: Balconera Corredera Dormitorio Niña a Balcón Sur (2,20 x 2,40 m) en X=7.00..9.20, Y=16.32
-    out.append(draw_sliding_door(X1(7.00), Y1(16.32), X1(9.20), Y1(16.32), wall_thick=wt, leaves=2, code="C-12", dim_txt="2,20x2,40 COR 80"))
+    # C-11: Ventana Norte Baño Suite (1,20 x 0,60 m, h=160cm) en X=14.65..15.85, Y=5.17
+    out.append(draw_window_cad(X1(14.65), Y1(5.17), X1(15.85), Y1(5.17), wall_thick=wt, code="C-11", dim_txt="1,20x0,60 (h=160)"))
 
-    # C-13: Balconera Corredera Dormitorio Niño a Balcón Sur (2,20 x 2,40 m) en X=10.35..12.55, Y=16.32
-    out.append(draw_sliding_door(X1(10.35), Y1(16.32), X1(12.55), Y1(16.32), wall_thick=wt, leaves=2, code="C-13", dim_txt="2,20x2,40 COR 80"))
+    # C-14B: Ventana Este Vestidor Suite (1,00 x 1,20 m) en X=16.82, Y=9.40..10.40
+    out.append(draw_window_cad(X1(16.82), Y1(9.40), X1(16.82), Y1(10.40), wall_thick=wt, code="C-14B", dim_txt="1,00x1,20"))
 
-    # C-14: Gran Balconera Corredera Suite Matrimonio a Balcón Sur (3,00 x 2,40 m) en X=13.40..16.40, Y=16.32
-    out.append(draw_sliding_door(X1(13.40), Y1(16.32), X1(16.40), Y1(16.32), wall_thick=wt, leaves=2, code="C-14", dim_txt="3,00x2,40 Cor Vision"))
+    # C-12: Balconera Corredera Dormitorio Niña a Balcón Sur (2,20 x 2,40 m) en X=7.10..9.30, Y=17.82
+    out.append(draw_sliding_door(X1(7.10), Y1(17.82), X1(9.30), Y1(17.82), wall_thick=wt, leaves=2, code="C-12", dim_txt="2,20x2,40 COR 80"))
 
-    # C-15: Mampara Acústica Fija Continua 4+4 Silence sobre el Claustro (4,00 x 2,60 m, Rw=42dB)
-    # En borde Oeste (X=8.50, Y=8.40..12.40) y borde Sur del Claustro (Y=12.40, X=8.50..12.50)
-    out.append(draw_window_cad(X1(8.50), Y1(8.40), X1(8.50), Y1(12.40), wall_thick=7, code="C-15A", dim_txt="Mampara 4+4 Silence 42dB"))
+    # C-13: Balconera Corredera Dormitorio Niño a Balcón Sur (2,20 x 2,40 m) en X=10.65..12.85, Y=17.82
+    out.append(draw_sliding_door(X1(10.65), Y1(17.82), X1(12.85), Y1(17.82), wall_thick=wt, leaves=2, code="C-13", dim_txt="2,20x2,40 COR 80"))
+
+    # C-14: Gran Balconera Corredera Suite Matrimonio a Balcón Sur (2,70 x 2,40 m) en X=13.75..16.45, Y=17.82
+    out.append(draw_sliding_door(X1(13.75), Y1(17.82), X1(16.45), Y1(17.82), wall_thick=wt, leaves=2, code="C-14", dim_txt="2,70x2,40 Cor Vision"))
+
+    # C-15: Mampara Acústica Fija Continua 4+4 Silence sobre el Claustro (Rw=42dB)
+    out.append(draw_window_cad(X1(8.50), Y1(9.15), X1(8.50), Y1(12.40), wall_thick=7, code="C-15A", dim_txt="Mampara 4+4 Silence 42dB"))
     out.append(draw_window_cad(X1(8.50), Y1(12.40), X1(12.50), Y1(12.40), wall_thick=7, code="C-15B", dim_txt="Mampara Acústica 4+4 Silence (4,00x2,60m · Aísla 42 dB)"))
+    # Mirador acústico interior C-15C de Sala Polivalente hacia el Arce del Patio (con estor Blackout cine)
+    out.append(draw_window_cad(X1(10.30), Y1(8.34), X1(12.30), Y1(8.34), wall_thick=7, code="C-15C", dim_txt="Fijo 4+4 Silence + Blackout"))
 
     # Puertas interiores P1:
-    # P-11: Entrada Baño Hijos (0,82m) en Y=8.15, X=7.40..8.22
-    out.append(draw_door_swing(X1(7.40), Y1(8.15), L1(0.82), WallDir="E", SwingDir="N", code="P-11", dim_txt="0,82"))
-    # P-12: Entrada Dormitorio Niña (0,82m) en Y=12.40, X=7.45..8.27
-    out.append(draw_door_swing(X1(7.45), Y1(12.52), L1(0.82), WallDir="E", SwingDir="S", code="P-12", dim_txt="0,82"))
-    # P-13: Entrada Dormitorio Niño (0,82m) en Y=13.55, X=10.05..10.87
-    out.append(draw_door_swing(X1(10.05), Y1(13.67), L1(0.82), WallDir="E", SwingDir="S", code="P-13", dim_txt="0,82"))
-    # P-14: Entrada Suite Principal desde Galería (0,85m) en X=13.00, Y=12.60..13.45
-    out.append(draw_door_swing(X1(13.14), Y1(12.60), L1(0.85), WallDir="S", SwingDir="E", code="P-14", dim_txt="0,85"))
-    # P-15: Corredera Vestidor → Dormitorio Suite (0,90m) en Y=10.80, X=14.20..15.10
-    out.append(draw_sliding_door(X1(14.20), Y1(10.85), X1(15.10), Y1(10.85), wall_thick=pt, leaves=1, code="P-15", dim_txt="0,90"))
-    # P-16: Corredera Vestidor → Baño Privado Suite (0,85m) en Y=7.55, X=14.20..15.05
-    out.append(draw_sliding_door(X1(14.20), Y1(7.60), X1(15.05), Y1(7.60), wall_thick=pt, leaves=1, code="P-16", dim_txt="0,85"))
+    # P-11: Entrada Baño Hijos (0,80m) en Y=8.28, X=7.55..8.35
+    out.append(draw_door_swing(X1(7.55), Y1(8.28), L1(0.80), WallDir="E", SwingDir="N", code="P-11", dim_txt="0,80"))
+    # P-11B: Puerta Isofónica Rw≥38dB Sala Polivalente / Cine / 4º Dorm. (0,82m) en Y=8.28, X=9.12..9.94
+    out.append(draw_door_swing(X1(9.12), Y1(8.28), L1(0.82), WallDir="E", SwingDir="N", code="P-11B", dim_txt="0,82 Rw38dB"))
+    # P-12: Entrada Dormitorio Niña (0,82m) en Y=13.38, X=7.55..8.37
+    out.append(draw_door_swing(X1(7.55), Y1(13.38), L1(0.82), WallDir="E", SwingDir="S", code="P-12", dim_txt="0,82"))
+    # P-13: Entrada Dormitorio Niño (0,82m) en Y=13.38, X=10.35..11.17
+    out.append(draw_door_swing(X1(10.35), Y1(13.38), L1(0.82), WallDir="E", SwingDir="S", code="P-13", dim_txt="0,82"))
+    # P-14: Entrada Suite Principal desde Galería (0,85m) en X=13.60, Y=12.35..13.20
+    out.append(draw_door_swing(X1(13.60), Y1(12.35), L1(0.85), WallDir="S", SwingDir="E", code="P-14", dim_txt="0,85"))
+    # P-15: Corredera Vestidor → Dormitorio Suite (0,90m) en Y=12.18, X=14.50..15.40
+    out.append(draw_sliding_door(X1(14.50), Y1(12.18), X1(15.40), Y1(12.18), wall_thick=pt, leaves=1, code="P-15", dim_txt="0,90"))
+    # P-16: Corredera Vestidor → Baño Privado Suite (0,85m) en Y=7.66, X=14.60..15.45
+    out.append(draw_sliding_door(X1(14.60), Y1(7.66), X1(15.45), Y1(7.66), wall_thick=pt, leaves=1, code="P-16", dim_txt="0,85"))
     out.append('</g>')
 
     # =========================================================================
@@ -925,107 +1005,132 @@ def build_planta_alta_svg():
     # =========================================================================
     out.append('<g id="mobiliario-nhg">')
     # 12. DESEMBARCO ESCALERA Y GALERÍA ACÚSTICA P1 (8,20 m² útiles)
-    st_x, st_y, st_w = X1(6.55), Y1(8.40), L1(1.05)
-    tread_h = L1(0.23)
+    st_x, st_y, st_w = X1(6.55), Y1(8.40), L1(0.95)
+    tread_h = L1(0.235)
     out.append(f'<rect x="{st_x:.1f}" y="{st_y:.1f}" width="{st_w:.1f}" height="{17 * tread_h:.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.9"/>')
     for i in range(1, 18):
         ty = st_y + i * tread_h
         out.append(f'<line x1="{st_x:.1f}" y1="{ty:.1f}" x2="{st_x + st_w:.1f}" y2="{ty:.1f}" stroke="#94a3b8" stroke-width="0.65"/>')
     out.append(f'<line x1="{st_x + st_w/2:.1f}" y1="{st_y + 10:.1f}" x2="{st_x + st_w/2:.1f}" y2="{st_y + 16*tread_h:.1f}" stroke="#10b981" stroke-width="0.9" marker-end="url(#arrow-tech)"/>')
-    out.append(f'<text x="{st_x + st_w/2:.1f}" y="{st_y + 16.5*tread_h:.1f}" fill="#10b981" font-size="5.5" font-weight="700" text-anchor="middle">LLEGADA +3,15m</text>')
-    out.append(draw_room_stamp(X1(10.65), Y1(13.00), "E-16", "GALERÍA ACÚSTICA P1", 8.20, "Roble 14mm · Balizas 25cm", "+3,15"))
+    out.append(f'<text x="{st_x + st_w/2:.1f}" y="{st_y + 16.5*tread_h:.1f}" fill="#10b981" font-size="5.2" font-weight="700" text-anchor="middle">LLEGADA +3,15m</text>')
+    out.append(draw_room_stamp(X1(10.85), Y1(12.82), "E-16", "GALERÍA ACÚSTICA P1", 8.20, "Roble 14mm · Balizas 25cm", "+3,15"))
 
-    # 15. BAÑO COMPARTIDO HIJOS (X=6.50..12.50, Y=5.35..8.15 → 6,80 m²)
-    # Bañera/Ducha amplia encastrada 1,70 x 0,75 m
-    out.append(draw_shower_block(X1(6.60), Y1(5.45), L1(1.70), L1(0.80), drain_side="E", label="BAÑERA/DUCHA 1,70x0,75"))
-    # Mueble suspendido doble seno (1,40 x 0,50 m)
-    out.append(draw_sink_block(X1(9.35), Y1(5.42), L1(1.40), L1(0.50), basins=2, orient="N"))
-    # Inodoro suspendido Geberit iCon Rimless
-    out.append(draw_wc_block(X1(11.15), Y1(5.42), L1(0.42), L1(0.56), orient="N"))
-    out.append(draw_nhg_circle(X1(9.60), Y1(7.10), 1.20, S1, "Ø1,20m NHG"))
-    out.append(draw_room_stamp(X1(11.15), Y1(7.25), "E-19", "BAÑO COMPARTIDO HIJOS", 6.80, "Porcelánico C3 · Doble Seno", "+3,15"))
+    # 15. BAÑO COMPARTIDO HIJOS (X=6.50..8.82, Y=5.35..8.28 → 2,32 × 2,93 m = 6,80 m² REALES)
+    # Bañera/Ducha encastrada 1,70 x 0,75 m en pared Norte
+    out.append(draw_shower_block(X1(6.58), Y1(5.42), L1(1.65), L1(0.75), drain_side="E", label="BAÑERA/DUCHA 1,70x0,75"))
+    # Mueble suspendido doble seno (1,30 x 0,48 m) en pared Oeste
+    out.append(draw_sink_block(X1(6.58), Y1(6.35), L1(0.48), L1(1.30), basins=2, orient="W"))
+    # Inodoro suspendido Geberit iCon Rimless en pared Este
+    out.append(draw_wc_block(X1(8.20), Y1(6.40), L1(0.55), L1(0.42), orient="E"))
+    out.append(draw_nhg_circle(X1(7.72), Y1(7.35), 1.20, S1, "Ø1,20m"))
+    out.append(draw_room_stamp(X1(7.66), Y1(7.85), "E-19", "BAÑO HIJOS (2,32×2,93m)", 6.80, "Porcelánico C3 · Doble Seno", "+3,15"))
 
-    # 13. DORMITORIO INFANTIL NIÑA (X=6.50..9.75, Y=12.55..16.15 → 14,60 m²)
+    # 15B. SALA POLIVALENTE — CINE, TV & GAMING / FUTURO 4º DORMITORIO (X=8.94..13.72, Y=5.35..8.28 → 4,78 × 2,93 m = 14,00 m²)
+    # Sofá en L relax / sofá-cama de 2,30 x 1,55 m en lado Oeste orientado a pantalla Este y al Patio Sur
+    out.append(f'<path d="M {X1(9.10):.1f} {Y1(5.48):.1f} L {X1(10.65):.1f} {Y1(5.48):.1f} L {X1(10.65):.1f} {Y1(6.25):.1f} L {X1(9.88):.1f} {Y1(6.25):.1f} L {X1(9.88):.1f} {Y1(7.45):.1f} L {X1(9.10):.1f} {Y1(7.45):.1f} Z" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.9"/>')
+    out.append(f'<text x="{X1(9.50):.1f}" y="{Y1(6.65):.1f}" fill="#cbd5e1" font-size="4.8" text-anchor="middle" transform="rotate(-90 {X1(9.50):.1f} {Y1(6.65):.1f})">SOFÁ-CAMA CHAISELONGUE</text>')
+    # Mesa baja central y alfombra acústica
+    out.append(f'<rect x="{X1(10.15):.1f}" y="{Y1(6.42):.1f}" width="{L1(0.95):.1f}" height="{L1(0.65):.1f}" fill="#131c31" stroke="#f59e0b" stroke-width="0.75"/>')
+    # Setup Gaming / Estudio Doble en Norte (1,65 x 0,60 m) con luz Norte lateral
+    out.append(f'<rect x="{X1(11.35):.1f}" y="{Y1(5.42):.1f}" width="{L1(1.65):.1f}" height="{L1(0.60):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="0.95"/>')
+    out.append(f'<circle cx="{X1(11.85):.1f}" cy="{Y1(6.22):.1f}" r="{L1(0.22):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.65"/>')
+    out.append(f'<circle cx="{X1(12.55):.1f}" cy="{Y1(6.22):.1f}" r="{L1(0.22):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.65"/>')
+    out.append(f'<text x="{X1(12.17):.1f}" y="{Y1(5.78):.1f}" fill="#38bdf8" font-size="4.8" font-weight="700" text-anchor="middle">SETUP GAMING / ESTUDIO</text>')
+    # Muro Multimedia Acústico Este con TV OLED 65" (X=13.30..13.68, Y=6.05..7.65)
+    out.append(f'<rect x="{X1(13.32):.1f}" y="{Y1(6.05):.1f}" width="{L1(0.36):.1f}" height="{L1(1.60):.1f}" fill="#131c31" stroke="#cbd5e1" stroke-width="0.8"/>')
+    out.append(f'<rect x="{X1(13.56):.1f}" y="{Y1(6.20):.1f}" width="{L1(0.08):.1f}" height="{L1(1.30):.1f}" fill="#38bdf8"/>')
+    out.append(f'<g transform="translate({X1(13.18):.1f}, {Y1(6.85):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="4.8" font-weight="700" text-anchor="middle">OLED 65" + PANEL ACÚSTICO</text></g>')
+    out.append(draw_nhg_circle(X1(11.35), Y1(7.15), 1.50, S1, "Ø1,50m NHG"))
+    out.append(draw_room_stamp(X1(11.45), Y1(7.78), "E-19B", "SALA POLIVALENTE / CINE & GAMING", 14.00, "Roble · Rw≥50dB (4º Dorm.)", "+3,15"))
+
+    # 13. DORMITORIO INFANTIL NIÑA (X=6.50..9.92, Y=13.38..17.65 → 3,42 × 4,27 m = 14,60 m² REALES)
     # Armario empotrado en pared Norte (1,50 x 0,60 m)
-    out.append(draw_wardrobe_block(X1(8.20), Y1(12.58), L1(1.50), L1(0.58), "ARMARIO 1,50m"))
-    # Cama 1,20 x 2,00 m apoyada en pared Oeste
-    out.append(draw_bed_block(X1(6.58), Y1(13.65), L1(1.95), L1(1.20), orient="W", kind="single", label="CAMA 1,20x2,00"))
+    out.append(draw_wardrobe_block(X1(8.38), Y1(13.42), L1(1.50), L1(0.60), "ARMARIO 1,50×0,60m"))
+    # Cama 1,35 x 2,00 m apoyada en pared Oeste
+    out.append(draw_bed_block(X1(6.58), Y1(14.55), L1(2.00), L1(1.35), orient="W", kind="single", label="CAMA 1,35x2,00"))
     # Mesa de estudio suspendida (1,80 x 0,65 m) en PARED LATERAL ESTE (Luz de balconera Sur a 90°)
-    out.append(f'<rect x="{X1(9.05):.1f}" y="{Y1(13.85):.1f}" width="{L1(0.65):.1f}" height="{L1(1.80):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<circle cx="{X1(8.75):.1f}" cy="{Y1(14.75):.1f}" r="{L1(0.24):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
-    out.append(f'<g transform="translate({X1(9.40):.1f}, {Y1(14.75):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.3" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>')
-    out.append(draw_nhg_circle(X1(7.80), Y1(15.45), 1.50, S1, "Ø1,50m NHG"))
-    out.append(draw_room_stamp(X1(7.80), Y1(13.15), "E-17", "DORMITORIO NIÑA", 14.60, "Roble 14mm · Luz 90°", "+3,15"))
+    out.append(f'<rect x="{X1(9.22):.1f}" y="{Y1(14.95):.1f}" width="{L1(0.65):.1f}" height="{L1(1.80):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<circle cx="{X1(8.92):.1f}" cy="{Y1(15.85):.1f}" r="{L1(0.24):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
+    out.append(f'<g transform="translate({X1(9.55):.1f}, {Y1(15.85):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.2" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>')
+    out.append(draw_nhg_circle(X1(7.85), Y1(16.75), 1.50, S1, "Ø1,50m NHG"))
+    out.append(draw_room_stamp(X1(8.05), Y1(14.12), "E-17", "DORMITORIO NIÑA (3,42×4,27m)", 14.60, "Roble 14mm · Luz 90°", "+3,15"))
 
-    # 14. DORMITORIO INFANTIL NIÑO (X=9.90..13.00, Y=13.65..16.15 → 14,60 m²)
-    out.append(draw_wardrobe_block(X1(11.15), Y1(13.70), L1(1.75), L1(0.58), "ARMARIO 1,75m"))
-    out.append(draw_bed_block(X1(9.95), Y1(14.35), L1(1.90), L1(1.20), orient="W", kind="single", label="CAMA 1,20x2,00"))
+    # 14. DORMITORIO INFANTIL NIÑO (X=10.06..13.48, Y=13.38..17.65 → 3,42 × 4,27 m = 14,60 m² REALES)
+    out.append(draw_wardrobe_block(X1(11.65), Y1(13.42), L1(1.78), L1(0.60), "ARMARIO 1,80×0,60m"))
+    out.append(draw_bed_block(X1(10.14), Y1(14.55), L1(2.00), L1(1.35), orient="W", kind="single", label="CAMA 1,35x2,00"))
     # Mesa de estudio suspendida (1,80 x 0,65 m) en PARED LATERAL ESTE (Luz de balconera Sur a 90°)
-    out.append(f'<rect x="{X1(12.30):.1f}" y="{Y1(14.30):.1f}" width="{L1(0.65):.1f}" height="{L1(1.75):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<circle cx="{X1(12.02):.1f}" cy="{Y1(15.15):.1f}" r="{L1(0.24):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
-    out.append(f'<g transform="translate({X1(12.65):.1f}, {Y1(15.15):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.3" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>')
-    out.append(draw_Room_Or_Stamp := draw_room_stamp(X1(11.15), Y1(15.72), "E-18", "DORMITORIO NIÑO", 14.60, "Roble 14mm · Luz 90°", "+3,15"))
+    out.append(f'<rect x="{X1(12.78):.1f}" y="{Y1(14.95):.1f}" width="{L1(0.65):.1f}" height="{L1(1.80):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<circle cx="{X1(12.48):.1f}" cy="{Y1(15.85):.1f}" r="{L1(0.24):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
+    out.append(f'<g transform="translate({X1(13.12):.1f}, {Y1(15.85):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.2" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>')
+    out.append(draw_nhg_circle(X1(11.45), Y1(16.75), 1.50, S1, "Ø1,50m NHG"))
+    out.append(draw_room_stamp(X1(11.65), Y1(14.12), "E-18", "DORMITORIO NIÑO (3,42×4,27m)", 14.60, "Roble 14mm · Luz 90°", "+3,15"))
 
-    # 18. BAÑO PRIVADO SUITE (X=12.65..16.65, Y=5.35..7.55 → 6,30 m²)
-    out.append(draw_sink_block(X1(12.80), Y1(5.42), L1(1.60), L1(0.50), basins=2, orient="N"))
-    out.append(draw_wc_block(X1(14.55), Y1(5.42), L1(0.42), L1(0.56), orient="N"))
-    out.append(draw_shower_block(X1(15.10), Y1(5.42), L1(1.50), L1(0.95), drain_side="E", label="DUCHA DOBLE 1,50x0,95"))
-    out.append(draw_room_stamp(X1(14.65), Y1(6.95), "E-22", "BAÑO PRIVADO SUITE", 6.30, "Dekton Kelya · Ducha Doble", "+3,15"))
+    # 18. BAÑO PRIVADO SUITE (X=13.84..16.65, Y=5.35..7.60 → 2,81 × 2,25 m = 6,30 m² REALES)
+    out.append(draw_sink_block(X1(13.92), Y1(5.42), L1(1.30), L1(0.50), basins=2, orient="N"))
+    out.append(draw_wc_block(X1(13.92), Y1(6.85), L1(0.55), L1(0.42), orient="W"))
+    out.append(draw_shower_block(X1(15.35), Y1(5.42), L1(1.22), L1(0.95), drain_side="E", label="DUCHA DOBLE 1,22x0,95"))
+    out.append(draw_room_stamp(X1(15.25), Y1(7.05), "E-22", "BAÑO SUITE (2,81×2,25m)", 6.30, "Dekton Kelya · Ducha Doble", "+3,15"))
 
-    # 17. VESTIDOR DE PASO DOBLE SUITE (X=12.65..16.65, Y=7.68..10.80 → 8,40 m²)
-    # Dos hileras enfrentadas de suelo a techo (fondo 60 cm) con pasillo central libre
-    out.append(draw_wardrobe_block(X1(12.75), Y1(7.80), L1(0.60), L1(2.85), "VESTIDOR W (0,60m)"))
-    out.append(draw_wardrobe_block(X1(16.00), Y1(7.80), L1(0.60), L1(2.85), "VESTIDOR E (0,60m)"))
-    out.append(draw_room_stamp(X1(14.65), Y1(9.25), "E-21", "VESTIDOR DE PASO SUITE", 8.40, "Vidrio Ahumado · LED", "+3,15"))
+    # 17. VESTIDOR DE PASO DOBLE SUITE (X=12.75..16.65, Y=7.72..12.12 → 8,40 m² útiles libres entre armarios)
+    out.append(draw_wardrobe_block(X1(12.82), Y1(8.35), L1(0.60), L1(3.60), "VESTIDOR W (3,60×0,60m)"))
+    out.append(draw_wardrobe_block(X1(15.98), Y1(7.82), L1(0.60), L1(4.15), "VESTIDOR E (4,15×0,60m)"))
+    # Isla joyero central de vestidor (1,60 x 0,60 m)
+    out.append(f'<rect x="{X1(14.35):.1f}" y="{Y1(9.10):.1f}" width="{L1(0.65):.1f}" height="{L1(1.75):.1f}" fill="#131c31" stroke="#f59e0b" stroke-width="0.8"/>')
+    out.append(f'<g transform="translate({X1(14.68):.1f}, {Y1(9.98):.1f}) rotate(-90)"><text x="0" y="0" fill="#fde68a" font-size="4.8" text-anchor="middle">ISLA JOYERO 1,75m</text></g>')
+    out.append(draw_room_stamp(X1(14.70), Y1(11.45), "E-21", "VESTIDOR SUITE (7,75m lin.)", 8.40, "Vidrio Ahumado · Isla LED", "+3,15"))
 
-    # 16. MASTER SUITE MATRIMONIO (X=13.15..16.65, Y=10.95..16.15 → 16,50 m²)
-    # Cama King Size 1,80 x 2,00 m centrada con mesillas flotantes
-    out.append(draw_bed_block(X1(14.00), Y1(11.10), L1(1.80), L1(2.00), orient="N", kind="double", label="KING SIZE 1,80 × 2,00 m"))
-    out.append(f'<rect x="{X1(13.50):.1f}" y="{Y1(11.10):.1f}" width="{L1(0.45):.1f}" height="{L1(0.42):.1f}" fill="#131c31" stroke="#cbd5e1" stroke-width="0.7"/>')
-    out.append(f'<rect x="{X1(15.85):.1f}" y="{Y1(11.10):.1f}" width="{L1(0.45):.1f}" height="{L1(0.42):.1f}" fill="#131c31" stroke="#cbd5e1" stroke-width="0.7"/>')
-    out.append(draw_nhg_circle(X1(14.90), Y1(14.15), 1.50, S1, "Ø1,50m NHG"))
-    out.append(draw_room_stamp(X1(14.90), Y1(15.35), "E-20", "MASTER SUITE MATRIMONIO", 16.50, "Roble 14mm · Balcón Sur", "+3,15"))
+    # 16. MASTER SUITE MATRIMONIO (X=13.60..16.65, Y=12.24..17.65 → 3,05 × 5,41 m = 16,50 m² REALES)
+    # Cama King Size 1,80 x 2,00 m apoyada en muro Este con vistas cruzadas y salida a Balcón Sur
+    out.append(draw_bed_block(X1(14.55), Y1(13.35), L1(2.00), L1(1.80), orient="E", kind="double", label="KING SIZE 1,80 × 2,00 m"))
+    out.append(f'<rect x="{X1(16.10):.1f}" y="{Y1(12.80):.1f}" width="{L1(0.45):.1f}" height="{L1(0.45):.1f}" fill="#131c31" stroke="#cbd5e1" stroke-width="0.7"/>')
+    out.append(f'<rect x="{X1(16.10):.1f}" y="{Y1(15.25):.1f}" width="{L1(0.45):.1f}" height="{L1(0.45):.1f}" fill="#131c31" stroke="#cbd5e1" stroke-width="0.7"/>')
+    out.append(draw_nhg_circle(X1(15.05), Y1(16.25), 1.50, S1, "Ø1,50m NHG"))
+    out.append(draw_room_stamp(X1(15.10), Y1(17.15), "E-20", "MASTER SUITE (3,05×5,41m)", 16.50, "Roble 14mm · Balcón Sur", "+3,15"))
     out.append('</g>')
 
     # =========================================================================
     # CAPA 7: INSTALACIONES MEP PLANTA PRIMERA (VMC, BAJANTES, ELECTRICIDAD)
     # =========================================================================
     out.append('<g id="instalaciones-mep-p1">')
-    out.append(draw_mep_symbol(X1(11.20), Y1(6.20), "vmc_ext", "VMC-E 40m³/h"))
-    out.append(draw_mep_symbol(X1(15.80), Y1(6.60), "vmc_ext", "VMC-E 40m³/h"))
-    out.append(draw_mep_symbol(X1(7.20), Y1(15.60), "vmc_imp", "VMC-I 30m³/h"))
-    out.append(draw_mep_symbol(X1(10.30), Y1(15.60), "vmc_imp", "VMC-I 30m³/h"))
-    out.append(draw_mep_symbol(X1(16.00), Y1(13.80), "vmc_imp", "VMC-I 40m³/h"))
-    # Tomas RJ45 Cat 6A en los pupitres de estudio (desplazadas >30 cm en tabique medianero)
-    out.append(draw_mep_symbol(X1(9.55), Y1(14.30), "rj45", "2×RJ45+3×16A (h=80)"))
-    out.append(draw_mep_symbol(X1(12.80), Y1(14.80), "rj45", "2×RJ45+3×16A (h=80)"))
+    out.append(draw_mep_symbol(X1(8.35), Y1(5.85), "vmc_ext", "VMC-E 40m³/h"))
+    out.append(draw_mep_symbol(X1(13.20), Y1(7.15), "vmc_imp", "VMC-I 35m³/h"))
+    out.append(draw_mep_symbol(X1(14.85), Y1(5.85), "vmc_ext", "VMC-E 40m³/h"))
+    out.append(draw_mep_symbol(X1(7.20), Y1(17.10), "vmc_imp", "VMC-I 30m³/h"))
+    out.append(draw_mep_symbol(X1(10.70), Y1(17.10), "vmc_imp", "VMC-I 30m³/h"))
+    out.append(draw_mep_symbol(X1(15.95), Y1(16.30), "vmc_imp", "VMC-I 40m³/h"))
+    # Tomas RJ45 Cat 6A en Sala Polivalente (Cine/Gaming) y pupitres de estudio
+    out.append(draw_mep_symbol(X1(13.35), Y1(5.65), "rj45", "4×RJ45 Cat6A Gaming"))
+    out.append(draw_mep_symbol(X1(9.72), Y1(15.30), "rj45", "2×RJ45+3×16A (h=80)"))
+    out.append(draw_mep_symbol(X1(13.28), Y1(15.80), "rj45", "2×RJ45+3×16A (h=80)"))
     # Bajantes insonorizadas Geberit Silent-PP Ø110
-    out.append(draw_mep_symbol(X1(11.65), Y1(5.55), "drain", "BAJANTE B-02 Ø110"))
-    out.append(draw_mep_symbol(X1(16.45), Y1(5.55), "drain", "BAJANTE B-01 Ø110"))
+    out.append(draw_mep_symbol(X1(8.55), Y1(6.95), "drain", "BAJANTE B-02 Ø110"))
+    out.append(draw_mep_symbol(X1(14.15), Y1(7.35), "drain", "BAJANTE B-01 Ø110"))
     out.append('</g>')
 
     # =========================================================================
     # CAPA 8: COTAS ENCADENADAS Y NORTE PLANTA PRIMERA (id="textos-cotas-norte")
     # =========================================================================
     out.append('<g id="textos-cotas-norte">')
-    # Cotas Horizontales Superiores (Norte)
+    # Cotas Horizontales Superiores (Norte: desglose exacto de la Banda Norte)
     out.append(draw_dim_h(X1(1.00), X1(6.15), Y1(5.00), Y1(4.15), "5,15 m (Cubierta Técnica FV)", S1, "#94a3b8", "tick-45-white"))
-    out.append(draw_dim_h(X1(6.15), X1(12.50), Y1(5.00), Y1(4.15), "6,35 m (Baño Hijos + Escalera)", S1, "#38bdf8"))
-    out.append(draw_dim_h(X1(12.50), X1(17.00), Y1(5.00), Y1(4.15), "4,50 m (Ala Master Suite Este)", S1, "#38bdf8"))
-    out.append(draw_dim_h(X1(6.15), X1(17.00), Y1(4.15), Y1(3.45), "10,85 m (ANCHO TOTAL VOLUMEN PLANTA PRIMERA)", S1, "#f59e0b", "tick-45-amber", font_size=8.5))
+    out.append(draw_dim_h(X1(6.15), X1(8.88), Y1(5.00), Y1(4.15), "2,32 m útil (Baño Hijos 6,8m²)", S1, "#38bdf8"))
+    out.append(draw_dim_h(X1(8.88), X1(13.78), Y1(5.00), Y1(4.15), "4,78 m útil (Sala Polivalente 14,0m²)", S1, "#10b981"))
+    out.append(draw_dim_h(X1(13.78), X1(17.00), Y1(5.00), Y1(4.15), "2,81 m útil (Baño Suite 6,3m²)", S1, "#38bdf8"))
+    out.append(draw_dim_h(X1(6.15), X1(17.00), Y1(4.15), Y1(3.40), "10,85 m (ANCHO TOTAL VOLUMEN PLANTA PRIMERA · 10,15 m INTERIOR)", S1, "#f59e0b", "tick-45-amber", font_size=8.5))
 
-    # Cotas Horizontales Inferiores (Sur - Dormitorios)
-    out.append(draw_dim_h(X1(6.15), X1(9.75), Y1(17.90), Y1(18.45), "3,60 m (Dorm. Niña)", S1, "#38bdf8"))
-    out.append(draw_dim_h(X1(9.75), X1(13.00), Y1(17.90), Y1(18.45), "3,25 m (Dorm. Niño)", S1, "#38bdf8"))
-    out.append(draw_dim_h(X1(13.00), X1(17.00), Y1(17.90), Y1(18.45), "4,00 m (Master Suite)", S1, "#38bdf8"))
+    # Cotas Horizontales Inferiores (Sur - Dormitorios con ancho interior exacto)
+    out.append(draw_dim_h(X1(6.15), X1(9.99), Y1(19.40), Y1(20.00), "3,42 m útil (Dorm. Niña 14,6m²)", S1, "#38bdf8"))
+    out.append(draw_dim_h(X1(9.99), X1(13.54), Y1(19.40), Y1(20.00), "3,42 m útil (Dorm. Niño 14,6m²)", S1, "#38bdf8"))
+    out.append(draw_dim_h(X1(13.54), X1(17.00), Y1(19.40), Y1(20.00), "3,05 m útil (Master Suite 16,5m²)", S1, "#38bdf8"))
 
-    # Cotas Verticales Izquierda (Oeste)
-    out.append(draw_dim_v(Y1(5.00), Y1(8.40), X1(1.00), X1(0.30), "3,40 m (Núcleo Baños N)", S1, "#38bdf8"))
+    # Cotas Verticales Izquierda (Oeste: fondos exactos)
+    out.append(draw_dim_v(Y1(5.00), Y1(8.40), X1(1.00), X1(0.30), "2,93 m útil (Banda Norte)", S1, "#38bdf8"))
     out.append(draw_dim_v(Y1(8.40), Y1(12.40), X1(1.00), X1(0.30), "4,00 m (Vacío Claustro)", S1, "#10b981"))
-    out.append(draw_dim_v(Y1(12.40), Y1(16.50), X1(6.15), X1(0.30), "4,10 m (Dormitorios Sur)", S1, "#38bdf8"))
-    out.append(draw_dim_v(Y1(16.50), Y1(17.90), X1(6.15), X1(0.30), "1,40 m (Balcón Sur)", S1, "#f59e0b", "tick-45-amber"))
+    out.append(draw_dim_v(Y1(12.40), Y1(13.38), X1(6.15), X1(0.30), "0,98 m (Galería Sur)", S1, "#94a3b8"))
+    out.append(draw_dim_v(Y1(13.38), Y1(18.00), X1(6.15), X1(0.30), "4,27 m útil (Dormitorios Sur)", S1, "#38bdf8"))
+    out.append(draw_dim_v(Y1(18.00), Y1(19.40), X1(6.15), X1(0.30), "1,40 m (Balcón Sur)", S1, "#f59e0b", "tick-45-amber"))
 
-    out.append(draw_north_rose_and_scale(X1(3.50), Y1(15.50), scale_px_per_m=S1, scale_label="1:75"))
+    out.append(draw_north_rose_and_scale(X1(3.50), Y1(16.20), scale_px_per_m=S1, scale_label="1:75"))
     out.append('</g>')
 
     # =========================================================================
@@ -1039,61 +1144,63 @@ def build_planta_alta_svg():
 
     p1_rooms = [
         ("E-16", "12. Desembarco Escalera y Galería Acústica", "8,20 m²", "Roble 14mm + Vidrio 4+4 Silence"),
-        ("E-17", "13. Dormitorio Infantil Niña (Estudio 90°)", "14,60 m²", "Roble 14mm + Balconera 2,20m"),
-        ("E-18", "14. Dormitorio Infantil Niño (Estudio 90°)", "14,60 m²", "Roble 14mm + Balconera 2,20m"),
-        ("E-19", "15. Baño Compartido Hijos (Doble Seno)", "6,80 m²", "Porcelánico C3 + Bañera 1,70m"),
-        ("E-20", "16. Dormitorio Master Suite Matrimonio", "16,50 m²", "Roble 14mm + Balconera 3,00m"),
-        ("E-21", "17. Vestidor de Paso Doble Hilera Suite", "8,40 m²", "Roble 14mm + Vidrio Ahumado"),
-        ("E-22", "18. Baño Privado Suite (Ducha Doble 1,50m)", "6,30 m²", "Porcelánico C3 + Dekton Kelya"),
-        ("SUB-P1", "TOTAL SUPERFICIE ÚTIL INTERIOR P1", "75,40 m²", "(Construida cerrada P1: 98,50 m²)"),
-        ("E-23", "19. Balcón Corrido Sur en Voladizo (Fondo 1,4m)", "14,00 m²", "Tarima Iroko s/ Plots + Vidrio"),
+        ("E-17", "13. Dormitorio Infantil Niña (3,42 × 4,27 m)", "14,60 m²", "Roble 14mm + Balconera 2,20m"),
+        ("E-18", "14. Dormitorio Infantil Niño (3,42 × 4,27 m)", "14,60 m²", "Roble 14mm + Balconera 2,20m"),
+        ("E-19", "15. Baño Compartido Hijos (2,32 × 2,93 m)", "6,80 m²", "Porcelánico C3 + Bañera 1,70m"),
+        ("E-19B", "15B. Sala Polivalente Cine/Gaming (4,78×2,93m)", "14,00 m²", "Cerrada Rw≥50dB · 4º Dormitorio"),
+        ("E-20", "16. Dormitorio Master Suite (3,05 × 5,41 m)", "16,50 m²", "Roble 14mm + Balconera 2,70m"),
+        ("E-21", "17. Vestidor de Paso Doble Suite + Isla", "8,40 m²", "7,75m armarios + Ventana Este"),
+        ("E-22", "18. Baño Privado Suite (2,81 × 2,25 m)", "6,30 m²", "Porcelánico C3 + Dekton Kelya"),
+        ("SUB-P1", "TOTAL SUPERFICIE ÚTIL INTERIOR P1", "89,40 m²", "(100% aprovechada sin m² muertos)"),
+        ("E-23", "19. Balcón Corrido Sur (10,15 × 1,40 m)", "13,20 m²", "Tarima Iroko s/ Plots + Vidrio"),
         ("CUB-FV", "Cubierta Plana Técnica Inferior (12 Módulos)", "38,10 m²", "Grava + 5,40 kWp Solar FV"),
-        ("TOT-VIV", "SUPERFICIE ÚTIL TOTAL VIVIENDA (PB + P1)", "188,40 m²", "(Construida Total: 215,00 m²)"),
+        ("TOT-VIV", "SUPERFICIE ÚTIL TOTAL VIVIENDA (PB + P1)", "202,40 m²", "(4 Dorm. + Despacho + Sala Cine)"),
     ]
-    out.append('<text x="14" y="52" fill="#38bdf8" font-size="7.8" font-weight="700">1. DESGLOSE DE SUPERFICIES ÚTILES Y ACABADOS (PLANTA PRIMERA +3,15 m)</text>')
-    y0 = 60
+    out.append('<text x="14" y="50" fill="#38bdf8" font-size="7.6" font-weight="700">1. DESGLOSE DE SUPERFICIES ÚTILES REALES Y ACABADOS (PLANTA PRIMERA +3,15 m)</text>')
+    y0 = 57
     for idx, (cid, cnam, csup, cpav) in enumerate(p1_rooms):
-        yr = y0 + idx * 18
-        is_hl = cid in ("SUB-P1", "TOT-VIV")
+        yr = y0 + idx * 17
+        is_hl = cid in ("SUB-P1", "TOT-VIV", "E-19B")
         bg = "#131c31" if is_hl else "none"
-        col_c = "#f59e0b" if is_hl else "#e2e8f0"
-        out.append(f'<rect x="14" y="{yr}" width="452" height="18" fill="{bg}" stroke="#334155" stroke-width="0.5"/>')
-        out.append(f'<text x="18" y="{yr+12}" fill="#38bdf8" font-size="6.0" font-weight="700">{cid}</text>')
-        out.append(f'<text x="65" y="{yr+12}" fill="{col_c}" font-size="6.0" font-weight="{"700" if is_hl else "400"}">{cnam}</text>')
-        out.append(f'<text x="275" y="{yr+12}" fill="{col_c}" font-size="6.3" font-weight="700">{csup}</text>')
-        out.append(f'<text x="330" y="{yr+12}" fill="#94a3b8" font-size="5.6">{cpav}</text>')
+        col_c = "#10b981" if cid == "E-19B" else ("#f59e0b" if is_hl else "#e2e8f0")
+        out.append(f'<rect x="14" y="{yr}" width="452" height="17" fill="{bg}" stroke="#334155" stroke-width="0.5"/>')
+        out.append(f'<text x="18" y="{yr+11.5}" fill="#38bdf8" font-size="5.8" font-weight="700">{cid}</text>')
+        out.append(f'<text x="65" y="{yr+11.5}" fill="{col_c}" font-size="5.8" font-weight="{"700" if is_hl else "400"}">{cnam}</text>')
+        out.append(f'<text x="275" y="{yr+11.5}" fill="{col_c}" font-size="6.1" font-weight="700">{csup}</text>')
+        out.append(f'<text x="330" y="{yr+11.5}" fill="#94a3b8" font-size="5.5">{cpav}</text>')
 
     # Tabla Carpinterías P1
-    y_c1 = 280
-    out.append(f'<text x="14" y="{y_c1}" fill="#10b981" font-size="7.8" font-weight="700">2. CUADRO DE CARPINTERÍAS DE PLANTA PRIMERA (C-10 A C-15)</text>')
+    y_c1 = 278
+    out.append(f'<text x="14" y="{y_c1}" fill="#10b981" font-size="7.6" font-weight="700">2. CUADRO DE CARPINTERÍAS DE PLANTA PRIMERA (C-10 A C-15 / P-11B)</text>')
     c_p1 = [
-        ("C-10", "Baño Hijos Norte", "Oscilobatiente Alta", "1,20 × 0,60 m", "h=160 cm", "Cortizo COR 80 RPT Mate"),
-        ("C-11", "Baño Suite Norte", "Oscilobatiente Alta", "1,40 × 0,60 m", "h=160 cm", "Cortizo COR 80 RPT Mate"),
-        ("C-12", "Dorm. Niña → Balcón", "Balconera Corredera", "2,20 × 2,40 m", "h=0 cm", "COR 80 RPT + Persiana Motor."),
-        ("C-13", "Dorm. Niño → Balcón", "Balconera Corredera", "2,20 × 2,40 m", "h=0 cm", "COR 80 RPT + Persiana Motor."),
-        ("C-14", "Suite → Balcón Sur", "Balconera Corredera", "3,00 × 2,40 m", "h=0 cm", "Cortizo Cor Vision + Persiana"),
-        ("C-15", "Galería → Claustro", "Fijo Acústico Suelo-Techo", "4,00 × 2,60 m", "h=0 cm", "Laminado Acústico 4+4 Silence"),
+        ("C-10", "Baño Hijos Norte", "Oscilobatiente Alta", "1,00 × 0,60 m", "h=160 cm", "Cortizo COR 80 RPT Mate"),
+        ("C-10B", "Sala Poliv. Norte", "Oscilobatiente 2H", "1,80 × 1,20 m", "h=95 cm", "COR 80 RPT · Triple Vidrio"),
+        ("C-11", "Baño Suite Norte", "Oscilobatiente Alta", "1,20 × 0,60 m", "h=160 cm", "Cortizo COR 80 RPT Mate"),
+        ("C-12/13", "Dorms. → Balcón Sur", "Balconera Corredera", "2,20 × 2,40 m", "h=0 cm", "COR 80 RPT + Persiana Motor."),
+        ("C-14", "Suite → Balcón Sur", "Balconera Corredera", "2,70 × 2,40 m", "h=0 cm", "Cortizo Cor Vision + Persiana"),
+        ("C-15", "Galería/Sala→Patio", "Fijo Acústico Suelo-Techo", "4,00 × 2,60 m", "h=0 cm", "Laminado Acústico 4+4 Silence"),
+        ("P-11B", "Sala Polivalente", "Batiente Isofónica", "0,82 × 2,10 m", "h=0 cm", "Madera Maciza Rw≥38dB Guillot."),
     ]
     for idx, (cc, cub, cap, cdim, cant, cser) in enumerate(c_p1):
-        yr = y_c1 + 10 + idx * 17
-        out.append(f'<rect x="14" y="{yr}" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>')
-        out.append(f'<text x="18" y="{yr+11.5}" fill="#f59e0b" font-size="6.0" font-weight="700">{cc}</text>')
-        out.append(f'<text x="55" y="{yr+11.5}" fill="#e2e8f0" font-size="5.8">{cub}</text>')
-        out.append(f'<text x="145" y="{yr+11.5}" fill="#94a3b8" font-size="5.8">{cap}</text>')
-        out.append(f'<text x="235" y="{yr+11.5}" fill="#38bdf8" font-size="6.0" font-weight="700">{cdim}</text>')
-        out.append(f'<text x="300" y="{yr+11.5}" fill="#cbd5e1" font-size="5.8">{cant}</text>')
-        out.append(f'<text x="345" y="{yr+11.5}" fill="#94a3b8" font-size="5.6">{cser}</text>')
+        yr = y_c1 + 8 + idx * 16
+        out.append(f'<rect x="14" y="{yr}" width="452" height="16" fill="none" stroke="#334155" stroke-width="0.5"/>')
+        out.append(f'<text x="18" y="{yr+11}" fill="#f59e0b" font-size="5.8" font-weight="700">{cc}</text>')
+        out.append(f'<text x="60" y="{yr+11}" fill="#e2e8f0" font-size="5.7">{cub}</text>')
+        out.append(f'<text x="148" y="{yr+11}" fill="#94a3b8" font-size="5.7">{cap}</text>')
+        out.append(f'<text x="235" y="{yr+11}" fill="#38bdf8" font-size="5.9" font-weight="700">{cdim}</text>')
+        out.append(f'<text x="300" y="{yr+11}" fill="#cbd5e1" font-size="5.7">{cant}</text>')
+        out.append(f'<text x="345" y="{yr+11}" fill="#94a3b8" font-size="5.5">{cser}</text>')
 
     # Criterios Técnicos de Ejecución P1
     y_n1 = 415
     out.append(f'<text x="14" y="{y_n1}" fill="#f59e0b" font-size="7.8" font-weight="700">3. ESPECIFICACIONES DE EJECUCIÓN Y ACÚSTICA EN PLANTA PRIMERA</text>')
     out.append(f'<rect x="14" y="{y_n1+10}" width="452" height="260" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>')
     notas_p1 = [
-        "1. MAMPARA ACÚSTICA 4+4 SILENCE (C-15): Cerramiento fijo de vidrio laminado acústico con",
-        "   butiral PVB Silence que cierra la galería sobre el vacío del Patio Corrala. Atenuación Rw = 42 dB.",
-        "2. ERGONOMÍA DE ESTUDIO A 90° (CERO REFLEJOS): En ambos dormitorios infantiles (E-17 y E-18),",
-        "   las mesas de estudio de 1,80 × 0,65 m se anclan en la pared lateral Este. La luz del Sur entra",
-        "   perpendicularmente por la izquierda, evitando deslumbramiento y contraluz en pantallas.",
+        "1. SALA POLIVALENTE / CINE & GAMING / 4º DORMITORIO (E-19B · 14,00 m²): Recinto cerrado con",
+        "   tabiquería acústica Rw ≥ 50 dB y puerta isofónica P-11B (Rw ≥ 38 dB). Cuenta con ventana Norte",
+        "   y mirador acústico 4+4 Silence con estor blackout motorizado hacia la copa del arce del patio.",
+        "2. PROPORCIÓN GEOMÉTRICA REAL: Baño Hijos acotado a 2,32 × 2,93 m (6,80 m² reales) y Dormitorios",
+        "   Infantiles ampliados a 3,42 × 4,27 m (14,60 m² reales cada uno) con pupitres a 90° en pared Este.",
         "3. TABIQUE MEDIANERO DE ALTA MASA ACÚSTICA (Rw ≥ 50 dB): La divisoria entre ambos dormitorios",
         "   infantiles se ejecuta con doble placa Pladur Fonic 13mm por cara y lana mineral 70 kg/m³.",
         "   Prohibido enfrentar cajas de mecanismos eléctricos (desfase mínimo horizontal de 30 cm).",
@@ -1102,6 +1209,8 @@ def build_planta_alta_svg():
         "   sobre el techo del Salón ni del Comedor.",
         "5. BARANDILLA ESTRUCTURAL DEL BALCÓN SUR: Perfil en U de aluminio anodizado embutido en el canto",
         "   del forjado de hormigón para alojar vidrio laminar templado 10+10.2 mm sin montantes verticales.",
+        "6. CELOSÍA IROKO Y TIRO BBQ FUERA DE TERRAZA: Celosía cortaviento a X=16,30 m. El tiro de barbacoa",
+        "   asciende por el testero exterior sin invadir el suelo de la terraza ni la visión de la suite.",
     ]
     for idx_n, nl in enumerate(notas_p1):
         col_n = "#f8fafc" if nl[0].isdigit() else "#94a3b8"
@@ -1112,28 +1221,21 @@ def build_planta_alta_svg():
     y_det = 705
     out.append(f'<text x="14" y="{y_det}" fill="#38bdf8" font-size="7.8" font-weight="700">4. DETALLE SECCIÓN CONSTRUCTIVA DE FORJADO P1 Y BALCÓN SUR (E 1:20)</text>')
     out.append(f'<rect x="14" y="{y_det+10}" width="452" height="310" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>')
-    # Dibujo CAD de sección del forjado P1 y encuentro con balcón sur enrasado cota +3,15m
     dx0, dy0 = 40, y_det + 145
-    # Losa de hormigón armado 25cm
     out.append(f'<rect x="{dx0}" y="{dy0}" width="380" height="45" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.2"/>')
     out.append(f'<text x="{dx0+190}" y="{dy0+26}" fill="#f8fafc" font-size="6.5" font-weight="700" text-anchor="middle">LOSA / FORJADO HORMIGÓN ARMADO HA-25 (e = 25,0 cm)</text>')
-    # Interior (izquierda): Lámina anti-impacto + XPS 30mm + Autonivelante anhidrita 50mm con tubos PEX + Roble 14mm
     out.append(f'<rect x="{dx0}" y="{dy0-14}" width="210" height="14" fill="url(#hatch-insulation)" stroke="#38bdf8" stroke-width="0.7"/>')
     out.append(f'<rect x="{dx0}" y="{dy0-32}" width="210" height="18" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.8"/>')
     for x_p in range(dx0 + 20, dx0 + 200, 28):
         out.append(f'<circle cx="{x_p}" cy="{dy0-22}" r="3.5" fill="#0b1120" stroke="#f43f5e" stroke-width="1.1"/>')
     out.append(f'<rect x="{dx0}" y="{dy0-38}" width="210" height="6" fill="#78350f" stroke="#f59e0b" stroke-width="0.7"/>')
-    # Taco Purenit 50mm bajo marco balconera C-14 (en X = dx0+210..235)
     out.append(f'<rect x="{dx0+210}" y="{dy0-38}" width="24" height="38" fill="#334155" stroke="#f59e0b" stroke-width="1.1"/>')
     out.append(f'<rect x="{dx0+214}" y="{dy0-95}" width="16" height="57" fill="#0b1120" stroke="#38bdf8" stroke-width="1.2"/>')
-    # Exterior Balcón Sur (derecha): Impermeabilización + Plots regulables + Tarima Iroko 21mm a cota +3,15m + Barandilla vidrio 10+10
     out.append(f'<rect x="{dx0+234}" y="{dy0-38}" width="130" height="6" fill="#78350f" stroke="#f59e0b" stroke-width="0.8"/>')
     for x_pl in [dx0 + 250, dx0 + 295, dx0 + 340]:
         out.append(f'<rect x="{x_pl}" y="{dy0-32}" width="10" height="30" fill="#475569" stroke="#cbd5e1" stroke-width="0.6"/>')
-    # Perfil U oculto y barandilla de vidrio estructural 10+10mm en extremo derecho
     out.append(f'<rect x="{dx0+366}" y="{dy0-38}" width="12" height="32" fill="#334155" stroke="#e2e8f0" stroke-width="1.0"/>')
     out.append(f'<rect x="{dx0+369}" y="{dy0-125}" width="6" height="95" fill="#38bdf8" fill-opacity="0.35" stroke="#38bdf8" stroke-width="1.1"/>')
-    # Etiquetas del detalle constructivo
     out.append(f'<text x="{dx0+100}" y="{dy0-46}" fill="#f8fafc" font-size="6.2" font-weight="700" text-anchor="middle">INTERIOR DORMITORIO (+3,15 m)</text>')
     out.append(f'<text x="{dx0+100}" y="{dy0-57}" fill="#94a3b8" font-size="5.6" text-anchor="middle">Roble 14mm + Anhidrita 50mm (PEX Ø16) + XPS 30mm</text>')
     out.append(f'<text x="{dx0+295}" y="{dy0-46}" fill="#38bdf8" font-size="6.2" font-weight="700" text-anchor="middle">BALCÓN SUR ENRASADO (+3,15 m)</text>')
@@ -1151,18 +1253,18 @@ def build_planta_alta_svg():
             sheet_num="A-02",
             sheet_title="PLANTA PRIMERA GENERAL (COTA +3,15 m) Y CUBIERTAS",
             scale_txt="ESCALA 1:75 / 1:20",
-            subtitle="Zonificación Nocturna, Mampara Acústica 4+4 Silence, Estudio a 90° y Campo FV 5,4 kWp",
+            subtitle="Zonificación Nocturna + Sala Polivalente Cine/Gaming (4º Dorm.) · Cotas Reales Verificadas",
             summary_rows=[
-                "• Superficie Útil Interior P1: 75,40 m² + Balcón Corrido Sur: 14,00 m² · Total Útil Vivienda: 188,40 m²",
-                "• Aislamiento Acústico: Mampara 4+4 Silence (42 dB) sobre Claustro + Medianera Dormitorios Rw ≥ 50 dB",
-                "• Ergonomía Visual: Pupitres de 1,80 m en pared Este con luz natural lateral a 90° (cero reflejos)",
-                "• Cubierta Técnica Inferior: 12 Módulos Fotovoltaicos Monocristalinos 450W (5,40 kWp) con Inversor 5kW",
+                "• Superficie Útil Interior P1: 89,40 m² + Balcón Corrido Sur: 14,00 m² · Total Útil Vivienda: 202,40 m²",
+                "• Banda Norte Optimizada: Baño Hijos (6,80 m²) + Sala Polivalente Cine/Gaming/4º Dorm (14,00 m²) + Baño Suite (6,30 m²)",
+                "• Banda Sur Real: Dormitorios Hijos de 3,42 × 4,27 m (14,60 m² c/u) + Master Suite de 3,05 × 5,41 m (16,50 m²)",
+                "• Aislamiento Acústico: Mampara 4+4 Silence (42 dB) + Tabiques Acústicos Rw ≥ 50 dB en Sala Cine y Dormitorios",
             ],
         )
     )
 
     out.append("</svg>")
-    return "\n".join(out)
+    return sanitize_svg_text("\n".join(out))
 
 
 def main():
@@ -1172,8 +1274,10 @@ def main():
     paths_pb = [
         "/home/antigravity/landslore/oleiros/planta_baja_propuesta_d.svg",
         "/home/antigravity/landslore/oleiros/propuestas/planta_baja_propuesta_d.svg",
+        "/home/antigravity/landslore/oleiros/v2/planos/planta_baja_definitiva.svg",
     ]
     for p in paths_pb:
+        os.makedirs(os.path.dirname(p), exist_ok=True)
         with open(p, "w", encoding="utf-8") as f:
             f.write(pb_svg)
         print(f"Written {p} ({len(pb_svg)} bytes)")
@@ -1181,8 +1285,10 @@ def main():
     paths_p1 = [
         "/home/antigravity/landslore/oleiros/planta_alta_propuesta_d.svg",
         "/home/antigravity/landslore/oleiros/propuestas/planta_alta_propuesta_d.svg",
+        "/home/antigravity/landslore/oleiros/v2/planos/planta_alta_definitiva.svg",
     ]
     for p in paths_p1:
+        os.makedirs(os.path.dirname(p), exist_ok=True)
         with open(p, "w", encoding="utf-8") as f:
             f.write(p1_svg)
         print(f"Written {p} ({len(p1_svg)} bytes)")

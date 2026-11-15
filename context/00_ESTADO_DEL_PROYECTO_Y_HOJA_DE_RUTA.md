@@ -34,10 +34,12 @@ El proyecto ha completado su **auditoría crítica de habitabilidad, bioclimáti
    * Gran corredera elevable *Cortizo Cor Vision Plus* de $5,00 \times 2,60\text{ m}$ a cota cero.
 7. **Porche Sur Expandido (Fondo real de 3,00 m · 36,00 m² cubiertos):**
    * Protegido de la lluvia atlántica para comer fuera todo el año. Churrasqueira tradicional de granito gallego de obra en extremo Este con campana forja, bancada de granito Zimbabwe y leñero inferior.
-8. **Planta Primera (+3,15 m):**
-   * Galería acústica superior con mampara de vidrio laminar `4+4 Silence` sobre el claustro (aísla 42 dB de ruido entre plantas).
-   * Dormitorios infantiles (14,6 m² cada uno) con pupitres suspendidos en pared lateral Este (luz a 90° sin reflejos) y salida directa a Balcón Corrido Sur. Cero ventanas laterales en tabiques medianeros.
-   * Master Suite Matrimonio (31,2 m² con vestidor de paso doble con frentes de vidrio ahumado y baño privado doble).
+8. **Planta Primera (+3,15 m · Escala 100% Real Verificada · 89,40 m² útiles interiores + 14,00 m² Balcón Sur):**
+   * **Galería acústica superior (8,20 m²)** con mampara de vidrio laminar `4+4 Silence` sobre el claustro (aísla 42 dB de ruido entre plantas) y pasarela norte sobre el alero estructural de 80 cm del patio.
+   * **Baño Compartido Hijos (6,80 m² · `2,32 × 2,93 m`):** Dimensionado a su escala real exacta (menos de la mitad que cada dormitorio infantil), con doble seno de 1,40 m, bañera/ducha de 2,20 × 0,85 m al Norte e inodoro suspendido.
+   * **Sala Polivalente / Cine, TV & Gaming / 4º Dormitorio (`E-19B` · 14,00 m² · `4,78 × 2,93 m`):** Segundo salón íntimo familiar en el centro-norte de Planta Primera, cerrado con tabiques acústicos ($R_w \ge 50\text{ dB}$) y puerta isofónica independiente `P-11B` ($R_w \ge 38\text{ dB}$). Dotado de sofá-cama chaiselongue en L, TV OLED 65" con barra Dolby Atmos sobre panel fonoabsorbente, puesto doble Gaming/Estudio con luz Norte (`C-10B`) y mirador interior acústico `4+4 Silence` con estor *blackout* hacia la copa del arce del Patio Corrala. 100% convertible en 4º dormitorio doble en el futuro.
+   * **Dormitorios infantiles gemelos (14,60 m² cada uno · `3,42 × 4,27 m`):** Pupitres suspendidos de 1,80 m en pared lateral Este (luz Sur a 90° sin reflejos), medianera ciega $R_w \ge 50\text{ dB}$ y salida directa a Balcón Corrido Sur (`10,85 × 1,40 m = 14,00 m²`).
+   * **Master Suite Matrimonio (31,20 m² totales):** Dormitorio principal al Sur (`16,50 m² · 3,05 × 5,41 m`), vestidor de paso doble (`8,40 m²` libres con 7,75 m de armarios e isla central) y baño privado doble al Norte (`6,30 m² · 2,81 × 2,25 m`).
 
 ---
 

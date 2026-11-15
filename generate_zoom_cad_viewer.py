@@ -488,40 +488,40 @@ ROOMS = [
     {
         "id": "r13", "fl": "P1", "num": "13", "short": "13. Dormitorio Niña",
         "title": "13. Dormitorio Infantil Niña",
-        "w": 3.65, "h": 4.00, "area": "14,60 m² útiles", "dims": "3,65 × 4,00 m · h = 2,65 m",
-        "desc": "Espacio de descanso y estudio juvenil. Mesa de 1,80 m apoyada en pared lateral Este con luz natural a 90° (cero reflejos en pantalla de portátil y cero contraluz) y salida directa al Balcón Corrido Sur.",
-        "wN": "Pared con armario empotrado de suelo a techo y tabique con pasillo superior.",
-        "wS": "Fachada Sur con balconera corredera elevable y persiana autoblocante motorizada.",
-        "wE": "Pared lateral con mesa de estudio suspendida y luz natural lateral.",
-        "wW": "Tabique acústico medianero con el dormitorio del hermano (aislamiento Rw >= 50 dB).",
+        "w": 3.42, "h": 4.27, "area": "14,60 m² útiles", "dims": "3,42 × 4,27 m · 14,60 m² útiles · h = 2,65 m",
+        "desc": "Espacio de descanso y estudio juvenil a escala 100% real (3,42 × 4,27 m = 14,60 m²). Mesa de 1,80 m apoyada en pared lateral Este con luz natural a 90° (cero reflejos en pantalla de portátil y cero contraluz) y salida directa al Balcón Corrido Sur.",
+        "wN": "Tabique interior hacia la Galería Acústica con armario empotrado de suelo a techo y puerta acústica P-12.",
+        "wS": "Fachada Sur con balconera corredera elevable C-12 (2,20 × 2,40 m) y persiana autoblocante motorizada.",
+        "wE": "Medianera acústica ciega (Rw >= 50 dB) con el dormitorio del hermano; mesa de estudio de 1,80 m con luz Sur a 90°.",
+        "wW": "Muro exterior de fachada Oeste (SATE + Termoarcilla 35 cm) donde apoya el cabecero de la cama de 135×200 cm.",
         "openings": [
-            {"wall": "S", "pos": 0.50, "len": 2.20, "type": "sliding", "label": "Balconera a Balcón Sur"},
-            {"wall": "N", "pos": 0.30, "len": 0.85, "type": "door", "label": "Puerta Dormitorio"}
+            {"wall": "S", "pos": 0.60, "len": 2.20, "type": "sliding", "label": "Balconera C-12 a Balcón Sur"},
+            {"wall": "N", "pos": 1.15, "len": 0.82, "type": "door", "label": "Puerta P-12"}
         ],
         "furn": [
-            {"code": "MESA", "name": "Mesa de estudio suspendida (1,80 × 0,65 m)", "x": 2.80, "y": 0.80, "w": 0.65, "h": 1.80, "col": "#1e293b", "str": "#38bdf8", "desc": "Mesa en abedul a h = 74 cm apoyada en pared lateral Este: luz a 90° sin reflejos."},
-            {"code": "CAMA", "name": "Cama juvenil (1,20 × 2,00 m)", "x": 0.30, "y": 1.50, "w": 1.20, "h": 2.00, "col": "#334155", "str": "#cbd5e1", "desc": "Cama con cabecero tapizado y mesilla suspendida."},
-            {"code": "ARM", "name": "Armario empotrado suelo a techo (2,00 × 0,60 m)", "x": 1.40, "y": 0.10, "w": 2.00, "h": 0.60, "col": "#475569", "str": "#94a3b8", "desc": "Puertas lisas lacadas con baldas regulables y cajonera interior."}
+            {"code": "MESA", "name": "Mesa de estudio suspendida (1,80 × 0,65 m)", "x": 2.65, "y": 1.80, "w": 0.65, "h": 1.80, "col": "#1e293b", "str": "#38bdf8", "desc": "Mesa en abedul a h = 74 cm apoyada en pared lateral Este: luz a 90° sin reflejos."},
+            {"code": "CAMA", "name": "Cama juvenil amplia (1,35 × 2,00 m)", "x": 0.15, "y": 1.20, "w": 2.00, "h": 1.35, "col": "#334155", "str": "#cbd5e1", "desc": "Cama apoyada en muro Oeste con cabecero tapizado y mesilla suspendida."},
+            {"code": "ARM", "name": "Armario empotrado suelo a techo (1,35 × 0,60 m)", "x": 2.00, "y": 0.10, "w": 1.35, "h": 0.60, "col": "#475569", "str": "#94a3b8", "desc": "Puertas lisas lacadas con baldas regulables y cajonera interior."}
         ],
         "elec": [
-            {"code": "E1", "name": "2× Enchufes 16A + 2× USB-C mesa estudio", "x": 3.45, "y": 1.70, "h_cm": 80, "cir": "C2", "desc": "Sobre el escritorio para ordenador portátil, flexo y tablet de estudio."},
-            {"code": "RJ1", "name": "Doble Toma RJ45 Cat 6A (10 Gbps) escritorio", "x": 3.45, "y": 1.20, "h_cm": 80, "cir": "RACK-P1", "isRJ": True, "desc": "Cableado de alta velocidad para clases online y descargas pesadas."},
-            {"code": "E2", "name": "2× Enchufes + RJ45 pared frontal cama", "x": 0.10, "y": 2.20, "h_cm": 115, "cir": "C2 + RACK", "isRJ": True, "desc": "Previsión para TV/pantalla frente a la cama."},
-            {"code": "E3", "name": "Enchufe + conmutador en mesilla de noche", "x": 0.10, "y": 1.20, "h_cm": 65, "cir": "C1", "desc": "Apagado de luz general desde la cama."}
+            {"code": "E1", "name": "2× Enchufes 16A + 2× USB-C mesa estudio", "x": 3.30, "y": 2.60, "h_cm": 80, "cir": "C2", "desc": "Sobre el escritorio para ordenador portátil, flexo y tablet de estudio."},
+            {"code": "RJ1", "name": "Doble Toma RJ45 Cat 6A (10 Gbps) escritorio", "x": 3.30, "y": 2.10, "h_cm": 80, "cir": "RACK-P1", "isRJ": True, "desc": "Cableado de alta velocidad para clases online y descargas pesadas."},
+            {"code": "E2", "name": "2× Enchufes + RJ45 pared frontal cama", "x": 3.30, "y": 1.30, "h_cm": 115, "cir": "C2 + RACK", "isRJ": True, "desc": "Previsión para TV/pantalla frente a la cama."},
+            {"code": "E3", "name": "Enchufe + conmutador en mesilla de noche", "x": 0.15, "y": 0.95, "h_cm": 65, "cir": "C1", "desc": "Apagado de luz general desde la cama."}
         ],
         "sw": [
-            {"code": "I1", "name": "Conmutador triple puerta/cabecero", "x": 1.20, "y": 0.20, "h_cm": 110, "cir": "C1", "desc": "Control conmutado de luz general y foseado LED."},
-            {"code": "I2", "name": "Pulsador persiana autoblocante motorizada", "x": 2.80, "y": 3.80, "h_cm": 110, "cir": "PERSIANAS", "desc": "Subida y bajada de persiana Somfy."}
+            {"code": "I1", "name": "Conmutador triple puerta/cabecero", "x": 1.00, "y": 0.20, "h_cm": 110, "cir": "C1", "desc": "Control conmutado de luz general y foseado LED."},
+            {"code": "I2", "name": "Pulsador persiana autoblocante motorizada", "x": 2.95, "y": 4.10, "h_cm": 110, "cir": "PERSIANAS", "desc": "Subida y bajada de persiana Somfy."}
         ],
         "hvac": [
-            {"code": "SR", "name": "Circuito Suelo Radiante Dormitorio Niña", "x": 1.80, "y": 2.50, "cir": "SR-P1-1", "isFloor": True, "desc": "Tarima de roble nórdico apta para suelo radiante."},
-            {"code": "T", "name": "Termostato digital táctil independiente", "x": 1.20, "y": 0.40, "h_cm": 150, "cir": "CLIMA", "desc": "Termostato zonal programable."},
-            {"code": "VMC", "name": "Boca Impulsión Zehnder Ø 125 mm", "x": 1.80, "y": 3.40, "cir": "VMC-IMP", "isVMC": True, "desc": "Impulsión silenciosa de 30 m³/h de aire fresco."}
+            {"code": "SR", "name": "Circuito Suelo Radiante Dormitorio Niña", "x": 1.70, "y": 2.80, "cir": "SR-P1-1", "isFloor": True, "desc": "Tarima de roble nórdico apta para suelo radiante."},
+            {"code": "T", "name": "Termostato digital táctil KNX independiente", "x": 2.05, "y": 0.25, "h_cm": 150, "cir": "CLIMA", "desc": "Termostato zonal programable."},
+            {"code": "VMC", "name": "Boca Impulsión Zehnder Ø 125 mm", "x": 1.35, "y": 0.75, "cir": "VMC-IMP", "isVMC": True, "desc": "Impulsión silenciosa de 30 m³/h de aire fresco."}
         ],
         "planning": [
-            "Mesa de estudio suspendida de 180 × 65 cm con luz lateral a 90°.",
-            "Cama juvenil de 120 × 200 cm con cabecero tapizado y mesilla suspendida.",
-            "Armario empotrado de suelo a techo de 200 × 60 cm.",
+            "Superficie verificada a escala 100% real: 3,42 × 4,27 m = 14,60 m² útiles.",
+            "Mesa de estudio suspendida de 180 × 65 cm en pared Este con luz lateral Sur a 90°.",
+            "Cama de 135 × 200 cm con cabecero tapizado y círculo libre NHG Ø 1,50 m.",
             "Salida directa al Balcón Corrido Sur protegido."
         ],
         "materials": "Paredes tono salvia suave empolvada (NCS S 1510-G40Y) · Tarima roble blanqueado · Textiles lino natural",
@@ -530,40 +530,40 @@ ROOMS = [
     {
         "id": "r14", "fl": "P1", "num": "14", "short": "14. Dormitorio Niño",
         "title": "14. Dormitorio Infantil Niño",
-        "w": 3.65, "h": 4.00, "area": "14,60 m² útiles", "dims": "3,65 × 4,00 m · h = 2,65 m",
-        "desc": "Espacio de descanso y estudio juvenil gemelo. Mesa de 1,80 m apoyada en pared lateral con luz a 90° sin reflejos en monitor, armario empotrado y salida directa al balcón sur.",
-        "wN": "Pared con armario empotrado de suelo a techo y tabique con pasillo superior.",
-        "wS": "Fachada Sur con balconera corredera elevable y persiana autoblocante motorizada.",
-        "wE": "Tabique acústico medianero con el dormitorio de la hermana (Rw >= 50 dB).",
-        "wW": "Pared lateral con mesa de estudio suspendida y luz natural lateral.",
+        "w": 3.42, "h": 4.27, "area": "14,60 m² útiles", "dims": "3,42 × 4,27 m · 14,60 m² útiles · h = 2,65 m",
+        "desc": "Espacio de descanso y estudio juvenil gemelo a escala 100% real (3,42 × 4,27 m = 14,60 m²). Separado del dormitorio de su hermana por medianera acústica ciega Rw >= 50 dB, con mesa de estudio en pared Este (luz Sur a 90°) y salida al Balcón Sur.",
+        "wN": "Tabique con Galería Acústica con armario empotrado de 2,20 m y puerta acústica P-13.",
+        "wS": "Fachada Sur con balconera corredera elevable C-13 (2,20 × 2,40 m) y persiana autoblocante motorizada.",
+        "wE": "Medianera acústica ciega (Rw >= 50 dB) con la Master Suite; mesa de estudio de 1,80 m con luz lateral Sur a 90°.",
+        "wW": "Medianera acústica ciega multicapa (Rw >= 50 dB, sin armarios pasantes) con el Dormitorio de la Niña.",
         "openings": [
-            {"wall": "S", "pos": 0.50, "len": 2.20, "type": "sliding", "label": "Balconera a Balcón Sur"},
-            {"wall": "N", "pos": 2.50, "len": 0.85, "type": "door", "label": "Puerta Dormitorio"}
+            {"wall": "S", "pos": 0.60, "len": 2.20, "type": "sliding", "label": "Balconera C-13 a Balcón Sur"},
+            {"wall": "N", "pos": 0.20, "len": 0.82, "type": "door", "label": "Puerta P-13"}
         ],
         "furn": [
-            {"code": "MESA", "name": "Mesa de estudio suspendida (1,80 × 0,65 m)", "x": 0.20, "y": 0.80, "w": 0.65, "h": 1.80, "col": "#1e293b", "str": "#38bdf8", "desc": "Mesa en abedul a h = 74 cm con luz lateral a 90° sin reflejos."},
-            {"code": "CAMA", "name": "Cama juvenil (1,20 × 2,00 m)", "x": 2.10, "y": 1.50, "w": 1.20, "h": 2.00, "col": "#334155", "str": "#cbd5e1", "desc": "Cama con cabecero tapizado y mesilla suspendida."},
-            {"code": "ARM", "name": "Armario empotrado suelo a techo (2,00 × 0,60 m)", "x": 0.30, "y": 0.10, "w": 2.00, "h": 0.60, "col": "#475569", "str": "#94a3b8", "desc": "Puertas lacadas con distribución interior personalizada."}
+            {"code": "MESA", "name": "Mesa de estudio suspendida (1,80 × 0,65 m)", "x": 2.65, "y": 1.80, "w": 0.65, "h": 1.80, "col": "#1e293b", "str": "#38bdf8", "desc": "Mesa en abedul a h = 74 cm en pared Este con luz lateral Sur a 90° sin reflejos."},
+            {"code": "CAMA", "name": "Cama juvenil amplia (1,35 × 2,00 m)", "x": 0.15, "y": 1.20, "w": 2.00, "h": 1.35, "col": "#334155", "str": "#cbd5e1", "desc": "Cama con cabecero tapizado apoyada en tabique acústico Rw >= 50 dB."},
+            {"code": "ARM", "name": "Armario empotrado suelo a techo (2,20 × 0,60 m)", "x": 1.15, "y": 0.10, "w": 2.20, "h": 0.60, "col": "#475569", "str": "#94a3b8", "desc": "Puertas lacadas con distribución interior personalizada."}
         ],
         "elec": [
-            {"code": "E1", "name": "2× Enchufes 16A + 2× USB-C mesa estudio", "x": 0.15, "y": 1.70, "h_cm": 80, "cir": "C2", "desc": "Para portátil y flexo de estudio."},
-            {"code": "RJ1", "name": "Doble Toma RJ45 Cat 6A (10 Gbps) escritorio", "x": 0.15, "y": 1.20, "h_cm": 80, "cir": "RACK-P1", "isRJ": True, "desc": "Toma de red Gigabit directo al Rack."},
-            {"code": "E2", "name": "2× Enchufes + RJ45 pared frontal cama", "x": 3.45, "y": 2.20, "h_cm": 115, "cir": "C2 + RACK", "isRJ": True, "desc": "Previsión para pantalla frente a cama."},
-            {"code": "E3", "name": "Enchufe + conmutador en mesilla de noche", "x": 3.45, "y": 1.20, "h_cm": 65, "cir": "C1", "desc": "Apagado desde la cama."}
+            {"code": "E1", "name": "2× Enchufes 16A + 2× USB-C mesa estudio", "x": 3.30, "y": 2.60, "h_cm": 80, "cir": "C2", "desc": "Para portátil y flexo de estudio."},
+            {"code": "RJ1", "name": "Doble Toma RJ45 Cat 6A (10 Gbps) escritorio", "x": 3.30, "y": 2.10, "h_cm": 80, "cir": "RACK-P1", "isRJ": True, "desc": "Toma de red Gigabit directo al Rack."},
+            {"code": "E2", "name": "2× Enchufes + RJ45 pared frontal cama", "x": 3.30, "y": 1.30, "h_cm": 115, "cir": "C2 + RACK", "isRJ": True, "desc": "Previsión para pantalla frente a cama."},
+            {"code": "E3", "name": "Enchufe + conmutador en mesilla de noche", "x": 0.15, "y": 0.95, "h_cm": 65, "cir": "C1", "desc": "Apagado desde la cama."}
         ],
         "sw": [
-            {"code": "I1", "name": "Conmutador triple puerta/cabecero", "x": 2.40, "y": 0.20, "h_cm": 110, "cir": "C1", "desc": "Control conmutado de iluminación."},
-            {"code": "I2", "name": "Pulsador persiana motorizada", "x": 0.80, "y": 3.80, "h_cm": 110, "cir": "PERSIANAS", "desc": "Motor Somfy silencioso."}
+            {"code": "I1", "name": "Conmutador triple puerta/cabecero", "x": 1.05, "y": 0.20, "h_cm": 110, "cir": "C1", "desc": "Control conmutado de iluminación."},
+            {"code": "I2", "name": "Pulsador persiana motorizada", "x": 2.95, "y": 4.10, "h_cm": 110, "cir": "PERSIANAS", "desc": "Motor Somfy silencioso."}
         ],
         "hvac": [
-            {"code": "SR", "name": "Circuito Suelo Radiante Dormitorio Niño", "x": 1.80, "y": 2.50, "cir": "SR-P1-2", "isFloor": True, "desc": "Tarima de roble nórdico blanqueado."},
-            {"code": "T", "name": "Termostato digital táctil independiente", "x": 2.40, "y": 0.40, "h_cm": 150, "cir": "CLIMA", "desc": "Termostato zonal programable."},
-            {"code": "VMC", "name": "Boca Impulsión Zehnder Ø 125 mm", "x": 1.80, "y": 3.40, "cir": "VMC-IMP", "isVMC": True, "desc": "Impulsión de 30 m³/h de aire fresco."}
+            {"code": "SR", "name": "Circuito Suelo Radiante Dormitorio Niño", "x": 1.70, "y": 2.80, "cir": "SR-P1-2", "isFloor": True, "desc": "Tarima de roble nórdico blanqueado."},
+            {"code": "T", "name": "Termostato digital táctil KNX independiente", "x": 1.10, "y": 0.40, "h_cm": 150, "cir": "CLIMA", "desc": "Termostato zonal programable."},
+            {"code": "VMC", "name": "Boca Impulsión Zehnder Ø 125 mm", "x": 1.55, "y": 0.75, "cir": "VMC-IMP", "isVMC": True, "desc": "Impulsión de 30 m³/h de aire fresco."}
         ],
         "planning": [
-            "Distribución gemela ergonómica con luz a 90° en pupitre.",
-            "Aislamiento acústico medianero Rw >= 50 dB entre dormitorios.",
-            "Armario empotrado de 200 × 60 cm y cama de 120 × 200 cm.",
+            "Superficie verificada a escala 100% real: 3,42 × 4,27 m = 14,60 m² útiles (idéntico al Dormitorio 1).",
+            "Aislamiento acústico medianero Rw >= 50 dB entre dormitorios sin armarios empotrados pasantes.",
+            "Armario empotrado de 220 × 60 cm, cama de 135 × 200 cm y escritorio Este con luz Sur a 90°.",
             "Acceso directo a Balcón Corrido Sur."
         ],
         "materials": "Paredes tono neutro cálido arena y azul grisáceo suave (NCS S 2005-B20G) · Tarima roble blanqueado",
@@ -572,62 +572,107 @@ ROOMS = [
     {
         "id": "r15", "fl": "P1", "num": "15", "short": "15. Baño Compartido Hijos",
         "title": "15. Baño Compartido Hijos",
-        "w": 2.70, "h": 2.50, "area": "6,80 m² útiles", "dims": "2,70 × 2,50 m · h = 2,65 m",
-        "desc": "Baño amplio para uso diario simultáneo de los dos hermanos. Encimera de doble lavabo de 140 cm, bañera ergonómica con ducha combinada, inodoro suspendido y ventana oscilobatiente a fachada Norte.",
-        "wN": "Fachada Norte con ventana practicable oscilobatiente.",
-        "wS": "Tabique interior con puerta batiente hacia el pasillo superior.",
-        "wE": "Pared con mueble de doble lavabo y toallero calefactable.",
-        "wW": "Pared con bañera y zona de inodoro suspendido.",
+        "w": 2.32, "h": 2.93, "area": "6,80 m² útiles", "dims": "2,32 × 2,93 m · 6,80 m² útiles · h = 2,60 m",
+        "desc": "Baño compartido infantil redimensionado a su escala exacta (2,32 × 2,93 m = 6,80 m², menos de la mitad que cada dormitorio de los niños). Encimera de doble lavabo de 140 cm, bañera/ducha de 2,20 × 0,85 m al Norte, inodoro suspendido y ventana Norte.",
+        "wN": "Fachada Norte con ventana practicable oscilobatiente C-10 (1,00 × 0,60 m) sobre bañera/ducha.",
+        "wS": "Tabique interior hacia el desembarco de escalera con puerta batiente P-11 (0,80 m).",
+        "wE": "Tabique acústico (Rw >= 50 dB) colindante con la Sala Polivalente; aloja el inodoro suspendido y patinillo B-01.",
+        "wW": "Muro exterior Oeste con mueble suspendido de doble seno (1,40 m) y espejo antivaho.",
         "openings": [
-            {"wall": "N", "pos": 0.80, "len": 1.10, "type": "window", "label": "Ventana Norte"},
-            {"wall": "S", "pos": 0.90, "len": 0.80, "type": "door", "label": "Puerta Baño"}
+            {"wall": "N", "pos": 0.65, "len": 1.00, "type": "window", "label": "Ventana Norte C-10"},
+            {"wall": "S", "pos": 1.05, "len": 0.80, "type": "door", "label": "Puerta P-11"}
         ],
         "furn": [
-            {"code": "LAV2", "name": "Mueble suspendido 140 cm con Doble Seno", "x": 2.10, "y": 0.30, "w": 0.50, "h": 1.40, "col": "#f8fafc", "str": "#38bdf8", "desc": "Dos senos bajo encimera con dos grifos monomando empotrados negros."},
-            {"code": "BAN", "name": "Bañera exenta acrílica ergonómica (1,60 × 0,75 m)", "x": 0.15, "y": 0.15, "w": 0.75, "h": 1.60, "col": "#0284c7", "str": "#38bdf8", "desc": "Bañera profunda con rociador efecto lluvia superior y grifería termostática."},
-            {"code": "WC", "name": "Inodoro suspendido Geberit Rimless", "x": 0.20, "y": 1.90, "w": 0.40, "h": 0.50, "col": "#f8fafc", "str": "#94a3b8", "desc": "Cisterna empotrada insonorizada Geberit."}
+            {"code": "LAV2", "name": "Mueble suspendido 140 cm con Doble Seno", "x": 0.10, "y": 1.05, "w": 0.52, "h": 1.40, "col": "#f8fafc", "str": "#38bdf8", "desc": "Dos senos bajo encimera en pared Oeste con dos grifos monomando empotrados negros."},
+            {"code": "BAN", "name": "Bañera / Ducha ergonómica Norte (2,20 × 0,85 m)", "x": 0.06, "y": 0.08, "w": 2.20, "h": 0.85, "col": "#0284c7", "str": "#38bdf8", "desc": "Bañera con zona de ducha efecto lluvia superior y mampara de vidrio templado."},
+            {"code": "WC", "name": "Inodoro suspendido Geberit Rimless", "x": 1.72, "y": 1.20, "w": 0.52, "h": 0.42, "col": "#f8fafc", "str": "#94a3b8", "desc": "Cisterna empotrada insonorizada Geberit junto a bajante acústica B-01."}
         ],
         "elec": [
-            {"code": "E1", "name": "2× Enchufes estancos IP44 lavabo", "x": 2.10, "y": 1.80, "h_cm": 115, "cir": "C5", "desc": "Para secador y cepillos de dientes eléctricos."},
-            {"code": "TR", "name": "Radiador Toallero Eléctrico Negro 600W", "x": 2.10, "y": 2.10, "h_cm": 120, "cir": "C-TOALLERO", "desc": "Toallero de gran formato 140 × 50 cm para secar las toallas de ambos niños."}
+            {"code": "E1", "name": "2× Enchufes estancos IP44 doble lavabo", "x": 0.12, "y": 2.50, "h_cm": 115, "cir": "C5", "desc": "Para secador y cepillos de dientes eléctricos."},
+            {"code": "TR", "name": "Radiador Toallero Eléctrico Negro 600W", "x": 2.20, "y": 2.15, "h_cm": 120, "cir": "C-TOALLERO", "desc": "Toallero de gran formato 140 × 50 cm para secar las toallas de ambos niños."}
         ],
         "sw": [
-            {"code": "I1", "name": "Interruptor general + Luz espejo LED", "x": 0.80, "y": 2.40, "h_cm": 110, "cir": "C1", "desc": "Junto a la puerta de entrada."}
+            {"code": "I1", "name": "Interruptor general + Luz espejo LED", "x": 0.90, "y": 2.80, "h_cm": 110, "cir": "C1", "desc": "Junto a la puerta de entrada P-11."}
         ],
         "hvac": [
-            {"code": "SR", "name": "Circuito Suelo Radiante Baño Hijos", "x": 1.35, "y": 1.40, "cir": "SR-P1-BH", "isFloor": True, "desc": "Suelo cálido al salir de la bañera."},
-            {"code": "VMC", "name": "Boca Extracción Zehnder Ø 125 mm", "x": 1.35, "y": 0.50, "cir": "VMC-EXT", "isVMC": True, "desc": "Extracción continua de 45 m³/h de vapor de baño."}
+            {"code": "SR", "name": "Circuito Suelo Radiante Baño Hijos", "x": 1.15, "y": 1.80, "cir": "SR-P1-BH", "isFloor": True, "desc": "Suelo cálido al salir de la bañera."},
+            {"code": "VMC", "name": "Boca Extracción Zehnder Ø 125 mm", "x": 1.15, "y": 0.80, "cir": "VMC-EXT", "isVMC": True, "desc": "Extracción continua de 35 m³/h de vapor de baño."}
         ],
         "planning": [
-            "Encimera de 140 cm con doble seno: uso matinal simultáneo de los dos niños.",
-            "Bañera acrílica de 160 × 75 cm con rociador efecto lluvia superior.",
-            "Inodoro suspendido Geberit con cisterna insonorizada.",
-            "Ventana oscilobatiente en fachada Norte para iluminación y ventilación natural."
+            "Dimensiones reales verificadas: 2,32 × 2,93 m = 6,80 m² útiles exactos.",
+            "Encimera de 140 cm con doble seno en pared Oeste: uso matinal simultáneo de los dos niños.",
+            "Bañera/ducha de 220 × 85 cm en testero Norte con luz y ventilación natural directa.",
+            "Separado de la Sala Polivalente por tabique acústico Rw >= 50 dB."
         ],
         "materials": "Porcelánico rectificado imitación caliza gris clara · Mueble suspendido roble claro · Grifería negra",
         "lighting": "300 lux general + espejo con tira LED perimetral frontal de 400 lux sin sombras"
     },
     {
-        "id": "r16", "fl": "P1", "num": "16", "short": "16. Suite Matrimonio",
-        "title": "16. Suite Principal de Matrimonio",
-        "w": 7.00, "h": 4.50, "area": "31,20 m² totales", "dims": "7,00 × 4,50 m · h = 2,65 m",
-        "desc": "Ala Este privada en Planta Primera: Dormitorio Sur de 16,5 m² con vistas abiertas al jardín, vestidor de paso de 8,4 m² en doble hilera con iluminación LED y baño privado doble de 6,3 m² con ducha italiana doble.",
-        "wN": "Fachada Norte con ventana del baño privado y vestidor.",
-        "wS": "Fachada Sur con balconera corredera elevable hacia el Balcón Corrido.",
-        "wE": "Muro exterior Este con orientación al naciente.",
-        "wW": "Tabique interior con puerta de acceso desde la Galería Acústica.",
+        "id": "r15b", "fl": "P1", "num": "15B", "short": "15B. Sala Polivalente / Cine",
+        "title": "15B. Sala Polivalente / Cine, TV & Gaming / 4º Dormitorio",
+        "w": 4.78, "h": 2.93, "area": "14,00 m² útiles", "dims": "4,78 × 2,93 m · 14,00 m² útiles · h = 2,65 m",
+        "desc": "Segundo salón íntimo en Planta Primera (4,78 × 2,93 m = 14,00 m²) obtenido al ajustar el Baño de Hijos a su escala real. Configurado como Sala de Cine/TV familiar, zona Gaming/Estudio y habitación de invitados o futuro 4º dormitorio doble.",
+        "wN": "Fachada Norte (SATE 35 cm) con gran ventana apaisada C-10B (1,80 × 1,20 m) que aporta luz difusa continua sin reflejos.",
+        "wS": "Cierre hacia el Patio Corrala con mirador fijo acústico C-15C (vidrio 4+4 Silence + estor blackout motorizado) y puerta isofónica P-11B (Rw >= 38 dB).",
+        "wE": "Tabique acústico (Rw >= 50 dB) con el Baño Suite; revestido con panel fonoabsorbente de lamas de roble para TV OLED de 65\" y barra Dolby Atmos.",
+        "wW": "Tabique acústico (Rw >= 50 dB) con el Baño de Hijos, donde apoya el sofá-cama chaiselongue en L.",
         "openings": [
-            {"wall": "S", "pos": 0.80, "len": 2.80, "type": "sliding", "label": "Balconera a Balcón Sur"},
-            {"wall": "N", "pos": 5.20, "len": 1.20, "type": "window", "label": "Ventana Baño Suite"},
-            {"wall": "W", "pos": 1.80, "len": 0.85, "type": "door", "label": "Entrada Suite"}
+            {"wall": "N", "pos": 1.50, "len": 1.80, "type": "window", "label": "Ventana Norte C-10B (1,80m)"},
+            {"wall": "S", "pos": 0.18, "len": 0.82, "type": "door", "label": "Puerta Acústica P-11B (38dB)"},
+            {"wall": "S", "pos": 1.30, "len": 2.10, "type": "glass_fixed", "label": "Mirador Acústico 4+4 Silence a Copa Arce"}
         ],
         "furn": [
-            {"code": "KING", "name": "Cama King Size (1,80 × 2,00 m)", "x": 0.80, "y": 1.60, "w": 1.80, "h": 2.00, "col": "#334155", "str": "#cbd5e1", "desc": "Cama orientada al Sur con vistas abiertas al jardín y cabecero de roble tostado."},
-            {"code": "VEST1", "name": "Vestidor Hilera 1 (Armarios con LED)", "x": 3.40, "y": 0.20, "w": 0.60, "h": 2.40, "col": "#475569", "str": "#1e293b", "desc": "Frentes de vidrio ahumado con barras iluminadas y cajones pantaloneros."},
-            {"code": "VEST2", "name": "Vestidor Hilera 2 (Armarios con LED)", "x": 4.70, "y": 0.20, "w": 0.60, "h": 2.40, "col": "#475569", "str": "#1e293b", "desc": "Pasillo central libre de 110 cm entre ambas hileras de armario."},
-            {"code": "LAV2", "name": "Encimera Dekton 150 cm con Doble Seno", "x": 5.80, "y": 0.20, "w": 0.50, "h": 1.50, "col": "#f8fafc", "str": "#38bdf8", "desc": "Dos senos bajo encimera con grifería monomando empotrada negra mate."},
-            {"code": "DUCHA", "name": "Ducha italiana doble (1,50 × 0,90 m)", "x": 5.80, "y": 2.40, "w": 0.90, "h": 1.50, "col": "#0284c7", "str": "#38bdf8", "desc": "Rociador de techo empotrado 40 × 40 cm Hansgrohe Raindance con termostato electrónico."},
-            {"code": "WC", "name": "Cabina de Inodoro semi-independiente", "x": 5.80, "y": 4.00, "w": 0.40, "h": 0.45, "col": "#f8fafc", "str": "#94a3b8", "desc": "Inodoro suspendido Geberit con puerta translúcida."}
+            {"code": "SOFA", "name": "Sofá-Cama Chaiselongue en L (2,45 × 1,65 m)", "x": 0.16, "y": 0.15, "w": 2.45, "h": 1.65, "col": "#1e293b", "str": "#38bdf8", "desc": "Sofá modular de cine familiar convertible en cama doble de 150 × 200 cm para invitados o 4º dormitorio."},
+            {"code": "MESA_C", "name": "Mesa baja de cine / Puff reposapiés (1,10 × 0,60 m)", "x": 1.35, "y": 1.95, "w": 1.10, "h": 0.60, "col": "#0f172a", "str": "#64748b", "desc": "Mesa elevable sobre alfombra acústica de lana virgen de alto gramaje."},
+            {"code": "TV65", "name": "Mueble Cine + TV OLED 65\" + Barra Dolby Atmos", "x": 4.45, "y": 0.25, "w": 0.26, "h": 1.90, "col": "#0f172a", "str": "#fbbf24", "desc": "Panel fonoabsorbente de lamas de roble en pared Este con TV 65\" y consola oculta."},
+            {"code": "GAME", "name": "Estación Doble Gaming / Estudio / Música (1,65 × 0,60 m)", "x": 2.75, "y": 0.12, "w": 1.65, "h": 0.60, "col": "#334155", "str": "#38bdf8", "desc": "Escritorio doble junto a ventana Norte C-10B con luz difusa homogénea sin reflejos en monitores."}
+        ],
+        "elec": [
+            {"code": "E1", "name": "4× Enchufes 16A + 2× USB-C tras TV 65\" y Consola", "x": 4.65, "y": 1.15, "h_cm": 110, "cir": "C2", "desc": "Alimentación para TV OLED 65\", barra de sonido Dolby Atmos, videoconsola y Apple TV."},
+            {"code": "RJ1", "name": "Doble Toma RJ45 Cat 6A (10 Gbps) Cine / Consola", "x": 4.65, "y": 1.45, "h_cm": 110, "cir": "RACK-P1", "isRJ": True, "desc": "Streaming 4K/8K y juego online con latencia cero."},
+            {"code": "E2", "name": "3× Enchufes 16A + 2× USB-C PD en Setup Gaming", "x": 3.55, "y": 0.10, "h_cm": 78, "cir": "C2", "desc": "Para doble monitor, PC/Mac y periféricos."},
+            {"code": "RJ2", "name": "Doble Toma RJ45 Cat 6A (10 Gbps) en Setup Gaming", "x": 3.20, "y": 0.10, "h_cm": 78, "cir": "RACK-P1", "isRJ": True, "desc": "Doble línea Ethernet 10 Gbps directa al switch central."},
+            {"code": "E3", "name": "2× Enchufes + USB-C junto al Sofá-Cama", "x": 0.12, "y": 1.90, "h_cm": 60, "cir": "C2", "desc": "Para cargar mandos, tablets o móviles desde el sofá o cama."}
+        ],
+        "sw": [
+            {"code": "I1", "name": "Botonera KNX Escenas (Cine / Lectura / Gaming / Noche)", "x": 1.10, "y": 2.80, "h_cm": 110, "cir": "DOM", "desc": "Un toque activa el 'Modo Cine': baja estores blackout al 100% y atenúa el foseado LED al 10%."},
+            {"code": "I2", "name": "Doble pulsador Estores Blackout (Norte y Mirador Patio)", "x": 1.35, "y": 2.80, "h_cm": 110, "cir": "PERSIANAS", "desc": "Control motorizado Somfy de oscurecimiento total para cine diurno o uso como 4º dormitorio."}
+        ],
+        "hvac": [
+            {"code": "SR", "name": "Circuito Independiente Suelo Radiante Sala Polivalente", "x": 2.40, "y": 1.50, "cir": "SR-P1-SALA", "isFloor": True, "desc": "Tarima de roble sobre lámina acústica anti-impacto."},
+            {"code": "T", "name": "Termostato digital táctil KNX independiente", "x": 1.10, "y": 2.55, "h_cm": 150, "cir": "CLIMA", "desc": "Control térmico propio para uso intensivo de tarde/noche."},
+            {"code": "VMC", "name": "Boca de Impulsión VMC Zehnder Ø 125 mm (+35 m³/h)", "x": 2.40, "y": 1.10, "cir": "VMC-IMP", "isVMC": True, "desc": "Renovación silenciosa de aire filtrado con puerta cerrada."}
+        ],
+        "planning": [
+            "Espacio recuperado de 14,00 m² útiles (4,78 × 2,93 m) en el centro-norte de Planta Primera.",
+            "Cerramiento acústico integral: tabiques Rw >= 50 dB + puerta isofónica Rw >= 38 dB con guillotina.",
+            "Mirador interior fijo 4+4 Silence hacia la copa del arce del Patio Corrala con estor blackout oculto.",
+            "100% preparado en dimensiones, enchufes, VMC y clima para convertirse en 4º Dormitorio doble en el futuro."
+        ],
+        "materials": "Panel acústico de lamas de roble sobre fieltro negro (αw = 0,85) · Tarima roble natural · Estores técnicos blackout",
+        "lighting": "Foseado perimetral LED RGBW / Tunable White 2200K-4000K regulable por DALI + 2 proyectores orientables UGR < 16"
+    },
+    {
+        "id": "r16", "fl": "P1", "num": "16", "short": "16. Suite Matrimonio",
+        "title": "16. Suite Principal de Matrimonio (Dormitorio + Vestidor + Baño)",
+        "w": 7.00, "h": 4.50, "area": "31,20 m² totales", "dims": "16,50 m² Dorm + 8,40 m² Vest + 6,30 m² Baño · h = 2,65 m",
+        "desc": "Ala Este privada en Planta Primera: Dormitorio Sur de 16,50 m² (3,05 × 5,41 m) con vistas abiertas al jardín, vestidor de paso de 8,40 m² con 7,75 m de armarios e isla central, y baño privado de 6,30 m² (2,81 × 2,25 m) con ducha doble walk-in.",
+        "wN": "Fachada Norte con ventana C-11 del baño privado (1,20 × 0,60 m).",
+        "wS": "Fachada Sur con balconera corredera elevable C-14 (2,70 × 2,40 m) hacia el Balcón Corrido.",
+        "wE": "Muro exterior Este con ventana C-14B en vestidor y cabecero de la cama King Size.",
+        "wW": "Tabique acústico Rw >= 50 dB con Dormitorio 2 y Sala Polivalente, con puerta de acceso P-14 desde la Galería Acústica.",
+        "openings": [
+            {"wall": "S", "pos": 0.80, "len": 2.70, "type": "sliding", "label": "Balconera C-14 a Balcón Sur"},
+            {"wall": "N", "pos": 5.20, "len": 1.20, "type": "window", "label": "Ventana C-11 Baño Suite"},
+            {"wall": "W", "pos": 1.80, "len": 0.82, "type": "door", "label": "Entrada Suite P-14"}
+        ],
+        "furn": [
+            {"code": "KING", "name": "Cama King Size (1,80 × 2,00 m)", "x": 0.80, "y": 1.60, "w": 1.80, "h": 2.00, "col": "#334155", "str": "#cbd5e1", "desc": "Cama King Size con vistas al Sur y cabecero acústico de roble tostado."},
+            {"code": "VEST1", "name": "Vestidor Hilera Oeste (3,60 m lineales con LED)", "x": 3.40, "y": 0.20, "w": 0.60, "h": 2.40, "col": "#475569", "str": "#1e293b", "desc": "Frentes de vidrio ahumado con barras iluminadas y cajones pantaloneros."},
+            {"code": "VEST2", "name": "Vestidor Hilera Este (4,15 m lineales) + Isla Joyero", "x": 4.70, "y": 0.20, "w": 0.60, "h": 2.40, "col": "#475569", "str": "#1e293b", "desc": "7,75 m lineales totales de armarios con isla joyero central y ventana Este."},
+            {"code": "LAV2", "name": "Encimera Dekton 145 cm con Doble Seno", "x": 5.80, "y": 0.20, "w": 0.50, "h": 1.45, "col": "#f8fafc", "str": "#38bdf8", "desc": "Dos senos bajo encimera con grifería monomando empotrada negra mate."},
+            {"code": "DUCHA", "name": "Ducha italiana doble Walk-in (2,15 × 0,92 m)", "x": 5.80, "y": 2.30, "w": 0.92, "h": 1.60, "col": "#0284c7", "str": "#38bdf8", "desc": "Rociador de techo empotrado 40 × 40 cm Hansgrohe Raindance con termostato electrónico."},
+            {"code": "WC", "name": "Cabina de Inodoro suspendido Geberit", "x": 5.80, "y": 4.00, "w": 0.40, "h": 0.45, "col": "#f8fafc", "str": "#94a3b8", "desc": "Inodoro suspendido Geberit con cisterna oculta."}
         ],
         "elec": [
             {"code": "E1", "name": "2× Enchufes + USB-C cada mesilla de noche", "x": 0.40, "y": 1.80, "h_cm": 65, "cir": "C1", "desc": "Carga rápida en ambos lados de la cama King Size."},
@@ -641,13 +686,13 @@ ROOMS = [
         "hvac": [
             {"code": "SR", "name": "2 Circuitos Suelo Radiante Suite (Dormitorio + Baño)", "x": 2.00, "y": 2.80, "cir": "SR-P1-3/4", "isFloor": True, "desc": "Zonificación independiente."},
             {"code": "TR", "name": "Radiador Toallero Eléctrico Diseño Negro 750W", "x": 5.75, "y": 2.00, "h_cm": 120, "cir": "C-TOALLERO", "desc": "Toallero de gran formato en baño suite."},
-            {"code": "VMC", "name": "Impulsión en dormitorio (45 m³/h) + Extracción en baño (45 m³/h)", "x": 2.00, "y": 3.80, "cir": "VMC", "isVMC": True, "desc": "Circulación de aire óptima."}
+            {"code": "VMC", "name": "Impulsión en dormitorio (+45 m³/h) + Extracción en baño (-35 m³/h)", "x": 2.00, "y": 3.80, "cir": "VMC", "isVMC": True, "desc": "Circulación de aire óptima."}
         ],
         "planning": [
-            "Suite completa de 31,2 m² en ala Este privada.",
-            "Cama King Size orientada al Sur con vistas panorámicas al jardín.",
-            "Vestidor de paso en doble hilera con pasillo central libre de 110 cm.",
-            "Baño privado de 6,3 m² con ducha doble walk-in (150 × 90 cm) y doble seno."
+            "Suite completa de 31,20 m² útiles en ala Este privada (16,50 + 8,40 + 6,30 m²).",
+            "Cama King Size con salida directa al Balcón Sur y vistas panorámicas al jardín.",
+            "Vestidor de paso con 7,75 m lineales de armarios, isla central y ventana Este.",
+            "Baño privado de 6,30 m² (2,81 × 2,25 m) con ducha doble walk-in y doble seno."
         ],
         "materials": "Dekton Kelya Cosentino en lavabo y ducha · Roble tostado en cabecero y panelados · Vidrio ahumado en vestidor",
         "lighting": "150 lux dormitorio / 300 lux vestidor / 400 lux baño · Foseado perimetral regulable + apliques lectura Marset Ledtube"
@@ -655,30 +700,30 @@ ROOMS = [
     {
         "id": "r17", "fl": "P1", "num": "17", "short": "17. Balcón Corrido Sur",
         "title": "17. Balcón Corrido Sur P1",
-        "w": 11.50, "h": 1.20, "area": "14,00 m² útiles", "dims": "11,50 × 1,20 m · h = 1,10 m peto",
-        "desc": "Balcón volado corrido con orientación 100% Sur sobre el porche de PB. Barandilla continua de vidrio estructural 10+10 mm sin montantes metálicos verticales: vistas despejadas al jardín y piscina desde el interior de la cama.",
+        "w": 10.85, "h": 1.40, "area": "14,00 m² útiles", "dims": "10,85 × 1,40 m · 14,00 m² útiles · h = 1,10 m peto",
+        "desc": "Balcón volado corrido de 10,85 × 1,40 m con orientación 100% Sur sobre el porche de PB. Barandilla continua de vidrio estructural 10+10 mm sin montantes metálicos verticales: vistas despejadas al jardín y piscina desde la cama.",
         "wN": "Fachada Sur de la planta primera con salidas desde los tres dormitorios (suite y dos infantiles).",
         "wS": "Barandilla continua de vidrio estructural laminar de seguridad 10+10 mm embutida en forjado.",
-        "wE": "Testero Este con celosía de lamas de madera para privacidad de la suite.",
-        "wW": "Testero Oeste con peto de hormigón blanco.",
+        "wE": "Testero Este (Eje E = 17,00 m) con celosía de lamas de madera para privacidad de la suite.",
+        "wW": "Testero Oeste (Eje B = 6,15 m) con peto de hormigón blanco.",
         "openings": [
-            {"wall": "N", "pos": 0.80, "len": 9.50, "type": "sliding", "label": "Balconeras Suite y Dormitorios"}
+            {"wall": "N", "pos": 0.70, "len": 9.40, "type": "sliding", "label": "Balconeras C-12, C-13 y C-14"}
         ],
         "furn": [
-            {"code": "VIDRIO", "name": "Barandilla vidrio estructural 10+10 mm (11,5 m)", "x": 0.10, "y": 1.10, "w": 11.30, "h": 0.08, "col": "#bae6fd", "str": "#0284c7", "desc": "Vidrio laminar de seguridad embutido en perfil U oculto en forjado (cero montantes)."},
-            {"code": "SILLAS", "name": "2× Sillones lounge de exterior en balcón suite", "x": 8.50, "y": 0.20, "w": 1.80, "h": 0.70, "col": "#334155", "str": "#64748b", "desc": "Para tomar el sol o café matinal al despertar."}
+            {"code": "VIDRIO", "name": "Barandilla vidrio estructural 10+10 mm (10,85 m)", "x": 0.10, "y": 1.28, "w": 10.65, "h": 0.08, "col": "#bae6fd", "str": "#0284c7", "desc": "Vidrio laminar de seguridad embutido en perfil U oculto en forjado (cero montantes)."},
+            {"code": "SILLAS", "name": "2× Sillones lounge de exterior en balcón suite", "x": 8.20, "y": 0.25, "w": 1.80, "h": 0.75, "col": "#334155", "str": "#64748b", "desc": "Para tomar el sol o café matinal al despertar."}
         ],
         "elec": [
             {"code": "E1", "name": "3× Enchufes estancos IP66 en balcón", "x": 2.00, "y": 0.10, "h_cm": 30, "cir": "C1-EXT", "desc": "Uno en cada zona de dormitorio para recarga de portátil o móvil al aire libre."}
         ],
         "sw": [
-            {"code": "I1", "name": "Conmutador luz balcón", "x": 9.00, "y": 0.10, "h_cm": 110, "cir": "C1", "desc": "Encendido desde el dormitorio principal."}
+            {"code": "I1", "name": "Conmutador luz balcón", "x": 8.80, "y": 0.10, "h_cm": 110, "cir": "C1", "desc": "Encendido desde el dormitorio principal."}
         ],
         "hvac": [
-            {"code": "SUMID", "name": "3× Sumideros lineales ocultos de pluviales", "x": 5.50, "y": 1.10, "cir": "PLUV", "desc": "Evacuación inmediata del agua de lluvia hacia bajantes ocultas."}
+            {"code": "SUMID", "name": "3× Sumideros lineales ocultos de pluviales", "x": 5.40, "y": 1.25, "cir": "PLUV", "desc": "Evacuación inmediata del agua de lluvia hacia bajantes ocultas."}
         ],
         "planning": [
-            "Longitud continua de 11,50 m con 1,20 m de vuelo libre.",
+            "Longitud continua de 10,85 m (Eje B a Eje E) con 1,40 m de vuelo libre.",
             "Barandilla de vidrio estructural 10+10 mm: visual 100% limpia sin barrotes desde la cama.",
             "Tarima tecnológica de exterior idéntica a la del Porche y Patio Corrala.",
             "Actúa como voladizo de sombra estival para los grandes ventanales de la Planta Baja."
@@ -742,25 +787,25 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="space-y-1">
       <div class="flex flex-wrap items-center gap-2">
         <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">PROYECTO DE EJECUCIÓN · ESCALA 1:20</span>
-        <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">INTERIORISTA &amp; APAREJADOR</span>
-        <span class="badge bg-amber-500/20 text-amber-400 border border-amber-500/30">17 PLANOS CAD SVG + FICHAS TÉCNICAS</span>
+        <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">ESCALA REAL VERIFICADA + SALA POLIVALENTE</span>
+        <span class="badge bg-amber-500/20 text-amber-400 border border-amber-500/30">18 PLANOS CAD SVG + FICHAS TÉCNICAS</span>
       </div>
       <h1 class="text-xl md:text-2xl font-black text-white tracking-tight">Hogar Oleiros — Visor Técnico de Estancias al Centímetro (Propuesta D)</h1>
       <p class="text-xs md:text-sm text-slate-400 max-w-5xl">
-        Cada una de las <strong>17 estancias</strong> cuenta con su <strong>plano técnico CAD interactivo</strong>: cotas reales, distribución de mobiliario a escala, ubicación exacta y altura ($h$) de <strong>enchufes 16A/25A, tomas dobles RJ45 Cat 6A, interruptores, serpentín de suelo radiante y bocas VMC Zehnder</strong>.
+        Cada una de las <strong>18 estancias</strong> (incluyendo la nueva <strong>15B. Sala Polivalente / Cine &amp; Gaming de 14,00 m²</strong>) cuenta con su <strong>plano técnico CAD interactivo a escala real</strong>: cotas verificadas, mobiliario, ubicación exacta y altura ($h$) de <strong>enchufes 16A/25A, tomas dobles RJ45 Cat 6A, interruptores, suelo radiante y bocas VMC Zehnder</strong>.
       </p>
     </div>
 
     <!-- FILTRO DE PLANTA -->
     <div class="flex flex-wrap items-center gap-2 shrink-0">
       <button id="filter-ALL" onclick="setFloorFilter('ALL')" class="px-3.5 py-2 rounded-xl text-xs font-bold border border-sky-500 bg-sky-600 text-white shadow-lg transition">
-        Todas (17)
+        Todas (18)
       </button>
       <button id="filter-PB" onclick="setFloorFilter('PB')" class="px-3.5 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-800 text-slate-300 hover:text-white transition">
         Planta Baja (11)
       </button>
       <button id="filter-P1" onclick="setFloorFilter('P1')" class="px-3.5 py-2 rounded-xl text-xs font-semibold border border-slate-800 bg-slate-800 text-slate-300 hover:text-white transition">
-        Planta Primera (6)
+        Planta Primera (7)
       </button>
     </div>
   </header>

@@ -77,35 +77,38 @@ La vivienda se organiza como una reinterpretación bioclimática contemporánea 
 
 ---
 
-## 3. Planta Primera (Cota +3,15 m) — Distribución y Privacidad
+## 3. Planta Primera (Cota +3,15 m) — Distribución a Escala 100% Real y Privacidad
 
 ```
-                            FACHADA NORTE (Técnica & Baños)
-+---------------------------------------+---------------------------------------+
-| 15. BAÑO COMPARTIDO HIJOS (6,8 m²)    | 18. BAÑO PRIVADO SUITE (6,3 m²)       |
-| [X: 6,8..10,6m | Y: 6,5..8,3m]        | [X: 14,6..18,9m | Y: 6,3..7,7m]       |
-| Doble lavabo + Bañera/ducha 1,70x0,75 | Doble seno Dekton + Ducha doble 1,50m |
-+---------------------------------------+---------------------------------------+
-| 12. DESEMBARCO & GALERÍA ACÚSTICA     | 17. VESTIDOR DE PASO SUITE (8,4 m²)   |
-| (8,2 m² útiles)                       | [X: 14,6..18,9m | Y: 7,8..9,8m]       |
-| [Pared Norte: MAMPARA 4+4 SILENCE]    | Armarios suelo a techo vidrio ahumado |
-| Vistas cenitales al Patio Corrala     +---------------------------------------+
-| Balizas nocturnas zócalo h=25 cm      | 16. MASTER SUITE MATRIMONIO (16,5 m²) |
-+---------------------------------------+ [X: 14,6..18,9m | Y: 9,9..13,7m]      |
-| 13. DORMITORIO NIÑA (14,6 m²)         | Cama King Size 1,80x2,00m hacia el Sur|
-| [X: 6,8..10,6m | Y: 9,9..13,7m]       | Balconera corredera Cortizo 3,00 m    |
-| Mesa suspendida 1,80m en pared Este   | Salida directa a Balcón Corrido Sur   |
-| Luz a 90° · Cero contraluz en monitor |                                       |
-| Salida a Balcón Corrido Sur           |                                       |
-|---------------------------------------|                                       |
-| 14. DORMITORIO NIÑO (14,6 m²)         |                                       |
-| [X: 10,7..14,5m | Y: 9,9..13,7m]      |                                       |
-| Distribución gemela · Mesa pared Este |                                       |
-| Tabique acústico medianero Rw ≥ 50 dB |                                       |
-+---------------------------------------+---------------------------------------+
-| 19. BALCÓN CORRIDO SUR P1 (14,0 m² · Fondo 1,40 m)                            |
-| [X: 8,5..18,5m | Y: 13,8..15,2m] · Barandilla continua vidrio 10+10 mm         |
-+-------------------------------------------------------------------------------+
+                               FACHADA NORTE (Eje 1: Y = 5,00 m)
++-------------------------+----------------------------------+-------------------------+
+| 15. BAÑO HIJOS (6,8 m²) | 15B. SALA POLIVALENTE / CINE /   | 18. BAÑO SUITE (6,3 m²) |
+| [X: 6,50..8,82m | 2,32m]|      GAMING / 4º DORM (14,0 m²)  | [X: 13,84..16,65m|2,81m]|
+| [Y: 5,35..8,28m | 2,93m]| [X: 8,94..13,72m | Ancho 4,78 m] | [Y: 5,35..7,60m  |2,25m]|
+| Doble seno 1,40m Oeste  | [Y: 5,35..8,28m  | Fondo 2,93 m] | Ducha doble Walk-in     |
+| Bañera/ducha 2,20x0,85m | Tabiques Rw≥50dB + Puerta Rw≥38dB| Doble seno Dekton 1,45m |
+| Ventana Norte C-10      | Sofá-cama L + TV 65" + Gaming    +-------------------------+
++------------+------------+ Mirador 4+4 Silence a Copa Arce  | 17. VESTIDOR DE PASO    |
+| ESCALERA   | PASARELA N +----------------------------------+     SUITE (8,4 m² útil) |
+| +3,15 m    | [Y:8,3..9,1|                                  | [X: 12,75..16,65m]      |
+| [X:6,5..8,5|            |     VACÍO PATIO CORRALA          | [Y: 7,72..12,12m]       |
+|  Y:8,3..12,4]           |     (4,00 × 4,00 m · 16,0 m²)    | 7,75 m armarios + Isla  |
+|            | MAMPARA    |     [X: 8,50..12,50 m]           | Ventana Este C-14B      |
+|            | 4+4 SILENCE|     [Y: 8,40..12,40 m]           +-------------------------+
++------------+------------+----------------------------------+ 16. MASTER SUITE        |
+| 12. GALERÍA ACÚSTICA SUR (8,2 m² total c/ pasarelas)       |     MATRIMONIO (16,5 m²)|
+| [X: 6,50..13,48m | Y: 12,40..13,26m] · Vidrio 4+4 Silence  | [X: 13,60..16,65m|3,05m]|
++----------------------------+-------------------------------+ [Y: 12,24..17,65m|5,41m]|
+| 13. DORM. NIÑA (14,6 m²)   | 14. DORM. NIÑO (14,6 m²)      | Cama King Size 180x200  |
+| [X: 6,50..9,92m  | 3,42 m] | [X: 10,06..13,48m | 3,42 m]   | Balconera Sur C-14      |
+| [Y: 13,38..17,65m| 4,27 m] | [Y: 13,38..17,65m | 4,27 m]   | (2,70 × 2,40 m)         |
+| Cama 135x200 + Armario     | Cama 135x200 + Armario 2,20 m | Salida directa a        |
+| Escritorio 1,80m pared Este| Escritorio 1,80m pared Este   | Balcón Corrido Sur      |
+| (Luz Sur a 90° sin reflejo)| Medianera ciega Rw ≥ 50 dB    |                         |
++----------------------------+-------------------------------+-------------------------+
+| 19. BALCÓN CORRIDO SUR P1 (14,0 m² · 10,85 × 1,40 m)                                 |
+| [X: 6,15..17,00m | Y: 18,00..19,40m] · Barandilla continua vidrio laminar 10+10.2 mm |
++--------------------------------------------------------------------------------------+
 ```
 
 ---

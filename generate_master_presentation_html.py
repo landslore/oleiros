@@ -6,7 +6,7 @@ import shutil
 
 RENDERS_DIR = "/home/antigravity/landslore/oleiros/propuestas/renders"
 PROPUESTAS_DIR = "/home/antigravity/landslore/oleiros/propuestas"
-ARTIFACT_DIR = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e1ba5ab5-6618-481c-aa11-2f67e0876cc9"
+ARTIFACT_DIR = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/9d6fceeb-5543-49ce-8bfb-417101638eb5"
 os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
 def get_base64_image(filename):
@@ -98,7 +98,7 @@ html_content = f"""<!DOCTYPE html>
       <div>
         <div class="flex items-center gap-2">
           <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">PROYECTO DE EJECUCIÓN</span>
-          <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">PROPUESTA D · DEFINITIVA</span>
+          <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">PROPUESTA D · ESCALA REAL + SALA POLIVALENTE</span>
           <span class="badge bg-amber-500/20 text-amber-400 border border-amber-500/30">OLEIROS (A CORUÑA)</span>
         </div>
         <h1 class="text-lg md:text-xl font-black text-white tracking-tight mt-0.5">
@@ -119,7 +119,7 @@ html_content = f"""<!DOCTYPE html>
         🌐 Visor 3D Three.js (Paseo WASD)
       </button>
       <button onclick="switchTab('zoom')" id="tab-zoom" class="nav-tab px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium transition">
-        🔍 Zoom-In 1:20 (17 Estancias)
+        🔍 Zoom-In 1:20 (18 Estancias)
       </button>
       <button onclick="switchTab('powerpoint')" id="tab-powerpoint" class="nav-tab px-3.5 py-2 rounded-xl bg-amber-950 text-amber-300 border border-amber-800 font-semibold transition flex items-center gap-1.5">
         📊 PowerPoint (.pptx para Mac)
