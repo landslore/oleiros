@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ala Norte: Acceso, Zaguán, Hall, Despacho y Baño PB · Oleiros</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --card-bg: #0b1120;
+      --border: #1e293b;
+      --primary: #38bdf8;
+      --accent: #f59e0b;
+      --emerald: #10b981;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    header {
+      background: #0b1120 border-bottom 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .tabs-nav {
+      display: flex;
+      background: #0f172a;
+      padding: 0.5rem 2rem;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+    .tab-btn {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+    }
+    .tab-btn.active {
+      background: var(--card-bg);
+      color: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+    .main-container {
+      padding: 1.5rem 2rem;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .viewer-frame {
+      width: 100%;
+      height: 780px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #050811;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+    .viewer-frame iframe, .viewer-frame embed, .viewer-frame object {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .grid-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+    .card h3 {
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .card li strong {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <span class="badge">V2 DEFINITIVA · ZOOM-IN CAD 1:20</span>
+      <h1 style="font-size: 1.4rem; margin-top: 0.35rem;">Ala Norte: Acceso, Zaguán Mudroom, Hall, Despacho y Baño PB</h1>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">Liáns, Concello de Oleiros · Parcela 2B · Cumplimiento Integral NHG Galicia y PXOM</p>
+    </div>
+    <div style="text-align: right;">
+      <span style="font-size: 0.8rem; color: var(--accent); font-weight: 700;">Superficie Útil Ala Norte: 32,90 m²</span><br>
+      <span style="font-size: 0.75rem; color: var(--text-muted);">Longitud de Fachada Norte: 13,15 m (Ejes A a E)</span>
+    </div>
+  </header>
+
+  <nav class="tabs-nav">
+    <button class="tab-btn active" onclick="showTab('tab-a01')">📐 A-01: Planta Esquemática 1:20</button>
+    <button class="tab-btn" onclick="showTab('tab-a02')">🏛️ A-02: Alzados y Secciones 1:20</button>
+    <button class="tab-btn" onclick="showTab('tab-a03')">⚡ A-03: Electricidad y CGMP+RITI</button>
+    <button class="tab-btn" onclick="showTab('tab-a04')">💡 A-04: Iluminación y VMC</button>
+    <button class="tab-btn" onclick="showTab('tab-memoria')">📋 Memoria Técnica y NHG</button>
+  </nav>
+
+  <div class="main-container">
+    <!-- Pestaña 1: Planta Esquemática -->
+    <div id="tab-a01" class="tab-pane active">
+      <div class="viewer-frame">
+        <object data="plano_acceso_planta_esquematica.svg" type="image/svg+xml" width="100%" height="100%"></object>
+      </div>
+      <div class="grid-info">
+        <div class="card">
+          <h3>[E-03] Zaguán Mudroom (5,80 m²)</h3>
+          <ul>
+            <li>Banco zapatero: <strong>1,60 × 0,45 m con almacenaje</strong></li>
+            <li>Gabanero empotrado: <strong>1,25 × 0,60 m integrado</strong></li>
+            <li>Secador técnico: <strong>Armario térmico neoprenos/surf</strong></li>
+            <li>Ventilación: <strong>VMC-E 30 m³/h extracción</strong></li>
+            <li>Suelo: <strong>Porcelánico C3 gris basalto</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>[E-04] Hall Principal (10,40 m²)</h3>
+          <ul>
+            <li>Puerta principal C-01: <strong>1,00 × 2,40 m Pivotante</strong></li>
+            <li>Accesibilidad: <strong>Círculo Ø 1,50 m libre NHG</strong></li>
+            <li>Cuadro técnico: <strong>CGMP + RITI empotrado</strong></li>
+            <li>Bajante: <strong>B-02 Ø110 insonorizada de P1</strong></li>
+            <li>Conexión: <strong>Abierto a galería y patio sur</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>[E-05] Despacho / Suite PB (11,50 m²)</h3>
+          <ul>
+            <li>Mesa de trabajo: <strong>En L a 90° ergonómica</strong></li>
+            <li>Sofá-cama 140: <strong>Dormitorio PB / invitados</strong></li>
+            <li>Acústica: <strong>Tabique reforzado Rw ≥ 38 dB</strong></li>
+            <li>Ventana C-03: <strong>1,80 × 1,20 m (h=95cm) norte</strong></li>
+            <li>Orientación sur: <strong>Fijo Cor Vision al patio</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>[E-06] Baño Completo PB (5,20 m²)</h3>
+          <ul>
+            <li>Ducha cota cero: <strong>1,15 × 0,90 m sumidero lineal</strong></li>
+            <li>Inodoro: <strong>Suspendido Geberit empotrado</strong></li>
+            <li>Mueble lavabo: <strong>90 × 50 cm suspendido</strong></li>
+            <li>Ventana C-04: <strong>0,80 × 0,60 m (h=160cm) alta</strong></li>
+            <li>Distribuidor: <strong>Esclusa neutra doble puerta NHG</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña 2: Alzados y Secciones -->
+    <div id="tab-a02" class="tab-pane">
+      <div class="viewer-frame">
+        <object data="plano_acceso_elevaciones_alturas.svg" type="image/svg+xml" width="100%" height="100%"></object>
+      </div>
+    </div>
+
+    <!-- Pestaña 3: Electricidad y CGMP+RITI -->
+    <div id="tab-a03" class="tab-pane">
+      <div class="viewer-frame">
+        <object data="plano_acceso_electricidad_fuerza.svg" type="image/svg+xml" width="100%" height="100%"></object>
+      </div>
+    </div>
+
+    <!-- Pestaña 4: Iluminación y VMC -->
+    <div id="tab-a04" class="tab-pane">
+      <div class="viewer-frame">
+        <object data="plano_acceso_iluminacion_clima.svg" type="image/svg+xml" width="100%" height="100%"></object>
+      </div>
+    </div>
+
+    <!-- Pestaña 5: Memoria Técnica y NHG -->
+    <div id="tab-memoria" class="tab-pane">
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h2 style="color: var(--primary); margin-bottom: 1rem;">Memoria Arquitectónica Descriptiva · Ala Norte PB</h2>
+        <p style="margin-bottom: 1rem; color: var(--text-muted);">
+          El diseño del ala norte de la planta baja responde con máxima precisión a los condicionantes climáticos costeros de Oleiros (Zona C1) y a la estricta normativa de habitabilidad autonómica (Normas do Hábitat Galego - Decreto 29/2010). Se configura como una secuencia funcional de entrada noble y filtro atlántico, combinada con un espacio de teletrabajo de altas prestaciones acústicas y un baño completo totalmente accesible.
+        </p>
+        <h3 style="color: var(--accent); margin: 1rem 0 0.5rem 0;">1. Secuencia de Acceso y Zaguán Mudroom (Filtro Atlántico)</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+          Se accede desde el norte bajo el porche cubierto E-02 (3,50 m², pavimento de losas abujardadas de granito silvestre Clase 3). La entrada cuenta con una puerta acorazada pivotante C-01 (1,00 x 2,40 m) que da acceso al Hall Principal E-04 (10,40 m²). A la derecha (oeste) se sitúa el Zaguán Mudroom E-03 (5,80 m²), concebido específicamente para la vida en la costa coruñesa: permite descalzarse en un banco corrido de 1,60x0,45 m, colgar abrigos mojados en el gabanero empotrado de 1,25x0,60 m y secar trajes de surf y neoprenos en un armario técnico con calefacción y extracción mecánica VMC-E (30 m³/h). La puerta intermedia P-02 actúa como esclusa térmica frente al viento atlántico.
+        </p>
+        <h3 style="color: var(--accent); margin: 1rem 0 0.5rem 0;">2. Despacho / Suite de Planta Baja (Flexibilidad y Acústica Rw38dB)</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+          El Despacho E-05 (11,50 m²) está diseñado con una mesa ergonómica en L a 90° para teletrabajo intensivo, con canalizaciones de datos Cat 6A y tomas múltiples. Se equipa con un sofá-cama de 140 cm que permite su uso inmediato como dormitorio de invitados o suite de planta baja accesible para personas con movilidad reducida (PMR). El tabique que lo separa del Hall cuenta con aislamiento reforzado de lana mineral de alta densidad y doble placa fonoabsorbente (Rw ≥ 38 dBA) con puerta acústica P-03 provista de guillotina automática de estanqueidad.
+        </p>
+        <h3 style="color: var(--accent); margin: 1rem 0 0.5rem 0;">3. Independencia y Normativa NHG del Baño Completo PB</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.75rem;">
+          De conformidad con el Decreto 29/2010 de Galicia, el baño completo E-06 (5,20 m²) no abre directamente a ninguna estancia de estancia/comedor/cocina. Se accede exclusivamente a través de un Distribuidor Neutro intermedio mediante una esclusa de tres puertas: P-04 (desde el Despacho), P-05 (hacia el Baño) y P-06 (corredera empotrada hacia la Cocina unificada). El baño está dotado de ducha enrasada a cota cero de 1,15 x 0,90 m con sumidero lineal oculto de acero inoxidable AISI 316, inodoro suspendido Geberit con cisterna empotrada y lavabo suspendido de 90x50 cm, garantizando un itinerario 100% practicable.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
