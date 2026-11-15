@@ -82,3 +82,11 @@ Este documento es el **registro histórico de razonamiento** del proyecto. Expli
 * ❌ **Alternativa Descartada:** Lavadora y secadora colocadas una al lado de la otra (en paralelo) bajo la encimera.
   * *Por qué se descartó:* Ocupaba 1,30 m lineales de suelo, impidiendo colocar una encimera de doblado amplia, el armario de carga del aspirador Dyson y la pila profunda de lavado manual.
 * ✅ **Decisión Adoptada:** Columna vertical (lavadora abajo + secadora arriba con kit de unión extraíble).
+
+---
+
+## 9. Estrategia de Inversión: Blindaje de Envolvente Passivhaus y Amueblamiento Progresivo
+
+* ❌ **Alternativa Descartada:** Pretender financiar y ejecutar el amueblamiento decorativo completo "de catálogo" desde el Día 1 (lo que inflaba la hipoteca en 40.000–60.000 € y obligaba a recortar en la calidad de la envolvente térmica, las carpinterías o el patio).
+* ✅ **Decisión Adoptada:** Priorizar al 100 % la **cáscara y los sistemas inmutables** (suelo en Liáns, estructura, forjado Cáviti anti-radón, envolvente Passivhaus, VMC Zehnder, suelo radiante, cocina funcional equipada, baños completos y el Patio Claustro abierto). El mobiliario exento (sofá modular, mesa de comedor de gran formato, decoración, mobiliario infantil y exterior) se irá adquiriendo progresivamente una vez viviendo la casa, reutilizando piezas iniciales y amueblando según las dinámicas reales de la familia.
+

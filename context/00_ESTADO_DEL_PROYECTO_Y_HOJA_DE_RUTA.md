@@ -6,7 +6,7 @@
 > **Ubicación:** Liáns / Santa Cruz, Concello de Oleiros (A Coruña)  
 > **Fórmula arquitectónica:** "Pabellón Bioclimático Atlántico con Patio Corrala Abierto a Cota Cero"  
 > **Superficie Construida:** 215,00 m² (PB: 116,50 m² cerrados + P1: 98,50 m²)  
-> **Presupuesto Llave en Mano:** **662.980 €** (incluye autopromoción, licencias, aparejador y Passivhaus)
+> **Presupuesto Llave en Mano Integral (Desde Cero):** **990.979 €** (Passivhaus Premium con parcela de 600 m², contrata completa, tasas Concello de Oleiros, técnicos e impuestos; opción faseada sin piscina: **~961.800 €**; estándar funcional: **~679.000 €**)
 
 ---
 
