@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cocina Unificada Santos · Frente Mixto con Ventanal Panorámico Este</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #070b14; color: #f8fafc; font-family: ui-sans-serif, system-ui, sans-serif; }
+    .tab-btn.active { border-color: #f59e0b; color: #f59e0b; background: rgba(245, 158, 11, 0.12); }
+  </style>
+</head>
+<body class="p-4 md:p-8 max-w-7xl mx-auto">
+  <!-- Cabecera -->
+  <header class="border-b border-slate-800 pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-950/60 border border-amber-800 text-amber-400 text-xs font-mono mb-2">
+        <span>OPCIÓN A SELECCIONADA: FRENTE MIXTO CON VENTANAL ESTE (20,80 m²)</span>
+      </div>
+      <h1 class="text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+        <span>☀️ Cocina Unificada: Ventanal Panorámico Este & Gran Isla Santos</span>
+      </h1>
+      <p class="text-slate-400 text-sm mt-1">Luz solar de mañana (Este) + Luz de tarde (Patio Claustro Oeste) + Comedor diáfano Sur (4,20 m libres)</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <a href="plano_cocina_planta_esquematica.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-01 Planta
+      </a>
+      <a href="plano_cocina_elevaciones_alturas.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-02 Alzados
+      </a>
+      <a href="plano_cocina_electricidad_fuerza.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-03 Electricidad
+      </a>
+      <a href="plano_cocina_iluminacion_escenas.svg" target="_blank" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-yellow-400 border border-slate-700 rounded-lg text-xs font-mono transition">
+        K-04 Iluminación
+      </a>
+    </div>
+  </header>
+
+  <!-- Pestañas de Navegación de Planos -->
+  <div class="flex flex-wrap border-b border-slate-800 mb-6 gap-2">
+    <button onclick="showTab('planta')" id="tab-planta" class="tab-btn active px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 font-bold transition flex items-center gap-1.5">
+      <span>📐 K-01: Planta (1:20)</span>
+    </button>
+    <button onclick="showTab('elevaciones')" id="tab-elevaciones" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>📏 K-02: Alzados (1:20)</span>
+    </button>
+    <button onclick="showTab('electricidad')" id="tab-electricidad" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>⚡ K-03: Electricidad & Fuerza (1:20)</span>
+    </button>
+    <button onclick="showTab('iluminacion')" id="tab-iluminacion" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>💡 K-04: Iluminación & Escenas (1:20)</span>
+    </button>
+    <button onclick="showTab('renders')" id="tab-renders" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>🖼️ Renders (3 Vistas)</span>
+    </button>
+    <button onclick="showTab('resumen')" id="tab-resumen" class="tab-btn px-4 py-2.5 font-mono text-xs md:text-sm border-b-2 border-transparent text-slate-400 hover:text-white transition flex items-center gap-1.5">
+      <span>📋 Memoria Técnica</span>
+    </button>
+  </div>
+
+  <!-- Contenedor Tab 1: Planta Esquemática -->
+  <div id="content-planta" class="space-y-4">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center mb-3 px-2">
+        <span class="text-xs font-mono text-amber-400">VENTANAL ESTE C-07 (3,00×0,80m) · BANCADA DEKTON · GRAN ISLA 3,60×1,10m · PATIO OESTE</span>
+        <span class="text-xs font-mono text-slate-500">Vector SVG ISO 129 (1:20)</span>
+      </div>
+      <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
+        <img src="plano_cocina_planta_esquematica.svg" alt="Plano Planta Cocina" class="w-full min-w-[900px] h-auto block"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 2: Alzados y Alturas -->
+  <div id="content-elevaciones" class="space-y-4 hidden">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center mb-3 px-2">
+        <span class="text-xs font-mono text-amber-400">ALZADO FRENTE MIXTO CON VENTANAL (+0,95m a +1,75m) · ISLA 3,60m · CORTE LUZ ESTE-OESTE</span>
+        <span class="text-xs font-mono text-slate-500">Vector SVG ISO 128</span>
+      </div>
+      <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
+        <img src="plano_cocina_elevaciones_alturas.svg" alt="Plano Alzados Cocina" class="w-full min-w-[900px] h-auto block"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 3: Electricidad & Fuerza K-03 -->
+  <div id="content-electricidad" class="space-y-4 hidden">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center mb-3 px-2">
+        <span class="text-xs font-mono text-emerald-400">CIRCUITO C3 (25A BORA PURE) · CIRCUITOS C4.1-C4.6 (16A) · TOMAS BANCADA C5 (+1,05m) · CUADRO DE CARGAS</span>
+        <span class="text-xs font-mono text-slate-500">REBT ITC-BT-25 (1:20)</span>
+      </div>
+      <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
+        <img src="plano_cocina_electricidad_fuerza.svg" alt="Plano Electricidad Cocina" class="w-full min-w-[900px] h-auto block"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 4: Iluminación & Escenas K-04 -->
+  <div id="content-iluminacion" class="space-y-4 hidden">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 overflow-hidden shadow-2xl">
+      <div class="flex justify-between items-center mb-3 px-2">
+        <span class="text-xs font-mono text-yellow-400">CARRIL MAGNÉTICO 48V (3,00m) · TIRA LED CONTINUA COB 2700K · CURVAS ISOLUX &gt;500 LUX · DALI / CASAMBI</span>
+        <span class="text-xs font-mono text-slate-500">CTE DB-HE3 / IESNA (1:20)</span>
+      </div>
+      <div class="w-full overflow-x-auto border border-slate-800 rounded-xl bg-slate-950">
+        <img src="plano_cocina_iluminacion_escenas.svg" alt="Plano Iluminación Cocina" class="w-full min-w-[900px] h-auto block"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 5: Renders Fotorrealistas -->
+  <div id="content-renders" class="space-y-8 hidden">
+    <!-- Render 1 -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4">
+        <div>
+          <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Perspectiva 1</span>
+          <h3 class="text-xl font-bold text-white">Vista desde el Salón / Comedor (Hacia el Norte)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">Encuadre Eje Sur → Norte</span>
+      </div>
+      <div class="overflow-hidden rounded-xl border border-slate-700 shadow-xl mb-4 bg-slate-950">
+        <img src="v2/renders/render_cocina_salon.jpg" alt="Render Cocina desde Salón" class="w-full h-auto block"/>
+      </div>
+      <p class="text-sm text-slate-300 font-mono leading-relaxed">
+        <strong>Fidelidad técnica:</strong> Pared norte con puerta corredera P-06 hacia el distribuidor. En la pared derecha (Este), una única columna de 60 cm para la Cava Santos climatizada y despensa, bancada baja de 3 m con el ventanal faja corrido C-07 (3,00 × 0,80 m), y columnas de hornos al fondo derecho. En el centro, isla de 3,60 m con taburetes al patio a la izquierda.
+      </p>
+    </div>
+
+    <!-- Render 2 -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4">
+        <div>
+          <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Perspectiva 2</span>
+          <h3 class="text-xl font-bold text-white">Vista desde el Patio Claustro (Hacia el Este)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">Encuadre Exterior → Interior</span>
+      </div>
+      <div class="overflow-hidden rounded-xl border border-slate-700 shadow-xl mb-4 bg-slate-950">
+        <img src="v2/renders/render_cocina_patio.jpg" alt="Render Cocina desde Patio Claustro" class="w-full h-auto block"/>
+      </div>
+      <p class="text-sm text-slate-300 font-mono leading-relaxed">
+        <strong>Fidelidad técnica:</strong> A la izquierda se observa la pared y puerta norte P-06 hacia el distribuidor, junto a las columnas de hornos. En el centro, el ventanal horizontal corrido de 3 m iluminando la bancada. A la derecha, una única columna de 60 cm para la cava de vinos y despensa cerrada. En la isla, los 5 taburetes de diseño bajo el voladizo de 35 cm.
+      </p>
+    </div>
+
+    <!-- Render 3 -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-2xl">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4">
+        <div>
+          <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Perspectiva 3</span>
+          <h3 class="text-xl font-bold text-white">Vista desde el Norte (Hacia el Comedor y Jardín Sur)</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">Encuadre Eje Norte → Sur</span>
+      </div>
+      <div class="overflow-hidden rounded-xl border border-slate-700 shadow-xl mb-4 bg-slate-950">
+        <img src="v2/renders/render_cocina_norte.jpg" alt="Render Cocina desde Norte" class="w-full h-auto block"/>
+      </div>
+      <p class="text-sm text-slate-300 font-mono leading-relaxed">
+        <strong>Fidelidad técnica:</strong> Perspectiva a lo largo de los 6 metros de longitud de cocina, con los taburetes perfectamente visibles a lo largo de la isla encarada al patio claustro. Al fondo se abre de par en par el comedor diáfano de 17,50 m² con mesa de roble macizo para 10 comensales (4,20 m libres), con amplios ventanales orientados al jardín sur.
+      </p>
+    </div>
+  </div>
+
+  <!-- Contenedor Tab 6: Resumen & Memoria Técnica -->
+  <div id="content-resumen" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+      <h3 class="text-lg font-bold text-amber-400 font-mono mb-4">☀️ Luz Solar & Ventanal Este</h3>
+      <ul class="space-y-2 text-sm text-slate-300 font-mono">
+        <li>• <strong class="text-white">Ventana Panorámica:</strong> 3,00 × 0,80 m (+0,95 a +1,75 m)</li>
+        <li>• <strong class="text-white">Sol matinal:</strong> Luz suave de desayuno sobre la bancada</li>
+        <li>• <strong class="text-white">Luz cruzada:</strong> Sol Este + Luz Oeste del Patio Claustro</li>
+        <li>• <strong class="text-white">Coffee Station:</strong> Encimera Dekton con vistas al jardín</li>
+        <li>• <strong class="text-white">Muebles altos:</strong> Suspendidos con iluminación LED</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+      <h3 class="text-lg font-bold text-sky-400 font-mono mb-4">🏛️ Almacenaje Masivo Equilibrado</h3>
+      <ul class="space-y-2 text-sm text-slate-300 font-mono">
+        <li>• <strong class="text-white">Col 01:</strong> Frigorífico XXL integrable (todo frío)</li>
+        <li>• <strong class="text-white">Col 02:</strong> Congelador vertical No-Frost</li>
+        <li>• <strong class="text-white">Col 03:</strong> Torre Horno + Micro Bosch Serie 8</li>
+        <li>• <strong class="text-white">Bancada Este:</strong> 3 gaveteros de 100 cm (caceroleros)</li>
+        <li>• <strong class="text-white">Col 04:</strong> Cava vinos Santos 60 botellas vitrina</li>
+        <li>• <strong class="text-white">Col 05:</strong> Despensa gavetas Legrabox + Vajillero</li>
+        <li>• <strong class="text-white">Gran Isla:</strong> 3,60 × 1,10 m con caceroleros 90 cm</li>
+      </ul>
+    </div>
+
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+      <h3 class="text-lg font-bold text-emerald-400 font-mono mb-4">🍽️ Comedor Principal (4,20 m)</h3>
+      <ul class="space-y-2 text-sm text-slate-300 font-mono">
+        <li>• <strong class="text-white">Superficie Comedor:</strong> 17,50 m² ($4,15 	imes 4,20$ m)</li>
+        <li>• <strong class="text-white">Mesa 10 Pax:</strong> 2,80 × 1,00 m roble macizo</li>
+        <li>• <strong class="text-white">Paso Norte:</strong> 1,00 m libre hacia la isla de cocina</li>
+        <li>• <strong class="text-white">Paso Sur:</strong> 1,00 m libre hacia el porche y jardín</li>
+        <li>• <strong class="text-white">Transición:</strong> Cero tabiques, espacio continuo y abierto</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tab) {
+      const tabs = ['planta', 'elevaciones', 'electricidad', 'iluminacion', 'renders', 'resumen'];
+      tabs.forEach(t => {
+        const content = document.getElementById('content-' + t);
+        if (content) content.classList.toggle('hidden', t !== tab);
+        
+        const btn = document.getElementById('tab-' + t);
+        if (btn) {
+          if (t === tab) {
+            btn.classList.add('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
+            btn.classList.remove('border-transparent', 'text-slate-400');
+          } else {
+            btn.classList.remove('border-amber-400', 'text-amber-400', 'bg-amber-950/20');
+            btn.classList.add('border-transparent', 'text-slate-400');
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
