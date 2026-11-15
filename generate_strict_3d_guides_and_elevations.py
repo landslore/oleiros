@@ -253,8 +253,8 @@ def build_4_elevations_svg() -> str:
 
     # 3.2 PLANTA PRIMERA ESTE: Solo ocupa Y=14.30..21.45m (7,15 m de fondo · Z=3.15..6.80m)
     # ¡La zona Norte Y=5.00..14.30m es de 1 PLANTA!
-    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(6.80):.1f}" width="{7.15*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
-    out.append(f'<rect x="{ex(21.50):.1f}" y="{ey(6.80):.1f}" width="{7.25*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(6.80):.1f}" width="{12.95*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
+    out.append(f'<rect x="{ex(21.50):.1f}" y="{ey(6.80):.1f}" width="{13.05*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
     # Ventana C-11 Baño Suite (Y=15.20..16.20, Z=4.75..5.35m)
     out.append(f'<rect x="{ex(16.20):.1f}" y="{ey(5.35):.1f}" width="{1.00*S:.1f}" height="{0.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.0"/>')
     out.append(f'<text x="{ex(15.70):.1f}" y="{ey(5.55):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.6">C-11 BAÑO SUITE</text>')
@@ -271,8 +271,8 @@ def build_4_elevations_svg() -> str:
     out.append(f'<text x="{ex(21.05):.1f}" y="{ey(4.50):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.6" transform="rotate(-90 {ex(21.05):.1f} {ey(4.50):.1f})">CHIMENEA GRANITO ADOSADA EXTERIOR</text>')
 
     # Cotas Horizontales Alzado Este
-    out.append(dim_h(ex(21.45), ex(14.30), gy3, 32, "7,15 m (Cuerpo P1)", "#38bdf8"))
-    out.append(dim_h(ex(14.30), ex(5.00), gy3, 32, "9,30 m (1 Planta PB Norte)", "#10b981"))
+    out.append(dim_h(ex(21.45), ex(8.50), gy3, 32, "12,95 m (Ala Este P1 sobre Cocina y Porche)", "#38bdf8"))
+    out.append(dim_h(ex(8.50), ex(5.00), gy3, 32, "3,50 m (1 Planta PB Norte Despacho)", "#10b981"))
     out.append(dim_h(ex(21.45), ex(5.00), gy3, 56, "16,45 m (LONGITUD TOTAL ENVOLVENTE ESTE)", "#f8fafc"))
 
     # ==========================================================================
@@ -304,8 +304,8 @@ def build_4_elevations_svg() -> str:
         out.append(f'<text x="{xx:.1f}" y="635" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="6.0" font-weight="700">{lbl}</text>')
 
     # 4.1 SEGUNDO PLANO: Volumen Planta Primera SATE blanco (Y=14.30..21.45, Z=3.15..6.80m · CIEGO)
-    out.append(f'<rect x="{wx(14.30):.1f}" y="{wy(6.80):.1f}" width="{7.15*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
-    out.append(f'<rect x="{wx(14.25):.1f}" y="{wy(6.80):.1f}" width="{7.25*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    out.append(f'<rect x="{wx(8.50):.1f}" y="{wy(6.80):.1f}" width="{12.95*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
+    out.append(f'<rect x="{wx(8.45):.1f}" y="{wy(6.80):.1f}" width="{13.05*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
     out.append(f'<text x="{wx(17.85):.1f}" y="{wy(5.20):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="700">FACHADA OESTE P1 CIEGA (SATE BLANCO · BLINDAJE TÉRMICO)</text>')
 
     # 4.2 PRIMER PLANO: Muro de Granito / Servicio Oeste en PB (Y=5.00..21.45m · 16,45 m)
@@ -441,9 +441,15 @@ def get_strict_3d_faces():
     for px_s in [6.32, 10.00, 13.50, 16.82]:
         add_box(px_s - 0.12, px_s + 0.12, 21.35, 21.45, 0.0, 3.15, "#0f172a", "#cbd5e1", 1.0, layer=1)
 
-    # 8. PLANTA PRIMERA (X=6.15..17.00, Y=14.30..21.45, Z=3.15..6.80m)
-    # SATE Blanco Cálido en 4 fachadas
+    # 8. PLANTA PRIMERA EN "U" (Z=3.15..6.80m) EN SATE BLANCO CÁLIDO:
+    # 8a. Ala Oeste (Escalera y Galería Claustro: X=6.15..8.50, Y=8.50..14.30)
+    add_box(6.15, 8.50, 8.50, 14.30, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8b. Ala Este (Suite sobre Cocina: X=13.50..17.00, Y=8.50..17.00)
+    add_box(13.50, 17.00, 8.50, 17.00, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8c. Ala Sur (Dormitorios y Galería distribuidora: X=6.15..17.00, Y=14.30..21.45 · Vuela 3m sobre Porche)
     add_box(6.15, 17.00, 14.30, 21.45, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8d. Mirador acristalado de la galería hacia el patio en Ala Oeste
+    add_rect_on_x(8.48, 9.10, 13.70, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)
 
     # 9. CHIMENEA EXTERIOR DE GRANITO MORENO EN FACHADA ESTE (OPCIÓN A)
     # X=17.00..17.80, Y=20.65..21.45, Z=0..7.80m (+1,00m sobre cubierta)
