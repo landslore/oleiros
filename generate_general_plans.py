@@ -98,7 +98,13 @@ def build_planta_baja_svg():
     out.append('<g id="urbanizacion-exteriores">')
     # Acceso rodado y Pérgola 2 Vehículos: X=[1.00..3.85], Y=[5.00..12.00] (28,00 m²)
     out.append(f'<rect x="{X(1.00):.1f}" y="{Y(0.00):.1f}" width="{L(2.85):.1f}" height="{L(5.00):.1f}" fill="url(#hatch-gravel)" stroke="#475569" stroke-width="0.7"/>')
-    out.append(f'<text x="{X(2.42):.1f}" y="{Y(2.50):.1f}" fill="#94a3b8" font-size="6.5" text-anchor="middle">RAMPA ACCESO RODADO (p=2%)</text>')
+    out.append(f'<text x="{X(2.42):.1f}" y="{Y(1.30):.1f}" fill="#94a3b8" font-size="6.5" text-anchor="middle">RAMPA ACCESO RODADO (p=2%)</text>')
+    # Depósito Pluviales Enterrado 6.000 L (X=1.20..3.65, Y=1.70..4.30)
+    out.append(f'<rect x="{X(1.30):.1f}" y="{Y(1.70):.1f}" width="{L(2.35):.1f}" height="{L(2.60):.1f}" rx="6" fill="#082f49" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="4,2"/>')
+    out.append(f'<circle cx="{X(2.47):.1f}" cy="{Y(3.00):.1f}" r="{L(0.40):.1f}" fill="#0369a1" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<text x="{X(2.47):.1f}" y="{Y(2.75):.1f}" fill="#38bdf8" font-size="6.0" font-weight="700" text-anchor="middle">DEPÓSITO PLUVIALES 6.000 L</text>')
+    out.append(f'<text x="{X(2.47):.1f}" y="{Y(3.35):.1f}" fill="#bae6fd" font-size="5.2" text-anchor="middle">Filtro Vórtex + Bomba Presión</text>')
+    out.append(f'<text x="{X(2.47):.1f}" y="{Y(3.55):.1f}" fill="#7dd3fc" font-size="4.8" text-anchor="middle">(Red Doble: Inodoros + Riego)</text>')
     out.append(f'<rect x="{X(1.00):.1f}" y="{Y(5.00):.1f}" width="{L(2.85):.1f}" height="{L(7.00):.1f}" fill="url(#hatch-tile-60)" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="8,3"/>')
     # Vigas de pérgola
     for ym_beam in [5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5]:
@@ -711,7 +717,7 @@ def build_planta_baja_svg():
     # Bloque 5: Notas Constructivas de Obligado Cumplimiento en Obra
     y_t5 = 925
     out.append(f'<text x="14" y="{y_t5}" fill="#f43f5e" font-size="8" font-weight="700">5. PRESCRIPCIONES TÉCNICAS OBLIGATORIAS DE EJECUCIÓN EN OBRA</text>')
-    out.append(f'<rect x="14" y="{y_t5+10}" width="487" height="285" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>')
+    out.append(f'<rect x="14" y="{y_t5+10}" width="487" height="330" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>')
     notas = [
         "1. BARRERA ANTI-RADÓN (CTE DB-HS6 ZONA II OLEIROS): Lámina elastomérica continua de e ≥ 2,0 mm",
         "   (D ≤ 10^-11 m²/s) bajo solera con solapes de 15 cm termosoldados y pasamuros sellados con manguito.",
@@ -725,11 +731,13 @@ def build_planta_baja_svg():
         "   sanitaria hacia compuerta mural motorizada estanca en fachada. Circuito eléctrico dedicado C3 (6 mm²).",
         "6. INDEPENDENCIA DEL BAÑO PB (NHG GALICIA): El Baño E-06 cuenta con distribuidor neutro previo y doble",
         "   puerta (P-05 y P-06) respecto a la cocina y comedor, cumpliendo estrictamente el Decreto 29/2010.",
+        "7. APROVECHAMIENTO PLUVIALES (177.000 L/AÑO): Depósito enterrado 6.000 L PEAD con filtro vórtex",
+        "   autolimpiable y grupo de presión hidroneumático para alimentar cisternas WC y riego de jardín.",
     ]
     for idx_n, n_line in enumerate(notas):
         col_n = "#f8fafc" if n_line[0].isdigit() else "#94a3b8"
         fw_n = "700" if n_line[0].isdigit() else "400"
-        out.append(f'<text x="22" y="{y_t5 + 28 + idx_n*21}" fill="{col_n}" font-size="6.1" font-weight="{fw_n}">{n_line}</text>')
+        out.append(f'<text x="22" y="{y_t5 + 26 + idx_n*20}" fill="{col_n}" font-size="6.0" font-weight="{fw_n}">{n_line}</text>')
     out.append('</g>')
 
     # =========================================================================
@@ -846,15 +854,28 @@ def build_planta_alta_svg():
     out.append(f'<text x="{X1(10.50):.1f}" y="{Y1(10.45):.1f}" fill="#10b981" font-size="7.0" font-weight="700" text-anchor="middle">VACÍO PATIO CORRALA (4,00 × 4,00 m)</text>')
     out.append(f'<text x="{X1(10.50):.1f}" y="{Y1(10.75):.1f}" fill="#6ee7b7" font-size="5.6" text-anchor="middle">Abierto al cielo · Proyección copa Acer palmatum</text>')
 
-    # 19. BALCÓN CORRIDO SUR P1: X=[6.15..17.00], Y=[18.00..19.40] (Fondo 1,40 m · 14,00 m² útiles)
-    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(18.00):.1f}" width="{L1(10.85):.1f}" height="{L1(1.40):.1f}" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="1.1"/>')
-    # Barandilla continua de vidrio estructural laminar 10+10.2 mm en borde Sur (Y=19.40)
-    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(19.36):.1f}" x2="{X1(17.00):.1f}" y2="{Y1(19.36):.1f}" stroke="#38bdf8" stroke-width="2.2"/>')
-    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(19.42):.1f}" x2="{X1(17.00):.1f}" y2="{Y1(19.42):.1f}" stroke="#e2e8f0" stroke-width="0.6"/>')
+    # 19. BALCÓN CORRIDO SUR P1: X=[6.15..16.30], Y=[18.00..19.40] (Fondo 1,40 m · 13,20 m² útiles limpios)
+    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(18.00):.1f}" width="{L1(10.15):.1f}" height="{L1(1.40):.1f}" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="1.1"/>')
+    # Barandilla continua de vidrio estructural laminar 10+10.2 mm en borde Sur (Y=19.40, remate en celosía X=16.30)
+    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(19.36):.1f}" x2="{X1(16.30):.1f}" y2="{Y1(19.36):.1f}" stroke="#38bdf8" stroke-width="2.2"/>')
+    out.append(f'<line x1="{X1(6.15):.1f}" y1="{Y1(19.42):.1f}" x2="{X1(16.30):.1f}" y2="{Y1(19.42):.1f}" stroke="#e2e8f0" stroke-width="0.6"/>')
+
+    # Celosía cortaviento de Iroko en testero Este del balcón (X=16.30, Y=18.00..19.40)
+    out.append(f'<line x1="{X1(16.30):.1f}" y1="{Y1(18.00):.1f}" x2="{X1(16.30):.1f}" y2="{Y1(19.40):.1f}" stroke="#d97706" stroke-width="2.8"/>')
+    for y_lama in [18.15, 18.35, 18.55, 18.75, 18.95, 19.15, 19.35]:
+        out.append(f'<line x1="{X1(16.22):.1f}" y1="{Y1(y_lama):.1f}" x2="{X1(16.38):.1f}" y2="{Y1(y_lama):.1f}" stroke="#f59e0b" stroke-width="1.2"/>')
+    out.append(f'<text x="{X1(16.15):.1f}" y="{Y1(18.70):.1f}" fill="#f59e0b" font-size="5.2" font-weight="700" text-anchor="end">CELOSÍA IROKO CORTAVIENTO</text>')
+
+    # Shunt exterior y tiro de chimenea de la barbacoa FUERA de la terraza (X=16.40..17.00, Y=18.45..19.10)
+    out.append(f'<rect x="{X1(16.45):.1f}" y="{Y1(18.45):.1f}" width="{L1(0.50):.1f}" height="{L1(0.60):.1f}" fill="#1e293b" stroke="#64748b" stroke-width="0.8"/>')
+    out.append(f'<circle cx="{X1(16.70):.1f}" cy="{Y1(18.75):.1f}" r="{L1(0.18):.1f}" fill="#0f172a" stroke="#ef4444" stroke-width="1.0"/>')
+    out.append(f'<text x="{X1(16.70):.1f}" y="{Y1(19.22):.1f}" fill="#ef4444" font-size="4.8" font-weight="700" text-anchor="middle">TIRO BBQ Ø250</text>')
+    out.append(f'<text x="{X1(16.70):.1f}" y="{Y1(19.36):.1f}" fill="#94a3b8" font-size="4.2" text-anchor="middle">(EXTERIOR)</text>')
+
     # Proyección del vuelo inferior del Porche Sur de PB (Y=19.40..21.45)
     out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(19.40):.1f}" width="{L1(10.85):.1f}" height="{L1(2.05):.1f}" fill="none" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>')
-    out.append(f'<text x="{X1(11.57):.1f}" y="{Y1(20.55):.1f}" fill="#64748b" font-size="6.2" text-anchor="middle">PROYECCIÓN CUBIERTA PORCHE SUR INFERIOR (COTA +3,00 m · PENDIENTE 1,5%)</text>')
-    out.append(draw_room_stamp(X1(11.57), Y1(18.70), "E-23", "BALCÓN CORRIDO SUR P1", 14.00, "Iroko · Vidrio 10+10mm", "+3,15"))
+    out.append(f'<text x="{X1(11.22):.1f}" y="{Y1(20.55):.1f}" fill="#64748b" font-size="6.2" text-anchor="middle">PROYECCIÓN CUBIERTA PORCHE SUR INFERIOR (COTA +3,00 m · PENDIENTE 1,5%)</text>')
+    out.append(draw_room_stamp(X1(11.22), Y1(18.70), "E-23", "BALCÓN CORRIDO SUR P1", 13.20, "Iroko · Vidrio 10+10mm", "+3,15"))
     out.append('</g>')
 
     # =========================================================================
@@ -1130,7 +1151,7 @@ def build_planta_alta_svg():
         ("E-21", "17. Vestidor de Paso Doble Suite + Isla", "8,40 m²", "7,75m armarios + Ventana Este"),
         ("E-22", "18. Baño Privado Suite (2,81 × 2,25 m)", "6,30 m²", "Porcelánico C3 + Dekton Kelya"),
         ("SUB-P1", "TOTAL SUPERFICIE ÚTIL INTERIOR P1", "89,40 m²", "(100% aprovechada sin m² muertos)"),
-        ("E-23", "19. Balcón Corrido Sur (10,85 × 1,40 m)", "14,00 m²", "Tarima Iroko s/ Plots + Vidrio"),
+        ("E-23", "19. Balcón Corrido Sur (10,15 × 1,40 m)", "13,20 m²", "Tarima Iroko s/ Plots + Vidrio"),
         ("CUB-FV", "Cubierta Plana Técnica Inferior (12 Módulos)", "38,10 m²", "Grava + 5,40 kWp Solar FV"),
         ("TOT-VIV", "SUPERFICIE ÚTIL TOTAL VIVIENDA (PB + P1)", "202,40 m²", "(4 Dorm. + Despacho + Sala Cine)"),
     ]
@@ -1187,6 +1208,8 @@ def build_planta_alta_svg():
         "   sobre el techo del Salón ni del Comedor.",
         "5. BARANDILLA ESTRUCTURAL DEL BALCÓN SUR: Perfil en U de aluminio anodizado embutido en el canto",
         "   del forjado de hormigón para alojar vidrio laminar templado 10+10.2 mm sin montantes verticales.",
+        "6. CELOSÍA IROKO Y TIRO BBQ FUERA DE TERRAZA: Celosía cortaviento a X=16,30 m. El tiro de barbacoa",
+        "   asciende por el testero exterior sin invadir el suelo de la terraza ni la visión de la suite.",
     ]
     for idx_n, nl in enumerate(notas_p1):
         col_n = "#f8fafc" if nl[0].isdigit() else "#94a3b8"

@@ -158,17 +158,30 @@
 <circle cx="582.0" cy="401.4" r="31.2" fill="none" stroke="#10b981" stroke-width="0.8" stroke-dasharray="2,2"/>
 <text x="582.0" y="396.6" fill="#10b981" font-size="7.0" font-weight="700" text-anchor="middle">VACÍO PATIO CORRALA (4,00 × 4,00 m)</text>
 <text x="582.0" y="411.0" fill="#6ee7b7" font-size="5.6" text-anchor="middle">Abierto al cielo · Proyección copa Acer palmatum</text>
-<rect x="373.2" y="759.0" width="520.8" height="67.2" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="1.1"/>
-<line x1="373.2" y1="824.3" x2="894.0" y2="824.3" stroke="#38bdf8" stroke-width="2.2"/>
-<line x1="373.2" y1="827.2" x2="894.0" y2="827.2" stroke="#e2e8f0" stroke-width="0.6"/>
+<rect x="373.2" y="759.0" width="487.2" height="67.2" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="1.1"/>
+<line x1="373.2" y1="824.3" x2="860.4" y2="824.3" stroke="#38bdf8" stroke-width="2.2"/>
+<line x1="373.2" y1="827.2" x2="860.4" y2="827.2" stroke="#e2e8f0" stroke-width="0.6"/>
+<line x1="860.4" y1="759.0" x2="860.4" y2="826.2" stroke="#d97706" stroke-width="2.8"/>
+<line x1="856.6" y1="766.2" x2="864.2" y2="766.2" stroke="#f59e0b" stroke-width="1.2"/>
+<line x1="856.6" y1="775.8" x2="864.2" y2="775.8" stroke="#f59e0b" stroke-width="1.2"/>
+<line x1="856.6" y1="785.4" x2="864.2" y2="785.4" stroke="#f59e0b" stroke-width="1.2"/>
+<line x1="856.6" y1="795.0" x2="864.2" y2="795.0" stroke="#f59e0b" stroke-width="1.2"/>
+<line x1="856.6" y1="804.6" x2="864.2" y2="804.6" stroke="#f59e0b" stroke-width="1.2"/>
+<line x1="856.6" y1="814.2" x2="864.2" y2="814.2" stroke="#f59e0b" stroke-width="1.2"/>
+<line x1="856.6" y1="823.8" x2="864.2" y2="823.8" stroke="#f59e0b" stroke-width="1.2"/>
+<text x="853.2" y="792.6" fill="#f59e0b" font-size="5.2" font-weight="700" text-anchor="end">CELOSÍA IROKO CORTAVIENTO</text>
+<rect x="867.6" y="780.6" width="24.0" height="28.8" fill="#1e293b" stroke="#64748b" stroke-width="0.8"/>
+<circle cx="879.6" cy="795.0" r="8.6" fill="#0f172a" stroke="#ef4444" stroke-width="1.0"/>
+<text x="879.6" y="817.6" fill="#ef4444" font-size="4.8" font-weight="700" text-anchor="middle">TIRO BBQ Ø250</text>
+<text x="879.6" y="824.3" fill="#94a3b8" font-size="4.2" text-anchor="middle">(EXTERIOR)</text>
 <rect x="373.2" y="826.2" width="520.8" height="98.4" fill="none" stroke="#475569" stroke-width="0.8" stroke-dasharray="6,4"/>
-<text x="633.4" y="881.4" fill="#64748b" font-size="6.2" text-anchor="middle">PROYECCIÓN CUBIERTA PORCHE SUR INFERIOR (COTA +3,00 m · PENDIENTE 1,5%)</text>
+<text x="616.6" y="881.4" fill="#64748b" font-size="6.2" text-anchor="middle">PROYECCIÓN CUBIERTA PORCHE SUR INFERIOR (COTA +3,00 m · PENDIENTE 1,5%)</text>
 <g class="room-stamp">
-      <rect x="585.4" y="774.6" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
-      <line x1="585.4" y1="786.6" x2="681.4" y2="786.6" stroke="#334155" stroke-width="0.6"/>
-      <text x="633.4" y="783.6" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-23] BALCÓN CORRIDO SUR P1</text>
-      <text x="633.4" y="795.6" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 14,00 m²</text>
-      <text x="633.4" y="805.1" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Iroko · Vidrio 10+10mm · Z=+3,15m</text>
+      <rect x="568.6" y="774.6" width="96" height="35" rx="1.5" fill="#0b1120" fill-opacity="0.88" stroke="#475569" stroke-width="0.7"/>
+      <line x1="568.6" y1="786.6" x2="664.6" y2="786.6" stroke="#334155" stroke-width="0.6"/>
+      <text x="616.6" y="783.6" fill="#38bdf8" font-family="monospace" font-size="7" font-weight="700" text-anchor="middle">[E-23] BALCÓN CORRIDO SUR P1</text>
+      <text x="616.6" y="795.6" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">S.Útil: 13,20 m²</text>
+      <text x="616.6" y="805.1" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Iroko · Vidrio 10+10mm · Z=+3,15m</text>
     </g>
 </g>
 <g id="muros-exteriores">
@@ -826,8 +839,8 @@
 <text x="330" y="204.5" fill="#94a3b8" font-size="5.5">(100% aprovechada sin m² muertos)</text>
 <rect x="14" y="210" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
 <text x="18" y="221.5" fill="#38bdf8" font-size="5.8" font-weight="700">E-23</text>
-<text x="65" y="221.5" fill="#e2e8f0" font-size="5.8" font-weight="400">19. Balcón Corrido Sur (10,85 × 1,40 m)</text>
-<text x="275" y="221.5" fill="#e2e8f0" font-size="6.1" font-weight="700">14,00 m²</text>
+<text x="65" y="221.5" fill="#e2e8f0" font-size="5.8" font-weight="400">19. Balcón Corrido Sur (10,15 × 1,40 m)</text>
+<text x="275" y="221.5" fill="#e2e8f0" font-size="6.1" font-weight="700">13,20 m²</text>
 <text x="330" y="221.5" fill="#94a3b8" font-size="5.5">Tarima Iroko s/ Plots + Vidrio</text>
 <rect x="14" y="227" width="452" height="17" fill="none" stroke="#334155" stroke-width="0.5"/>
 <text x="18" y="238.5" fill="#38bdf8" font-size="5.8" font-weight="700">CUB-FV</text>
@@ -904,6 +917,8 @@
 <text x="20" y="626.0" fill="#94a3b8" font-size="5.8" font-weight="400">   sobre el techo del Salón ni del Comedor.</text>
 <text x="20" y="644.5" fill="#f8fafc" font-size="5.8" font-weight="700">5. BARANDILLA ESTRUCTURAL DEL BALCÓN SUR: Perfil en U de aluminio anodizado embutido en el canto</text>
 <text x="20" y="663.0" fill="#94a3b8" font-size="5.8" font-weight="400">   del forjado de hormigón para alojar vidrio laminar templado 10+10.2 mm sin montantes verticales.</text>
+<text x="20" y="681.5" fill="#f8fafc" font-size="5.8" font-weight="700">6. CELOSÍA IROKO Y TIRO BBQ FUERA DE TERRAZA: Celosía cortaviento a X=16,30 m. El tiro de barbacoa</text>
+<text x="20" y="700.0" fill="#94a3b8" font-size="5.8" font-weight="400">   asciende por el testero exterior sin invadir el suelo de la terraza ni la visión de la suite.</text>
 <text x="14" y="705" fill="#38bdf8" font-size="7.8" font-weight="700">4. DETALLE SECCIÓN CONSTRUCTIVA DE FORJADO P1 Y BALCÓN SUR (E 1:20)</text>
 <rect x="14" y="715" width="452" height="310" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>
 <rect x="40" y="850" width="380" height="45" fill="url(#hatch-ansi31)" stroke="#e2e8f0" stroke-width="1.2"/>

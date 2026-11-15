@@ -520,10 +520,11 @@ def get_strict_3d_faces():
     add_rect_on_y(12.85, 13.80, 18.08, 3.35, 5.75, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5)# Paño Iroko entre D2 y Suite
     add_rect_on_y(13.80, 16.50, 18.08, 3.35, 5.75, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-14 Balconera Suite (2,70x2,40)
 
-    # Barandilla de vidrio del Balcón Sur al borde de los 3.00 m (Y = 21.42)
-    add_rect_on_y(6.15, 17.00, 21.42, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
+    # Barandilla de vidrio del Balcón Sur hasta X = 16.30 m (el cortaviento de iroko cierra en X = 16.30)
+    add_rect_on_y(6.15, 16.30, 21.42, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
     add_rect_on_x(6.15, 18.00, 21.40, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
-    add_rect_on_x(17.00, 18.00, 21.40, 3.35, 6.60, "#92400e", "#78350f", 0.92, layer=1, bias=-0.3)
+    # Cortaviento de lamas de Iroko RETRAÍDO a X = 16.30 m (la chimenea queda 100% por fuera en X=16.65..16.95)
+    add_rect_on_x(16.30, 18.00, 21.45, 3.35, 6.60, "#92400e", "#78350f", 0.98, layer=1, bias=-0.4)
 
     # --- FACHADA ESTE (X = 17.08) ---
     add_rect_on_x(17.08, 11.95, 12.85, 1.40, 2.40, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-04 Ventana Despensa PB (0,90x1,00)
@@ -531,8 +532,8 @@ def get_strict_3d_faces():
     add_rect_on_x(17.08, 9.40, 10.40, 4.15, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-14B Ventana Vestidor Suite P1 (1,00x1,20)
     add_rect_on_x(17.08, 10.40, 11.20, 4.15, 5.55, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5)# Listones Iroko Este
     add_rect_on_x(17.08, 14.00, 15.20, 4.15, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-14C Ventana Suite Este (1,20x1,20)
-    # Tiro Inox Barbacoa oculto tras celosía Iroko en X=16.70..16.95, Y=20.00..20.35, Z=2.90..6.95
-    add_box(16.70, 16.95, 20.00, 20.35, 2.90, 6.95, "#1f2937", "#0f172a", 1.0, layer=1, bias=-0.3)
+    # Tiro Inox Barbacoa en patinillo exterior pegado al testero Este (X=16.65..16.95, Y=20.00..20.35, Z=2.90..6.95)
+    add_box(16.65, 16.95, 20.00, 20.35, 2.90, 6.95, "#1f2937", "#0f172a", 1.0, layer=1, bias=-0.2)
 
     # --- FACHADA OESTE (X = 3.92 en PB) ---
     add_rect_on_x(3.92, 6.60, 7.50, 0.0, 2.20, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)    # P-02 Puerta Mudroom

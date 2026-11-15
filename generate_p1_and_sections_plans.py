@@ -735,6 +735,7 @@ def build_secciones_y_detalles_svg() -> str:
             "Sección Transversal B-B': Ala Técnica Oeste (Lavandería + Claraboyas Velux) -> Escalera -> Patio Central -> Cocina Isla Santos -> Despensa Walk-in",
             "Detalle D-03: Cubierta plana invertida sin tejas (2% pendiente, EPDM continuo, XPS 200mm, grava 60mm y sumideros interiores calefactados)",
             "Salidas de humos y ventilación: Campana BORA sin puente térmico, tiro barbacoa oculto tras celosía iroko y chimenea salón en ala Oeste",
+            "Aprovechamiento de pluviales: Depósito enterrado 6.000 L PEAD con filtro vórtex y grupo de presión para cisternas WC y riego de jardín",
         ]
     ))
 

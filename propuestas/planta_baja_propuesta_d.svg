@@ -133,7 +133,12 @@
 </g>
 <g id="urbanizacion-exteriores">
 <rect x="150.0" y="85.0" width="114.0" height="200.0" fill="url(#hatch-gravel)" stroke="#475569" stroke-width="0.7"/>
-<text x="206.8" y="185.0" fill="#94a3b8" font-size="6.5" text-anchor="middle">RAMPA ACCESO RODADO (p=2%)</text>
+<text x="206.8" y="137.0" fill="#94a3b8" font-size="6.5" text-anchor="middle">RAMPA ACCESO RODADO (p=2%)</text>
+<rect x="162.0" y="153.0" width="94.0" height="104.0" rx="6" fill="#082f49" stroke="#0284c7" stroke-width="1.2" stroke-dasharray="4,2"/>
+<circle cx="208.8" cy="205.0" r="16.0" fill="#0369a1" stroke="#38bdf8" stroke-width="1.0"/>
+<text x="208.8" y="195.0" fill="#38bdf8" font-size="6.0" font-weight="700" text-anchor="middle">DEPÓSITO PLUVIALES 6.000 L</text>
+<text x="208.8" y="219.0" fill="#bae6fd" font-size="5.2" text-anchor="middle">Filtro Vórtex + Bomba Presión</text>
+<text x="208.8" y="227.0" fill="#7dd3fc" font-size="4.8" text-anchor="middle">(Red Doble: Inodoros + Riego)</text>
 <rect x="150.0" y="285.0" width="114.0" height="280.0" fill="url(#hatch-tile-60)" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="8,3"/>
 <line x1="150.0" y1="305.0" x2="264.0" y2="305.0" stroke="#475569" stroke-width="0.6" stroke-dasharray="4,2"/>
 <line x1="150.0" y1="345.0" x2="264.0" y2="345.0" stroke="#475569" stroke-width="0.6" stroke-dasharray="4,2"/>
@@ -1298,19 +1303,21 @@
     </g>
 <text x="65" y="878" fill="#10b981" font-size="6.2" font-weight="700">Círculo Libre de Inscripción Ø1,50 m (Cumplimiento Decreto 29/2010 Normas do Hábitat Galego)</text>
 <text x="14" y="925" fill="#f43f5e" font-size="8" font-weight="700">5. PRESCRIPCIONES TÉCNICAS OBLIGATORIAS DE EJECUCIÓN EN OBRA</text>
-<rect x="14" y="935" width="487" height="285" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>
-<text x="22" y="953" fill="#f8fafc" font-size="6.1" font-weight="700">1. BARRERA ANTI-RADÓN (CTE DB-HS6 ZONA II OLEIROS): Lámina elastomérica continua de e ≥ 2,0 mm</text>
-<text x="22" y="974" fill="#94a3b8" font-size="6.1" font-weight="400">   (D ≤ 10^-11 m²/s) bajo solera con solapes de 15 cm termosoldados y pasamuros sellados con manguito.</text>
-<text x="22" y="995" fill="#f8fafc" font-size="6.1" font-weight="700">2. ENRASADO COTA CERO SIN PUENTE TÉRMICO: Todos los carriles inferiores de correderas Cortizo Cor Vision</text>
-<text x="22" y="1016" fill="#94a3b8" font-size="6.1" font-weight="400">   Plus descansan sobre premarco térmico de Purenit de 50 mm y canaleta lineal oculta inox AISI 316.</text>
-<text x="22" y="1037" fill="#f8fafc" font-size="6.1" font-weight="700">3. PATIO CORRALA ABIERTO AL CIELO: Prohibido cerrar el patio con lucernarios (elimina sobrecalentamiento).</text>
-<text x="22" y="1058" fill="#94a3b8" font-size="6.1" font-weight="400">   Pendiente del 1,5% bajo tarima de Iroko sobre plots hacia 2 sumideros sifónicos pluviales Ø110 mm.</text>
-<text x="22" y="1079" fill="#f8fafc" font-size="6.1" font-weight="700">4. CHIMENEA ESTANCA PASSIVHAUS: Hogar cerrado Stûv 21 con conducto de admisión de aire exterior Ø150 mm</text>
-<text x="22" y="1100" fill="#94a3b8" font-size="6.1" font-weight="400">   bajo solera. Garantiza estanqueidad BlowerDoor (n50 ≤ 1,0 h^-1) sin interferir con la VMC Zehnder.</text>
-<text x="22" y="1121" fill="#f8fafc" font-size="6.1" font-weight="700">5. EXTRACCIÓN DE COCINA BORA PURE: Conducto plano insonorizado Bora Ecotube embutido por cámara</text>
-<text x="22" y="1142" fill="#94a3b8" font-size="6.1" font-weight="400">   sanitaria hacia compuerta mural motorizada estanca en fachada. Circuito eléctrico dedicado C3 (6 mm²).</text>
-<text x="22" y="1163" fill="#f8fafc" font-size="6.1" font-weight="700">6. INDEPENDENCIA DEL BAÑO PB (NHG GALICIA): El Baño E-06 cuenta con distribuidor neutro previo y doble</text>
-<text x="22" y="1184" fill="#94a3b8" font-size="6.1" font-weight="400">   puerta (P-05 y P-06) respecto a la cocina y comedor, cumpliendo estrictamente el Decreto 29/2010.</text>
+<rect x="14" y="935" width="487" height="330" fill="#0b1120" stroke="#475569" stroke-width="0.7"/>
+<text x="22" y="951" fill="#f8fafc" font-size="6.0" font-weight="700">1. BARRERA ANTI-RADÓN (CTE DB-HS6 ZONA II OLEIROS): Lámina elastomérica continua de e ≥ 2,0 mm</text>
+<text x="22" y="971" fill="#94a3b8" font-size="6.0" font-weight="400">   (D ≤ 10^-11 m²/s) bajo solera con solapes de 15 cm termosoldados y pasamuros sellados con manguito.</text>
+<text x="22" y="991" fill="#f8fafc" font-size="6.0" font-weight="700">2. ENRASADO COTA CERO SIN PUENTE TÉRMICO: Todos los carriles inferiores de correderas Cortizo Cor Vision</text>
+<text x="22" y="1011" fill="#94a3b8" font-size="6.0" font-weight="400">   Plus descansan sobre premarco térmico de Purenit de 50 mm y canaleta lineal oculta inox AISI 316.</text>
+<text x="22" y="1031" fill="#f8fafc" font-size="6.0" font-weight="700">3. PATIO CORRALA ABIERTO AL CIELO: Prohibido cerrar el patio con lucernarios (elimina sobrecalentamiento).</text>
+<text x="22" y="1051" fill="#94a3b8" font-size="6.0" font-weight="400">   Pendiente del 1,5% bajo tarima de Iroko sobre plots hacia 2 sumideros sifónicos pluviales Ø110 mm.</text>
+<text x="22" y="1071" fill="#f8fafc" font-size="6.0" font-weight="700">4. CHIMENEA ESTANCA PASSIVHAUS: Hogar cerrado Stûv 21 con conducto de admisión de aire exterior Ø150 mm</text>
+<text x="22" y="1091" fill="#94a3b8" font-size="6.0" font-weight="400">   bajo solera. Garantiza estanqueidad BlowerDoor (n50 ≤ 1,0 h^-1) sin interferir con la VMC Zehnder.</text>
+<text x="22" y="1111" fill="#f8fafc" font-size="6.0" font-weight="700">5. EXTRACCIÓN DE COCINA BORA PURE: Conducto plano insonorizado Bora Ecotube embutido por cámara</text>
+<text x="22" y="1131" fill="#94a3b8" font-size="6.0" font-weight="400">   sanitaria hacia compuerta mural motorizada estanca en fachada. Circuito eléctrico dedicado C3 (6 mm²).</text>
+<text x="22" y="1151" fill="#f8fafc" font-size="6.0" font-weight="700">6. INDEPENDENCIA DEL BAÑO PB (NHG GALICIA): El Baño E-06 cuenta con distribuidor neutro previo y doble</text>
+<text x="22" y="1171" fill="#94a3b8" font-size="6.0" font-weight="400">   puerta (P-05 y P-06) respecto a la cocina y comedor, cumpliendo estrictamente el Decreto 29/2010.</text>
+<text x="22" y="1191" fill="#f8fafc" font-size="6.0" font-weight="700">7. APROVECHAMIENTO PLUVIALES (177.000 L/AÑO): Depósito enterrado 6.000 L PEAD con filtro vórtex</text>
+<text x="22" y="1211" fill="#94a3b8" font-size="6.0" font-weight="400">   autolimpiable y grupo de presión hidroneumático para alimentar cisternas WC y riego de jardín.</text>
 </g>
 <g class="iso-title-block" transform="translate(30.0, 1365.0)">
 <rect x="0" y="0" width="1440.0" height="65.0" fill="#090e1a" stroke="#cbd5e1" stroke-width="1.3"/>
