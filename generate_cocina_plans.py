@@ -344,7 +344,7 @@ def build_cocina_planta_svg():
     rx = 1500
     out.append(f'<rect x="{rx}" y="30" width="420" height="1070" fill="#0f172a" stroke="#334155" stroke-width="1.0"/>')
     out.append(f'<rect x="{rx+10}" y="42" width="400" height="26" fill="#1e293b"/>')
-    out.append(f'<text x="{rx+20}" y="59" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="700">MEMORIA SUITE COCINA & BODEGA V2</text>')
+    out.append(f'<text x="{rx+20}" y="59" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="700">MEMORIA SUITE COCINA &amp; BODEGA V2</text>')
 
     specs = [
         ("1. ZONIFICACIÓN TRAS TRASLADO LAVANDERÍA", "#38bdf8", [
@@ -649,7 +649,7 @@ def build_cocina_elevaciones_svg():
     out.append(f'<text x="{dx(-0.35):.1f}" y="{d_ceil_y+4:.1f}" fill="#f59e0b" font-family="monospace" font-size="8.0" font-weight="700" text-anchor="end">FALSO TECHO +2,65 m</text>')
 
     out.append(f'<rect x="{dx(0.0):.1f}" y="{d_ceil_y-32:.1f}" width="480" height="22" fill="#1e293b"/>')
-    out.append(f'<text x="{dx(0.0)+10:.1f}" y="{d_ceil_y-17:.1f}" fill="#f59e0b" font-family="monospace" font-size="9.0" font-weight="700">ALZADO D · INTERIOR DESPENSA WALK-IN & CAVA BODEGA SANTOS (2,30×2,65 m)</text>')
+    out.append(f'<text x="{dx(0.0)+10:.1f}" y="{d_ceil_y-17:.1f}" fill="#f59e0b" font-family="monospace" font-size="9.0" font-weight="700">ALZADO D · INTERIOR DESPENSA WALK-IN &amp; CAVA BODEGA SANTOS (2,30×2,65 m)</text>')
 
     # 1. Módulo Cava de Vinos Climatizada (X=0.00..0.70m, H=2,20m)
     cava_w_px = 0.70 * S2
