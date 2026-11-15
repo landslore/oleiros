@@ -243,11 +243,11 @@
 <rect x="1371.8" y="338.1" width="10.9" height="4" fill="#fbbf24"/>
 <line x1="1465.0" y1="435.0" x2="1465.0" y2="316.0" stroke="#10b981" stroke-width="2.0"/>
 <circle cx="1465.0" cy="316.0" r="28.9" fill="#064e3b" fill-opacity="0.45" stroke="#10b981" stroke-width="1.2"/>
-<text x="1264.4" y="389.1" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">10. SALA TÉCNICA</text>
+<text x="1264.4" y="389.1" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">13B. LAVAND. / TÉCNICA</text>
 <text x="1349.4" y="389.1" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">09. ESCALERA</text>
 <text x="1465.0" y="389.1" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">00. PATIO 4×4m</text>
 <text x="1589.1" y="389.1" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">08. COCINA ISLA</text>
-<text x="1672.4" y="389.1" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">07. LAVAND.</text>
+<text x="1672.4" y="389.1" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">07B. DESPENSA</text>
 <text x="1312.0" y="285.4" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">13. BAÑO / GALERÍA P1</text>
 <text x="1618.0" y="285.4" text-anchor="middle" fill="#e2e8f0" font-size="5.6" font-weight="700">16. BAÑO Y VESTIDOR SUITE</text>
 <g class="cad-dim">
@@ -375,15 +375,19 @@
 <rect x="170" y="118" width="210" height="27" fill="url(#hatch-gravel)" stroke="#94a3b8" stroke-width="1.0"/>
 <polyline points="90,72 170,72 170,208 380,213" fill="none" stroke="#ef4444" stroke-width="2.2" stroke-dasharray="6,2"/>
 <path d="M 38,65 V 50 H 180 V 65" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
-<text x="20" y="330" fill="#cbd5e1" font-size="5.8">1. Albardilla de aluminio lacado e=2 mm con doble goterón y pendiente hacia el interior de cubierta</text>
-<text x="20" y="347" fill="#cbd5e1" font-size="5.8">2. Envolvente continua SATE EPS Grafito 160 mm (λ=0,031 W/mK) envolviendo el peto (sin puente térmico)</text>
-<text x="20" y="364" fill="#cbd5e1" font-size="5.8">3. Lastre de canto rodado lavado Ø16/32 mm (e = 60 mm) sobre geotextil antipunzonamiento 300 g/m²</text>
-<text x="20" y="381" fill="#cbd5e1" font-size="5.8">4. Doble capa de aislamiento Poliestireno Extruido XPS 100+100 mm = 200 mm (U cubierta = 0,14 W/m²K)</text>
-<text x="20" y="465" fill="#cbd5e1" font-size="5.8">5. Impermeabilización bicapa EPDM 1,5 mm sobre hormigón celular de formación de pendientes (min. 2%)</text>
-<text x="20" y="503" fill="#cbd5e1" font-size="5.8">6. Forjado reticular / losa maciza HA-25 (h = 250+50 mm) + barrera de vapor bituminosa</text>
-<text x="20" y="550" fill="#cbd5e1" font-size="5.8">7. Trasdosado interior autoportante PYL 12,5+12,5 mm con lana mineral 48 mm y cámara de instalaciones</text>
+<text x="20" y="270" fill="#cbd5e1" font-size="5.4">1. Albardilla de aluminio lacado e=2 mm con doble goterón y pendiente hacia el interior de cubierta</text>
+<text x="20" y="286" fill="#cbd5e1" font-size="5.4">2. Envolvente continua SATE EPS Grafito 160 mm (λ=0,031 W/mK) envolviendo el peto (sin puente térmico)</text>
+<text x="20" y="302" fill="#cbd5e1" font-size="5.4">3. Lastre canto rodado lavado Ø16/32 mm (e = 60 mm) sobre geotextil antipunzonamiento 300 g/m² (frena caudal y UV)</text>
+<text x="20" y="318" fill="#cbd5e1" font-size="5.4">4. Doble capa aislamiento Poliestireno Extruido XPS 100+100 mm = 200 mm (U cubierta = 0,14 W/m²K Passivhaus)</text>
+<text x="20" y="334" fill="#cbd5e1" font-size="5.4">5. Impermeabilización bicapa EPDM 1,5 mm termosoldada sobre formación de pendientes 2% hormigón celular</text>
+<text x="20" y="350" fill="#cbd5e1" font-size="5.4">6. Sumideros sifónicos interiores Ø110 mm con cestillo paragravas + Rebosadero de seguridad en peto (+10 cm)</text>
+<text x="20" y="366" fill="#cbd5e1" font-size="5.4">7. Forjado reticular / losa maciza HA-25 (h = 250+50 mm) + barrera de vapor bituminosa</text>
+<text x="20" y="382" fill="#cbd5e1" font-size="5.4">8. Trasdosado interior autoportante PYL 12,5+12,5 mm con lana mineral 48 mm y cámara de instalaciones</text>
+<text x="20" y="398" fill="#cbd5e1" font-size="5.4">9. Campana BORA Pure: recirculación carbón activo regenerable sin fuga térmica (opción Thermobox estanca)</text>
+<text x="20" y="414" fill="#cbd5e1" font-size="5.4">10. Tiros de humos: Salón tubo inox doble pared +7,25m Oeste. Barbacoa tubo inox Ø250mm tras celosía iroko +6,80m</text>
+<text x="20" y="430" fill="#cbd5e1" font-size="5.4">11. Iluminación cenital ala Oeste: Claraboyas tubulares Velux SunTunnel estancas para Lavandería y Sala Técnica</text>
 <rect x="16" y="452" width="542" height="28" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>
-<text x="26" y="469" fill="#10b981" font-size="6.2" font-weight="700">CONTINUIDAD DE LA ENVOLVENTE TÉRMICA (Ψ ≤ 0,01 W/mK · ESTÁNDAR PASSIVHAUS EN CLIMA ATLÁNTICO C1)</text>
+<text x="26" y="469" fill="#10b981" font-size="6.2" font-weight="700">CONTINUIDAD ENVOLVENTE PASSIVHAUS &amp; DRENAJE INTERIOR ANTICONGELACIÓN (CTE DB-HS1 Y DB-HE1)</text>
 </g>
 <g class="iso-title-block" transform="translate(28.0, 1085.0)">
 <rect x="0" y="0" width="1744.0" height="128.0" fill="#090e1a" stroke="#cbd5e1" stroke-width="1.3"/>
@@ -397,14 +401,14 @@
 <text x="10" y="74.4" fill="#94a3b8" font-family="monospace" font-size="6.8">EMPLAZAMIENTO: Liáns / Santa Cruz · Concello de Oleiros (A Coruña) · Clima C1</text>
 <text x="10" y="86.4" fill="#10b981" font-family="monospace" font-size="6.8" font-weight="700">NORMATIVA: PGOM Oleiros Ord. 2B (Ocup. ≤ 20%) · Decreto 29/2010 NHG · CTE DB-HE/HS6</text>
 <text x="603.0" y="13" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700">ESPECIFICACIONES Y PARÁMETROS GEOMÉTRICOS DE HOJA</text>
-<text x="603.0" y="25.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Sección Longitudinal A-A' (Norte-Sur): Porche Norte -> Hall -> Patio Central -> Salón-Comedor -> Porche Sur -> Piscina</text>
-<text x="603.0" y="36.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Sección Transversal B-B' (Oeste-Este): Sala Técnica -> Escalera -> Patio Central -> Cocina Isla Santos -> Lavandería</text>
-<text x="603.0" y="48.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Altura Máxima de Coronación: Z = +6,80 m ≤ 7,00 m (Cumple PGOM Oleiros Ordenanza 2B · Bajo Rasante 0,00 m²)</text>
-<text x="603.0" y="59.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Detalles Constructivos 1:20: D-01 Cáviti + Radón DB-HS6 · D-02 Umbral Cota Cero Purenit · D-03 Cubierta Invertida</text>
+<text x="603.0" y="25.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Sección Longitudinal A-A': Porche Norte -> Hall -> Patio -> Salón-Comedor -> Porche Sur (Fondo 3,00m) -> Preinstalación Piscina en Césped</text>
+<text x="603.0" y="36.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Sección Transversal B-B': Ala Técnica Oeste (Lavandería + Claraboyas Velux) -> Escalera -> Patio Central -> Cocina Isla Santos -> Despensa Walk-in</text>
+<text x="603.0" y="48.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Detalle D-03: Cubierta plana invertida sin tejas (2% pendiente, EPDM continuo, XPS 200mm, grava 60mm y sumideros interiores calefactados)</text>
+<text x="603.0" y="59.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Salidas de humos y ventilación: Campana BORA sin puente térmico, tiro barbacoa oculto tras celosía iroko y chimenea salón en ala Oeste</text>
 <text x="1193.9" y="12" fill="#64748b" font-family="monospace" font-size="6">TÍTULO DEL PLANO:</text>
 <text x="1193.9" y="24" fill="#38bdf8" font-family="monospace" font-size="8" font-weight="700">SECCIONES CONSTRUCTIVAS A-A' Y B-B' (1:50) Y DETALLES DE EJECUCIÓN (1:20)</text>
 <text x="1193.9" y="76.0" fill="#64748b" font-family="monospace" font-size="6">SUBTÍTULO / CONTENIDO:</text>
-<text x="1193.9" y="87.0" fill="#e2e8f0" font-family="monospace" font-size="6.5">Altimetría Z, Soleamiento Estacional, Detalle Anti-Radón DB-HS6, Umbral Cota Cero Purenit y Cubierta</text>
+<text x="1193.9" y="87.0" fill="#e2e8f0" font-family="monospace" font-size="6.5">Altimetría Z, Soleamiento, Anti-Radón DB-HS6, Umbral Purenit Cota Cero y Cubierta Invertida</text>
 <text x="1490.4" y="12" fill="#64748b" font-family="monospace" font-size="6">PLANO Nº:</text>
 <text x="1736.0" y="25" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="700" text-anchor="end">E-05</text>
 <text x="1490.4" y="76.0" fill="#64748b" font-family="monospace" font-size="6">ESCALA / FECHA:</text>

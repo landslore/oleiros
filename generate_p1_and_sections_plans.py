@@ -566,11 +566,11 @@ def build_secciones_y_detalles_svg() -> str:
     out.append(f'<circle cx="{bx(10.00):.1f}" cy="{bz(3.50):.1f}" r="{0.85*S_b:.1f}" fill="#064e3b" fill-opacity="0.45" stroke="#10b981" stroke-width="1.2"/>')
 
     b_labels = [
-        (4.10, 1.35, "10. SALA TÉCNICA"),
+        (4.10, 1.35, "13B. LAVAND. / TÉCNICA"),
         (6.60, 1.35, "09. ESCALERA"),
         (10.00, 1.35, "00. PATIO 4×4m"),
         (13.65, 1.35, "08. COCINA ISLA"),
-        (16.10, 1.35, "07. LAVAND."),
+        (16.10, 1.35, "07B. DESPENSA"),
         (5.50, 4.40, "13. BAÑO / GALERÍA P1"),
         (14.50, 4.40, "16. BAÑO Y VESTIDOR SUITE"),
     ]
@@ -704,18 +704,22 @@ def build_secciones_y_detalles_svg() -> str:
 
     d3_callouts = [
         (60,  "1. Albardilla de aluminio lacado e=2 mm con doble goterón y pendiente hacia el interior de cubierta"),
-        (100, "2. Envolvente continua SATE EPS Grafito 160 mm (λ=0,031 W/mK) envolviendo el peto (sin puente térmico)"),
-        (132, "3. Lastre de canto rodado lavado Ø16/32 mm (e = 60 mm) sobre geotextil antipunzonamiento 300 g/m²"),
-        (175, "4. Doble capa de aislamiento Poliestireno Extruido XPS 100+100 mm = 200 mm (U cubierta = 0,14 W/m²K)"),
-        (210, "5. Impermeabilización bicapa EPDM 1,5 mm sobre hormigón celular de formación de pendientes (min. 2%)"),
-        (248, "6. Forjado reticular / losa maciza HA-25 (h = 250+50 mm) + barrera de vapor bituminosa"),
-        (295, "7. Trasdosado interior autoportante PYL 12,5+12,5 mm con lana mineral 48 mm y cámara de instalaciones"),
+        (95,  "2. Envolvente continua SATE EPS Grafito 160 mm (λ=0,031 W/mK) envolviendo el peto (sin puente térmico)"),
+        (125, "3. Lastre canto rodado lavado Ø16/32 mm (e = 60 mm) sobre geotextil antipunzonamiento 300 g/m² (frena caudal y UV)"),
+        (155, "4. Doble capa aislamiento Poliestireno Extruido XPS 100+100 mm = 200 mm (U cubierta = 0,14 W/m²K Passivhaus)"),
+        (185, "5. Impermeabilización bicapa EPDM 1,5 mm termosoldada sobre formación de pendientes 2% hormigón celular"),
+        (215, "6. Sumideros sifónicos interiores Ø110 mm con cestillo paragravas + Rebosadero de seguridad en peto (+10 cm)"),
+        (245, "7. Forjado reticular / losa maciza HA-25 (h = 250+50 mm) + barrera de vapor bituminosa"),
+        (275, "8. Trasdosado interior autoportante PYL 12,5+12,5 mm con lana mineral 48 mm y cámara de instalaciones"),
+        (305, "9. Campana BORA Pure: recirculación carbón activo regenerable sin fuga térmica (opción Thermobox estanca)"),
+        (335, "10. Tiros de humos: Salón tubo inox doble pared +7,25m Oeste. Barbacoa tubo inox Ø250mm tras celosía iroko +6,80m"),
+        (365, "11. Iluminación cenital ala Oeste: Claraboyas tubulares Velux SunTunnel estancas para Lavandería y Sala Técnica"),
     ]
     for cy_c, c_txt in d3_callouts:
-        out.append(f'<text x="20" y="{cy_c+255 if cy_c>200 else 330 + d3_callouts.index((cy_c, c_txt))*17}" fill="#cbd5e1" font-size="5.8">{c_txt}</text>')
+        out.append(f'<text x="20" y="{270 + d3_callouts.index((cy_c, c_txt))*16}" fill="#cbd5e1" font-size="5.4">{c_txt}</text>')
 
     out.append('<rect x="16" y="452" width="542" height="28" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>')
-    out.append('<text x="26" y="469" fill="#10b981" font-size="6.2" font-weight="700">CONTINUIDAD DE LA ENVOLVENTE TÉRMICA (Ψ ≤ 0,01 W/mK · ESTÁNDAR PASSIVHAUS EN CLIMA ATLÁNTICO C1)</text>')
+    out.append('<text x="26" y="469" fill="#10b981" font-size="6.2" font-weight="700">CONTINUIDAD ENVOLVENTE PASSIVHAUS &amp; DRENAJE INTERIOR ANTICONGELACIÓN (CTE DB-HS1 Y DB-HE1)</text>')
     out.append('</g>')
 
     # ISO 7200 Title Block
@@ -725,12 +729,12 @@ def build_secciones_y_detalles_svg() -> str:
         title="SECCIONES CONSTRUCTIVAS A-A' Y B-B' (1:50) Y DETALLES DE EJECUCIÓN (1:20)",
         scale="1:50 / 1:20 (Cotas m/mm)",
         phase="PROYECTO DE EJECUCIÓN",
-        subtitle="Altimetría Z, Soleamiento Estacional, Detalle Anti-Radón DB-HS6, Umbral Cota Cero Purenit y Cubierta",
+        subtitle="Altimetría Z, Soleamiento, Anti-Radón DB-HS6, Umbral Purenit Cota Cero y Cubierta Invertida",
         extra_notes=[
-            "Sección Longitudinal A-A' (Norte-Sur): Porche Norte -> Hall -> Patio Central -> Salón-Comedor -> Porche Sur -> Piscina",
-            "Sección Transversal B-B' (Oeste-Este): Sala Técnica -> Escalera -> Patio Central -> Cocina Isla Santos -> Lavandería",
-            "Altura Máxima de Coronación: Z = +6,80 m ≤ 7,00 m (Cumple PGOM Oleiros Ordenanza 2B · Bajo Rasante 0,00 m²)",
-            "Detalles Constructivos 1:20: D-01 Cáviti + Radón DB-HS6 · D-02 Umbral Cota Cero Purenit · D-03 Cubierta Invertida",
+            "Sección Longitudinal A-A': Porche Norte -> Hall -> Patio -> Salón-Comedor -> Porche Sur (Fondo 3,00m) -> Preinstalación Piscina en Césped",
+            "Sección Transversal B-B': Ala Técnica Oeste (Lavandería + Claraboyas Velux) -> Escalera -> Patio Central -> Cocina Isla Santos -> Despensa Walk-in",
+            "Detalle D-03: Cubierta plana invertida sin tejas (2% pendiente, EPDM continuo, XPS 200mm, grava 60mm y sumideros interiores calefactados)",
+            "Salidas de humos y ventilación: Campana BORA sin puente térmico, tiro barbacoa oculto tras celosía iroko y chimenea salón en ala Oeste",
         ]
     ))
 

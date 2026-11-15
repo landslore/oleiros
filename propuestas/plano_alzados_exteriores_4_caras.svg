@@ -288,12 +288,16 @@
 <rect x="133.7" y="897.9" width="102.0" height="10.2" fill="#334155" stroke="#f8fafc" stroke-width="1.3"/>
 <rect x="133.7" y="908.1" width="11.9" height="96.9" fill="#334155" stroke="#cbd5e1" stroke-width="1.2"/>
 <rect x="145.6" y="908.1" width="54.4" height="96.9" fill="#334155" stroke="#64748b" stroke-width="1.2"/>
-<text x="172.8" y="954.0" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.0">MURO TRASERO CHURRASQUEIRA</text>
+<text x="172.8" y="954.0" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.8">MURO 100% CIEGO BARBACOA</text>
+<text x="172.8" y="964.2" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="4.2">(Hogar mirando al interior del porche)</text>
 <rect x="133.7" y="897.9" width="102.0" height="8.5" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>
 <rect x="133.7" y="860.5" width="102.0" height="37.4" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>
 <rect x="133.7" y="780.6" width="10.2" height="110.5" fill="#78350f" stroke="#d97706" stroke-width="1.0"/>
+<rect x="162.6" y="773.8" width="10.2" height="124.1" fill="#1e293b" stroke="#38bdf8" stroke-width="0.9" stroke-dasharray="4,2"/>
+<rect x="160.9" y="765.3" width="13.6" height="8.5" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="167.7" y="760.2" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.6">TIRO BBQ +6,80m (TRAS CELOSÍA)</text>
 <rect x="426.1" y="923.4" width="30.6" height="34.0" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>
-<text x="441.4" y="916.6" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">C-04 LAVANDERÍA (0,90×1,00)</text>
+<text x="441.4" y="916.6" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">C-04 DESPENSA (0,90×1,00)</text>
 <rect x="482.2" y="948.9" width="68.0" height="17.0" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>
 <text x="516.2" y="942.1" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.8">C-04B COCINA CORRIDA (2,00×0,50)</text>
 <rect x="497.5" y="816.3" width="57.8" height="54.4" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>
@@ -375,14 +379,19 @@
 <rect x="1429.0" y="897.9" width="117.3" height="8.5" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>
 <rect x="1429.0" y="860.5" width="117.3" height="37.4" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>
 <rect x="987.0" y="887.7" width="559.3" height="117.3" fill="#334155" stroke="#e2e8f0" stroke-width="1.5"/>
-<text x="1495.3" y="945.5" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">MURO OESTE CIERRE PORCHE</text>
+<text x="1507.2" y="897.9" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">CIERRE OESTE PORCHE SUR</text>
 <rect x="1041.4" y="930.2" width="30.6" height="74.8" fill="#78350f" stroke="#fbbf24" stroke-width="1.2"/>
 <text x="1056.7" y="923.4" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">P-02 MUDROOM</text>
 <rect x="1143.4" y="930.2" width="47.6" height="74.8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
 <line x1="1167.2" y1="930.2" x2="1167.2" y2="1005.0" stroke="#38bdf8" stroke-width="0.8"/>
 <text x="1167.2" y="923.4" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.8">P-05 SALA TÉC./SURF</text>
+<rect x="1449.4" y="930.2" width="34.0" height="74.8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2"/>
+<text x="1466.4" y="923.4" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">C-09B CASETA APEROS</text>
+<ellipse cx="1276.0" cy="884.3" rx="10.2" ry="4.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.1"/>
+<ellipse cx="1367.8" cy="884.3" rx="10.2" ry="4.1" fill="#38bdf8" stroke="#0284c7" stroke-width="1.1"/>
+<text x="1321.9" y="877.5" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.6">2 LUCERNARIOS CENITALES VELUX SUNTUNNEL (LAVANDERÍA Y TÉCNICA)</text>
 <rect x="1313.4" y="758.5" width="22.1" height="246.5" fill="#0f172a" stroke="#94a3b8" stroke-width="1.2"/>
-<text x="1324.3" y="752.7" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="5.0">CHIMENEA +7,25m</text>
+<text x="1324.3" y="752.7" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="5.0">CHIMENEA SALÓN +7,25m</text>
 <rect x="987.0" y="906.4" width="231.2" height="7.5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.3"/>
 <rect x="988.7" y="913.9" width="5.1" height="91.1" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
 <rect x="1100.9" y="913.9" width="5.1" height="91.1" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
@@ -405,8 +414,8 @@
       <line x1="1444.3" y1="1008.0" x2="1444.3" y2="1041.0" stroke="#fbbf24" stroke-width="0.45" opacity="0.75"/>
       <line x1="1546.3" y1="1008.0" x2="1546.3" y2="1041.0" stroke="#fbbf24" stroke-width="0.45" opacity="0.75"/>
       <line x1="1444.3" y1="1037.0" x2="1546.3" y2="1037.0" stroke="#fbbf24" stroke-width="0.75" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
-      <rect x="1403.8" y="1028.7" width="183.1" height="9.8" fill="#0b1120" opacity="0.9"/>
-      <text x="1495.3" y="1035.5" fill="#fbbf24" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">3,00 m (Cierre Lateral Granito Porche Sur)</text>
+      <rect x="1395.3" y="1028.7" width="199.9" height="9.8" fill="#0b1120" opacity="0.9"/>
+      <text x="1495.3" y="1035.5" fill="#fbbf24" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">3,00 m (Caseta Jardín y Cierre Lateral Porche)</text>
     </g>
 <g class="cad-dim">
       <line x1="987.0" y1="1008.0" x2="987.0" y2="1065.0" stroke="#f8fafc" stroke-width="0.45" opacity="0.75"/>
@@ -427,14 +436,14 @@
 <text x="10" y="74.4" fill="#94a3b8" font-family="monospace" font-size="6.8">EMPLAZAMIENTO: Liáns / Santa Cruz · Concello de Oleiros (A Coruña) · Clima C1</text>
 <text x="10" y="86.4" fill="#10b981" font-family="monospace" font-size="6.8" font-weight="700">NORMATIVA: PGOM Oleiros Ord. 2B (Ocup. ≤ 20%) · Decreto 29/2010 NHG · CTE DB-HE/HS6</text>
 <text x="603.0" y="13" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700">ESPECIFICACIONES Y PARÁMETROS GEOMÉTRICOS DE HOJA</text>
-<text x="603.0" y="25.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Norte: Puerta Pivotante P-01 (1,10m), Despacho C-02 (1,80m), Baño PB C-03 (1,00m), Baño Hijos C-10 (1,00m), Sala Polivalente C-10B (1,80m) y Baño Suite C-11 (1,20m)</text>
-<text x="603.0" y="36.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Sur: Correderas Salón C-08 (4,80m) y Comedor C-09 (3,60m) bajo Porche de 3,00m cerrado al Oeste por muro de granito; Balcón corrido P1 de 3,00m unificado con 3 balconeras</text>
-<text x="603.0" y="48.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Este: Ventana Lavandería C-04 (0,90m) + Ventana Corrida Cocina C-04B (2,00×0,50m) en PB; Ventanas Vestidor C-14B y Suite C-14C en P1; Muro ciego trasero de Churrasqueira</text>
-<text x="603.0" y="59.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Oeste: Muro de granito continuo de 16,45m (Mudroom, Sala Técnica, Salón y Cierre Porche Sur) con chimenea +7,25m, 12 paneles FV y Pérgola 2 coches</text>
+<text x="603.0" y="25.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Norte: Puerta Pivotante P-01 (1,10m), Despacho C-02 (1,80m), Baño PB C-03, Baño Hijos C-10, Sala Polivalente C-10B y Baño Suite C-11</text>
+<text x="603.0" y="36.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Sur: Correderas Salón C-08 (4,80m) y Comedor C-09 (3,60m) bajo Porche de 3,00m cerrado al Oeste por Caseta de Jardinería en granito</text>
+<text x="603.0" y="48.0" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Este: Muro Barbacoa 100% CIEGO al exterior (hogar hacia dentro); tiro inox Ø250mm oculto tras celosía iroko (+6,80m); C-04 Despensa Santos</text>
+<text x="603.0" y="59.5" fill="#cbd5e1" font-family="monospace" font-size="6.5">Alzado Oeste: Muro granito 16,45m continuo con 3 puertas exteriores (P-02 Mudroom, P-05 Surf, C-09B Caseta Jardín) + 2 lucernarios Velux SunTunnel</text>
 <text x="1193.9" y="12" fill="#64748b" font-family="monospace" font-size="6">TÍTULO DEL PLANO:</text>
 <text x="1193.9" y="24" fill="#38bdf8" font-family="monospace" font-size="8" font-weight="700">ALZADOS EXTERIORES DE LAS 4 FACHADAS (NORTE, SUR, ESTE Y OESTE)</text>
 <text x="1193.9" y="76.0" fill="#64748b" font-family="monospace" font-size="6">SUBTÍTULO / CONTENIDO:</text>
-<text x="1193.9" y="87.0" fill="#e2e8f0" font-family="monospace" font-size="6.5">Muro Cortaviento Oeste Continuo + Vuelo Sur Unificado Sin Escalón + Preinstalación Piscina en Césped + Ventanas Este</text>
+<text x="1193.9" y="87.0" fill="#e2e8f0" font-family="monospace" font-size="6.5">Muro Cortaviento Oeste Continuo + 3 Accesos + Tiro Barbacoa Oculto + Cubiertas Planas Invertidas</text>
 <text x="1490.4" y="12" fill="#64748b" font-family="monospace" font-size="6">PLANO Nº:</text>
 <text x="1736.0" y="25" fill="#f59e0b" font-family="monospace" font-size="11" font-weight="700" text-anchor="end">A-03</text>
 <text x="1490.4" y="76.0" fill="#64748b" font-family="monospace" font-size="6">ESCALA / FECHA:</text>
