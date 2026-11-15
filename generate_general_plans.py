@@ -861,21 +861,26 @@ def build_planta_alta_svg():
     # CAPA 2: PAVIMENTOS INTERIORES PLANTA PRIMERA EN "U"
     # =========================================================================
     out.append('<g id="pavimentos-p1">')
-    # ALA OESTE: Desembarco y Galería (X=6.15..8.50, Y=8.50..14.30)
+    # ALA OESTE: Escalera y Desembarco (X=6.15..8.50, Y=8.50..14.30)
     out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(8.50):.1f}" width="{L1(2.35):.1f}" height="{L1(5.80):.1f}" fill="url(#hatch-wood-deck)"/>')
+
+    # ALA OESTE: Baño Hijos PA-19 (X=6.15..8.50, Y=14.30..17.00) - Pavimento Cerámico C3
+    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(14.30):.1f}" width="{L1(2.35):.1f}" height="{L1(2.70):.1f}" fill="url(#hatch-tile-60)"/>')
+
+    # GALERÍA CLAUSTRO CENTRAL PA-16 (X=8.50..13.50, Y=14.30..17.00) - Roble Natural
+    out.append(f'<rect x="{X1(8.50):.1f}" y="{Y1(14.30):.1f}" width="{L1(5.00):.1f}" height="{L1(2.70):.1f}" fill="url(#hatch-wood-deck)"/>')
 
     # ALA ESTE: Suite sobre Cocina (X=13.50..17.00, Y=8.50..17.00)
     out.append(f'<rect x="{X1(13.50):.1f}" y="{Y1(8.50):.1f}" width="{L1(3.50):.1f}" height="{L1(8.50):.1f}" fill="url(#hatch-wood-deck)"/>')
-    # Suelo porcelánico C3 en Baño Suite (Y=8.50..12.00, X=13.50..17.00)
+    # Suelo porcelánico C3 en Baño Suite PA-22 (Y=8.50..12.00, X=13.50..17.00)
     out.append(f'<rect x="{X1(13.50):.1f}" y="{Y1(8.50):.1f}" width="{L1(3.50):.1f}" height="{L1(3.50):.1f}" fill="url(#hatch-tile-60)"/>')
 
-    # ALA SUR: Galería + Baño Hijos + Dormitorios (X=6.15..17.00, Y=14.30..21.45)
-    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(14.30):.1f}" width="{L1(10.85):.1f}" height="{L1(7.15):.1f}" fill="url(#hatch-wood-deck)"/>')
-    # Suelo porcelánico C3 en Baño Hijos (X=8.50..10.50, Y=14.30..17.00)
-    out.append(f'<rect x="{X1(8.50):.1f}" y="{Y1(14.30):.1f}" width="{L1(2.00):.1f}" height="{L1(2.70):.1f}" fill="url(#hatch-tile-60)"/>')
+    # BANDA SUR DE DORMITORIOS (X=6.15..17.00, Y=17.00..21.45) - Roble Natural
+    out.append(f'<rect x="{X1(6.15):.1f}" y="{Y1(17.00):.1f}" width="{L1(10.85):.1f}" height="{L1(4.45):.1f}" fill="url(#hatch-wood-deck)"/>')
 
-    # Serpentín de suelo radiante continuo en zonas habitables
-    out.append(f'<rect x="{X1(6.30):.1f}" y="{Y1(17.10):.1f}" width="{L1(10.40):.1f}" height="{L1(4.20):.1f}" fill="url(#hatch-radiant)" opacity="0.45"/>')
+    # Serpentín de suelo radiante continuo en dormitorios y vestidor
+    out.append(f'<rect x="{X1(6.30):.1f}" y="{Y1(17.15):.1f}" width="{L1(10.40):.1f}" height="{L1(4.15):.1f}" fill="url(#hatch-radiant)" opacity="0.45"/>')
+    out.append(f'<rect x="{X1(13.65):.1f}" y="{Y1(12.15):.1f}" width="{L1(3.10):.1f}" height="{L1(3.80):.1f}" fill="url(#hatch-radiant)" opacity="0.45"/>')
 
     # CHIMENEA EXTERIOR DE GRANITO MORENO EN FACHADA ESTE (OPCIÓN A · FUERA DE LA VIVIENDA)
     out.append(f'<rect x="{X1(17.00):.1f}" y="{Y1(20.65):.1f}" width="{L1(0.80):.1f}" height="{L1(0.80):.1f}" fill="#334155" stroke="#94a3b8" stroke-width="1.2"/>')
@@ -891,8 +896,9 @@ def build_planta_alta_svg():
     out.append('<g id="muros-exteriores">')
     wt = L1(0.35)
 
-    # 1. Envolvente Fachada Oeste (X=6.15, Y=8.50..21.45 · Muro Ciego Térmico Atlántico)
-    out.append(draw_wall_segment(X1(6.15), Y1(8.50), wt, L1(12.95), "ext"))
+    # 1. Envolvente Fachada Oeste (X=6.15, Y=8.50..21.45 · Muro Ciego Térmico Atlántico con ventana en Baño Hijos)
+    out.append(draw_wall_segment(X1(6.15), Y1(8.50), wt, L1(6.40), "ext"))   # Y=8.50..14.90
+    out.append(draw_wall_segment(X1(6.15), Y1(15.90), wt, L1(5.55), "ext"))  # Y=15.90..21.45 (Ventana C-16 en 14.90..15.90)
 
     # 2. Fachada Norte del Ala Oeste (Y=8.50, X=6.15..8.50)
     out.append(draw_wall_segment(X1(6.15), Y1(8.50), L1(2.35), wt, "ext"))
@@ -913,9 +919,8 @@ def build_planta_alta_svg():
     out.append(draw_wall_segment(X1(16.60), Y1(21.10), L1(0.40), wt, "ext"))  # Machón SE
 
     # 6. Muros Interiores que abrazan el Patio Claustro:
-    # Fachada Este del Ala Oeste hacia el patio (X=8.15..8.50, Y=8.50..14.30) con Gran Mirador Acristalado
-    out.append(draw_wall_segment(X1(8.15), Y1(8.50), wt, L1(0.60), "ext"))
-    out.append(draw_wall_segment(X1(8.15), Y1(13.70), wt, L1(0.60), "ext"))
+    # Fachada Este del Ala Oeste hacia el patio (X=8.15..8.50, Y=8.50..14.30)
+    out.append(draw_wall_segment(X1(8.15), Y1(8.50), wt, L1(5.80), "ext"))
 
     # Fachada Oeste del Ala Este hacia el patio (X=13.50..13.85, Y=8.50..14.30)
     out.append(draw_wall_segment(X1(13.50), Y1(8.50), wt, L1(5.80), "ext"))
@@ -924,8 +929,8 @@ def build_planta_alta_svg():
     for px_m, py_m, plbl in [
         (6.32, 8.67, "P-07"), (8.50, 8.67, "P-08"), (13.50, 8.67, "P-09"), (16.82, 8.67, "P-10"),
         (6.32, 14.47, "P-12"), (8.50, 14.47, "P-13"), (13.50, 14.47, "P-14"), (16.82, 14.47, "P-15"),
-        (6.32, 17.15, "P-16"), (10.00, 17.15, "P-17"), (13.50, 17.15, "P-17B"), (16.82, 17.15, "P-18"),
-        (6.32, 21.28, "PS-1"), (10.00, 21.28, "PS-2"), (13.50, 21.28, "PS-2B"), (16.82, 21.28, "PS-3"),
+        (6.32, 17.15, "P-16"), (9.85, 17.15, "P-17"), (13.50, 17.15, "P-17B"), (16.82, 17.15, "P-18"),
+        (6.32, 21.28, "PS-1"), (9.85, 21.28, "PS-2"), (13.50, 21.28, "PS-2B"), (16.82, 21.28, "PS-3"),
     ]:
         out.append(draw_pillar(X1(px_m), Y1(py_m), size_px=10, label=plbl))
     out.append('</g>')
@@ -936,37 +941,48 @@ def build_planta_alta_svg():
     out.append('<g id="tabiqueria-interior">')
     pt = L1(0.12)
 
-    # 1. Frente Acristalado Mirador hacia el Patio Claustro en Ala Oeste (X=8.50, Y=9.10..13.70)
-    # 2. Galería distribuidora Sur (Y=14.30..15.60, X=8.50..13.50): Ancho libre 1,30 m continuo
-    # Barandilla/frente acristalado fijo de seguridad hacia el patio en Y=14.30 (X=10.00..13.20)
-    out.append(f'<rect x="{X1(10.00):.1f}" y="{Y1(14.25):.1f}" width="{L1(3.20):.1f}" height="6" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<text x="{X1(11.60):.1f}" y="{Y1(14.05):.1f}" fill="#38bdf8" font-size="5.2" font-weight="700" text-anchor="middle">MIRADOR GALERÍA SOBRE PATIO CLAUSTRO</text>')
+    # 1. Gran Mirador Acristalado Sur del Patio Claustro (Y=14.30, X=8.50..13.50 · 5,00 m ancho)
+    out.append(f'<rect x="{X1(8.50):.1f}" y="{Y1(14.24):.1f}" width="{L1(5.00):.1f}" height="6" fill="#38bdf8" fill-opacity="0.30" stroke="#38bdf8" stroke-width="1.4"/>')
+    out.append(f'<text x="{X1(11.00):.1f}" y="{Y1(14.00):.1f}" fill="#38bdf8" font-size="5.5" font-weight="700" text-anchor="middle">GRAN MIRADOR VIDRIO FIJO SOBRE PATIO CLAUSTRO (5,00 m)</text>')
 
-    # 3. Tabique separador Galería Sur / Dormitorios (Y=16.88..17.00, X=6.15..17.00)
-    out.append(draw_wall_segment(X1(6.15), Y1(16.88), L1(10.85), pt, "acoustic"))
+    # 2. Tabique Norte de Baño Hijos PA-19 (Y=14.30, X=6.15..8.50)
+    out.append(draw_wall_segment(X1(6.15), Y1(14.30), L1(2.35), pt, "acoustic"))
 
-    # 4. Tabiques Baño Hijos PA-19 (X=8.50..10.50, Y=14.30..16.88):
-    out.append(draw_wall_segment(X1(8.50), Y1(14.30), pt, L1(2.58), "acoustic")) # Separación con galería Oeste
-    out.append(draw_wall_segment(X1(10.50), Y1(14.30), pt, L1(2.58), "acoustic")) # Separación con paso a dormitorios
-    out.append(draw_wall_segment(X1(8.50), Y1(14.30), L1(2.00), pt, "int"))       # Tabique Norte con puerta P-11
+    # 3. Tabique Este de Baño Hijos PA-19 con Galería (X=8.50, Y=14.30..17.00) con puerta P-11
+    out.append(draw_wall_segment(X1(8.50), Y1(14.30), pt, L1(0.50), "acoustic")) # Y=14.30..14.80
+    out.append(draw_wall_segment(X1(8.50), Y1(15.60), pt, L1(1.40), "acoustic")) # Y=15.60..17.00 (Puerta P-11 en 14.80..15.60)
 
-    # 5. MEDIANERA CIEGA ACÚSTICA ENTRE DORMITORIO NIÑA Y NIÑO (X=9.94..10.06, Y=17.00..21.10 · Rw ≥ 50 dB)
-    out.append(draw_wall_segment(X1(9.94), Y1(17.00), pt, L1(4.10), "acoustic"))
-    out.append(f'<g transform="translate({X1(9.82):.1f}, {Y1(19.10):.1f}) rotate(-90)"><text x="0" y="0" fill="#f59e0b" font-size="5.2" font-weight="700" text-anchor="middle">MEDIANERA CIEGA Rw≥50dB (CERO HUECOS)</text></g>')
+    # 4. TABIQUE MAESTRO SUR DE GALERÍA (Y=17.00, X=6.15..17.00 · Rw ≥ 50 dB):
+    # Separa la galería y baño de los dormitorios, albergando accesos independientes P-12 y P-13
+    out.append(draw_wall_segment(X1(6.15), Y1(17.00), L1(2.70), pt, "acoustic"))  # X=6.15..8.85 (Fondo Baño Hijos)
+    out.append(draw_wall_segment(X1(9.67), Y1(17.00), L1(0.73), pt, "acoustic"))  # X=9.67..10.40 (Entre P-12 y P-13)
+    out.append(draw_wall_segment(X1(11.22), Y1(17.00), L1(2.28), pt, "acoustic")) # X=11.22..13.50 (Entre P-13 y Ala Este)
+    out.append(draw_wall_segment(X1(13.50), Y1(17.00), L1(3.50), pt, "acoustic")) # X=13.50..17.00 (Frente Suite)
 
-    # 6. MEDIANERA CIEGA ACÚSTICA ENTRE DORMITORIO NIÑO Y MASTER SUITE (X=13.44..13.56, Y=17.00..21.10 · Rw ≥ 50 dB)
-    out.append(draw_wall_segment(X1(13.44), Y1(17.00), pt, L1(4.10), "acoustic"))
+    # 5. MEDIANERA CIEGA ACÚSTICA ENTRE DORMITORIO NIÑA Y NIÑO (X=9.85, Y=17.00..21.10 · Rw ≥ 50 dB)
+    out.append(draw_wall_segment(X1(9.85), Y1(17.00), pt, L1(4.10), "acoustic"))
+    out.append(f'<g transform="translate({X1(9.73):.1f}, {Y1(19.10):.1f}) rotate(-90)"><text x="0" y="0" fill="#f59e0b" font-size="5.2" font-weight="700" text-anchor="middle">MEDIANERA CIEGA Rw≥50dB (CERO HUECOS)</text></g>')
+
+    # 6. MEDIANERA CIEGA ACÚSTICA ENTRE DORMITORIO NIÑO Y MASTER SUITE (X=13.50, Y=17.00..21.10 · Rw ≥ 50 dB)
+    out.append(draw_wall_segment(X1(13.50), Y1(17.00), pt, L1(4.10), "acoustic"))
 
     # 7. Tabique separador en Ala Este: Vestidor Suite / Baño Suite (Y=12.00, X=13.50..17.00)
     out.append(draw_wall_segment(X1(13.50), Y1(12.00), L1(3.50), pt, "int"))
+
+    # 8. Muro divisorio Galería / Suite en Ala Este (X=13.50, Y=14.30..17.00) con puerta P-14
+    out.append(draw_wall_segment(X1(13.50), Y1(14.30), pt, L1(1.40), "acoustic")) # Y=14.30..15.70
+    out.append(draw_wall_segment(X1(13.50), Y1(16.60), pt, L1(0.40), "acoustic")) # Y=16.60..17.00 (Puerta P-14 en 15.70..16.60)
     out.append('</g>')
 
     # =========================================================================
     # CAPA 5: CARPINTERÍAS Y PUERTAS INDEPENDIENTES (CERO CRUCES DE BAÑO)
     # =========================================================================
     out.append('<g id="carpinterias">')
-    # C-15A: Gran Mirador Acristalado Galería Oeste hacia Patio Claustro (4,60 × 2,40 m)
-    out.append(draw_window_cad(X1(8.35), Y1(9.10), X1(8.35), Y1(13.70), wall_thick=6, code="C-15A", dim_txt="4,60x2,40 Silence 10+10mm"))
+    # C-15A: Gran Mirador Acristalado Galería Claustro Sur (5,00 × 2,40 m)
+    out.append(draw_window_cad(X1(8.50), Y1(14.30), X1(13.50), Y1(14.30), wall_thick=6, code="C-15A", dim_txt="5,00x2,40 Silence 10+10mm"))
+
+    # C-16: Ventana Exterior Baño Hijos Fachada Oeste (1,00 × 0,60 m) en X=6.15, Y=14.90..15.90
+    out.append(draw_window_cad(X1(6.15), Y1(14.90), X1(6.15), Y1(15.90), wall_thick=wt, code="C-16", dim_txt="1,00x0,60 COR 80"))
 
     # C-11: Ventana Baño Suite Norte/Este (1,20 × 0,60 m) en X=14.50..15.70, Y=8.67
     out.append(draw_window_cad(X1(14.50), Y1(8.67), X1(15.70), Y1(8.67), wall_thick=wt, code="C-11", dim_txt="1,20x0,60 COR 80"))
@@ -983,18 +999,18 @@ def build_planta_alta_svg():
     # C-14: Gran Ventanal Panorámico Master Suite (2,80 × 2,40 m) en X=13.80..16.60, Y=21.28
     out.append(draw_sliding_door(X1(13.80), Y1(21.28), X1(16.60), Y1(21.28), wall_thick=wt, leaves=2, code="C-14", dim_txt="2,80x2,40 Cor Vision Plus"))
 
-    # RED DE PUERTAS INDEPENDIENTES DESDE LA GALERÍA:
-    # P-11: Entrada Baño Hijos (0,80m) directa desde galería en Y=14.30, X=8.90..9.70
-    out.append(draw_door_swing(X1(8.90), Y1(14.30), L1(0.80), WallDir="E", SwingDir="S", code="P-11", dim_txt="0,80"))
+    # RED DE PUERTAS 100% INDEPENDIENTES DESDE LA GALERÍA CLAUSTRO:
+    # P-11: Entrada Baño Hijos (0,80m) en X=8.50, Y=14.80..15.60 (Abre hacia el interior del baño)
+    out.append(draw_door_swing(X1(8.50), Y1(14.80), L1(0.80), WallDir="S", SwingDir="W", code="P-11", dim_txt="0,80"))
 
-    # P-12: Entrada Dormitorio Niña (0,82m) directa desde galería en Y=16.88, X=7.20..8.02
-    out.append(draw_door_swing(X1(7.20), Y1(16.88), L1(0.82), WallDir="E", SwingDir="S", code="P-12", dim_txt="0,82"))
+    # P-12: Entrada Dormitorio Niña (0,82m) directa desde galería en Y=17.00, X=8.85..9.67
+    out.append(draw_door_swing(X1(8.85), Y1(17.00), L1(0.82), WallDir="E", SwingDir="S", code="P-12", dim_txt="0,82"))
 
-    # P-13: Entrada Dormitorio Niño (0,82m) directa desde galería en Y=16.88, X=10.40..11.22
-    out.append(draw_door_swing(X1(10.40), Y1(16.88), L1(0.82), WallDir="E", SwingDir="S", code="P-13", dim_txt="0,82"))
+    # P-13: Entrada Dormitorio Niño (0,82m) directa desde galería en Y=17.00, X=10.40..11.22
+    out.append(draw_door_swing(X1(10.40), Y1(17.00), L1(0.82), WallDir="E", SwingDir="S", code="P-13", dim_txt="0,82"))
 
-    # P-14: Entrada Independiente a Master Suite (0,90m) en X=13.50, Y=15.40..16.30
-    out.append(draw_door_swing(X1(13.50), Y1(15.40), L1(0.90), WallDir="S", SwingDir="E", code="P-14", dim_txt="0,90"))
+    # P-14: Entrada Independiente a Master Suite (0,90m) en X=13.50, Y=15.70..16.60
+    out.append(draw_door_swing(X1(13.50), Y1(15.70), L1(0.90), WallDir="S", SwingDir="E", code="P-14", dim_txt="0,90"))
 
     # P-15: Paso corredera Vestidor → Baño Suite (0,85m) en Y=12.00, X=14.80..15.65
     out.append(draw_sliding_door(X1(14.80), Y1(12.00), X1(15.65), Y1(12.00), wall_thick=pt, leaves=1, code="P-15", dim_txt="0,85"))
@@ -1004,34 +1020,34 @@ def build_planta_alta_svg():
     # CAPA 6: MOBILIARIO Y APARATOS SANITARIOS NHG
     # =========================================================================
     out.append('<g id="mobiliario-nhg">')
-    # PA-16: Desembarco y Galería Acristalada Claustro (7,60 m²)
+    # PA-16: Desembarco y Gran Galería Acristalada Claustro (13,50 m²)
     out.append(f'<text x="{X1(7.30):.1f}" y="{Y1(13.50):.1f}" fill="#10b981" font-size="5.5" font-weight="700" text-anchor="middle">LLEGADA +3,15 m</text>')
-    out.append(draw_room_stamp(X1(7.30), Y1(11.20), "PA-16", "GALERÍA CLAUSTRO P1", 7.60, "Roble 14mm · Mirador Vidrio", "+3,15"))
+    out.append(draw_room_stamp(X1(11.00), Y1(15.60), "PA-16", "GRAN GALERÍA CLAUSTRO P1", 13.50, "Roble 14mm · Mirador Vidrio 5m", "+3,15"))
 
-    # PA-19: Baño Compartido Hijos (4,80 m² · ACCESO DIRECTO DESDE GALERÍA)
-    out.append(draw_shower_block(X1(8.60), Y1(15.20), L1(1.20), L1(0.80), drain_side="E", label="DUCHA 1,20x0,80"))
-    out.append(draw_sink_block(X1(8.60), Y1(14.40), L1(1.20), L1(0.50), basins=2, orient="N"))
-    out.append(draw_wc_block(X1(9.80), Y1(16.30), L1(0.55), L1(0.42), orient="S"))
-    out.append(draw_nhg_circle(X1(9.50), Y1(15.50), 1.20, S1, "Ø1,20m"))
-    out.append(draw_room_stamp(X1(9.50), Y1(14.90), "PA-19", "BAÑO HIJOS (INDEP.)", 4.80, "Porcelánico C3 · Ducha Obra", "+3,15"))
+    # PA-19: Baño Compartido Hijos en Ala Oeste (5,10 m² · ACCESO DIRECTO DESDE GALERÍA)
+    out.append(draw_shower_block(X1(6.30), Y1(16.05), L1(1.20), L1(0.80), drain_side="E", label="DUCHA 1,20x0,80"))
+    out.append(draw_sink_block(X1(6.30), Y1(14.45), L1(1.20), L1(0.50), basins=2, orient="N"))
+    out.append(draw_wc_block(X1(7.70), Y1(16.30), L1(0.55), L1(0.42), orient="S"))
+    out.append(draw_nhg_circle(X1(7.40), Y1(15.30), 1.20, S1, "Ø1,20m"))
+    out.append(draw_room_stamp(X1(7.40), Y1(15.30), "PA-19", "BAÑO HIJOS", 5.10, "Porcelánico C3 · Ventana Oeste", "+3,15"))
 
     # PA-17: Dormitorio Infantil Niña (14,20 m²)
-    out.append(draw_wardrobe_block(X1(8.40), Y1(17.10), L1(1.45), L1(0.60), "ARMARIO 1,50x0,60m"))
-    out.append(draw_bed_block(X1(6.60), Y1(18.00), L1(2.00), L1(1.35), orient="W", kind="single", label="CAMA 1,35x2,00"))
-    out.append(f'<rect x="{X1(9.20):.1f}" y="{Y1(18.50):.1f}" width="{L1(0.65):.1f}" height="{L1(1.80):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<circle cx="{X1(8.90):.1f}" cy="{Y1(19.40):.1f}" r="{L1(0.24):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
-    out.append(f'<g transform="translate({X1(9.55):.1f}, {Y1(19.40):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.0" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>')
+    out.append(draw_wardrobe_block(X1(6.35), Y1(17.20), L1(1.60), L1(0.60), "ARMARIO 1,60x0,60m"))
+    out.append(draw_bed_block(X1(6.60), Y1(18.30), L1(2.00), L1(1.35), orient="W", kind="single", label="CAMA 1,35x2,00"))
+    out.append(f'<rect x="{X1(9.10):.1f}" y="{Y1(18.50):.1f}" width="{L1(0.65):.1f}" height="{L1(1.80):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<circle cx="{X1(8.80):.1f}" cy="{Y1(19.40):.1f}" r="{L1(0.24):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
+    out.append(f'<g transform="translate({X1(9.45):.1f}, {Y1(19.40):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.0" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>')
     out.append(draw_nhg_circle(X1(7.80), Y1(20.10), 1.50, S1, "Ø1,50m NHG"))
-    out.append(draw_room_stamp(X1(8.00), Y1(19.20), "PA-17", "DORMITORIO NIÑA", 14.20, "Roble 14mm · Ventanal Sur", "+3,15"))
+    out.append(draw_room_stamp(X1(7.80), Y1(19.20), "PA-17", "DORMITORIO NIÑA", 14.20, "Roble 14mm · Ventanal Sur", "+3,15"))
 
-    # PA-18: Dormitorio Infantil Niño (14,20 m²)
-    out.append(draw_wardrobe_block(X1(11.85), Y1(17.10), L1(1.45), L1(0.60), "ARMARIO 1,50x0,60m"))
-    out.append(draw_bed_block(X1(10.15), Y1(18.00), L1(2.00), L1(1.35), orient="W", kind="single", label="CAMA 1,35x2,00"))
+    # PA-18: Dormitorio Infantil Niño (14,00 m²)
+    out.append(draw_wardrobe_block(X1(11.75), Y1(17.20), L1(1.60), L1(0.60), "ARMARIO 1,60x0,60m"))
+    out.append(draw_bed_block(X1(10.15), Y1(18.30), L1(2.00), L1(1.35), orient="W", kind="single", label="CAMA 1,35x2,00"))
     out.append(f'<rect x="{X1(12.70):.1f}" y="{Y1(18.50):.1f}" width="{L1(0.65):.1f}" height="{L1(1.80):.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
     out.append(f'<circle cx="{X1(12.40):.1f}" cy="{Y1(19.40):.1f}" r="{L1(0.24):.1f}" fill="none" stroke="#94a3b8" stroke-width="0.7"/>')
     out.append(f'<g transform="translate({X1(13.05):.1f}, {Y1(19.40):.1f}) rotate(-90)"><text x="0" y="0" fill="#38bdf8" font-size="5.0" font-weight="700" text-anchor="middle">ESTUDIO 1,80m (LUZ 90°)</text></g>')
     out.append(draw_nhg_circle(X1(11.40), Y1(20.10), 1.50, S1, "Ø1,50m NHG"))
-    out.append(draw_room_stamp(X1(11.60), Y1(19.20), "PA-18", "DORMITORIO NIÑO", 14.20, "Roble 14mm · Ventanal Sur", "+3,15"))
+    out.append(draw_room_stamp(X1(11.40), Y1(19.20), "PA-18", "DORMITORIO NIÑO", 14.00, "Roble 14mm · Ventanal Sur", "+3,15"))
 
     # PA-20: Master Suite Matrimonio (15,50 m²)
     out.append(draw_bed_block(X1(14.30), Y1(18.00), L1(2.00), L1(1.80), orient="E", kind="double", label="KING SIZE 1,80 × 2,00 m"))
@@ -1040,17 +1056,17 @@ def build_planta_alta_svg():
     out.append(draw_nhg_circle(X1(15.20), Y1(19.50), 1.50, S1, "Ø1,50m NHG"))
     out.append(draw_room_stamp(X1(15.20), Y1(20.40), "PA-20", "MASTER SUITE", 15.50, "Roble 14mm · Ventanal Sur", "+3,15"))
 
-    # PA-21: Vestidor Suite en Ala Este (5,50 m² útiles · SOBRE COCINA)
+    # PA-21: Vestidor Suite en Ala Este (6,80 m² útiles · SOBRE COCINA)
     out.append(draw_wardrobe_block(X1(13.60), Y1(12.20), L1(0.60), L1(3.20), "ARMARIO W (3,20m)"))
     out.append(draw_wardrobe_block(X1(16.05), Y1(12.20), L1(0.60), L1(3.20), "ARMARIO E (3,20m)"))
-    out.append(draw_room_stamp(X1(15.15), Y1(14.50), "PA-21", "VESTIDOR SUITE", 5.50, "6,40m Armarios Dobles", "+3,15"))
+    out.append(draw_room_stamp(X1(15.15), Y1(14.50), "PA-21", "VESTIDOR SUITE", 6.80, "6,40m Armarios Dobles", "+3,15"))
 
-    # PA-22: Baño Privado Suite en Ala Este (6,00 m² útiles · SOBRE COCINA)
+    # PA-22: Baño Privado Suite en Ala Este (6,20 m² útiles · SOBRE COCINA)
     out.append(draw_shower_block(X1(13.60), Y1(8.60), L1(1.50), L1(0.90), drain_side="E", label="DUCHA 1,50x0,90"))
     out.append(draw_sink_block(X1(15.40), Y1(9.80), L1(1.20), L1(0.50), basins=2, orient="E"))
     out.append(draw_wc_block(X1(14.00), Y1(11.20), L1(0.55), L1(0.42), orient="S"))
     out.append(draw_nhg_circle(X1(15.00), Y1(10.80), 1.20, S1, "Ø1,20m"))
-    out.append(draw_room_stamp(X1(15.15), Y1(11.40), "PA-22", "BAÑO SUITE", 6.00, "Porcelánico C3 · Ventana Este", "+3,15"))
+    out.append(draw_room_stamp(X1(15.15), Y1(11.40), "PA-22", "BAÑO SUITE", 6.20, "Porcelánico C3 · Ventana Este", "+3,15"))
     out.append('</g>')
 
     # =========================================================================

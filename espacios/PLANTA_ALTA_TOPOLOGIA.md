@@ -23,13 +23,13 @@ Este documento actúa como el **Master Plan Semántico de Planta Primera (+3,15 
 
 | ID | Estancia / Espacio | Cota Real en Metros (X1, Y1) a (X2, Y2) | Dimensión Libre (Ancho × Fondo) | Sup. Útil | Orientación Solar | Vistas / Ventilación |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **PA-16** | Desembarco Escalera y Galería Claustro | `(6.55, 8.50) -> (8.50, 15.60)` + paso Sur | 1,40 × 7,10 m (en L) | 7,60 m² | Este / Cenital | Gran galería acristalada mirando al Patio Claustro |
-| **PA-17** | Dormitorio Infantil Niña | `(6.55, 17.00) -> (10.00, 21.45)` | 3,45 × 4,45 m | 14,20 m² | Sur / Jardín | Ventanal de suelo a techo al jardín Sur |
-| **PA-18** | Dormitorio Infantil Niño | `(10.00, 17.00) -> (13.50, 21.45)`| 3,50 × 4,45 m | 14,20 m² | Sur / Jardín | Ventanal de suelo a techo al jardín Sur |
-| **PA-19** | Baño Compartido Hijos | `(8.50, 14.30) -> (10.50, 17.00)` | 2,00 × 2,70 m | 4,80 m² | Norte / Galería | Acceso directo e independiente desde la galería |
-| **PA-20** | Dormitorio Master Suite | `(13.50, 17.00) -> (17.00, 21.45)`| 3,50 × 4,45 m | 15,50 m² | Sur / Sureste | Ventanal panorámico al jardín Sur |
-| **PA-21** | Vestidor Suite (Ala Este sobre Cocina) | `(13.50, 12.00) -> (17.00, 15.60)`| 3,50 × 3,60 m | 5,50 m² | Este / Claustro | Armarios dobles continuos y luz natural |
-| **PA-22** | Baño Privado Suite (Ala Este sobre Cocina)| `(13.50, 8.50) -> (17.00, 12.00)`| 3,50 × 3,50 m | 6,00 m² | Este | Ducha 150×90, doble seno y ventana exterior Este |
+| **PA-16** | Desembarco y Gran Galería Claustro | `(8.50, 14.30) -> (13.50, 17.00)` + desembarco | 5,00 × 2,70 m + 2,35 × 1,10 m | 13,50 m² | Norte / Patio | Mirador panorámico de 5,00 m sobre Patio Claustro y doble altura |
+| **PA-17** | Dormitorio Infantil Niña | `(6.15, 17.00) -> (9.85, 21.45)` | 3,70 × 4,45 m | 14,20 m² | Sur / Jardín | Ventanal de suelo a techo C-12 (2,40m) al jardín Sur |
+| **PA-18** | Dormitorio Infantil Niño | `(9.85, 17.00) -> (13.50, 21.45)`| 3,65 × 4,45 m | 14,00 m² | Sur / Jardín | Ventanal de suelo a techo C-13 (2,40m) al jardín Sur |
+| **PA-19** | Baño Compartido Hijos (Ala Oeste) | `(6.15, 14.30) -> (8.50, 17.00)` | 2,35 × 2,70 m | 5,10 m² | Oeste / Ventana C-16 | Ventana exterior Oeste, inodoro, doble seno, ducha 120×80 y acceso directo P-11 |
+| **PA-20** | Dormitorio Master Suite | `(13.50, 17.00) -> (17.00, 21.45)`| 3,50 × 4,45 m | 15,50 m² | Sur / Sureste | Ventanal panorámico C-14 (2,80m) al jardín Sur |
+| **PA-21** | Vestidor Suite (Ala Este sobre Cocina) | `(13.50, 12.00) -> (17.00, 17.00)`| 3,50 × 4,00 m | 6,80 m² | Este / Claustro | 6,40 m de armarios dobles, paso a baño y conexión privada |
+| **PA-22** | Baño Privado Suite (Ala Este sobre Cocina)| `(13.50, 8.50) -> (17.00, 12.00)`| 3,50 × 3,50 m | 6,20 m² | Norte y Este | Ducha 150×90, doble lavabo, ventanas exteriores C-11 y C-11B |
 | **PA-24** | Campo Solar Fotovoltaico (5,4 kWp)| `Cubierta Superior (+6,50 m)` | Azotea Alta P1 | 38,00 m² | Sur 30° Óptimo | 100 % libre de sombras todo el día |
 
 ---
@@ -39,20 +39,21 @@ Este documento actúa como el **Master Plan Semántico de Planta Primera (+3,15 
 ```text
                [Escalera Volada PB-12 desde PB (Ala Oeste)]
                                     │
+                  (Doble altura abierta con luz cenital)
                                     ▼ (Llegada en cota +3,15 m)
-               [Galería Acristalada PA-16 (Bordeando el Patio Claustro)]
+               [Gran Galería Claustro PA-16 (5,00 m de Mirador)]
                  (Luz natural cenital, suelo de roble y vistas al arce)
                                     │
          ┌──────────────────────────┼──────────────────────────┬──────────────────────────┐
-         │ (Puerta 82 cm)           │ (Puerta 82 cm)           │ (Puerta 82 cm)           │ (Paso / Puerta 90 cm)
+         │ (Puerta P-11: 80 cm)     │ (Puerta P-12: 82 cm)     │ (Puerta P-13: 82 cm)     │ (Puerta P-14: 90 cm)
          ▼                          ▼                          ▼                          ▼
-   [Baño Hijos PA-19]         [Dorm. Niña PA-17]         [Dorm. Niño PA-18]         [MASTER SUITE PRIVADA]
-    (4,80 m² indep.)             (14,20 m² útiles)          (14,20 m² útiles)         ├──► [Dormitorio PA-20 (15,50 m²)]
-                                         │                          │                 │      (Ventanal al Jardín Sur)
-                                         ▼                          ▼                 └──► [Ala Este sobre Cocina]
-                                   [Jardín Sur]               [Jardín Sur]                   ├──► [Vestidor PA-21 (5,50 m²)]
-                                                                                             └──► [Baño Suite PA-22 (6,00 m²)]
-                                                                                                    (Ventana exterior Este)
+   [Baño Hijos PA-19]        [Dorm. Niña PA-17]         [Dorm. Niño PA-18]        [MASTER SUITE PRIVADA]
+    (5,10 m² Ala Oeste)       (14,20 m² útiles)          (14,00 m² útiles)        ├──► [Dormitorio PA-20 (15,50 m²)]
+    Ventana exterior Oeste            │                          │                │      (Ventanal C-14 al Jardín Sur)
+                                      ▼                          ▼                └──► [Ala Este sobre Cocina]
+                                [Jardín Sur]               [Jardín Sur]                  ├──► [Vestidor PA-21 (6,80 m²)]
+                                                                                         └──► [Baño Suite PA-22 (6,20 m²)]
+                                                                                                (Ventanas C-11 y C-11B)
 ```
 
 ---
