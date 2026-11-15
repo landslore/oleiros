@@ -6,7 +6,7 @@ import shutil
 
 RENDERS_DIR = "/home/antigravity/landslore/oleiros/propuestas/renders"
 PROPUESTAS_DIR = "/home/antigravity/landslore/oleiros/propuestas"
-ARTIFACT_DIR = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/9d6fceeb-5543-49ce-8bfb-417101638eb5"
+ARTIFACT_DIR = os.environ.get("ARTIFACT_DIR", "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/3d615617-306e-49e0-8e88-a6b61c5e651a")
 os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
 def get_base64_image(filename):
@@ -45,6 +45,8 @@ with open(os.path.join(PROPUESTAS_DIR, 'plano_constructivo_planta_primera_p1.svg
     raw_svg_p1_50 = f.read()
 with open(os.path.join(PROPUESTAS_DIR, 'plano_secciones_y_detalle_constructivo.svg'), 'r') as f:
     raw_svg_sec = f.read()
+with open(os.path.join(PROPUESTAS_DIR, 'plano_alzados_exteriores_4_caras.svg'), 'r') as f:
+    raw_svg_alzados = f.read()
 
 
 html_content = f"""<!DOCTYPE html>
@@ -98,7 +100,7 @@ html_content = f"""<!DOCTYPE html>
       <div>
         <div class="flex items-center gap-2">
           <span class="badge bg-sky-500/20 text-sky-400 border border-sky-500/30">PROYECTO DE EJECUCIÓN</span>
-          <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">PROPUESTA D · ESCALA REAL + SALA POLIVALENTE</span>
+          <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">PROPUESTA D OPTIMIZADA · ~165 m² PASSIVHAUS</span>
           <span class="badge bg-amber-500/20 text-amber-400 border border-amber-500/30">OLEIROS (A CORUÑA)</span>
         </div>
         <h1 class="text-lg md:text-xl font-black text-white tracking-tight mt-0.5">
@@ -157,7 +159,7 @@ html_content = f"""<!DOCTYPE html>
             <div>
               <h3 class="text-base font-extrabold text-white">Patio Corrala Habitable y 100% Accesible</h3>
               <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                El único patio interior de la casa: 16,0 m² abiertos al cielo con drenaje natural sobre terreno real. Tarima de iroko a cota cero, banco de lectura bajo alero de 80 cm y arce japonés.
+                Patio Claustro Zen Atlántico: 10,24 m² (3,20 × 3,20 m) 100% abiertos al cielo con drenaje natural sobre terreno real. Tarima de iroko a cota cero, banco de lectura bajo alero de 80 cm y arce japonés.
               </p>
             </div>
             <div class="text-[11px] font-mono text-emerald-400 bg-emerald-950/50 p-2.5 rounded-xl border border-emerald-900/60">
@@ -429,6 +431,7 @@ html_content = f"""<!DOCTYPE html>
           <button type="button" onclick="showFloorSVG('p1_50')" id="btn-svg-p1_50" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
             E-04 · 1:50 Planta Primera + MEP
           </button>
+          <button type="button" onclick="showFloorSVG('alzados')" id="btn-svg-alzados" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">A-03 · Alzados 4 Fachadas</button>
           <button type="button" onclick="showFloorSVG('sec')" id="btn-svg-sec" class="py-2 px-3.5 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:text-white min-h-[40px] flex items-center justify-center cursor-pointer transition">
             E-05 · Secciones A-A'/B-B' y Detalles 1:20
           </button>

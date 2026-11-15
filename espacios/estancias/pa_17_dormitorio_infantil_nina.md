@@ -1,35 +1,18 @@
-# Ficha de Estancia: [PA-17] Dormitorio Infantil Niña
+# Ficha de Estancia: [PA-17] Dormitorio Infantil Niña (14,20 m²)
 
-* **ID Plano:** `PA-17` / `E-17` (Zona de Descanso y Estudio Sur).
-* **Superficie Útil:** `14,60 m²` (Dimensiones interiores: `3,42 m × 4,27 m`).
+* **ID Plano:** `PA-17` / `E-17` (Zona de Descanso, Estudio y Juegos Sur).
+* **Superficie Útil:** `14,20 m²` (Dimensiones interiores: `3,40 m × 4,20 m`).
 * **Cota de Nivel Z:** `+3,15 m` | Altura libre: `2,65 m`.
-* **Rango de Coordenadas Globales:** `X: [450..620], Y: [660..875]`.
+* **Ubicación:** Fachada Sur completa sobre el jardín, enrasada con el borde del Porche Sur (volando 3 metros sobre él en formato soportal).
+* **Vistas:** Ventanal limpio de suelo a techo orientado al mediodía con vistas al césped atlántico. Cero terrazas exteriores que acumulen hojas.
 
 ---
 
-## 1. Delimitación Perimetral y Conexiones de Enganche
+## 1. Ergonomía, Mobiliario e Instalaciones
 
-* **Cara NORTE (Y = 660):** `PA-16 (Galería Acústica)`.
-  * **Conexión de Enganche:** Puerta batiente enrasada P-09 (`X: [480..525]`, paso libre 0,82 × 2,40 m).
-* **Cara SUR (Y = 875):** `PA-23 (Balcón Corrido Sur)`.
-  * **Conexión de Enganche:** Balconera osciloparalela C-11 (`X: [490..600]`, 2,20 m de ancho) con persiana motorizada de lamas orientables de aluminio extruido conectada a domótica.
-* **Cara ESTE (X = 620):** `PA-18 (Dormitorio Infantil Niño)`.
-  * **Composición:** Tabique divisorio con doble placa acústica y lana de roca fonoaislante ($R_w \ge 48\text{ dB}$).
-* **Cara OESTE (X = 450):** `PA-16 (Desembarco Escalera y Galería)`. Muro ciego con armario empotrado modular de 2,40 m lineales.
-
----
-
-## 2. Instalaciones y Ergonomía
-
-* **Distribución:** Zona de cama de 1,05 × 2,00 m, mesa de estudio orientada con luz lateral natural y zona de juegos cumpliendo el círculo NHG de 1,20 m libre.
-* **Climatización:** Suelo radiante y refrescante individualizado.
-* **Ventilación VMC:** Impulsión **VMC-I (25 m³/h)** silenciosa.
-
----
-
-## 3. Anexo de Materiales y Armonía Visual
-
-> Cumple estrictamente con [CRITERIOS_MATERIALES_Y_ARMONIA.md](../CRITERIOS_MATERIALES_Y_ARMONIA.md).
-
-* **Pavimento:** Tarima de roble natural 14 mm cálido compatible con suelo radiante.
-* **Paredes:** Pintura ecológica mineral al silicato NCS S 0502-Y.
+* **Cama:** Espacio holgado para cama de 1,05 × 2,00 m (ampliable a 1,35 m en adolescencia).
+* **Zona de Estudio:** Mesa de estudio suspendida de 1,80 m en pared lateral con luz natural a 90° (cero reflejos en pantalla).
+* **Armario Empotrado:** Frente de armario de 2,00 m de suelo a techo con frentes lisos en blanco lino.
+* **Zona Libre de Juegos:** Espacio central despejado de más de 5 m² para alfombra, juegos o rincón multimedia.
+* **Climatización y Confort:** Suelo radiante-refrescante zonificado y boca de impulsión silenciosa de ventilación mecánica controlada (VMC Zehnder, 30 m³/h).
+* **Telecomunicaciones:** 2 tomas dobles RJ45 Cat 6A (10 Gbps) en la mesa de estudio enlazadas al rack técnico.

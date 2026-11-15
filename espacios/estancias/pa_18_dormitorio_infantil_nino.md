@@ -1,35 +1,18 @@
-# Ficha de Estancia: [PA-18] Dormitorio Infantil Niño
+# Ficha de Estancia: [PA-18] Dormitorio Infantil Niño (14,20 m²)
 
-* **ID Plano:** `PA-18` / `E-18` (Zona de Descanso y Estudio Sur).
-* **Superficie Útil:** `14,60 m²` (Dimensiones interiores: `3,42 m × 4,27 m`).
+* **ID Plano:** `PA-18` / `E-18` (Zona de Descanso, Estudio y Juegos Sur).
+* **Superficie Útil:** `14,20 m²` (Dimensiones interiores: `3,40 m × 4,20 m`).
 * **Cota de Nivel Z:** `+3,15 m` | Altura libre: `2,65 m`.
-* **Rango de Coordenadas Globales:** `X: [620..790], Y: [660..875]`.
+* **Ubicación:** Fachada Sur completa sobre el jardín, enrasada con el borde del Porche Sur (volando 3 metros sobre él en formato soportal).
+* **Vistas:** Ventanal limpio de suelo a techo orientado al mediodía con vistas al césped atlántico. Cero terrazas exteriores que acumulen hojas.
 
 ---
 
-## 1. Delimitación Perimetral y Conexiones de Enganche
+## 1. Ergonomía, Mobiliario e Instalaciones
 
-* **Cara NORTE (Y = 660):** `PA-16 (Galería Acústica)`.
-  * **Conexión de Enganche:** Puerta batiente enrasada P-10 (`X: [640..685]`, paso libre 0,82 × 2,40 m).
-* **Cara SUR (Y = 875):** `PA-23 (Balcón Corrido Sur)`.
-  * **Conexión de Enganche:** Balconera osciloparalela C-12 (`X: [660..770]`, 2,20 m de ancho) con persiana orientable motorizada.
-* **Cara ESTE (X = 790):** `PA-20 (Dormitorio Master Suite)`.
-  * **Composición:** Tabique acústico reforzado ($R_w \ge 48\text{ dB}$).
-* **Cara OESTE (X = 620):** `PA-17 (Dormitorio Infantil Niña)`.
-  * **Composición:** Tabique acústico divisorio.
-
----
-
-## 2. Instalaciones y Ergonomía
-
-* **Distribución:** Zona de cama de 1,05 × 2,00 m, mesa de estudio integrada y armario empotrado modular de 2,40 m lineales. Cumple círculo libre NHG $\varnothing 1,20\text{ m}$.
-* **Climatización y VMC:** Suelo radiante/refrescante e impulsión continua **VMC-I (25 m³/h)**.
-
----
-
-## 3. Anexo de Materiales y Armonía Visual
-
-> Cumple estrictamente con [CRITERIOS_MATERIALES_Y_ARMONIA.md](../CRITERIOS_MATERIALES_Y_ARMONIA.md).
-
-* **Pavimento:** Tarima de roble natural 14 mm en continuidad con la galería y el dormitorio de su hermana.
-* **Paredes:** Pintura mineral al silicato color NCS S 0502-Y.
+* **Cama:** Espacio holgado para cama de 1,05 × 2,00 m (ampliable a 1,35 m en adolescencia).
+* **Zona de Estudio:** Mesa de estudio suspendida de 1,80 m en pared lateral con luz natural a 90° (cero reflejos en pantalla).
+* **Armario Empotrado:** Frente de armario de 2,00 m de suelo a techo con frentes lisos en blanco lino.
+* **Zona Libre de Juegos:** Espacio central despejado de más de 5 m² para alfombra, juegos o rincón multimedia/consola.
+* **Climatización y Confort:** Suelo radiante-refrescante zonificado y boca de impulsión silenciosa de ventilación mecánica controlada (VMC Zehnder, 30 m³/h).
+* **Telecomunicaciones:** 2 tomas dobles RJ45 Cat 6A (10 Gbps) en la mesa de estudio enlazadas al rack técnico.
