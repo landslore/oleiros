@@ -62,24 +62,26 @@
 
 ## 4. Estructura Financiera y Presupuesto Llave en Mano
 
-### Desglose Presupuestario Detallado (Presupuesto Cerrado Objetivo):
-* **Adquisición del Terreno en Oleiros (`500–700 m²`):** `150.000 €` + ITP (10 %) + Notaría/Registro = **`180.000 €`**.
-* **Ejecución Material de la Obra (PEM + Gastos Generales + Beneficio Industrial):**
-  * `212 m² cerrados × 1.800 €/m²` = **`381.600 €`**.
-* **Honorarios Técnicos y Estudios:**
-  * Proyecto Básico y de Ejecución (Arquitecto) + Dirección de Obra = `24.000 €`.
-  * Dirección de Ejecución + Coordinación de Seguridad (Aparejador) = `11.000 €`.
-  * Estudio Geotécnico + Levantamiento Topográfico = `2.500 €`.
-* **Licencias, Tasas e Impuestos Municipales (Concello de Oleiros):**
-  * ICIO (4 %) + Tasa urbanística + Fianza de residuos = `19.500 €`.
-* **Partidas Complementarias Integradas en Presupuesto:**
-  * Pérgola cubierta para 2 coches + Puntos Wallbox = `12.000 €`.
-  * Cocina completa de gama alta con isla Dekton y electrodomésticos Bosch Serie 8 / Siemens = `28.000 €`.
-  * Climatización completa: Aerotermia + Suelo radiante-refrescante + VMC Zehnder = `32.000 €`.
-  * Fotovoltaica (10 paneles 4,5 kWp + Inversor Híbrido) = `7.800 €`.
-  * Urbanización exterior, cierres de parcela, césped y riego Hunter = `16.000 €`.
-* **TOTAL LLAVE EN MANO (Sin piscina / Preinstalación Fase 2):** **`662.980 €`** (IVA incluido).
-* *(Opcional con Piscina 8 × 4 m de gres porcelánico desde Día 1: `+26.400 €` → Total `689.380 €`)*.
+> [!IMPORTANT]
+> **Actualización Presupuestaria de Ejecución (Auditada para Mercado Oleiros 2026-2027):**  
+> Ver documento maestro completo y desglosado en [`docs/PRESUPUESTO_REALISTA_AUTOPROMOCION_OLEIROS.md`](file:///home/antigravity/landslore/oleiros/docs/PRESUPUESTO_REALISTA_AUTOPROMOCION_OLEIROS.md) y archivo CSV de mediciones en [`presupuesto_autopromocion_oleiros.csv`](file:///home/antigravity/landslore/oleiros/presupuesto_autopromocion_oleiros.csv).
+
+### Comparativa de Escenarios de Inversión Llave en Mano (Desde Cero, Parcela e Impuestos Incluidos):
+
+| Concepto Clave | 1. Estándar / Funcional | 2. Media-Alta | 3. Propuesta D (Passivhaus Premium) |
+|---|:---:|:---:|:---:|
+| **Adquisición Suelo (~600 m² + ITP 10% + Notaría/Reg.)** | 156.650 € | 178.650 € | 195.150 € |
+| **Estudios Previos (Topográfico + Geotécnico roca)** | 2.481 € | 2.481 € | 2.844 € |
+| **Contrata Vivienda + Porches + Equipamientos (Neto)** | 388.625 € | 493.650 € | 583.175 € |
+| **IVA Reducido Autopromoción (10 %)** | 38.863 € | 49.365 € | 58.318 € |
+| **Honorarios Técnicos (Arquitecto + Aparejador + Ensayos + IVA 21%)** | 40.744 € | 52.543 € | 63.236 € |
+| **Licencias y Tasas Municipales (Concello de Oleiros: ICIO 4% + Tasa)** | 16.151 € | 19.381 € | 22.611 € |
+| **Acometidas de Servicios Definitivos (Luz, Agua, Datos + IVA 21%)** | 5.445 € | 5.445 € | 5.445 € |
+| **Gastos Notaría, Registro y AJD Galicia (1,5 %)** | 10.629 € | 12.205 € | 13.548 € |
+| **Colchón de Contingencias e Imprevistos (Roca / Desvíos)** | 19.431 € | 34.556 € | 46.654 € |
+| **TOTAL INVERSIÓN LLAVE EN MANO (€)** | **679.018 €** | **848.274 €** | **990.979 €** |
+
+*(Nota: En la Propuesta D, si se ejecuta la piscina salina en una segunda fase, la inversión inicial se sitúa en **~961.800 €**)*.
 
 ### Fondos Propios y Financiación Bancaria:
 * **Liquidez bruta disponible:**
@@ -88,7 +90,8 @@
   * **Total liquidez familiar:** **`468.000 €`**.
 * **Reservas de seguridad intocables:**
   * Colchón familiar de emergencia: `58.000 €`.
-  * Fondo de contingencias de obra (imprevistos): `27.000 €`.
-  * **Aportación neta de fondos propios a la operación:** **`383.000 €`**.
-* **Hipoteca de Autopromoción requerida:**
-  * Importe a financiar: **`~280.000 € – 306.000 €`** (representa un LTV de solo el 42–46 % sobre el valor de tasación del conjunto terminado `~670.000 €`, lo que garantiza las mejores condiciones bancarias).
+  * **Aportación neta de fondos propios a la operación:** **`410.000 €`**.
+* **Hipoteca de Autopromoción requerida (Propuesta D):**
+  * Importe a financiar: **`~580.000 €`** (disposiciones progresivas contra certificaciones mensuales de obra del Aparejador).
+  * **Valor de tasación final del inmueble terminado:** `1.150.000 € – 1.250.000 €`.
+  * **LTV Bancario:** `~48 % – 50 %` sobre valor de tasación, lo que garantiza acceso a las mejores condiciones hipotecarias del mercado sin penalización de diferencial.

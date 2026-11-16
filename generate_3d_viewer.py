@@ -837,7 +837,7 @@ def main():
     print(f"Generated 3D Viewer: {target_path} ({len(html_code)} bytes)")
 
     # Save to artifacts directory as well
-    artifact_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/e8f6a578-76cf-4abb-986f-afb074438ab7/modelo_3d_propuesta_d.html"
+    artifact_path = "/home/antigravity/.gemini/jetski/brain/v1/default/jetski_remote_agents_3p/3d615617-306e-49e0-8e88-a6b61c5e651a/modelo_3d_propuesta_d.html"
     with open(artifact_path, "w", encoding="utf-8") as f:
         f.write(html_code)
     print(f"Artifact updated: {artifact_path} ({len(html_code)} bytes)")

@@ -17,13 +17,22 @@ Proyecto integral de arquitectura, bioclimática y ejecución de vivienda unifam
 
 ## 🧭 Estructura del Repositorio y Documentación Agéntica (SSOT)
 
-> **REGLA AGÉNTICA PRIMORDIAL:** Cualquier agente de IA que trabaje en este proyecto **NO necesita leer ni parsear archivos HTML**. Todo el proyecto está completamente documentado y acotado al milímetro en archivos Markdown (`.md`) para que dos agentes distintos plasmen con exactitud paramétrica el mismo plano técnico.
+> **REGLA AGÉNTICA PRIMORDIAL:** Cualquier agente de IA que trabaje en este proyecto **NO necesita leer ni parsear archivos SVG pesados ni código HTML**. Toda la geometría, cotas de inicio/fin, conectividad y materiales están aplanados en fichas Markdown (`.md`) dentro de [`espacios/`](espacios/README.md).
 
 ```
+├── AGENTS.md                                                        # ⭐ Reglas de navegación y directivas de IA
 ├── README.md                                                        # Este documento (visión general e índice)
 │
+├── espacios/                                                        # ⭐⭐ DIGITAL TWIN SEMÁNTICO (Cotas, adyacencias y acabados)
+│   ├── README.md                                                    # Índice y guía de uso para agentes
+│   ├── SISTEMA_COORDENADAS_Y_EJES.md                                # Origen (0,0), escala (50px = 1m) y cotas Z
+│   ├── CRITERIOS_MATERIALES_Y_ARMONIA.md                            # Pliego maestro de calidades y armonía visual
+│   ├── PLANTA_BAJA_TOPOLOGIA.md                                     # Master Plan PB, Bounding Boxes y grafo de pasos
+│   ├── PLANTA_ALTA_TOPOLOGIA.md                                     # Master Plan PA, Bounding Boxes y red de circulación
+│   └── estancias/                                                   # Fichas independientes 1 a 1 de cada habitación
+│
 ├── docs/                                                            # Documentación de Ejecución Oficial
-│   ├── PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md       # ⭐ SINGLE SOURCE OF TRUTH (Cotas, coordenadas, REBT, fontanería, VMC)
+│   ├── PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md       # Memoria técnica de instalaciones (REBT, fontanería, VMC)
 │   ├── FICHAS_TECNICAS_ESTANCIAS_ZOOM_PROPUESTA_D.md                # Fichas técnicas 1:20 de las 17 zonas
 │   └── PROPUESTA_D_PABELLON_BIOCLIMATICO_OLEIROS.md                 # Memoria conceptual y bioclimática de Propuesta D
 │
@@ -34,13 +43,12 @@ Proyecto integral de arquitectura, bioclimática y ejecución de vivienda unifam
 │   ├── 03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md              # Climatización Passivhaus, Bora, churrasqueira y piscina
 │   └── 04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md        # Historial de decisiones y alternativas rechazadas
 │
-├── propuestas/                                                      # Planos vectoriales SVG a escala y Renders
+├── propuestas/                                                      # Artefactos gráficos de salida (SVG 1:50 / 1:20 y Renders)
 │   ├── plano_constructivo_zona_norte_pb.svg                         # Detalle 1:50 Zona Norte PB
 │   ├── plano_constructivo_centro_patio_cocina_pb.svg                # Detalle 1:50 Centro PB (Patio, Cocina, Escalera)
 │   ├── plano_constructivo_sur_salon_porche_pb.svg                   # Detalle 1:50 Zona Sur PB (Salón, Porche, Piscina)
 │   ├── planta_baja_propuesta_d.svg                                  # Planta Baja General 1:100
 │   ├── planta_alta_propuesta_d.svg                                  # Planta Primera General 1:100
-│   ├── Presentacion_Hogar_Oleiros_Propuesta_D.pptx                  # PowerPoint 16:9 compatible con Mac (Keynote)
 │   └── renders/                                                     # Galería de 12 renders fotorrealistas
 │
 └── .agents/                                                         # Skills de arquitectura, bioclimática y cálculo
@@ -52,10 +60,13 @@ Proyecto integral de arquitectura, bioclimática y ejecución de vivienda unifam
 
 Si eres un agente de IA que retoma o continúa este proyecto:
 
-1. **Lectura Obligatoria #1 (SSOT):** Lee [`docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md`](file:///home/antigravity/landslore/oleiros/docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md). Contiene las coordenadas exactas $(X, Y, Z)$, las dimensiones de muros, carpinterías, muebles, tomas de corriente Schuko/RJ45, caudales de ventilación VMC y trazado de fontanería.
-2. **Consultas de Contexto Rápido:**
-   * Para cotas y superficies: [`context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md`](file:///home/antigravity/landslore/oleiros/context/02_DISTRIBUCION_ARQUITECTONICA_Y_COTAS.md).
-   * Para instalaciones Passivhaus y calidades: [`context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md`](file:///home/antigravity/landslore/oleiros/context/03_MEMORIA_TECNICA_INSTALACIONES_Y_CALIDADES.md).
+1. **⛔ PROHIBIDO PARSEAR ARCHIVOS `.svg` PARA CONSULTAS ESPACIALES:** Los ficheros SVG son exclusivamente para renderizado visual. No leas miles de líneas XML para buscar una cota o puerta.
+2. **Lectura Obligatoria #1 (SSOT):** Consulta directamente [**`espacios/README.md`**](file:///home/antigravity/landslore/oleiros/espacios/README.md).
+   * Para distribución global: [**`espacios/PLANTA_BAJA_TOPOLOGIA.md`**](file:///home/antigravity/landslore/oleiros/espacios/PLANTA_BAJA_TOPOLOGIA.md) y [**`espacios/PLANTA_ALTA_TOPOLOGIA.md`**](file:///home/antigravity/landslore/oleiros/espacios/PLANTA_ALTA_TOPOLOGIA.md).
+   * Para trabajar en una estancia: Abre solo su ficha en [**`espacios/estancias/<id_estancia>.md`**](file:///home/antigravity/landslore/oleiros/espacios/estancias/).
+   * Para respetar la armonía y acabados: [**`espacios/CRITERIOS_MATERIALES_Y_ARMONIA.md`**](file:///home/antigravity/landslore/oleiros/espacios/CRITERIOS_MATERIALES_Y_ARMONIA.md).
+3. **Consultas de Contexto Rápido:**
+   * Para memoria global de instalaciones: [`docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md`](file:///home/antigravity/landslore/oleiros/docs/PROYECTO_EJECUCION_DEFINITIVO_COTAS_E_INSTALACIONES.md).
    * Para no reintroducir ideas descartadas: [`context/04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md`](file:///home/antigravity/landslore/oleiros/context/04_BITACORA_DECISIONES_Y_ALTERNATIVAS_DESCARTADAS.md).
 3. **Reglas de Oro Innegociables:**
    * 🚫 **El Patio Corrala (16 m²) es a cielo abierto:** Jamás colocar cubiertas de cristal cerradas ni lucernarios motorizados. Es una corrala habitable a cota cero.

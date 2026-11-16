@@ -1,0 +1,385 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1220" width="100%" height="100%" style="background-color:#070b14;">
+
+    <defs>
+      <!-- Retícula CAD milimétrica -->
+      <pattern id="grid-cad-fine" width="20" height="20" patternUnits="userSpaceOnUse">
+        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.35" opacity="0.6"/>
+      </pattern>
+      <pattern id="grid-cad-major" width="100" height="100" patternUnits="userSpaceOnUse">
+        <rect width="100" height="100" fill="url(#grid-cad-fine)"/>
+        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#334155" stroke-width="0.8" opacity="0.75"/>
+      </pattern>
+
+      <!-- Rayado técnico muros ANSI31 -->
+      <pattern id="hatch-wall" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="6" stroke="#94a3b8" stroke-width="0.8"/>
+      </pattern>
+
+      <!-- Rayado pilares estructurales -->
+      <pattern id="hatch-pillar" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="5" stroke="#e2e8f0" stroke-width="1.1"/>
+        <line x1="0" y1="0" x2="5" y2="0" stroke="#e2e8f0" stroke-width="1.1"/>
+      </pattern>
+
+      <!-- Marcadores de cota -->
+      <marker id="tick-45" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#38bdf8" stroke-width="1.2"/>
+      </marker>
+      <marker id="tick-amber" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#f59e0b" stroke-width="1.2"/>
+      </marker>
+      <marker id="tick-emerald" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <line x1="1.5" y1="6.5" x2="6.5" y2="1.5" stroke="#10b981" stroke-width="1.2"/>
+      </marker>
+      <marker id="arrow-tech" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+        <polygon points="0 0, 7 3.5, 0 7" fill="#38bdf8"/>
+      </marker>
+
+      <!-- Gradientes -->
+      <linearGradient id="grad-iroko-patio" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#3b2514"/>
+        <stop offset="100%" stop-color="#24170d"/>
+      </linearGradient>
+      <linearGradient id="grad-roble-pelda" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2d2217"/>
+        <stop offset="100%" stop-color="#1d150e"/>
+      </linearGradient>
+      <linearGradient id="grad-tecnico" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#182232"/>
+        <stop offset="100%" stop-color="#0f1622"/>
+      </linearGradient>
+    </defs>
+    
+<rect width="1920" height="1220" fill="url(#grid-cad-major)"/>
+
+    <rect x="30" y="30" width="1860" height="1160" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+    <rect x="36" y="36" width="1848" height="1148" fill="none" stroke="#1e293b" stroke-width="0.8"/>
+    <g transform="translate(60, 70)">
+      <text x="0" y="0" fill="#38bdf8" font-family="monospace" font-size="20" font-weight="900" letter-spacing="2">NÚCLEO CENTRAL: PATIO CLAUSTRO, ESCALERA VOLADA Y HUECOS DE ALMACENAJE (1:20)</text>
+      <text x="0" y="24" fill="#94a3b8" font-family="monospace" font-size="11">PULMÓN BIOCLIMÁTICO [PB-07] · ESCALERA VOLADA ROBLE 80mm [PB-12] · APROVECHAMIENTO BAJO ESCALERA · PLANO N-01</text>
+      <line x1="0" y1="36" x2="1800" y2="36" stroke="#334155" stroke-width="1.2"/>
+    </g>
+    
+<g class="cad-dim">
+      <line x1="380.0" y1="198.0" x2="380.0" y2="196.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="520.0" y1="198.0" x2="520.0" y2="196.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="380.0" y1="200.0" x2="520.0" y2="200.0" stroke="#38bdf8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <rect x="387.0" y="194.0" width="126.0" height="12.0" fill="#0b1120" opacity="0.9"/>
+      <text x="450.0" y="203.0" fill="#38bdf8" font-family="monospace" font-size="8" font-weight="700" text-anchor="middle">1,40 m · [PB-12] ESCALERA</text>
+    </g>
+<g class="cad-dim">
+      <line x1="550.0" y1="198.0" x2="550.0" y2="196.0" stroke="#10b981" stroke-width="0.5" opacity="0.6"/>
+      <line x1="950.0" y1="198.0" x2="950.0" y2="196.0" stroke="#10b981" stroke-width="0.5" opacity="0.6"/>
+      <line x1="550.0" y1="200.0" x2="950.0" y2="200.0" stroke="#10b981" stroke-width="0.8" marker-start="url(#tick-emerald)" marker-end="url(#tick-emerald)"/>
+      <rect x="634.8" y="193.8" width="230.4" height="12.5" fill="#0b1120" opacity="0.9"/>
+      <text x="750.0" y="203.2" fill="#10b981" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">4,00 m · [PB-07] PATIO CLAUSTRO BIOCLIMÁTICO</text>
+    </g>
+<g class="cad-dim">
+      <line x1="380.0" y1="148.0" x2="380.0" y2="146.0" stroke="#f59e0b" stroke-width="0.5" opacity="0.6"/>
+      <line x1="950.0" y1="148.0" x2="950.0" y2="146.0" stroke="#f59e0b" stroke-width="0.5" opacity="0.6"/>
+      <line x1="380.0" y1="150.0" x2="950.0" y2="150.0" stroke="#f59e0b" stroke-width="0.8" marker-start="url(#tick-amber)" marker-end="url(#tick-amber)"/>
+      <rect x="583.7" y="143.5" width="162.6" height="13.0" fill="#0b1120" opacity="0.9"/>
+      <text x="665.0" y="153.5" fill="#f59e0b" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">ANCHURA TOTAL NÚCLEO = 5,70 m</text>
+    </g>
+<g class="cad-dim">
+      <line x1="308.0" y1="260.0" x2="306.0" y2="260.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="308.0" y1="660.0" x2="306.0" y2="660.0" stroke="#38bdf8" stroke-width="0.5" opacity="0.6"/>
+      <line x1="310.0" y1="260.0" x2="310.0" y2="660.0" stroke="#38bdf8" stroke-width="0.8" marker-start="url(#tick-45)" marker-end="url(#tick-45)"/>
+      <g transform="translate(310.0, 460.0) rotate(-90)">
+        <rect x="-82.0" y="-6.2" width="164.1" height="12.5" fill="#0b1120" opacity="0.9"/>
+        <text x="0" y="3.2" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">LONGITUD = 4,00 m (17 PELDAÑOS)</text>
+      </g>
+    </g>
+
+    <!-- PATIO CLAUSTRO [PB-07] -->
+    <!-- Solera exterior: Tarima maciza Iroko sobre plots -->
+    <rect x="550" y="260" width="400" height="400" fill="url(#grad-iroko-patio)" stroke="#10b981" stroke-width="1.5"/>
+    
+<line x1="550" y1="260" x2="950" y2="260" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="272" x2="950" y2="272" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="284" x2="950" y2="284" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="296" x2="950" y2="296" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="308" x2="950" y2="308" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="320" x2="950" y2="320" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="332" x2="950" y2="332" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="344" x2="950" y2="344" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="356" x2="950" y2="356" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="368" x2="950" y2="368" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="380" x2="950" y2="380" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="392" x2="950" y2="392" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="404" x2="950" y2="404" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="416" x2="950" y2="416" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="428" x2="950" y2="428" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="440" x2="950" y2="440" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="452" x2="950" y2="452" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="464" x2="950" y2="464" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="476" x2="950" y2="476" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="488" x2="950" y2="488" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="500" x2="950" y2="500" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="512" x2="950" y2="512" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="524" x2="950" y2="524" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="536" x2="950" y2="536" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="548" x2="950" y2="548" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="560" x2="950" y2="560" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="572" x2="950" y2="572" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="584" x2="950" y2="584" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="596" x2="950" y2="596" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="608" x2="950" y2="608" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="620" x2="950" y2="620" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="632" x2="950" y2="632" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="644" x2="950" y2="644" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+<line x1="550" y1="656" x2="950" y2="656" stroke="#451a03" stroke-width="0.5" opacity="0.6"/>
+
+    <!-- Parterre Vegetal Central y Árbol Singular (Arce Japonés) -->
+    <rect x="675" y="385" width="150" height="150" rx="3" fill="#0f1f17" stroke="#10b981" stroke-width="1.8"/>
+    <!-- Copa de árbol (Arce Japonés / Liquidambar) -->
+    <circle cx="750" cy="460" r="60" fill="#064e3b" fill-opacity="0.45" stroke="#10b981" stroke-width="1.2" stroke-dasharray="4,2"/>
+    <circle cx="750" cy="460" r="10" fill="#10b981"/>
+    <!-- 4 Focos rasantes sumergibles IP68 (2700K cálido) -->
+    <circle cx="700" cy="410" r="5" fill="#f59e0b"/>
+    <circle cx="800" cy="410" r="5" fill="#f59e0b"/>
+    <circle cx="700" cy="510" r="5" fill="#f59e0b"/>
+    <circle cx="800" cy="510" r="5" fill="#f59e0b"/>
+    <text x="750" y="464" fill="#f8fafc" font-family="monospace" font-size="7" font-weight="900" text-anchor="middle">ARCE JAPONÉS</text>
+    <text x="750" y="476" fill="#a7f3d0" font-family="monospace" font-size="6" text-anchor="middle">(CORTEZA ROJA EN OTOÑO)</text>
+
+    <!-- Arqueta de recogida de pluviales (Conexión a depósito 5.000 L) -->
+    <rect x="570" y="280" width="24" height="24" fill="#0b1120" stroke="#38bdf8" stroke-width="1.0"/>
+    <text x="582" y="295" fill="#38bdf8" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="middle">PLUV</text>
+
+    <!-- Carpinterías perimetrales de vidrio -->
+    <!-- Norte: Cristalera fija C-05 hacia Hall/Despacho -->
+    <rect x="550" y="254" width="400" height="6" fill="#0b1120" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="750" y="248" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">C-05 FIJO VIDRIO AL HALL Y DESPACHO (4,00 m)</text>
+    <!-- Sur: Cristalera hacia Salón -->
+    <rect x="550" y="660" width="400" height="6" fill="#0b1120" stroke="#38bdf8" stroke-width="1.2"/>
+    <text x="750" y="678" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">FRENTE VIDRIO VENTILACIÓN CRUZADA SALÓN</text>
+    <!-- Este: Gran Corredera C-06 (2,40 m) hacia Cocina Santos -->
+    <rect x="947" y="340" width="6" height="240" fill="#0b1120" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="965" y="460" fill="#f59e0b" font-family="monospace" font-size="6.8" font-weight="700" transform="rotate(90 965 460)">C-06 CORREDERA COCINA SANTOS (2,40 m)</text>
+    <!-- Oeste: Barandilla vidrio Silence 10+10mm frente a escalera -->
+    <line x1="520" y1="260" x2="520" y2="660" stroke="#38bdf8" stroke-width="2.8"/>
+    <text x="532" y="460" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" transform="rotate(-90 532 460)">BARANDILLA VIDRIO SILENCE 10+10mm</text>
+    
+
+    <!-- ESCALERA VOLADA [PB-12] -->
+    <!-- Muro portante oeste de anclaje estructural (X: 340 a 380) -->
+    <rect x="340" y="260" width="40" height="400" fill="url(#hatch-wall)" stroke="#cbd5e1" stroke-width="1.2"/>
+    
+
+        <g class="cad-step">
+          <rect x="380" y="260.0" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="281.5" x2="520" y2="281.5" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="273.8" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">01</text>
+          <text x="490" y="273.8" fill="#94a3b8" font-family="monospace" font-size="5.5">+0.18m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="283.5" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="305.1" x2="520" y2="305.1" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="297.3" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">02</text>
+          <text x="490" y="297.3" fill="#94a3b8" font-family="monospace" font-size="5.5">+0.35m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="307.1" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="328.6" x2="520" y2="328.6" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="320.8" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">03</text>
+          <text x="490" y="320.8" fill="#94a3b8" font-family="monospace" font-size="5.5">+0.53m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="330.6" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="352.1" x2="520" y2="352.1" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="344.4" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">04</text>
+          <text x="490" y="344.4" fill="#94a3b8" font-family="monospace" font-size="5.5">+0.71m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="354.1" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="375.6" x2="520" y2="375.6" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="367.9" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">05</text>
+          <text x="490" y="367.9" fill="#94a3b8" font-family="monospace" font-size="5.5">+0.88m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="377.6" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="399.2" x2="520" y2="399.2" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="391.4" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">06</text>
+          <text x="490" y="391.4" fill="#94a3b8" font-family="monospace" font-size="5.5">+1.06m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="401.2" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="422.7" x2="520" y2="422.7" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="414.9" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">07</text>
+          <text x="490" y="414.9" fill="#94a3b8" font-family="monospace" font-size="5.5">+1.24m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="424.7" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="446.2" x2="520" y2="446.2" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="438.5" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">08</text>
+          <text x="490" y="438.5" fill="#94a3b8" font-family="monospace" font-size="5.5">+1.41m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="448.2" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="469.8" x2="520" y2="469.8" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="462.0" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">09</text>
+          <text x="490" y="462.0" fill="#94a3b8" font-family="monospace" font-size="5.5">+1.59m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="471.8" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="493.3" x2="520" y2="493.3" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="485.5" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">10</text>
+          <text x="490" y="485.5" fill="#94a3b8" font-family="monospace" font-size="5.5">+1.76m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="495.3" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="516.8" x2="520" y2="516.8" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="509.1" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">11</text>
+          <text x="490" y="509.1" fill="#94a3b8" font-family="monospace" font-size="5.5">+1.94m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="518.8" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="540.4" x2="520" y2="540.4" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="532.6" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">12</text>
+          <text x="490" y="532.6" fill="#94a3b8" font-family="monospace" font-size="5.5">+2.12m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="542.4" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="563.9" x2="520" y2="563.9" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="556.1" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">13</text>
+          <text x="490" y="556.1" fill="#94a3b8" font-family="monospace" font-size="5.5">+2.29m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="565.9" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="587.4" x2="520" y2="587.4" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="579.6" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">14</text>
+          <text x="490" y="579.6" fill="#94a3b8" font-family="monospace" font-size="5.5">+2.47m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="589.4" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="610.9" x2="520" y2="610.9" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="603.2" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">15</text>
+          <text x="490" y="603.2" fill="#94a3b8" font-family="monospace" font-size="5.5">+2.65m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="612.9" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="634.5" x2="520" y2="634.5" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="626.7" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">16</text>
+          <text x="490" y="626.7" fill="#94a3b8" font-family="monospace" font-size="5.5">+2.82m</text>
+        </g>
+        
+
+        <g class="cad-step">
+          <rect x="380" y="636.5" width="140" height="23.5" fill="url(#grad-roble-pelda)" stroke="#cbd5e1" stroke-width="0.7"/>
+          <line x1="380" y1="658.0" x2="520" y2="658.0" stroke="#f59e0b" stroke-width="1.2" opacity="0.8"/>
+          <text x="395" y="650.2" fill="#fde68a" font-family="monospace" font-size="6.5" font-weight="700">17</text>
+          <text x="490" y="650.2" fill="#94a3b8" font-family="monospace" font-size="5.5">+3.00m</text>
+        </g>
+        
+
+    <g class="cad-stair-arrow">
+      <line x1="450" y1="280" x2="450" y2="630" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow-tech)"/>
+      <circle cx="450" cy="280" r="3.5" fill="#38bdf8"/>
+      <text x="450" y="272" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">SUBE (17 PELDAÑOS A P1)</text>
+    </g>
+    
+
+    <!-- ======================================================== -->
+    <!-- ALZADO SECCIÓN: APROVECHAMIENTO DE HUECOS BAJO ESCALERA  -->
+    <!-- ======================================================== -->
+    <g id="huecos-muertos-seccion" transform="translate(0, 0)">
+      <rect x="60" y="260" width="240" height="400" fill="#0b1120" stroke="#334155" stroke-width="1.0" rx="2"/>
+      <rect x="60" y="260" width="240" height="24" fill="#1e293b"/>
+      <text x="180" y="276" fill="#38bdf8" font-family="monospace" font-size="7.5" font-weight="900" text-anchor="middle">SECCIÓN BAJO ESCALERA: ZONIFICACIÓN</text>
+
+      <!-- Perfil de altura ascendente de peldaños (de 0m a 3,00m en escala vertical) -->
+      <!-- Zona 1: Peldaños 1-6 (h = 0,00 a 1,06 m) -> BATERÍA DE GAVETAS PUSH -->
+      <path d="M 70 300 L 290 300 L 290 370 L 70 370 Z" fill="#131c31" stroke="#38bdf8" stroke-width="1.0"/>
+      <!-- 4 Gavetas extraíbles -->
+      <rect x="75" y="310" width="48" height="50" rx="1" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.7"/>
+      <rect x="128" y="310" width="48" height="50" rx="1" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.7"/>
+      <rect x="181" y="310" width="48" height="50" rx="1" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.7"/>
+      <rect x="234" y="310" width="48" height="50" rx="1" fill="#1e293b" stroke="#cbd5e1" stroke-width="0.7"/>
+      <text x="180" y="385" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">ZONA 1 (h &lt; 1,05m): 4 GAVETAS EXTRAÍBLES PUSH</text>
+      <text x="180" y="396" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Zapatero profundo (fondo 1,20m) y calzado de invierno</text>
+
+      <!-- Zona 2: Peldaños 7-11 (h = 1,06 a 1,94 m) -> ARMARIO ROBOT + MALETERO -->
+      <rect x="70" y="415" width="220" height="95" fill="#131c31" stroke="#f59e0b" stroke-width="1.0" rx="2"/>
+      <rect x="80" y="430" width="60" height="70" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8"/>
+      <!-- Robot aspirador en base -->
+      <circle cx="110" cy="485" r="14" fill="#0b1120" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="110" y="488" fill="#fde68a" font-family="monospace" font-size="5" text-anchor="middle">ROBOT</text>
+      <rect x="150" y="430" width="130" height="70" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.8"/>
+      <text x="215" y="465" fill="#cbd5e1" font-family="monospace" font-size="6" text-anchor="middle">ALMACENAJE MALETAS</text>
+      <text x="180" y="525" fill="#f59e0b" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">ZONA 2 (h = 1,06-1,94m): ARMARIO TÉCNICO Y ROBÓTICA</text>
+      <text x="180" y="536" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Base de carga oculta robot aspirador y maletero</text>
+
+      <!-- Zona 3: Peldaños 12-17 (h = 1,94 a 3,00 m) -> PASO Y REGISTRO INSTALACIONES -->
+      <rect x="70" y="550" width="220" height="95" fill="#131c31" stroke="#10b981" stroke-width="1.0" rx="2"/>
+      <rect x="80" y="565" width="40" height="65" fill="#0f172a" stroke="#ef4444" stroke-width="0.8"/>
+      <text x="100" y="600" fill="#fca5a5" font-family="monospace" font-size="5" text-anchor="middle">SHUNT</text>
+      <text x="180" y="585" fill="#10b981" font-family="monospace" font-size="6.5" font-weight="700" text-anchor="middle">ZONA 3 (h &gt; 1,94m): PASO LIBRE Y SHUNT</text>
+      <text x="180" y="598" fill="#94a3b8" font-family="monospace" font-size="5.8" text-anchor="middle">Paso cómodo altura de hombre y registro VMC/P1</text>
+    </g>
+    
+
+    <g transform="translate(1020, 260)">
+      <rect x="0" y="0" width="820" height="550" fill="#0b1120" stroke="#334155" stroke-width="1.0" rx="3"/>
+      <rect x="0" y="0" width="820" height="28" fill="#1e293b"/>
+      <text x="15" y="19" fill="#10b981" font-family="monospace" font-size="9" font-weight="900">MEMORIA TÉCNICA · NÚCLEO BIOCLIMÁTICO Y CONEXIÓN VERTICAL</text>
+      
+      <g transform="translate(20, 45)">
+        <text x="0" y="15" fill="#10b981" font-family="monospace" font-size="8.5" font-weight="700">1. PATIO CENTRAL CLAUSTRO [PB-07] · EL PULMÓN VERDE:</text>
+        <text x="0" y="32" fill="#94a3b8" font-family="monospace" font-size="7">· Superficie: 16,00 m² (4,00 × 4,00 m libres entre paramentos de vidrio de suelo a techo).</text>
+        <text x="0" y="46" fill="#94a3b8" font-family="monospace" font-size="7">· Función bioclimática: Genera un microclima húmedo y fresco en verano mediante sombraje natural</text>
+        <text x="0" y="58" fill="#94a3b8" font-family="monospace" font-size="7">  y efecto chimenea térmica con ventilación cruzada noche/día hacia el salón y cocina.</text>
+        <text x="0" y="72" fill="#94a3b8" font-family="monospace" font-size="7">· Tarima de Iroko FSC sobre plots regulables de polipropileno con cota cero absoluta enrasada.</text>
+        <text x="0" y="86" fill="#94a3b8" font-family="monospace" font-size="7">· Parterre vegetal central de 1,50×1,50 m con arce japonés (Acer palmatum) e iluminación rasante IP68.</text>
+
+        <text x="0" y="115" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700">2. ESCALERA VOLADA DE ROBLE MACIZO [PB-12]:</text>
+        <text x="0" y="132" fill="#94a3b8" font-family="monospace" font-size="7">· 17 peldaños volados de 80 mm de roble macizo europeo empotrados en placa oculta en muro oeste.</text>
+        <text x="0" y="146" fill="#94a3b8" font-family="monospace" font-size="7">· Geometría CTE DB-SUA: Huella H = 28,0 cm | Contrahuella CH = 17,65 cm | Ley Blondel = 63,30 cm.</text>
+        <text x="0" y="160" fill="#94a3b8" font-family="monospace" font-size="7">· Anchura libre de paso = 1,10 m. Barandilla continua de vidrio Silence 10+10mm sin postes verticales.</text>
+        <text x="0" y="174" fill="#94a3b8" font-family="monospace" font-size="7">· Tiras LED 2700K cálidas fresadas en la base de cada peldaño con encendido progresivo crepuscular.</text>
+
+        <text x="0" y="205" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700">3. APROVECHAMIENTO QUIRÚRGICO DE HUECOS MUERTOS (3,80 m³):</text>
+        <text x="0" y="222" fill="#94a3b8" font-family="monospace" font-size="7">· Zona inferior (Peldaños 1-6): 4 gavetas extraíbles push-to-open de 1,20 m de fondo para calzado.</text>
+        <text x="0" y="236" fill="#94a3b8" font-family="monospace" font-size="7">· Zona media (Peldaños 7-11): Armario para robot aspirador con toma eléctrica y gaveta para maletas.</text>
+        <text x="0" y="250" fill="#94a3b8" font-family="monospace" font-size="7">· Zona alta (Peldaños 12-17): Registro técnico insonorizado para el paso vertical de shunts y VMC.</text>
+
+        <rect x="0" y="280" width="780" height="180" fill="#131c31" stroke="#334155" stroke-width="0.8"/>
+        <text x="15" y="305" fill="#f8fafc" font-family="monospace" font-size="8" font-weight="700">EXPERIENCIA SENSORIAL FAMILIAR:</text>
+        <text x="15" y="325" fill="#cbd5e1" font-family="monospace" font-size="7.2">Al subir o bajar de la planta primera, la barandilla de vidrio transparente permite</text>
+        <text x="15" y="340" fill="#cbd5e1" font-family="monospace" font-size="7.2">mantener contacto visual permanente con el árbol del patio claustro y la luz natural.</text>
+        <text x="15" y="355" fill="#cbd5e1" font-family="monospace" font-size="7.2">Al mismo tiempo, la pared bajo la escalera queda completamente limpia y enrasada,</text>
+        <text x="15" y="370" fill="#cbd5e1" font-family="monospace" font-size="7.2">transformando un espacio habitualmente residual en almacenaje de alta capacidad.</text>
+      </g>
+    </g>
+    
+</svg>

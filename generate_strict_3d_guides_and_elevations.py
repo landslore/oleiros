@@ -5,8 +5,9 @@ Generador de:
 1. Plano CAD de los 4 Alzados Exteriores Estrictos (Norte, Sur, Este y Oeste) a Escala 1:100:
    - plano_alzados_exteriores_4_caras.svg
 2. Guías Geométricas 3D Exactas (PNG) proyectadas matemáticamente desde las coordenadas reales
-   (X=0..20m, Y=0..30m, Z=0..6.80m) para condicionar los renders fotorrealistas de las 4 fachadas
-   y la vista en perspectiva superior.
+   (X=0..20m, Y=0..30m, Z=0..6.80m / +7.80m chimenea) para condicionar los renders fotorrealistas
+   de las 4 fachadas y la vista en perspectiva superior.
+   Versión Optimizada Passivhaus (~165 m² constr. totales · Desfase Sur · Cero Terrazas Sucias).
 """
 
 import os
@@ -35,8 +36,8 @@ def build_4_elevations_svg() -> str:
         f'<rect x="14" y="14" width="{W-28}" height="{H-28}" fill="none" stroke="#475569" stroke-width="1.5"/>',
         f'<rect x="20" y="20" width="{W-40}" height="{H-40}" fill="none" stroke="#334155" stroke-width="0.6"/>',
         '<rect x="28" y="26" width="1744" height="36" fill="#0f172a" stroke="#334155" stroke-width="0.8"/>',
-        '<text x="42" y="43" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="700">PLANO A-03 · ALZADOS EXTERIORES ESTRICTOS (NORTE, SUR, ESTE Y OESTE) — GEOMETRÍA 100% FIEL A PLANOS</text>',
-        '<text x="42" y="55" fill="#94a3b8" font-family="monospace" font-size="7.2">Correspondencia milimétrica con Plantas A-01, A-02 y E-04 · Cotas de coronación +6,80 m · Forjado P1 +3,15 m · Cubierta Oeste FV +3,45 m · Pérgola +2,90 m</text>',
+        '<text x="42" y="43" fill="#38bdf8" font-family="monospace" font-size="10.5" font-weight="700">PLANO A-03 · ALZADOS EXTERIORES ESTRICTOS (NORTE, SUR, ESTE Y OESTE) — VERSIÓN OPTIMIZADA PASSIVHAUS (~165 m²)</text>',
+        '<text x="42" y="55" fill="#94a3b8" font-family="monospace" font-size="7.2">Desfase Volumétrico Sur · Efecto Soportal Porche 3,00 m · Cero Terrazas Sucias · Chimenea Exterior Este (+7,80 m) · Solar FV (+6,50 m)</text>',
     ]
 
     def level_marks(x_left: float, x_right: float, gy: float, levels):
@@ -53,98 +54,86 @@ def build_4_elevations_svg() -> str:
     # ==========================================================================
     out.append('<rect x="28" y="70" width="862" height="515" fill="url(#grid-minor)" stroke="#334155" stroke-width="0.8"/>')
     out.append('<rect x="28" y="70" width="862" height="22" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>')
-    out.append('<text x="40" y="85" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">1. ALZADO NORTE (FACHADA VIAL DE ACCESO · EJE 1: Y = 5,00 m) — De Este (X=17,00 m) a Oeste (X=1,00 m)</text>')
+    out.append('<text x="40" y="85" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">1. ALZADO NORTE (ACCESO Y VIAL · Y = 5,00 m) — De Este (X=17,00 m) a Oeste (X=1,00 m)</text>')
 
     gy1 = 465.0
-    # Función x para Alzado Norte: X=17.00 a la izquierda, X=1.00 a la derecha
     def nx(xm: float) -> float:
         return 115.0 + (17.00 - xm) * S
 
     def ny(zm: float) -> float:
         return gy1 - zm * S
 
-    # Niveles
     out.append(level_marks(nx(17.50), nx(0.50), gy1, [
         (0.00, "±0,00 m (PB)", "#10b981"),
         (2.90, "+2,90 m (Pérgola)", "#94a3b8"),
-        (3.15, "+3,15 m (Forjado P1)", "#38bdf8"),
-        (3.45, "+3,45 m (Cub. Oeste FV)", "#f59e0b"),
+        (3.15, "+3,15 m (Cub. PB / Forjado P1)", "#38bdf8"),
         (6.80, "+6,80 m (Coronación P1)", "#f8fafc"),
+        (7.40, "+7,40 m (Campo FV 30°)", "#f59e0b"),
     ]))
 
-    # Ejes verticales E, D, C, B, A
-    for lbl, xm in [("E", 17.00), ("D", 12.50), ("C", 8.50), ("B", 6.15), ("A", 4.00)]:
+    for lbl, xm in [("E", 17.00), ("D", 13.50), ("C", 10.00), ("B", 6.15), ("A", 4.00)]:
         xx = nx(xm)
         out.append(f'<line x1="{xx:.1f}" y1="102" x2="{xx:.1f}" y2="{gy1+15:.1f}" stroke="#f59e0b" stroke-width="0.55" stroke-dasharray="6,3" opacity="0.65"/>')
         out.append(f'<circle cx="{xx:.1f}" cy="102" r="7.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>')
         out.append(f'<text x="{xx:.1f}" y="105" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="6.2" font-weight="700">{lbl}</text>')
 
-    # Cuerpo Principal 2 Plantas (X=17.00 a X=6.15 -> ancho 10,85 m)
-    # Planta Baja (Z=0..3.15): Zócalo y paños de granito gallego + SATE blanco
-    out.append(f'<rect x="{nx(17.00):.1f}" y="{ny(3.15):.1f}" width="{10.85*S:.1f}" height="{3.15*S:.1f}" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>')
-    # Zócalo granito h=1,10m
-    out.append(f'<rect x="{nx(17.00):.1f}" y="{ny(1.10):.1f}" width="{10.85*S:.1f}" height="{1.10*S:.1f}" fill="#334155" stroke="#94a3b8" stroke-width="0.9"/>')
-    # Planta Primera (Z=3.15..6.80): SATE Blanco Cálido NCS S 0502-Y
-    out.append(f'<rect x="{nx(17.00):.1f}" y="{ny(6.80):.1f}" width="{10.85*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
-    # Albardilla coronación +6,80m
+    # 1.1 SEGUNDO PLANO (AL FONDO): Volumen Planta Primera a Y=14.30m (X=17.00..6.15, Z=3.15..6.80m)
+    # SATE Blanco Cálido NCS S 0502-Y
+    out.append(f'<rect x="{nx(17.00):.1f}" y="{ny(6.80):.1f}" width="{10.85*S:.1f}" height="{3.65*S:.1f}" fill="#1e293b" stroke="#94a3b8" stroke-width="1.2"/>')
     out.append(f'<rect x="{nx(17.05):.1f}" y="{ny(6.80):.1f}" width="{10.95*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    # Mirador C-15A Galería (X=6.50..8.30, Z=3.15..5.55) asomando al fondo sobre el patio
+    out.append(f'<rect x="{nx(8.30):.1f}" y="{ny(5.55):.1f}" width="{1.80*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.0"/>')
+    # Ventana C-10 Baño Hijos (X=8.80..9.80, Z=4.75..5.35)
+    out.append(f'<rect x="{nx(9.80):.1f}" y="{ny(5.35):.1f}" width="{1.00*S:.1f}" height="{0.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.0"/>')
+    # Campo Solar Fotovoltaico en Azotea Alta (+6,50m): 12 paneles orientados a 30° Sur
+    out.append(f'<polygon points="{nx(15.50):.1f},{ny(6.80):.1f} {nx(8.00):.1f},{ny(6.80):.1f} {nx(8.00):.1f},{ny(7.40):.1f} {nx(15.50):.1f},{ny(7.40):.1f}" fill="#0284c7" stroke="#38bdf8" stroke-width="1.2"/>')
+    out.append(f'<text x="{nx(11.75):.1f}" y="{ny(7.05):.1f}" text-anchor="middle" fill="#7dd3fc" font-family="monospace" font-size="5.2" font-weight="700">12 PANELES FV (5,40 kWp · AZOTEA ALTA +6,50 m)</text>')
 
-    # Cuerpo Oeste 1 Planta (Mudroom X=6.15..4.00, Z=0..3.45m) en mampostería de granito
-    out.append(f'<rect x="{nx(6.15):.1f}" y="{ny(3.45):.1f}" width="{2.15*S:.1f}" height="{3.45*S:.1f}" fill="#334155" stroke="#cbd5e1" stroke-width="1.4"/>')
-    # Paneles solares FV sobre cubierta Oeste (Z=3.45..3.75m)
-    out.append(f'<polygon points="{nx(5.90):.1f},{ny(3.45):.1f} {nx(4.25):.1f},{ny(3.45):.1f} {nx(4.40):.1f},{ny(3.82):.1f} {nx(5.90):.1f},{ny(3.60):.1f}" fill="#0284c7" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<text x="{nx(5.07):.1f}" y="{ny(4.00):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.2" font-weight="700">12 PANELES FV</text>')
+    # 1.2 PRIMER PLANO: Planta Baja (Y=5.00m, Z=0..3.15m con Cubierta Inclinada Zinc 15%)
+    # Volumen Despacho y Baño PB (X=17.00..6.15)
+    out.append(f'<rect x="{nx(17.00):.1f}" y="{ny(3.15):.1f}" width="{10.85*S:.1f}" height="{3.15*S:.1f}" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>')
+    # Zócalo de granito silvestre moreno h=1.10m
+    out.append(f'<rect x="{nx(17.00):.1f}" y="{ny(1.10):.1f}" width="{10.85*S:.1f}" height="{1.10*S:.1f}" fill="#334155" stroke="#94a3b8" stroke-width="0.9"/>')
+    # Cubierta inclinada de zinc 15% sobre Despacho y Hall (Z=3.15..3.60m)
+    out.append(f'<polygon points="{nx(17.00):.1f},{ny(3.15):.1f} {nx(6.15):.1f},{ny(3.15):.1f} {nx(6.15):.1f},{ny(3.55):.1f} {nx(17.00):.1f},{ny(3.55):.1f}" fill="#475569" stroke="#94a3b8" stroke-width="1.0"/>')
+    out.append(f'<text x="{nx(11.50):.1f}" y="{ny(3.35):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.8">CUBIERTA ZINC 15% (AUTOLIMPIABLE)</text>')
 
-    # Chimenea Salón asomando al fondo en X=4.40..4.95, Z=3.45..7.25m
-    out.append(f'<rect x="{nx(4.95):.1f}" y="{ny(7.25):.1f}" width="{0.55*S:.1f}" height="{3.80*S:.1f}" fill="#0f172a" stroke="#94a3b8" stroke-width="1.0"/>')
-    out.append(f'<text x="{nx(4.67):.1f}" y="{ny(7.42):.1f}" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="5.0">CHIMENEA +7,25m</text>')
+    # Huecos en Fachada Norte PB:
+    # Puerta Pivotante Iroko P-01 (X=7.25..8.35, Z=0..2.40m)
+    out.append(f'<rect x="{nx(8.35):.1f}" y="{ny(2.40):.1f}" width="{1.10*S:.1f}" height="{2.40*S:.1f}" fill="#78350f" stroke="#fbbf24" stroke-width="1.3"/>')
+    out.append(f'<circle cx="{nx(7.45):.1f}" cy="{ny(1.20):.1f}" r="2" fill="#fbbf24"/>')
+    out.append(f'<text x="{nx(7.80):.1f}" y="{ny(2.55):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="5.2" font-weight="700">P-01 IROKO</text>')
+    # Fijo Vidrio Hall (X=6.65..7.25, Z=0..2.40m)
+    out.append(f'<rect x="{nx(7.25):.1f}" y="{ny(2.40):.1f}" width="{0.60*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.1"/>')
+    # Ventana Despacho C-02 (X=10.80..12.60, Z=1.10..2.30m)
+    out.append(f'<rect x="{nx(12.60):.1f}" y="{ny(2.30):.1f}" width="{1.80*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
+    out.append(f'<text x="{nx(11.70):.1f}" y="{ny(1.70):.1f}" text-anchor="middle" fill="#e0f2fe" font-family="monospace" font-size="5.2">C-02 DESPACHO</text>')
+    # Ventana Baño PB C-03 (X=14.15..15.15, Z=1.80..2.40m)
+    out.append(f'<rect x="{nx(15.15):.1f}" y="{ny(2.40):.1f}" width="{1.00*S:.1f}" height="{0.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<text x="{nx(14.65):.1f}" y="{ny(2.10):.1f}" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="4.6">C-03 BAÑO</text>')
 
-    # Pérgola Aparcamiento 2 Coches (X=4.00..1.00, Z=0..2.90m)
-    out.append(f'<rect x="{nx(4.00):.1f}" y="{ny(2.90):.1f}" width="{3.00*S:.1f}" height="{0.22*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<rect x="{nx(1.15):.1f}" y="{ny(2.68):.1f}" width="{0.15*S:.1f}" height="{2.68*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.1"/>')
-    out.append(f'<text x="{nx(2.50):.1f}" y="{ny(1.50):.1f}" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="5.5" font-weight="700">PÉRGOLA 2 COCHES</text>')
-    out.append(f'<text x="{nx(2.50):.1f}" y="{ny(1.20):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">(3,00 × 6,80 m)</text>')
+    # 1.3 Volumen Mudroom y Ala Técnica Oeste (X=6.15..3.85, Z=0..3.15m)
+    out.append(f'<rect x="{nx(6.15):.1f}" y="{ny(3.15):.1f}" width="{2.30*S:.1f}" height="{3.15*S:.1f}" fill="#334155" stroke="#cbd5e1" stroke-width="1.3"/>')
+    out.append(f'<text x="{nx(5.00):.1f}" y="{ny(1.60):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.0">MUDROOM PB</text>')
 
-    # Huecos Planta Baja Norte:
-    # C-03 Ventana Baño PB (X=14.15..15.15, Z=1.80..2.40)
-    out.append(f'<rect x="{nx(15.15):.1f}" y="{ny(2.40):.1f}" width="{1.00*S:.1f}" height="{0.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<text x="{nx(14.65):.1f}" y="{ny(1.50):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">C-03 BAÑO PB</text>')
-    # C-02 Ventana Despacho (X=10.80..12.60, Z=1.10..2.30)
-    out.append(f'<rect x="{nx(12.60):.1f}" y="{ny(2.30):.1f}" width="{1.80*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<line x1="{nx(11.70):.1f}" y1="{ny(2.30):.1f}" x2="{nx(11.70):.1f}" y2="{ny(1.10):.1f}" stroke="#38bdf8" stroke-width="0.9"/>')
-    out.append(f'<text x="{nx(11.70):.1f}" y="{ny(0.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.2" font-weight="700">C-02 DESPACHO (1,80×1,20)</text>')
-    # Porche Norte + Puerta Pivotante Iroko P-01 (X=6.50..9.10, Z=0..2.40)
-    out.append(f'<rect x="{nx(9.10):.1f}" y="{ny(2.55):.1f}" width="{2.60*S:.1f}" height="{2.55*S:.1f}" fill="#0f172a" stroke="#f59e0b" stroke-width="1.1"/>')
-    out.append(f'<rect x="{nx(8.35):.1f}" y="{ny(2.40):.1f}" width="{1.10*S:.1f}" height="{2.40*S:.1f}" fill="#78350f" stroke="#fbbf24" stroke-width="1.4"/>')
-    out.append(f'<rect x="{nx(7.25):.1f}" y="{ny(2.40):.1f}" width="{0.55*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<text x="{nx(7.80):.1f}" y="{ny(2.70):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="5.2" font-weight="700">P-01 IROKO (1,10×2,40)</text>')
-
-    # Huecos Planta Primera Norte (+3,15 m):
-    # C-11 Ventana Baño Suite (X=14.65..15.85, Z=4.95..5.55)
-    out.append(f'<rect x="{nx(15.85):.1f}" y="{ny(5.55):.1f}" width="{1.20*S:.1f}" height="{0.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<text x="{nx(15.25):.1f}" y="{ny(5.75):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">C-11 BAÑO SUITE (1,20×0,60)</text>')
-    # C-10B Ventana Sala Polivalente / Cine & Gaming (X=10.45..12.25, Z=4.15..5.35) + Paño Iroko
-    out.append(f'<rect x="{nx(12.65):.1f}" y="{ny(5.55):.1f}" width="{0.40*S:.1f}" height="{1.40*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>')
-    out.append(f'<rect x="{nx(12.25):.1f}" y="{ny(5.35):.1f}" width="{1.80*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#fbbf24" stroke-width="1.4"/>')
-    out.append(f'<line x1="{nx(11.35):.1f}" y1="{ny(5.35):.1f}" x2="{nx(11.35):.1f}" y2="{ny(4.15):.1f}" stroke="#fbbf24" stroke-width="0.9"/>')
-    out.append(f'<text x="{nx(11.35):.1f}" y="{ny(5.75):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="5.3" font-weight="700">C-10B SALA POLIVALENTE (1,80×1,20)</text>')
-    # C-10 Ventana Baño Hijos (X=7.15..8.15, Z=4.95..5.55)
-    out.append(f'<rect x="{nx(8.15):.1f}" y="{ny(5.55):.1f}" width="{1.00*S:.1f}" height="{0.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<text x="{nx(7.65):.1f}" y="{ny(5.75):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">C-10 BAÑO HIJOS (1,00×0,60)</text>')
+    # 1.4 Pérgola 2 Coches al Oeste (X=3.85..1.00, Z=0..2.90m)
+    out.append(f'<rect x="{nx(3.85):.1f}" y="{ny(2.90):.1f}" width="{2.85*S:.1f}" height="{0.22*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2"/>')
+    out.append(f'<rect x="{nx(1.15):.1f}" y="{ny(2.68):.1f}" width="{0.15*S:.1f}" height="{2.68*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<text x="{nx(2.42):.1f}" y="{ny(1.50):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.2">PÉRGOLA 2 COCHES</text>')
 
     # Cotas Horizontales Alzado Norte
-    out.append(dim_h(nx(17.00), nx(6.15), gy1, 32, "10,85 m (Volumen 2 Plantas · Ejes E - B)", "#38bdf8"))
-    out.append(dim_h(nx(6.15), nx(4.00), gy1, 32, "2,15 m (Mudroom PB)", "#cbd5e1"))
-    out.append(dim_h(nx(4.00), nx(1.00), gy1, 32, "3,00 m (Pérgola)", "#94a3b8"))
-    out.append(dim_h(nx(17.00), nx(1.00), gy1, 56, "16,00 m (FRENTE TOTAL EDIFICACIÓN + PÉRGOLA EN LÍNEA Y=5,00 m)", "#f8fafc"))
+    out.append(dim_h(nx(17.00), nx(6.15), gy1, 32, "10,85 m (Cuerpo Principal PB / P1)", "#38bdf8"))
+    out.append(dim_h(nx(6.15), nx(3.85), gy1, 32, "2,30 m (Mudroom)", "#cbd5e1"))
+    out.append(dim_h(nx(3.85), nx(1.00), gy1, 32, "2,85 m (Pérgola)", "#94a3b8"))
+    out.append(dim_h(nx(17.00), nx(1.00), gy1, 56, "16,00 m (FRENTE TOTAL EDIFICACIÓN LÍNEA NORTE)", "#f8fafc"))
 
     # ==========================================================================
-    # PANEL 2: ALZADO SUR (FACHADA AL JARDÍN Y PISCINA · Y = 18,00 / 21,45 m)
+    # PANEL 2: ALZADO SUR (FACHADA PRINCIPAL JARDÍN Y PORCHE TECHADO · Y = 21,45 m)
     # Vista mirando hacia el Norte -> Izquierda es Oeste (X=1,00), Derecha es Este (X=17,00)
     # ==========================================================================
     out.append('<rect x="910" y="70" width="862" height="515" fill="url(#grid-minor)" stroke="#334155" stroke-width="0.8"/>')
     out.append('<rect x="910" y="70" width="862" height="22" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>')
-    out.append('<text x="922" y="85" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">2. ALZADO SUR (FACHADA PRINCIPAL JARDÍN Y PISCINA) — De Oeste (X=1,00 m) a Este (X=17,00 m)</text>')
+    out.append('<text x="922" y="85" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">2. ALZADO SUR (FACHADA JARDÍN · EFECTO SOPORTAL) — De Oeste (X=1,00 m) a Este (X=17,80 m)</text>')
 
     gy2 = 465.0
     def sx(xm: float) -> float:
@@ -153,76 +142,86 @@ def build_4_elevations_svg() -> str:
     def sy(zm: float) -> float:
         return gy2 - zm * S
 
-    out.append(level_marks(sx(0.80), sx(17.40), gy2, [
+    out.append(level_marks(sx(0.80), sx(18.00), gy2, [
         (0.00, "±0,00 m (Porche/PB)", "#10b981"),
-        (3.15, "+3,15 m (Balcón P1)", "#38bdf8"),
-        (3.45, "+3,45 m (Cub. Oeste)", "#f59e0b"),
-        (6.80, "+6,80 m (Coronación)", "#f8fafc"),
+        (3.15, "+3,15 m (Soportal / P1)", "#38bdf8"),
+        (6.80, "+6,80 m (Coronación P1)", "#f8fafc"),
+        (7.80, "+7,80 m (Chimenea Este)", "#f59e0b"),
     ]))
 
-    for lbl, xm in [("A", 4.00), ("B", 6.15), ("C", 8.50), ("D", 12.50), ("E", 17.00)]:
+    for lbl, xm in [("B", 6.15), ("C", 10.00), ("D", 13.50), ("E", 17.00)]:
         xx = sx(xm)
         out.append(f'<line x1="{xx:.1f}" y1="102" x2="{xx:.1f}" y2="{gy2+15:.1f}" stroke="#f59e0b" stroke-width="0.55" stroke-dasharray="6,3" opacity="0.65"/>')
         out.append(f'<circle cx="{xx:.1f}" cy="102" r="7.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>')
         out.append(f'<text x="{xx:.1f}" y="105" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="6.2" font-weight="700">{lbl}</text>')
 
-    # Cuerpo Oeste 1 Planta visto desde el Sur (Muro de Granito del Salón extendido hasta el Porche X=4.00..6.15, Z=0..3.45m + Chimenea +7.25m)
-    out.append(f'<rect x="{sx(4.00):.1f}" y="{sy(3.45):.1f}" width="{2.15*S:.1f}" height="{3.45*S:.1f}" fill="#334155" stroke="#cbd5e1" stroke-width="1.4"/>')
-    out.append(f'<rect x="{sx(4.40):.1f}" y="{sy(7.25):.1f}" width="{0.55*S:.1f}" height="{3.80*S:.1f}" fill="#0f172a" stroke="#94a3b8" stroke-width="1.1"/>')
-    out.append(f'<text x="{sx(5.07):.1f}" y="{sy(1.75):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.8" transform="rotate(-90 {sx(5.07):.1f} {sy(1.75):.1f})">MURO GRANITO SALÓN</text>')
-
-    # Cuerpo Principal 2 Plantas (X=6.15..17.00 -> 10,85 m)
-    # Planta Baja (Porche Sur Cubierto + Grandes Correderas C-08 y C-09)
-    out.append(f'<rect x="{sx(6.15):.1f}" y="{sy(3.15):.1f}" width="{10.85*S:.1f}" height="{3.15*S:.1f}" fill="#172036" stroke="#e2e8f0" stroke-width="1.5"/>')
+    # 2.1 PLANTA BAJA: PORCHE SUR TECHADO (Z=0..3,15m) CON EFECTO SOPORTAL CONTINUO
+    # Fondo del porche en sombra (Y=18.45m al fondo)
+    out.append(f'<rect x="{sx(6.15):.1f}" y="{sy(3.15):.1f}" width="{10.85*S:.1f}" height="{3.15*S:.1f}" fill="#0d1527" stroke="#334155" stroke-width="1.0"/>')
+    # Grandes correderas elevables cota cero al fondo del porche:
     # Corredera Salón C-08 (X=6.80..11.60, Z=0..2.60)
-    out.append(f'<rect x="{sx(6.80):.1f}" y="{sy(2.60):.1f}" width="{4.80*S:.1f}" height="{2.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.4"/>')
-    out.append(f'<line x1="{sx(9.20):.1f}" y1="{sy(2.60):.1f}" x2="{sx(9.20):.1f}" y2="{sy(0.00):.1f}" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<text x="{sx(9.20):.1f}" y="{sy(1.30):.1f}" text-anchor="middle" fill="#e0f2fe" font-family="monospace" font-size="5.5" font-weight="700">C-08 CORREDERA SALÓN (4,80×2,60m)</text>')
-    # Corredera Comedor C-09 (X=12.60..16.20, Z=0..2.60)
-    out.append(f'<rect x="{sx(12.60):.1f}" y="{sy(2.60):.1f}" width="{3.60*S:.1f}" height="{2.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.4"/>')
-    out.append(f'<line x1="{sx(14.40):.1f}" y1="{sy(2.60):.1f}" x2="{sx(14.40):.1f}" y2="{sy(0.00):.1f}" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<text x="{sx(14.40):.1f}" y="{sy(1.30):.1f}" text-anchor="middle" fill="#e0f2fe" font-family="monospace" font-size="5.2" font-weight="700">C-09 COMEDOR (3,60×2,60m)</text>')
-    # Churrasqueira en extremo Este del Porche Sur (X=15.40..16.95, Z=0..3.15)
-    out.append(f'<rect x="{sx(15.65):.1f}" y="{sy(2.85):.1f}" width="{1.30*S:.1f}" height="{2.85*S:.1f}" fill="#334155" stroke="#f59e0b" stroke-width="1.1"/>')
-    out.append(f'<text x="{sx(16.30):.1f}" y="{sy(1.40):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.6" transform="rotate(-90 {sx(16.30):.1f} {sy(1.40):.1f})">CHURRASQUEIRA</text>')
+    out.append(f'<rect x="{sx(6.80):.1f}" y="{sy(2.60):.1f}" width="{4.80*S:.1f}" height="{2.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
+    out.append(f'<line x1="{sx(9.20):.1f}" y1="{sy(2.60):.1f}" x2="{sx(9.20):.1f}" y2="{sy(0.00):.1f}" stroke="#38bdf8" stroke-width="0.8"/>')
+    # Corredera Comedor C-09 (X=12.60..15.80, Z=0..2.60)
+    out.append(f'<rect x="{sx(12.60):.1f}" y="{sy(2.60):.1f}" width="{3.20*S:.1f}" height="{2.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
+    # Churrasqueira tradicional de granito al fondo Este del porche
+    out.append(f'<rect x="{sx(16.00):.1f}" y="{sy(2.80):.1f}" width="{0.95*S:.1f}" height="{2.80*S:.1f}" fill="#334155" stroke="#f59e0b" stroke-width="1.0"/>')
+    out.append(f'<text x="{sx(16.48):.1f}" y="{sy(1.40):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.4" transform="rotate(-90 {sx(16.48):.1f} {sy(1.40):.1f})">CHURRASQUEIRA</text>')
 
-    # Planta Primera Sur (X=6.15..17.00, Z=3.15..6.80): SATE Blanco + 3 Balconeras + Barandilla Vidrio
+    # Pilares estructurales de soporte del soportal en línea de fachada Sur (Y=21.45m)
+    for p_x in [6.32, 10.00, 13.50, 16.82]:
+        out.append(f'<rect x="{sx(p_x)-4:.1f}" y="{sy(3.15):.1f}" width="8" height="{3.15*S:.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="0.9"/>')
+    out.append(f'<text x="{sx(11.50):.1f}" y="{sy(0.40):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.5" font-weight="700">PORCHE SUR EXPANDIDO (FONDO 3,00 m · CUBIERTO POR P1)</text>')
+
+    # 2.2 PLANTA PRIMERA SUR (Z=3,15..6,80m · X=6.15..17.00):
+    # Desplazada hacia el Sur, vuela a plomo sobre el porche. SATE Blanco Cálido NCS S 0502-Y.
     out.append(f'<rect x="{sx(6.15):.1f}" y="{sy(6.80):.1f}" width="{10.85*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
     out.append(f'<rect x="{sx(6.10):.1f}" y="{sy(6.80):.1f}" width="{10.95*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
-    # C-12 Balconera Dormitorio 1 Niña (X=7.10..9.30, Z=3.15..5.55)
-    out.append(f'<rect x="{sx(7.10):.1f}" y="{sy(5.55):.1f}" width="{2.20*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<line x1="{sx(8.20):.1f}" y1="{sy(5.55):.1f}" x2="{sx(8.20):.1f}" y2="{sy(3.15):.1f}" stroke="#38bdf8" stroke-width="0.9"/>')
-    out.append(f'<text x="{sx(8.20):.1f}" y="{sy(5.80):.1f}" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="5.0" font-weight="700">C-12 DORM. NIÑA (2,20m)</text>')
-    # Paño Iroko entre D1 y D2 (X=9.30..10.65)
-    out.append(f'<rect x="{sx(9.30):.1f}" y="{sy(5.55):.1f}" width="{1.35*S:.1f}" height="{2.40*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>')
-    # C-13 Balconera Dormitorio 2 Niño (X=10.65..12.85, Z=3.15..5.55)
-    out.append(f'<rect x="{sx(10.65):.1f}" y="{sy(5.55):.1f}" width="{2.20*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<line x1="{sx(11.75):.1f}" y1="{sy(5.55):.1f}" x2="{sx(11.75):.1f}" y2="{sy(3.15):.1f}" stroke="#38bdf8" stroke-width="0.9"/>')
-    out.append(f'<text x="{sx(11.75):.1f}" y="{sy(5.80):.1f}" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="5.0" font-weight="700">C-13 DORM. NIÑO (2,20m)</text>')
-    # Paño Iroko entre D2 y Suite (X=12.85..13.80)
-    out.append(f'<rect x="{sx(12.85):.1f}" y="{sy(5.55):.1f}" width="{0.95*S:.1f}" height="{2.40*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>')
-    # C-14 Balconera Master Suite (X=13.80..16.50, Z=3.15..5.55)
-    out.append(f'<rect x="{sx(13.80):.1f}" y="{sy(5.55):.1f}" width="{2.70*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<line x1="{sx(15.15):.1f}" y1="{sy(5.55):.1f}" x2="{sx(15.15):.1f}" y2="{sy(3.15):.1f}" stroke="#38bdf8" stroke-width="0.9"/>')
-    out.append(f'<text x="{sx(15.15):.1f}" y="{sy(5.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0" font-weight="700">C-14 SUITE (2,70m)</text>')
 
-    # Barandilla continua de vidrio 10+10.2 mm en Balcón Sur (Z=3.15..4.25, X=6.15..17.00)
-    out.append(f'<rect x="{sx(6.15):.1f}" y="{sy(4.25):.1f}" width="{10.85*S:.1f}" height="{1.10*S:.1f}" fill="#38bdf8" fill-opacity="0.18" stroke="#e0f2fe" stroke-width="1.5"/>')
+    # Ventanales limpios de suelo a techo (sin barandilla de balcón saliente):
+    # C-12 Ventanal Dormitorio Niña (X=7.00..9.40, Z=3.15..5.55)
+    out.append(f'<rect x="{sx(7.00):.1f}" y="{sy(5.55):.1f}" width="{2.40*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.4"/>')
+    out.append(f'<line x1="{sx(8.20):.1f}" y1="{sy(5.55):.1f}" x2="{sx(8.20):.1f}" y2="{sy(3.15):.1f}" stroke="#38bdf8" stroke-width="0.9"/>')
+    out.append(f'<text x="{sx(8.20):.1f}" y="{sy(5.80):.1f}" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="5.2" font-weight="700">C-12 DORM. NIÑA (2,40m)</text>')
+
+    # Paño Iroko entre D1 y D2 (X=9.40..10.20)
+    out.append(f'<rect x="{sx(9.40):.1f}" y="{sy(5.55):.1f}" width="{0.80*S:.1f}" height="{2.40*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>')
+
+    # C-13 Ventanal Dormitorio Niño (X=10.20..12.60, Z=3.15..5.55)
+    out.append(f'<rect x="{sx(10.20):.1f}" y="{sy(5.55):.1f}" width="{2.40*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.4"/>')
+    out.append(f'<line x1="{sx(11.40):.1f}" y1="{sy(5.55):.1f}" x2="{sx(11.40):.1f}" y2="{sy(3.15):.1f}" stroke="#38bdf8" stroke-width="0.9"/>')
+    out.append(f'<text x="{sx(11.40):.1f}" y="{sy(5.80):.1f}" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="5.2" font-weight="700">C-13 DORM. NIÑO (2,40m)</text>')
+
+    # Paño Iroko entre D2 y Suite (X=12.60..13.80)
+    out.append(f'<rect x="{sx(12.60):.1f}" y="{sy(5.55):.1f}" width="{1.20*S:.1f}" height="{2.40*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>')
+
+    # C-14 Gran Ventanal Panorámico Master Suite (X=13.80..16.60, Z=3.15..5.55)
+    out.append(f'<rect x="{sx(13.80):.1f}" y="{sy(5.55):.1f}" width="{2.80*S:.1f}" height="{2.40*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.4"/>')
+    out.append(f'<line x1="{sx(15.20):.1f}" y1="{sy(5.55):.1f}" x2="{sx(15.20):.1f}" y2="{sy(3.15):.1f}" stroke="#38bdf8" stroke-width="0.9"/>')
+    out.append(f'<text x="{sx(15.20):.1f}" y="{sy(5.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.2" font-weight="700">C-14 MASTER SUITE (2,80m)</text>')
+
+    # 2.3 CHIMENEA ESCULTÓRICA EXTERIOR DE GRANITO MORENO EN FACHADA ESTE (OPCIÓN A)
+    # X=17.00..17.80, Z=0..7.80m (+1,00m sobre coronación)
+    out.append(f'<rect x="{sx(17.00):.1f}" y="{sy(7.80):.1f}" width="{0.80*S:.1f}" height="{7.80*S:.1f}" fill="#334155" stroke="#94a3b8" stroke-width="1.4"/>')
+    out.append(f'<rect x="{sx(16.95):.1f}" y="{sy(7.80):.1f}" width="{0.90*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    out.append(f'<circle cx="{sx(17.40):.1f}" cy="{sy(7.95):.1f}" r="4" fill="#0f172a" stroke="#ef4444" stroke-width="1.0"/>')
+    out.append(f'<text x="{sx(17.40):.1f}" y="{sy(8.15):.1f}" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="5.0" font-weight="700">CHIMENEA +7,80m</text>')
+    out.append(f'<text x="{sx(17.40):.1f}" y="{sy(4.50):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.6" transform="rotate(-90 {sx(17.40):.1f} {sy(4.50):.1f})">GRANITO MORENO (EXTERIOR ESTE)</text>')
 
     # Cotas Horizontales Alzado Sur
-    out.append(dim_h(sx(4.00), sx(6.15), gy2, 32, "2,15 m (Salón 1P)", "#cbd5e1"))
-    out.append(dim_h(sx(6.15), sx(9.99), gy2, 32, "3,42 m útil (Dorm 1)", "#10b981"))
-    out.append(dim_h(sx(9.99), sx(13.54), gy2, 32, "3,42 m útil (Dorm 2)", "#10b981"))
-    out.append(dim_h(sx(13.54), sx(17.00), gy2, 32, "3,05 m útil (Suite)", "#38bdf8"))
-    out.append(dim_h(sx(6.15), sx(17.00), gy2, 56, "10,85 m (FRENTE SUR 2 PLANTAS + BALCÓN CORRIDO Y PORCHE)", "#f8fafc"))
+    out.append(dim_h(sx(6.15), sx(10.00), gy2, 32, "3,85 m (Dorm. Niña)", "#34d399"))
+    out.append(dim_h(sx(10.00), sx(13.50), gy2, 32, "3,50 m (Dorm. Niño)", "#34d399"))
+    out.append(dim_h(sx(13.50), sx(17.00), gy2, 32, "3,50 m (Master Suite)", "#38bdf8"))
+    out.append(dim_h(sx(17.00), sx(17.80), gy2, 32, "0,80m", "#f59e0b"))
+    out.append(dim_h(sx(6.15), sx(17.80), gy2, 56, "11,65 m (FRENTE SUR TOTAL 2 PLANTAS + CHIMENEA ESTE)", "#f8fafc"))
 
     # ==========================================================================
     # PANEL 3: ALZADO ESTE (FACHADA LATERAL DERECHA · X = 17,00 m)
-    # Vista mirando hacia el Oeste -> Izquierda es Sur (Y=24,00), Derecha es Norte (Y=5,00)
+    # Vista mirando hacia el Oeste -> Izquierda es Sur (Y=21,45), Derecha es Norte (Y=5,00)
     # ==========================================================================
     out.append('<rect x="28" y="600" width="862" height="535" fill="url(#grid-minor)" stroke="#334155" stroke-width="0.8"/>')
     out.append('<rect x="28" y="600" width="862" height="22" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>')
-    out.append('<text x="40" y="615" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">3. ALZADO ESTE (FACHADA LATERAL DERECHA · EJE E: X = 17,00 m) — De Sur (Y=21,45 m) a Norte (Y=5,00 m)</text>')
+    out.append('<text x="40" y="615" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">3. ALZADO ESTE (FACHADA LATERAL · X = 17,00 m) — De Sur (Y=21,45 m) a Norte (Y=5,00 m)</text>')
 
     gy3 = 1005.0
     def ex(ym: float) -> float:
@@ -232,72 +231,57 @@ def build_4_elevations_svg() -> str:
         return gy3 - zm * S
 
     out.append(level_marks(ex(22.00), ex(4.50), gy3, [
-        (0.00, "±0,00 m (PB/Porche)", "#10b981"),
+        (0.00, "±0,00 m (PB)", "#10b981"),
         (3.15, "+3,15 m (Forjado P1)", "#38bdf8"),
         (6.80, "+6,80 m (Coronación P1)", "#f8fafc"),
+        (7.80, "+7,80 m (Chimenea)", "#f59e0b"),
     ]))
 
-    for lbl, ym in [("5", 21.45), ("4B", 19.40), ("4", 18.00), ("3", 12.40), ("2", 8.40), ("1", 5.00)]:
+    for lbl, ym in [("5", 21.45), ("4", 17.50), ("3B", 14.30), ("3", 11.70), ("2", 8.50), ("1", 5.00)]:
         xx = ex(ym)
         out.append(f'<line x1="{xx:.1f}" y1="632" x2="{xx:.1f}" y2="{gy3+15:.1f}" stroke="#f59e0b" stroke-width="0.55" stroke-dasharray="6,3" opacity="0.65"/>')
         out.append(f'<circle cx="{xx:.1f}" cy="632" r="7.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>')
         out.append(f'<text x="{xx:.1f}" y="635" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="6.0" font-weight="700">{lbl}</text>')
 
-    # Cuerpo Principal 2 Plantas en Alzado Este (Y=18.00 a Y=5.00 -> 13,00 m)
-    out.append(f'<rect x="{ex(18.45):.1f}" y="{ey(3.15):.1f}" width="{13.45*S:.1f}" height="{3.15*S:.1f}" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>')
-    out.append(f'<rect x="{ex(18.45):.1f}" y="{ey(1.10):.1f}" width="{13.45*S:.1f}" height="{1.10*S:.1f}" fill="#334155" stroke="#94a3b8" stroke-width="0.9"/>')
-    out.append(f'<rect x="{ex(18.00):.1f}" y="{ey(6.80):.1f}" width="{13.00*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
-    out.append(f'<rect x="{ex(18.05):.1f}" y="{ey(6.80):.1f}" width="{13.10*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    # 3.1 PLANTA BAJA ESTE (Y=5.00..21.45m · 16,45 m):
+    # Zócalo granito + SATE blanco
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(3.15):.1f}" width="{16.45*S:.1f}" height="{3.15*S:.1f}" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5"/>')
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(1.10):.1f}" width="{16.45*S:.1f}" height="{1.10*S:.1f}" fill="#334155" stroke="#94a3b8" stroke-width="0.9"/>')
+    # Ventana Cocina Este (Y=9.50..11.00, Z=1.10..2.30m)
+    out.append(f'<rect x="{ex(11.00):.1f}" y="{ey(2.30):.1f}" width="{1.50*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.1"/>')
+    out.append(f'<text x="{ex(10.25):.1f}" y="{ey(1.70):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.8">COCINA SANTOS</text>')
 
-    # Vuelo del Porche Sur (Y=21.45..18.45 -> 3,00 m) + Muro Ciego Posterior de la Churrasqueira de Granito + Balcón Sur P1 unificado a 3,00m
-    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(3.15):.1f}" width="{3.00*S:.1f}" height="{0.30*S:.1f}" fill="#334155" stroke="#f8fafc" stroke-width="1.3"/>')
-    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(2.85):.1f}" width="{0.35*S:.1f}" height="{2.85*S:.1f}" fill="#334155" stroke="#cbd5e1" stroke-width="1.2"/>')
-    # Muro ciego posterior de piedra de la Churrasqueira (100% CIEGO al exterior Este, fuego mirando hacia adentro del porche)
-    out.append(f'<rect x="{ex(21.10):.1f}" y="{ey(2.85):.1f}" width="{1.60*S:.1f}" height="{2.85*S:.1f}" fill="#334155" stroke="#64748b" stroke-width="1.2"/>')
-    out.append(f'<text x="{ex(20.30):.1f}" y="{ey(1.50):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.8">MURO 100% CIEGO BARBACOA</text>')
-    out.append(f'<text x="{ex(20.30):.1f}" y="{ey(1.20):.1f}" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="4.2">(Hogar mirando al interior del porche)</text>')
-    # Balcón Sur P1 unificado (Y=21.45..18.00 -> 3,00 m) con celosía Iroko que oculta el tiro inox de la barbacoa
-    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(3.15):.1f}" width="{3.00*S:.1f}" height="{0.25*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>')
-    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(4.25):.1f}" width="{3.00*S:.1f}" height="{1.10*S:.1f}" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>')
-    # Celosía de lamas de madera de Iroko
-    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(6.60):.1f}" width="{0.30*S:.1f}" height="{3.25*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="1.0"/>')
-    # Tiro de humos inox barbacoa embutido/oculto tras celosía iroko subiendo a +6.80m con sombrerete
-    out.append(f'<rect x="{ex(20.60):.1f}" y="{ey(6.80):.1f}" width="{0.30*S:.1f}" height="{3.65*S:.1f}" fill="#1e293b" stroke="#38bdf8" stroke-width="0.9" stroke-dasharray="4,2"/>')
-    out.append(f'<rect x="{ex(20.65):.1f}" y="{ey(7.05):.1f}" width="{0.40*S:.1f}" height="{0.25*S:.1f}" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.2"/>')
-    out.append(f'<text x="{ex(20.45):.1f}" y="{ey(7.20):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.6">TIRO BBQ +6,80m (TRAS CELOSÍA)</text>')
+    # 3.2 PLANTA PRIMERA ESTE: Solo ocupa Y=14.30..21.45m (7,15 m de fondo · Z=3.15..6.80m)
+    # ¡La zona Norte Y=5.00..14.30m es de 1 PLANTA!
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(6.80):.1f}" width="{12.95*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
+    out.append(f'<rect x="{ex(21.50):.1f}" y="{ey(6.80):.1f}" width="{13.05*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    # Ventana C-11 Baño Suite (Y=15.20..16.20, Z=4.75..5.35m)
+    out.append(f'<rect x="{ex(16.20):.1f}" y="{ey(5.35):.1f}" width="{1.00*S:.1f}" height="{0.60*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.0"/>')
+    out.append(f'<text x="{ex(15.70):.1f}" y="{ey(5.55):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.6">C-11 BAÑO SUITE</text>')
 
-    # Huecos Fachada Este Actualizados:
-    # PB: C-04 Ventana Despensa Walk-in Santos (Y=11.95..12.85, Z=1.40..2.40) + C-04B Ventana Corrida Cocina sobre encimera (Y=9.20..11.20, Z=1.15..1.65)
-    out.append(f'<rect x="{ex(12.85):.1f}" y="{ey(2.40):.1f}" width="{0.90*S:.1f}" height="{1.00*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<text x="{ex(12.40):.1f}" y="{ey(2.60):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0">C-04 DESPENSA (0,90×1,00)</text>')
-    out.append(f'<rect x="{ex(11.20):.1f}" y="{ey(1.65):.1f}" width="{2.00*S:.1f}" height="{0.50*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<text x="{ex(10.20):.1f}" y="{ey(1.85):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.8">C-04B COCINA CORRIDA (2,00×0,50)</text>')
-    # P1: C-14B Ventana Vestidor Master Suite (Y=9.40..10.40, Z=4.15..5.35) + C-14C Ventana Este Suite (Y=14.00..15.20, Z=4.15..5.35)
-    out.append(f'<rect x="{ex(10.75):.1f}" y="{ey(5.55):.1f}" width="{1.70*S:.1f}" height="{1.60*S:.1f}" fill="#78350f" stroke="#d97706" stroke-width="0.8"/>')
-    out.append(f'<rect x="{ex(10.40):.1f}" y="{ey(5.35):.1f}" width="{1.00*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<text x="{ex(9.90):.1f}" y="{ey(5.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0" font-weight="700">C-14B VESTIDOR (1,00×1,20)</text>')
-    out.append(f'<rect x="{ex(15.20):.1f}" y="{ey(5.35):.1f}" width="{1.20*S:.1f}" height="{1.20*S:.1f}" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<text x="{ex(14.60):.1f}" y="{ey(5.80):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="5.0" font-weight="700">C-14C SUITE ESTE (1,20×1,20)</text>')
+    # Cubierta de zinc 15% de Planta Baja visible en Norte (Y=5.00..14.30m, Z=3.15..3.55m)
+    out.append(f'<polygon points="{ex(14.30):.1f},{ey(3.15):.1f} {ex(5.00):.1f},{ey(3.15):.1f} {ex(5.00):.1f},{ey(3.55):.1f} {ex(14.30):.1f},{ey(3.15):.1f}" fill="#475569" stroke="#94a3b8" stroke-width="1.0"/>')
+    out.append(f'<text x="{ex(9.65):.1f}" y="{ey(3.40):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="4.8">CUBIERTA INCLINADA ZINC 15% (1 PLANTA)</text>')
 
-    # Copa del Arce Japonés asomando en sección/proyección central (Y=8.40..12.40)
-    out.append(f'<line x1="{ex(12.40):.1f}" y1="{ey(3.15):.1f}" x2="{ex(12.40):.1f}" y2="{ey(6.80):.1f}" stroke="#10b981" stroke-width="0.9" stroke-dasharray="4,3"/>')
-    out.append(f'<line x1="{ex(8.40):.1f}" y1="{ey(3.15):.1f}" x2="{ex(8.40):.1f}" y2="{ey(6.80):.1f}" stroke="#10b981" stroke-width="0.9" stroke-dasharray="4,3"/>')
-    out.append(f'<text x="{ex(10.40):.1f}" y="{ey(6.35):.1f}" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="4.8">(PROYECCIÓN PATIO CENTRAL 4,00m)</text>')
+    # 3.3 CHIMENEA EXTERIOR DE GRANITO MORENO EN FACHADA ESTE (OPCIÓN A)
+    # Adosada al extremo Sur (Y=20.65..21.45m), sube hasta +7.80m
+    out.append(f'<rect x="{ex(21.45):.1f}" y="{ey(7.80):.1f}" width="{0.80*S:.1f}" height="{7.80*S:.1f}" fill="#334155" stroke="#94a3b8" stroke-width="1.4"/>')
+    out.append(f'<rect x="{ex(21.50):.1f}" y="{ey(7.80):.1f}" width="{0.90*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    out.append(f'<text x="{ex(21.05):.1f}" y="{ey(8.15):.1f}" text-anchor="middle" fill="#ef4444" font-family="monospace" font-size="5.0" font-weight="700">TIRO BBQ +7,80m</text>')
+    out.append(f'<text x="{ex(21.05):.1f}" y="{ey(4.50):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.6" transform="rotate(-90 {ex(21.05):.1f} {ey(4.50):.1f})">CHIMENEA GRANITO ADOSADA EXTERIOR</text>')
 
     # Cotas Horizontales Alzado Este
-    out.append(dim_h(ex(21.45), ex(18.45), gy3, 32, "3,00 m (Porche Sur)", "#fbbf24"))
-    out.append(dim_h(ex(18.45), ex(12.40), gy3, 32, "6,05 m (Crujía Sur)", "#38bdf8"))
-    out.append(dim_h(ex(12.40), ex(8.40), gy3, 32, "4,00 m (Crujía Central)", "#10b981"))
-    out.append(dim_h(ex(8.40), ex(5.00), gy3, 32, "3,40 m (Crujía Norte)", "#38bdf8"))
-    out.append(dim_h(ex(21.45), ex(5.00), gy3, 56, "16,45 m (LONGITUD TOTAL EDIFICACIÓN + PORCHE SUR EN EJE E)", "#f8fafc"))
+    out.append(dim_h(ex(21.45), ex(8.50), gy3, 32, "12,95 m (Ala Este P1 sobre Cocina y Porche)", "#38bdf8"))
+    out.append(dim_h(ex(8.50), ex(5.00), gy3, 32, "3,50 m (1 Planta PB Norte Despacho)", "#10b981"))
+    out.append(dim_h(ex(21.45), ex(5.00), gy3, 56, "16,45 m (LONGITUD TOTAL ENVOLVENTE ESTE)", "#f8fafc"))
 
     # ==========================================================================
-    # PANEL 4: ALZADO OESTE (FACHADA LATERAL IZQUIERDA · X = 1,00 / 4,00 / 6,15 m)
+    # PANEL 4: ALZADO OESTE (FACHADA SERVICIO Y BLINDAJE ATLÁNTICO · X = 1,00 / 3,85 / 6,15 m)
     # Vista mirando hacia el Este -> Izquierda es Norte (Y=5,00), Derecha es Sur (Y=21,45)
     # ==========================================================================
     out.append('<rect x="910" y="600" width="862" height="535" fill="url(#grid-minor)" stroke="#334155" stroke-width="0.8"/>')
     out.append('<rect x="910" y="600" width="862" height="22" fill="#1e293b" stroke="#334155" stroke-width="0.8"/>')
-    out.append('<text x="922" y="615" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">4. ALZADO OESTE (FACHADA LATERAL IZQUIERDA · EJES A-B) — De Norte (Y=5,00 m) a Sur (Y=21,45 m)</text>')
+    out.append('<text x="922" y="615" fill="#38bdf8" font-family="monospace" font-size="8.0" font-weight="700">4. ALZADO OESTE (FACHADA SERVICIO Y PROTECCIÓN TEMPORALES) — De Norte a Sur</text>')
 
     gy4 = 1005.0
     def wx(ym: float) -> float:
@@ -309,74 +293,55 @@ def build_4_elevations_svg() -> str:
     out.append(level_marks(wx(4.50), wx(22.00), gy4, [
         (0.00, "±0,00 m (PB)", "#10b981"),
         (2.90, "+2,90 m (Pérgola)", "#94a3b8"),
-        (3.45, "+3,45 m (Cub. Oeste)", "#f59e0b"),
+        (3.15, "+3,15 m (Cub. Oeste / Forjado P1)", "#38bdf8"),
         (6.80, "+6,80 m (Coronación P1)", "#f8fafc"),
     ]))
 
-    for lbl, ym in [("1", 5.00), ("2", 8.40), ("3", 12.40), ("4", 18.00), ("4B", 19.40), ("5", 21.45)]:
+    for lbl, ym in [("1", 5.00), ("2", 8.50), ("3", 11.70), ("3B", 14.30), ("4", 17.50), ("5", 21.45)]:
         xx = wx(ym)
         out.append(f'<line x1="{xx:.1f}" y1="632" x2="{xx:.1f}" y2="{gy4+15:.1f}" stroke="#f59e0b" stroke-width="0.55" stroke-dasharray="6,3" opacity="0.65"/>')
         out.append(f'<circle cx="{xx:.1f}" cy="632" r="7.5" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>')
         out.append(f'<text x="{xx:.1f}" y="635" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="6.0" font-weight="700">{lbl}</text>')
 
-    # Tercer plano al fondo (X=6.15): Volumen Planta Primera SATE blanco (Y=5.00..18.00, Z=3.45..6.80) + Balcón Sur unificado (Y=18.00..21.45)
-    out.append(f'<rect x="{wx(5.00):.1f}" y="{wy(6.80):.1f}" width="{13.00*S:.1f}" height="{3.35*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
-    out.append(f'<rect x="{wx(4.95):.1f}" y="{wy(6.80):.1f}" width="{13.10*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
-    out.append(f'<text x="{wx(11.50):.1f}" y="{wy(5.20):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.5" font-weight="700">FACHADA OESTE P1 CIEGA (SATE BLANCO · BLINDAJE TÉRMICO NOROESTE)</text>')
-    # Vuelo Balcón Sur P1 unificado (Y=18.00..21.45 -> 3,45 m)
-    out.append(f'<rect x="{wx(18.00):.1f}" y="{wy(3.15):.1f}" width="{3.45*S:.1f}" height="{0.25*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.2"/>')
-    out.append(f'<rect x="{wx(18.00):.1f}" y="{wy(4.25):.1f}" width="{3.45*S:.1f}" height="{1.10*S:.1f}" fill="#38bdf8" fill-opacity="0.22" stroke="#e0f2fe" stroke-width="1.3"/>')
+    # 4.1 SEGUNDO PLANO: Volumen Planta Primera SATE blanco (Y=14.30..21.45, Z=3.15..6.80m · CIEGO)
+    out.append(f'<rect x="{wx(8.50):.1f}" y="{wy(6.80):.1f}" width="{12.95*S:.1f}" height="{3.65*S:.1f}" fill="#26334d" stroke="#f8fafc" stroke-width="1.6"/>')
+    out.append(f'<rect x="{wx(8.45):.1f}" y="{wy(6.80):.1f}" width="{13.05*S:.1f}" height="{0.15*S:.1f}" fill="#475569" stroke="#f8fafc" stroke-width="1.0"/>')
+    out.append(f'<text x="{wx(17.85):.1f}" y="{wy(5.20):.1f}" text-anchor="middle" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="700">FACHADA OESTE P1 CIEGA (SATE BLANCO · BLINDAJE TÉRMICO)</text>')
 
-    # Segundo plano (X=4.00): Muro de Granito Continuo extendido hasta el final del Porche (Y=5.00..21.45 -> 16,45 m continuos)
-    out.append(f'<rect x="{wx(5.00):.1f}" y="{wy(3.45):.1f}" width="{16.45*S:.1f}" height="{3.45*S:.1f}" fill="#334155" stroke="#e2e8f0" stroke-width="1.5"/>')
-    out.append(f'<text x="{wx(20.30):.1f}" y="{wy(3.15):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">CIERRE OESTE PORCHE SUR</text>')
+    # 4.2 PRIMER PLANO: Muro de Granito / Servicio Oeste en PB (Y=5.00..21.45m · 16,45 m)
+    out.append(f'<rect x="{wx(5.00):.1f}" y="{wy(3.15):.1f}" width="{16.45*S:.1f}" height="{3.15*S:.1f}" fill="#334155" stroke="#e2e8f0" stroke-width="1.5"/>')
+    # Puerta Mudroom exterior P-02 (Y=6.40..7.30, Z=0..2.10)
+    out.append(f'<rect x="{wx(6.40):.1f}" y="{wy(2.10):.1f}" width="{0.90*S:.1f}" height="{2.10*S:.1f}" fill="#78350f" stroke="#fbbf24" stroke-width="1.2"/>')
+    out.append(f'<text x="{wx(6.85):.1f}" y="{wy(2.30):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">P-02 MUDROOM</text>')
+    # Puerta Sala Técnica / Surf P-05 (Y=9.80..10.80, Z=0..2.10)
+    out.append(f'<rect x="{wx(9.80):.1f}" y="{wy(2.10):.1f}" width="{1.00*S:.1f}" height="{2.10*S:.1f}" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>')
+    out.append(f'<text x="{wx(10.30):.1f}" y="{wy(2.30):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.8">P-05 SURF/TÉCNICA</text>')
+    # Lucernario Velux SunTunnel en cubierta Oeste (+3,15m)
+    out.append(f'<ellipse cx="{wx(9.00):.1f}" cy="{wy(3.25):.1f}" rx="{0.30*S:.1f}" ry="{0.12*S:.1f}" fill="#38bdf8" stroke="#0284c7" stroke-width="1.1"/>')
+    out.append(f'<text x="{wx(9.00):.1f}" y="{wy(3.45):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.4">VELUX SUNTUNNEL</text>')
 
-    # 1. Puerta P-02 Zaguán Mudroom (Y=6.60..7.50, Z=0..2.20)
-    out.append(f'<rect x="{wx(6.60):.1f}" y="{wy(2.20):.1f}" width="{0.90*S:.1f}" height="{2.20*S:.1f}" fill="#78350f" stroke="#fbbf24" stroke-width="1.2"/>')
-    out.append(f'<text x="{wx(7.05):.1f}" y="{wy(2.40):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">P-02 MUDROOM</text>')
-
-    # 2. Puerta doble P-05 Sala Técnica / Surf (Y=9.60..11.00, Z=0..2.20) + Rejillas VMC
-    out.append(f'<rect x="{wx(9.60):.1f}" y="{wy(2.20):.1f}" width="{1.40*S:.1f}" height="{2.20*S:.1f}" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>')
-    out.append(f'<line x1="{wx(10.30):.1f}" y1="{wy(2.20):.1f}" x2="{wx(10.30):.1f}" y2="{wy(0.00):.1f}" stroke="#38bdf8" stroke-width="0.8"/>')
-    out.append(f'<text x="{wx(10.30):.1f}" y="{wy(2.40):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.8">P-05 SALA TÉC./SURF</text>')
-
-    # 3. Puerta C-09B Caseta de Jardinería y Aperos (Y=18.60..19.60, Z=0..2.20)
-    out.append(f'<rect x="{wx(18.60):.1f}" y="{wy(2.20):.1f}" width="{1.00*S:.1f}" height="{2.20*S:.1f}" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2"/>')
-    out.append(f'<text x="{wx(19.10):.1f}" y="{wy(2.40):.1f}" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="4.8">C-09B CASETA APEROS</text>')
-
-    # Claraboyas cenitales tubulares Velux SunTunnel en cubierta Oeste (+3,45m)
-    out.append(f'<ellipse cx="{wx(13.50):.1f}" cy="{wy(3.55):.1f}" rx="{0.30*S:.1f}" ry="{0.12*S:.1f}" fill="#38bdf8" stroke="#0284c7" stroke-width="1.1"/>')
-    out.append(f'<ellipse cx="{wx(16.20):.1f}" cy="{wy(3.55):.1f}" rx="{0.30*S:.1f}" ry="{0.12*S:.1f}" fill="#38bdf8" stroke="#0284c7" stroke-width="1.1"/>')
-    out.append(f'<text x="{wx(14.85):.1f}" y="{wy(3.75):.1f}" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="4.6">2 LUCERNARIOS CENITALES VELUX SUNTUNNEL (LAVANDERÍA Y TÉCNICA)</text>')
-
-    # Chimenea vertical de leña en Salón (Y=14.60..15.25, Z=0..7.25m)
-    out.append(f'<rect x="{wx(14.60):.1f}" y="{wy(7.25):.1f}" width="{0.65*S:.1f}" height="{7.25*S:.1f}" fill="#0f172a" stroke="#94a3b8" stroke-width="1.2"/>')
-    out.append(f'<text x="{wx(14.92):.1f}" y="{wy(7.42):.1f}" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="5.0">CHIMENEA SALÓN +7,25m</text>')
-
-    # Primer plano (X=1.00..4.00): Pérgola 2 Coches (Y=5.00..11.80, Z=0..2.90)
+    # Pérgola Coches en primer término (Y=5.00..11.80, Z=0..2.90m)
     out.append(f'<rect x="{wx(5.00):.1f}" y="{wy(2.90):.1f}" width="{6.80*S:.1f}" height="{0.22*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.3"/>')
-    out.append(f'<rect x="{wx(5.05):.1f}" y="{wy(2.68):.1f}" width="{0.15*S:.1f}" height="{2.68*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<rect x="{wx(8.35):.1f}" y="{wy(2.68):.1f}" width="{0.15*S:.1f}" height="{2.68*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
-    out.append(f'<rect x="{wx(11.65):.1f}" y="{wy(2.68):.1f}" width="{0.15*S:.1f}" height="{2.68*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
+    for px_c in [5.10, 8.40, 11.70]:
+        out.append(f'<rect x="{wx(px_c):.1f}" y="{wy(2.68):.1f}" width="{0.15*S:.1f}" height="{2.68*S:.1f}" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>')
 
     # Cotas Horizontales Alzado Oeste
-    out.append(dim_h(wx(5.00), wx(11.80), gy4, 32, "6,80 m (Pérgola 2 Coches + Mudroom/Surf)", "#38bdf8"))
-    out.append(dim_h(wx(11.80), wx(18.45), gy4, 32, "6,65 m (Muro Granito Salón + Chimenea)", "#cbd5e1"))
-    out.append(dim_h(wx(18.45), wx(21.45), gy4, 32, "3,00 m (Caseta Jardín y Cierre Lateral Porche)", "#fbbf24"))
-    out.append(dim_h(wx(5.00), wx(21.45), gy4, 56, "16,45 m (DESARROLLO TOTAL OESTE CERRADO Y PROTEGIDO)", "#f8fafc"))
+    out.append(dim_h(wx(5.00), wx(11.80), gy4, 32, "6,80 m (Pérgola + Mudroom/Surf)", "#38bdf8"))
+    out.append(dim_h(wx(11.80), wx(21.45), gy4, 32, "9,65 m (Salón y Cierre Porche)", "#cbd5e1"))
+    out.append(dim_h(wx(5.00), wx(21.45), gy4, 56, "16,45 m (LONGITUD TOTAL ENVOLVENTE OESTE)", "#f8fafc"))
 
     out.append(title_block(
         28, H - 155, W - 56, 128,
         plano_id="A-03",
         title="ALZADOS EXTERIORES DE LAS 4 FACHADAS (NORTE, SUR, ESTE Y OESTE)",
         scale="1:100 (Cotas en m)",
-        phase="PROYECTO DE EJECUCIÓN (GEOMETRÍA DEFINITIVA AJUSTADA)",
-        subtitle="Muro Cortaviento Oeste Continuo + 3 Accesos + Tiro Barbacoa Oculto + Cubiertas Planas Invertidas",
+        phase="PROYECTO DE EJECUCIÓN (VERSIÓN OPTIMIZADA PASSIVHAUS ~165 m²)",
+        subtitle="Efecto Soportal Atlántico Sur · Desfase Volumétrico · Chimenea Exterior Este (+7,80 m) · Solar FV (+6,50 m)",
         extra_notes=[
-            "Alzado Norte: Puerta Pivotante P-01 (1,10m), Despacho C-02 (1,80m), Baño PB C-03, Baño Hijos C-10, Sala Polivalente C-10B y Baño Suite C-11",
-            "Alzado Sur: Correderas Salón C-08 (4,80m) y Comedor C-09 (3,60m) bajo Porche de 3,00m cerrado al Oeste por Caseta de Jardinería en granito",
-            "Alzado Este: Muro Barbacoa 100% CIEGO al exterior (hogar hacia dentro); tiro inox Ø250mm oculto tras celosía iroko (+6,80m); C-04 Despensa Santos",
-            "Alzado Oeste: Muro granito 16,45m continuo con 3 puertas exteriores (P-02 Mudroom, P-05 Surf, C-09B Caseta Jardín) + 2 lucernarios Velux SunTunnel",
+            "Alzado Norte: Acceso protegido P-01 (1,10m Iroko), Despacho C-02 (1,80m), Baño PB C-03; Planta Primera al fondo con C-10 y Mirador C-15A",
+            "Alzado Sur: Porche de 3,00m de fondo cubierto por P1 (efecto soportal continuo); ventanales de suelo a techo C-12, C-13 y C-14 sin terrazas sucias",
+            "Alzado Este: Muro de cocina y churrasqueira; chimenea escultórica de granito moreno gallego (Opción A) adosada al exterior hasta +7,80 m",
+            "Alzado Oeste: Muro de granito de 16,45m continuo de alta inercia térmica contra temporales atlánticos; P1 ciega al fondo con SATE blanco",
         ]
     ))
 
@@ -388,10 +353,6 @@ def build_4_elevations_svg() -> str:
 # 2. GENERADOR DE VISTAS 3D MATEMÁTICAS ESTRICTAS (GUÍAS DE GEOMETRÍA PARA IA)
 # ==============================================================================
 def get_strict_3d_faces():
-    """
-    Construye el modelo 3D exacto subdividido en celdas para que el algoritmo del pintor
-    tenga precisión tipo Z-buffer sin artefactos de oclusión.
-    """
     faces = []
 
     def cy(y_cad):
@@ -414,20 +375,18 @@ def get_strict_3d_faces():
                 faces.append((verts, color, edgecolor, alpha, layer, bias))
 
     def add_box(x0, x1, y0_cad, y1_cad, z0, z1, color, edgecolor="#334155", alpha=1.0, layer=1, bias=0.0):
-        ya, yb = cy(y1_cad), cy(y0_cad)  # ya < yb
+        ya, yb = cy(y1_cad), cy(y0_cad)
         nx = max(1, int(round(abs(x1 - x0) / 1.2)))
         ny = max(1, int(round(abs(yb - ya) / 1.2)))
         nz = max(1, int(round(abs(z1 - z0) / 1.2)))
-        # Top (z1)
-        add_subdivided_quad((x0, ya, z1), (x1, ya, z1), (x1, yb, z1), (x0, yb, z1), color, edgecolor, alpha, layer, bias, nx, ny)
-        # South (ya)
-        add_subdivided_quad((x0, ya, z0), (x1, ya, z0), (x1, ya, z1), (x0, ya, z1), color, edgecolor, alpha, layer, bias, nx, nz)
-        # North (yb)
-        add_subdivided_quad((x0, yb, z0), (x1, yb, z0), (x1, yb, z1), (x0, yb, z1), color, edgecolor, alpha, layer, bias, nx, nz)
-        # West (x0)
-        add_subdivided_quad((x0, ya, z0), (x0, yb, z0), (x0, yb, z1), (x0, ya, z1), color, edgecolor, alpha, layer, bias, ny, nz)
-        # East (x1)
-        add_subdivided_quad((x1, ya, z0), (x1, yb, z0), (x1, yb, z1), (x1, ya, z1), color, edgecolor, alpha, layer, bias, ny, nz)
+
+        # 6 caras
+        add_subdivided_quad((x0, ya, z0), (x1, ya, z0), (x1, ya, z1), (x0, ya, z1), color, edgecolor, alpha, layer, bias, nx, nz) # y = ya (Sur)
+        add_subdivided_quad((x1, yb, z0), (x0, yb, z0), (x0, yb, z1), (x1, yb, z1), color, edgecolor, alpha, layer, bias, nx, nz) # y = yb (Norte)
+        add_subdivided_quad((x0, yb, z0), (x0, ya, z0), (x0, ya, z1), (x0, yb, z1), color, edgecolor, alpha, layer, bias, ny, nz) # x = x0 (Oeste)
+        add_subdivided_quad((x1, ya, z0), (x1, yb, z0), (x1, yb, z1), (x1, ya, z1), color, edgecolor, alpha, layer, bias, ny, nz) # x = x1 (Este)
+        add_subdivided_quad((x0, ya, z1), (x1, ya, z1), (x1, yb, z1), (x0, yb, z1), color, edgecolor, alpha, layer, bias, nx, ny) # z = z1 (Techo)
+        add_subdivided_quad((x0, yb, z0), (x1, yb, z0), (x1, ya, z0), (x0, ya, z0), color, edgecolor, alpha, layer, bias, nx, ny) # z = z0 (Suelo)
 
     def add_rect_on_y(x0, x1, y_cad, z0, z1, color, edgecolor="#0f172a", alpha=1.0, layer=1, bias=-0.35):
         yy = cy(y_cad)
@@ -447,140 +406,133 @@ def get_strict_3d_faces():
         ny = max(1, int(round(abs(yb - ya) / 1.5)))
         add_subdivided_quad((x0, ya, z_val), (x1, ya, z_val), (x1, yb, z_val), (x0, yb, z_val), color, edgecolor, alpha, layer, bias, nx, ny)
 
-    # CAPA 0: Parcela Césped Completa (20 x 30 m), Vial, Tarima Porche y Suelo Patio (SIN PISCINA, SOLO CÉSPED)
+    # CAPA 0: Suelo Parcela Césped (20 x 30 m), Porches y Suelo de Patio Claustro
     add_rect_on_z(0, 20, 0, 30, 0.0, "#4d7c0f", "#3f6212", 1.0, layer=0, bias=1.5)
-    add_rect_on_z(1.0, 4.5, 0.0, 11.8, 0.02, "#94a3b8", "#64748b", 1.0, layer=0, bias=0.6)
-    add_rect_on_z(6.5, 9.1, 0.0, 5.0, 0.02, "#cbd5e1", "#94a3b8", 1.0, layer=0, bias=0.6)
+    add_rect_on_z(1.0, 4.0, 0.0, 12.0, 0.02, "#94a3b8", "#64748b", 1.0, layer=0, bias=0.6)
+    add_rect_on_z(7.0, 9.3, 0.0, 5.0, 0.02, "#cbd5e1", "#94a3b8", 1.0, layer=0, bias=0.6)
     # Tarima Iroko Porche Sur (X=6.15..17.00, Y=18.45..21.45)
     add_rect_on_z(6.15, 17.00, 18.45, 21.45, 0.04, "#92400e", "#78350f", 1.0, layer=0, bias=-0.3)
-    # Suelo Patio Central
-    add_rect_on_z(8.50, 12.50, 8.40, 12.40, 0.06, "#92400e", "#78350f", 1.0, layer=0, bias=-0.4)
+    # Suelo Patio Claustro (X=10.00..13.20, Y=8.50..11.70)
+    add_rect_on_z(10.00, 13.20, 8.50, 11.70, 0.06, "#92400e", "#78350f", 1.0, layer=0, bias=-0.4)
 
-    # CAPA 1: VOLÚMENES ARQUITECTÓNICOS ESTRICTOS
-    # 1. Cuerpo Oeste Continuo en Granito Gallego extendido hasta el final del Porche Sur (X=4.00..6.15, Y=5.00..21.45, Z=0..3.45)
-    add_box(4.00, 6.15, 5.00, 21.45, 0.0, 3.45, "#9ca3af", "#4b5563", 1.0, layer=1)
-    # Cubierta Grava + 12 Paneles Solares FV (X=4.25..5.90, Y=7.20..17.00, Z=3.50)
-    add_rect_on_z(4.08, 6.12, 5.08, 18.35, 3.47, "#cbd5e1", "#64748b", 1.0, layer=1, bias=-0.2)
-    for r in range(6):
-        ry = 7.20 + r * 1.65
-        add_rect_on_z(4.25, 5.90, ry, ry + 1.25, 3.52, "#1e3a8a", "#38bdf8", 1.0, layer=1, bias=-0.55)
-    # Chimenea vertical negra en Salón (X=4.35..4.95, Y=14.60..15.25, Z=0..7.25)
-    add_box(4.35, 4.95, 14.60, 15.25, 0.0, 7.25, "#1f2937", "#0f172a", 1.0, layer=1, bias=-0.2)
-
-    # 2. Pérgola 2 Coches al Oeste (X=1.00..4.00, Y=5.00..11.80, Z=0..2.90)
-    add_box(1.00, 4.00, 5.00, 11.80, 2.72, 2.90, "#1f2937", "#0f172a", 1.0, layer=1)
+    # CAPA 1: VOLÚMENES ARQUITECTÓNICOS
+    # 1. Pérgola 2 Coches (X=1.00..3.85, Y=5.00..12.00, Z=0..2.90m)
+    add_box(1.00, 3.85, 5.00, 12.00, 2.72, 2.90, "#1f2937", "#0f172a", 1.0, layer=1)
     for py_c in [5.15, 8.40, 11.60]:
         add_box(1.05, 1.25, py_c, py_c + 0.20, 0.0, 2.72, "#1f2937", "#0f172a", 1.0, layer=1)
 
-    # 3. Volumen Principal 2 Plantas alrededor del Patio Central (X=6.15..17.00, Y=5.00..18.00)
-    # Bloque Norte (X=6.15..17.00, Y=5.00..8.40):
-    add_box(6.15, 17.00, 5.00, 8.40, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
-    add_box(6.15, 17.00, 5.00, 8.40, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
-    # Bloque Sur (X=6.15..17.00, Y=12.40..18.00 / PB llega a 18.45):
-    add_box(6.15, 17.00, 12.40, 18.45, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
-    add_box(6.15, 17.00, 12.40, 18.00, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
-    # Bloque Oeste del Patio (Escalera X=6.15..8.50, Y=8.40..12.40):
-    add_box(6.15, 8.50, 8.40, 12.40, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
-    add_box(6.15, 8.50, 8.40, 12.40, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
-    # Bloque Este del Patio (Cocina PB + Vestidor Suite P1 X=12.50..17.00, Y=8.40..12.40):
-    add_box(12.50, 17.00, 8.40, 12.40, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
-    add_box(12.50, 17.00, 8.40, 12.40, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 2. Ala Oeste (Mudroom y Sala Técnica X=3.85..6.15, Y=5.00..12.50, Z=0..3.15m) en Granito
+    add_box(3.85, 6.15, 5.00, 12.50, 0.0, 3.15, "#9ca3af", "#4b5563", 1.0, layer=1)
 
-    # 4. Arce Japonés en el centro del Patio Corrala (X=9.50..11.50, Y=9.50..11.50)
-    add_box(10.35, 10.65, 10.35, 10.65, 0.06, 2.30, "#451a03", "#290f02", 1.0, layer=1)
-    add_box(9.45, 11.55, 9.45, 11.55, 2.10, 4.95, "#b91c1c", "#7f1d1d", 0.95, layer=1)
+    # 3. Planta Baja Norte (Despacho, Hall, Baño PB X=6.15..17.00, Y=5.00..8.50, Z=0..3.15m)
+    add_box(6.15, 17.00, 5.00, 8.50, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
 
-    # 5. Porche Sur Cubierto (X=6.15..17.00, Y=18.45..21.45, techo en Z=2.90..3.15) + Churrasqueira Este
-    add_box(6.15, 17.00, 18.45, 21.45, 2.90, 3.15, "#f8fafc", "#cbd5e1", 1.0, layer=1)
-    add_box(16.65, 17.00, 21.10, 21.45, 0.0, 2.90, "#d6d3d1", "#78716c", 1.0, layer=1)
-    # Muro de cierre posterior de la Churrasqueira al Este (ciego en cara exterior)
-    add_box(15.60, 16.95, 19.20, 21.00, 0.0, 2.90, "#4b5563", "#1f2937", 1.0, layer=1)
+    # 4. Cocina PB Este (X=13.20..17.00, Y=8.50..12.00, Z=0..3.15m)
+    add_box(13.20, 17.00, 8.50, 12.00, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
 
-    # 6. Balcón Corrido Sur P1 UNIFICADO (X=6.15..17.00, Y=18.00..21.45, losa Z=3.15..3.35)
-    # Vuela exactamente los 3.00 m del porche, eliminando el doble escalón
-    add_box(6.15, 17.00, 18.00, 21.45, 3.15, 3.35, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 5. Escalera / Conexión Oeste del Patio (X=6.15..10.00, Y=8.50..14.30, Z=0..3.15m)
+    add_box(6.15, 10.00, 8.50, 14.30, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
 
-    # CAPA 1 CON BIAS FRONTAL: CARPINTERÍAS Y HUECOS ESTRICTOS EN LAS 4 FACHADAS
-    # --- FACHADA NORTE (Y = 4.92) ---
-    add_rect_on_y(7.25, 8.35, 4.92, 0.0, 2.40, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)   # P-01 Puerta Pivotante Iroko
-    add_rect_on_y(6.65, 7.25, 4.92, 0.0, 2.40, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)  # Fijo vidrio Hall
-    add_rect_on_y(10.80, 12.60, 4.92, 1.10, 2.30, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-02 Ventana Despacho (1,80x1,20)
-    add_rect_on_y(14.15, 15.15, 4.92, 1.80, 2.40, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-03 Ventana Baño PB (1,00x0,60)
-    add_rect_on_y(7.15, 8.15, 4.92, 4.95, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)  # C-10 Ventana Baño Hijos (1,00x0,60)
-    add_rect_on_y(10.45, 12.25, 4.92, 4.15, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-10B Ventana Sala Polivalente (1,80x1,20)
-    add_rect_on_y(12.25, 12.75, 4.92, 4.15, 5.55, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5) # Paño Iroko Norte
-    add_rect_on_y(14.65, 15.85, 4.92, 4.95, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-11 Ventana Baño Suite (1,20x0,60)
+    # 6. Salón PB (X=6.15..17.00, Y=14.30..18.45, Z=0..3.15m)
+    add_box(6.15, 17.00, 14.30, 18.45, 0.0, 3.15, "#d6d3d1", "#78716c", 1.0, layer=1)
 
-    # --- FACHADA SUR (Y = 18.52 en PB, Y = 18.08 en P1) ---
-    add_rect_on_y(6.80, 11.60, 18.52, 0.05, 2.65, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-08 Corredera Salón (4,80x2,60)
-    add_rect_on_y(12.60, 16.20, 18.52, 0.05, 2.65, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-09 Corredera Comedor (3,60x2,60)
-    add_rect_on_y(7.10, 9.30, 18.08, 3.35, 5.75, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-12 Balconera Dorm Niña (2,20x2,40)
-    add_rect_on_y(9.30, 10.65, 18.08, 3.35, 5.75, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5) # Paño Iroko entre D1 y D2
-    add_rect_on_y(10.65, 12.85, 18.08, 3.35, 5.75, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-13 Balconera Dorm Niño (2,20x2,40)
-    add_rect_on_y(12.85, 13.80, 18.08, 3.35, 5.75, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5)# Paño Iroko entre D2 y Suite
-    add_rect_on_y(13.80, 16.50, 18.08, 3.35, 5.75, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-14 Balconera Suite (2,70x2,40)
+    # 7. Porche Sur Soportal (X=6.15..17.00, Y=18.45..21.45, Z=0..3.15m cubierto por P1)
+    # Pilares en borde Sur Y=21.45m
+    for px_s in [6.32, 10.00, 13.50, 16.82]:
+        add_box(px_s - 0.12, px_s + 0.12, 21.35, 21.45, 0.0, 3.15, "#0f172a", "#cbd5e1", 1.0, layer=1)
 
-    # Barandilla de vidrio del Balcón Sur hasta X = 16.30 m (el cortaviento de iroko cierra en X = 16.30)
-    add_rect_on_y(6.15, 16.30, 21.42, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
-    add_rect_on_x(6.15, 18.00, 21.40, 3.35, 4.35, "#7dd3fc", "#0284c7", 0.42, layer=1, bias=-0.3)
-    # Cortaviento de lamas de Iroko RETRAÍDO a X = 16.30 m (la chimenea queda 100% por fuera en X=16.65..16.95)
-    add_rect_on_x(16.30, 18.00, 21.45, 3.35, 6.60, "#92400e", "#78350f", 0.98, layer=1, bias=-0.4)
+    # 8. PLANTA PRIMERA EN "U" (Z=3.15..6.80m) EN SATE BLANCO CÁLIDO:
+    # 8a. Ala Oeste (Escalera y Galería Claustro: X=6.15..8.50, Y=8.50..14.30)
+    add_box(6.15, 8.50, 8.50, 14.30, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8b. Ala Este (Suite sobre Cocina: X=13.50..17.00, Y=8.50..17.00)
+    add_box(13.50, 17.00, 8.50, 17.00, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8c. Ala Sur (Dormitorios y Galería distribuidora: X=6.15..17.00, Y=14.30..21.45 · Vuela 3m sobre Porche)
+    add_box(6.15, 17.00, 14.30, 21.45, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8d. Mirador acristalado de la galería hacia el patio en Ala Oeste
+    add_rect_on_x(8.48, 9.10, 13.70, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)
+
+    # 9. CHIMENEA EXTERIOR DE GRANITO MORENO EN FACHADA ESTE (OPCIÓN A)
+    # X=17.00..17.80, Y=20.65..21.45, Z=0..7.80m (+1,00m sobre cubierta)
+    add_box(17.00, 17.80, 20.65, 21.45, 0.0, 7.80, "#334155", "#1f2937", 1.0, layer=1, bias=-0.2)
+
+    # 10. CAMPO SOLAR FOTOVOLTAICO EN CUBIERTA SUPERIOR (+6,50m)
+    # 12 Paneles solares sobre P1 (X=8.00..15.50, Y=14.80..20.80, Z=6.85..7.15m)
+    for r in range(4):
+        ry = 15.20 + r * 1.35
+        for c in range(3):
+            cx = 8.50 + c * 2.30
+            add_box(cx, cx + 2.00, ry, ry + 1.10, 6.85, 7.10, "#1e3a8a", "#38bdf8", 1.0, layer=1, bias=-0.4)
+
+    # 11. Acer Palmatum en Patio Claustro (X=11.60, Y=10.10)
+    add_box(11.45, 11.75, 9.95, 10.25, 0.06, 2.30, "#451a03", "#290f02", 1.0, layer=1)
+    add_box(10.60, 12.60, 9.10, 11.10, 2.10, 4.80, "#b91c1c", "#7f1d1d", 0.95, layer=1)
+
+    # CARPINTERÍAS FRONTALES:
+    # --- FACHADA NORTE PB (Y = 4.92) ---
+    add_rect_on_y(7.25, 8.35, 4.92, 0.0, 2.40, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)  # P-01
+    add_rect_on_y(6.65, 7.25, 4.92, 0.0, 2.40, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # Fijo Hall
+    add_rect_on_y(10.80, 12.60, 4.92, 1.10, 2.30, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-02 Despacho
+    add_rect_on_y(14.15, 15.15, 4.92, 1.80, 2.40, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-03 Baño PB
+
+    # --- FACHADA NORTE P1 (Y = 14.22) ---
+    add_rect_on_y(6.50, 8.30, 14.22, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-15A Galería
+    add_rect_on_y(8.80, 9.80, 14.22, 4.75, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-10 Baño Hijos
+
+    # --- FACHADA SUR PB (Y = 18.52 al fondo del porche) ---
+    add_rect_on_y(6.80, 11.60, 18.52, 0.05, 2.65, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-08 Corredera Salón
+    add_rect_on_y(12.60, 15.80, 18.52, 0.05, 2.65, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-09 Corredera Comedor
+
+    # --- FACHADA SUR P1 (Y = 21.48 borde del soportal) ---
+    add_rect_on_y(7.00, 9.40, 21.48, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-12 Dorm. Niña
+    add_rect_on_y(9.40, 10.20, 21.48, 3.15, 5.55, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)  # Paño Iroko
+    add_rect_on_y(10.20, 12.60, 21.48, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-13 Dorm. Niño
+    add_rect_on_y(12.60, 13.80, 21.48, 3.15, 5.55, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)# Paño Iroko
+    add_rect_on_y(13.80, 16.60, 21.48, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-14 Master Suite
 
     # --- FACHADA ESTE (X = 17.08) ---
-    add_rect_on_x(17.08, 11.95, 12.85, 1.40, 2.40, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-04 Ventana Despensa PB (0,90x1,00)
-    add_rect_on_x(17.08, 9.20, 11.20, 1.15, 1.65, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-04B Ventana Corrida Cocina PB (2,00x0,50)
-    add_rect_on_x(17.08, 9.40, 10.40, 4.15, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-14B Ventana Vestidor Suite P1 (1,00x1,20)
-    add_rect_on_x(17.08, 10.40, 11.20, 4.15, 5.55, "#92400e", "#78350f", 1.0, layer=1, bias=-0.5)# Listones Iroko Este
-    add_rect_on_x(17.08, 14.00, 15.20, 4.15, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # C-14C Ventana Suite Este (1,20x1,20)
-    # Tiro Inox Barbacoa en patinillo exterior pegado al testero Este (X=16.65..16.95, Y=20.00..20.35, Z=2.90..6.95)
-    add_box(16.65, 16.95, 20.00, 20.35, 2.90, 6.95, "#1f2937", "#0f172a", 1.0, layer=1, bias=-0.2)
+    add_rect_on_x(17.08, 9.50, 11.00, 1.10, 2.30, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5) # Ventana Cocina
+    add_rect_on_x(17.08, 15.20, 16.20, 4.75, 5.35, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)# C-11 Baño Suite
 
-    # --- FACHADA OESTE (X = 3.92 en PB) ---
-    add_rect_on_x(3.92, 6.60, 7.50, 0.0, 2.20, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)    # P-02 Puerta Mudroom
-    add_rect_on_x(3.92, 9.60, 11.00, 0.0, 2.20, "#1f2937", "#0f172a", 1.0, layer=1, bias=-0.5)   # P-05 Puerta Sala Técnica / Surf
-    add_rect_on_x(3.92, 18.60, 19.60, 0.0, 2.20, "#1f2937", "#fbbf24", 1.0, layer=1, bias=-0.5)  # C-09B Puerta Caseta Aperos
-    # Claraboyas cenitales tubulares Velux SunTunnel en cubierta Oeste (+3,45m)
-    add_box(4.80, 5.35, 13.00, 13.50, 3.45, 3.65, "#38bdf8", "#0284c7", 1.0, layer=1, bias=-0.3)
-    add_box(4.80, 5.35, 15.60, 16.10, 3.45, 3.65, "#38bdf8", "#0284c7", 1.0, layer=1, bias=-0.3)
+    # --- FACHADA OESTE (X = 3.78) ---
+    add_rect_on_x(3.78, 6.40, 7.30, 0.0, 2.10, "#78350f", "#451a03", 1.0, layer=1, bias=-0.5)    # P-02 Mudroom
+    add_rect_on_x(3.78, 9.80, 10.80, 0.0, 2.10, "#1e293b", "#0f172a", 0.95, layer=1, bias=-0.5)  # P-05 Surf
 
     return faces
 
 
-def render_guide_view(faces, elev_deg, azim_deg, title, out_path, cam_dist=31.0, cz=2.6):
-    """
-    Renderiza en perspectiva 3D exacta las caras subdivididas del modelo.
-    """
-    W, H = 1600, 1000
-    img = Image.new("RGBA", (W, H), (219, 234, 254, 255))
-    draw = ImageDraw.Draw(img, "RGBA")
+def render_guide_view(faces, elev_deg: float, azim_deg: float, title: str, out_path: str, cam_dist=42.0, cx=10.0, cy_target=15.0, cz=3.4, W=1536, H=1024):
+    img = Image.new("RGBA", (W, H), (7, 11, 20, 255))
+    draw = ImageDraw.Draw(img)
 
-    draw.rectangle([0, 0, W, int(H * 0.52)], fill=(186, 230, 253, 255))
-    draw.rectangle([0, int(H * 0.52), W, H], fill=(226, 232, 240, 255))
+    rad_elev = math.radians(elev_deg)
+    rad_azim = math.radians(azim_deg)
+    cam_x = cx + cam_dist * math.cos(rad_elev) * math.sin(rad_azim)
+    cam_y = cy_target - cam_dist * math.cos(rad_elev) * math.cos(rad_azim)
+    cam_z = cz + cam_dist * math.sin(rad_elev)
 
-    cx, cy = 9.5, 14.5
-    elev = math.radians(elev_deg)
-    azim = math.radians(azim_deg)
+    fx, fy, fz = cx - cam_x, cy_target - cam_y, cz - cam_z
+    f_len = math.sqrt(fx * fx + fy * fy + fz * fz)
+    fx, fy, fz = fx / f_len, fy / f_len, fz / f_len
 
-    ux = math.cos(elev) * math.cos(azim)
-    uy = math.cos(elev) * math.sin(azim)
-    uz = math.sin(elev)
-    cam_x = cx + cam_dist * ux
-    cam_y = cy + cam_dist * uy
-    cam_z = cz + cam_dist * uz
+    rx = fy * 0.0 - fz * 0.0
+    ry = fz * 0.0 - fx * 1.0
+    rz = fx * 0.0 - fy * 0.0
+    rx, ry, rz = -fy, fx, 0.0
+    r_len = math.sqrt(rx * rx + ry * ry)
+    if r_len > 1e-6:
+        rx, ry, rz = rx / r_len, ry / r_len, 0.0
+    else:
+        rx, ry, rz = 1.0, 0.0, 0.0
 
-    fx, fy, fz = -ux, -uy, -uz
-    rx, ry, rz = -math.sin(azim), math.cos(azim), 0.0
     upx = ry * fz - rz * fy
     upy = rz * fx - rx * fz
     upz = rx * fy - ry * fx
+    up_len = math.sqrt(upx * upx + upy * upy + upz * upz)
+    upx, upy, upz = upx / up_len, upy / up_len, upz / up_len
 
-    focal = 1520.0
-
-    def hex_to_rgba(h, alpha=1.0):
-        h = h.lstrip("#")
-        return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16), int(255 * alpha))
-
+    focal = W * 0.95
     projected_polys = []
+
     for verts, col_hex, edge_hex, alpha, layer, bias in faces:
         pts_2d = []
         dists = []
@@ -601,7 +553,6 @@ def render_guide_view(faces, elev_deg, azim_deg, title, out_path, cam_dist=31.0,
             avg_dist = sum(dists) / len(dists) + bias
             projected_polys.append((layer, -avg_dist, pts_2d, hex_to_rgba(col_hex, alpha), hex_to_rgba(edge_hex, min(1.0, alpha + 0.2))))
 
-    # Ordenar primero por capa (0=suelo/piscina, 1=edificio) y luego de mayor distancia a menor distancia
     projected_polys.sort(key=lambda item: (item[0], item[1]))
 
     for _, _, pts_2d, fill_rgba, edge_rgba in projected_polys:
@@ -609,6 +560,16 @@ def render_guide_view(faces, elev_deg, azim_deg, title, out_path, cam_dist=31.0,
 
     img.convert("RGB").save(out_path, "PNG")
     print(f"Rendered 3D guide: {out_path}")
+
+
+def hex_to_rgba(hex_code: str, alpha=1.0):
+    hex_code = hex_code.lstrip("#")
+    if len(hex_code) == 3:
+        hex_code = "".join([c * 2 for c in hex_code])
+    r = int(hex_code[0:2], 16)
+    g = int(hex_code[2:4], 16)
+    b = int(hex_code[4:6], 16)
+    return (r, g, b, int(alpha * 255))
 
 
 def main():
