@@ -1,44 +1,44 @@
-# Ficha de Estancia: [PA-19B] Sala Cine / Gaming / 4º Dormitorio Polivalente
-## Planta Primera (+3,15 m) · Morfología Amplia ~215 m² cerrados
+# Ficha de Estancia: [PA-19B] Sala Multiusos Atardecer / Cine / Gaming / 4º Dormitorio
+## Planta Primera (+3,15 m) · Morfología en "U" Pura ~218 m² constr. (Opción B)
 
 ---
 
 ## 1. Identificación y Superficies
 
 * **Código Espacial:** `PA-19B`
-* **Denominación:** Sala Multimedia de Cine, Gaming y Cuarto Dormitorio Polivalente.
-* **Cota de Nivel:** `+3,15 m` (Pavimento terminado).
-* **Superficie Útil Neta:** `15,20 m²`
-* **Superficie Construida:** `~18,00 m²`
-* **Dimensiones Libres Interiores:** `5,00 m (Ancho Este-Oeste) × 3,50 m (Fondo Norte-Sur)`
-* **Altura Libre:** `2,65 m` a falso techo acústico continuo.
+* **Denominación:** Sala Multiusos de Ocio, Mirador de Atardecer, Cine/Gaming y Cuarto Dormitorio Polivalente.
+* **Cota de Nivel:** `+3,15 m` (Pavimento terminado en roble natural multicapa 14 mm con alfombra acústica perimetral).
+* **Superficie Útil Neta:** `16,80 m²`
+* **Superficie Construida:** `~19,50 m²`
+* **Dimensiones Libres Interiores:** `3,95 m (Ancho Este-Oeste) × 4,20 m (Fondo Norte-Sur)` (Planta casi cuadrada de máximo aprovechamiento).
+* **Altura Libre:** `2,65 m` a falso techo acústico continuo con fosos perimetrales.
 
 ---
 
 ## 2. Bounding Box y Coordenadas Canónicas
 
-* **Límite Norte (`Y = 11.70 m`):** Cerramiento acristalado fijo con mirador panorámico `C-17` (3,40 × 1,40 m) orientado al Patio Claustro Central.
-* **Límite Sur (`Y = 15.20 m`):** Tabique divisorio con la Galería Distribuidora `PA-16`. Aloja la puerta corredera acústica `P-19B` (0,90 × 2,10 m).
-* **Límite Oeste (`X = 8.50 m`):** Tabique acústico divisorio con el Ala Oeste (desembarco de escalera y baño compartido de hijos).
-* **Límite Este (`X = 13.50 m`):** Tabique divisorio acústico con el Vestidor de la Master Suite `PA-21`.
+* **Límite Oeste (`X = 3.85 m`):** Muro exterior de fachada oeste (vuela y apoya sobre el zaguán y cuarto técnico de PB). Aloja el gran mirador panorámico al atardecer `C-18` (2,60 m de ancho × 2,20 m de alto), orientado a poniente con banco corrido de lectura integrado (2,40 × 0,60 m) en madera de roble natural.
+* **Límite Este (`X = 7.80 m`):** Tabique divisorio acústico con el desembarco de escalera y el arranque de la Galería Distribuidora Claustro `PA-16`. Aloja la puerta corredera acústica `P-19B` (0,90 × 2,10 m, casoneto fonoabsorbente con guillotina retráctil inferior).
+* **Límite Norte (`Y = 12.80 m`):** Tabique divisorio acústico ($R_w \ge 50\text{ dB}$) con el Baño Compartido de Hijos `PA-19`.
+* **Límite Sur (`Y = 17.00 m`):** Cerramiento exterior de fachada sur que retranquea hacia el Este en el nudo de encuentro con el Dormitorio Infantil Niña `PA-17` (`X = 6.15 m`).
 
 ---
 
 ## 3. Dotación, Mobiliario y Aislamiento Acústico
 
-* **Pantalla Audiovisual:** Pantalla de proyección motorizada tensionada de 110" oculta en foso de falso techo (o pantalla OLED 83"/85" en pared frontal Este/Oeste).
-* **Mobiliario de Descanso:** Sofá modular en "L" con chaise-longue (2,80 × 1,80 m) + pufs tapizados en tejido antimanchas de alta resistencia.
-* **Zona de Estudio / Gaming:** Mesa corrida de 2,40 m para set de doble monitor, consola PS5/PC gaming y cableado oculto bajo encimera de roble natural.
-* **Versatilidad como 4º Dormitorio de Invitados:** Espacio libre para desplegar cama de 1,50 × 2,00 m o sofá-cama italiano de uso esporádico.
+* **Gran Mirador de Poniente:** Ventanal panorámico `C-18` (2,60 × 2,20 m, carpintería Schüco AWS 75.SI / Cortizo Cor Vision Plus con vidrio selectivo de control solar g=0,35 y baja emisividad). Incluye banco corrido de roble europeo integrado en carpintería para contemplar la puesta de sol.
+* **Pantalla Audiovisual y TV Wall:** Pared multimedia preparada para televisor OLED de 83"/85" o pantalla de proyección motorizada de 110" oculta en foso de falso techo.
+* **Mobiliario de Descanso y Gaming:** Sofá modular en "L" con chaise-longue (2,60 × 1,80 m), mesa de centro en roble y set de gaming / estudio con tomas de conexión directa apantalladas.
+* **Versatilidad como 4º Dormitorio de Invitados:** Espacio libre holgado para desplegar cama doble de 1,50 × 2,00 m o sofá-cama de mecanismo italiano sin comprometer la circulación.
 * **Acondicionamiento Acústico Box-in-a-Box:**
-  * Tabiquería con doble placa de yeso laminado fonoabsorbente con lana de roca de 70 kg/m³ (`Rw ≥ 50 dB`) en los 4 paramentos.
-  * Puerta corredera oculta en casoneto acústico con juntas de guillotina inferior y burletes perimetrales de estanqueidad acústica.
+  * Tabiquería con doble placa de yeso laminado fonoabsorbente (tipo Placo Plaphonique / Knauf Diamant) con lana mineral de 70 kg/m³ en cámara desacoplada ($R_w \ge 50\text{ dB}$).
+  * Puerta corredera oculta en casoneto acústico con juntas de estanqueidad perimetrales y guillotina inferior retráctil.
 
 ---
 
 ## 4. Instalaciones y Climatización
 
-* **Climatización:** Suelo radiante/refrescante zonificado independientemente (termostato digital Modbus integrado en domótica Home Assistant / KNX).
-* **Ventilación Mecánica:** VMC doble flujo con recuperador de calor entálpico: 1 boca de impulsión de aire filtrado de bajo nivel sonoro (< 20 dB(A)).
-* **Telecomunicaciones:** 4 tomas dobles RJ45 Cat.6A apantalladas directas al rack central (2 tomas en consola/TV, 2 en mesa de trabajo).
-* **Iluminación:** Línea perimetral de LED cálido indirecto regulable (2700K - 1800K, Dim-to-Warm) y focos empotrados antideslumbrantes UGR < 16.
+* **Climatización:** Suelo radiante/refrescante zonificado independientemente con termostato inteligente integrado en domótica Home Assistant / KNX.
+* **Ventilación Mecánica:** VMC doble flujo con recuperador de calor entálpico: 1 boca de impulsión de aire filtrado silenciosa (< 20 dB(A)).
+* **Telecomunicaciones:** 4 tomas dobles RJ45 Cat.6A apantalladas con canalización directa al rack central de datos en PB.
+* **Iluminación:** Foso perimetral con tiras LED cálidas (2700K - 1800K, Dim-to-Warm) y focos empotrados antideslumbrantes UGR < 16 orientados a zona de relax y lectura.
