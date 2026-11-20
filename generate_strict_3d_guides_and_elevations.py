@@ -442,14 +442,18 @@ def get_strict_3d_faces():
         add_box(px_s - 0.12, px_s + 0.12, 21.35, 21.45, 0.0, 3.15, "#0f172a", "#cbd5e1", 1.0, layer=1)
 
     # 8. PLANTA PRIMERA EN "U" (Z=3.15..6.80m) EN SATE BLANCO CÁLIDO:
-    # 8a. Ala Oeste (Escalera y Galería Claustro: X=6.15..8.50, Y=8.50..14.30)
-    add_box(6.15, 8.50, 8.50, 14.30, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8a. Ala Oeste Expandida (Baño Hijos + Sala Multiusos Atardecer: X=3.85..7.80, Y=8.50..17.00)
+    add_box(3.85, 7.80, 8.50, 17.00, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # Mirador Oeste C-18 Sala Multiusos Atardecer (Y=13.00..15.60, Z=3.60..5.80)
+    add_rect_on_x(3.83, 13.00, 15.60, 3.60, 5.80, "#0284c7", "#0f172a", 0.95, layer=1, bias=-0.6)
+    # Ventana Baño Hijos C-16 Oeste (Y=9.50..10.50, Z=4.20..4.90)
+    add_rect_on_x(3.83, 9.50, 10.50, 4.20, 4.90, "#0284c7", "#0f172a", 0.95, layer=1, bias=-0.6)
     # 8b. Ala Este (Suite sobre Cocina: X=13.50..17.00, Y=8.50..17.00)
     add_box(13.50, 17.00, 8.50, 17.00, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
-    # 8c. Ala Sur (Dormitorios y Galería distribuidora: X=6.15..17.00, Y=14.30..21.45 · Vuela 3m sobre Porche)
-    add_box(6.15, 17.00, 14.30, 21.45, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
-    # 8d. Mirador acristalado de la galería hacia el patio en Ala Oeste
-    add_rect_on_x(8.48, 9.10, 13.70, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)
+    # 8c. Ala Sur (Dormitorios: X=6.15..17.00, Y=17.00..21.45 · Vuela 3m sobre Porche)
+    add_box(6.15, 17.00, 17.00, 21.45, 3.15, 6.80, "#f8fafc", "#cbd5e1", 1.0, layer=1)
+    # 8d. Galería Claustro C-15 mirando al patio norte (X=8.50..13.30, Y=15.20)
+    add_rect_on_y(8.50, 13.30, 15.22, 3.15, 5.55, "#0284c7", "#0f172a", 0.90, layer=1, bias=-0.5)
 
     # 9. CHIMENEA EXTERIOR DE GRANITO MORENO EN FACHADA ESTE (OPCIÓN A)
     # X=17.00..17.80, Y=20.65..21.45, Z=0..7.80m (+1,00m sobre cubierta)

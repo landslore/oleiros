@@ -26,9 +26,12 @@ img_salon = get_base64_image("salon_jardin_render.jpg")
 img_despacho = get_base64_image("despacho_render.jpg")
 img_bano_pb = get_base64_image("bano_pb_render.jpg")
 img_porche = get_base64_image("porche_sur_render.jpg")
-img_galeria = get_base64_image("galeria_escalera_render.jpg")
+img_galeria = get_base64_image("galeria_claustro_render.jpg")
 img_suite = get_base64_image("suite_principal_render.jpg")
 img_ninos = get_base64_image("dormitorio_infantil_render.jpg")
+img_multiusos = get_base64_image("multiusos_atardecer_render.jpg")
+img_fachada_oeste = get_base64_image("fachada_oeste_render.jpg")
+img_bano_hijos = get_base64_image("bano_hijos_p1_render.jpg")
 
 with open(os.path.join(PROPUESTAS_DIR, 'planta_baja_propuesta_d.svg'), 'r') as f:
     raw_svg_pb = f.read()
@@ -112,7 +115,7 @@ html_content = f"""<!DOCTYPE html>
     <!-- NAVEGACIÓN PRINCIPAL -->
     <nav class="flex flex-wrap items-center gap-1.5 text-xs">
       <button onclick="switchTab('renders')" id="tab-renders" class="nav-tab active px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-semibold transition">
-        🖼️ Renders de Cada Estancia (12)
+        🖼️ Renders de Cada Estancia (15)
       </button>
       <button onclick="switchTab('planos')" id="tab-planos" class="nav-tab px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 font-medium transition">
         📐 Planos Generales (PB &amp; P1)
@@ -315,23 +318,23 @@ html_content = f"""<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- 9. GALERÍA ACÚSTICA Y ESCALERA P1 -->
+        <!-- 9. GRAN GALERÍA CLAUSTRO P1 -->
         <div class="render-card bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
           <div class="relative overflow-hidden aspect-video bg-slate-950">
-            <img src="{img_galeria}" alt="Galería Acústica y Escalera" class="w-full h-full object-cover">
+            <img src="{img_galeria}" alt="Gran Galería Claustro P1" class="w-full h-full object-cover">
             <div class="absolute top-3 left-3">
-              <span class="badge bg-purple-500 text-slate-950 font-extrabold shadow-md">ESTANCIA 12 · DISTRIBUIDOR P1</span>
+              <span class="badge bg-purple-500 text-slate-950 font-extrabold shadow-md">ESTANCIA 16 · GALERÍA CLAUSTRO P1</span>
             </div>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
             <div>
-              <h3 class="text-base font-extrabold text-white">Galería Acústica &amp; Escalera de Roble</h3>
+              <h3 class="text-base font-extrabold text-white">Gran Galería Claustro &amp; Vistas al Patio Abierto</h3>
               <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                Mampara acristalada fija 4+4 Silence (aísla 42 dB entre plantas) con vistas cenitales sobre el patio claustral. Escalera con peldaños volados de roble y balizas LED de cortesía.
+                Galería recta continua de 1,80 m de ancho con frente acristalado panorámico C-15 de 4,80 m. Vistas directas sobre el patio claustral abierto 100% al cielo y el arce japonés. Tarima de roble europeo continuo.
               </p>
             </div>
             <div class="text-[11px] font-mono text-purple-400 bg-purple-950/50 p-2.5 rounded-xl border border-purple-900/60">
-              ✓ 8,2 m² · Vidrio 4+4 Silence · Balizas de zócalo para trayectos nocturnos
+              ✓ 11,5 m² útiles · Ancho libre 1,80 m · Cristalera C-15 4,80m · Luz cenital
             </div>
           </div>
         </div>
@@ -341,18 +344,18 @@ html_content = f"""<!DOCTYPE html>
           <div class="relative overflow-hidden aspect-video bg-slate-950">
             <img src="{img_suite}" alt="Suite Principal Matrimonio" class="w-full h-full object-cover">
             <div class="absolute top-3 left-3">
-              <span class="badge bg-indigo-500 text-slate-950 font-extrabold shadow-md">ESTANCIA 16 · PLANTA PRIMERA</span>
+              <span class="badge bg-indigo-500 text-slate-950 font-extrabold shadow-md">ESTANCIA 20 · MASTER SUITE</span>
             </div>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
             <div>
-              <h3 class="text-base font-extrabold text-white">Suite Principal de Matrimonio</h3>
+              <h3 class="text-base font-extrabold text-white">Master Suite Privada de Matrimonio</h3>
               <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                Ala Este privada de 31,2 m² con cama King Size orientada al Sur, balcón corrido con barandilla continua de vidrio estructural, vestidor de paso en doble hilera y baño doble.
+                Ala Este privada de 30,3 m² con dormitorio sur (15,5 m²) volando 3m sobre el porche, gran vestidor independiente en "U" (8,0 m²) y baño suite doble seno con ducha 150×90 cm (6,8 m²).
               </p>
             </div>
             <div class="text-[11px] font-mono text-sky-400 bg-sky-950/50 p-2.5 rounded-xl border border-sky-900/60">
-              ✓ 31,2 m² suite · Ducha italiana doble · Frentes de vidrio ahumado
+              ✓ 30,3 m² suite útil · Gran Vestidor en U · Ventanas exteriores Norte y Este
             </div>
           </div>
         </div>
@@ -362,23 +365,86 @@ html_content = f"""<!DOCTYPE html>
           <div class="relative overflow-hidden aspect-video bg-slate-950">
             <img src="{img_ninos}" alt="Dormitorio Infantil Niña/Niño" class="w-full h-full object-cover">
             <div class="absolute top-3 left-3">
-              <span class="badge bg-emerald-500 text-slate-950 font-extrabold shadow-md">ESTANCIAS 13-14 · DORMITORIOS HIJOS</span>
+              <span class="badge bg-emerald-500 text-slate-950 font-extrabold shadow-md">ESTANCIAS 17-18 · DORMITORIOS HIJOS</span>
             </div>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
             <div>
-              <h3 class="text-base font-extrabold text-white">Dormitorios Infantiles (Estudio a 90°)</h3>
+              <h3 class="text-base font-extrabold text-white">Dormitorios Infantiles (Sur con Soportal)</h3>
               <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                Pupitre suspendido de 1,80 m con luz natural lateral a 90° de balconera sur (cero contraluz ni reflejos en portátil), cama tapizada, armario empotrado y salida a balcón sur.
+                14,5 m² útiles cada uno volando 3,00 m sobre el Porche Sur. Ventanales de suelo a techo sin balcones abiertos (cero terrazas sucias ni pérdidas térmicas) y mesas de estudio con luz natural rasante.
               </p>
             </div>
             <div class="text-[11px] font-mono text-emerald-400 bg-emerald-950/50 p-2.5 rounded-xl border border-emerald-900/60">
-              ✓ 14,6 m² cada uno · Aislamiento acústico medianero Rw ≥ 50 dB
+              ✓ 14,5 m² cada uno · Ventanales suelo a techo C-12 y C-13 · Rw ≥ 50 dB
             </div>
           </div>
         </div>
 
-        <!-- 12. FACHADA NORTE Y ACCESO -->
+        <!-- 12. SALA MULTIUSOS ATARDECER (NOVEDAD OPCIÓN B) -->
+        <div class="render-card bg-slate-900 border border-amber-500/40 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+          <div class="relative overflow-hidden aspect-video bg-slate-950">
+            <img src="{img_multiusos}" alt="Sala Multiusos Atardecer" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3">
+              <span class="badge bg-amber-500 text-slate-950 font-extrabold shadow-md">ESTANCIA 19B · MIRADOR ATARDECER</span>
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="text-base font-extrabold text-white">Sala Multiusos Atardecer &amp; Ocio</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                16,8 m² útiles en la esquina Suroeste de P1. Gran mirador panorámico C-18 (2,60 × 2,20 m) a poniente con banco corrido de roble integrado para contemplar el atardecer, sofá en "L" y pantalla multimedia 110"/85".
+              </p>
+            </div>
+            <div class="text-[11px] font-mono text-amber-400 bg-amber-950/50 p-2.5 rounded-xl border border-amber-900/60">
+              ✓ 16,8 m² útiles · Mirador C-18 (2,60m) · Banco roble · Box-in-a-box acústico
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. BAÑO COMPARTIDO HIJOS P1 -->
+        <div class="render-card bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+          <div class="relative overflow-hidden aspect-video bg-slate-950">
+            <img src="{img_bano_hijos}" alt="Baño Compartido Hijos P1" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3">
+              <span class="badge bg-sky-500 text-slate-950 font-extrabold shadow-md">ESTANCIA 19 · BAÑO HIJOS P1</span>
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="text-base font-extrabold text-white">Baño Compartido Hijos P1 Oeste</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                6,0 m² útiles en fachada oeste con ventana exterior oscilobatiente C-16. Mueble doble seno suspendido de 1,40 m en roble tratado, ducha enrasada de 140 × 80 cm y acceso independiente P-11 sin cruces.
+              </p>
+            </div>
+            <div class="text-[11px] font-mono text-sky-400 bg-sky-950/50 p-2.5 rounded-xl border border-sky-900/60">
+              ✓ 6,0 m² útiles · Mueble doble lavabo 1,40 m · Ducha 140×80 cm · Ventana C-16
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. FACHADA EXTERIOR OESTE -->
+        <div class="render-card bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+          <div class="relative overflow-hidden aspect-video bg-slate-950">
+            <img src="{img_fachada_oeste}" alt="Fachada Exterior Oeste Atardecer" class="w-full h-full object-cover">
+            <div class="absolute top-3 left-3">
+              <span class="badge bg-amber-500 text-slate-950 font-extrabold shadow-md">EXTERIOR · FACHADA OESTE</span>
+            </div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <h3 class="text-base font-extrabold text-white">Fachada Oeste &amp; Volumen P1 en Voladizo</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                Composición volumétrica con basamento de mampostería de granito moreno gallego en PB y volumen blanco cálido en P1 con el gran ventanal mirador de la sala de estar a poniente.
+              </p>
+            </div>
+            <div class="text-[11px] font-mono text-amber-400 bg-amber-950/50 p-2.5 rounded-xl border border-amber-900/60">
+              ✓ Granito moreno gallego · Mirador C-18 en voladizo · Pérgola norte
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. FACHADA NORTE Y ACCESO -->
         <div class="render-card bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
           <div class="relative overflow-hidden aspect-video bg-slate-950">
             <img src="{img_fachada}" alt="Fachada Norte y Acceso" class="w-full h-full object-cover">
