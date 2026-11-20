@@ -1,28 +1,26 @@
 # Planta Alta: Topología Espacial, Bounding Boxes y Grafo de Adyacencia
-## Versión Morfología en "U" Pura ~218 m² constr. (Opción B: Sala Multiusos Atardecer + Patio Libre al Cielo)
+## Versión Morfología en "U" Pura (Opción B: Sala Multiusos Atardecer + Patio Libre al Cielo)
 
-Este documento actúa como el **Master Plan Semántico de Planta Primera (+3,15 m)** (Single Source of Truth). Permite a cualquier agente de IA consultar instantáneamente las dimensiones, coordenadas envolventes y puntos de enganche de las estancias de noche y ocio sin parsear archivos vectoriales.
+Este documento actúa como el **Master Plan Semántico de Planta Primera (+3,15 m)** (Single Source of Truth). Permite a cualquier agente de IA o software CAD consultar instantáneamente las dimensiones, coordenadas envolventes y puntos de enganche de las estancias de noche y ocio sin parsear archivos vectoriales.
 
 * **Cota de Nivel General:** `+3,15 m` (Pavimento terminado de roble natural y porcelánico C3).
 * **Altura Libre:** `2,65 m` a falso techo continuo con foso perimetral de iluminación indirecta.
-* **Superficie Útil Interior P1:** `93,60 m²` (Aprovechamiento integral con ala oeste expandida sobre planta baja).
-* **Superficie Construida P1:** `~110,00 m²` cerrados.
-* **Superficie Construida Total Vivienda (PB + P1):** `~200,00 m²` cerrados (`~218,00 m²` computables totales con porches al 50%).
-* **Superficie Útil Total Vivienda:** `166,60 m² útiles interiores`.
+* **Superficie Útil Interior P1:** `110,80 m²` útiles interiores.
+* **Superficie Construida P1:** `135,00 m²` cerrados.
+* **Superficie Construida Total Vivienda (PB + P1):** `223,00 m²` cerrados (`239,00 m²` computables totales con porches al 50%).
 * **Calidad Constructiva:** **CTE Clase A / nZEB (High Standard)** con presupuesto objetivo llave en mano de ~680.000 € (terreno e impuestos incluidos). Termoarcilla + SATE 12-14 cm, aerotermia y suelo radiante/refrescante.
-* **Esquema de Distribución:**
-  * **Ala Oeste Expandida (`X = 3.85..7.80 m`):**
-    * **Sala Multiusos Atardecer (PA-19B, 16,80 m² útiles):** En la esquina Suroeste (`X = 3.85..7.80, Y = 12.80..17.00`), dimensiones casi cuadradas (3,95 × 4,20 m). Incorpora el gran mirador panorámico `C-18` (2,60 × 2,20 m) a poniente, banco de lectura, sofá en "L" y pantalla multimedia 110"/85".
-    * **Baño Compartido Hijos (PA-19, 6,00 m² útiles):** En el tercio norte (`X = 3.85..6.15, Y = 8.50..12.80`), con ventana exterior `C-16` a fachada oeste, mueble doble seno suspendido y plato de ducha enrasado de 140 × 80 cm. Acceso independiente `P-11` desde el desembarco.
-    * **Escalera y Doble Altura Cenital (`X = 6.15..8.50, Y = 8.50..12.80`):** Se mantiene abierta sobre el arranque de la escalera, bañando de luz natural el hall de PB.
-  * **Patio Claustro Central (`X = 8.50..13.50, Y = 8.50..15.20` · 5,00 × 6,70 m = 33,50 m²):**
-    * **100% abierto al cielo.** Abraza el *Acer palmatum* y baña de luz cenital la planta baja y la planta alta.
-  * **Galería Distribuidora Claustro (PA-16, 11,50 m² útiles):**
-    * Bordea el Patio Claustro por el Sur (`Y = 15.20..17.00`, 1,80 m de ancho libre) con un frente acristalado panorámico continuo `C-15` (4,80 × 2,40 m).
-  * **Ala Sur (Dormitorios con Soportal 3m):**
+* **Esquema de Distribución y Circulación Limpia:**
+  * **Ala Oeste (`X = 3.85..6.15 m`):**
+    * **Sala Multiusos Atardecer / Cine (PA-19B, 9,20 m² útiles):** En el tercio norte (`X = 3.85..6.15, Y = 8.50..12.50`), con mirador panorámico `C-18` (2,60 × 2,20 m) a poniente, sofá en "L" y pantalla multimedia 85". Acceso independiente con puerta `P-19B` desde el desembarco de escalera en `Y = 12.50`.
+    * **Baño Compartido Hijos (PA-19, 9,20 m² útiles):** En el tramo central (`X = 3.85..6.15, Y = 12.50..16.50`), con ventana exterior `C-16` a fachada oeste, mueble doble seno suspendido y plato de ducha enrasado de 150 × 90 cm. **Acceso 100% directo e independiente con puerta `P-11` desde el distribuidor general (`X = 6.15`). NO requiere jamás atravesar la sala multiusos ni ningún dormitorio.**
+  * **Patio Claustro Central (`X = 10.00..13.20, Y = 8.50..11.70` · 3,20 × 3,20 m = 10,24 m²):**
+    * **100% abierto al cielo.** Hueco vertical continuo idéntico a Planta Baja. Abraza el *Acer palmatum* y baña de luz cenital la planta baja y la planta alta.
+  * **Galería Distribuidora y Zona de Estudio Claustro (PA-16, 28,20 m² útiles):**
+    * Abraza el Patio Claustro por el Oeste y el Sur (`Y = 11.70..16.50`, `X = 6.15..13.20`) con un frente acristalado panorámico continuo `C-15` (3,20 × 2,40 m). Incluye rincón de lectura y pupitre infantil integrado frente al jardín cenital.
+  * **Ala Sur (Dormitorios con Soportal 3m · `Y = 16.50..21.45 m`):**
     * Tres dormitorios de gran formato volando 3,00 m sobre el Porche Sur de PB. Ventanales de suelo a techo y **cero balcones abiertos**.
-  * **Ala Este (Zona Wellness Suite sobre Cocina):**
-    * Gran Vestidor en "U" `PA-21` (8,00 m²) y Baño privado de lujo `PA-22` (6,80 m²) con ventanas exteriores Norte y Este.
+  * **Ala Este (Zona Wellness Suite sobre Cocina · `X = 13.20..17.00 m`):**
+    * Gran Vestidor en "U" `PA-21` (15,20 m²) y Baño privado de lujo `PA-22` (15,20 m²) con ventanas exteriores Norte y Este, sobre la crujía de cocina y despensa de PB.
 * **Cubierta Alta (+6,50 m):** Alberga 14 módulos fotovoltaicos (6,30 kWp), 100% libres de sombras.
 
 ---
@@ -33,14 +31,16 @@ Este documento actúa como el **Master Plan Semántico de Planta Primera (+3,15 
 
 | ID | Estancia / Espacio | Cota Real en Metros (X1, Y1) a (X2, Y2) | Dimensión Libre (Ancho × Fondo) | Sup. Útil | Orientación Solar | Vistas / Ventilación |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **PA-16** | Galería Distribuidora Claustro | `(7.80, 15.20) -> (17.00, 17.00)` + desembarco `(6.15..8.50, 12.50..15.20)` | 1,80 m ancho continuo | 11,50 m² | Centro / Claustro | Cristalera panorámica C-15 (4,80 m) con vistas 180° al claustro |
-| **PA-17** | Dormitorio Infantil Niña | `(6.15, 17.00) -> (9.85, 21.45)` | 3,70 × 4,45 m | 14,50 m² | Sur / Jardín | Ventanal suelo a techo C-12 (2,40 m) volando sobre porche |
-| **PA-18** | Dormitorio Infantil Niño | `(9.85, 17.00) -> (13.50, 21.45)`| 3,65 × 4,45 m | 14,50 m² | Sur / Jardín | Ventanal suelo a techo C-13 (2,40 m) volando sobre porche |
-| **PA-19** | Baño Compartido Hijos (Ala Oeste N) | `(3.85, 8.50) -> (6.15, 12.80)` | 2,00 × 4,00 m | 6,00 m² | Oeste / Ventana C-16 | Ventana exterior Oeste C-16, doble seno, ducha 140×80 cm y acceso P-11 |
-| **PA-19B**| Sala Multiusos Atardecer / Cine | `(3.85, 12.80) -> (7.80, 17.00)` | 3,95 × 4,20 m | 16,80 m² | Oeste / Poniente | Gran Mirador C-18 (2,60 m) al atardecer, sofá L, pantalla 110"/85" y puerta P-19B |
-| **PA-20** | Dormitorio Master Suite | `(13.50, 17.00) -> (17.00, 21.45)`| 3,50 × 4,45 m | 15,50 m² | Sur / Sureste | Ventanal suelo a techo C-14 (2,80 m) volando sobre porche |
-| **PA-21** | Gran Vestidor Suite (sobre Cocina) | `(13.50, 12.00) -> (17.00, 17.00)`| 3,50 × 5,00 m | 8,00 m² | Este / Claustro | 7,20 m lineales de armarios en U y paso privado a baño |
-| **PA-22** | Baño Privado Suite (sobre Cocina) | `(13.50, 8.50) -> (17.00, 12.00)`| 3,50 × 3,50 m | 6,80 m² | Norte y Este | Doble seno, ducha 150×90 cm, ventanas C-11 (N) y C-11B (E) |
+| **PA-07** | Patio Claustro Abierto (Hueco Cenital) | `(10.00, 8.50) -> (13.20, 11.70)` | 3,20 × 3,20 m | 10,24 m² | Núcleo Bioclimático | Hueco libre al cielo vertical 1:1 coincidente con PB-07 |
+| **PA-12** | Hueco y Desembarco Escalera Volada | `(6.15, 8.50) -> (7.50, 12.50)` | 1,35 × 4,00 m | 5,40 m² | Oeste / Cenital | Doble altura sobre escalera roble. Desembarco en cota +3,15 m a Y = 12.50 m |
+| **PA-19B**| Sala Multiusos Atardecer / Cine | `(3.85, 8.50) -> (6.15, 12.50)` | 2,30 × 4,00 m | 9,20 m² | Oeste / Poniente | Gran Mirador C-18 (2,60 m) al atardecer, sofá L, pantalla 85", puerta P-19B |
+| **PA-19** | Baño Compartido Hijos | `(3.85, 12.50) -> (6.15, 16.50)`| 2,30 × 4,00 m | 9,20 m² | Oeste / Fachada | Ventana exterior Oeste C-16, doble seno, ducha 150×90 cm y puerta P-11 a pasillo |
+| **PA-16** | Galería Distribuidora y Rincón Estudio | `(6.15, 12.50) -> (13.20, 16.50)`| 7,05 × 4,00 m | 28,20 m² | Centro / Claustro | Cristalera panorámica C-15 (3,20 m) con vistas directas al claustro y arce |
+| **PA-17** | Dormitorio Infantil Niña | `(6.15, 16.50) -> (9.70, 21.45)` | 3,55 × 4,95 m | 17,57 m² | Sur / Jardín | Ventanal suelo a techo C-12 (2,40 m) volando sobre porche |
+| **PA-18** | Dormitorio Infantil Niño | `(9.70, 16.50) -> (13.20, 21.45)`| 3,50 × 4,95 m | 17,32 m² | Sur / Jardín | Ventanal suelo a techo C-13 (2,40 m) volando sobre porche |
+| **PA-20** | Dormitorio Master Suite | `(13.20, 16.50) -> (17.00, 21.45)`| 3,80 × 4,95 m | 18,81 m² | Sur / Sureste | Ventanal suelo a techo C-14 (2,80 m) volando sobre porche |
+| **PA-21** | Gran Vestidor Suite (sobre Cocina) | `(13.20, 12.50) -> (17.00, 16.50)`| 3,80 × 4,00 m | 15,20 m² | Este / Claustro | Armarios continuos en U, luz natural y paso privado a baño suite |
+| **PA-22** | Baño Privado Suite (sobre Cocina) | `(13.20, 8.50) -> (17.00, 12.50)`| 3,80 × 4,00 m | 15,20 m² | Norte y Este | Doble seno, bañera exenta y ducha 160×90 cm, ventanas C-11 (N) y C-11B (E) |
 | **PA-24** | Campo Solar Fotovoltaico (6,3 kWp)| `Cubierta Superior (+6,50 m)` | Azotea Alta P1 | 42,00 m² | Sur 30° Óptimo | 14 paneles monocristalinos 450W libres de sombras |
 
 ---
@@ -50,24 +50,25 @@ Este documento actúa como el **Master Plan Semántico de Planta Primera (+3,15 
 ```text
                [Escalera Volada PB-12 desde PB (Ala Oeste)]
                                     │
-                  (Doble altura abierta con luz cenital)
-                                    ▼ (Llegada en cota +3,15 m)
-                     [Desembarco de Escalera P1]
+                   (Doble altura abierta con luz cenital)
+                                    ▼ (Llegada en cota +3,15 m a Y = 12.50 m)
+                      [Desembarco de Escalera P1]
                                     │
-        ┌───────────────────────────┼────────────────────────────────────────┐
-        │ (P-11: 80cm Norte)        │ (P-19B: 90cm Oeste)                    │ (Galería hacia el Sur)
-        ▼                           ▼                                        ▼
-   [Baño Hijos PA-19]    [SALA MULTIUSOS ATARDECER PA-19B]   [GRAN GALERÍA DISTRIBUIDORA PA-16]
-     (6,00 m² utiles)         (16,80 m² utiles)               (Cristalera C-15 al Patio Claustro)
-     Ventana Oeste C-16       ★ GRAN MIRADOR PONIENTE C-18                   │
-     Doble seno + Ducha       Sofá L + Pantalla 110"/85"       ┌─────────────┼─────────────┐
-                              Banco de lectura atardecer       │ (P-12)      │ (P-13)      │ (P-14)
-                                                               ▼             ▼             ▼
-                                                          [Dorm. Niña]  [Dorm. Niño]  [MASTER SUITE]
-                                                            (PA-17)       (PA-18)     ├──► [Dorm. PA-20 (15,5m²)]
-                                                           14,50 m²      14,50 m²     └──► [Ala Este Privada]
-                                                               │             │               ├──► [Vestidor PA-21 (8,0m²)]
-                                                               ▼             ▼               └──► [Baño Suite PA-22 (6,8m²)]
-                                                          [Jardín Sur]  [Jardín Sur]              (Ventanas N y E)
-                                                          (Soportal 3m) (Soportal 3m)
+         ┌──────────────────────────┼────────────────────────────────────────┐
+         │ (P-19B: Batiente Norte)  │ (P-11: Batiente Oeste)                 │ (Galería hacia el Sur/Este)
+         ▼                          ▼                                        ▼
+   [SALA MULTIUSOS ATARDECER]   [BAÑO COMPARTIDO HIJOS]      [GRAN GALERÍA DISTRIBUIDORA PA-16]
+        (PA-19B, 9,20 m²)            (PA-19, 9,20 m²)         (Cristalera C-15 al Patio Claustro)
+     ★ GRAN MIRADOR PONIENTE C-18   ★ VENTANA EXTERIOR C-16     Estudio infantil + vista al arce
+     Sofá L + Pantalla 85"          Doble seno + Ducha 150×90                │
+     Atardecer y lectura            ACCESO DIRECTO INDEPENDIENTE ┌───────────┼───────────┐
+                                                                 │ (P-12)    │ (P-13)    │ (P-14)
+                                                                 ▼           ▼           ▼
+                                                            [Dorm. Niña] [Dorm. Niño] [MASTER SUITE]
+                                                               (PA-17)     (PA-18)    ├──► [Dorm. PA-20 (18,8m²)]
+                                                              17,57 m²    17,32 m²    └──► [Ala Este Privada]
+                                                                 │           │               ├──► [Vestidor PA-21 (15,2m²)]
+                                                                 ▼           ▼               └──► [Baño Suite PA-22 (15,2m²)]
+                                                            [Jardín Sur] [Jardín Sur]              (Ventanas N y E)
+                                                            (Soportal 3m)(Soportal 3m)
 ```
