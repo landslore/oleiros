@@ -32,266 +32,263 @@
 <rect x="20" y="20" width="1840" height="1280" fill="none" stroke="#334155" stroke-width="0.6"/>
 <rect x="28" y="28" width="1824" height="1140" fill="url(#cad-grid-major)" stroke="#1e293b" stroke-width="0.8"/>
 <g id="ejes-estructurales" opacity="0.85">
-<line x1="220.0" y1="95.0" x2="220.0" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<line x1="220.0" y1="95.0" x2="220.0" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="220.0" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
 <text x="220.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">A</text>
-<line x1="226.9" y1="95.0" x2="226.9" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="226.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="226.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">B</text>
-<line x1="351.1" y1="95.0" x2="351.1" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<line x1="351.1" y1="95.0" x2="351.1" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="351.1" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="351.1" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">C</text>
-<line x1="456.9" y1="95.0" x2="456.9" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="351.1" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">B</text>
+<line x1="456.9" y1="95.0" x2="456.9" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="456.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="456.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">D</text>
-<line x1="519.0" y1="95.0" x2="519.0" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="456.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">C</text>
+<line x1="519.0" y1="95.0" x2="519.0" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="519.0" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="519.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">E</text>
-<line x1="627.1" y1="95.0" x2="627.1" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="519.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">D</text>
+<line x1="627.1" y1="95.0" x2="627.1" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="627.1" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="627.1" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">F</text>
-<line x1="634.0" y1="95.0" x2="634.0" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="627.1" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">E</text>
+<line x1="634.0" y1="95.0" x2="634.0" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="634.0" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="634.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">G</text>
-<line x1="781.2" y1="95.0" x2="781.2" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="634.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">F</text>
+<line x1="781.2" y1="95.0" x2="781.2" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="781.2" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="781.2" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">H</text>
-<line x1="801.9" y1="95.0" x2="801.9" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="781.2" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">G</text>
+<line x1="801.9" y1="95.0" x2="801.9" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="801.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="801.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">I</text>
-<line x1="956.0" y1="95.0" x2="956.0" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="801.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">H</text>
+<line x1="956.0" y1="95.0" x2="956.0" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="956.0" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="956.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">J</text>
-<line x1="1094.0" y1="95.0" x2="1094.0" y2="1522.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<text x="956.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">I</text>
+<line x1="1094.0" y1="95.0" x2="1094.0" y2="1430.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="1094.0" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="1094.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">K</text>
+<text x="1094.0" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">J</text>
 <line x1="185.0" y1="130.0" x2="1129.0" y2="130.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="171.0" cy="130.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
 <text x="171.0" y="133.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">1</text>
-<line x1="185.0" y1="268.0" x2="1129.0" y2="268.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="268.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="271.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">2</text>
-<line x1="185.0" y1="337.0" x2="1129.0" y2="337.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="337.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="340.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">3</text>
-<line x1="185.0" y1="498.0" x2="1129.0" y2="498.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="498.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="501.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">4</text>
-<line x1="185.0" y1="645.2" x2="1129.0" y2="645.2" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="645.2" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="648.4" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">5</text>
-<line x1="185.0" y1="682.0" x2="1129.0" y2="682.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="682.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="685.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">6</text>
-<line x1="185.0" y1="955.7" x2="1129.0" y2="955.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="955.7" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="958.9" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">7</text>
-<line x1="185.0" y1="1093.7" x2="1129.0" y2="1093.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="1093.7" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="1096.9" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">8</text>
-<line x1="185.0" y1="1487.0" x2="1129.0" y2="1487.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="1487.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="1490.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">9</text>
+<line x1="185.0" y1="153.0" x2="1129.0" y2="153.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="153.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="156.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">2</text>
+<line x1="185.0" y1="245.0" x2="1129.0" y2="245.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="245.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="248.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">3</text>
+<line x1="185.0" y1="406.0" x2="1129.0" y2="406.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="406.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="409.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">4</text>
+<line x1="185.0" y1="553.2" x2="1129.0" y2="553.2" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="553.2" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="556.4" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">5</text>
+<line x1="185.0" y1="590.0" x2="1129.0" y2="590.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="590.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="593.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">6</text>
+<line x1="185.0" y1="863.7" x2="1129.0" y2="863.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="863.7" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="866.9" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">7</text>
+<line x1="185.0" y1="1001.7" x2="1129.0" y2="1001.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="1001.7" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="1004.9" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">8</text>
+<line x1="185.0" y1="1395.0" x2="1129.0" y2="1395.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="1395.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="1398.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">9</text>
 </g>
 <g id="pavimentos-estancias">
-<rect x="226.9" y="130.0" width="230.0" height="207.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="456.9" y="268.0" width="170.2" height="69.0" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="0.8"/>
-<rect x="351.1" y="337.0" width="105.8" height="161.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="456.9" y="337.0" width="170.2" height="161.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="627.1" y="337.0" width="174.8" height="161.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="801.9" y="337.0" width="154.1" height="161.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
-<rect x="351.1" y="498.0" width="105.8" height="184.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="456.9" y="498.0" width="62.1" height="184.0" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="0.8"/>
-<rect x="519.0" y="498.0" width="115.0" height="184.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="634.0" y="498.0" width="147.2" height="147.2" fill="url(#hatch-void-patio)" stroke="#10b981" stroke-width="2.0"/>
-<line x1="634.0" y1="498.0" x2="781.2" y2="645.2" stroke="#10b981" stroke-width="0.8" stroke-dasharray="6,4" opacity="0.6"/>
-<line x1="781.2" y1="498.0" x2="634.0" y2="645.2" stroke="#10b981" stroke-width="0.8" stroke-dasharray="6,4" opacity="0.6"/>
-<circle cx="707.6" cy="571.6" r="32.2" fill="#b91c1c" fill-opacity="0.3" stroke="#ef4444" stroke-width="1.0" stroke-dasharray="3,2"/>
-<circle cx="707.6" cy="571.6" r="11.5" fill="#451a03" stroke="#78350f" stroke-width="0.8"/>
-<text x="707.6" y="593.6" fill="#a7f3d0" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="middle">Acer palmatum</text>
-<rect x="634.0" y="645.2" width="147.2" height="36.8" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
-<rect x="781.2" y="498.0" width="174.8" height="184.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
-<rect x="351.1" y="682.0" width="105.8" height="273.7" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
-<rect x="456.9" y="682.0" width="499.1" height="273.7" fill="url(#hatch-grass)" stroke="#10b981" stroke-width="1.0"/>
-<rect x="351.1" y="955.7" width="105.8" height="138.0" fill="url(#hatch-grass)" stroke="#10b981" stroke-width="1.0"/>
-<rect x="456.9" y="955.7" width="499.1" height="138.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="220.0" y="1093.7" width="874.0" height="393.3" fill="url(#hatch-grass)" stroke="#10b981" stroke-width="1.0"/>
+<rect x="220.0" y="130.0" width="131.1" height="460.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="456.9" y="153.0" width="170.2" height="92.0" fill="url(#hatch-grass)" stroke="#10b981" stroke-width="1.0"/>
+<rect x="351.1" y="245.0" width="105.8" height="161.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="456.9" y="245.0" width="170.2" height="161.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="627.1" y="245.0" width="174.8" height="161.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="801.9" y="245.0" width="154.1" height="161.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
+<rect x="351.1" y="406.0" width="105.8" height="184.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="456.9" y="406.0" width="62.1" height="184.0" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="0.8"/>
+<rect x="519.0" y="406.0" width="115.0" height="184.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="634.0" y="406.0" width="147.2" height="147.2" fill="url(#hatch-void-patio)" stroke="#10b981" stroke-width="2.0"/>
+<line x1="634.0" y1="406.0" x2="781.2" y2="553.2" stroke="#10b981" stroke-width="0.8" stroke-dasharray="6,4" opacity="0.6"/>
+<line x1="781.2" y1="406.0" x2="634.0" y2="553.2" stroke="#10b981" stroke-width="0.8" stroke-dasharray="6,4" opacity="0.6"/>
+<circle cx="707.6" cy="479.6" r="32.2" fill="#b91c1c" fill-opacity="0.3" stroke="#ef4444" stroke-width="1.0" stroke-dasharray="3,2"/>
+<circle cx="707.6" cy="479.6" r="11.5" fill="#451a03" stroke="#78350f" stroke-width="0.8"/>
+<text x="707.6" y="501.6" fill="#a7f3d0" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="middle">Acer palmatum</text>
+<rect x="634.0" y="553.2" width="147.2" height="36.8" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
+<rect x="781.2" y="406.0" width="174.8" height="184.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
+<rect x="351.1" y="590.0" width="105.8" height="273.7" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
+<rect x="456.9" y="590.0" width="499.1" height="273.7" fill="url(#hatch-grass)" stroke="#10b981" stroke-width="1.0"/>
+<rect x="351.1" y="863.7" width="105.8" height="138.0" fill="url(#hatch-grass)" stroke="#10b981" stroke-width="1.0"/>
+<rect x="456.9" y="863.7" width="499.1" height="138.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="220.0" y="1001.7" width="874.0" height="393.3" fill="url(#hatch-grass)" stroke="#10b981" stroke-width="1.0"/>
 </g>
 <g id="muros-y-cerramientos">
-<rect x="226.9" y="130.0" width="230.0" height="207.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="456.9" y="268.0" width="170.2" height="69.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="351.1" y="337.0" width="105.8" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="456.9" y="337.0" width="170.2" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="627.1" y="337.0" width="174.8" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="801.9" y="337.0" width="154.1" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="351.1" y="498.0" width="105.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="456.9" y="498.0" width="62.1" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="519.0" y="498.0" width="115.0" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="634.0" y="498.0" width="147.2" height="147.2" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="634.0" y="645.2" width="147.2" height="36.8" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="781.2" y="498.0" width="174.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="351.1" y="682.0" width="105.8" height="273.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="456.9" y="682.0" width="499.1" height="273.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="351.1" y="955.7" width="105.8" height="138.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="456.9" y="955.7" width="499.1" height="138.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="220.0" y="1093.7" width="874.0" height="393.3" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="220.0" y="130.0" width="131.1" height="460.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="456.9" y="153.0" width="170.2" height="92.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="351.1" y="245.0" width="105.8" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="456.9" y="245.0" width="170.2" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="627.1" y="245.0" width="174.8" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="801.9" y="245.0" width="154.1" height="161.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="351.1" y="406.0" width="105.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="456.9" y="406.0" width="62.1" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="519.0" y="406.0" width="115.0" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="634.0" y="406.0" width="147.2" height="147.2" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="634.0" y="553.2" width="147.2" height="36.8" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="781.2" y="406.0" width="174.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="351.1" y="590.0" width="105.8" height="273.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="456.9" y="590.0" width="499.1" height="273.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="351.1" y="863.7" width="105.8" height="138.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="456.9" y="863.7" width="499.1" height="138.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="220.0" y="1001.7" width="874.0" height="393.3" fill="none" stroke="#64748b" stroke-width="1.2"/>
 </g>
 <g id="sellos-estancias">
-<rect x="317.9" y="215.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="341.9" y="224.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-01</text>
-<text x="341.9" y="235.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Pérgola Cubierta 2 Coches</text>
-<text x="341.9" y="246.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">22.50 m² útil</text>
-<text x="341.9" y="255.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(1.15, 0.50) -&gt; (6.15, 5.00)</text>
-<rect x="518.0" y="284.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="542.0" y="293.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-02</text>
-<text x="542.0" y="304.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Porche Peatonal Norte</text>
-<text x="542.0" y="315.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">5.55 m² útil</text>
-<text x="542.0" y="324.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 3.50) -&gt; (9.85, 5.00)</text>
-<rect x="380.0" y="399.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="404.0" y="408.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-03</text>
-<text x="404.0" y="419.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Zaguán Mudroom Cortavientos</text>
-<text x="404.0" y="430.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">8.05 m² útil</text>
-<text x="404.0" y="439.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 5.00) -&gt; (6.15, 8.50)</text>
-<rect x="518.0" y="399.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="542.0" y="408.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-04</text>
-<text x="542.0" y="419.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Hall / Recibidor Principal</text>
-<text x="542.0" y="430.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">12.95 m² útil</text>
-<text x="542.0" y="439.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 5.00) -&gt; (9.85, 8.50)</text>
-<rect x="690.5" y="399.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="714.5" y="408.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-05</text>
-<text x="714.5" y="419.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Despacho / Suite Invitados</text>
-<text x="714.5" y="430.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">13.30 m² útil</text>
-<text x="714.5" y="439.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(9.85, 5.00) -&gt; (13.65, 8.50)</text>
-<rect x="855.0" y="399.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="879.0" y="408.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-06</text>
-<text x="879.0" y="419.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Baño Completo PB + Distribuidor</text>
-<text x="879.0" y="430.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">11.72 m² útil</text>
-<text x="879.0" y="439.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(13.65, 5.00) -&gt; (17.00, 8.50)</text>
-<rect x="380.0" y="572.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="404.0" y="580.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-13</text>
-<text x="404.0" y="592.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Sala Técnica / Surf Passivhaus</text>
-<text x="404.0" y="603.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">9.20 m² útil</text>
-<text x="404.0" y="612.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 8.50) -&gt; (6.15, 12.50)</text>
-<rect x="463.9" y="572.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="487.9" y="580.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-12</text>
-<text x="487.9" y="592.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Escalera Volada Roble</text>
-<text x="487.9" y="603.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">5.40 m² útil</text>
-<text x="487.9" y="612.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 8.50) -&gt; (7.50, 12.50)</text>
-<rect x="552.5" y="572.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="576.5" y="580.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-09</text>
-<text x="576.5" y="592.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Galería Pasillo Oeste Claustro</text>
-<text x="576.5" y="603.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">10.00 m² útil</text>
-<text x="576.5" y="612.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(7.50, 8.50) -&gt; (10.00, 12.50)</text>
-<rect x="683.6" y="525.6" width="48" height="12" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="0.8"/>
-<text x="707.6" y="534.1" fill="#10b981" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-07</text>
-<text x="707.6" y="545.6" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Patio Claustro Abierto</text>
-<text x="707.6" y="556.6" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">10.24 m² útil</text>
-<text x="707.6" y="565.6" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(10.00, 8.50) -&gt; (13.20, 11.70)</text>
-<rect x="683.6" y="645.6" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="707.6" y="654.1" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-07B</text>
-<text x="707.6" y="665.6" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Galería Paso Sur Claustro</text>
-<text x="707.6" y="676.6" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">2.56 m² útil</text>
-<text x="707.6" y="685.6" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(10.00, 11.70) -&gt; (13.20, 12.50)</text>
-<rect x="844.6" y="572.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="868.6" y="580.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-08</text>
-<text x="868.6" y="592.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Cocina con Isla Santos / Dica</text>
-<text x="868.6" y="603.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">15.20 m² útil</text>
-<text x="868.6" y="612.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(13.20, 8.50) -&gt; (17.00, 12.50)</text>
-<rect x="380.0" y="800.9" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="404.0" y="809.4" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-13B</text>
-<text x="404.0" y="820.9" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Lavandería y Plancha Oeste</text>
-<text x="404.0" y="831.9" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">13.68 m² útil</text>
-<text x="404.0" y="840.9" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 12.50) -&gt; (6.15, 18.45)</text>
-<rect x="682.4" y="800.9" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="706.4" y="809.4" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-10</text>
-<text x="706.4" y="820.9" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Salón - Comedor Principal</text>
-<text x="706.4" y="831.9" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">64.55 m² útil</text>
-<text x="706.4" y="840.9" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 12.50) -&gt; (17.00, 18.45)</text>
-<rect x="380.0" y="1006.7" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="404.0" y="1015.2" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-13C</text>
-<text x="404.0" y="1026.7" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Caseta Jardinería y Aperos</text>
-<text x="404.0" y="1037.7" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">6.90 m² útil</text>
-<text x="404.0" y="1046.7" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 18.45) -&gt; (6.15, 21.45)</text>
-<rect x="682.4" y="1006.7" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="706.4" y="1015.2" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-14</text>
-<text x="706.4" y="1026.7" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Porche Sur Techado Expandido</text>
-<text x="706.4" y="1037.7" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">32.55 m² útil</text>
-<text x="706.4" y="1046.7" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 18.45) -&gt; (17.00, 21.45)</text>
-<rect x="633.0" y="1272.4" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="657.0" y="1280.9" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-15</text>
-<text x="657.0" y="1292.4" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Pradera Césped Natural Sur</text>
-<text x="657.0" y="1303.4" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">162.00 m² útil</text>
-<text x="657.0" y="1312.4" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(1.00, 21.45) -&gt; (20.00, 30.00)</text>
+<rect x="261.6" y="342.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="285.6" y="350.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-01</text>
+<text x="285.6" y="362.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Pérgola Lateral 2 Coches en Línea</text>
+<text x="285.6" y="373.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">28.50 m² útil</text>
+<text x="285.6" y="382.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(1.00, 2.50) -&gt; (3.85, 12.50)</text>
+<rect x="518.0" y="181.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="542.0" y="189.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-02</text>
+<text x="542.0" y="201.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Porche Peatonal Norte</text>
+<text x="542.0" y="212.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">7.40 m² útil</text>
+<text x="542.0" y="221.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 3.00) -&gt; (9.85, 5.00)</text>
+<rect x="380.0" y="307.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="404.0" y="316.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-03</text>
+<text x="404.0" y="327.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Zaguán Mudroom Cortavientos</text>
+<text x="404.0" y="338.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">8.05 m² útil</text>
+<text x="404.0" y="347.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 5.00) -&gt; (6.15, 8.50)</text>
+<rect x="518.0" y="307.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="542.0" y="316.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-04</text>
+<text x="542.0" y="327.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Hall / Recibidor Principal</text>
+<text x="542.0" y="338.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">12.95 m² útil</text>
+<text x="542.0" y="347.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 5.00) -&gt; (9.85, 8.50)</text>
+<rect x="690.5" y="307.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="714.5" y="316.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-05</text>
+<text x="714.5" y="327.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Despacho / Suite Invitados</text>
+<text x="714.5" y="338.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">13.30 m² útil</text>
+<text x="714.5" y="347.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(9.85, 5.00) -&gt; (13.65, 8.50)</text>
+<rect x="855.0" y="307.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="879.0" y="316.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-06</text>
+<text x="879.0" y="327.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Baño Completo PB + Distribuidor</text>
+<text x="879.0" y="338.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">11.72 m² útil</text>
+<text x="879.0" y="347.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(13.65, 5.00) -&gt; (17.00, 8.50)</text>
+<rect x="380.0" y="480.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="404.0" y="488.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-13</text>
+<text x="404.0" y="500.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Sala Técnica / Surf Passivhaus</text>
+<text x="404.0" y="511.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">9.20 m² útil</text>
+<text x="404.0" y="520.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 8.50) -&gt; (6.15, 12.50)</text>
+<rect x="463.9" y="480.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="487.9" y="488.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-12</text>
+<text x="487.9" y="500.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Escalera Volada Roble</text>
+<text x="487.9" y="511.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">5.40 m² útil</text>
+<text x="487.9" y="520.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 8.50) -&gt; (7.50, 12.50)</text>
+<rect x="552.5" y="480.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="576.5" y="488.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-09</text>
+<text x="576.5" y="500.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Galería Pasillo Oeste Claustro</text>
+<text x="576.5" y="511.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">10.00 m² útil</text>
+<text x="576.5" y="520.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(7.50, 8.50) -&gt; (10.00, 12.50)</text>
+<rect x="683.6" y="433.6" width="48" height="12" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="0.8"/>
+<text x="707.6" y="442.1" fill="#10b981" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-07</text>
+<text x="707.6" y="453.6" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Patio Claustro Abierto</text>
+<text x="707.6" y="464.6" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">10.24 m² útil</text>
+<text x="707.6" y="473.6" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(10.00, 8.50) -&gt; (13.20, 11.70)</text>
+<rect x="683.6" y="553.6" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="707.6" y="562.1" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-07B</text>
+<text x="707.6" y="573.6" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Galería Paso Sur Claustro</text>
+<text x="707.6" y="584.6" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">2.56 m² útil</text>
+<text x="707.6" y="593.6" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(10.00, 11.70) -&gt; (13.20, 12.50)</text>
+<rect x="844.6" y="480.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="868.6" y="488.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-08</text>
+<text x="868.6" y="500.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Cocina con Isla Santos / Dica</text>
+<text x="868.6" y="511.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">15.20 m² útil</text>
+<text x="868.6" y="520.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(13.20, 8.50) -&gt; (17.00, 12.50)</text>
+<rect x="380.0" y="708.9" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="404.0" y="717.4" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-13B</text>
+<text x="404.0" y="728.9" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Lavandería y Plancha Oeste</text>
+<text x="404.0" y="739.9" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">13.68 m² útil</text>
+<text x="404.0" y="748.9" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 12.50) -&gt; (6.15, 18.45)</text>
+<rect x="682.4" y="708.9" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="706.4" y="717.4" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-10</text>
+<text x="706.4" y="728.9" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Salón - Comedor Principal</text>
+<text x="706.4" y="739.9" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">64.55 m² útil</text>
+<text x="706.4" y="748.9" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 12.50) -&gt; (17.00, 18.45)</text>
+<rect x="380.0" y="914.7" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="404.0" y="923.2" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-13C</text>
+<text x="404.0" y="934.7" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Caseta Jardinería y Aperos</text>
+<text x="404.0" y="945.7" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">6.90 m² útil</text>
+<text x="404.0" y="954.7" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 18.45) -&gt; (6.15, 21.45)</text>
+<rect x="682.4" y="914.7" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="706.4" y="923.2" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-14</text>
+<text x="706.4" y="934.7" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Porche Sur Techado Expandido</text>
+<text x="706.4" y="945.7" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">32.55 m² útil</text>
+<text x="706.4" y="954.7" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 18.45) -&gt; (17.00, 21.45)</text>
+<rect x="633.0" y="1180.4" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="657.0" y="1188.9" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PB-15</text>
+<text x="657.0" y="1200.4" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Pradera Césped Natural Sur</text>
+<text x="657.0" y="1211.4" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">162.00 m² útil</text>
+<text x="657.0" y="1220.4" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(1.00, 21.45) -&gt; (20.00, 30.00)</text>
 </g>
 <g id="acotacion-encadenada" opacity="0.9">
-<line x1="226.9" y1="120.0" x2="456.9" y2="120.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="226.9" y1="117.0" x2="226.9" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="456.9" y1="117.0" x2="456.9" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="341.9" y="117.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">5.00 m</text>
-<line x1="456.9" y1="258.0" x2="627.1" y2="258.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="456.9" y1="255.0" x2="456.9" y2="261.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="627.1" y1="255.0" x2="627.1" y2="261.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="542.0" y="255.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.70 m</text>
-<line x1="351.1" y1="327.0" x2="456.9" y2="327.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="351.1" y1="324.0" x2="351.1" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="456.9" y1="324.0" x2="456.9" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="404.0" y="324.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
-<line x1="456.9" y1="327.0" x2="627.1" y2="327.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="456.9" y1="324.0" x2="456.9" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="627.1" y1="324.0" x2="627.1" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="542.0" y="324.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.70 m</text>
-<line x1="627.1" y1="327.0" x2="801.9" y2="327.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="627.1" y1="324.0" x2="627.1" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="801.9" y1="324.0" x2="801.9" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="714.5" y="324.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.80 m</text>
-<line x1="801.9" y1="327.0" x2="956.0" y2="327.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="801.9" y1="324.0" x2="801.9" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="956.0" y1="324.0" x2="956.0" y2="330.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="879.0" y="324.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.35 m</text>
-<line x1="351.1" y1="488.0" x2="456.9" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="351.1" y1="485.0" x2="351.1" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="456.9" y1="485.0" x2="456.9" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="404.0" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
-<line x1="456.9" y1="488.0" x2="519.0" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="456.9" y1="485.0" x2="456.9" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="519.0" y1="485.0" x2="519.0" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="488.0" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">1.35 m</text>
-<line x1="519.0" y1="488.0" x2="634.0" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="519.0" y1="485.0" x2="519.0" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="634.0" y1="485.0" x2="634.0" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="576.5" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.50 m</text>
-<line x1="634.0" y1="488.0" x2="781.2" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="634.0" y1="485.0" x2="634.0" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="781.2" y1="485.0" x2="781.2" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="707.6" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.20 m</text>
-<line x1="634.0" y1="635.2" x2="781.2" y2="635.2" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="634.0" y1="632.2" x2="634.0" y2="638.2" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="781.2" y1="632.2" x2="781.2" y2="638.2" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="707.6" y="632.2" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.20 m</text>
-<line x1="781.2" y1="488.0" x2="956.0" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="781.2" y1="485.0" x2="781.2" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="956.0" y1="485.0" x2="956.0" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="868.6" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.80 m</text>
-<line x1="351.1" y1="672.0" x2="456.9" y2="672.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="351.1" y1="669.0" x2="351.1" y2="675.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="456.9" y1="669.0" x2="456.9" y2="675.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="404.0" y="669.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
-<line x1="456.9" y1="672.0" x2="956.0" y2="672.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="456.9" y1="669.0" x2="456.9" y2="675.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="956.0" y1="669.0" x2="956.0" y2="675.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="706.5" y="669.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">10.85 m</text>
-<line x1="351.1" y1="945.7" x2="456.9" y2="945.7" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="351.1" y1="942.7" x2="351.1" y2="948.7" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="456.9" y1="942.7" x2="456.9" y2="948.7" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="404.0" y="942.7" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
-<line x1="456.9" y1="945.7" x2="956.0" y2="945.7" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="456.9" y1="942.7" x2="456.9" y2="948.7" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="956.0" y1="942.7" x2="956.0" y2="948.7" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="706.5" y="942.7" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">10.85 m</text>
-<line x1="220.0" y1="1083.7" x2="1094.0" y2="1083.7" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="220.0" y1="1080.7" x2="220.0" y2="1086.7" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="1094.0" y1="1080.7" x2="1094.0" y2="1086.7" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="657.0" y="1080.7" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">19.00 m</text>
+<line x1="220.0" y1="120.0" x2="351.1" y2="120.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="220.0" y1="117.0" x2="220.0" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="351.1" y1="117.0" x2="351.1" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="285.6" y="117.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.85 m</text>
+<line x1="456.9" y1="143.0" x2="627.1" y2="143.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="456.9" y1="140.0" x2="456.9" y2="146.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="627.1" y1="140.0" x2="627.1" y2="146.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="542.0" y="140.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.70 m</text>
+<line x1="351.1" y1="235.0" x2="456.9" y2="235.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="351.1" y1="232.0" x2="351.1" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="456.9" y1="232.0" x2="456.9" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="404.0" y="232.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
+<line x1="456.9" y1="235.0" x2="627.1" y2="235.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="456.9" y1="232.0" x2="456.9" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="627.1" y1="232.0" x2="627.1" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="542.0" y="232.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.70 m</text>
+<line x1="627.1" y1="235.0" x2="801.9" y2="235.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="627.1" y1="232.0" x2="627.1" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="801.9" y1="232.0" x2="801.9" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="714.5" y="232.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.80 m</text>
+<line x1="801.9" y1="235.0" x2="956.0" y2="235.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="801.9" y1="232.0" x2="801.9" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="956.0" y1="232.0" x2="956.0" y2="238.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="879.0" y="232.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.35 m</text>
+<line x1="351.1" y1="396.0" x2="456.9" y2="396.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="351.1" y1="393.0" x2="351.1" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="456.9" y1="393.0" x2="456.9" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="404.0" y="393.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
+<line x1="456.9" y1="396.0" x2="519.0" y2="396.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="456.9" y1="393.0" x2="456.9" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="519.0" y1="393.0" x2="519.0" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="488.0" y="393.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">1.35 m</text>
+<line x1="519.0" y1="396.0" x2="634.0" y2="396.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="519.0" y1="393.0" x2="519.0" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="634.0" y1="393.0" x2="634.0" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="576.5" y="393.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.50 m</text>
+<line x1="634.0" y1="396.0" x2="781.2" y2="396.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="634.0" y1="393.0" x2="634.0" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="781.2" y1="393.0" x2="781.2" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="707.6" y="393.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.20 m</text>
+<line x1="634.0" y1="543.2" x2="781.2" y2="543.2" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="634.0" y1="540.2" x2="634.0" y2="546.2" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="781.2" y1="540.2" x2="781.2" y2="546.2" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="707.6" y="540.2" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.20 m</text>
+<line x1="781.2" y1="396.0" x2="956.0" y2="396.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="781.2" y1="393.0" x2="781.2" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="956.0" y1="393.0" x2="956.0" y2="399.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="868.6" y="393.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.80 m</text>
+<line x1="351.1" y1="580.0" x2="456.9" y2="580.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="351.1" y1="577.0" x2="351.1" y2="583.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="456.9" y1="577.0" x2="456.9" y2="583.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="404.0" y="577.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
+<line x1="456.9" y1="580.0" x2="956.0" y2="580.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="456.9" y1="577.0" x2="456.9" y2="583.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="956.0" y1="577.0" x2="956.0" y2="583.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="706.5" y="577.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">10.85 m</text>
+<line x1="351.1" y1="853.7" x2="456.9" y2="853.7" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="351.1" y1="850.7" x2="351.1" y2="856.7" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="456.9" y1="850.7" x2="456.9" y2="856.7" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="404.0" y="850.7" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
+<line x1="456.9" y1="853.7" x2="956.0" y2="853.7" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="456.9" y1="850.7" x2="456.9" y2="856.7" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="956.0" y1="850.7" x2="956.0" y2="856.7" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="706.5" y="850.7" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">10.85 m</text>
+<line x1="220.0" y1="991.7" x2="1094.0" y2="991.7" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="220.0" y1="988.7" x2="220.0" y2="994.7" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="1094.0" y1="988.7" x2="1094.0" y2="994.7" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="657.0" y="988.7" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">19.00 m</text>
 </g>
 <g id="cuadro-tecnico-y-cajetin">
 <rect x="1380.0" y="28.0" width="472.0" height="1264.0" fill="#0b1120" stroke="#334155" stroke-width="1.0"/>
@@ -304,16 +301,16 @@
 <text x="1800.0" y="76.0" fill="#94a3b8" font-family="monospace" font-size="6.5" font-weight="700">S. ÚTIL</text>
 <line x1="1390.0" y1="81.0" x2="1842.0" y2="81.0" stroke="#334155" stroke-width="0.8"/>
 <text x="1392.0" y="94.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PB-01</text>
-<text x="1440.0" y="94.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Pérgola Cubierta 2 Coche...</text>
-<text x="1610.0" y="94.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(1.15,0.50)→(6.15,5.00)</text>
-<text x="1740.0" y="94.0" fill="#94a3b8" font-family="monospace" font-size="5.8">5.00×4.50</text>
-<text x="1800.0" y="94.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">22.50 m²</text>
+<text x="1440.0" y="94.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Pérgola Lateral 2 Coches...</text>
+<text x="1610.0" y="94.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(1.00,2.50)→(3.85,12.50)</text>
+<text x="1740.0" y="94.0" fill="#94a3b8" font-family="monospace" font-size="5.8">2.85×10.00</text>
+<text x="1800.0" y="94.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">28.50 m²</text>
 <line x1="1390.0" y1="98.0" x2="1842.0" y2="98.0" stroke="#1e293b" stroke-width="0.5"/>
 <text x="1392.0" y="112.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PB-02</text>
 <text x="1440.0" y="112.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Porche Peatonal Norte</text>
-<text x="1610.0" y="112.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(6.15,3.50)→(9.85,5.00)</text>
-<text x="1740.0" y="112.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.70×1.50</text>
-<text x="1800.0" y="112.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">5.55 m²</text>
+<text x="1610.0" y="112.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(6.15,3.00)→(9.85,5.00)</text>
+<text x="1740.0" y="112.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.70×2.00</text>
+<text x="1800.0" y="112.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">7.40 m²</text>
 <line x1="1390.0" y1="116.0" x2="1842.0" y2="116.0" stroke="#1e293b" stroke-width="0.5"/>
 <text x="1392.0" y="130.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PB-03</text>
 <text x="1440.0" y="130.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Zaguán Mudroom Cortavien...</text>
@@ -407,11 +404,11 @@
 <line x1="1390.0" y1="386.0" x2="1842.0" y2="386.0" stroke="#1e293b" stroke-width="0.5"/>
 <rect x="1390.0" y="394.0" width="452.0" height="24" fill="#1e293b" rx="4"/>
 <text x="1400.0" y="410.0" fill="#f8fafc" font-family="monospace" font-size="7.5" font-weight="700">TOTAL SUPERFICIE ÚTIL COMPUTABLE:</text>
-<text x="1828.0" y="410.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="800" text-anchor="end">162.66 m²</text>
+<text x="1828.0" y="410.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="800" text-anchor="end">163.11 m²</text>
 <rect x="1390.0" y="1150.0" width="452.0" height="130" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0" rx="4"/>
 <text x="1402.0" y="1172.0" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11.0" font-weight="800">HOGAR OLEIROS · LIÁNS</text>
 <text x="1402.0" y="1188.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700">PLANTA BAJA: TOPOLOGÍA ESPACIAL, BOUNDING BOXES Y GRAFO DE ADYACENCIA</text>
-<text x="1402.0" y="1202.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="6.8">Versión Optimizada Passivhaus (~165 m² construidos totales · Con Patio Claustro y Porche 3 m)</text>
+<text x="1402.0" y="1202.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="6.8">Versión Optimizada Passivhaus (~165 m² construidos totales · Coches en Tándem Lateral + Patio Claustro y Porche 3 m)</text>
 <line x1="1395.0" y1="1210.0" x2="1837.0" y2="1210.0" stroke="#334155" stroke-width="0.6"/>
 <text x="1402.0" y="1226.0" fill="#cbd5e1" font-family="monospace" font-size="6.0">MOTOR: markdown_cad_compiler.py (Agnóstico al dato)</text>
 <text x="1402.0" y="1238.0" fill="#10b981" font-family="monospace" font-size="6.0">FUENTE: PLANTA_BAJA_TOPOLOGIA.md (Single Source of Truth)</text>
