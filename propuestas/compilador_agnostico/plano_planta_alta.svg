@@ -41,18 +41,21 @@
 <line x1="387.9" y1="95.0" x2="387.9" y2="760.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="387.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
 <text x="387.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">C</text>
-<line x1="433.9" y1="95.0" x2="433.9" y2="760.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="433.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="433.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">D</text>
 <line x1="502.9" y1="95.0" x2="502.9" y2="760.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="502.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="502.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">E</text>
+<text x="502.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">D</text>
+<line x1="539.7" y1="95.0" x2="539.7" y2="760.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="539.7" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
+<text x="539.7" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">E</text>
 <line x1="650.1" y1="95.0" x2="650.1" y2="760.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="650.1" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
 <text x="650.1" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">F</text>
+<line x1="686.9" y1="95.0" x2="686.9" y2="760.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="686.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
+<text x="686.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">G</text>
 <line x1="824.9" y1="95.0" x2="824.9" y2="760.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="824.9" cy="81.0" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0"/>
-<text x="824.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">G</text>
+<text x="824.9" y="85.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">H</text>
 <line x1="185.0" y1="130.0" x2="859.9" y2="130.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="171.0" cy="130.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
 <text x="171.0" y="133.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">1</text>
@@ -62,9 +65,9 @@
 <line x1="185.0" y1="314.0" x2="859.9" y2="314.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="171.0" cy="314.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
 <text x="171.0" y="317.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">3</text>
-<line x1="185.0" y1="498.0" x2="859.9" y2="498.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
-<circle cx="171.0" cy="498.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
-<text x="171.0" y="501.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">4</text>
+<line x1="185.0" y1="521.0" x2="859.9" y2="521.0" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
+<circle cx="171.0" cy="521.0" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
+<text x="171.0" y="524.2" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">4</text>
 <line x1="185.0" y1="725.7" x2="859.9" y2="725.7" stroke="#334155" stroke-width="0.6" stroke-dasharray="8,4,2,4"/>
 <circle cx="171.0" cy="725.7" r="11" fill="#0f172a" stroke="#f59e0b" stroke-width="1.0"/>
 <text x="171.0" y="728.9" fill="#f59e0b" font-family="monospace" font-size="8.5" font-weight="700" text-anchor="middle">5</text>
@@ -76,28 +79,32 @@
 <circle cx="576.5" cy="203.6" r="32.2" fill="#b91c1c" fill-opacity="0.3" stroke="#ef4444" stroke-width="1.0" stroke-dasharray="3,2"/>
 <circle cx="576.5" cy="203.6" r="11.5" fill="#451a03" stroke="#78350f" stroke-width="0.8"/>
 <text x="576.5" y="225.6" fill="#a7f3d0" font-family="monospace" font-size="5.5" font-weight="700" text-anchor="middle">Acer palmatum</text>
+<rect x="502.9" y="277.2" width="147.2" height="36.8" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
 <rect x="325.8" y="130.0" width="62.1" height="184.0" fill="url(#hatch-wood-deck)" stroke="#38bdf8" stroke-width="0.8"/>
 <rect x="387.9" y="130.0" width="115.0" height="184.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="220.0" y="130.0" width="105.8" height="184.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="220.0" y="314.0" width="105.8" height="184.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
-<rect x="325.8" y="314.0" width="324.3" height="184.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="220.0" y="498.0" width="213.9" height="227.7" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="433.9" y="498.0" width="216.2" height="227.7" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="650.1" y="498.0" width="174.8" height="227.7" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
-<rect x="650.1" y="314.0" width="174.8" height="184.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
+<rect x="220.0" y="130.0" width="105.8" height="184.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
+<rect x="220.0" y="314.0" width="167.9" height="207.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="387.9" y="314.0" width="262.2" height="207.0" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="220.0" y="521.0" width="167.9" height="204.7" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="387.9" y="521.0" width="151.8" height="204.7" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="539.7" y="521.0" width="147.2" height="204.7" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="686.9" y="521.0" width="138.0" height="204.7" fill="#0c1529" stroke="#475569" stroke-width="0.8"/>
+<rect x="650.1" y="314.0" width="174.8" height="207.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
 <rect x="650.1" y="130.0" width="174.8" height="184.0" fill="url(#hatch-tile)" stroke="#0284c7" stroke-width="0.8"/>
 </g>
 <g id="muros-y-cerramientos">
 <rect x="502.9" y="130.0" width="147.2" height="147.2" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="502.9" y="277.2" width="147.2" height="36.8" fill="none" stroke="#64748b" stroke-width="1.2"/>
 <rect x="325.8" y="130.0" width="62.1" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
 <rect x="387.9" y="130.0" width="115.0" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
 <rect x="220.0" y="130.0" width="105.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="220.0" y="314.0" width="105.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="325.8" y="314.0" width="324.3" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="220.0" y="498.0" width="213.9" height="227.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="433.9" y="498.0" width="216.2" height="227.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="650.1" y="498.0" width="174.8" height="227.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
-<rect x="650.1" y="314.0" width="174.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="220.0" y="314.0" width="167.9" height="207.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="387.9" y="314.0" width="262.2" height="207.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="220.0" y="521.0" width="167.9" height="204.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="387.9" y="521.0" width="151.8" height="204.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="539.7" y="521.0" width="147.2" height="204.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="686.9" y="521.0" width="138.0" height="204.7" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="650.1" y="314.0" width="174.8" height="207.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
 <rect x="650.1" y="130.0" width="174.8" height="184.0" fill="none" stroke="#64748b" stroke-width="1.2"/>
 </g>
 <g id="sellos-estancias">
@@ -106,6 +113,11 @@
 <text x="576.5" y="177.6" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Patio Claustro Abierto (Hueco Cenital)</text>
 <text x="576.5" y="188.6" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">10.24 m² útil</text>
 <text x="576.5" y="197.6" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(10.00, 8.50) -&gt; (13.20, 11.70)</text>
+<rect x="552.5" y="277.6" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="576.5" y="286.1" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-07B</text>
+<text x="576.5" y="297.6" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Galería Paso Sur Claustro</text>
+<text x="576.5" y="308.6" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">2.56 m² útil</text>
+<text x="576.5" y="317.6" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(10.00, 11.70) -&gt; (13.20, 12.50)</text>
 <rect x="332.9" y="204.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
 <text x="356.9" y="212.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-12</text>
 <text x="356.9" y="224.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Hueco y Desembarco Escalera Volada</text>
@@ -117,40 +129,45 @@
 <text x="445.4" y="235.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">10.00 m² útil</text>
 <text x="445.4" y="244.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(7.50, 8.50) -&gt; (10.00, 12.50)</text>
 <rect x="248.9" y="204.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="272.9" y="212.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-19B</text>
-<text x="272.9" y="224.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Sala Multiusos Atardecer / Cine</text>
+<text x="272.9" y="212.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-19</text>
+<text x="272.9" y="224.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Baño Compartido Hijos / Invitados</text>
 <text x="272.9" y="235.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">9.20 m² útil</text>
 <text x="272.9" y="244.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 8.50) -&gt; (6.15, 12.50)</text>
-<rect x="248.9" y="388.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="272.9" y="396.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-19</text>
-<text x="272.9" y="408.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Baño Compartido Hijos</text>
-<text x="272.9" y="419.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">9.20 m² útil</text>
-<text x="272.9" y="428.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 12.50) -&gt; (6.15, 16.50)</text>
-<rect x="464.0" y="388.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="488.0" y="396.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-16</text>
-<text x="488.0" y="408.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Galería Distribuidora y Rincón Estudio</text>
-<text x="488.0" y="419.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">28.20 m² útil</text>
-<text x="488.0" y="428.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(6.15, 12.50) -&gt; (13.20, 16.50)</text>
-<rect x="303.0" y="593.9" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="327.0" y="602.4" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-17</text>
-<text x="327.0" y="613.9" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Dormitorio Niña (Suite Esquinera)</text>
-<text x="327.0" y="624.9" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">23.00 m² útil</text>
-<text x="327.0" y="633.9" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 16.50) -&gt; (8.50, 21.45)</text>
-<rect x="518.0" y="593.9" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="542.0" y="602.4" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-18</text>
-<text x="542.0" y="613.9" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Dormitorio Infantil Niño</text>
-<text x="542.0" y="624.9" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">23.26 m² útil</text>
-<text x="542.0" y="633.9" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(8.50, 16.50) -&gt; (13.20, 21.45)</text>
-<rect x="713.5" y="593.9" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="737.5" y="602.4" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-20</text>
-<text x="737.5" y="613.9" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Dormitorio Master Suite Matrimonio</text>
-<text x="737.5" y="624.9" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">18.81 m² útil</text>
-<text x="737.5" y="633.9" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(13.20, 16.50) -&gt; (17.00, 21.45)</text>
-<rect x="713.5" y="388.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
-<text x="737.5" y="396.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-21</text>
-<text x="737.5" y="408.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Gran Vestidor Suite (sobre Cocina)</text>
-<text x="737.5" y="419.0" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">15.20 m² útil</text>
-<text x="737.5" y="428.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(13.20, 12.50) -&gt; (17.00, 16.50)</text>
+<rect x="280.0" y="399.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="304.0" y="408.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-19B</text>
+<text x="304.0" y="419.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Sala Multiusos Atardecer / Cine</text>
+<text x="304.0" y="430.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">16.43 m² útil</text>
+<text x="304.0" y="439.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 12.50) -&gt; (7.50, 17.00)</text>
+<rect x="495.0" y="399.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="519.0" y="408.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-16</text>
+<text x="519.0" y="419.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Galería Distribuidora y Rincón Estudio</text>
+<text x="519.0" y="430.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">25.65 m² útil</text>
+<text x="519.0" y="439.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(7.50, 12.50) -&gt; (13.20, 17.00)</text>
+<rect x="280.0" y="605.4" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="304.0" y="613.9" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-25</text>
+<text x="304.0" y="625.4" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Dormitorio 4 / Invitados / Despacho P1</text>
+<text x="304.0" y="636.4" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">16.24 m² útil</text>
+<text x="304.0" y="645.4" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(3.85, 17.00) -&gt; (7.50, 21.45)</text>
+<rect x="439.8" y="605.4" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="463.8" y="613.9" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-17</text>
+<text x="463.8" y="625.4" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Dormitorio Infantil Niña</text>
+<text x="463.8" y="636.4" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">14.68 m² útil</text>
+<text x="463.8" y="645.4" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(7.50, 17.00) -&gt; (10.80, 21.45)</text>
+<rect x="589.3" y="605.4" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="613.3" y="613.9" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-18</text>
+<text x="613.3" y="625.4" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Dormitorio Infantil Niño</text>
+<text x="613.3" y="636.4" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">14.24 m² útil</text>
+<text x="613.3" y="645.4" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(10.80, 17.00) -&gt; (14.00, 21.45)</text>
+<rect x="731.9" y="605.4" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="755.9" y="613.9" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-20</text>
+<text x="755.9" y="625.4" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Master Suite Matrimonio (Dormitorio)</text>
+<text x="755.9" y="636.4" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">13.35 m² útil</text>
+<text x="755.9" y="645.4" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(14.00, 17.00) -&gt; (17.00, 21.45)</text>
+<rect x="713.5" y="399.5" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
+<text x="737.5" y="408.0" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-21</text>
+<text x="737.5" y="419.5" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Gran Vestidor Suite (sobre Cocina)</text>
+<text x="737.5" y="430.5" fill="#38bdf8" font-family="monospace" font-size="6.8" font-weight="700" text-anchor="middle">17.10 m² útil</text>
+<text x="737.5" y="439.5" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="5.2" text-anchor="middle">(13.20, 12.50) -&gt; (17.00, 17.00)</text>
 <rect x="713.5" y="204.0" width="48" height="12" rx="3" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8"/>
 <text x="737.5" y="212.5" fill="#38bdf8" font-family="monospace" font-size="6.5" font-weight="800" text-anchor="middle">PA-22</text>
 <text x="737.5" y="224.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="7.5" font-weight="700" text-anchor="middle">Baño Privado Suite (sobre Cocina)</text>
@@ -162,6 +179,10 @@
 <line x1="502.9" y1="117.0" x2="502.9" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
 <line x1="650.1" y1="117.0" x2="650.1" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
 <text x="576.5" y="117.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.20 m</text>
+<line x1="502.9" y1="267.2" x2="650.1" y2="267.2" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="502.9" y1="264.2" x2="502.9" y2="270.2" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="650.1" y1="264.2" x2="650.1" y2="270.2" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="576.5" y="264.2" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.20 m</text>
 <line x1="325.8" y1="120.0" x2="387.9" y2="120.0" stroke="#94a3b8" stroke-width="0.6"/>
 <line x1="325.8" y1="117.0" x2="325.8" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
 <line x1="387.9" y1="117.0" x2="387.9" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
@@ -174,26 +195,30 @@
 <line x1="220.0" y1="117.0" x2="220.0" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
 <line x1="325.8" y1="117.0" x2="325.8" y2="123.0" stroke="#94a3b8" stroke-width="0.8"/>
 <text x="272.9" y="117.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
-<line x1="220.0" y1="304.0" x2="325.8" y2="304.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="220.0" y1="304.0" x2="387.9" y2="304.0" stroke="#94a3b8" stroke-width="0.6"/>
 <line x1="220.0" y1="301.0" x2="220.0" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="325.8" y1="301.0" x2="325.8" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="272.9" y="301.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">2.30 m</text>
-<line x1="325.8" y1="304.0" x2="650.1" y2="304.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="325.8" y1="301.0" x2="325.8" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="387.9" y1="301.0" x2="387.9" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="303.9" y="301.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.65 m</text>
+<line x1="387.9" y1="304.0" x2="650.1" y2="304.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="387.9" y1="301.0" x2="387.9" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
 <line x1="650.1" y1="301.0" x2="650.1" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="487.9" y="301.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">7.05 m</text>
-<line x1="220.0" y1="488.0" x2="433.9" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="220.0" y1="485.0" x2="220.0" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="433.9" y1="485.0" x2="433.9" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="326.9" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">4.65 m</text>
-<line x1="433.9" y1="488.0" x2="650.1" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="433.9" y1="485.0" x2="433.9" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="650.1" y1="485.0" x2="650.1" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="542.0" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">4.70 m</text>
-<line x1="650.1" y1="488.0" x2="824.9" y2="488.0" stroke="#94a3b8" stroke-width="0.6"/>
-<line x1="650.1" y1="485.0" x2="650.1" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<line x1="824.9" y1="485.0" x2="824.9" y2="491.0" stroke="#94a3b8" stroke-width="0.8"/>
-<text x="737.5" y="485.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.80 m</text>
+<text x="519.0" y="301.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">5.70 m</text>
+<line x1="220.0" y1="511.0" x2="387.9" y2="511.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="220.0" y1="508.0" x2="220.0" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="387.9" y1="508.0" x2="387.9" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="303.9" y="508.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.65 m</text>
+<line x1="387.9" y1="511.0" x2="539.7" y2="511.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="387.9" y1="508.0" x2="387.9" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="539.7" y1="508.0" x2="539.7" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="463.8" y="508.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.30 m</text>
+<line x1="539.7" y1="511.0" x2="686.9" y2="511.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="539.7" y1="508.0" x2="539.7" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="686.9" y1="508.0" x2="686.9" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="613.3" y="508.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.20 m</text>
+<line x1="686.9" y1="511.0" x2="824.9" y2="511.0" stroke="#94a3b8" stroke-width="0.6"/>
+<line x1="686.9" y1="508.0" x2="686.9" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<line x1="824.9" y1="508.0" x2="824.9" y2="514.0" stroke="#94a3b8" stroke-width="0.8"/>
+<text x="755.9" y="508.0" fill="#cbd5e1" font-family="monospace" font-size="5.2" font-weight="600" text-anchor="middle">3.00 m</text>
 <line x1="650.1" y1="304.0" x2="824.9" y2="304.0" stroke="#94a3b8" stroke-width="0.6"/>
 <line x1="650.1" y1="301.0" x2="650.1" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
 <line x1="824.9" y1="301.0" x2="824.9" y2="307.0" stroke="#94a3b8" stroke-width="0.8"/>
@@ -219,73 +244,85 @@
 <text x="1740.0" y="94.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.20×3.20</text>
 <text x="1800.0" y="94.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">10.24 m²</text>
 <line x1="1390.0" y1="98.0" x2="1842.0" y2="98.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="112.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-12</text>
-<text x="1440.0" y="112.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Hueco y Desembarco Escal...</text>
-<text x="1610.0" y="112.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(6.15,8.50)→(7.50,12.50)</text>
-<text x="1740.0" y="112.0" fill="#94a3b8" font-family="monospace" font-size="5.8">1.35×4.00</text>
-<text x="1800.0" y="112.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">5.40 m²</text>
+<text x="1392.0" y="112.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-07B</text>
+<text x="1440.0" y="112.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Galería Paso Sur Claustr...</text>
+<text x="1610.0" y="112.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(10.00,11.70)→(13.20,12.50)</text>
+<text x="1740.0" y="112.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.20×0.80</text>
+<text x="1800.0" y="112.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">2.56 m²</text>
 <line x1="1390.0" y1="116.0" x2="1842.0" y2="116.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="130.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-09</text>
-<text x="1440.0" y="130.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Galería Mirador Oeste Cl...</text>
-<text x="1610.0" y="130.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(7.50,8.50)→(10.00,12.50)</text>
-<text x="1740.0" y="130.0" fill="#94a3b8" font-family="monospace" font-size="5.8">2.50×4.00</text>
-<text x="1800.0" y="130.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">10.00 m²</text>
+<text x="1392.0" y="130.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-12</text>
+<text x="1440.0" y="130.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Hueco y Desembarco Escal...</text>
+<text x="1610.0" y="130.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(6.15,8.50)→(7.50,12.50)</text>
+<text x="1740.0" y="130.0" fill="#94a3b8" font-family="monospace" font-size="5.8">1.35×4.00</text>
+<text x="1800.0" y="130.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">5.40 m²</text>
 <line x1="1390.0" y1="134.0" x2="1842.0" y2="134.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="148.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-19B</text>
-<text x="1440.0" y="148.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Sala Multiusos Atardecer...</text>
-<text x="1610.0" y="148.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(3.85,8.50)→(6.15,12.50)</text>
-<text x="1740.0" y="148.0" fill="#94a3b8" font-family="monospace" font-size="5.8">2.30×4.00</text>
-<text x="1800.0" y="148.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">9.20 m²</text>
+<text x="1392.0" y="148.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-09</text>
+<text x="1440.0" y="148.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Galería Mirador Oeste Cl...</text>
+<text x="1610.0" y="148.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(7.50,8.50)→(10.00,12.50)</text>
+<text x="1740.0" y="148.0" fill="#94a3b8" font-family="monospace" font-size="5.8">2.50×4.00</text>
+<text x="1800.0" y="148.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">10.00 m²</text>
 <line x1="1390.0" y1="152.0" x2="1842.0" y2="152.0" stroke="#1e293b" stroke-width="0.5"/>
 <text x="1392.0" y="166.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-19</text>
-<text x="1440.0" y="166.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Baño Compartido Hijos</text>
-<text x="1610.0" y="166.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(3.85,12.50)→(6.15,16.50)</text>
+<text x="1440.0" y="166.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Baño Compartido Hijos / ...</text>
+<text x="1610.0" y="166.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(3.85,8.50)→(6.15,12.50)</text>
 <text x="1740.0" y="166.0" fill="#94a3b8" font-family="monospace" font-size="5.8">2.30×4.00</text>
 <text x="1800.0" y="166.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">9.20 m²</text>
 <line x1="1390.0" y1="170.0" x2="1842.0" y2="170.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="184.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-16</text>
-<text x="1440.0" y="184.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Galería Distribuidora y ...</text>
-<text x="1610.0" y="184.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(6.15,12.50)→(13.20,16.50)</text>
-<text x="1740.0" y="184.0" fill="#94a3b8" font-family="monospace" font-size="5.8">7.05×4.00</text>
-<text x="1800.0" y="184.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">28.20 m²</text>
+<text x="1392.0" y="184.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-19B</text>
+<text x="1440.0" y="184.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Sala Multiusos Atardecer...</text>
+<text x="1610.0" y="184.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(3.85,12.50)→(7.50,17.00)</text>
+<text x="1740.0" y="184.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.65×4.50</text>
+<text x="1800.0" y="184.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">16.43 m²</text>
 <line x1="1390.0" y1="188.0" x2="1842.0" y2="188.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="202.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-17</text>
-<text x="1440.0" y="202.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Dormitorio Niña (Suite E...</text>
-<text x="1610.0" y="202.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(3.85,16.50)→(8.50,21.45)</text>
-<text x="1740.0" y="202.0" fill="#94a3b8" font-family="monospace" font-size="5.8">4.65×4.95</text>
-<text x="1800.0" y="202.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">23.00 m²</text>
+<text x="1392.0" y="202.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-16</text>
+<text x="1440.0" y="202.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Galería Distribuidora y ...</text>
+<text x="1610.0" y="202.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(7.50,12.50)→(13.20,17.00)</text>
+<text x="1740.0" y="202.0" fill="#94a3b8" font-family="monospace" font-size="5.8">5.70×4.50</text>
+<text x="1800.0" y="202.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">25.65 m²</text>
 <line x1="1390.0" y1="206.0" x2="1842.0" y2="206.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="220.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-18</text>
-<text x="1440.0" y="220.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Dormitorio Infantil Niño</text>
-<text x="1610.0" y="220.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(8.50,16.50)→(13.20,21.45)</text>
-<text x="1740.0" y="220.0" fill="#94a3b8" font-family="monospace" font-size="5.8">4.70×4.95</text>
-<text x="1800.0" y="220.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">23.26 m²</text>
+<text x="1392.0" y="220.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-25</text>
+<text x="1440.0" y="220.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Dormitorio 4 / Invitados...</text>
+<text x="1610.0" y="220.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(3.85,17.00)→(7.50,21.45)</text>
+<text x="1740.0" y="220.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.65×4.45</text>
+<text x="1800.0" y="220.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">16.24 m²</text>
 <line x1="1390.0" y1="224.0" x2="1842.0" y2="224.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="238.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-20</text>
-<text x="1440.0" y="238.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Dormitorio Master Suite ...</text>
-<text x="1610.0" y="238.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(13.20,16.50)→(17.00,21.45)</text>
-<text x="1740.0" y="238.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.80×4.95</text>
-<text x="1800.0" y="238.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">18.81 m²</text>
+<text x="1392.0" y="238.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-17</text>
+<text x="1440.0" y="238.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Dormitorio Infantil Niña</text>
+<text x="1610.0" y="238.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(7.50,17.00)→(10.80,21.45)</text>
+<text x="1740.0" y="238.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.30×4.45</text>
+<text x="1800.0" y="238.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">14.68 m²</text>
 <line x1="1390.0" y1="242.0" x2="1842.0" y2="242.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="256.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-21</text>
-<text x="1440.0" y="256.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Gran Vestidor Suite (sob...</text>
-<text x="1610.0" y="256.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(13.20,12.50)→(17.00,16.50)</text>
-<text x="1740.0" y="256.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.80×4.00</text>
-<text x="1800.0" y="256.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">15.20 m²</text>
+<text x="1392.0" y="256.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-18</text>
+<text x="1440.0" y="256.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Dormitorio Infantil Niño</text>
+<text x="1610.0" y="256.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(10.80,17.00)→(14.00,21.45)</text>
+<text x="1740.0" y="256.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.20×4.45</text>
+<text x="1800.0" y="256.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">14.24 m²</text>
 <line x1="1390.0" y1="260.0" x2="1842.0" y2="260.0" stroke="#1e293b" stroke-width="0.5"/>
-<text x="1392.0" y="274.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-22</text>
-<text x="1440.0" y="274.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Baño Privado Suite (sobr...</text>
-<text x="1610.0" y="274.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(13.20,8.50)→(17.00,12.50)</text>
-<text x="1740.0" y="274.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.80×4.00</text>
-<text x="1800.0" y="274.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">15.20 m²</text>
+<text x="1392.0" y="274.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-20</text>
+<text x="1440.0" y="274.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Master Suite Matrimonio ...</text>
+<text x="1610.0" y="274.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(14.00,17.00)→(17.00,21.45)</text>
+<text x="1740.0" y="274.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.00×4.45</text>
+<text x="1800.0" y="274.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">13.35 m²</text>
 <line x1="1390.0" y1="278.0" x2="1842.0" y2="278.0" stroke="#1e293b" stroke-width="0.5"/>
-<rect x="1390.0" y="286.0" width="452.0" height="24" fill="#1e293b" rx="4"/>
-<text x="1400.0" y="302.0" fill="#f8fafc" font-family="monospace" font-size="7.5" font-weight="700">TOTAL SUPERFICIE ÚTIL COMPUTABLE:</text>
-<text x="1828.0" y="302.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="800" text-anchor="end">157.47 m²</text>
+<text x="1392.0" y="292.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-21</text>
+<text x="1440.0" y="292.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Gran Vestidor Suite (sob...</text>
+<text x="1610.0" y="292.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(13.20,12.50)→(17.00,17.00)</text>
+<text x="1740.0" y="292.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.80×4.50</text>
+<text x="1800.0" y="292.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">17.10 m²</text>
+<line x1="1390.0" y1="296.0" x2="1842.0" y2="296.0" stroke="#1e293b" stroke-width="0.5"/>
+<text x="1392.0" y="310.0" fill="#38bdf8" font-family="monospace" font-size="6.2" font-weight="700">PA-22</text>
+<text x="1440.0" y="310.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="6.2">Baño Privado Suite (sobr...</text>
+<text x="1610.0" y="310.0" fill="#cbd5e1" font-family="monospace" font-size="5.8">(13.20,8.50)→(17.00,12.50)</text>
+<text x="1740.0" y="310.0" fill="#94a3b8" font-family="monospace" font-size="5.8">3.80×4.00</text>
+<text x="1800.0" y="310.0" fill="#34d399" font-family="monospace" font-size="6.2" font-weight="700">15.20 m²</text>
+<line x1="1390.0" y1="314.0" x2="1842.0" y2="314.0" stroke="#1e293b" stroke-width="0.5"/>
+<rect x="1390.0" y="322.0" width="452.0" height="24" fill="#1e293b" rx="4"/>
+<text x="1400.0" y="338.0" fill="#f8fafc" font-family="monospace" font-size="7.5" font-weight="700">TOTAL SUPERFICIE ÚTIL COMPUTABLE:</text>
+<text x="1828.0" y="338.0" fill="#38bdf8" font-family="monospace" font-size="8.5" font-weight="800" text-anchor="end">160.05 m²</text>
 <rect x="1390.0" y="1150.0" width="452.0" height="130" fill="#0f172a" stroke="#38bdf8" stroke-width="1.0" rx="4"/>
 <text x="1402.0" y="1172.0" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11.0" font-weight="800">HOGAR OLEIROS · LIÁNS</text>
 <text x="1402.0" y="1188.0" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="8.5" font-weight="700">PLANTA ALTA: TOPOLOGÍA ESPACIAL, BOUNDING BOXES Y GRAFO DE ADYACENCIA</text>
-<text x="1402.0" y="1202.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="6.8">Versión Morfología en &quot;U&quot; Pura (Opción B: Sala Multiusos Atardecer + Galería Claustro Integral + Suite Sur Expandida)</text>
+<text x="1402.0" y="1202.0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="6.8">Opción A: 4 Dormitorios Completos + Sala Multiusos Atardecer (16 m²) + Galería Claustro</text>
 <line x1="1395.0" y1="1210.0" x2="1837.0" y2="1210.0" stroke="#334155" stroke-width="0.6"/>
 <text x="1402.0" y="1226.0" fill="#cbd5e1" font-family="monospace" font-size="6.0">MOTOR: markdown_cad_compiler.py (Agnóstico al dato)</text>
 <text x="1402.0" y="1238.0" fill="#10b981" font-family="monospace" font-size="6.0">FUENTE: PLANTA_ALTA_TOPOLOGIA.md (Single Source of Truth)</text>

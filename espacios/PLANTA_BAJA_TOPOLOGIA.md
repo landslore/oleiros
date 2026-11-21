@@ -1,13 +1,13 @@
 # Planta Baja: Topología Espacial, Bounding Boxes y Grafo de Adyacencia
-## Versión Optimizada Passivhaus (~165 m² construidos totales · Coches en Tándem Lateral + Patio Claustro y Porche 3 m)
+## Versión Optimizada Passivhaus (~165 m² construidos totales · Coches en Tándem Lateral Enrasados a Fachada Norte)
 
 Este documento actúa como el **Master Plan Semántico de Planta Baja** (Single Source of Truth). Permite a cualquier agente de IA o software CAD consultar instantáneamente las dimensiones, coordenadas envolventes y puntos de enganche de cada estancia sin parsear archivos vectoriales.
 
 * **Cota de Nivel General:** `±0,00 m` (Pavimento terminado interior y enrasado exterior cota cero).
 * **Superficie Útil Interior PB:** `75,00 m²`.
 * **Superficie Construida PB Cerrada:** `88,00 m²` (Ocupación: **14,6 %** sobre parcela de 600 m², ampliamente legal s/ límite del 20 % = 120 m² PXOM Oleiros Ord. 2B).
-* **Superficies Exteriores Vinculadas:** Pérgola aparcamiento lateral 2 coches en línea (28,50 m²), Porche Peatonal Norte (7,40 m²), Patio Claustro Abierto (10,24 m²), Porche Sur Techado (32,55 m² · Fondo 3,00 m), Pradera Césped Sur (162,00 m²).
-* **Aparcamiento en Tándem Lateral Oeste:** Los dos vehículos aparcan en línea (uno detrás de otro) a lo largo de la linde Oeste (`X = 1.00..3.85, Y = 2.50..12.50`). Esto libera el 100% de la fachada Norte para un acceso peatonal noble, jardín de entrada y vistas despejadas desde la calle.
+* **Superficies Exteriores Vinculadas:** Pérgola aparcamiento lateral 2 coches en línea (28,50 m²), Porche Peatonal Norte (5,55 m²), Patio Claustro Abierto (10,24 m²), Porche Sur Techado (32,55 m² · Fondo 3,00 m), Pradera Césped Sur (162,00 m²).
+* **Pérgola en Tándem Enrasada a Fachada Norte:** Empieza exactamente en la línea de fachada Norte (`Y = 5.00`) y desciende hacia el Sur hasta `Y = 15.00` a lo largo de la linde Oeste (`X = 1.00..3.85`). **Cero salientes hacia el Norte**, dejando el frente de entrada noble y ajardinado con el Porche Peatonal `PB-02`.
 * **Churrasqueira y Chimenea:** En el extremo Este del Porche Sur (`X = 17.00 m`), con chimenea de granito moreno exterior.
 
 ---
@@ -18,8 +18,8 @@ Este documento actúa como el **Master Plan Semántico de Planta Baja** (Single 
 
 | ID | Estancia / Espacio | Cota Real en Metros (X1, Y1) a (X2, Y2) | Dimensión Libre (Ancho × Fondo) | Sup. Útil | Orientación Solar | Observaciones Funcionales |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **PB-01** | Pérgola Lateral 2 Coches en Línea | `(1.00, 2.50) -> (3.85, 12.50)` | 2,85 × 10,00 m | 28,50 m² | Oeste / Lateral | Coches en tándem, Wallbox 7,4 kW, paso resguardado a Mudroom y Sala Técnica |
-| **PB-02** | Porche Peatonal Norte | `(6.15, 3.00) -> (9.85, 5.00)` | 3,70 × 2,00 m | 7,40 m² | Norte / Calle | Entrada noble ajardinada, granito abujardado cota +0,05 m ante puerta pivotante C-01 |
+| **PB-01** | Pérgola Lateral 2 Coches en Línea | `(1.00, 5.00) -> (3.85, 15.00)` | 2,85 × 10,00 m | 28,50 m² | Oeste / Lateral | Coches en tándem, enrasada con fachada Norte (Y=5.00), paso a Mudroom y Sala Técnica |
+| **PB-02** | Porche Peatonal Norte | `(6.15, 3.50) -> (9.85, 5.00)` | 3,70 × 1,50 m | 5,55 m² | Norte / Calle | Entrada noble ajardinada, granito abujardado cota +0,05 m ante puerta pivotante C-01 |
 | **PB-03** | Zaguán Mudroom Cortavientos | `(3.85, 5.00) -> (6.15, 8.50)` | 2,30 × 3,50 m | 8,05 m² | Noroeste | Banco zapatero 16 pares, secador y esclusa térmica con puerta a pérgola |
 | **PB-04** | Hall / Recibidor Principal | `(6.15, 5.00) -> (9.85, 8.50)` | 3,70 × 3,50 m | 12,95 m² | Norte / Central | Puerta noble pivotante y vista directa al patio claustro |
 | **PB-05** | Despacho / Suite Invitados | `(9.85, 5.00) -> (13.65, 8.50)`| 3,80 × 3,50 m | 13,30 m² | Norte | Ventana Norte sin reflejos, sofá-cama y puerta acústica |
@@ -46,7 +46,7 @@ Este documento actúa como el **Master Plan Semántico de Planta Baja** (Single 
        ├─────────────────────────────────────────┐
        ▼ (Entrada de vehículos al lateral Oeste)  ▼ (Acceso peatonal ajardinado al Norte)
 [Pérgola Tándem PB-01 (10m x 2,85m)]        [Porche Peatonal Norte PB-02]
-       │ (Paso lateral resguardado)               │ (Puerta Pivotante C-01)
+       │ (Enrasada con fachada Norte Y=5.00)      │ (Puerta Pivotante C-01)
        ├───────────────────┐                      ▼
        ▼                   ▼               [Hall Principal PB-04]
 [Zaguán Mudroom PB-03] [Sala Técnica PB-13]       │
